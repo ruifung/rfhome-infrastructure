@@ -1,0 +1,3 @@
+[submodule "apps/unifi-controller"]
+	path = apps/unifi-controller
+	url = git@github.com:ruifung/unifi-controller-kustomize.git
