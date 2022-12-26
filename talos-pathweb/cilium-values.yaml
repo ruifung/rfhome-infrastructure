@@ -1,0 +1,22 @@
+kubeProxyReplacement: strict
+k8sServiceHost: pathweb.clusters.home.yrf.me
+k8sServicePort: 6443
+egressGateway:
+  enabled: true
+bpf:
+  masquerade: true
+  vlanBypass: "0"
+hubble:
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+tunnel: disabled
+ipv4NativeRoutingCIDR: 10.96.0.0/16
+loadBalancer:
+  mode: dsr
+autoDirectNodeRoutes: true
+ipam:
+  mode: kubernetes
+securityContext:
+  privileged: true

@@ -1,0 +1,4 @@
+# These files have secrets!
+controlplane.yaml
+worker.yaml
+_out
