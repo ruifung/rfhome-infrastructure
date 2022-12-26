@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: unifi-controller
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 10.229.30.0
+spec:
+  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: unifi-ingress
+spec:
+  rules:
+  - host: unifi.services.home.yrf.me
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: unifi-controller-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/service.serverstransport: unifi-ingress-transport@KubernetesCRD

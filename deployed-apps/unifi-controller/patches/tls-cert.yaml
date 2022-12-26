@@ -1,0 +1,11 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: unifi-controller
+spec:
+  template:
+    spec:
+      volumes:
+        - name: unifi-certs
+          secret:
+            secretName: "services-wildcard-cert"
