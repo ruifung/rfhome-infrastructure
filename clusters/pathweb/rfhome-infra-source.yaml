@@ -8,5 +8,7 @@ spec:
   interval: 3m0s
   ref:
     branch: master
+  secretRef:
+    name: flux-system # Use the flux-system credentials for this, since it's the same damn repo.
   url: ssh://git@github.com/ruifung/rfhome-infrastructure
 
