@@ -37,6 +37,8 @@ spec:
     rbac:
       impersonationResourceNames:
       - "wego-admin"
+      impersonationResources:
+      - "users"
     adminUser:
       create: true
       createSecret: false
