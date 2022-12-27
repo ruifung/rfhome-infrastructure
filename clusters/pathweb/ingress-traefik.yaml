@@ -75,6 +75,7 @@ metadata:
   namespace: traefik
 spec:
   approvePlan: auto
+  destroyResourcesOnDeletion: true
   interval: 24h
   path: ./deployments/pathweb/ingress-cf-tunnel
   varsFrom:

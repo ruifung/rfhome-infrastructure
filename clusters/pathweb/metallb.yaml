@@ -25,6 +25,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-  targetNamespace: flux-system
+  targetNamespace: kube-system
   dependsOn:
   - name: metallb
