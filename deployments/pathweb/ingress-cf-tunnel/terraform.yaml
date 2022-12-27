@@ -3,7 +3,7 @@ apiVersion: infra.contrib.fluxcd.io/v1alpha1
 kind: Terraform
 metadata:
   name: ingress-cf-tunnel
-  namespace: traefik
+  namespace: flux-system
 spec:
   approvePlan: auto
   destroyResourcesOnDeletion: true
@@ -15,7 +15,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-    namespace: flux-system
   writeOutputsToSecret:
     name: ingress-cf-tunnel-token
     outputs:
@@ -26,7 +25,7 @@ kind: SealedSecret
 metadata:
   creationTimestamp: null
   name: ingress-cf-tunnel-tf-vars
-  namespace: traefik
+  namespace: flux-system
 spec:
   encryptedData:
     cf_account_id: AgCjc0bc3M8Ox+C4nxPZpXd82UmM0W4Fyvw1jtz2RsiO0/yDBIYNLICSzRgzxuN8D+6NWBQHfNfY+s+Vg1HJ8v/UBvxnYn0qCuz2sJiF3wE8q8DdKBWGW6+vpklBi/GjG00REGQQ8xW8T4xzHthkkYfAhfiRbX5JygNoDzay5EQLgn/f4oGIDRk4LdrUY4O14AXgE+0eSuVsBBdoL8pWW6iHwqm2Wg4OAUZ1wFX5xuhj81b2tCOw+xFwRSEptCEwRu4v2qedmUrtMiY1h3H5nJMngoYlXGoLNLRmFm4dlejFmNsvlign3KWceCBfGN43aBuugE0a7R4ZLQnJrpgYsD341gYAJDWMcFJ+2tKj7YIyqiAXiFZliF5BwMbKd69Nb7MxcH9gBSeMVGGYTt7/XVeUHn3T/d08cHKwCDech/LqPmidu6LdbFoxOy84QSJMA1AgTvtVlO5KjISRDZ3E6++ROOrTTW37hzKtMyAsmo6Z2MYODn2V+qgTwNWLCgHj0FUuNPAj6GJCXD8pMlMVXTutLSBPtaQEXi4aWO61FyvsYBnSa8u7id6F6JBR+Zb4dcirOzP9NgjQ0b4/65WJGmgQ3YaFCXn8K1d9ouV+ZTwe30KwXO+l48kpYtB6MSFAC0jLc/U6DccfB71yqf/Y/8YEfsvLW0JkaarsUsQXs6VbcS77f6aTgcgGqvxe5u01ZpIU2NC5DyUI6SC1xsw6dyH1ngcz5luMeEndOq666zAQlQ==
@@ -35,4 +34,15 @@ spec:
     metadata:
       creationTimestamp: null
       name: ingress-cf-tunnel-tf-vars
-      namespace: traefik
+      namespace: flux-system
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ingress-cf-tunnel-token
+  namespace: flux-system
+  annotations:
+    reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+    reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "traefik"
+    reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "traefik"
+data:

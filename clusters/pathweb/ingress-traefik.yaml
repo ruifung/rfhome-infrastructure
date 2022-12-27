@@ -17,8 +17,9 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: traefik
-  namespace: traefik
+  namespace: flux-system
 spec:
+  targetNamespace: traefik
   chart:
     spec:
       chart: traefik
@@ -80,4 +81,3 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-  targetNamespace: traefik
