@@ -12,7 +12,11 @@ provider "helm" {
 }
 
 provider "kubectl" {
-  config_path    = "../talos-pathweb/kubeconfig"
-  config_context = "admin@pathweb"
+  config_path      = "../talos-pathweb/kubeconfig"
+  config_context   = "admin@pathweb"
   load_config_file = true
+}
+
+provider "github" {
+  owner = "ruifung"
 }
