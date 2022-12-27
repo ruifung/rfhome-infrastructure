@@ -35,7 +35,8 @@ spec:
   interval: 1h0m0s
   values:
     adminUser:
-      create: false
+      create: true
+      createSecret: false
 ---
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
