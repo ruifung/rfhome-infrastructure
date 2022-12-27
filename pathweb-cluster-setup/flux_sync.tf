@@ -25,6 +25,11 @@ resource "kubectl_manifest" "sync" {
   for_each   = { for v in local.sync : lower(join("/", compact([v.data.apiVersion, v.data.kind, lookup(v.data.metadata, "namespace", ""), v.data.metadata.name]))) => v.content }
   depends_on = [kubernetes_namespace_v1.flux_system]
   yaml_body  = each.value
+
+  lifecycle {
+    # This will be managed by flux later.
+    ignore_changes = all
+  }
 }
 
 # Generate Deploy Key
