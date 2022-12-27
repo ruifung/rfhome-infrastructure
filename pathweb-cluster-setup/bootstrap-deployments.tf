@@ -18,7 +18,7 @@ resource "helm_release" "tf_controller" {
   name       = "tf-controller"
   repository = "https://weaveworks.github.io/tf-controller/"
   chart      = "tf-controller"
-  namespace  = "kube-system"
+  namespace  = "flux-system"
 
   values = [yamlencode({
     replicaCount = 0
