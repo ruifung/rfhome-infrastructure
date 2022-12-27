@@ -20,22 +20,6 @@ spec:
     outputs:
     - token
 ---
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  creationTimestamp: null
-  name: ingress-cf-tunnel-tf-vars
-  namespace: flux-system
-spec:
-  encryptedData:
-    cf_account_id: AgCjc0bc3M8Ox+C4nxPZpXd82UmM0W4Fyvw1jtz2RsiO0/yDBIYNLICSzRgzxuN8D+6NWBQHfNfY+s+Vg1HJ8v/UBvxnYn0qCuz2sJiF3wE8q8DdKBWGW6+vpklBi/GjG00REGQQ8xW8T4xzHthkkYfAhfiRbX5JygNoDzay5EQLgn/f4oGIDRk4LdrUY4O14AXgE+0eSuVsBBdoL8pWW6iHwqm2Wg4OAUZ1wFX5xuhj81b2tCOw+xFwRSEptCEwRu4v2qedmUrtMiY1h3H5nJMngoYlXGoLNLRmFm4dlejFmNsvlign3KWceCBfGN43aBuugE0a7R4ZLQnJrpgYsD341gYAJDWMcFJ+2tKj7YIyqiAXiFZliF5BwMbKd69Nb7MxcH9gBSeMVGGYTt7/XVeUHn3T/d08cHKwCDech/LqPmidu6LdbFoxOy84QSJMA1AgTvtVlO5KjISRDZ3E6++ROOrTTW37hzKtMyAsmo6Z2MYODn2V+qgTwNWLCgHj0FUuNPAj6GJCXD8pMlMVXTutLSBPtaQEXi4aWO61FyvsYBnSa8u7id6F6JBR+Zb4dcirOzP9NgjQ0b4/65WJGmgQ3YaFCXn8K1d9ouV+ZTwe30KwXO+l48kpYtB6MSFAC0jLc/U6DccfB71yqf/Y/8YEfsvLW0JkaarsUsQXs6VbcS77f6aTgcgGqvxe5u01ZpIU2NC5DyUI6SC1xsw6dyH1ngcz5luMeEndOq666zAQlQ==
-    cf_api_token: AgAOe1I2s0yweJAFMQVVY/SjiRf9HfkyCnmZ8yyfZuRpEkz7JpaLYhDcb8STsChu8xAFiY5ns3oi3DWpibkdKZDTMhxPcEPkbMQgR1S9DkZufNyncg3krKVaLZBqzhhPUzfshIvFfNCi1I4NaM7q9r1YSBEd9JsIkLVVdV6bpI/iX1vEN/X6ku4/e6jjRzUx6Dc92PvfHVYS/85WQh/6OC99SoQ3KW+D1DnAxoMW6NQRBdOYYiMTCP+TUxuYDefho+RCs9Y1N1pD7BFArOAbJYZEoIGTSjKnr62mzqXh9NUlxEmipO1HXaGdm2CAAlkWZj7HYFi/SIrWrLfx3CSq1xVKYJrC14X7psip0OqdjrAazd+qagoJG5xDKvzfyCq3mZiaBaIImM8RPvAPNSCsbm4uR7HoTFPbJOQNbVkvq305GTNskwmi7Je+rysGzGx+k/bTm9yYPlmXA82ECyeN/rkut67/eNpDBNbqSYnMeH1fby7Tle9mj4M307d+9JpKxllglcwvT24vkdVi6Pnnmq479ZLNAoXqMMg5ktgM5s2lqG1xJORHIWI/U79C6dFu2YpQmhXnJdkYdG2OH3vdJ7AT641QnnuTrk8hMBoJypNSDSaybl61cKcJzxlbzR7sWnGKz29Av+K3yzGjqiFEAbJtL0YXz7TH1I7/TgSGNp70PWUV2WV6ogtXtf8IH72ah/DrGGko5cfwxdVWU6xP6USTIZbCXhkMPewyTF+648t0UfOGG7w61mZW
-  template:
-    metadata:
-      creationTimestamp: null
-      name: ingress-cf-tunnel-tf-vars
-      namespace: flux-system
----
 apiVersion: v1
 kind: Secret
 metadata:
