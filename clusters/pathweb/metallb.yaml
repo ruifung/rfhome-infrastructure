@@ -27,4 +27,4 @@ spec:
     name: rfhome-infrastructure
   targetNamespace: home-network
   dependsOn:
-  - metallb
+  - name: metallb
