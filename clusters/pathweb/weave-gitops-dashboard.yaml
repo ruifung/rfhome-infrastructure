@@ -34,6 +34,9 @@ spec:
         name: ww-gitops
   interval: 1h0m0s
   values:
+    rbac:
+      impersonationResourceNames:
+      - "wego-admin"
     adminUser:
       create: true
       createSecret: false
