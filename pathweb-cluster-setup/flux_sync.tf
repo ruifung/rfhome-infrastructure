@@ -46,8 +46,8 @@ data "http" "github_meta" {
 }
 
 locals {
-    gh_ssh_keys = jsondecode(data.http.github_meta.response_body).ssh_keys
-    gh_known_hosts = formatlist("github.com %s", local.gh_ssh_keys)
+  gh_ssh_keys    = jsondecode(data.http.github_meta.response_body).ssh_keys
+  gh_known_hosts = formatlist("github.com %s", local.gh_ssh_keys)
 }
 
 # Generate a Kubernetes secret with the Git credentials
@@ -60,7 +60,7 @@ resource "kubernetes_secret" "main" {
   }
 
   data = {
-    identity = tls_private_key.rfhome_infra_deploy_key.private_key_openssh
+    identity    = tls_private_key.rfhome_infra_deploy_key.private_key_openssh
     known_hosts = join("\n", local.gh_known_hosts)
   }
 }
