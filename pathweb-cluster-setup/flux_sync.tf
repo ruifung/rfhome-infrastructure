@@ -51,7 +51,7 @@ locals {
 }
 
 # Generate a Kubernetes secret with the Git credentials
-resource "kubernetes_secret" "main" {
+resource "kubernetes_secret_v1" "main" {
   depends_on = [kubectl_manifest.apply]
 
   metadata {
