@@ -54,7 +54,7 @@ spec:
           enabled: true
     deployment:
       podLabels:
-        velero.io/exclude-from-backup: true
+        velero.io/exclude-from-backup: "true"
       additionalContainers:
         - name: cloudflared
           image: cloudflare/cloudflared:latest
