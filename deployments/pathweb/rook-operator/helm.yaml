@@ -25,7 +25,8 @@ spec:
         name: rook-release
   interval: 5m0s
   targetNamespace: rook-ceph
-  createNamespace: true
+  install:
+    createNamespace: true
   values:
     csi:
       clusterName: pathweb
