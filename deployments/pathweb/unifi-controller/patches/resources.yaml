@@ -18,6 +18,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: unifi-pvc
 spec:
+  storageClassName: ceph-rbd
   resources:
     requests:
       storage: 5Gi

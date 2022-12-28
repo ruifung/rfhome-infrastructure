@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: unifi-controller
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 10.229.30.0
+    metallb.universe.tf/loadBalancerIPs: 10.229.30.1
 spec:
   type: LoadBalancer
 ---
