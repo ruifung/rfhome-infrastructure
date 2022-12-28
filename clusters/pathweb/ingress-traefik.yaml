@@ -29,6 +29,9 @@ spec:
         name: traefik
   interval: 5m0s
   values:
+    service:
+      annotations:
+        metallb.universe.tf/loadBalancerIPs: 10.229.30.0
     ports:
       web:
         port: 8080
