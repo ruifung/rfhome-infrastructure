@@ -28,6 +28,7 @@ spec:
   install:
     createNamespace: true
   values:
+    pspEnable: true
     csi:
       clusterName: pathweb
       enableCSIHostNetwork: true
