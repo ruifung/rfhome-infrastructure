@@ -1,0 +1,1 @@
+foreach ($i in Get-ChildItem | Where-Object {$_.Name.EndsWith(".secret.yaml")} ) { kubeseal -f $i.Name --cert ..\..\..\..\pathweb-sealed-secrets.pem --format yaml > $i.Name.Replace("secret","sealed")  }
