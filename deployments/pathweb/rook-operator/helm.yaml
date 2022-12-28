@@ -1,10 +1,4 @@
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: rook-ceph
-
----
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
@@ -31,6 +25,7 @@ spec:
         name: rook-release
   interval: 5m0s
   targetNamespace: rook-ceph
+  createNamespace: true
   values:
     csi:
       clusterName: pathweb
