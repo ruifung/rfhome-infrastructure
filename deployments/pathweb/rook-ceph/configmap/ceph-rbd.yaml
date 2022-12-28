@@ -4,7 +4,7 @@ metadata:
   name: ceph-rbd
 provisioner: kube-system.rbd.csi.ceph.com
 parameters:
-  clusterID: rook-ceph
+  clusterID: rook-ceph-external
   pool: cluster-block
   imageFormat: "2"
   imageFeatures: layering

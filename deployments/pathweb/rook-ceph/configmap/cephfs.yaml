@@ -4,7 +4,7 @@ metadata:
   name: cephfs
 provisioner: kube-system.cephfs.csi.ceph.com
 parameters:
-  clusterID: rook-ceph
+  clusterID: rook-ceph-external
   fsName: cluster-cephfs
   pool: cluster-cephfs_data
   csi.storage.k8s.io/provisioner-secret-name: "rook-csi-cephfs-provisioner"
