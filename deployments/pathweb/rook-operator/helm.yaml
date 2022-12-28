@@ -45,3 +45,121 @@ spec:
       - key: node-role.kubernetes.io/control-plane
         operator: Exists
         effect: NoSchedule
+    csiRBDPluginResource: |
+      - name : driver-registrar
+        resource:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
+      - name : csi-rbdplugin
+        resource:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+      - name : liveness-prometheus
+        resource:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
+    csiCephFSPluginResource: |
+      - name : driver-registrar
+        resource:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
+      - name : csi-cephfsplugin
+        resource:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+      - name : liveness-prometheus
+        resource:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
+    csiCephFSProvisionerResource: |
+      - name : csi-provisioner
+        resource:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 200m
+      - name : csi-resizer
+        resource:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 200m
+      - name : csi-attacher
+        resource:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 200m
+      - name : csi-snapshotter
+        resource:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 200m
+      - name : csi-cephfsplugin
+        resource:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+      - name : liveness-prometheus
+        resource:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
+    csiRBDProvisionerResource: |
+      - name : csi-provisioner
+        resource:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 200m
+      - name : csi-resizer
+        resource:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 200m
+      - name : csi-attacher
+        resource:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 200m
+      - name : csi-snapshotter
+        resource:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 200m
+      - name : csi-rbdplugin
+        resource:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+      - name : csi-omap-generator
+        resource:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+      - name : liveness-prometheus
+        resource:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
