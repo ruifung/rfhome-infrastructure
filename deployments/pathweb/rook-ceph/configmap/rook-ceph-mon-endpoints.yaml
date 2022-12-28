@@ -7,4 +7,4 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: rook-ceph-mon-endpoints
-  namespace: rook-ceph
+  namespace: rook-ceph-external
