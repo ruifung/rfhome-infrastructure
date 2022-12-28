@@ -24,11 +24,8 @@ spec:
         kind: HelmRepository
         name: rook-release
   interval: 5m0s
-  targetNamespace: rook-ceph
-  install:
-    createNamespace: true
+  targetNamespace: kube-system
   values:
-    pspEnable: true
     csi:
       clusterName: pathweb
       enableCSIHostNetwork: true
