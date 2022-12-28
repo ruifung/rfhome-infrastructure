@@ -16,6 +16,10 @@ metadata:
   namespace: flux-system
 spec:
   releaseName: rook-ceph
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
   chart:
     spec:
       chart: rook-ceph
