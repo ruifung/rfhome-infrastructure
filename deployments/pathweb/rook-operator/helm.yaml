@@ -37,6 +37,7 @@ spec:
     csi:
       clusterName: pathweb
       enableCSIHostNetwork: true
+      provisionerReplicas: 1
       csiRBDPluginResource: |
         - name : driver-registrar
           resource:
