@@ -30,6 +30,9 @@ resource "random_id" "cf_ingress_tunnel_token_tail" {
 output "token" {
   value = cloudflare_argo_tunnel.ingress_tunnel.tunnel_token
 }
+output "tunnel_cname" {
+  value = cloudflare_argo_tunnel.ingress_tunnel.cname
+}
 
 terraform {
   required_providers {
