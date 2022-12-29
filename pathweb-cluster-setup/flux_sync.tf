@@ -45,6 +45,18 @@ resource "github_repository_deploy_key" "rfhome_infra_deploy_key" {
   read_only  = "true"
 }
 
+resource "tls_private_key" "rfhome_infra_private_deploy_key" {
+  algorithm = "ED25519"
+}
+
+resource "github_repository_deploy_key" "rfhome_infra_private_deploy_key" {
+  title      = "Pathweb Flux Deploy Key"
+  repository = "rfhome-infrastructure-private"
+  key        = tls_private_key.rfhome_infra_private_deploy_key.public_key_openssh
+  read_only  = "true"
+}
+
+
 # Fetch github metadata
 data "http" "github_meta" {
   url = "https://api.github.com/meta"
@@ -66,6 +78,20 @@ resource "kubernetes_secret_v1" "main" {
 
   data = {
     identity    = tls_private_key.rfhome_infra_deploy_key.private_key_openssh
+    known_hosts = join("\n", local.gh_known_hosts)
+  }
+}
+
+resource "kubernetes_secret_v1" "rfhome_private" {
+  depends_on = [kubectl_manifest.apply]
+
+  metadata {
+    name      = "rfhome-private"
+    namespace = data.flux_sync.main.namespace
+  }
+
+  data = {
+    identity    = tls_private_key.rfhome_infra_private_deploy_key.private_key_openssh
     known_hosts = join("\n", local.gh_known_hosts)
   }
 }
