@@ -11,7 +11,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-  targetNamespace: home-network
+  targetNamespace: flux-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -25,6 +25,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure-private
-  targetNamespace: flux-system
+  targetNamespace: home-network
   dependsOn:
   - name: emqx-operator
