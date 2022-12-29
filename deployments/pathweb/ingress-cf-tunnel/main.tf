@@ -27,11 +27,26 @@ resource "random_id" "cf_ingress_tunnel_token_tail" {
   }
 }
 
-output "token" {
-  value = cloudflare_argo_tunnel.ingress_tunnel.tunnel_token
+resource "kubernetes_config_map_v1" "tunnel_info" {
+  metadata {
+    name = "ingress-cf-tunnel-info"
+    namespace = "traefik"
+  }
+
+  data = {
+    "tunnel-cname" = cloudflare_argo_tunnel.ingress_tunnel.cname
+  }
 }
-output "tunnel_cname" {
-  value = cloudflare_argo_tunnel.ingress_tunnel.cname
+
+resource "kubernetes_secret_v1" "tunnel_token" {
+  metadata {
+    name = "ingress-cf-tunnel-token"
+    namespace = "traefik"
+  }
+
+  data = {
+    "token" = cloudflare_argo_tunnel.ingress_tunnel.tunnel_token
+  }
 }
 
 terraform {
@@ -44,6 +59,11 @@ terraform {
     random = {
       source  = "hashicorp/random"
       version = "3.3.2"
+    }
+
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "2.16.1"
     }
   }
 }

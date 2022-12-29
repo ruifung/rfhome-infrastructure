@@ -15,19 +15,3 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-  writeOutputsToSecret:
-    name: ingress-cf-tunnel-token
-    outputs:
-    - token
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: ingress-cf-tunnel-token
-  namespace: flux-system
-  annotations:
-    reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
-    reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "traefik"
-    reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
-    reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "traefik"
-data:
