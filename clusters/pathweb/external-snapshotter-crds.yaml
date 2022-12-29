@@ -6,7 +6,7 @@ metadata:
   name: k8s-external-snapshotter
   namespace: flux-system
 spec:
-  interval: 3m0s
+  interval: 15m
   ref:
     branch: release-6.2
   url: https://github.com/kubernetes-csi/external-snapshotter
@@ -17,7 +17,7 @@ metadata:
   name: external-snapshotter-crds
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 15m
   path: ./client/config/crd
   prune: true
   sourceRef:

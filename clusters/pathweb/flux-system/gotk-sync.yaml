@@ -19,7 +19,7 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 15m
   path: ./clusters/pathweb
   prune: true
   sourceRef:

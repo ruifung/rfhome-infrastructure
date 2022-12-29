@@ -27,7 +27,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: traefik
-  interval: 5m0s
+  interval: 15m
   values:
     service:
       annotations:
@@ -78,7 +78,7 @@ metadata:
   name: ingress-cf-tunnel
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 15m
   path: ./deployments/pathweb/ingress-cf-tunnel
   prune: true
   sourceRef:
