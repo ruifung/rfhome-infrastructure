@@ -1,0 +1,30 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: emqx
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://repos.emqx.io/charts
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: emqx-operator
+  namespace: flux-system
+spec:
+  releaseName: emqx-operator
+  chart:
+    spec:
+      chart: emqx-operator
+      version: 2.0.2
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: emqx
+  interval: 5m0s
+  targetNamespace: emqx-operator
+  install:
+    createNamespace: true
