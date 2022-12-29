@@ -20,7 +20,7 @@ metadata:
 spec:
   interval: 3m0s
   ref:
-    branch: master
+    branch: main
   secretRef:
     name: rfhome-private
   url: ssh://git@github.com/ruifung/rfhome-infrastructure-private
