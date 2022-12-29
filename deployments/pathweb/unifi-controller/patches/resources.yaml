@@ -7,6 +7,13 @@ spec:
     spec:
       containers:
         - name: unifi-controller
+          env:
+          - name: MEM_LIMIT
+            value: "384"
+          - name: MEM_STARTUP
+            value: "256"
+          - name: "TZ"
+            value: "Asia/Kuala_Lumpur"
           resources:
             limits:
               memory: 1Gi
