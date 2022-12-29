@@ -9,9 +9,9 @@ spec:
         - name: unifi-controller
           resources:
             limits:
-              memory: 512M
+              memory: 1Gi
             requests:
-              memory: 256M
+              memory: 256Mi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
