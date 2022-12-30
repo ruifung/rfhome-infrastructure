@@ -4,8 +4,8 @@ namespace: rook-ceph-external
 resources:
 - common-external.yaml
 - cluster-external.yaml
-- configmap/ceph-rbd.yaml
-- configmap/cephfs.yaml
+- storageclass/ceph-rbd.yaml
+- storageclass/cephfs.yaml
 - configmap/rook-ceph-mon-endpoints.yaml
 - secrets/csi-cephfs-node.sealed.yaml
 - secrets/csi-cephfs-provisioner.sealed.yaml
