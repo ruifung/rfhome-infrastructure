@@ -38,6 +38,7 @@ spec:
       enable_pod_antiaffinity: true
       enable_pod_disruption_budget: false
       enable_readiness_probe: false
+      spilo_fsgroup: 103
       ignored_annotations:
       - k8s.v1.cni.cncf.io/network-status
       - k8s.v1.cni.cncf.io/networks-status
