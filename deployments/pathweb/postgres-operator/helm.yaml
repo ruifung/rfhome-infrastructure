@@ -29,6 +29,8 @@ spec:
   install:
     createNamespace: true
   values:
+    image:
+      tag: v1.8.2-43-g3e148ea5
     configGeneral:
       workers: 1
     configKubernetes:
