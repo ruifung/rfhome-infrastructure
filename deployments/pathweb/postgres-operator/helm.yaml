@@ -30,7 +30,6 @@ spec:
     createNamespace: true
   values:
     configGeneral:
-      max_instances: 1
       workers: 1
     configKubernetes:
       enable_cross_namespace_secret: true
