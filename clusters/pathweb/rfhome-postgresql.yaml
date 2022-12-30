@@ -1,0 +1,15 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: rfhome-postgresql
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  path: ./deployments/pathweb/rfhome-postgresql
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure-private
+  targetNamespace: home-network
+  dependsOn:
+  - name: postgres-operator
