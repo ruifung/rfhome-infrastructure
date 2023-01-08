@@ -13,6 +13,11 @@ patchesStrategicMerge:
   - "patches/tls-cert.yaml"
   - "patches/network.yaml"
   - "patches/resources.yaml"
+patches:
+  - target:
+      kind: Ingress
+      name: unifi-ingress
+    path: "patches/ingress-host.json"
 commonLabels:
   app.kubernetes.io/instance: unifi-controller
   app.kubernetes.io/name: unifi-controller

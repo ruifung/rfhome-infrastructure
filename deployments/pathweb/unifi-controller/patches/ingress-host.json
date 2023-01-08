@@ -1,0 +1,7 @@
+[
+    {
+        "op": "add",
+        "path": "/spec/rules/0/host",
+        "value": "unifi.services.home.yrf.me"
+    }
+]

@@ -7,14 +7,6 @@ metadata:
 spec:
   type: LoadBalancer
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: unifi-ingress
-spec:
-  rules:
-  - host: unifi.services.home.yrf.me
----
 apiVersion: v1
 kind: Service
 metadata:
