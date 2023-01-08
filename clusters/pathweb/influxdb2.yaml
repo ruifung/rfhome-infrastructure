@@ -29,6 +29,7 @@ spec:
       enabled: true
       className: traefik-traefik
       tls: true
+      secretName: services-wildcard-cert
       hostname: influxdb.services.home.yrf.me
     pdb:
       create: false
