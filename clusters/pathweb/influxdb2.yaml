@@ -30,3 +30,5 @@ spec:
       className: traefik-traefik
       tls: true
       hostname: influxdb.services.home.yrf.me
+    pdb:
+      create: false
