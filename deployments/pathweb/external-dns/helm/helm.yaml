@@ -73,6 +73,7 @@ spec:
   install:
     createNamespace: true
   values:
+    logLevel: debug
     image:
       registry: ghcr.io/ruifung
       repository: external-dns-markus-agh
