@@ -13,6 +13,7 @@ patchesStrategicMerge:
   - "patches/tls-cert.yaml"
   - "patches/network.yaml"
   - "patches/resources.yaml"
+  - "patches/ingress-agh-dns.yaml"
 patches:
   - target:
       kind: Ingress
