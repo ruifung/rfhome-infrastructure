@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: yrf-me-cf-api-token
+  namespace: external-dns
+spec:
+  encryptedData:
+    cloudflare_api_token: AgBglbr7VlgnMJvCkOhsJzXDzWprcVSI1cbDKi7N8+nDCApc+Fz3Uq2LeIPhsKVuGN9goudB1RmAzqrR48ug8AV3E5cVnzs6geRbPI8UbL/JnGk7F3ag6U7PVDRM4FIejSgmZydnddT0pJNbrgnogoDSrer9pv5OubTi6ChsVJr1gVjZZ1ZYaNtYyjW4UkYJ7VXBFIE1azFbDSJ0uDNtadEHBE8LTbtHU+cQEvOd8/OfHeA0U7D3NWNCId9/fRUTNUN3kRjdM81tPzTsSR9cbGIxBOnVRlKzmXUgJ2CMb3N+9/gz3N8zqIjqiYwtJWAY/MpdjmvlpWAEzudLocAvxydses7MtJg9TBH8eUGjeonaHGuVjvSDBRwHRtasCRZPzmeSewPEijE7OFQ0JA5aH8YRUxFG6o5v77hKzEPrHviMTMZJU0LXrdfNw8V0XWQUUTA12i/S6Ja3YM3H/7KJYAM8NJQ1A73sWNG5v7HrlQtWJRJGTDl9NiMw5XD2J9qxCkw37C0VB9Kc8hAEm/IAhua5r0u4GaSz3ZKR3g239Y84plKUJdyh2jfCXaLBJcOaoRlPX5UCQnToO/7EvqNovf2dRvQoUAx5pAjaB7CPGDBD38Tb5jKA0eRjrmqWjDYPCJwwSYQgU2YUQ6tkCkVvTgbQ60yHEInTCAwYO5Qt/1NxcCr1wHeqAFhEC6F+0r/4c+RhLpLmGLbHt+xAmW84FU57vT86sZBYvZm850Q49DF1kxBzaYCeVJWt
+  template:
+    metadata:
+      creationTimestamp: null
+      name: yrf-me-cf-api-token
+      namespace: external-dns
+    type: Opaque
+
