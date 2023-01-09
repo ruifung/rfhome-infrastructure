@@ -56,10 +56,10 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: external-dns-agh
+  name: external-dns-local-pdns
   namespace: flux-system
 spec:
-  releaseName: external-dns-agh
+  releaseName: external-dns-local-pdns
   chart:
     spec:
       chart: external-dns
@@ -75,18 +75,22 @@ spec:
   values:
     logLevel: debug
     image:
-      registry: ghcr.io/ruifung
-      repository: external-dns-markus-agh
-      tag: "20230109"
+      registry: k8s.gcr.io/external-dns
+      repository: external-dns
+      tag: v0.13.1
     sources:
     - ingress
     - service
     - crd
-    provider: adguardhome
-    extraEnvVarsSecret: adguardhome-dns
+    provider: pdns
+    pdns:
+      apiUrl: http://10.229.31.54
+      apiPort: 8081
+      secretName: local-pdns-api-key
     domainFilters:
-    - home.yrf.me
-    labelFilter: external-dns=agh
+    - services.home.yrf.me
+    - pathweb.clusters.home.yrf.me
+    labelFilter: external-dns=local-pdns
     registry: txt
     txtSuffix: .external-dns-txt
     txtOwnerId: "rfhome-cluster-pathweb"
