@@ -34,7 +34,7 @@ spec:
         metallb.universe.tf/loadBalancerIPs: 10.229.30.0
         external-dns.alpha.kubernetes.io/hostname: ingress.pathweb.clusters.home.yrf.me
       labels:
-        external-dns: agh
+        external-dns: local-pdns
     ports:
       web:
         port: 8080

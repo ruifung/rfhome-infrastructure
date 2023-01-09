@@ -3,4 +3,4 @@ kind: Ingress
 metadata:
   name: unifi-ingress
   labels:
-    external-dns: agh
+    external-dns: local-pdns
