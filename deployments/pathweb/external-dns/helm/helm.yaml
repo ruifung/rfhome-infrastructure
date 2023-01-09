@@ -76,7 +76,8 @@ spec:
     image:
       registry: ghcr.io/ruifung
       repository: external-dns-markus-agh
-      tag: "@sha256:93b551c27b0d09842051d8e83cb70967f403f07e3a262c036c6a6da216ff86ff"
+      tag: "latest"
+      digest: "sha256:93b551c27b0d09842051d8e83cb70967f403f07e3a262c036c6a6da216ff86ff"
     sources:
     - ingress
     - service
