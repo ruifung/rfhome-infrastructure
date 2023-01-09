@@ -3,3 +3,8 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: home-network
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: external-dns
