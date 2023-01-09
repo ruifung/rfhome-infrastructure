@@ -73,7 +73,6 @@ spec:
   install:
     createNamespace: true
   values:
-    logLevel: debug
     image:
       registry: k8s.gcr.io/external-dns
       repository: external-dns
