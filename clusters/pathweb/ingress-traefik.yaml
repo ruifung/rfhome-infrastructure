@@ -32,6 +32,9 @@ spec:
     service:
       annotations:
         metallb.universe.tf/loadBalancerIPs: 10.229.30.0
+        external-dns.alpha.kubernetes.io/hostname: pathweb-ingress
+      labels:
+        external-dns: agh
     ports:
       web:
         port: 8080
