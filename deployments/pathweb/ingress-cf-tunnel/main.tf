@@ -29,7 +29,7 @@ resource "random_id" "cf_ingress_tunnel_token_tail" {
 
 resource "kubernetes_config_map_v1" "tunnel_info" {
   metadata {
-    name = "ingress-cf-tunnel-info"
+    name      = "ingress-cf-tunnel-info"
     namespace = "traefik"
   }
 
@@ -40,13 +40,21 @@ resource "kubernetes_config_map_v1" "tunnel_info" {
 
 resource "kubernetes_secret_v1" "tunnel_token" {
   metadata {
-    name = "ingress-cf-tunnel-token"
+    name      = "ingress-cf-tunnel-token"
     namespace = "traefik"
   }
 
   data = {
     "token" = cloudflare_argo_tunnel.ingress_tunnel.tunnel_token
   }
+}
+
+resource "cloudflare_record" "ingress_cname_record" {
+  name    = "ingress-pathweb-clusters-home"
+  proxied = true
+  type    = "CNAME"
+  value   = cloudflare_argo_tunnel.ingress_tunnel.cname
+  zone_id = "5bc68a047b2375ae7dbd5ccc3cc96912"
 }
 
 terraform {
