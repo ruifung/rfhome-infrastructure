@@ -41,15 +41,21 @@ spec:
         exposedPort: 80
         expose: true
         protocol: TCP
+        redirectTo: websecure
       websecure:
         port: 8443
         exposedPort: 443
         expose: true
         protocol: TCP
+        http3:
+          enabled: true
       cloudflared:
         port: 8081
         expose: false
         protocol: TCP
+        forwardedHeaders:
+          trustedIPs:
+          - 127.0.0.0/8
     additionalArguments:
       - --entrypoints.cloudflared.forwardedheaders.trustedips=127.0.0.1
     experimental:
