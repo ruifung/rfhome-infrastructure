@@ -9,6 +9,8 @@ spec:
   destroyResourcesOnDeletion: true
   interval: 1h
   path: ./deployments/pathweb/ingress-cf-tunnel
+  tfstate:
+    forceUnlock: auto
   varsFrom:
   - kind: Secret
     name: ingress-cf-tunnel-tf-vars
