@@ -51,7 +51,7 @@ spec:
       create: true
       apiversion: externaldns.k8s.io/v1alpha1
       kind: DNSEndpoint
-    dryRun: true
+    dryRun: false
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
