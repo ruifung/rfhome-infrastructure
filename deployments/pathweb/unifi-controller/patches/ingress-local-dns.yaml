@@ -4,3 +4,8 @@ metadata:
   name: unifi-ingress
   labels:
     external-dns: local-pdns
+spec:
+  tls:
+  - hosts:
+      - unifi.services.home.yrf.me
+    secretName: services-wildcard-cert
