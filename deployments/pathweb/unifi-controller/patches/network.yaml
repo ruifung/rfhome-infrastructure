@@ -15,4 +15,4 @@ kind: Service
 metadata:
   name: unifi-controller-ingress
   annotations:
-    traefik.ingress.kubernetes.io/service.serverstransport: unifi-ingress-transport@KubernetesCRD
+    traefik.ingress.kubernetes.io/service.serverstransport: home-network-unifi-ingress-transport@kubernetescrd
