@@ -33,6 +33,15 @@ spec:
         kind: HelmRepository
         name: ww-gitops
   interval: 15m
+  postRenderers:
+  - kustomize:
+      patchesStrategicMerge:
+      - apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: ww-gitops-weave-gitops
+          labels:
+            external-dns: local-pdns
   values:
     ingress:
       enabled: true
