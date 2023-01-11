@@ -30,7 +30,7 @@ metadata:
     external-dns: local-pdns
 spec:
   rules:
-  - host: hass2.services.home.yrf.me
+  - host: hass.services.home.yrf.me
     http:
       paths:
       - pathType: Prefix
