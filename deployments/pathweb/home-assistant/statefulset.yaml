@@ -10,7 +10,7 @@ spec:
     rollingUpdate:
       maxUnavailable: 0
   template:
-    mmetadata:
+    metadata:
       annotations:
         k8s.v1.cni.cncf.io/networks: home-network/hass-iot-network
     spec:
