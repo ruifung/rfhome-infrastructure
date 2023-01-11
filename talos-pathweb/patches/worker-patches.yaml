@@ -1,0 +1,6 @@
+﻿machine:
+  network:
+    interfaces:
+      - interface: eth1
+        vlans:
+          - vlanId: 55
