@@ -42,5 +42,5 @@ spec:
               name: http
   tls:
     - hosts:
-      - hass2.services.home.yrf.me
+      - hass.services.home.yrf.me
       secretName: services-wildcard-cert
