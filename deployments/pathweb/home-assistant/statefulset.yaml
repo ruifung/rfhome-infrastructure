@@ -1,0 +1,41 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: home-assistant
+spec:
+  serviceName: home-assistant
+  replicas: 1
+  template:
+    mmetadata:
+      annotations:
+        k8s.v1.cni.cncf.io/networks: home-network/hass-iot-network
+    spec:
+      initContainers:
+        - name: update-listen-ip
+          image: lscr.io/linuxserver/yq
+          volumeMounts:
+            - mountPath: data
+              name: /config
+          command: ["yq"]
+          args: ["\".http.server_host = \\\"$(ip -f inet addr show eth0 | sed -En -e 's/\\s*inet ([0-9.]+).*/\\1/p')\\\"\"  test.yaml -yi"]
+      containers:
+        - name: home-assistant
+          image: lscr.io/linuxserver/homeassistant:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Asia/Kuala_Lumpur
+          ports:
+            - containerPort: 8123
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: data
+              mountPath: /config
+      volumes:
+        - name: hass-data
+          persistentVolumeClaim:
+            claimName: home-assistant-data

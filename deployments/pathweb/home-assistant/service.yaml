@@ -1,0 +1,13 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant
+  namespace: home-network
+spec:
+  clusterIP: None
+  ports:
+  - port: 8123
+    targetPort: 8123
+    name: http
+    protocol: TCP
+    appProtocol: http
