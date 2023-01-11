@@ -34,6 +34,20 @@ spec:
         name: ww-gitops
   interval: 15m
   values:
+    ingress:
+      enabled: true
+      className: "traefik-traefik"
+      annotations:
+        ingress.kubernetes.io/whitelist-source-range: 10.229.2.0/24,10.229.51.0/24
+      hosts:
+      - host: gitops.pathweb.clusters.home.yrf.me
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - secretName: pathweb-wildcard-cert
+        hosts: 
+        - gitops.pathweb.clusters.home.yrf.me
     adminUser:
       create: true
       createSecret: false
