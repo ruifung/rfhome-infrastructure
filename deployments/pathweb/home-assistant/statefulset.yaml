@@ -16,8 +16,8 @@ spec:
           volumeMounts:
             - name: hass-data
               mountPath: /config
-          command: ["yq"]
-          args: ["\".http.server_host = \\\"$(ip -f inet addr show eth0 | sed -En -e 's/\\s*inet ([0-9.]+).*/\\1/p')\\\"\"  test.yaml -yi"]
+          command: ["bash"]
+          args: ["-c", "yq \".http.server_host = \\\"$(ip -f inet addr show eth0 | sed -En -e 's/\\s*inet ([0-9.]+).*/\\1/p')\\\"\"  test.yaml -yi"]
       containers:
         - name: home-assistant
           image: lscr.io/linuxserver/homeassistant:latest
