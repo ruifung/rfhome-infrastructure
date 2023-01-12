@@ -4,7 +4,7 @@ machine:
       rotate-server-certificates: true
 cluster:
   controlPlane:
-    endpoint: https://controlplane.pathweb.clusters.home.yrf.me
+    endpoint: https://controlplane.pathweb.clusters.home.yrf.me:6443
   network:
     cni:
       name: none
