@@ -2,27 +2,6 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: home-assistant-external
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: cloudflared
-  # labels:
-    # external-dns: cf-yrf.me
-spec:
-  rules:
-  - host: hass-home.yrf.me
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: home-assistant
-            port: 
-              name: http
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
   name: home-assistant
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
