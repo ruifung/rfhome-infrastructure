@@ -12,6 +12,10 @@ spec:
     kind: GitRepository
     name: rfhome-infrastructure
   targetNamespace: flux-system
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: traefik
   dependsOn:
   - name: ingress-cf-tunnel
 ---
