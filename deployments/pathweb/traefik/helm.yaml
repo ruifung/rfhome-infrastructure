@@ -1,9 +1,4 @@
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: traefik
----
+﻿---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
@@ -81,16 +76,3 @@ spec:
                   name: ingress-cf-tunnel-token
                   key: token
                   optional: false
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: ingress-cf-tunnel
-  namespace: flux-system
-spec:
-  interval: 15m
-  path: ./deployments/pathweb/ingress-cf-tunnel
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: rfhome-infrastructure

@@ -11,3 +11,5 @@ spec:
     kind: GitRepository
     name: rfhome-infrastructure
   targetNamespace: home-network
+  dependsOn:
+    - name: rook-external-cluster

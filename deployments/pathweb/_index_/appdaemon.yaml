@@ -14,3 +14,4 @@ spec:
   targetNamespace: home-network
   dependsOn:
     - name: home-assistant
+    - name: rook-external-cluster
