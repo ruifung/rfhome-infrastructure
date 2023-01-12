@@ -1,0 +1,66 @@
+﻿---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  annotations:
+    metadata.weave.works/description: This is the source location for the Weave GitOps
+      Dashboard's helm chart.
+  labels:
+    app.kubernetes.io/component: ui
+    app.kubernetes.io/created-by: weave-gitops-cli
+    app.kubernetes.io/name: weave-gitops-dashboard
+    app.kubernetes.io/part-of: weave-gitops
+  name: ww-gitops
+  namespace: flux-system
+spec:
+  interval: 24h
+  type: oci
+  url: oci://ghcr.io/weaveworks/charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  annotations:
+    metadata.weave.works/description: This is the Weave GitOps Dashboard.  It provides
+      a simple way to get insights into your GitOps workloads.
+  name: ww-gitops
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: weave-gitops
+      sourceRef:
+        kind: HelmRepository
+        name: ww-gitops
+  interval: 15m
+  postRenderers:
+  - kustomize:
+      patchesStrategicMerge:
+      - apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: ww-gitops-weave-gitops
+          labels:
+            external-dns: local-pdns
+  values:
+    ingress:
+      enabled: true
+      className: "traefik-traefik"
+      annotations:
+        ingress.kubernetes.io/whitelist-source-range: 10.229.2.0/24,10.229.51.0/24
+      hosts:
+      - host: gitops.pathweb.clusters.home.yrf.me
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - secretName: pathweb-wildcard-cert
+        hosts: 
+        - gitops.pathweb.clusters.home.yrf.me
+    adminUser:
+      create: true
+      createSecret: false
+      username: ruifung
+
+
+

@@ -1,85 +1,14 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
 metadata:
-  annotations:
-    metadata.weave.works/description: This is the source location for the Weave GitOps
-      Dashboard's helm chart.
-  labels:
-    app.kubernetes.io/component: ui
-    app.kubernetes.io/created-by: weave-gitops-cli
-    app.kubernetes.io/name: weave-gitops-dashboard
-    app.kubernetes.io/part-of: weave-gitops
-  name: ww-gitops
+  name: unifi-controller
   namespace: flux-system
 spec:
-  interval: 24h
-  type: oci
-  url: oci://ghcr.io/weaveworks/charts
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  annotations:
-    metadata.weave.works/description: This is the Weave GitOps Dashboard.  It provides
-      a simple way to get insights into your GitOps workloads.
-  name: ww-gitops
-  namespace: flux-system
-spec:
-  chart:
-    spec:
-      chart: weave-gitops
-      sourceRef:
-        kind: HelmRepository
-        name: ww-gitops
-  interval: 15m
-  postRenderers:
-  - kustomize:
-      patchesStrategicMerge:
-      - apiVersion: networking.k8s.io/v1
-        kind: Ingress
-        metadata:
-          name: ww-gitops-weave-gitops
-          labels:
-            external-dns: local-pdns
-  values:
-    ingress:
-      enabled: true
-      className: "traefik-traefik"
-      annotations:
-        ingress.kubernetes.io/whitelist-source-range: 10.229.2.0/24,10.229.51.0/24
-      hosts:
-      - host: gitops.pathweb.clusters.home.yrf.me
-        paths:
-        - path: /
-          pathType: Prefix
-      tls:
-      - secretName: pathweb-wildcard-cert
-        hosts: 
-        - gitops.pathweb.clusters.home.yrf.me
-    adminUser:
-      create: true
-      createSecret: false
-      username: ruifung
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  creationTimestamp: null
-  name: cluster-user-auth
-  namespace: flux-system
-  labels:
-    app.kubernetes.io/name: weave-gitops-dashboard
-spec:
-  encryptedData:
-    password: AgBcdeTmizhWHYqVE5mhvLjr7NQzDfj7QqHbtSqTK8Che5plzomklfcsmoamZNS07f+fEo8jKlMR33Z/64SD3Xb6rSfwAjx4ZoXgcrRjmRn+0mAk/CZQCu6RHevEF6WTPhRhk8tlnkfxyA20pU8vLeDh+SZ/kAo+eBGNkBvsGpNQ3NGh+Yuv0jOr6OhIhkZpNgJHDfQP7rW/q5dTGYw+XCV48gezi0971m/FRm6m1w6XsxfNgyJddApka6jp2LcCSr0rNvqGvvuW/neS7eae3ZEz38+f3RbuRz4y8oOC54OWkfmwWRloTJLBQeUW1D/++S+HkK6/ApJlnXxGf3q8dAsryscwE9IUUfaxTT+Q5SS6i5abssJShhUTDi6LEV1x8MkDRytwhphhiY55nb2MVAY2vhrHvyOSROCzI+ppasi8uAftz8tUYOYkRJPxTcAFMiBH6biq5KJgIE90fcVTAaz/ZCKcOrhUVeyKPW0fxl9C+pE3r4VSMrQWRwA79D9EEzSY9hXKA9/S6LYV4vjgKONFTwWpff5/bJ2YXdPxGN9roHxTTPwa5vncLnqhI3MOWSlqXmBnB41GnWH9kgNosuKiZxLJBOsy5zTGpYJPeSG+yXLR+t3TZgknkOF+3rnOBLKwtdSsbcNRMNjvq6ZqMD7TfapX2xNhqpgoVp7UxU6MzqPqO+Gg8M00NuOho2tS62AKyBvn7i5Lns3xZTDcy5Mfspbr5ajn9USZnfpMx0/wjyg6quhwQuIuwbrWsEBfALZjtCY1c4NRZSaAXEU=
-    username: AgAV0ylFE9F7DZslNu2pHYWyd0b13wsi7gVRjSCiJmymgzH2tkoCE+trb/5vZ89BWkoNs0OMyL/mL1oRbY1IYq3yzG5S6duPF0tTczLCxc4yjxKrOWNE1Ofq/AR8TOCP7kiH1UOr3BlPf6ewhZvFg89ALpU58NSpVUeZAXqo8dr1a0IMnPGgVvk6RKD6zDaJ88bJxwEVn8bVPoaWOolJ9OGB8ueelOw1QNjzOpuTsMvAZzdye0xM9QeACsl+Le14Y45rTlP7JHZ6j4hs0CnCqt1jjmwvtULNZqy9Wq0sJEG9bsr1SfJM6G3ZBpT0Z32IaRojBTKqiqgFxb5ofhZSbLrtiFX9NA/zH2wJP2zlL1swEcDCU3EMYQnugX4ASMfHAC3Fpmrok/bkCbnidhPkrJkXk+dNUxRTlTWLJXR5zECXLro995JFgaFcaTTOIQmtzENT1eeIBUO0Dr4SHwaqmt/p/tgQ8Qaon+cX2iX1nu56npNNHjKE+A7iiN4QYLLD9yihe0u2OZ1XfpBfqiR2LtiEG33F7Orhw4xMtbpBxucI+QwHeU7a1tffFFhS38vbeVXs7EEeXS5kG7kwhk2S9r7DwBhXnSb4xLFB4wB59hkMvmLmBQGOjEr9d+oGkmzv8lEhDzPcV7XMfqKM5YFM3m/tNzy8bUZl1Fh0m9ViV60wslnCruLrzKnF/SADnbEGd5vKO9KbP13I
-  template:
-    metadata:
-      creationTimestamp: null
-      name: cluster-user-auth
-      namespace: flux-system
-      labels:
-        app.kubernetes.io/name: weave-gitops-dashboard
-
-
+  interval: 5m0s
+  path: ./deployments/pathweb/weave-gitops
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: home-network
