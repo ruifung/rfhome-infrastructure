@@ -37,6 +37,11 @@ spec:
               value: "1000"
             - name: TZ
               value: Asia/Kuala_Lumpur
+            - name: HASS_DB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: rfhome-postgres-ha-pguser-home-assistant
+                  key: pgbouncer-uri
           ports:
             - containerPort: 8123
               name: http
