@@ -1,0 +1,27 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: appdaemon
+spec:
+  serviceName: appdaemon
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+  template:
+    spec:
+      containers:
+        - name: appdaemon
+          image: acockburn/appdaemon:latest
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: hass-data
+              mountPath: /conf/
+              subPath: appdaemon
+      volumes:
+        - name: hass-data
+          persistentVolumeClaim:
+            claimName: home-assistant-data

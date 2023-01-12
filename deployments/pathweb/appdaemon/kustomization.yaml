@@ -1,0 +1,14 @@
+﻿---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  app.kubernetes.io/version: "4.2.1"
+  app.kubernetes.io/name: appdaemon
+images:
+- name: acockburn/appdaemon
+  newTag: "4.2.1"
+resources:
+- statefulset.yaml
+- service.yaml
+patchesStrategicMerge: []
+patches: []
