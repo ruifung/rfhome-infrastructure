@@ -1,15 +1,16 @@
+﻿---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: rfhome-postgresql
+  name: appdaemon
   namespace: flux-system
 spec:
-  interval: 5m0s
-  path: ./deployments/pathweb/rfhome-postgresql
-  prune: false
+  interval: 15m
+  path: ./deployments/pathweb/appdaemon
+  prune: true
   sourceRef:
     kind: GitRepository
-    name: rfhome-infrastructure-private
+    name: rfhome-infrastructure
   targetNamespace: home-network
   dependsOn:
-  - name: postgres-operator
+    - name: home-assistant
