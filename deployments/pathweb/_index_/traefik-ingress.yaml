@@ -35,7 +35,7 @@ spec:
   healthChecks:
     - apiVersion: infra.contrib.fluxcd.io/v1alpha1
       kind: Terraform
-      name: traefik
-      namespace: ingress-cf-tunnel
+      name: ingress-cf-tunnel
+      namespace: flux-system
   dependsOn:
   - name: tf-controller
