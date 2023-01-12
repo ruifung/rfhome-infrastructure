@@ -32,5 +32,10 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
+  healthChecks:
+    - apiVersion: infra.contrib.fluxcd.io/v1alpha1
+      kind: Terraform
+      name: traefik
+      namespace: ingress-cf-tunnel
   dependsOn:
   - name: tf-controller
