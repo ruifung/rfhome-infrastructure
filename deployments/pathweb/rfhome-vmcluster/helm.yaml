@@ -24,7 +24,7 @@ spec:
         kind: HelmRepository
         name: victoria-metrics
   interval: 15m
-  targetNamespace: victoria-metrics
+  targetNamespace: home-network
   install:
     createNamespace: true
   values:

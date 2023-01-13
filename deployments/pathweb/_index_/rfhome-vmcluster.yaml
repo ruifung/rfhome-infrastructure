@@ -11,7 +11,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-  targetNamespace: home-network
+  targetNamespace: flux-system
   healthChecks:
     - apiVersion: infra.contrib.fluxcd.io/v1alpha1
       kind: HelmRelease
