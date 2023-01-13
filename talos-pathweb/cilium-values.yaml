@@ -24,3 +24,5 @@ securityContext:
 endpointStatus:
   enabled: true
   status: "policy"
+cni:
+  exclusive: false
