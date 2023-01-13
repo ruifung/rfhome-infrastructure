@@ -7,6 +7,7 @@ bpf:
   masquerade: true
   vlanBypass: "0"
 hubble:
+  enabled: true
   relay:
     enabled: true
   ui:
@@ -20,3 +21,6 @@ ipam:
   mode: kubernetes
 securityContext:
   privileged: true
+endpointStatus:
+  enabled: true
+  status: "policy"
