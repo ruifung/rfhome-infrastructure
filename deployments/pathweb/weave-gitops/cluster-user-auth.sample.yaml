@@ -1,0 +1,11 @@
+﻿apiVersion: v1
+kind: Secret
+metadata:
+  name: cluster-user-auth
+  namespace: flux-system
+  labels:
+    app.kubernetes.io/name: weave-gitops-dashboard
+type: Opaque
+stringData:
+  username: ""
+  password: "bcrypt-password-goes-here"
