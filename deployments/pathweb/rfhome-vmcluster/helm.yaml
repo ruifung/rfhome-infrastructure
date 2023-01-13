@@ -17,7 +17,7 @@ spec:
   releaseName: rfhome-vmcluster
   chart:
     spec:
-      chart: victoria-metrics-operator
+      chart: victoria-metrics-cluster
       version: 0.9.49
       reconcileStrategy: ChartVersion
       sourceRef:
