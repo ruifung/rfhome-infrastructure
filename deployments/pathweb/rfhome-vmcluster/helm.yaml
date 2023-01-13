@@ -1,0 +1,48 @@
+﻿---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: victoria-metrics
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://victoriametrics.github.io/helm-charts/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rfhome-vmcluster
+  namespace: flux-system
+spec:
+  releaseName: rfhome-vmcluster
+  chart:
+    spec:
+      chart: victoria-metrics-operator
+      version: 0.9.49
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: victoria-metrics
+  interval: 15m
+  targetNamespace: victoria-metrics
+  install:
+    createNamespace: true
+  values:
+    vmselect:
+      replicaCount: 2
+      podDisruptionBudget:
+        enabled: true
+        minAvailable: 1
+    vminsert:
+      replicaCount: 2
+      podDisruptionBudget:
+        enabled: true
+        minAvailable: 1
+    vmstorage:
+      replicaCount: 3
+      podDisruptionBudget:
+        enabled: true
+        minAvailable: 2
+      retentionPeriod: "12"
+      persistentVolume:
+        storageClass: "ceph-rbd"
