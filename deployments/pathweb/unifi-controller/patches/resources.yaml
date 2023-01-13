@@ -4,6 +4,9 @@ metadata:
   name: unifi-controller
 spec:
   template:
+    metadata:
+      annotations:
+        io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
     spec:
       containers:
         - name: unifi-controller

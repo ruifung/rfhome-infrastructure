@@ -6372,6 +6372,7 @@ spec:
       annotations:
         prometheus.io/port: "8080"
         prometheus.io/scrape: "true"
+        io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
       labels:
         app: helm-controller
     spec:
@@ -6455,6 +6456,7 @@ spec:
       annotations:
         prometheus.io/port: "8080"
         prometheus.io/scrape: "true"
+        io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
       labels:
         app: kustomize-controller
     spec:
@@ -6538,6 +6540,7 @@ spec:
       annotations:
         prometheus.io/port: "8080"
         prometheus.io/scrape: "true"
+        io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
       labels:
         app: notification-controller
     spec:
@@ -6628,6 +6631,7 @@ spec:
       annotations:
         prometheus.io/port: "8080"
         prometheus.io/scrape: "true"
+        io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
       labels:
         app: source-controller
     spec:

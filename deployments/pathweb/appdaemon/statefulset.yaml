@@ -9,6 +9,9 @@ spec:
     rollingUpdate:
       maxUnavailable: 0
   template:
+    metadata:
+      annotations:
+        io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
     spec:
       containers:
         - name: appdaemon
