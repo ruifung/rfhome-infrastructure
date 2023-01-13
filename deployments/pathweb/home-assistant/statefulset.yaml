@@ -13,7 +13,6 @@ spec:
     metadata:
       annotations:
         k8s.v1.cni.cncf.io/networks: home-network/hass-iot-network
-        io.cilium.proxy-visibility: <Egress/53/UDP/DNS>
     spec:
       initContainers:
         - name: update-listen-ip
