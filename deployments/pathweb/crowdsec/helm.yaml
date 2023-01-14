@@ -14,7 +14,7 @@ metadata:
   name: crowdsec
   namespace: flux-system
 spec:
-  targetNamespace: crowdsec
+  targetNamespace: monitoring
   releaseName: crowdsec
   chart:
     spec:
