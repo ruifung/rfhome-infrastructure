@@ -1,0 +1,76 @@
+﻿---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: traefik-external
+  namespace: flux-system
+spec:
+  targetNamespace: traefik
+  chart:
+    spec:
+      chart: traefik
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+  interval: 15m
+  install:
+    createNamespace: true
+  postRenderers:
+    - kustomize:
+        patchesJson6902:
+        - target:
+            version: v1
+            kind: Service
+          patch:
+          - op: remove
+            path: /spec/selector
+          - op: replace
+            path: /spec/type
+            value: ExternalName
+          - op: add
+            path: /spec/externalName
+            value: ingress-pathweb-clusters-home.yrf.me
+  values:
+    service:
+      enabled: true
+    ports:
+      web:
+        exposedPort: 80
+        expose: true
+      websecure:
+        exposedPort: 443
+        expose: true
+      cloudflared:
+        port: 8081
+        expose: false
+        protocol: TCP
+        forwardedHeaders:
+          trustedIPs:
+          - 127.0.0.0/8
+    additionalArguments:
+      - --entrypoints.cloudflared.forwardedheaders.trustedips=127.0.0.1
+    experimental:
+      http3:
+        enabled: true
+    providers:
+      kubernetesIngress:
+        ingressClass: traefik-external
+        publishedService:
+          enabled: true
+    deployment:
+      replicas: 2
+      podLabels:
+        velero.io/exclude-from-backup: "true"
+      additionalContainers:
+        - name: cloudflared
+          image: cloudflare/cloudflared:latest
+          imagePullPolicy: Always
+          args: ["tunnel", "run", "--url", "127.0.0.1:8081"]
+          env:
+            - name: TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ingress-cf-tunnel-token
+                  key: token
+                  optional: false
