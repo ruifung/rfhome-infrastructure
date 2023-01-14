@@ -67,3 +67,9 @@ spec:
                   name: ingress-cf-tunnel-token
                   key: token
                   optional: false
+    logs:
+      general:
+        format: json
+      access:
+        enabled: true
+        format: json

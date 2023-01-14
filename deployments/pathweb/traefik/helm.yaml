@@ -63,3 +63,9 @@ spec:
       replicas: 2
       podLabels:
         velero.io/exclude-from-backup: "true"
+    logs:
+      general:
+        format: json
+      access:
+        enabled: true
+        format: json
