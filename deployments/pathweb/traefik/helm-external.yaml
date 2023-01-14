@@ -28,6 +28,7 @@ spec:
             kind: IngressRoute
             metadata:
               name: traefik-external-dashboard
+              namespace: traefik
               annotations:
                 kubernetes.io/ingress.class: traefik-external
   values:
