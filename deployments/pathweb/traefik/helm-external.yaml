@@ -18,33 +18,17 @@ spec:
   install:
     createNamespace: true
     skipCRDs: true
-  postRenderers:
-    - kustomize:
-        patchesStrategicMerge:
-          - apiVersion: v1
-            kind: Service
-            metadata:
-              name: traefik-external
-              namespace: traefik
-            status:
-              loadBalancer:
-                ingress:
-                - hostname: ingress-pathweb-clusters-home.yrf.me
   dependsOn:
     - name: traefik
       namespace: flux-system
   values:
     service:
-      enabled: true
-      spec:
-        loadBalancerClass: cloudflare-tunnel-pathweb-ingress
+      enabled: false
     ports:
       web:
-        exposedPort: 80
-        expose: true
+        expose: false
       websecure:
-        exposedPort: 443
-        expose: true
+        expose: false
       cloudflared:
         port: 8081
         expose: false
