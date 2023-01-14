@@ -51,6 +51,7 @@ spec:
         enabled: true
     providers:
       kubernetesIngress:
+        ingressClass: traefik-traefik
         publishedService:
           enabled: true
     deployment:
