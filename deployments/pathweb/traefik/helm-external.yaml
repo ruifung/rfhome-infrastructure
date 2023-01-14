@@ -6,6 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: traefik
+  releaseName: traefik-external
   chart:
     spec:
       chart: traefik
@@ -23,6 +24,7 @@ spec:
         - target:
             version: v1
             kind: Service
+            name: traefik-external
           patch:
           - op: remove
             path: /spec/selector
