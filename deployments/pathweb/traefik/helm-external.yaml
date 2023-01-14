@@ -21,6 +21,15 @@ spec:
   dependsOn:
     - name: traefik
       namespace: flux-system
+  postRenderers:
+    - kustomize:
+        patchesStrategicMerge:
+          - apiVersion: traefik.containo.us/v1alpha1
+            kind: IngressRoute
+            metadata:
+              name: traefik-external-dashboard
+              annotations:
+                kubernetes.io/ingress.class: traefik-external
   values:
     service:
       enabled: false

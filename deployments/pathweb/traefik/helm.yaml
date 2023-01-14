@@ -25,6 +25,15 @@ spec:
   interval: 15m
   install:
     createNamespace: true
+  postRenderers:
+    - kustomize:
+        patchesStrategicMerge:
+          - apiVersion: traefik.containo.us/v1alpha1
+            kind: IngressRoute
+            metadata:
+              name: traefik-traefik-dashboard
+              annotations:
+                kubernetes.io/ingress.class: traefik-traefik
   values:
     service:
       annotations:
