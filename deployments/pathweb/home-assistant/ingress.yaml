@@ -30,7 +30,7 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/target: ingress-pathweb-clusters-home.yrf.me
   labels:
-    external-dns: cf-yrf.me
+    external-dns: cf-yrf-me
 spec:
   ingressClassName: traefik-external
   rules:
