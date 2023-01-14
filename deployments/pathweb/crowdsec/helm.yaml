@@ -27,6 +27,9 @@ spec:
   install:
     createNamespace: true
   values:
+    image:
+      repository: ghcr.io/ruifung/crowdsec
+      tag: fix-docker-start-20230114
     agent:
       # To specify each pod you want to process it logs (pods present in the node)
       acquisition:
