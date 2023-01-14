@@ -10,6 +10,7 @@ metadata:
   labels:
     external-dns: "cf-yrf-me"
 spec:
+  ingressClassName: traefik-external
   rules:
   - host: flux-webhook-pathweb-clusters-home.yrf.me
     http:

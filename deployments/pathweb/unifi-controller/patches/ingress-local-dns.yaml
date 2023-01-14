@@ -5,6 +5,7 @@ metadata:
   labels:
     external-dns: local-pdns
 spec:
+  ingressClassName: traefik-traefik
   tls:
   - hosts:
       - unifi.services.home.yrf.me
