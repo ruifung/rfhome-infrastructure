@@ -19,6 +19,8 @@ spec:
   install:
     createNamespace: true
   values:
+    victoria-metrics-operator:
+      enabled: false
     vmsingle:
       enabled: false
     vmcluster:
