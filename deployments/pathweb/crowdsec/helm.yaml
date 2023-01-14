@@ -27,6 +27,7 @@ spec:
   install:
     createNamespace: true
   values:
+    container_runtime: containerd
     image:
       repository: ghcr.io/ruifung/crowdsec
       tag: fix-docker-start-20230114
