@@ -49,6 +49,8 @@ spec:
       # As we are running Nginx, we want to install the Nginx collection
       - name: COLLECTIONS
         value: "crowdsecurity/traefik crowdsecurity/home-assistant"
+      - name: PARSERS
+        value: "crowdsecurity/cri-logs"
     lapi:
       env:
         # As it's a test, we don't want to share signals with CrowdSec, so disable the Online API.
