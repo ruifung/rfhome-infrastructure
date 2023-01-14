@@ -31,8 +31,9 @@ spec:
     vmalert:
       remoteWriteVMAgent: true
     vmagent:
-      externalLabels:
-        cluster: pathweb
+      spec:
+        externalLabels:
+          cluster: pathweb
     grafana:
       persistence:
         enabled: true
