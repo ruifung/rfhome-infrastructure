@@ -54,6 +54,8 @@ spec:
         ingressClass: traefik-traefik
         publishedService:
           enabled: true
+      kubernetesCRD:
+        ingressClass: traefik-traefik
     deployment:
       replicas: 2
       podLabels:

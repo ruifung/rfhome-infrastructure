@@ -42,6 +42,8 @@ spec:
       http3:
         enabled: true
     providers:
+      kubernetesCRD:
+        ingressClass: traefik-external
       kubernetesIngress:
         ingressClass: traefik-external
         publishedService:
