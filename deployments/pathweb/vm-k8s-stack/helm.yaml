@@ -33,3 +33,6 @@ spec:
     vmagent:
       externalLabels:
         cluster: pathweb
+    grafana:
+      persistence:
+        enabled: true
