@@ -16,6 +16,7 @@ spec:
   interval: 15m
   install:
     createNamespace: true
+    skipCRDs: true
   postRenderers:
     - kustomize:
         patchesJson6902:
@@ -31,6 +32,9 @@ spec:
           - op: add
             path: /spec/externalName
             value: ingress-pathweb-clusters-home.yrf.me
+  dependsOn:
+    - name: traefik
+      namespace: flux-system
   values:
     service:
       enabled: true
