@@ -20,26 +20,23 @@ spec:
     skipCRDs: true
   postRenderers:
     - kustomize:
-        patchesJson6902:
-        - target:
-            version: v1
+        patchesStrategicMerge:
+          - apiVersion: v1
             kind: Service
-            name: traefik-external
-          patch:
-          - op: remove
-            path: /spec/selector
-          - op: replace
-            path: /spec/type
-            value: ExternalName
-          - op: add
-            path: /spec/externalName
-            value: ingress-pathweb-clusters-home.yrf.me
+            metadata:
+              name: traefik-external
+            status:
+              loadBalancer:
+                ingress:
+                - hostname: ingress-pathweb-clusters-home.yrf.me
   dependsOn:
     - name: traefik
       namespace: flux-system
   values:
     service:
       enabled: true
+      spec:
+        loadBalancerClass: cloudflare-tunnel-pathweb-ingress
     ports:
       web:
         exposedPort: 80
