@@ -54,6 +54,10 @@ spec:
           value: "bouncer-ou"
         - name: AGENTS_ALLOWED_OU
           value: "agent-ou"
+        - name: "bouncers_allowed_yaml"
+          value: '["bouncer-ou"]'
+        - name: "bouncers_allowed_yaml"
+          value: '["agent-ou"]'
       dashboard:
         enabled: true
     tls:
