@@ -17,6 +17,7 @@ spec:
   targetNamespace: monitoring
   values:
     prometheus:
+      retention: 6h
       disableCompaction: true
       walCompression: true
       thanos:
