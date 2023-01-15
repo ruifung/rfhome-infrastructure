@@ -94,6 +94,10 @@ spec:
         enabled: true
         format: json
     metrics:
+      prometheus:
+        entryPoint: metrics
+      service:
+        enabled: true
       serviceMonitor:
         metricRelabelings:
           - sourceLabels: [__name__]
