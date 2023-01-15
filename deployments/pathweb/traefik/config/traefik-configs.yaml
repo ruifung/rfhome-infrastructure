@@ -6,7 +6,7 @@ metadata:
 data:
   crowdsec-bouncer.yaml: |-
     ---
-    http
+    http:
       middlewares:
         crowdsec:
           plugin:
