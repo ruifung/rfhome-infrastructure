@@ -28,9 +28,11 @@ spec:
       enabled: true
       pathType: Prefix
       hostname: grafana.services.home.yrf.me
-      tls: true
-      secrets:
-        - name: services-wildcard-cert
+      tls: false
+      extraTls:
+      - hosts:
+        - grafana.services.home.yrf.me
+        secretName: services-wildcard-cert
       ingressClassName: traefik-traefik
     metrics:
       enabled: true
