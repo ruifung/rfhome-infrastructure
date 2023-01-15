@@ -40,7 +40,7 @@ spec:
         enabled: true
         namespace: monitoring
       prometheusRule:
-        enabled: true
+        enabled: false
         namespace: monitoring
         rules:
           - alert: Grafana-Down
