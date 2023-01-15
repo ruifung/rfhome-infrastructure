@@ -52,5 +52,3 @@ spec:
               severity: warning
               service: grafana
             for: 5m
-    volumePermissions:
-      enabled: true
