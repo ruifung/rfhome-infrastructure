@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 15m
   path: ./deployments/pathweb/vm-k8s-stack
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure

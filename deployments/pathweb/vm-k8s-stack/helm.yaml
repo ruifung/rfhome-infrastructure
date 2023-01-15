@@ -6,6 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   releaseName: vm-k8s-stack
+  prune: true
   chart:
     spec:
       chart: victoria-metrics-k8s-stack
