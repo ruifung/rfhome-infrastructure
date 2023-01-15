@@ -43,3 +43,18 @@ spec:
       namespace: flux-system
   dependsOn:
   - name: tf-controller
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: traefik-additional-configs
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./deployments/pathweb/traefik/config
+  prune: true
+  targetNamespace: traefik
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure

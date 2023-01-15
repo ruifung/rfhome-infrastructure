@@ -26,6 +26,21 @@ spec:
   interval: 15m
   install:
     createNamespace: true
+  postRenderers:
+    - kustomize:
+        patchesStrategicMerge:
+          - apiVersion: cert-manager.io/v1
+            kind: Certificate
+            metadata:
+              name: crowdsec-bouncer
+              namespace: monitoring
+            spec:
+              secretTemplate:
+                annotations:
+                    reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+                    reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "traefik"
+                    reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+                    reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "traefik"
   values:
     container_runtime: containerd
     image:

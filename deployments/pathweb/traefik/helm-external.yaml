@@ -22,6 +22,28 @@ spec:
     - name: traefik
       namespace: flux-system
   values:
+    additionalArguments:
+      - "--providers.file.directory=/additional-configs"
+      - "--providers.file.watch=true"
+      - "--experimental.plugins.bouncer.modulename=github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
+      - "--experimental.plugins.bouncer.version=v1.1.8"
+      - "--entrypoints.web.http.middlewares=crowdsec@file"
+      - "--entrypoints.websecure.http.middlewares=crowdsec@file"
+      - "--entrypoints.cloudflared.http.middlewares=crowdsec@file"
+    deployment:
+      additionalVolumes:
+        - name: additional-configs
+          projected:
+            sources:
+              - configMap:
+                  name: traefik-additional-configs
+    volumes:
+      - name: crowdsec-bouncer-tls
+        mountPath: /crowdsec
+        type: secret
+    additionalVolumeMounts:       
+      - name: additional-configs
+        mountPath: /additional-configs
     service:
       enabled: false
     ports:
