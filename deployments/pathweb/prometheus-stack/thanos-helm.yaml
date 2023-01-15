@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: prometheus-stack
+  name: thanos
   namespace: flux-system
 spec:
   releaseName: prometheus-stack
@@ -19,7 +19,7 @@ spec:
     existingObjstoreSecret: thanos-objstore-config
     query:
       dnsDiscovery:
-        sidecarsService: kube-prometheus-prometheus-thanos
+        sidecarsService: prometheus-prometheus-thanos
         sidecarsNamespace: monitoring
     bucketweb:
       enabled: true
@@ -30,7 +30,7 @@ spec:
     ruler:
       enabled: true
       alertmanagers:
-        - http://kube-prometheus-alertmanager.monitoring.svc.cluster.local:9093
+        - http://prometheus-alertmanager.monitoring.svc.cluster.local:9093
       config: |-
         groups:
           - name: "metamonitoring"
@@ -41,9 +41,3 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: true
-    minio:
-      enabled: true
-      auth:
-        rootUser: "admin"
-        rootPassword: "minio123"
-      defaultBuckets: "thanos"

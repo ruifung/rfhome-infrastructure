@@ -15,3 +15,6 @@ spec:
         name: bitnami
   interval: 15m
   targetNamespace: monitoring
+  values:
+    serviceMonitor:
+      enabled: true
