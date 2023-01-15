@@ -1,0 +1,5 @@
+﻿resources:
+  - "node-exporter-helm.yaml"
+  - "prometheus-helm.yaml"
+  - "thanos-helm.yaml"
+  - "config.yaml"
