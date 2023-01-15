@@ -5,7 +5,7 @@ metadata:
   name: thanos
   namespace: flux-system
 spec:
-  releaseName: prometheus-stack
+  releaseName: thanos
   chart:
     spec:
       chart: thanos
