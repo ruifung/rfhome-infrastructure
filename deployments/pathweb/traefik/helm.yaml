@@ -34,6 +34,9 @@ spec:
       - "--entrypoints.web.http.middlewares=crowdsec@file"
       - "--entrypoints.websecure.http.middlewares=crowdsec@file"
     deployment:
+      replicas: 2
+      podLabels:
+        velero.io/exclude-from-backup: "true"
       additionalVolumes:
         - name: additional-configs
           projected:
@@ -80,10 +83,6 @@ spec:
     ingressRoute:
       annotations:
         kubernetes.io/ingress.class: traefik-traefik
-    deployment:
-      replicas: 2
-      podLabels:
-        velero.io/exclude-from-backup: "true"
     logs:
       general:
         format: json

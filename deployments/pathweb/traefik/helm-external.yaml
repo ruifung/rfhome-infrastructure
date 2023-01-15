@@ -31,6 +31,21 @@ spec:
       - "--entrypoints.websecure.http.middlewares=crowdsec@file"
       - "--entrypoints.cloudflared.http.middlewares=crowdsec@file"
     deployment:
+      replicas: 2
+      podLabels:
+        velero.io/exclude-from-backup: "true"
+      additionalContainers:
+        - name: cloudflared
+          image: cloudflare/cloudflared:latest
+          imagePullPolicy: Always
+          args: ["tunnel", "run", "--url", "127.0.0.1:8081"]
+          env:
+            - name: TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ingress-cf-tunnel-token
+                  key: token
+                  optional: false
       additionalVolumes:
         - name: additional-configs
           projected:
@@ -93,22 +108,6 @@ spec:
     ingressRoute:
       annotations:
         kubernetes.io/ingress.class: traefik-external
-    deployment:
-      replicas: 2
-      podLabels:
-        velero.io/exclude-from-backup: "true"
-      additionalContainers:
-        - name: cloudflared
-          image: cloudflare/cloudflared:latest
-          imagePullPolicy: Always
-          args: ["tunnel", "run", "--url", "127.0.0.1:8081"]
-          env:
-            - name: TUNNEL_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: ingress-cf-tunnel-token
-                  key: token
-                  optional: false
     logs:
       general:
         format: json
