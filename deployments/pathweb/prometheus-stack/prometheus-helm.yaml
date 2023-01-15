@@ -19,6 +19,9 @@ spec:
     prometheus:
       thanos:
         create: true
+        objectStorageConfig:
+          secretName: thanos-objstore-config
+          secretKey: objstore.yml
     node-exporter:
       serviceMonitor:
         enabled: true
