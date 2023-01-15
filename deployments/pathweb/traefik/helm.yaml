@@ -73,6 +73,8 @@ spec:
     experimental:
       http3:
         enabled: true
+      plugins:
+        enabled: true
     providers:
       kubernetesIngress:
         ingressClass: traefik-traefik
