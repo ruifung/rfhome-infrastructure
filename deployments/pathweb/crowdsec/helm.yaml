@@ -43,19 +43,17 @@ spec:
           program: home-assistant
       # Those are ENV variables
       env:
-      # As it's a test, we don't want to share signals with CrowdSec so disable the Online API.
-      - name: DISABLE_ONLINE_API
-        value: "false"
-      # As we are running Nginx, we want to install the Nginx collection
-      - name: COLLECTIONS
-        value: "crowdsecurity/traefik crowdsecurity/home-assistant"
-      - name: PARSERS
-        value: "crowdsecurity/cri-logs"
+        # As we are running Nginx, we want to install the Nginx collection
+        - name: COLLECTIONS
+          value: "crowdsecurity/traefik crowdsecurity/home-assistant"
+        - name: PARSERS
+          value: "crowdsecurity/cri-logs"
     lapi:
       env:
-        # As it's a test, we don't want to share signals with CrowdSec, so disable the Online API.
-        - name: DISABLE_ONLINE_API
-          value: "false"
+        - name: BOUNCERS_ALLOWED_OU
+          value: "bouncer-ou"
+        - name: AGENTS_ALLOWED_OU
+          value: "agent-ou"
       dashboard:
         enabled: true
     tls:
