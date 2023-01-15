@@ -17,6 +17,8 @@ spec:
   targetNamespace: monitoring
   values:
     prometheus:
+      disableCompaction: true
+      walCompression: true
       thanos:
         create: true
         objectStorageConfig:
