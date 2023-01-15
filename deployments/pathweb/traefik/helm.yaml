@@ -96,7 +96,7 @@ spec:
           namespace: "monitoring"
           rules:
             - alert: TraefikDown
-              expr: up{job="traefik"} == 0
+              expr: up{job="traefik-traefik-metrics"} == 0
               for: 5m
               labels:
                 context: traefik
