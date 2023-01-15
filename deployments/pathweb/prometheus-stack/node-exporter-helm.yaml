@@ -18,3 +18,8 @@ spec:
   values:
     serviceMonitor:
       enabled: true
+    tolerations:
+      - operator: Exists
+        effect: NoSchedule
+      - operator: Exists
+        effect: NoExecute
