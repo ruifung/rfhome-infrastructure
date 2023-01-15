@@ -19,7 +19,7 @@ spec:
     existingObjstoreSecret: thanos-objstore-config
     query:
       dnsDiscovery:
-        sidecarsService: prometheus-prometheus-thanos
+        sidecarsService: prometheus-kube-prometheus-prometheus-thanos
         sidecarsNamespace: monitoring
     bucketweb:
       enabled: true
@@ -30,7 +30,7 @@ spec:
     ruler:
       enabled: true
       alertmanagers:
-        - http://prometheus-alertmanager.monitoring.svc.cluster.local:9093
+        - http://prometheus-kube-prometheus-alertmanager.monitoring.svc.cluster.local:9093
       config: |-
         groups:
           - name: "metamonitoring"
