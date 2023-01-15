@@ -12,6 +12,17 @@ hubble:
     enabled: true
   ui:
     enabled: true
+  metrics:
+    enabled:
+      - dns
+      - drop
+      - tcp
+      - flow
+      - port-distribution
+      - icmp
+      - http
+    serviceMonitor:
+      enabled: true
 tunnel: disabled
 ipv4NativeRoutingCIDR: 10.96.0.0/16cilium
 loadBalancer:
@@ -28,6 +39,10 @@ cni:
   exclusive: false
 prometheus:
   enabled: true
+  serviceMonitor:
+      enabled: true
 operator:
   prometheus:
     enabled: true
+    serviceMonitor:
+      enabled: true
