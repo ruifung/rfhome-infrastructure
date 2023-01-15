@@ -30,7 +30,7 @@ spec:
       - "--providers.file.directory=/additional-configs"
       - "--providers.file.watch=true"
       - "--experimental.plugins.bouncer.modulename=github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
-      - "--experimental.plugins.bouncer.version=v1.1.8"
+      - "--experimental.plugins.bouncer.version=v1.1.7"
       - "--entrypoints.web.http.middlewares=crowdsec@file"
       - "--entrypoints.websecure.http.middlewares=crowdsec@file"
     deployment:
