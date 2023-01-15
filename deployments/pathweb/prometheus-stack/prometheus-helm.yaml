@@ -19,3 +19,11 @@ spec:
     prometheus:
       thanos:
         create: true
+    node-exporter:
+      serviceMonitor:
+        enabled: true
+      tolerations:
+        - operator: Exists
+          effect: NoSchedule
+        - operator: Exists
+          effect: NoExecute
