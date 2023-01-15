@@ -45,7 +45,7 @@ spec:
       env:
       # As it's a test, we don't want to share signals with CrowdSec so disable the Online API.
       - name: DISABLE_ONLINE_API
-        value: "true"
+        value: "false"
       # As we are running Nginx, we want to install the Nginx collection
       - name: COLLECTIONS
         value: "crowdsecurity/traefik crowdsecurity/home-assistant"
@@ -55,4 +55,10 @@ spec:
       env:
         # As it's a test, we don't want to share signals with CrowdSec, so disable the Online API.
         - name: DISABLE_ONLINE_API
-          value: "true"
+          value: "false"
+      dashboard:
+        enabled: true
+    tls:
+      enabled: true
+      certManager:
+        enabled: true
