@@ -1,0 +1,30 @@
+﻿---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: crowdsec-lapi
+  labels:
+    app.kubernetes.io/name: crowdsec
+    k8s-app: crowdsec
+spec:
+  selector:
+    matchLabels:
+      k8s-app: crowdsec
+      type: lapi
+  podMetricsEndpoints:
+  - targetPort: 6060
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: crowdsec-agent
+  labels:
+    app.kubernetes.io/name: crowdsec
+    k8s-app: crowdsec
+spec:
+  selector:
+    matchLabels:
+      k8s-app: crowdsec
+      type: agent
+  podMetricsEndpoints:
+  - targetPort: 6060
