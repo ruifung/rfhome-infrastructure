@@ -24,7 +24,7 @@ hubble:
     serviceMonitor:
       enabled: true
 tunnel: disabled
-ipv4NativeRoutingCIDR: 10.96.0.0/16cilium
+ipv4NativeRoutingCIDR: 10.96.0.0/16
 loadBalancer:
   mode: dsr
 autoDirectNodeRoutes: true
