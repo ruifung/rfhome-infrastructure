@@ -25,6 +25,7 @@ talosctl --talosconfig .\talosconfig -n 10.229.17.1 kubeconfig .
 talosctl --talosconfig .\talosconfig -n 10.229.17.1 kubeconfig $env:USERPROFILE\.kube\config
 $Env:KUBECONFIG = Resolve-Path .\kubeconfig
 Write-Host "Installing cilium"
-cilium install --helm-values .\cilium-values.yaml
+helm repo add cilium https://helm.cilium.io/
+helm install cilium cilium/cilium --namespace kube-system -f cilium-values.yaml
 Write-Host "Waiting for cilium to be ready."
 cilium status --wait

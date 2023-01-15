@@ -13,7 +13,7 @@ hubble:
   ui:
     enabled: true
 tunnel: disabled
-ipv4NativeRoutingCIDR: 10.96.0.0/16
+ipv4NativeRoutingCIDR: 10.96.0.0/16cilium
 loadBalancer:
   mode: dsr
 autoDirectNodeRoutes: true
@@ -26,3 +26,8 @@ endpointStatus:
   status: "policy"
 cni:
   exclusive: false
+prometheus:
+  enabled: true
+operator:
+  prometheus:
+    enabled: true
