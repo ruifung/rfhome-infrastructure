@@ -82,6 +82,8 @@ spec:
           enabled: true
       kubernetesCRD:
         ingressClass: traefik-traefik
+        allowCrossNamespace: true
+        allowExternalNameServices: true
     ingressRoute:
       dashboard:
         annotations:
