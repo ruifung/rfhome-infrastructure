@@ -76,10 +76,10 @@ spec:
                       envFrom:
                         - configMapRef:
                             name: authentik-config
-                            prefix: AUTHENTIK_
+                          prefix: AUTHENTIK_
                         - secretRef:
                             name: authentik-secrets
-                            prefix: AUTHENTIK_
+                          prefix: AUTHENTIK_
   values:
     replicas: 2
     worker:
