@@ -27,7 +27,8 @@ spec:
               namespace: home-network
 
   values:
-    global:
+    persistence:
+      accessMode: ReadWriteMany
       storageClass: cephfs
     grafana:
       updateStrategy:
