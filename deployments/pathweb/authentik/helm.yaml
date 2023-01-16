@@ -1,0 +1,107 @@
+﻿---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: authentik
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://charts.goauthentik.io
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: authentik
+  namespace: flux-system
+spec:
+  releaseName: authentik
+  chart:
+    spec:
+      chart: authentik
+      version: 2022.12.4
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: authentik
+  interval: 15m
+  targetNamespace: home-network
+  # Add a postRenderer to fix the stupid hardcoding of configuration options into the pod spec.
+  postRenderers:
+  - kustomize:
+      patches:
+        - target:
+            kind: Deployment
+          patch: |-
+            - op: remove
+              path: /spec/template/spec/containers/0/env
+        - target:
+            kind: Deployment
+          patch: |-
+            apiVersion: apps/v1
+            kind: Deployment
+            metadata:
+              name: inject-envs-patch
+            spec:
+              template:
+                spec:
+                  containers:
+                    - name: authentik
+                      env:
+                        - name: AUTHENTIK_POSTGRESQL__HOST
+                          valueFrom:
+                            secretKeyRef:
+                              name: "rfhome-postgres-ha-pguser-authentik"
+                              key: "pgbouncer-host"
+                        - name: AUTHENTIK_POSTGRESQL__PORT
+                          valueFrom:
+                            secretKeyRef:
+                              name: "rfhome-postgres-ha-pguser-authentik"
+                              key: "pgbouncer-port"
+                        - name: AUTHENTIK_POSTGRESQL__USER
+                          valueFrom:
+                            secretKeyRef:
+                              name: "rfhome-postgres-ha-pguser-authentik"
+                              key: "user"
+                        - name: AUTHENTIK_POSTGRESQL__PASSWORD
+                          valueFrom:
+                            secretKeyRef:
+                              name: "rfhome-postgres-ha-pguser-authentik"
+                              key: "password"
+                        - name: AUTHENTIK_POSTGRESQL__NAME
+                          valueFrom:
+                            secretKeyRef:
+                              name: "rfhome-postgres-ha-pguser-authentik"
+                              key: "dbname"
+                      envFrom:
+                        - configMapRef:
+                            name: authentik-config
+                            prefix: AUTHENTIK_
+                        - secretRef:
+                            name: authentik-secrets
+                            prefix: AUTHENTIK_
+  values:
+    replicas: 2
+    worker:
+      replicas: 2
+    ingress:
+      enabled: true
+      ingressClassName: traefik-traefik
+      labels:
+        external-dns: local-pdns
+      hosts:
+        - host: auth.services.home.yrf.me
+          paths:
+            - path: "/"
+              pathType: Prefix
+      tls:
+        - secretName: services-wildcard-cert
+          hosts:
+            - auth.services.home.yrf.me
+    prometheus:
+      serviceMonitor:
+        create: true
+      rules:
+        create: true
+    redis:
+      enabled: true

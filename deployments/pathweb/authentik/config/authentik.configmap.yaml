@@ -1,0 +1,15 @@
+﻿apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authentik-config
+  namespace: home-network
+data:
+  AVATARS: gravatar
+  ERROR_REPORTING__ENABLED: "false"
+  ERROR_REPORTING__ENVIRONMENT: "k8s"
+  ERROR_REPORTING__SEND_PII: "false"
+  GROIP: "/geoip/GeoLite2-City.mmdb"
+  LOG_LEVEL: "info"
+  OUTPOSTS__CONTAINER_IMAGE_BASE: "ghcr.io/goauthentik/%(type)s:%(version)s"
+  REDIS__HOST: "authentik-redis-master"
+  POSTGRESQL__USE_PGBOUNCER: "true"
