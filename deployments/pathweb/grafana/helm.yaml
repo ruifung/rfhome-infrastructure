@@ -27,6 +27,9 @@ spec:
               namespace: home-network
 
   values:
+    grafana:
+      updateStrategy:
+        type: Recreate
     datasources:
       secretDefinition:
         apiVersion: 1
