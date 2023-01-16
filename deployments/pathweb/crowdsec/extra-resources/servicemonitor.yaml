@@ -1,0 +1,17 @@
+﻿apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/name: crowdsec
+    k8s-app: crowdsec
+  name: crowdsec
+  namespace: monitoring
+spec:
+  endpoints:
+  - port: http
+  namespaceSelector:
+    matchNames:
+    - monitoring
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: crowdsec

@@ -1,0 +1,36 @@
+﻿---
+apiVersion: v1
+kind: Service
+metadata:
+  name: crowdsec-lapi-metrics
+  labels:
+    app.kubernetes.io/name: crowdsec
+    k8s-app: crowdsec
+    type: lapi
+spec:
+  clusterIP: None
+  selector:
+    k8s-app: crowdsec
+    type: lapi
+  ports:
+  - port: 6060
+    targetPort: 6060
+    name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: crowdsec-agent-metrics
+  labels:
+    app.kubernetes.io/name: crowdsec
+    k8s-app: crowdsec
+    type: agent
+spec:
+  clusterIP: None
+  selector:
+    k8s-app: crowdsec
+    type: agent
+  ports:
+  - port: 6060
+    targetPort: 6060
+    name: http
