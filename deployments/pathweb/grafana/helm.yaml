@@ -27,6 +27,8 @@ spec:
               namespace: home-network
 
   values:
+    global:
+      storageClass: cephfs
     grafana:
       updateStrategy:
         type: Recreate
