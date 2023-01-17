@@ -16,6 +16,8 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: calibre-library-sync
+      annotations:
+        io.cilium.proxy-visibility: <Egress/53/UDP/DNS>
     spec:
       terminationGracePeriodSeconds: 10
       securityContext:
