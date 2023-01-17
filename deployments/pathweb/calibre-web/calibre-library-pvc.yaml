@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: calibre-library
+  namespace: home-network
+  labels:
+    apps.kubernetes.io/name: calibre-library-sync
+spec:
+  storageClassName: cephfs
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi

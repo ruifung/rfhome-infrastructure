@@ -1,0 +1,15 @@
+commonLabels:
+  app.kubernetes.io/part-of: calibre-web
+
+images:
+  - name: driveone/onedrive
+    newTag: "2.4-debian"
+  - name: lscr.io/linuxserver/homeassistant
+    newTag: "0.6.19"
+
+resources:
+  - "calibre-library-pvc.yaml"
+  - "calibre-web-sts.yaml"
+  - "calibre-web-svc.yaml"
+  - "calibre-library-sync-sts.yaml"
+  - "calibre-library-sync-svc.yaml"

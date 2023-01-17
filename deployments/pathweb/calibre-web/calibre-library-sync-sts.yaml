@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: calibre-library-sync
+  namespace: home-network
+  labels:
+    apps.kubernetes.io/name: calibre-library-sync
+spec:
+  selector:
+    matchLabels:
+      apps.kubernetes.io/name: calibre-library-sync
+  serviceName: calibre-library-sync
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        apps.kubernetes.io/name: calibre-library-sync
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: onedrive
+        image: driveone/onedrive:debian
+        args:
+          - "--single-directory"
+          - "Calibre Library"
+        env:
+          - name: ONEDRIVE_DISPLAY_CONFIG
+            value: "1"
+          - name: ONEDRIVE_AUTHFILES
+            value: "/onedrive/conf/authreq:/onedrive/conf/authresp"
+          - name: ONEDRIVE_UID
+            value: "1000"
+          - name: ONEDRIVE_GID
+            value: "1000"
+        volumeMounts:
+        - name: onedrive-temp
+          mountPath: /onedrive/data
+        - name: calibre-library
+          mountPath: /onedrive/data/Calibre Library
+        - name: data
+          mountPath: /onedrive/conf
+      volumes:
+        - name: calibre-library
+          persistentVolumeClaim:
+            claimName: calibre-library
+        - name: onedrive-temp
+          emptyDir: {}
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "ceph-rbd"
+      resources:
+        requests:
+          storage: 5Gi

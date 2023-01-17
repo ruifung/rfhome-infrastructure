@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: calibre-web
+  namespace: home-network
+  labels:
+    apps.kubernetes.io/name: calibre-web
+spec:
+  selector:
+    matchLabels:
+      apps.kubernetes.io/name: calibre-web
+  serviceName: "calibre-web"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        apps.kubernetes.io/name: calibre-web
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: calibre-web
+        image: lscr.io/linuxserver/calibre-web:latest
+        env:
+        - name: TZ
+          value: Asia/Kuala_Lumpur
+        - name: DOCKER_MODS
+          value: linuxserver/mods:universal-calibre
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: OAUTHLIB_RELAX_TOKEN_SCOPE
+          value: "1"
+        ports:
+        - containerPort: 8083
+          name: http
+        volumeMounts:
+        - name: calibre-library
+          mountPath: /books
+        - name: data
+          mountPath: /config
+      volumes:
+        - name: calibre-library
+          persistentVolumeClaim:
+            claimName: calibre-library
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "ceph-rbd"
+      resources:
+        requests:
+          storage: 5Gi
