@@ -2,6 +2,8 @@
 kind: Ingress
 metadata:
   name: calibre-web
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
   labels:
     app.kubernetes.io/name: calibre-web
     external-dns: local-pdns
