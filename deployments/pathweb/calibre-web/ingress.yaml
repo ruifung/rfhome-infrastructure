@@ -1,0 +1,22 @@
+﻿apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: calibre-web
+  labels:
+    app.kubernetes.io/name: calibre-web
+spec:
+  rules:
+  - host: ebooks.services.home.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: calibre-web
+            port: 
+              name: http
+  tls:
+    - hosts:
+        - "ebooks.services.home.yrf.me"
+      secretName: services-wildcard-cert
