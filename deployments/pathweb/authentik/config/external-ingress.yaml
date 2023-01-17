@@ -1,0 +1,23 @@
+﻿apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: authentik-external
+  annotations:
+    external-dns.alpha.kubernetes.io/target: ingress-pathweb-clusters-home.yrf.me
+  labels:
+    app.kubernetes.io/instance: authentik
+    app.kubernetes.io/name: authentik
+    external-dns: cf-yrf-me
+spec:
+  ingressClassName: traefik-external
+  rules:
+  - host: auth-home.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: authentik
+            port: 
+              name: http
