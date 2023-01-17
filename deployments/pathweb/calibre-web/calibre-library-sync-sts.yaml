@@ -22,13 +22,17 @@ spec:
       - name: onedrive
         image: driveone/onedrive:debian
         args:
-          - "--single-directory"
-          - "Calibre Library"
+          - --monitor
+          - --confdir
+          - /onedrive/conf
+          - --syncdir
+          - /onedrive/data
+          - --single-directory
+          - Calibre Library
+          - --display-running-config
+          - --auth-files
+          - /onedrive/conf/authUrl:/onedrive/conf/authResponse
         env:
-          - name: ONEDRIVE_DISPLAY_CONFIG
-            value: "1"
-          - name: ONEDRIVE_AUTHFILES
-            value: "/onedrive/conf/authreq:/onedrive/conf/authresp"
           - name: ONEDRIVE_UID
             value: "1000"
           - name: ONEDRIVE_GID
