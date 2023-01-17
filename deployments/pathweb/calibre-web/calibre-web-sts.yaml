@@ -5,17 +5,17 @@ metadata:
   name: calibre-web
   namespace: home-network
   labels:
-    apps.kubernetes.io/name: calibre-web
+    app.kubernetes.io/name: calibre-web
 spec:
   selector:
     matchLabels:
-      apps.kubernetes.io/name: calibre-web
+      app.kubernetes.io/name: calibre-web
   serviceName: "calibre-web"
   replicas: 1
   template:
     metadata:
       labels:
-        apps.kubernetes.io/name: calibre-web
+        app.kubernetes.io/name: calibre-web
     spec:
       terminationGracePeriodSeconds: 10
       securityContext:

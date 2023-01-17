@@ -5,7 +5,7 @@ metadata:
   name: calibre-library
   namespace: home-network
   labels:
-    apps.kubernetes.io/name: calibre-library-sync
+    app.kubernetes.io/name: calibre-library-sync
 spec:
   storageClassName: cephfs
   accessModes:

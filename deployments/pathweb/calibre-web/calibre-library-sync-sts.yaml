@@ -5,17 +5,17 @@ metadata:
   name: calibre-library-sync
   namespace: home-network
   labels:
-    apps.kubernetes.io/name: calibre-library-sync
+    app.kubernetes.io/name: calibre-library-sync
 spec:
   selector:
     matchLabels:
-      apps.kubernetes.io/name: calibre-library-sync
+      app.kubernetes.io/name: calibre-library-sync
   serviceName: calibre-library-sync
   replicas: 1
   template:
     metadata:
       labels:
-        apps.kubernetes.io/name: calibre-library-sync
+        app.kubernetes.io/name: calibre-library-sync
     spec:
       terminationGracePeriodSeconds: 10
       securityContext:

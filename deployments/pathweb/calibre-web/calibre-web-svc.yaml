@@ -4,10 +4,10 @@ metadata:
   name: calibre-web
   namespace: home-network
   labels:
-    apps.kubernetes.io/name: calibre-web
+    app.kubernetes.io/name: calibre-web
 spec:
   selector:
-    apps.kubernetes.io/name: calibre-web
+    app.kubernetes.io/name: calibre-web
   type: ClusterIP
   clusterIP: None
   ports:

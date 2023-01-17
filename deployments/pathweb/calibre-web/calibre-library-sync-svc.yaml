@@ -4,9 +4,9 @@ metadata:
   name: calibre-library-sync
   namespace: home-network
   labels:
-    apps.kubernetes.io/name: calibre-library-sync
+    app.kubernetes.io/name: calibre-library-sync
 spec:
   selector:
-    apps.kubernetes.io/name: calibre-library-sync
+    app.kubernetes.io/name: calibre-library-sync
   type: ClusterIP
   clusterIP: None
