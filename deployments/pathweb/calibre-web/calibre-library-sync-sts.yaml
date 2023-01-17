@@ -30,7 +30,7 @@ spec:
           - --syncdir
           - /onedrive/data
           - --single-directory
-          - Calibre Library
+          - '"Calibre Library"'
           - --display-running-config
           - --auth-files
           - /onedrive/conf/authUrl:/onedrive/conf/authResponse
