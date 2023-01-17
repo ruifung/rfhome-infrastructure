@@ -4,7 +4,9 @@ metadata:
   name: calibre-web
   labels:
     app.kubernetes.io/name: calibre-web
+    external-dns: local-pdns
 spec:
+  ingressClassName: traefik-traefik
   rules:
   - host: ebooks.services.home.yrf.me
     http:
