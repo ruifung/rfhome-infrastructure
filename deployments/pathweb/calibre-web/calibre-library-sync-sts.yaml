@@ -18,6 +18,10 @@ spec:
         apps.kubernetes.io/name: calibre-library-sync
     spec:
       terminationGracePeriodSeconds: 10
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
       - name: onedrive
         image: driveone/onedrive:debian

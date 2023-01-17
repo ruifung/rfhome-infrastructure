@@ -18,6 +18,10 @@ spec:
         apps.kubernetes.io/name: calibre-web
     spec:
       terminationGracePeriodSeconds: 10
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
       - name: calibre-web
         image: lscr.io/linuxserver/calibre-web:latest
