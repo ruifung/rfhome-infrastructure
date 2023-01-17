@@ -13,3 +13,4 @@ resources:
   - "calibre-web-svc.yaml"
   - "calibre-library-sync-sts.yaml"
   - "calibre-library-sync-svc.yaml"
+  - "ingress.yaml"
