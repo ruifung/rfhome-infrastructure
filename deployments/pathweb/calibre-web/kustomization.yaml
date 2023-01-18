@@ -14,3 +14,5 @@ resources:
   - "calibre-library-sync-sts.yaml"
   - "calibre-library-sync-svc.yaml"
   - "ingress.yaml"
+  - "traefik-ingressroute.yaml"
+  - "traefik-middleware.yaml"

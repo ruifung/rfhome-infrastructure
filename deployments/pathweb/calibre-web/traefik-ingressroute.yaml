@@ -1,8 +1,7 @@
 ﻿apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: foo
-  namespace: bar
+  name: calire-web-authentik-support
 spec:
   entryPoints:
     - websecure
