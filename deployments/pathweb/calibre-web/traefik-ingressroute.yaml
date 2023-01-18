@@ -10,12 +10,14 @@ spec:
   routes:
   - kind: Rule
     match: Host(`ebooks.services.home.yrf.me`) && PathPrefix(`/outpost.goauthentik.io`)
+    priority: 100
     services:
     - kind: Service
       name: ak-outpost-authentik-embedded-outpost
       port: http
   - kind: Rule
     match: Host(`ebooks.services.home.yrf.me`) && PathPrefix(`/logout`)
+    priority: 100
     middlewares:
     - name: calibre-web-rewrite-logout-redirect
     services:

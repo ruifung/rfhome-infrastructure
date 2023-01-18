@@ -7,5 +7,5 @@ spec:
   plugin:
     rewriteHeaders:
       header: Location
-      regex: https?://(.*)/login
+      regex: (?:https?://)?(.*)/login
       replacement: https://${1}/outpost.goauthentik.io/sign_out
