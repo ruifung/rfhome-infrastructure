@@ -4,7 +4,7 @@ commonLabels:
 images:
   - name: driveone/onedrive
     newTag: "2.4-debian"
-  - name: lscr.io/linuxserver/homeassistant
+  - name: lscr.io/linuxserver/calibre-web
     newTag: "0.6.19"
 
 resources:
