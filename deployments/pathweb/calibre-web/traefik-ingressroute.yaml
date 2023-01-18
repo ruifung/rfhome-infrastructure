@@ -26,7 +26,7 @@ spec:
       name: calibre-web
       port: http
   - kind: Rule
-    match: Host(`ebooks.yrf.me`) && PathPrefix(`/static`, `/cover`)
+    match: Host(`ebooks.services.home.yrf.me`) && PathPrefix(`/static`, `/cover`)
     priority: 100
     middlewares:
     - name: calibre-web-static-caching-policy
