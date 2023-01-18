@@ -1,0 +1,94 @@
+﻿---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imageswap
+  namespace: imageswap-system
+  labels:
+    app: imageswap
+    resource: deployment
+spec:
+  selector:
+    matchLabels:
+      app: imageswap
+  template:
+    metadata:
+      labels:
+        app: imageswap
+    spec:
+      serviceAccountName: imageswap-sa
+      securityContext:
+        runAsUser: 1898
+        runAsGroup: 1898
+      initContainers:
+        - name: imageswap-init
+          image: thewebroot/imageswap-init:v1.5.1
+          command: [/app/imageswap-init.py]
+          imagePullPolicy: Always
+          securityContext:
+            allowPrivilegeEscalation: false
+          env:
+          - name: IMAGESWAP_POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: IMAGESWAP_NAMESPACE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          envFrom:
+            - configMapRef:
+                name: imageswap-env
+          volumeMounts:
+            - name: imageswap-tls
+              mountPath: /tls
+            - name: imageswap-mwc
+              mountPath: /mwc
+      containers:
+      - name: imageswap
+        image: thewebroot/imageswap:v1.5.1
+        ports:
+        - containerPort: 5000
+        command: ["gunicorn", "imageswap:app", "--config=config.py"]
+        imagePullPolicy: Always
+        securityContext:
+            allowPrivilegeEscalation: false
+        resources:
+          limits:
+            cpu: "500m"
+            memory: 512Mi
+          requests:
+            cpu: 50m
+            memory: 128Mi
+        env:
+          - name: IMAGESWAP_POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: IMAGESWAP_NAMESPACE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+        envFrom:
+            - configMapRef:
+                name: imageswap-env
+        volumeMounts:
+          - name: imageswap-tls
+            mountPath: /tls
+          - name: imageswap-maps
+            mountPath: /app/maps
+      volumes:
+        - name: imageswap-mwc
+          configMap:
+              name: imageswap-mwc-template
+              items:
+              - key: imageswap-mwc
+                path: imageswap-mwc.yaml
+        - name: imageswap-maps
+          configMap:
+              name: imageswap-maps
+              items:
+              - key: maps
+                path: imageswap-maps.conf
+        - name: imageswap-tls
+          emptyDir: {}

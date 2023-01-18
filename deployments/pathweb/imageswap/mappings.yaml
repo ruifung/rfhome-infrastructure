@@ -1,0 +1,17 @@
+﻿---
+apiVersion: v1
+data:
+  maps: |
+    default:container-registry.services.home.yrf.me/dockerhub
+    docker.io:container-registry.services.home.yrf.me/dockerhub
+    gcr.io:container-registry.services.home.yrf.me/gcr
+    ghcr.io:container-registry.services.home.yrf.me/ghcr
+    k8s.gcr.io:container-registry.services.home.yrf.me/k8s
+    lscr.io:container-registry.services.home.yrf.me/lscr
+    quay.io:container-registry.services.home.yrf.me/quayio
+    registry.developers.crunchydata.com:container-registry.services.home.yrf.me/crunchydata
+    artifacthub.io:container-registry.services.home.yrf.me/artifacthub
+kind: ConfigMap
+metadata:
+  name: imageswap-maps
+  namespace: imageswap-system

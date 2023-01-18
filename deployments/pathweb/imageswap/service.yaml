@@ -1,0 +1,18 @@
+﻿---
+apiVersion: v1
+kind: Service
+metadata:
+  name: imageswap
+  namespace: imageswap-system
+  labels:
+    app: imageswap
+    resource: service
+spec:
+  ports:
+  - name: https
+    port: 443
+    targetPort: 5000
+  selector:
+    app: imageswap
+  sessionAffinity: None
+  type: ClusterIP
