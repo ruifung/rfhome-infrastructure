@@ -1,4 +1,5 @@
-﻿apiVersion: networking.k8s.io/v1
+﻿---
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: calibre-web
@@ -24,3 +25,27 @@ spec:
     - hosts:
         - "ebooks.services.home.yrf.me"
       secretName: services-wildcard-cert
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: calibre-web-external
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-external-access@kubernetescrd
+    external-dns.alpha.kubernetes.io/target: ingress-pathweb-clusters-home.yrf.me
+  labels:
+    app.kubernetes.io/name: calibre-web
+    external-dns: cf-yrf-me
+spec:
+  ingressClassName: traefik-external
+  rules:
+  - host: ebooks.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: calibre-web
+            port: 
+              name: http

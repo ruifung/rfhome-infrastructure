@@ -1,4 +1,5 @@
-﻿apiVersion: traefik.containo.us/v1alpha1
+﻿---
+apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: calire-web-authentik-support
@@ -26,3 +27,30 @@ spec:
       port: http
   tls:
     secretName: services-wildcard-cert
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: calire-web-authentik-support-external
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - cloudflared
+  routes:
+  - kind: Rule
+    match: Host(`ebooks.yrf.me`) && PathPrefix(`/outpost.goauthentik.io`)
+    priority: 100
+    services:
+    - kind: Service
+      name: ak-outpost-authentik-external-access
+      port: http
+  - kind: Rule
+    match: Host(`ebooks.yrf.me`) && PathPrefix(`/logout`)
+    priority: 100
+    middlewares:
+    - name: calibre-web-rewrite-logout-redirect
+    services:
+    - kind: Service
+      name: calibre-web
+      port: http
