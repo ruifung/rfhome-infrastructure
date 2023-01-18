@@ -44,7 +44,7 @@ data:
               - "pods"
         sideEffects: None
         admissionReviewVersions: ["v1"]
-        failurePolicy: Fail
+        failurePolicy: Ignore
         reinvocationPolicy: IfNeeded
         namespaceSelector:
           matchLabels:
