@@ -5,16 +5,16 @@ metadata:
   name: imageswap
   namespace: imageswap-system
   labels:
-    app: imageswap
+    apps.kubernetes.io/name: imageswap
     resource: deployment
 spec:
   selector:
     matchLabels:
-      app: imageswap
+      apps.kubernetes.io/name: imageswap
   template:
     metadata:
       labels:
-        app: imageswap
+        apps.kubernetes.io/name: imageswap
     spec:
       serviceAccountName: imageswap-sa
       securityContext:

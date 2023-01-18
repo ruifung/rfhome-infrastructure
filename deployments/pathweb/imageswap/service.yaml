@@ -5,7 +5,7 @@ metadata:
   name: imageswap
   namespace: imageswap-system
   labels:
-    app: imageswap
+    apps.kubernetes.io/name: imageswap
     resource: service
 spec:
   ports:
@@ -13,6 +13,6 @@ spec:
     port: 443
     targetPort: 5000
   selector:
-    app: imageswap
+    apps.kubernetes.io/name: imageswap
   sessionAffinity: None
   type: ClusterIP

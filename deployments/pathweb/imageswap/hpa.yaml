@@ -5,7 +5,7 @@ metadata:
   name: imageswap
   namespace: imageswap-system
   labels:
-    app: imageswap
+    apps.kubernetes.io/name: imageswap
     resource: horizontalpodautoscaler
 spec:
   maxReplicas: 6
