@@ -44,10 +44,26 @@ spec:
           mountPath: /books
         - name: data
           mountPath: /config
+        - name: logs
+          mountPath: /logs
+      - name: calibre-web-log
+        image: busybox:1.28
+        args: [/bin/sh, -c, 'until [ -f /logs/calibre-web.log ]; do sleep 5; done; tail -n+1 -F /logs/calibre-web.log']
+        volumeMounts:
+        - name: logs
+          mountPath: /logs
+      - name: calibre-web-access-log
+        image: busybox:1.28
+        args: [/bin/sh, -c, 'until [ -f /logs/access.log ]; do sleep 5; done; tail -n+1 -F /logs/access.log']
+        volumeMounts:
+        - name: logs
+          mountPath: /logs
       volumes:
         - name: calibre-library
           persistentVolumeClaim:
             claimName: calibre-library
+        - name: logs
+          emptyDir: {}
   volumeClaimTemplates:
   - metadata:
       name: data
