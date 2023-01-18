@@ -2,6 +2,8 @@
 kind: IngressRoute
 metadata:
   name: calire-web-authentik-support
+  annotations:
+    kubernetes.io/ingress.class: traefik-traefik
 spec:
   entryPoints:
     - websecure
