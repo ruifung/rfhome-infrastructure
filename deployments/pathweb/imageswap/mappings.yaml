@@ -2,7 +2,7 @@
 apiVersion: v1
 data:
   maps: |
-    default:container-registry.services.home.yrf.me/dockerhub
+    default::
     docker.io:container-registry.services.home.yrf.me/dockerhub
     gcr.io:container-registry.services.home.yrf.me/gcr
     ghcr.io:container-registry.services.home.yrf.me/ghcr
