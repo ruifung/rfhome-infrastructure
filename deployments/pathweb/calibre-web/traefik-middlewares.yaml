@@ -1,0 +1,11 @@
+﻿---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: calibre-web-rewrite-logout-redirect
+spec:
+  plugin:
+    rewriteHeaders:
+      header: Location
+      regex: https?://(.*)/login
+      replacement: https://${1}/outpost.goauthentik.io/sign_out

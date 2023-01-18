@@ -1,0 +1,25 @@
+﻿apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: foo
+  namespace: bar
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host('ebooks.services.home.yrf.me') && PathPrefix('/outpost.goauthentik.io')
+    services:
+    - kind: Service
+      name: ak-outpost-authentik-embedded-outpost
+      port: http
+  - kind: Rule
+    match: Host('ebooks.services.home.yrf.me') && PathPrefix('/logout')
+    middlewares:
+    - name: calibre-web-rewrite-logout-redirect
+    services:
+    - kind: Service
+      name: calibre-web
+      port: http
+  tls:
+    secretName: services-wildcard-cert

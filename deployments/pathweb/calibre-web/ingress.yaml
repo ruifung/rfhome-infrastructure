@@ -14,13 +14,6 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: /outpost.goauthentik.io 
-        backend:
-          service:
-            name: ak-outpost-authentik-embedded-outpost
-            port:
-              name: http
-      - pathType: Prefix
         path: "/"
         backend:
           service:
