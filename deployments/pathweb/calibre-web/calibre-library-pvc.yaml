@@ -13,3 +13,18 @@ spec:
   resources:
     requests:
       storage: 20Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: calibre-web-cache
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: calibre-library-sync
+spec:
+  storageClassName: cephfs
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi

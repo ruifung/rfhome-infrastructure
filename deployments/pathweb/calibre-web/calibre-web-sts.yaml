@@ -36,12 +36,16 @@ spec:
           value: "1000"
         - name: OAUTHLIB_RELAX_TOKEN_SCOPE
           value: "1"
+        - name: CACHE_DIR
+          value: /cache
         ports:
         - containerPort: 8083
           name: http
         volumeMounts:
         - name: calibre-library
           mountPath: /books
+        - name: cache
+          mountPath: /cache
         - name: data
           mountPath: /config
         - name: logs
@@ -62,6 +66,9 @@ spec:
         - name: calibre-library
           persistentVolumeClaim:
             claimName: calibre-library
+        - name: cache
+          persistentVolumeClaim:
+            claimName: calibre-web-cache
         - name: logs
           emptyDir: {}
   volumeClaimTemplates:
