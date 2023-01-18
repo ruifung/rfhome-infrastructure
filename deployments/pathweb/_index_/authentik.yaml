@@ -17,3 +17,5 @@ spec:
       kind: HelmRelease
       name: authentik
       namespace: flux-system
+  dependsOn:
+    - name: imageswap

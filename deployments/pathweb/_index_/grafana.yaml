@@ -17,4 +17,6 @@ spec:
       kind: HelmRelease
       name: grafana
       namespace: flux-system
+  dependsOn:
+    - name: imageswap
 
