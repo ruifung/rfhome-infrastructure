@@ -7,9 +7,9 @@ data:
     gcr.io:container-registry.services.home.yrf.me/gcr
     ghcr.io:container-registry.services.home.yrf.me/ghcr
     k8s.gcr.io:container-registry.services.home.yrf.me/k8s
+    registry.k8s.io:container-registry.services.home.yrf.me/k8s
     lscr.io:container-registry.services.home.yrf.me/lscr
     quay.io:container-registry.services.home.yrf.me/quayio
-    registry.developers.crunchydata.com:container-registry.services.home.yrf.me/crunchydata
     artifacthub.io:container-registry.services.home.yrf.me/artifacthub
 kind: ConfigMap
 metadata:
