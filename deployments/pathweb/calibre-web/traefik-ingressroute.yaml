@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
   - kind: Rule
-    match: Host(`ebooks.services.home.yrf.me``) && PathPrefix(`/outpost.goauthentik.io`)
+    match: Host(`ebooks.services.home.yrf.me`) && PathPrefix(`/outpost.goauthentik.io`)
     services:
     - kind: Service
       name: ak-outpost-authentik-embedded-outpost
