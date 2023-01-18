@@ -11,6 +11,7 @@ metadata:
     app.kubernetes.io/version: v0.38.2
     pod-security.kubernetes.io/warn: restricted
     pod-security.kubernetes.io/warn-version: latest
+    k8s.twr.io/imageswap: "enabled"
   name: flux-system
 ---
 apiVersion: apiextensions.k8s.io/v1
