@@ -25,6 +25,15 @@ spec:
     - kind: Service
       name: calibre-web
       port: http
+  - kind: Rule
+    match: Host(`ebooks.yrf.me`) && PathPrefix(`/static`, `/cover`)
+    priority: 100
+    middlewares:
+    - name: calibre-web-static-caching-policy
+    services:
+    - kind: Service
+      name: calibre-web
+      port: http
   tls:
     secretName: services-wildcard-cert
 ---
@@ -50,6 +59,15 @@ spec:
     priority: 100
     middlewares:
     - name: calibre-web-rewrite-logout-redirect
+    services:
+    - kind: Service
+      name: calibre-web
+      port: http
+  - kind: Rule
+    match: Host(`ebooks.yrf.me`) && PathPrefix(`/static`, `/cover`)
+    priority: 100
+    middlewares:
+    - name: calibre-web-static-caching-policy
     services:
     - kind: Service
       name: calibre-web
