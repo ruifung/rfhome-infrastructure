@@ -18,3 +18,4 @@ spec:
         - --container-pod-name-label=pod
         - --pod-namespace-label=namespace
         - --pod-name-label=pod
+        - --metric-for-pod-labels=kube_pod_labels{job="prometheus-kube-state-metrics"}[8d]
