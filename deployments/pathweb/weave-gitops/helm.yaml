@@ -44,10 +44,10 @@ spec:
             external-dns: local-pdns
   values:
     # Comment this section out to restore cluster-user-auth support.
-    rbac:
-      impersonationResourceNames: ["wego-admin"]
-      impersonationResources: ["groups"]
-      viewSecretsResourceNames: ["cluster-user-auth","oidc-auth"]
+    #rbac:
+    #  impersonationResourceNames: ["wego-admin"]
+    #  impersonationResources: ["groups"]
+    #  viewSecretsResourceNames: ["cluster-user-auth","oidc-auth"]
     ingress:
       enabled: true
       className: "traefik-traefik"
