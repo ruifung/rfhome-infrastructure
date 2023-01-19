@@ -10,5 +10,8 @@ bases:
 commonLabels:
  app.kubernetes.io/name: vertical-pod-autoscaler
 
+resources:
+  - "certificate.yaml"
+
 patchesStrategicMerge:
   - "admission-controller-cert-patch.yaml"
