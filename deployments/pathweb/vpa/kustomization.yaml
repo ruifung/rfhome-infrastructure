@@ -16,3 +16,4 @@ resources:
 patchesStrategicMerge:
   - "admission-controller-cert-patch.yaml"
   - "recommender-prometheus.yaml"
+    
