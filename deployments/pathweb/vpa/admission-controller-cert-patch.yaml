@@ -9,6 +9,8 @@ spec:
     spec:
       volumes:
         - name: tls-certs
+          secret:
+            $patch: delete
           projected:
             sources:
               - secret:
