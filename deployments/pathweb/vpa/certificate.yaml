@@ -1,0 +1,59 @@
+﻿---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: vpa-root-issuer
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: vpa-ca-issuer
+  namespace: kube-system
+spec:
+  ca:
+    secretName: vpa-ca-certs
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: vpa-webhook-ca
+  namespace: kube-system
+spec:
+  commonName: vpa_webhook_ca
+  isCA: true
+  dnsNames:
+    - "vpa_webhook_ca"
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: vpa-root-issuer
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  secretName: vpa-ca-certs
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: vpa-webhook-tls
+  namespace: kube-system
+spec:
+  commonName: vpa-webhook.kube-system.svc
+  isCA: false
+  usages:
+    - key encipherment
+    - digital signature
+    - server auth
+    - client auth
+  dnsNames:
+    - "vpa-webhook.kube-system.svc"
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: vpa-ca-issuer
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  secretName: vpa-tls-certs
