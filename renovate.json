@@ -4,6 +4,6 @@
     "fileMatch": ["clusters/pathweb/.+\\.yaml$", "deployments/pathweb/.+\\.yaml$"]
   },
   "extends": [
-    "config:base"
+    "config:base", ":dependencyDashboard"
   ]
 }
