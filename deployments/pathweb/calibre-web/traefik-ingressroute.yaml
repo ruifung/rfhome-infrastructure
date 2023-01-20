@@ -26,6 +26,16 @@ spec:
       name: calibre-web
       port: http
   - kind: Rule
+    match: Host(`ebooks.services.home.yrf.me`) && PathPrefix(`/opds/cover`)
+    priority: 100
+    middlewares:
+    - name: calibre-web-static-caching-policy
+    - name: calibre-web-opds-cover-public
+    services:
+    - kind: Service
+      name: calibre-web
+      port: http
+  - kind: Rule
     match: Host(`ebooks.services.home.yrf.me`) && PathPrefix(`/static`, `/cover`)
     priority: 100
     middlewares:
@@ -59,6 +69,16 @@ spec:
     priority: 100
     middlewares:
     - name: calibre-web-rewrite-logout-redirect
+    services:
+    - kind: Service
+      name: calibre-web
+      port: http
+  - kind: Rule
+    match: Host(`ebooks.services.home.yrf.me`) && PathPrefix(`/opds/cover`)
+    priority: 100
+    middlewares:
+    - name: calibre-web-static-caching-policy
+    - name: calibre-web-opds-cover-public
     services:
     - kind: Service
       name: calibre-web
