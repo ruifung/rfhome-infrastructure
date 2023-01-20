@@ -28,5 +28,5 @@ metadata:
   name: calibre-web-opds-cover-public
 spec:
   headers:
-    customResponseHeaders:
+    customRequestHeaders:
       x-authentik-username: calibre-web
