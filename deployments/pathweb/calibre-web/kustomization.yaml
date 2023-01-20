@@ -5,7 +5,7 @@ images:
   - name: driveone/onedrive
     newTag: "2.4-debian"
   - name: lscr.io/linuxserver/calibre-web
-    newTag: "0.6.19"
+    newTag: "2021.12.16"
 
 resources:
   - "calibre-library-pvc.yaml"
