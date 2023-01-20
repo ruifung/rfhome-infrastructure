@@ -23,4 +23,3 @@ spec:
         name: fairwinds-stable
   interval: 15m
   targetNamespace: monitoring
-  values:
