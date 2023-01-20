@@ -19,6 +19,7 @@ spec:
   chart:
     spec:
       chart: portainer
+      version: 1.0.38
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository

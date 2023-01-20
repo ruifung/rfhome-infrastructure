@@ -18,6 +18,7 @@ spec:
   chart:
     spec:
       chart: traefik
+      version: 20.8.0
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository

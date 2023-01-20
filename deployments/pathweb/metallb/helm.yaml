@@ -18,6 +18,7 @@ spec:
   chart:
     spec:
       chart: metallb
+      version: 0.13.7
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
