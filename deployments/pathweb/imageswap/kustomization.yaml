@@ -1,0 +1,15 @@
+resources:
+  - configmap.yaml
+  - mappings.yaml
+  - hpa.yaml
+  - poddisruptionbudget.yaml
+  - rbac.yaml
+  - service.yaml
+  - serviceaccount.yaml
+  - deployment.yaml
+
+images:
+  - name: thewebroot/imageswap-init
+    newTag: v1.5.1
+  - name: thewebroot/imageswap
+    newTag: v1.5.1
