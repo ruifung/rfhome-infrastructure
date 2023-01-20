@@ -45,7 +45,7 @@ spec:
   values:
     # Comment this section out to restore cluster-user-auth support.
     rbac:
-      impersonationResourceNames: ["wego-admin"]
+      impersonationResourceNames: ["gitops-admin"]
       impersonationResources: ["groups"]
     ingress:
       enabled: true
