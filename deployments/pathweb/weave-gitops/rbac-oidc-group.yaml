@@ -3,8 +3,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: gitops-admin-group-read-resources-cr
-  resourceVersion: "236794"
-  uid: 7cb837ae-3e1b-4c1e-8c46-b4dc2b178aac
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
