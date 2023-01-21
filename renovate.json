@@ -9,6 +9,13 @@
   "flux": {
     "fileMatch": ["clusters/pathweb/.+\\.yaml$", "deployments/pathweb/.+\\.yaml$"]
   },
+  "helmValues": {
+    "commitMessageTopic": "helm values {{depName}}",
+    "fileMatch": [
+      "(^|/)helm-?\\S+\\.yaml$"
+    ],
+    "pinDigests": false
+  },
   "extends": [
     "config:base", ":dependencyDashboard"
   ]
