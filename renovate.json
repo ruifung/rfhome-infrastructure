@@ -12,7 +12,9 @@
   "helm-values": {
     "commitMessageTopic": "helm values {{depName}}",
     "fileMatch": [
-      "(^|/)helm(-?\\S+)?\\.yaml$"
+      "(^|/)helm-\\S+\\.yaml$",
+      "(^|/)helm\\.yaml$",
+      "(^|/)values\\.yaml$"
     ],
     "pinDigests": false
   },
