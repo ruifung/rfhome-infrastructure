@@ -9,6 +9,12 @@
   "flux": {
     "fileMatch": ["clusters/pathweb/.+\\.yaml$", "deployments/pathweb/.+\\.yaml$"]
   },
+  "helm-values": {
+    "fileMatch": ["clusters/pathweb/.+\\.yaml$", "deployments/pathweb/.+\\.yaml$"]
+  },
+  "kubernetes": {
+    "fileMatch": ["clusters/pathweb/.+\\.yaml$", "deployments/pathweb/.+\\.yaml$"]
+  },
   "extends": [
     "config:base", ":dependencyDashboard"
   ]
