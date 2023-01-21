@@ -12,8 +12,8 @@
   "helm-values": {
     "commitMessageTopic": "helm values {{depName}}",
     "fileMatch": [
-      "deployments/pathweb/helm-\\S+\\.yaml$",
-      "deployments/pathweb/helm\\.yaml$",
+      "deployments/pathweb/.+/helm-.+\\.yaml$",
+      "deployments/pathweb/.+/helm\\.yaml$",
       "(^|/)values\\.yaml$"
     ],
     "pinDigests": false
