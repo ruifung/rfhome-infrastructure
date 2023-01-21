@@ -9,7 +9,7 @@
   "flux": {
     "fileMatch": ["clusters/pathweb/.+\\.yaml$", "deployments/pathweb/.+\\.yaml$"]
   },
-  "helmValues": {
+  "helm-values": {
     "commitMessageTopic": "helm values {{depName}}",
     "fileMatch": [
       "(^|/)helm-?\\S+\\.yaml$"
