@@ -81,8 +81,6 @@ spec:
                             name: authentik-secrets
                           prefix: AUTHENTIK_
   values:
-    image:
-      tag: 2023.1.0
     replicas: 2
     worker:
       replicas: 2
