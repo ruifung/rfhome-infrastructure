@@ -25,7 +25,7 @@
     {
       "fileMatch": "kustomization.yaml",
       "matchStrings": ["github\\.com\\\/(?<depName>.*\\/.*?)\\/\\/vertical-pod-autoscaler\\/deploy\\/\\?ref=(?<currentValue>.*)"],
-      "datasourceTemplate": "github-releases"
+      "datasourceTemplate": "github-tags"
     }
   ],
   "extends": [
