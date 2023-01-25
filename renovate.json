@@ -4,6 +4,12 @@
     {
       "matchPackageNames": ["lscr.io/linuxserver/calibre-web"],
       "allowedVersions": "/^[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+-ls[0-9]+?$/"
+    },
+    {
+      "matchPackageNames": ["kubernetes/autoscaler"],
+      "matchPaths": ["dpeloyments/pathweb/vpa/kustomization.yaml"],
+      "matchManagers": ["regex"],
+      "allowedVersions": "^vertical-pod-autoscaler\\/v[0-9]+\\.[0-9]+\\.[0-9]+(\\.[0-9]+)?$"
     }
   ],
   "flux": {
@@ -15,6 +21,13 @@
   "kubernetes": {
     "fileMatch": ["clusters/pathweb/.+\\.yaml$", "deployments/pathweb/.+\\.yaml$"]
   },
+  "regexManagers": [
+    {
+      "fileMatch": "kustomization.yaml",
+      "matchStrings": ["github\\.com\\\/(?<depName>.*\\\/.*?)\\\/\\\/vertical-pod-autoscaler\\\/deploy\\\/\\?ref=(?<currentValue>.*)"],
+      "datasourceTemplate": "github-releases"
+    }
+  ],
   "extends": [
     "config:base", ":dependencyDashboard"
   ]

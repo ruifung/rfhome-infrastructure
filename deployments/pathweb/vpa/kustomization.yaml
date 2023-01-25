@@ -4,16 +4,13 @@ kind: Kustomization
 
 namespace: kube-system
 
-bases:
-- github.com/kubernetes/autoscaler//vertical-pod-autoscaler/deploy/?ref=vertical-pod-autoscaler/v0.12.0
-
 commonLabels:
  app.kubernetes.io/name: vertical-pod-autoscaler
 
 resources:
+  - "github.com/kubernetes/autoscaler//vertical-pod-autoscaler/deploy/?ref=vertical-pod-autoscaler/v0.12.0"
   - "certificate.yaml"
 
 patchesStrategicMerge:
   - "admission-controller-cert-patch.yaml"
   - "recommender-prometheus.yaml"
-    
