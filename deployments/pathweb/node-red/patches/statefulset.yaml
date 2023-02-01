@@ -19,6 +19,7 @@ spec:
               subPath: settings.js
             - mountPath: /extra-tools
               name: extra-tools
+              readOnly: true
           # resources:
             # limits:
             #   memory: 1Gi
@@ -43,19 +44,13 @@ spec:
               value: 1.2.0
           command: ["/bin/bash"]
           args:
-            - "-c"
-            - >
-              cd /extra-tools
-              if [[ -f speedtest/speedtest-$SPEEDTEST_VERSION ]]; then
-                rm -rf speedtest
-                mkdir -p speedtest
-                cd speedtest 
-                curl https://install.speedtest.net/app/cli/ookla-speedtest-$SPEEDTEST_VERSION-linux-$(arch).tgz | tar xvz
-                touch speedtest-$SPEEDTEST_VERSION
-              fi
+            - "/extra-tools/setup.sh"
           volumeMounts:
             - mountPath: /extra-tools
               name: extra-tools
+            - mountPath: /extra-tools/setup.sh
+              name: settings
+              subPath: extra-tools.sh
       volumes:
         - name: settings
           configMap:

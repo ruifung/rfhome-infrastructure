@@ -16,6 +16,7 @@ configMapGenerator:
     files:
       - "settings.js"
       - "extra-npm-modules.sh"
+      - "extra-tools.sh"
 patchesStrategicMerge:
   - "patches/statefulset.yaml"
   - "patches/ingress-local-dns.yaml"
