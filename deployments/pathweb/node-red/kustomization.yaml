@@ -15,6 +15,7 @@ configMapGenerator:
   - name: node-red-settings
     files:
       - "settings.js"
+      - "extra-npm-modules.sh"
 patchesStrategicMerge:
   - "patches/statefulset.yaml"
   - "patches/ingress-local-dns.yaml"
