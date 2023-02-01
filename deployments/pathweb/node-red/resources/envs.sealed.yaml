@@ -2,15 +2,15 @@ apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
   creationTimestamp: null
-  name: node-red-envs
+  name: node-red-env
   namespace: home-network
 spec:
   encryptedData:
-    NODE_RED_CREDENTIAL_SECRET: AgATk5SGDS0q6YXSccwaGWLtkcgJXxCAV+s1huHA7O4q0ybC5Fyy+e/RRVb4BIHiX0SU6P1FHKqThpE+E4czB94M10BokTCxHryWRe9j0xbZrdQwms7+tFnfRXnKEQmXnnqBIYPyidAVXbv3IZG2IHMHA4nsDDyUScVOEggsNIEjNqS631duLzcPVubK9ZxVu0Tj9U0HPPVRx7Ws4hsXldL3kljK2L//f7RaCrlDT00LYeqTEzQnokB/dg1ik5ztHQZ/x1czgCmMviFEZ68bbYrgFMeDi6lL3VJOWbsBWIDDyVItc6j6oLEBZXXBdZCPPB8yvFKkfjicyvBY/c074Oq9wDo69hhvknimsGgDkukT0AJLxAoztZP6bcrJREwOeRQRRrhvdjTx+wRq8tNr5mr0hh/wKSyse6jT/U6J9q6Yx3qFoBMuuhayri7lZF9wrskf7t6p+AYITZxSgme0+/vAEIvFqcxrfU+5/UdR60wNOFz7xkPdFv6EJpHWF1z0RzX/3uJPdGvmZ7LNpnSakhoi72Kvc5Fhj6okLkOAWDvNIbHgV1XkE1bIemP+dA6RqWvo998w3V+1a4geM1YQUfxvtD/BCdfT5qmRmIy3BEhuCOcaYrofiybYUVUGVdQReuNSwrsAGQOJDy3hevMDoBHw051LyZdnqx+beoKm9ur/mkjJUt+Ul6kC0FC2YVHYyaTiEgt+Zm65s+qCMfzNU38TSnHD8TRTSKZl38JM16BKucv5+9s=
+    NODE_RED_CREDENTIAL_SECRET: AgB1IYzErmiqzkhOgFlG0z3EDA1myJ7FUKJiyEga194e5MbrIad0ArzCZct5802jnmEO6F9x9XSYID10MWyecyYo76hxyENW5Pz098G5L+GHsK6Tf8uigjnjK6MY17SnrZLEZ5AgmibxgzMXWaleY4m+jbezCFoCYICw1dRNPa+7Vs0Hp0olrxgFgH1otVGHZKK0vpeCJzPOFxrMXb13nezIJJ4fF9zlDgMeMXN/LFLDnNebiG0s6U1n+pvCo1Gt2UEzXI+cpfTf56fr9i3VrDPC+Scmk4JjVsDWW3oLlLEppgxme78tjj5Xb4U0gdiMeAlV8z+CbG/nZkc5U8MX45TAsGuKBUP7IUgomjQIoS7/SIfinOc5Ao4TGHqA4lUjPYOSPeK8JSowzpswJZF9YR4z6UCY/5Slugm4XFLBtKYINxD+h7F0B7vOVbxtcFGn7HM/yilUd+1n/EcpEt85PkZNMHqw6Ycr4jMeafcHflCsnN8naEqSDEBVoRJFHCv9wBYjr4r7E1hTlAvY0ML2ko6yaPy1pzlCQIi0GqsbDASBmqNfVB+QvUcVZ6leBc1skaZiwry3aqKe3YobrtQ1UgUy0wnogkVF6uOk7JYPU5Ae7ObP9wPqnON0xDaYBCaqvEVuXykf/P1tnQT9N/x2QtgkJ3/yH5I1OQJ4ynfTL+e5Fyl0Zu20ov+/BiOSt70N8QnSzfHrEjvxQtUpvRJqlvh77iXZn3kJWCiHYA5L4eVqr/4kxp8=
   template:
     metadata:
       creationTimestamp: null
-      name: node-red-envs
+      name: node-red-env
       namespace: home-network
     type: Opaque
 
