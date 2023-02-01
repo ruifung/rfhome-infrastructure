@@ -13,7 +13,7 @@ configMapGenerator:
     literals:
       - "TZ=Asia/Kuala_Lumpur"
 patchesStrategicMerge:
-  - "patches/resources.yaml"
+  - "patches/statefulset.yaml"
   - "patches/ingress-local-dns.yaml"
 patches:
   - target:
