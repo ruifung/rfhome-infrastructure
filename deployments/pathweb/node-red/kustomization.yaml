@@ -12,6 +12,9 @@ configMapGenerator:
   - name: node-red-env
     literals:
       - "TZ=Asia/Kuala_Lumpur"
+  - name: node-red-settings
+    files:
+      - "settings.js"
 patchesStrategicMerge:
   - "patches/statefulset.yaml"
   - "patches/ingress-local-dns.yaml"

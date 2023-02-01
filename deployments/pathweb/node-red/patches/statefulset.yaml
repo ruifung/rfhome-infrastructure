@@ -13,11 +13,19 @@ spec:
           env:
           - name: "TZ"
             value: "Asia/Kuala_Lumpur"
+          volumeMounts:
+            - mountPath: /data/settings.js
+              name: settings
+              subPath: settings.js
           # resources:
             # limits:
             #   memory: 1Gi
             # requests:
             #   memory: 256Mi
+      volumes:
+        - name: settings
+          configMap:
+            name: node-red-settings
     volumeClaimTemplates:
       - metadata:
           name: data
