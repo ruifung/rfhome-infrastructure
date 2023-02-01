@@ -41,7 +41,7 @@ module.exports = {
          * node-red from being able to decrypt your existing credentials and they will be
          * lost.
          */
-        //credentialSecret: "a-secret-key",
+        credentialSecret: process.env.NODE_RED_CREDENTIAL_SECRET,
     
         /** By default, the flow JSON will be formatted over multiple lines making
          * it easier to compare changes when using version control.
@@ -277,9 +277,9 @@ module.exports = {
          */
         runtimeState: {
             /** enable or disable flows/state endpoint. Must be set to `false` to disable */
-            enabled: false,
+            enabled: true,
             /** show or hide runtime stop/start options in the node-red editor. Must be set to `false` to hide */
-            ui: false,
+            ui: true,
         },
         /** Configure the logging output */
         logging: {
@@ -307,11 +307,14 @@ module.exports = {
          * provided here will enable file-based context that flushes to disk every 30 seconds.
          * Refer to the documentation for further options: https://nodered.org/docs/api/context/
          */
-        //contextStorage: {
-        //    default: {
-        //        module:"localfilesystem"
-        //    },
-        //},
+        contextStorage: {
+            default: {
+                module: "memory"
+            },
+            filesystem: {
+                module: "localfilesystem"
+            }
+        },
     
         /** `global.keys()` returns a list of all properties set in global context.
          * This allows them to be displayed in the Context Sidebar within the editor.
@@ -390,7 +393,7 @@ module.exports = {
     
             projects: {
                 /** To enable the Projects feature, set this value to true */
-                enabled: false,
+                enabled: true,
                 workflow: {
                     /** Set the default projects workflow mode.
                      *  - manual - you must manually commit changes
