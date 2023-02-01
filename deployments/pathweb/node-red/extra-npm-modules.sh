@@ -3,10 +3,11 @@ cd /data
 function install_package_if_needed() {
     local pkg=${1:-Package required}
     local version=${2:-Version required}
-    local installTarget="$p@$v"
+    local installUrl=${3:-InstallURL}
+    local installTarget="$pkg@$version"
     shift 2
-    if [ "$3" =~ "^git+" ]; then
-        installTarget=${3:-InstallURL}
+    if [[ $installUrl == git+* ]]; then
+        installTarget=$installUrl
         shift 1
     fi
     local i=$(node -p "require('$pkg/package.json').version" 2>/dev/null)
