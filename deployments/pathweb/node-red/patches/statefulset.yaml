@@ -17,15 +17,63 @@ spec:
             - mountPath: /data/settings.js
               name: settings
               subPath: settings.js
+            - mountPath: /extra-tools
+              name: extra-tools
           # resources:
             # limits:
             #   memory: 1Gi
             # requests:
             #   memory: 256Mi
+      initContainers:
+        - name: install-extra-modules
+          image: nodered/node-red:latest
+          command: ["/bin/bash"]
+          args:
+            - "-c"
+            - >
+              function install_package_if_needed() {
+                local pkg=${1:-Package required}
+                local version=${2:-Version required}
+                local installTarget="$p@$v"
+                shift 2
+                if [ "$3" =~ "^git+" ]; then
+                    installTarget=${3:-InstallURL}
+                    shift 1
+                fi
+                local i=$(node -p "require('$pkg/package.json').version" 2>/dev/null)
+                [ "$i" == "$version" ] || npm "$@" install $installTarget
+              }
+              install_package_if_needed node-red-context-redis 0.0.1 git+https://github.com/node-red/
+              install_package_if_needed passport-oauth2 1.6.1
+          volumeMounts:
+            - mountPath: /data
+              name: data
+        - name: load-extra-tools
+          image: nodered/node-red:latest
+          env:
+            - name: SPEEDTEST_VERSION
+              value: 1.2.0
+          command: ["/bin/bash"]
+          args:
+            - "-c"
+            - >
+              cd /extra-tools
+              if [[ -f speedtest/speedtest-$SPEEDTEST_VERSION ]]; then
+                rm -rf speedtest
+                mkdir -p speedtest
+                cd speedtest 
+                curl https://install.speedtest.net/app/cli/ookla-speedtest-$SPEEDTEST_VERSION-linux-$(arch).tgz | tar xvz
+                touch speedtest-$SPEEDTEST_VERSION
+              fi
+          volumeMounts:
+            - mountPath: /extra-tools
+              name: extra-tools
       volumes:
         - name: settings
           configMap:
             name: node-red-settings
+        - name: extra-tools
+          emptyDir: {}
     volumeClaimTemplates:
       - metadata:
           name: data
