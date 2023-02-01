@@ -1,0 +1,17 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: unifi-controller
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  path: ./deployments/pathweb/node-red
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: home-network
+  dependsOn:
+    - name: imageswap
+    - name: rook-external-cluster

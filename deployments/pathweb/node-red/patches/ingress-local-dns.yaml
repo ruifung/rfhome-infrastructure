@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: node-red
+  labels:
+    external-dns: local-pdns
+spec:
+  ingressClassName: traefik-traefik
+  tls:
+  - hosts:
+      - nodered.services.home.yrf.me
+    secretName: services-wildcard-cert

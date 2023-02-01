@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: node-red-envs
+  namespace: home-network
+spec:
+  encryptedData:
+    NODE_RED_CREDENTIAL_SECRET: AgATk5SGDS0q6YXSccwaGWLtkcgJXxCAV+s1huHA7O4q0ybC5Fyy+e/RRVb4BIHiX0SU6P1FHKqThpE+E4czB94M10BokTCxHryWRe9j0xbZrdQwms7+tFnfRXnKEQmXnnqBIYPyidAVXbv3IZG2IHMHA4nsDDyUScVOEggsNIEjNqS631duLzcPVubK9ZxVu0Tj9U0HPPVRx7Ws4hsXldL3kljK2L//f7RaCrlDT00LYeqTEzQnokB/dg1ik5ztHQZ/x1czgCmMviFEZ68bbYrgFMeDi6lL3VJOWbsBWIDDyVItc6j6oLEBZXXBdZCPPB8yvFKkfjicyvBY/c074Oq9wDo69hhvknimsGgDkukT0AJLxAoztZP6bcrJREwOeRQRRrhvdjTx+wRq8tNr5mr0hh/wKSyse6jT/U6J9q6Yx3qFoBMuuhayri7lZF9wrskf7t6p+AYITZxSgme0+/vAEIvFqcxrfU+5/UdR60wNOFz7xkPdFv6EJpHWF1z0RzX/3uJPdGvmZ7LNpnSakhoi72Kvc5Fhj6okLkOAWDvNIbHgV1XkE1bIemP+dA6RqWvo998w3V+1a4geM1YQUfxvtD/BCdfT5qmRmIy3BEhuCOcaYrofiybYUVUGVdQReuNSwrsAGQOJDy3hevMDoBHw051LyZdnqx+beoKm9ur/mkjJUt+Ul6kC0FC2YVHYyaTiEgt+Zm65s+qCMfzNU38TSnHD8TRTSKZl38JM16BKucv5+9s=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: node-red-envs
+      namespace: home-network
+    type: Opaque
+

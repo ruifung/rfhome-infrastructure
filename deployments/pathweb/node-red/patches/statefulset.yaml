@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: node-red
+spec:
+  template:
+    metadata:
+      annotations:
+        io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
+    spec:
+      containers:
+        - name: node-red
+          env:
+          - name: "TZ"
+            value: "Asia/Kuala_Lumpur"
+          # resources:
+            # limits:
+            #   memory: 1Gi
+            # requests:
+            #   memory: 256Mi
+    volumeClaimTemplates:
+      - metadata:
+          name: data
+        spec:
+          storageClassName: "ceph-rbd"
+          accessModes: [ "ReadWriteOnce" ]
+          resources:
+            requests:
+              storage: 5Gi
