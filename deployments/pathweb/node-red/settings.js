@@ -76,7 +76,7 @@ module.exports = {
     adminAuth: {
         type: 'strategy',
         strategy: {
-            name: 'rfhome-authentik',
+            name: 'openidconnect',
             label: 'Sign in with RFHome Authentication Service',
             icon: ' fa-key',
             strategy: require('passport-openidconnect'),
