@@ -14,4 +14,4 @@ function install_package_if_needed() {
     [ "$i" == "$version" ] || npm "$@" install $installTarget
 }
 install_package_if_needed node-red-context-redis 0.0.1 git+https://github.com/node-red/node-red-context-redis
-install_package_if_needed passport-oauth2 1.6.1
+install_package_if_needed openid-client 5.3.2
