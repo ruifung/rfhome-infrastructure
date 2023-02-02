@@ -88,6 +88,7 @@ module.exports = {
                 clientID: process.env.RFHOME_AUTH_CLIENT_ID,
                 clientSecret: process.env.RFHOME_AUTH_CLIENT_SECRET,
                 callbackURL: 'https://nodered.services.home.yrf.me/auth/strategy/callback',
+                scope: ['profile', 'email'],
                 verify: function(issuer, profile, done) {
                     console.log(JSON.stringify(profile))
                     done(null, profile)
