@@ -32,7 +32,7 @@ spec:
       - "--experimental.plugins.rewriteHeaders.version=v0.0.3"
       - "--experimental.plugins.moveHeaders.modulename=github.com/che-incubator/header-rewrite-traefik-plugin"
       - "--experimental.plugins.moveHeaders.version=v0.1.2"
-      - "--experimental.plugins.rewriteBody.modulename=github.com/packruler/rewrite-body/"
+      - "--experimental.plugins.rewriteBody.modulename=github.com/packruler/rewrite-body"
       - "--experimental.plugins.rewriteBody.version=v1.2.0"
       - "--entrypoints.web.http.middlewares=crowdsec@file"
       - "--entrypoints.websecure.http.middlewares=crowdsec@file"
