@@ -30,7 +30,8 @@ spec:
                 path: "/spec/template/spec/runtimeClassName"
                 value: "gvisor"
             target:
-              kind: Deployment   
+              kind: Deployment
+              name: traefik-external
   values:
     additionalArguments:
       - "--providers.file.directory=/additional-configs"
