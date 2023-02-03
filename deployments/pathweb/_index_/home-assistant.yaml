@@ -12,5 +12,4 @@ spec:
     name: rfhome-infrastructure
   targetNamespace: home-network
   dependsOn:
-    - name: imageswap
     - name: rook-external-cluster

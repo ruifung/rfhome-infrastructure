@@ -17,5 +17,3 @@ spec:
       kind: HelmRelease
       name: portainer
       namespace: flux-system
-  dependsOn:
-    - name: imageswap

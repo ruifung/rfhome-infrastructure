@@ -22,8 +22,6 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: rook-ceph-external # namespace:cluster
-  labels:
-    k8s.twr.io/imageswap: "enabled"
 ---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1

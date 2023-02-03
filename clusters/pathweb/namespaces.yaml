@@ -4,7 +4,6 @@ kind: Namespace
 metadata:
   name: home-network
   labels:
-    k8s.twr.io/imageswap: "enabled"
     goldilocks.fairwinds.com/enabled: "true"
 ---
 apiVersion: v1
@@ -12,7 +11,6 @@ kind: Namespace
 metadata:
   name: external-dns
   labels:
-    k8s.twr.io/imageswap: "enabled"
     goldilocks.fairwinds.com/enabled: "true"
 ---
 apiVersion: v1
@@ -29,5 +27,4 @@ kind: Namespace
 metadata:
   name: monitoring
   labels:
-    k8s.twr.io/imageswap: "enabled"
     goldilocks.fairwinds.com/enabled: "true"
