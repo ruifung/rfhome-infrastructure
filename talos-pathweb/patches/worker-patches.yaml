@@ -4,3 +4,8 @@
       - interface: eth1
         vlans:
           - vlanId: 55
+  sysctls:
+    user.max_user_namespaces: "11255"
+  install:
+    extensions:
+      - image: ghcr.io/siderolabs/gvisor:20221107.0-v1.3.3
