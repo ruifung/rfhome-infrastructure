@@ -16,15 +16,6 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: imageswap-system
-  labels:
-    apps.kubernetes.io/name: imageswap
-    resource: namespace
-    goldilocks.fairwinds.com/enabled: "true"
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: monitoring
   labels:
     goldilocks.fairwinds.com/enabled: "true"
