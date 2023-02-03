@@ -22,6 +22,15 @@ spec:
   dependsOn:
     - name: traefik
       namespace: flux-system
+  postRenderers:
+    - kustomize:
+        patchesJson6902:
+          - patch:
+              - op: "add"
+                path: "/spec/template/spec/runtimeClassName"
+                value: "gvisor"
+            target:
+              kind: Deployment   
   values:
     additionalArguments:
       - "--providers.file.directory=/additional-configs"
