@@ -42,7 +42,11 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: rfhome-postgres-ha-pguser-home-assistant
-                  key: pgbouncer-uri
+                  key: uri
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
           ports:
             - containerPort: 8123
               name: http
