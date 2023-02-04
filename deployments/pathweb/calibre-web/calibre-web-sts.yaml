@@ -29,8 +29,6 @@ spec:
         env:
         - name: TZ
           value: Asia/Kuala_Lumpur
-        - name: DOCKER_MODS
-          value: linuxserver/mods:universal-calibre
         - name: PUID
           value: "1000"
         - name: PGID
