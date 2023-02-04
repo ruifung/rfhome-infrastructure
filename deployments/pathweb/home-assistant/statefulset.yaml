@@ -2,6 +2,8 @@
 kind: StatefulSet
 metadata:
   name: home-assistant
+  annotations:
+    kustomize.toolkit.fluxcd.io/force: enabled
 spec:
   serviceName: home-assistant
   # replicas: 1
@@ -15,19 +17,6 @@ spec:
         k8s.v1.cni.cncf.io/networks: home-network/hass-iot-network
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>
     spec:
-      initContainers:
-        - name: update-listen-ip
-          image: mikefarah/yq
-          volumeMounts:
-            - name: hass-data
-              mountPath: /config
-          command: ["/bin/sh"]
-          args: 
-          - "-c"
-          - >-
-            if [ -f /config/configuration.yaml ];
-            then yq ".http.server_host = \"$(ip -f inet addr show eth0 | sed -En -e 's/\s*inet ([0-9.]+).*/\1/p')\""  /config/configuration.yaml -i;
-            fi;
       containers:
         - name: home-assistant
           image: lscr.io/linuxserver/homeassistant:latest
