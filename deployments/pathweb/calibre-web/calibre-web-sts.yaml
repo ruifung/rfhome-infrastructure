@@ -19,7 +19,7 @@ spec:
       annotations:
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>
     spec:
-      runtimeClassName: gvisor
+      # runtimeClassName: gvisor
       terminationGracePeriodSeconds: 10
       securityContext:
         fsGroup: 1000
