@@ -5,7 +5,7 @@ commonLabels:
   app.kubernetes.io/version: "2023.2.2"
   app.kubernetes.io/name: home-assistant
 images:
-- name: lscr.io/linuxserver/homeassistant
+- name: homeassistant/home-assistant
   newTag: "2023.2.2"
 resources:
 - statefulset.yaml
@@ -16,6 +16,6 @@ resources:
 patchesStrategicMerge: []
 patches: []
 configMapGenerator:
-  - name: hass-additional-files
+  - name: homeassistant-docker-venv
     files:
-      - "homeassistant-docker-venv/run"
+      - "venv-run"

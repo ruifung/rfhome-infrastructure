@@ -17,9 +17,11 @@ spec:
         k8s.v1.cni.cncf.io/networks: home-network/hass-iot-network
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>
     spec:
+      securityContext:
+        fsGroup: 1000
       containers:
         - name: home-assistant
-          image: lscr.io/linuxserver/homeassistant:latest
+          image: homeassistant/home-assistant:stable
           env:
             - name: PUID
               value: "1000"
@@ -43,7 +45,15 @@ spec:
           volumeMounts:
             - name: hass-data
               mountPath: /config
+            - name: homeassistant-docker-venv
+              mountPath: /etc/services.d/home-assistant/run
+              subPath: venv-run
+
       volumes:
         - name: hass-data
           persistentVolumeClaim:
             claimName: home-assistant-data
+        - name: homeassistant-docker-venv
+          configMap:
+            name: homeassistant-docker-venv
+            defaultMode: 0755
