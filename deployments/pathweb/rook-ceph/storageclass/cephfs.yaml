@@ -9,8 +9,6 @@ parameters:
   pool: cluster-cephfs_data
   csi.storage.k8s.io/provisioner-secret-name: "rook-csi-cephfs-provisioner"
   csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph-external
-  csi.storage.k8s.io/resizer-secret-name: "rook-csi-cephfs-provisioner"
-  csi.storage.k8s.io/resizer-secret-namespace: rook-ceph-external
   csi.storage.k8s.io/controller-expand-secret-name: "rook-csi-cephfs-provisioner"
   csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph-external
   csi.storage.k8s.io/node-stage-secret-name: "rook-csi-cephfs-node"
