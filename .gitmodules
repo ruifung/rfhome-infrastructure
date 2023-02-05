@@ -4,3 +4,6 @@
 [submodule "apps/node-red"]
 	path = apps/node-red
 	url = git@github.com:ruifung/node-red-kustomize.git
+[submodule "deployments/pathweb/home-assistant/homeassistant-docker-venv"]
+	path = deployments/pathweb/home-assistant/homeassistant-docker-venv
+	url = https://github.com/tribut/homeassistant-docker-venv.git

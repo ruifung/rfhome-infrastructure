@@ -15,3 +15,7 @@ resources:
 - ingress.yaml
 patchesStrategicMerge: []
 patches: []
+configMapGenerator:
+  - name: hass-additional-files
+    files:
+      - "homeassistant-docker-venv/run"
