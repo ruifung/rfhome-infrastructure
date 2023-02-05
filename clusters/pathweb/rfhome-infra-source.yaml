@@ -5,7 +5,7 @@ metadata:
   name: rfhome-infrastructure
   namespace: flux-system
 spec:
-  recurseSubmodules: true
+  recurseSubmodules: false
   interval: 3m0s
   ref:
     branch: master
@@ -19,7 +19,7 @@ metadata:
   name: rfhome-infrastructure-private
   namespace: flux-system
 spec:
-  recurseSubmodules: true
+  recurseSubmodules: false
   interval: 3m0s
   ref:
     branch: main
