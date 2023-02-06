@@ -35,6 +35,15 @@ spec:
       updateStrategy:
         type: Recreate
       extraEnvVarsSecret: "grafana-config"
+      extraVolumes:
+        - name: db-config
+          secret:
+            secretName: rfhome-postgres-ha-pguser-grafana
+            optional: false
+      extraVolumeMounts:
+        - name: db-config
+          mountPath: /db-config
+          readOnly: true
     config:
       useGrafanaIniFile: true
       grafanaIniConfigMap: "grafana-config"
