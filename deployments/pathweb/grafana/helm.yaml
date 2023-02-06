@@ -13,6 +13,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: bitnami
+        namespace: flux-system
   interval: 15m
   targetNamespace: home-network
   postRenderers:
@@ -33,6 +34,9 @@ spec:
     grafana:
       updateStrategy:
         type: Recreate
+    config:
+      useGrafanaIniFile: true
+      grafanaIniConfigMap: "grafana-config"
     datasources:
       secretDefinition:
         apiVersion: 1
