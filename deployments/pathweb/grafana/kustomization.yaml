@@ -2,7 +2,7 @@
 kind: Kustomization
 
 configurations:
-  - transformers.yaml
+  - kustomizeconfig.yaml
 
 resources:
   - "helm.yaml"
