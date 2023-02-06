@@ -8,7 +8,7 @@ resources:
 images:
   - name: linuxserver/unifi-controller
     newName: lscr.io/linuxserver/unifi-controller
-    newTag: 7.3.76
+    newTag: 7.3.83
 patchesStrategicMerge:
   - "patches/tls-cert.yaml"
   - "patches/network.yaml"
