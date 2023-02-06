@@ -1,0 +1,14 @@
+﻿apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+configurations:
+  - transformers.yaml
+
+resources:
+  - "helm.yaml"
+  - "grafana.sealed.yaml"
+
+configMapGenerator:
+  - name: grafana-config
+    files:
+      - "grafana.ini"

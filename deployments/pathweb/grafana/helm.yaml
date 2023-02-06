@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: grafana
-  namespace: flux-system
+  1namespace: home-network
 spec:
   releaseName: grafana
   chart:
@@ -27,7 +27,6 @@ spec:
                 external-dns: local-pdns
               name: grafana
               namespace: home-network
-
   values:
     persistence:
       accessMode: ReadWriteMany
@@ -35,6 +34,7 @@ spec:
     grafana:
       updateStrategy:
         type: Recreate
+      extraEnvVarsSecret: "grafana-config"
     config:
       useGrafanaIniFile: true
       grafanaIniConfigMap: "grafana-config"
