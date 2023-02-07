@@ -7,6 +7,7 @@ configurations:
 resources:
   - "helm.yaml"
   - "grafana.sealed.yaml"
+  - "traefik-middleware.yaml"
 
 configMapGenerator:
   - name: grafana-config
