@@ -30,6 +30,8 @@ spec:
               name: grafana
               namespace: home-network
   values:
+    imageRenderer:
+      enabled: true
     persistence:
       accessMode: ReadWriteMany
       storageClass: cephfs
