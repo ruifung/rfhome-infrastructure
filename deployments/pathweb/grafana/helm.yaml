@@ -36,6 +36,7 @@ spec:
       accessMode: ReadWriteMany
       storageClass: cephfs
     grafana:
+      replicaCount: 2
       updateStrategy:
         type: Recreate
       extraEnvVarsSecret: "grafana-config"
