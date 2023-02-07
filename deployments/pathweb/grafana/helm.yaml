@@ -25,12 +25,11 @@ spec:
             metadata:
               labels:
                 external-dns: local-pdns
+              annotations:
+                traefik.ingress.kubernetes.io/router.middlewares: grafana-rewrite-inject-remove-public-footer-css@kubernetescrd
               name: grafana
               namespace: home-network
   values:
-    ingress:
-      annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: grafana-rewrite-inject-remove-public-footer-css@kubernetescrd
     persistence:
       accessMode: ReadWriteMany
       storageClass: cephfs
