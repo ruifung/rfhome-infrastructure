@@ -326,7 +326,8 @@ module.exports = {
      * Refer to the documentation for further options: https://nodered.org/docs/api/context/
      */
     contextStorage: {
-        default: {
+        default: "memory",
+        memory: {
             module: "memory"
         },
         filesystem: {
