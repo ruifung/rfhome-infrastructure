@@ -8,7 +8,7 @@ resources:
   # - "resources/networkattachmentdefinition.yaml"
 images:
   - name: linuxserver/unifi-controller
-    newName: lscr.io/linuxserver/unifi-controller
+    newName: ghcr.io/ruifung/lsio-unifi-controller-preinstalled
     newTag: 7.3.83
 patchesStrategicMerge:
   - "patches/tls-cert.yaml"
