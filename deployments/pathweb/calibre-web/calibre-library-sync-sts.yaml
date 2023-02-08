@@ -33,6 +33,7 @@ spec:
           - --single-directory
           - "Calibre Library"
           - --display-running-config
+          - --no-remote-delete
           - --auth-files
           - /onedrive/conf/authUrl:/onedrive/conf/authResponse
         env:
