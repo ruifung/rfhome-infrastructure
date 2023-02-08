@@ -6,7 +6,7 @@ spec:
   template:
     metadata:
       annotations:
-        k8s.v1.cni.cncf.io/networks: home-network/unifi-infra-network
+        # k8s.v1.cni.cncf.io/networks: home-network/unifi-infra-network
         io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
     spec:
       containers:

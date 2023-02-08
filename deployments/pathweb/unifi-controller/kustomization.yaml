@@ -5,7 +5,7 @@ bases:
   - "https://github.com/ruifung/unifi-controller-kustomize.git"
 resources:
   - "resources/ingress-transport.yaml"
-  - "resources/networkattachmentdefinition.yaml"
+  # - "resources/networkattachmentdefinition.yaml"
 images:
   - name: linuxserver/unifi-controller
     newName: lscr.io/linuxserver/unifi-controller
