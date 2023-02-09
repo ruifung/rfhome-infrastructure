@@ -7,8 +7,8 @@ spec:
   plugin:
     rewriteBody:
       rewrites:
-        - regex: "(RegExp\\(\"\\/\\(api\\|auth)(\\)\\/\\.\\*\"\\))"
-          replacement: "$1\\|outpost.goauthentik.io$2"
+        - regex: '(RegExp\("\/\()(api\|auth)(\)\/\.\*"\))'
+          replacement: '$1$2|outpost.goauthentik.io$3'
       logLevel: 0
       monitoring:
         types:
