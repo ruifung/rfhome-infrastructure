@@ -36,6 +36,9 @@ spec:
           limits:
             memory: "1Gi"
             cpu: "1000m"
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
         ports:
         - containerPort: 6052
           name: http
