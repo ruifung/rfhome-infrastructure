@@ -19,8 +19,8 @@ spec:
       - name: esphome
         image: esphome/esphome
         args:
-          - "/config"
           - "dashboard"
+          - "/config"
           - "--address"
           - "$(POD_IP)"
           - "--port"
