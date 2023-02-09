@@ -5,6 +5,8 @@ metadata:
   name: home-assistant
   labels:
     external-dns: local-pdns
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
 spec:
   ingressClassName: traefik-traefik
   rules:
