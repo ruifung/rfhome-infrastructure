@@ -8,8 +8,12 @@ spec:
     rewriteBody:
       rewrites:
         - regex: '(RegExp\("\/\()(api\|auth)(\)\/\.\*"\))'
-          replacement: '$1$2|outpost.goauthentik.io$3'
+          replacement: "$1$2|outpost.goauthentik.io$3"
       logLevel: 0
       monitoring:
+        methods:
+          - GET
         types:
           - application/javascript
+          - text/html
+          - "*/*"
