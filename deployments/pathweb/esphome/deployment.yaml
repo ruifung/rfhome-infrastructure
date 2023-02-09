@@ -34,7 +34,7 @@ spec:
                 fieldPath: status.podIP
         resources:
           limits:
-            memory: "512Mi"
+            memory: "1Gi"
             cpu: "1000m"
         ports:
         - containerPort: 6052
