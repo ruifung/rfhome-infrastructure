@@ -13,6 +13,8 @@ resources:
 - persistentvolumeclaim.yaml
 - networkattachmentdefinition.yaml
 - ingress.yaml
+- traefik-ingressroute.yaml
+- traefik-middleware.yaml
 patchesStrategicMerge: []
 patches: []
 configMapGenerator:

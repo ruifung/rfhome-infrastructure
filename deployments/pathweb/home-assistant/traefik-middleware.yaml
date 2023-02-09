@@ -1,0 +1,15 @@
+﻿---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: home-assistant-rewrite-serviceworker-paths
+spec:
+  plugin:
+    rewriteBody:
+      rewrites:
+        - regex: "(RegExp\\(\"\\/\\(api\\|auth)(\\)\\/\\.\\*\"\\))"
+          replacement: "$1\\|outpost.goauthentik.io$2"
+      logLevel: 0
+      monitoring:
+        types:
+          - application/javascript
