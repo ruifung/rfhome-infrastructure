@@ -29,7 +29,11 @@ spec:
         volumeMounts:
           - mountPath: /config
             name: data
+          - mountPath: /.platformio
+            name: temp
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: esphome-data
+        - name: temp
+          emptyDir: {}
