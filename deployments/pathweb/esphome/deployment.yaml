@@ -22,7 +22,7 @@ spec:
           - "/config"
           - "dashboard"
           - "--address"
-          - "$POD_IP"
+          - "$(POD_IP)"
           - "--port"
           - "6052"
         env:
