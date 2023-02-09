@@ -23,6 +23,14 @@ spec:
               memory: 1Gi
             requests:
               memory: 256Mi
+          volumeMounts:
+            - mountPath: /etc/cont-init.d/20-config
+              name: lsio-unifi-image-patches
+              subPath: 20-config
+      volumes:
+        - name: lsio-unifi-image-patches
+          configMap:
+            name: lsio-unifi-image-patches
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

@@ -23,3 +23,7 @@ patches:
 commonLabels:
   app.kubernetes.io/instance: unifi-controller
   app.kubernetes.io/name: unifi-controller
+configMapGenerator:
+  - name: lsio-unifi-image-patches
+    files:
+      - "20-config"
