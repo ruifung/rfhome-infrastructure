@@ -1,0 +1,9 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: esphome
+spec:
+  ports:
+  - port: 6052
+    targetPort: http
+    name: http

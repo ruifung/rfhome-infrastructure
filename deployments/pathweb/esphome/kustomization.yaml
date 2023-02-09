@@ -1,0 +1,12 @@
+﻿images:
+  - name: esphome/esphome
+    newTag: 2022.12.8
+
+resources:
+  - deployment.yaml
+  - pvc.yaml
+  - service.yaml
+  - ingress.yaml
+
+commonLabels:
+  app.kubernetes.io/name: esphome

@@ -1,0 +1,35 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: esphome
+spec:
+  selector: {}
+  template:
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+      - name: esphome
+        image: esphome/esphome
+        args:
+          - "/config"
+          - "dashboard"
+        env:
+          - name: TZ
+            value: Asia/Kuala_Lumpur
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "1000m"
+        ports:
+        - containerPort: 6052
+          name: http
+        volumeMounts:
+          - mountPath: /config
+            name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: esphome-data
