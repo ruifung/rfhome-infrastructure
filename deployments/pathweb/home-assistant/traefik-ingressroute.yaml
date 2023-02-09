@@ -25,3 +25,12 @@ spec:
     - kind: Service
       name: home-assistant
       port: http
+  - kind: Rule
+    match: Host(`hass.services.home.yrf.me`) && PathPrefix(`/auth`) && !Path(`/auth/token`)
+    priority: 100
+    middlewares:
+      - name: ak-outpost-authentik-embedded-outpost
+    services:
+      - kind: Service
+        name: home-assistant
+        port: http
