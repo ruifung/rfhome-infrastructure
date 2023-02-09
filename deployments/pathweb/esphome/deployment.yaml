@@ -4,7 +4,12 @@ metadata:
   name: esphome
 spec:
   selector: {}
+  strategy:
+    type: Recreate
   template:
+    metadata:
+      annotations:
+        k8s.v1.cni.cncf.io/networks: home-network/esphome-iot-network
     spec:
       securityContext:
         runAsUser: 1000
@@ -16,9 +21,17 @@ spec:
         args:
           - "/config"
           - "dashboard"
+          - "--address"
+          - "$POD_IP"
+          - "--port"
+          - "6052"
         env:
           - name: TZ
             value: Asia/Kuala_Lumpur
+          - name: POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
         resources:
           limits:
             memory: "512Mi"
@@ -31,6 +44,10 @@ spec:
             name: data
           - mountPath: /.platformio
             name: temp
+            subPath: .platformio
+          - mountPath: /piolibs
+            name: temp
+            subPath: piolibs
       volumes:
         - name: data
           persistentVolumeClaim:
