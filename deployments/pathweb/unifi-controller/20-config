@@ -83,6 +83,5 @@ else
 fi
 
 # permissions
-chown -R abc:abc \
-        /config \
-        /run/unifi
+chown -R abc:abc /config /run/unifi
+chown abc:abc /usr/lib/unifi /var/lib/unifi /var/log/unifi /var/run/unifi
