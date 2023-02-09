@@ -31,6 +31,7 @@ spec:
         - name: lsio-unifi-image-patches
           configMap:
             name: lsio-unifi-image-patches
+            defaultMode: 0775
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
