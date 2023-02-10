@@ -15,3 +15,5 @@ function install_package_if_needed() {
 }
 install_package_if_needed node-red-context-redis 0.0.1 git+https://github.com/node-red/node-red-context-redis
 install_package_if_needed passport-openidconnect 0.1.1
+install_package_if_needed jsonwebtoken 9.0.0
+install_package_if_needed jwks-rsa 3.0.1

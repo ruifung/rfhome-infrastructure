@@ -95,6 +95,42 @@ module.exports = {
                 }
             }
         },
+        tokens: function(token) {
+            return new Promise(function(resolve, reject) {
+                var jwt = require('jsonwebtoken');
+                var jwksClient = require('jwks-rsa');
+                var client = jwksClient({
+                    jwksUri: process.env.JWT_JWKS_URI,
+                });
+                var options = {
+                    algorithms: [ 'RS256' ],
+                    audience: process.env.JWT_AUDIENCE,
+                    issuer: process.env.JWT_ISSUER
+                };
+                function getKey(header, callback){
+                    console.log("Fetching JWKS")
+                    client.getSigningKey(header.kid, function(err, key) {
+                        var signingKey = null;
+                        try {
+                            signingKey = key.publicKey || key.rsaPublicKey;
+                        } catch (e) {
+                            console.log(e);
+                        }
+                        callback(null, signingKey);
+                    });
+                }
+                jwt.verify(token, getKey, options, function(err, decoded) {
+                    if (err) {
+                        console.log("Error authenticating: " + err);
+                        resolve(null);
+                    } else {
+                        var user = { username: decoded.email, permissions: "*" };
+                        resolve(user);
+                    }
+                });
+            });
+        },
+        tokenHeader: process.env.JWT_HEADER,
         users: [
             {username: "ruifung", permissions: "*"}
         ]
