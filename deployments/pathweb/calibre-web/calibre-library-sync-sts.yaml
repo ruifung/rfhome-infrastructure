@@ -48,9 +48,9 @@ spec:
           mountPath: /onedrive/data/Calibre Library
         - name: data
           mountPath: /onedrive/conf
-        - name: onedrive-config
-          mountPath: /onedrive/conf/config
-          subPath: onedrive-config
+        # - name: onedrive-config
+        #   mountPath: /onedrive/conf/config
+        #   subPath: onedrive-config
       volumes:
         - name: calibre-library
           persistentVolumeClaim:
