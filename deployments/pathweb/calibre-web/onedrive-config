@@ -1,2 +1,2 @@
-﻿webhook_enabled = "true"
+webhook_enabled = "true"
 webhook_public_url = "https://nodered-home.yrf.me/webhooks/calibre-onedrive-sync"
