@@ -48,12 +48,18 @@ spec:
           mountPath: /onedrive/data/Calibre Library
         - name: data
           mountPath: /onedrive/conf
+        - name: onedrive-config
+          mountPath: /onedrive/conf/config
+          subPath: onedrive-config
       volumes:
         - name: calibre-library
           persistentVolumeClaim:
             claimName: calibre-library
         - name: onedrive-temp
           emptyDir: {}
+        - name: onedrive-config
+          configMap:
+            name: calibre-library-sync-config
   volumeClaimTemplates:
   - metadata:
       name: data

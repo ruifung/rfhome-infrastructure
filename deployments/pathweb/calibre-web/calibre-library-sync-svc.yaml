@@ -10,3 +10,6 @@ spec:
     app.kubernetes.io/name: calibre-library-sync
   type: ClusterIP
   clusterIP: None
+  ports:
+    - port: 8888
+      name: webhook

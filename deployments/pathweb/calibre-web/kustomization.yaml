@@ -17,3 +17,8 @@ resources:
   - "ingress.yaml"
   - "traefik-ingressroute.yaml"
   - "traefik-middleware.yaml"
+
+configMapGenerator:
+  - name: "calibre-library-sync-config"
+    files:
+      - "onedrive-config"
