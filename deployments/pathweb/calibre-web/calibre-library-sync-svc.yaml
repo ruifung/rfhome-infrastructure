@@ -13,3 +13,4 @@ spec:
   ports:
     - port: 8888
       name: webhook
+      targetPort: 8888
