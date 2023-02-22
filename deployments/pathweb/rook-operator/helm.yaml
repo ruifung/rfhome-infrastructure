@@ -23,7 +23,7 @@ spec:
   chart:
     spec:
       chart: rook-ceph
-      version: 1.10.10
+      version: v1.10.11
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
