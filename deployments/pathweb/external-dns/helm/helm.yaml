@@ -133,7 +133,7 @@ spec:
       port: 53
       zone: "services.home.yrf.me"
       secretName: local-rfc2136-key
-      tsigKeyname: externaldns-key
+      tsigKeyname: pathweb-external-dns
       tsigSecretAlg: hmac-sha256
       tsigAxfr: true
     domainFilters:
@@ -182,7 +182,7 @@ spec:
       port: 53
       zone: "pathweb.clusters.home.yrf.me"
       secretName: local-rfc2136-key
-      tsigKeyname: externaldns-key
+      tsigKeyname: pathweb-external-dns
       tsigSecretAlg: hmac-sha256
       tsigAxfr: true
     domainFilters:
