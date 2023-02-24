@@ -137,6 +137,7 @@ spec:
       tsigKeyname: pathweb-external-dns
       tsigSecretAlg: hmac-sha256
       tsigAxfr: true
+      minTTL: 300s
     domainFilters:
     - services.home.yrf.me
     labelFilter: external-dns=local-pdns
@@ -187,6 +188,7 @@ spec:
       tsigKeyname: pathweb-external-dns
       tsigSecretAlg: hmac-sha256
       tsigAxfr: true
+      minTTL: 300s
     domainFilters:
     - pathweb.clusters.home.yrf.me
     labelFilter: external-dns=local-pdns
