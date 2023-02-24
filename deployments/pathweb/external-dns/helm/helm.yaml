@@ -98,3 +98,101 @@ spec:
       apiversion: externaldns.k8s.io/v1alpha1
       kind: DNSEndpoint
     dryRun: false
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns-local-services
+  namespace: flux-system
+spec:
+  releaseName: external-dns-local-services
+  chart:
+    spec:
+      chart: external-dns
+      version: 6.14.0
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+  interval: 15m
+  targetNamespace: external-dns
+  install:
+    createNamespace: true
+  values:
+    image:
+      registry: k8s.gcr.io/external-dns
+      repository: external-dns
+      tag: v0.13.1
+    sources:
+    - ingress
+    - service
+    - crd
+    provider: rfc2136
+    rfc2136:
+      host: "10.229.31.53"
+      port: 53
+      zone: "services.home.yrf.me"
+      secretName: local-rfc2136-key
+      tsigKeyname: externaldns-key
+      tsigSecretAlg: hmac-sha256
+      tsigAxfr: true
+    domainFilters:
+    - services.home.yrf.me
+    labelFilter: external-dns=local-pdns
+    registry: txt
+    txtSuffix: .external-dns-txt
+    txtOwnerId: "rfhome-cluster-pathweb"
+    crd:
+      create: false
+      apiversion: externaldns.k8s.io/v1alpha1
+      kind: DNSEndpoint
+    dryRun: false
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns-local-cluster
+  namespace: flux-system
+spec:
+  releaseName: external-dns-local-cluster
+  chart:
+    spec:
+      chart: external-dns
+      version: 6.14.0
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+  interval: 15m
+  targetNamespace: external-dns
+  install:
+    createNamespace: true
+  values:
+    image:
+      registry: k8s.gcr.io/external-dns
+      repository: external-dns
+      tag: v0.13.1
+    sources:
+    - ingress
+    - service
+    - crd
+    provider: rfc2136
+    rfc2136:
+      host: "10.229.31.53"
+      port: 53
+      zone: "pathweb.clusters.home.yrf.me"
+      secretName: local-rfc2136-key
+      tsigKeyname: externaldns-key
+      tsigSecretAlg: hmac-sha256
+      tsigAxfr: true
+    domainFilters:
+    - pathweb.clusters.home.yrf.me
+    labelFilter: external-dns=local-pdns
+    registry: txt
+    txtSuffix: .external-dns-txt
+    txtOwnerId: "rfhome-cluster-pathweb"
+    crd:
+      create: false
+      apiversion: externaldns.k8s.io/v1alpha1
+      kind: DNSEndpoint
+    dryRun: false
