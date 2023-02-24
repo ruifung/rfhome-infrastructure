@@ -128,6 +128,7 @@ spec:
     - service
     - crd
     provider: rfc2136
+    policy: upsert-only
     rfc2136:
       host: "10.229.31.53"
       port: 53
@@ -139,7 +140,7 @@ spec:
     domainFilters:
     - services.home.yrf.me
     labelFilter: external-dns=local-pdns
-    registry: txt
+    registry: noop
     txtSuffix: .external-dns-txt
     txtOwnerId: "rfhome-cluster-pathweb"
     crd:
@@ -177,6 +178,7 @@ spec:
     - service
     - crd
     provider: rfc2136
+    policy: upsert-only
     rfc2136:
       host: "10.229.31.53"
       port: 53
@@ -188,8 +190,7 @@ spec:
     domainFilters:
     - pathweb.clusters.home.yrf.me
     labelFilter: external-dns=local-pdns
-    registry: txt
-    txtSuffix: .external-dns-txt
+    registry: noop
     txtOwnerId: "rfhome-cluster-pathweb"
     crd:
       create: false
