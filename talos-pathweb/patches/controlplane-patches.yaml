@@ -4,16 +4,22 @@ machine:
       - interface: eth0
         dhcp: true
         vip:
-          ip: 10.229.17.0
+          ip: 10.229.97.30
 cluster:
   clusterName: pathweb
   apiServer:
     certSANs:
-      - 10.229.17.0
-      - 10.229.17.1
-      - 10.229.17.2
-      - 10.229.17.3
-      - pathweb.clusters.home.yrf.me
+      - 10.229.97.30
+      - 10.229.97.31
+      - 10.229.97.32
+      - 10.229.97.33
+      - controlplane.pathweb.clusters.home.yrf.me
+      - 1.controlplane.pathweb.clusters.home.yrf.me
+      - 2.controlplane.pathweb.clusters.home.yrf.me
+      - 3.controlplane.pathweb.clusters.home.yrf.me
+      - pathweb-control-1.servers.home.yrf.me
+      - pathweb-control-2.servers.home.yrf.me
+      - pathweb-control-3.servers.home.yrf.me
     admissionControl:
       - name: PodSecurity
         configuration:

@@ -1,3 +1,5 @@
 machine:
+  certSANs:
+    - pathweb-worker-1.servers.home.yrf.me
   network:
     hostname: pathweb-worker-1

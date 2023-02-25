@@ -1,3 +1,5 @@
 machine:
+  certSANs:
+    - pathweb-control-3.servers.home.yrf.me
   network:
     hostname: pathweb-control-3
