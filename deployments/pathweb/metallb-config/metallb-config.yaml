@@ -15,5 +15,3 @@ metadata:
 spec:
   ipAddressPools:
   - service-addr-pool
-  interfaces:
-  - eth0.16

@@ -1,15 +1,9 @@
 ﻿machine:
   network:
     interfaces:
-      - interface: eth0
+      - interface: eth1
         dhcp: true
-        dhcpOptions:
-          routeMetric: 1
         vlans:
-          - vlanId: 16
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 1024
           - vlanId: 55
   sysctls:
     user.max_user_namespaces: "11255"
