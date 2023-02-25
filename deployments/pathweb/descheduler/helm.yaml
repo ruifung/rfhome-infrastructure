@@ -1,0 +1,28 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: descheduler
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://kubernetes-sigs.github.io/descheduler/
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: descheduler
+  namespace: flux-system
+spec:
+  releaseName: descheduler
+  chart:
+    spec:
+      chart: descheduler
+      version: 0.26.0
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: descheduler
+  interval: 15m
+  targetNamespace: kube-system
