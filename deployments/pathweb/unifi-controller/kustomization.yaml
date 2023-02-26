@@ -8,8 +8,8 @@ resources:
   # - "resources/networkattachmentdefinition.yaml"
 images:
   - name: linuxserver/unifi-controller
-    newName: ghcr.io/ruifung/lsio-unifi-controller-preinstalled
-    newTag: 7.3.83-rf11
+    newName: lscr.io/linuxserver/unifi-controller
+    newTag: 7.3.83-ls180
 patchesStrategicMerge:
   - "patches/tls-cert.yaml"
   - "patches/network.yaml"
@@ -23,7 +23,3 @@ patches:
 commonLabels:
   app.kubernetes.io/instance: unifi-controller
   app.kubernetes.io/name: unifi-controller
-# configMapGenerator:
-#   - name: lsio-unifi-image-patches
-#     files:
-#       - "20-config"
