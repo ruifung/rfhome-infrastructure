@@ -24,6 +24,13 @@ spec:
             - name: hass-data
               mountPath: /conf/
               subPath: appdaemon
+          resources:
+            requests:
+              cpu: 49m
+              memory: 263M
+            limits:
+              cpu: 2041m
+              memory: 512M
       volumes:
         - name: hass-data
           persistentVolumeClaim:

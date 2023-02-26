@@ -105,3 +105,18 @@ spec:
         create: true
     redis:
       enabled: true
+    resources:
+      server:
+        requests:
+          cpu: 182m
+          memory: 443Mi
+        limits:
+          cpu: 47149m
+          memory: 1Gi
+      worker:
+        requests:
+          cpu: 143m
+          memory: 1Gi
+        limits:
+          cpu: 63481m
+          memory: 2Gi

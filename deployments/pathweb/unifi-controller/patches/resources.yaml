@@ -19,10 +19,12 @@ spec:
           - name: "TZ"
             value: "Asia/Kuala_Lumpur"
           resources:
-            limits:
-              memory: 1Gi
             requests:
-              memory: 256Mi
+              cpu: 587m
+              memory: 765M
+            limits:
+              cpu: 587m
+              memory: 1Gi
       #     volumeMounts:
       #       - mountPath: /etc/cont-init.d/20-config
       #         name: lsio-unifi-image-patches

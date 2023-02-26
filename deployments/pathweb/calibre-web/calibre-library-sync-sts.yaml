@@ -51,6 +51,13 @@ spec:
         - name: onedrive-config
           mountPath: /onedrive/conf/config
           subPath: onedrive-config
+        resources:
+          requests:
+            cpu: 182m
+            memory: 263M
+          limits:
+            cpu: 73320m
+            memory: 1G
       volumes:
         - name: calibre-library
           persistentVolumeClaim:

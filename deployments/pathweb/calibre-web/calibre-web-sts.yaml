@@ -49,18 +49,39 @@ spec:
           mountPath: /config
         - name: logs
           mountPath: /logs
+        resources:
+          requests:
+            cpu: 296m
+            memory: 164M
+          limits:
+            cpu: 72950m
+            memory: 3G
       - name: calibre-web-log
         image: busybox:1.36
         args: [/bin/sh, -c, 'until [ -f /logs/calibre-web.log ]; do sleep 5; done; tail -n+1 -F /logs/calibre-web.log']
         volumeMounts:
         - name: logs
           mountPath: /logs
+        resources:
+          requests:
+            cpu: 11m
+            memory: 88M
+          limits:
+            cpu: 11m
+            memory: 88M
       - name: calibre-web-access-log
         image: busybox:1.36
         args: [/bin/sh, -c, 'until [ -f /logs/access.log ]; do sleep 5; done; tail -n+1 -F /logs/access.log']
         volumeMounts:
         - name: logs
           mountPath: /logs
+        resources:
+          requests:
+            cpu: 11m
+            memory: 88M
+          limits:
+            cpu: 11m
+            memory: 88M
       volumes:
         - name: calibre-library
           persistentVolumeClaim:

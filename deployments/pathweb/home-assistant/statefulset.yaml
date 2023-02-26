@@ -48,7 +48,13 @@ spec:
             - name: homeassistant-docker-venv
               mountPath: /etc/services.d/home-assistant/run
               subPath: venv-run
-
+          resources:
+            requests:
+              cpu: 671m
+              memory: 381M
+            limits:
+              cpu: 194565m
+              memory: 4G
       volumes:
         - name: hass-data
           persistentVolumeClaim:

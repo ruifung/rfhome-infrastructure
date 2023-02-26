@@ -20,11 +20,13 @@ spec:
             - mountPath: /extra-tools
               name: extra-tools
               readOnly: true
-          # resources:
-            # limits:
-            #   memory: 1Gi
-            # requests:
-            #   memory: 256Mi
+          resources:
+            requests:
+              cpu: 548m
+              memory: 549M
+            limits:
+              cpu: 2048m
+              memory: 1G
       initContainers:
         - name: install-extra-modules
           image: nodered/node-red:latest
