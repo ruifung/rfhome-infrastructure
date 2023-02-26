@@ -11,7 +11,7 @@ if (($mode -eq "controlplane") -or ($mode -eq "all")) {
 }
 if (($mode -eq "worker") -or ($mode -eq "all")) {
     Write-Output "Applying worker-nodes machine configs."
-    talosctl apply-config --talosconfig .\talosconfig --nodes 10.229.97.34 --file .\base\worker.yaml -p @patches\node-patches.yaml,@patches\worker-patches.yaml,@patches\worker-1.yaml $extraArgs
-    talosctl apply-config --talosconfig .\talosconfig --nodes 10.229.97.35 --file .\base\worker.yaml -p @patches\node-patches.yaml,@patches\worker-patches.yaml,@patches\worker-2.yaml $extraArgs
-    talosctl apply-config --talosconfig .\talosconfig --nodes 10.229.97.36 --file .\base\worker.yaml -p @patches\node-patches.yaml,@patches\worker-patches.yaml,@patches\worker-3.yaml $extraArgs
+    talosctl apply-config --talosconfig .\talosconfig --nodes 1.workers.$dnsSuffix --file .\base\worker.yaml -p @patches\node-patches.yaml,@patches\worker-patches.yaml,@patches\worker-1.yaml $extraArgs
+    talosctl apply-config --talosconfig .\talosconfig --nodes 2.workers.$dnsSuffix --file .\base\worker.yaml -p @patches\node-patches.yaml,@patches\worker-patches.yaml,@patches\worker-2.yaml $extraArgs
+    talosctl apply-config --talosconfig .\talosconfig --nodes 3.workers.$dnsSuffix --file .\base\worker.yaml -p @patches\node-patches.yaml,@patches\worker-patches.yaml,@patches\worker-3.yaml $extraArgs
 }
