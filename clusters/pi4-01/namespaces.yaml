@@ -19,3 +19,10 @@ metadata:
   name: monitoring
   labels:
     goldilocks.fairwinds.com/enabled: "true"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: traefik
+  labels:
+    goldilocks.fairwinds.com/enabled: "true"

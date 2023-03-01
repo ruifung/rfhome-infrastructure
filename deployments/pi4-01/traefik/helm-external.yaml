@@ -1,0 +1,172 @@
+﻿---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: traefik-external
+  namespace: flux-system
+spec:
+  releaseName: traefik-external
+  chart:
+    spec:
+      chart: traefik
+      version: 21.1.0
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+  interval: 15m
+  install:
+    createNamespace: true
+    skipCRDs: true
+  dependsOn:
+    - name: traefik-internal
+      namespace: flux-system
+  # postRenderers:
+  #   - kustomize:
+  #       patchesJson6902:
+  #         - patch:
+  #             - op: "add"
+  #               path: "/spec/template/spec/runtimeClassName"
+  #               value: "gvisor"
+  #           target:
+  #             kind: Deployment
+  #             name: traefik-external
+  values:
+    additionalArguments:
+      - "--providers.file.directory=/additional-configs"
+      - "--providers.file.watch=true"
+      - "--experimental.plugins.bouncer.modulename=github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
+      - "--experimental.plugins.bouncer.version=v1.1.7"
+      - "--experimental.plugins.rewriteHeaders.modulename=github.com/XciD/traefik-plugin-rewrite-headers"
+      - "--experimental.plugins.rewriteHeaders.version=v0.0.3"
+      - "--experimental.plugins.moveHeaders.modulename=github.com/che-incubator/header-rewrite-traefik-plugin"
+      - "--experimental.plugins.moveHeaders.version=v0.1.2"
+      - "--experimental.plugins.rewriteBody.modulename=github.com/packruler/rewrite-body"
+      - "--experimental.plugins.rewriteBody.version=v1.2.0"
+      # - "--entrypoints.web.http.middlewares=crowdsec@file"
+      # - "--entrypoints.websecure.http.middlewares=crowdsec@file"
+      # - "--entrypoints.cloudflared.http.middlewares=crowdsec@file"
+    deployment:
+      replicas: 2
+      podLabels:
+        velero.io/exclude-from-backup: "true"
+      additionalContainers:
+        - name: cloudflared
+          image: cloudflare/cloudflared:latest
+          imagePullPolicy: Always
+          args: ["tunnel", "run", "--url", "127.0.0.1:8081"]
+          env:
+            - name: TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ingress-cf-tunnel-token
+                  key: token
+                  optional: false
+      additionalVolumes:
+        - name: additional-configs
+          projected:
+            sources:
+              - configMap:
+                  name: traefik-additional-configs
+    volumes:
+      - name: crowdsec-bouncer-tls
+        mountPath: /crowdsec
+        type: secret
+    additionalVolumeMounts:       
+      - name: additional-configs
+        mountPath: /additional-configs
+    service:
+      enabled: false
+    ports:
+      web:
+        expose: false
+      websecure:
+        expose: false
+      cloudflared:
+        port: 8081
+        expose: false
+        protocol: TCP
+        forwardedHeaders:
+          trustedIPs:
+          - 127.0.0.0/8
+          - 103.21.244.0/22
+          - 103.22.200.0/22
+          - 103.31.4.0/22
+          - 104.16.0.0/13
+          - 104.24.0.0/14
+          - 108.162.192.0/18
+          - 131.0.72.0/22
+          - 131.0.72.0/22
+          - 162.158.0.0/15
+          - 172.64.0.0/13
+          - 173.245.48.0/20
+          - 188.114.96.0/20
+          - 190.93.240.0/20
+          - 197.234.240.0/22
+          - 198.41.128.0/17
+          - 2400:cb00::/32
+          - 2606:4700::/32
+          - 2803:f800::/32
+          - 2405:b500::/32
+          - 2405:8100::/32
+          - 2a06:98c0::/29
+          - 2c0f:f248::/32
+    experimental:
+      http3:
+        enabled: true
+      plugins:
+        enabled: true
+    providers:
+      kubernetesCRD:
+        ingressClass: traefik-external
+        allowCrossNamespace: true
+        allowExternalNameServices: true
+      kubernetesIngress:
+        ingressClass: traefik-external
+        publishedService:
+          enabled: true
+    ingressRoute:
+      dashboard:
+        annotations:
+          kubernetes.io/ingress.class: traefik-external
+    logs:
+      general:
+        format: json
+      access:
+        enabled: true
+        format: json
+    metrics:
+      prometheus:
+        entryPoint: metrics
+        service:
+          enabled: true
+        serviceMonitor:
+          metricRelabelings:
+            - sourceLabels: [__name__]
+              separator: ;
+              regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
+              replacement: $1
+              action: drop
+          relabelings:
+            - sourceLabels: [__meta_kubernetes_pod_node_name]
+              separator: ;
+              regex: ^(.*)$
+              targetLabel: nodename
+              replacement: $1
+              action: replace
+          jobLabel: traefik
+          interval: 30s
+          honorLabels: true
+        prometheusRule:
+          additionalLabels: {}
+          namespace: "monitoring"
+          rules:
+            - alert: TraefikDown
+              expr: up{job="traefik-external-metrics"} == 0
+              for: 5m
+              labels:
+                context: traefik
+                severity: warning
+              annotations:
+                summary: "Traefik Down"
+                description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
