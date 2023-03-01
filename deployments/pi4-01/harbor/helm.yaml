@@ -32,6 +32,11 @@ spec:
               namespace: harbor
               labels:
                 external-dns: local-pdns
+  valuesFrom:
+    - kind: Secret
+      name: harbor-postgres-passwords
+      valuesKey: postgres-password
+      targetPath: postgresql.auth.postgresPassword
   values:
     externalURL: https://harbor.services.home.yrf.me
     exposureType: ingress
@@ -52,8 +57,6 @@ spec:
         registry: docker.io
         repository: bitnami/postgresql
         tag: 13.10.0-debian-11-r5
-      auth:
-        existingSecret: harbor-postgres-passwords
     portal:
       image:
         registry: docker.io
