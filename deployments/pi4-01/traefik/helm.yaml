@@ -73,6 +73,8 @@ spec:
         external-dns.alpha.kubernetes.io/hostname: ingress.pi4-01.clusters.home.yrf.me
       labels:
         external-dns: local-dns
+      spec:
+        externalTrafficPolicy: Local
     ports:
       web:
         port: 8080
