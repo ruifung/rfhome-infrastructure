@@ -1,0 +1,38 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zigbee2mqtt
+spec:
+  selector: {}
+  serviceName: zigbee2mqtt
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: zigbee2mqtt
+          image: koenkk/zigbee2mqtt:latest
+          env:
+            - name: TZ
+              value: Asia/Kuala_Lumpur
+          securityContext:
+            privileged: true
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+            # - name: serial
+            #   mountPath: /dev/ttyAMA0
+      volumes:
+        - name: serial
+          hostPath:
+            path: /dev/ttyAMA0
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi

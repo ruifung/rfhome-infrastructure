@@ -1,0 +1,10 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: zigbee2mqtt
+spec:
+  selector: {}
+  ports:
+  - port: 80
+    name: http
+    targetPort: http

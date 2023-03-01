@@ -40,3 +40,10 @@ metadata:
   name: harbor
   labels:
     goldilocks.fairwinds.com/enabled: "true"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: zigbee2mqtt
+  labels:
+    goldilocks.fairwinds.com/enabled: "true"
