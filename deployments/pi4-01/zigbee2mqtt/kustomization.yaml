@@ -5,6 +5,8 @@
 
 resources:
   - "statefulset.yaml"
+  - "service.yaml"
+  - "ingress.yaml"
 
 commonLabels:
   app.kubernetes.io/name: zigbee2mqtt
