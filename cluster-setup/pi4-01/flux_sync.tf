@@ -39,7 +39,7 @@ resource "tls_private_key" "rfhome_infra_deploy_key" {
 
 # Add a deploy key
 resource "github_repository_deploy_key" "rfhome_infra_deploy_key" {
-  title      = "Pathweb Flux Deploy Key"
+  title      = "Pi4-01 Flux Deploy Key"
   repository = "rfhome-infrastructure"
   key        = tls_private_key.rfhome_infra_deploy_key.public_key_openssh
   read_only  = "true"
@@ -50,7 +50,7 @@ resource "tls_private_key" "rfhome_infra_private_deploy_key" {
 }
 
 resource "github_repository_deploy_key" "rfhome_infra_private_deploy_key" {
-  title      = "Pathweb Flux Deploy Key"
+  title      = "Pi4-01 Flux Deploy Key"
   repository = "rfhome-infrastructure-private"
   key        = tls_private_key.rfhome_infra_private_deploy_key.public_key_openssh
   read_only  = "true"
@@ -94,4 +94,18 @@ resource "kubernetes_secret_v1" "rfhome_private" {
     identity    = tls_private_key.rfhome_infra_private_deploy_key.private_key_openssh
     known_hosts = join("\n", local.gh_known_hosts)
   }
+}
+
+resource "github_repository_file" "sync" {
+  repository = "rfhome-infrastructure"
+  file       = data.flux_sync.main.path
+  content    = data.flux_sync.main.content
+  branch     = "master"
+}
+
+resource "github_repository_file" "kustomize" {
+  repository = "rfhome-infrastructure"
+  file       = data.flux_sync.main.kustomize_path
+  content    = data.flux_sync.main.kustomize_content
+  branch     = "master"
 }

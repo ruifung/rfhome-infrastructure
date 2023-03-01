@@ -95,3 +95,17 @@ resource "kubernetes_secret_v1" "rfhome_private" {
     known_hosts = join("\n", local.gh_known_hosts)
   }
 }
+
+resource "github_repository_file" "sync" {
+  repository = "rfhome-infrastructure"
+  file       = data.flux_sync.main.path
+  content    = data.flux_sync.main.content
+  branch     = "master"
+}
+
+resource "github_repository_file" "kustomize" {
+  repository = "rfhome-infrastructure"
+  file       = data.flux_sync.main.kustomize_path
+  content    = data.flux_sync.main.kustomize_content
+  branch     = "master"
+}

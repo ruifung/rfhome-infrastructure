@@ -37,3 +37,11 @@ resource "kubectl_manifest" "apply" {
   depends_on = [kubernetes_namespace_v1.flux_system, kubectl_manifest.multus]
   yaml_body = each.value
 }
+
+# GitHub
+resource "github_repository_file" "install" {
+  repository = "rfhome-infrastructure"
+  file       = data.flux_install.main.path
+  content    = data.flux_install.main.content
+  branch     = "master"
+}
