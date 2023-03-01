@@ -13,7 +13,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  path: ./deployments/pathweb/cert-manager
+  path: ./deployments/pi4-01/cert-manager
   prune: true
   sourceRef:
     kind: GitRepository
