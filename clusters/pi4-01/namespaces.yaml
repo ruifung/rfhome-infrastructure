@@ -33,3 +33,10 @@ metadata:
   name: external-dns
   labels:
     goldilocks.fairwinds.com/enabled: "true"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: harbor
+  labels:
+    goldilocks.fairwinds.com/enabled: "true"
