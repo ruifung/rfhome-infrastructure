@@ -22,12 +22,13 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /app/data
-            # - name: serial
-            #   mountPath: /dev/ttyAMA0
+            - name: serial
+              mountPath: /dev/ttyAMA0
       volumes:
         - name: serial
           hostPath:
             path: /dev/ttyAMA0
+            type: CharDevice
   volumeClaimTemplates:
     - metadata:
         name: data
