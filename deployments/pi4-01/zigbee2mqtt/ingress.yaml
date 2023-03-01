@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: zigbee2mqtt
   labels:
-    name: zigbee2mqtt
+    external-dns: local-dns
 spec:
   rules:
   - host: z2m.services.home.yrf.me
