@@ -25,11 +25,4 @@ spec:
         name: metallb
   interval: 15m
   targetNamespace: kube-system
-  values:
-    controller:
-      nodeSelector:
-        node-role.kubernetes.io/control-plane:
-      tolerations:
-      - key: node-role.kubernetes.io/control-plane
-        operator: Exists
-        effect: NoSchedule
+  values: {}
