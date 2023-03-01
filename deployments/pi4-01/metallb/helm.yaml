@@ -3,6 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: metallb
+  namespace: flux-system
 spec:
   interval: 24h
   url: https://metallb.github.io/metallb
@@ -12,8 +13,8 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: metallb
+  namespace: flux-system
 spec:
-  releaseName: metallb
   chart:
     spec:
       chart: metallb
@@ -23,6 +24,7 @@ spec:
         kind: HelmRepository
         name: metallb
   interval: 15m
+  targetNamespace: kube-system
   values:
     controller:
       nodeSelector:
