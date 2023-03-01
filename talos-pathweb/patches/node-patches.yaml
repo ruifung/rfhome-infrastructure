@@ -36,7 +36,14 @@ machine:
         overridePath: true
         endpoints:
           - https://harbor.services.home.yrf.me/v2/crunchydata/
-
+      artifacthub.io:
+        overridePath: true
+        endpoints:
+          - https://harbor.services.home.yrf.me/v2/artifacthub/
+      pkg.dev:
+        overridePath: true
+        endpoints:
+          - https://harbor.services.home.yrf.me/v2/pkgdev/  
 cluster:
   controlPlane:
     endpoint: https://controlplane.pathweb.clusters.home.yrf.me:6443
