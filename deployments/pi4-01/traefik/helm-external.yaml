@@ -20,7 +20,7 @@ spec:
     skipCRDs: true
   dependsOn:
     - name: traefik-internal
-      namespace: flux-system
+      namespace: traefik
   # postRenderers:
   #   - kustomize:
   #       patchesJson6902:
