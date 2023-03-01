@@ -5,7 +5,7 @@ metadata:
 spec:
   selector: {}
   serviceName: zigbee2mqtt
-  replicas: 2
+  replicas: 1
   template:
     spec:
       containers:
