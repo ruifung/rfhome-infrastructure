@@ -1,0 +1,15 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: service-addr-pool
+spec:
+  addresses:
+  - 10.229.29.0/24
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: service-addr-l2
+spec:
+  ipAddressPools:
+  - service-addr-pool
