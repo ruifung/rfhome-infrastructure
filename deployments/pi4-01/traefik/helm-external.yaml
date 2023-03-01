@@ -47,7 +47,7 @@ spec:
       # - "--entrypoints.websecure.http.middlewares=crowdsec@file"
       # - "--entrypoints.cloudflared.http.middlewares=crowdsec@file"
     deployment:
-      replicas: 2
+      replicas: 1
       podLabels:
         velero.io/exclude-from-backup: "true"
       additionalContainers:
