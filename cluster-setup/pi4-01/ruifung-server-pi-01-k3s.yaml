@@ -1,0 +1,18 @@
+apiVersion: v1
+clusters:
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://portainer.pathweb.clusters.home.yrf.me/api/endpoints/5/kubernetes
+  name: portainer-cluster-server-pi-01-k3s
+contexts:
+- context:
+    cluster: portainer-cluster-server-pi-01-k3s
+    user: portainer-sa-user-e7427fda-5f71-4a59-aa2b-47f7d7cb8803-1
+  name: portainer-ctx-server-pi-01-k3s
+current-context: portainer-ctx-server-pi-01-k3s
+kind: Config
+preferences: {}
+users:
+- name: portainer-sa-user-e7427fda-5f71-4a59-aa2b-47f7d7cb8803-1
+  user:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJydWlmdW5nIiwicm9sZSI6MSwic2NvcGUiOiJrdWJlY29uZmlnIiwiZm9yY2VDaGFuZ2VQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY3NzQxNTg3OX0.-u4wysVAti5SSnJ-bQQ99CmTeYj2cqBlrkBij2WejkQ
