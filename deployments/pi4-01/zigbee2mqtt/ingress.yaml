@@ -4,7 +4,10 @@ metadata:
   name: zigbee2mqtt
   labels:
     external-dns: local-dns
+  annotations:
+    cert-manager.io/cluster-issuer: le-yrf-me
 spec:
+  ingressClassName: traefik-internal
   rules:
   - host: z2m.services.home.yrf.me
     http:
@@ -16,3 +19,7 @@ spec:
             name: zigbee2mqtt
             port: 
               name: http
+  tls:
+  - hosts:
+    - z2m.services.home.yrf.me
+    secretName: z2m.services.home.yrf.me-tls
