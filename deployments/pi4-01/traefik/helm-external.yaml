@@ -68,10 +68,10 @@ spec:
             sources:
               - configMap:
                   name: traefik-additional-configs
-    volumes:
-      - name: crowdsec-bouncer-tls
-        mountPath: /crowdsec
-        type: secret
+    volumes: []
+      # - name: crowdsec-bouncer-tls
+      #   mountPath: /crowdsec
+      #   type: secret
     additionalVolumeMounts:       
       - name: additional-configs
         mountPath: /additional-configs
