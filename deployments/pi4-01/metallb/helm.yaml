@@ -15,6 +15,7 @@ metadata:
   name: metallb
   namespace: flux-system
 spec:
+  releaseName: metallb
   chart:
     spec:
       chart: metallb
