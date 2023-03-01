@@ -31,7 +31,7 @@ spec:
               name: harbor-ingress
               namespace: harbor
               labels:
-                external-dns: local-pdns
+                external-dns: local-dns
   valuesFrom:
     - kind: Secret
       name: harbor-postgres-passwords
