@@ -1,0 +1,152 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: bitnami
+spec:
+  interval: 24h
+  url: https://charts.bitnami.com/bitnami
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns-cf
+spec:
+  releaseName: external-dns-cf
+  chart:
+    spec:
+      chart: external-dns
+      version: 6.14.0
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+  interval: 15m
+  install:
+    createNamespace: true
+  values:
+    image:
+      registry: k8s.gcr.io/external-dns
+      repository: external-dns
+      tag: v0.13.1
+    sources:
+    - ingress
+    - crd
+    provider: cloudflare
+    domainFilters:
+    - yrf.me
+    zoneIdFilters:
+    - 5bc68a047b2375ae7dbd5ccc3cc96912
+    labelFilter: external-dns=cf-yrf-me
+    cloudflare:
+      secretName: "yrf-me-cf-api-token"
+      proxied: true
+    registry: txt
+    txtSuffix: .external-dns-txt
+    txtOwnerId: "rfhome-cluster-pi4-01"
+    crd:
+      create: true
+      apiversion: externaldns.k8s.io/v1alpha1
+      kind: DNSEndpoint
+    dryRun: false
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns-local-services
+  namespace: flux-system
+spec:
+  releaseName: external-dns-local-services
+  chart:
+    spec:
+      chart: external-dns
+      version: 6.14.0
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+  interval: 15m
+  targetNamespace: external-dns
+  install:
+    createNamespace: true
+  values:
+    image:
+      registry: k8s.gcr.io/external-dns
+      repository: external-dns
+      tag: v0.13.1
+    sources:
+    - ingress
+    - service
+    - crd
+    provider: rfc2136
+    policy: upsert-only
+    rfc2136:
+      host: "10.229.31.53"
+      port: 53
+      zone: "services.home.yrf.me"
+      secretName: local-rfc2136-key
+      tsigKeyname: pi4-01-external-dns
+      tsigSecretAlg: hmac-sha256
+      tsigAxfr: true
+      minTTL: 300s
+    domainFilters:
+    - services.home.yrf.me
+    labelFilter: external-dns=local-dns
+    registry: noop
+    txtSuffix: .external-dns-txt
+    txtOwnerId: "rfhome-cluster-pi4-01"
+    crd:
+      create: false
+      apiversion: externaldns.k8s.io/v1alpha1
+      kind: DNSEndpoint
+    dryRun: false
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns-local-cluster
+  namespace: flux-system
+spec:
+  releaseName: external-dns-local-cluster
+  chart:
+    spec:
+      chart: external-dns
+      version: 6.14.0
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+  interval: 15m
+  targetNamespace: external-dns
+  install:
+    createNamespace: true
+  values:
+    image:
+      registry: k8s.gcr.io/external-dns
+      repository: external-dns
+      tag: v0.13.1
+    sources:
+    - ingress
+    - service
+    - crd
+    provider: rfc2136
+    policy: upsert-only
+    rfc2136:
+      host: "10.229.31.53"
+      port: 53
+      zone: "pi4-01.clusters.home.yrf.me"
+      secretName: local-rfc2136-key
+      tsigKeyname: pi4-01-external-dns
+      tsigSecretAlg: hmac-sha256
+      tsigAxfr: true
+      minTTL: 300s
+    domainFilters:
+    - pi4-01.clusters.home.yrf.me
+    labelFilter: external-dns=local-dns
+    registry: noop
+    txtOwnerId: "rfhome-cluster-pi4-01"
+    crd:
+      create: false
+      apiversion: externaldns.k8s.io/v1alpha1
+      kind: DNSEndpoint
+    dryRun: false

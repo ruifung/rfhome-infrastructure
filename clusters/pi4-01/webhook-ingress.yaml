@@ -1,0 +1,24 @@
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webhook-receiver
+  namespace: flux-system
+  annotations:
+    external-dns.alpha.kubernetes.io/target: ingress-pi4-01-clusters-home.yrf.me
+  labels:
+    external-dns: "cf-yrf-me"
+spec:
+  ingressClassName: traefik-external
+  rules:
+  - host: flux-webhook-pi4-01-clusters-home.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: webhook-receiver
+            port:
+              number: 80

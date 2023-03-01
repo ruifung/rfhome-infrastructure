@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: local-rfc2136-key
+  namespace: external-dns
+spec:
+  encryptedData:
+    rfc2136_tsig_secret: AgCx3tCG2E6IXbnd2dBlCDFsEPY4Fhsb7jUAClqppxJXHYYZ193WBOxV9nS2WgLbTr4VGlmzpRYWEHV+pfA2gm1a9BVw9lYAxK4kDzO5EFC0Co8NQCNnTtHFvbxCEDKVjQogpHlOFvNwfQFdSWvmYwdEJ07Zt4GtroHxMFN/CfjOxblYOofOK2DstQ4uJ9V6lv9IU3yVvpSbaHmMGsbMupmk0iMU8g/EbM5VWZJLsDrPw3nLP+f5gIXrlVmML3c1bKVYQFToH7uLAYOTsY+Bhj3SJM5t/o6Hkbl+dEy2yfFzgGeZCDzI9qTxgmt+6almvic3s5rZedgkHSYnBGQ0wLR62q9DgQAvbwO3DtmDxpDxzvVyazgKudZJ/c4mMdAGoGzGc6T7kKh4O1uYoMu2DB2FcxQqYgR5NHzXfRGN/HC0Yz4iFimcRL6y8LadmFWZu9HHM+Y/6/mbKuBrWhHlU4hrRP59XEUn+1lY1Fziuu3s289BhE7DqJr4h/IdkW4esm576Q6w8mzWaqejSIaFAqMhOT65d4KPnfmhoiaYpu4SQNcD8vJBB/I7HUWb3OdrCsqBDq90e3+l3szFNqrAC2AoaaDDtyrz/pc5i3x0e91dPtlckM+I4x0gBxwVTAbw1Qfr7uoGj3gQn3sOXBrczR+5/Htk5F8T4W3y9Kz+b9vq6lsjoKeoMWHrO48SYv+FXzj6KtmqlxYOAU+ZUq7Lcf0gA7lVqHroBqhkDvQvBCbX+ds3V01TCRscxvrH7A==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: local-rfc2136-key
+      namespace: external-dns
+    type: Opaque
+
