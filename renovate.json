@@ -28,13 +28,13 @@
     }
   ],
   "flux": {
-    "fileMatch": ["clusters/pathweb/.+\\.yaml$", "deployments/pathweb/.+\\.yaml$"]
+    "fileMatch": ["clusters/.+/.+\\.yaml$", "deployments/.+/.+\\.yaml$"]
   },
   "helm-values": {
-    "fileMatch": ["clusters/pathweb/.+\\.yaml$", "deployments/pathweb/.+\\.yaml$"]
+    "fileMatch": ["clusters/.+/.+\\.yaml$", "deployments/.+/.+\\.yaml$"]
   },
   "kubernetes": {
-    "fileMatch": ["clusters/pathweb/.+\\.yaml$", "deployments/pathweb/.+\\.yaml$"]
+    "fileMatch": ["clusters/.+/.+\\.yaml$", "deployments/.+/.+\\.yaml$"]
   },
   "regexManagers": [
     {
