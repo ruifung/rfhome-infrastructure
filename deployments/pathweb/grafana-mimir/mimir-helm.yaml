@@ -1,0 +1,111 @@
+﻿---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana-mimir
+  namespace: monitoring
+spec:
+  releaseName: mimir
+  chart:
+    spec:
+      chart: mimir-distributed
+      version: 4.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+  interval: 15m
+  valuesFrom:
+    - kind: Secret
+      name: mimir-s3-secrets
+      valuesKey: access_key
+      targetPath: "mimir.structuredConfig.common.storage.s3.secret_access_key"
+    - kind: Secret
+      name: mimir-s3-secrets
+      valuesKey: key_id
+      targetPath: "mimir.structuredConfig.common.storage.s3.access_key_id"
+    - kind: ConfigMap
+      name: mimir-s3-config
+      valuesKey: blocks_bucket
+      targetPath: "mimir.structuredConfig.blocks_storage.s3.bucket_name"
+    - kind: ConfigMap
+      name: mimir-s3-config
+      valuesKey: alertmanager_bucket
+      targetPath: "mimir.structuredConfig.alertmanager_storage.s3.bucket_name"
+    - kind: ConfigMap
+      name: mimir-s3-config
+      valuesKey: ruler_bucket
+      targetPath: "mimir.structuredConfig.ruler_storage.s3.bucket_name"
+  values:
+    mimir:
+      structuredConfig:
+        common:
+          storage:
+            backend: s3
+            s3:
+              endpoint: s3.services.home.yrf.me:7481
+    alertmanager:
+      persistentVolume:
+        enabled: true
+      replicas: 2
+      statefulSet:
+        enabled: true
+    compactor:
+      persistentVolume:
+        size: 4Gi
+    distributor:
+      replicas: 2
+    ingester:
+      persistentVolume:
+        size: 8Gi
+      replicas: 3
+      topologySpreadConstraints: {}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/component
+                    operator: In
+                    values:
+                      - ingester
+              topologyKey: 'kubernetes.io/hostname'
+    chunks-cache:
+      enabled: true
+      replicas: 2
+    index-cache:
+      enabled: true
+      replicas: 3
+    metadata-cache:
+      enabled: true
+    results-cache:
+      enabled: true
+      replicas: 2
+    minio:
+      enabled: false
+    overrides_exporter:
+      replicas: 1
+    querier:
+      replicas: 1
+    query_frontend:
+      replicas: 1
+    ruler:
+      replicas: 1
+    store_gateway:
+      persistentVolume:
+        size: 8Gi
+      replicas: 3
+      topologySpreadConstraints: {}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/component
+                    operator: In
+                    values:
+                      - store-gateway
+              topologyKey: 'kubernetes.io/hostname'
+    nginx:
+      replicas: 1
+    gateway:
+      replicas: 1
