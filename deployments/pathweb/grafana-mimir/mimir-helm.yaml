@@ -70,16 +70,20 @@ spec:
                       - ingester
               topologyKey: 'kubernetes.io/hostname'
     chunks-cache:
-      enabled: true
+      enabled: false
       replicas: 2
+      resources: {}
     index-cache:
-      enabled: true
+      enabled: false
       replicas: 3
+      resources: {}
     metadata-cache:
-      enabled: true
+      enabled: false
+      resources: {}
     results-cache:
-      enabled: true
+      enabled: false
       replicas: 2
+      resources: {}
     minio:
       enabled: false
     overrides_exporter:
