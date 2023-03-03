@@ -58,7 +58,7 @@ spec:
         datasources:
           - name: Thanos
             type: prometheus
-            url: http://thanos-query-frontend.monitoring:9090
+            url: http://mimir-nginx.monitoring/prometheus
             isDefault: true
     ingress:
       enabled: true
