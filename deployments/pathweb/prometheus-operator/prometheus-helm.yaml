@@ -17,8 +17,9 @@ spec:
   interval: 15m
   values:
     prometheus:
-      enableFeatures:
-      - agent
+      retention: 1h
+      # enableFeatures:
+      # - agent
       remoteWrite:
       - url: "http://mimir-nginx/api/v1/push"
     alertmanager:
