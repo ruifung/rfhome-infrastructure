@@ -6,7 +6,7 @@ commonLabels:
   app.kubernetes.io/name: home-assistant
 images:
 - name: homeassistant/home-assistant
-  newTag: "2023.2.5"
+  newTag: "2023.3.1"
 resources:
 - statefulset.yaml
 - service.yaml
