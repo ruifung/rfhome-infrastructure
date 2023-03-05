@@ -102,7 +102,7 @@ spec:
       serviceMonitor:
         create: true
       rules:
-        create: true
+        create: false
     redis:
       enabled: true
     resources:
