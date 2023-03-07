@@ -23,8 +23,8 @@ spec:
               cpu: 587m
               memory: 765M
             limits:
-              cpu: 587m
-              memory: 1Gi
+              cpu: '2'
+              memory: 2Gi
       #     volumeMounts:
       #       - mountPath: /etc/cont-init.d/20-config
       #         name: lsio-unifi-image-patches
