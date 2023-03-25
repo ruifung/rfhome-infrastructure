@@ -36,6 +36,9 @@ spec:
           - --no-remote-delete
           - --auth-files
           - /onedrive/conf/authUrl:/onedrive/conf/authResponse
+          - --skip-file
+          - ~*|.~*|*.tmp|*.partial
+          - --resync-auth
         env:
           - name: ONEDRIVE_UID
             value: "1000"
