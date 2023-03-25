@@ -1,6 +1,6 @@
 ﻿images:
   - name: esphome/esphome
-    newTag: 2023.2.4
+    newTag: 2023.3.1
 
 resources:
   - deployment.yaml
