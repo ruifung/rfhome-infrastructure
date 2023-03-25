@@ -38,6 +38,7 @@ spec:
           - /onedrive/conf/authUrl:/onedrive/conf/authResponse
           - --skip-file
           - ~*|.~*|*.tmp|*.partial
+          - --resync
           - --resync-auth
         env:
           - name: ONEDRIVE_UID
