@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: grafana
-      version: 8.2.33
+      version: 8.4.1
       sourceRef:
         apiVersion: source.toolkit.fluxcd.io/v1beta2
         kind: HelmRepository
