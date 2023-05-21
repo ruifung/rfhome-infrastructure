@@ -17,7 +17,7 @@ spec:
   chart:
     spec:
       chart: harbor
-      version: 16.6.4
+      version: 16.6.5
       sourceRef:
         kind: HelmRepository
         name: bitnami
