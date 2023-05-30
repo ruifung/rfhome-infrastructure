@@ -56,52 +56,6 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: external-dns-local-pdns
-  namespace: flux-system
-spec:
-  releaseName: external-dns-local-pdns
-  chart:
-    spec:
-      chart: external-dns
-      version: 6.20.3
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: bitnami
-  interval: 15m
-  targetNamespace: external-dns
-  install:
-    createNamespace: true
-  values:
-    image:
-      registry: k8s.gcr.io/external-dns
-      repository: external-dns
-      tag: v0.13.1
-    sources:
-    - ingress
-    - service
-    - crd
-    provider: pdns
-    pdns:
-      apiUrl: http://10.229.31.54
-      apiPort: 8081
-      secretName: local-pdns-api-key
-    domainFilters:
-    - services.home.yrf.me
-    - pathweb.clusters.home.yrf.me
-    labelFilter: external-dns=local-pdns
-    registry: txt
-    txtSuffix: .external-dns-txt
-    txtOwnerId: "rfhome-cluster-pathweb"
-    crd:
-      create: false
-      apiversion: externaldns.k8s.io/v1alpha1
-      kind: DNSEndpoint
-    dryRun: false
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
   name: external-dns-local-services
   namespace: flux-system
 spec:
