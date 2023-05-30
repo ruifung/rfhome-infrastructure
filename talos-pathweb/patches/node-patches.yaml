@@ -1,4 +1,7 @@
 machine:
+  nodeLabels:
+    location: rfhome
+    type: proxmox-x64
   kubelet:
     extraArgs:
       rotate-server-certificates: true
