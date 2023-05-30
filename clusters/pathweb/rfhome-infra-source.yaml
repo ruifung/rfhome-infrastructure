@@ -12,6 +12,13 @@ spec:
   secretRef:
     name: flux-system # Use the flux-system credentials for this, since it's the same damn repo.
   url: ssh://git@github.com/ruifung/rfhome-infrastructure
+  ignore: |
+    # exclude all
+    /*
+    # include deploy dir
+    !/deployments/pathweb
+    # exclude file extensions from deploy dir
+    /deployments/pathweb/**/*.sample
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
@@ -26,3 +33,8 @@ spec:
   secretRef:
     name: rfhome-private
   url: ssh://git@github.com/ruifung/rfhome-infrastructure-private
+  ignore: |
+    # exclude all
+    /*
+    # include deploy dir
+    !/deployments/pathweb
