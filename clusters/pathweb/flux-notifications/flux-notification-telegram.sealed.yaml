@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: fluxcd_telegram_token
+  namespace: flux-system
+spec:
+  encryptedData:
+    token: AgCqic5coMGmRw52BiJ+79YTCTuFhDt4bzIeLcARQD9rdN72R/bLgvlwzs3/XZqY9NoT4uafo3VB8wb187bIR/Gz/XdUE/Xis18nVn/CDbkSQIr48C1QRzLDGHvKNegdWZMbQm9+obHWhPcuhq5oda7QFHKaYphG+1hCA8zWHfL+wzlhikALZr7NbCIUoz+5ZVEZBZO6dbJn8+CoEro1qUoPHzB2+EQxdACjiDFAT0p4IKKoTXLuu7fY24m+9jgapsVmNFYJwq8WsVQneB4n9yrh8do9svYyAZneIA7V/nazXRjRH8XRS1rIGptb/Pgj7qR6RztC/X+74CcxYNv3lJdlipfBZhC7RdYEyEUGEc5Un+gEfjidQp5TiZM2QEXElAXnb5eQHAiQLFq1uvcEIfI028mJ7YbE5EE4XAuiskx1esAYYNOQdfGogidMQM0EAu5i6Y5l8Y8NMS4FyA2Lya7SxXDSDcfx5RBIL/6H7dnDCVEKPDy5pD7YWUvVw1rq8SQR7KzxjhmZoNh08kpDcJIUY5bPrSxESIgTuuHFE+vBct+88Q71N/nP6ZTeD7K+naFBOQtWSjeWsI+e+W13H8miNwIzVOqmCIwOXKTXlFxKUfbGG7TudR+upIN/6fmc6wUS4m5byLTBw6F/XE5/6iEC60WaP09GycMj43c+Y16WKTCcmBqLB29Lnnq0YZFnVZH4AVTRJqKZ9qlHSmb4eQpjaMYQHeG4DOcIir1Cz2oJx+ez07niQ/Q3DuohBlNF
+  template:
+    metadata:
+      creationTimestamp: null
+      name: fluxcd_telegram_token
+      namespace: flux-system
+    type: Opaque
+

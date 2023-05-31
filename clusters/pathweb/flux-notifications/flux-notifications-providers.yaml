@@ -1,0 +1,34 @@
+﻿---
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Provider
+metadata:
+  name: github-status
+  namespace: flux-system
+spec:
+  type: github
+  address: https://github.com/ruifung/rfhome-infrastructure
+  secretRef:
+    name: fluxcd_github_token
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Provider
+metadata:
+  name: github-status-private
+  namespace: flux-system
+spec:
+  type: github
+  address: https://github.com/ruifung/rfhome-infrastructure-private
+  secretRef:
+    name: fluxcd_github_token
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Provider
+metadata:
+  name: rfhome-infrastructure-telegram
+  namespace: default
+spec:
+  type: telegram
+  address: https://api.telegram.org
+  channel: "-1001987631096"
+  secretRef:
+    name: fluxcd_telegram_token

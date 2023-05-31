@@ -1,0 +1,57 @@
+﻿---
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Alert
+metadata:
+  name: github-status
+  namespace: flux-system
+spec:
+  providerRef:
+    name: github-status
+  eventSources:
+    - kind: GitRepository
+      name: 'flux-system'
+      namespace: 'flux-system'
+    - kind: GitRepository
+      name: 'rfhome-infrastructure'
+      namespace: 'flux-system'
+    - kind: Kustomization
+      name: '*'
+      matchLabels:
+        kustomize.toolkit.fluxcd.io/name: 'rfhome-infrastructure-index'
+        kustomize.toolkit.fluxcd.io/namespace: 'flux-system'
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Alert
+metadata:
+  name: github-status-private
+  namespace: flux-system
+spec:
+  providerRef:
+    name: github-status-private
+  eventSources:
+    - kind: GitRepository
+      name: 'rfhome-infrastructure-private'
+      namespace: 'flux-system'
+    - kind: Kustomization
+      name: '*'
+      matchLabels:
+        kustomize.toolkit.fluxcd.io/name: 'rfhome-infrastructure-private-index'
+        kustomize.toolkit.fluxcd.io/namespace: 'flux-system'
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Alert
+metadata:
+  name: telegram
+  namespace: flux-system
+spec:
+  summary: "Cluster deployment failures in Pathweb cluster"
+  providerRef:
+    name: rfhome-infrastructure-telegram
+  eventSeverity: error
+  eventSources:
+    - kind: GitRepository
+      name: '*'
+    - kind: Kustomization
+      name: '*'
+    - kind: HelmRelease
+      name: '*'
