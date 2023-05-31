@@ -40,7 +40,7 @@ terraform {
   backend "kubernetes" {
     namespace      = "kube-system"
     secret_suffix  = "state"
-    config_path    = "../talos-pathweb/kubeconfig"
+    config_path    = "../../talos-pathweb/kubeconfig"
     config_context = "admin@pathweb"
   }
 }
