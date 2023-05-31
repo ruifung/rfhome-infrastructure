@@ -49,16 +49,28 @@ spec:
       replicas: 2
       statefulSet:
         enabled: true
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     compactor:
       persistentVolume:
         size: 4Gi
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     distributor:
       replicas: 2
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     ingester:
       persistentVolume:
         size: 8Gi
       replicas: 3
       topologySpreadConstraints: {}
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -73,31 +85,58 @@ spec:
       enabled: false
       replicas: 2
       resources: {}
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     index-cache:
       enabled: false
       replicas: 3
       resources: {}
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     metadata-cache:
       enabled: false
       resources: {}
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     results-cache:
       enabled: false
       replicas: 2
       resources: {}
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     minio:
       enabled: false
     overrides_exporter:
       replicas: 1
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     querier:
       replicas: 1
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     query_frontend:
       replicas: 1
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     ruler:
       replicas: 1
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     store_gateway:
       persistentVolume:
         size: 8Gi
       replicas: 3
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
       topologySpreadConstraints: {}
       affinity:
         podAntiAffinity:
@@ -111,5 +150,11 @@ spec:
               topologyKey: 'kubernetes.io/hostname'
     nginx:
       replicas: 1
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     gateway:
       replicas: 1
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome

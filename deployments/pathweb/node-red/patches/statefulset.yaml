@@ -8,6 +8,9 @@ spec:
       annotations:
         io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
     spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
       containers:
         - name: node-red
           env:

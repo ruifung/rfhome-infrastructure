@@ -48,6 +48,8 @@ spec:
       repository: ghcr.io/ruifung/crowdsec
       tag: fix-docker-start-20230114
     agent:
+      nodeSelector:
+        kubernetes.io/os: linux
       # To specify each pod you want to process it logs (pods present in the node)
       acquisition:
         # The namespace where the pod is located
@@ -65,6 +67,10 @@ spec:
         - name: PARSERS
           value: "crowdsecurity/cri-logs"
     lapi:
+      nodeSelector:
+        kubernetes.io/os: linux
+        kubernetes.io/arch=: amd64
+        location: rfhome
       env:
         - name: BOUNCERS_ALLOWED_OU
           value: "bouncer-ou"

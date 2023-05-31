@@ -24,3 +24,12 @@ spec:
         name: fairwinds-stable
   interval: 15m
   targetNamespace: monitoring
+  values:
+    controller:
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
+    dashboard:
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome

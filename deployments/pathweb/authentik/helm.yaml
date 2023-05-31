@@ -84,6 +84,10 @@ spec:
     replicas: 2
     worker:
       replicas: 2
+      nodeSelector:
+        kubernetes.io/os: linux
+        kubernetes.io/arch=: amd64
+        location: rfhome
     ingress:
       enabled: true
       ingressClassName: traefik-traefik

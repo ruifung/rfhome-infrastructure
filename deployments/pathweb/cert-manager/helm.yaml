@@ -29,6 +29,9 @@ spec:
   install:
     createNamespace: true
   values:
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome
     installCRDs: true
     extraArgs:
     - --dns01-recursive-nameservers-only

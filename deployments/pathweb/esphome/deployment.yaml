@@ -11,6 +11,9 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: home-network/esphome-iot-network
     spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000

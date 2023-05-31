@@ -18,6 +18,10 @@ spec:
       annotations:
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>
     spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+        kubernetes.io/arch=: amd64
+        location: rfhome
       terminationGracePeriodSeconds: 10
       securityContext:
         fsGroup: 1000

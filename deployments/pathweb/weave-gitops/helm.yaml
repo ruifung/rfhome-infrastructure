@@ -43,6 +43,9 @@ spec:
           labels:
             external-dns: local-pdns
   values:
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome
     # Comment this section out to restore cluster-user-auth support.
     rbac:
       impersonationResourceNames: ["gitops-admin"]

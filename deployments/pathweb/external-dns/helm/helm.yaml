@@ -35,6 +35,8 @@ spec:
     sources:
     - ingress
     - crd
+    nodeSelector:
+      kubernetes.io/os: linux
     provider: cloudflare
     domainFilters:
     - yrf.me
@@ -77,6 +79,9 @@ spec:
       registry: k8s.gcr.io/external-dns
       repository: external-dns
       tag: v0.13.1
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome
     sources:
     - ingress
     - service
@@ -128,6 +133,9 @@ spec:
       registry: k8s.gcr.io/external-dns
       repository: external-dns
       tag: v0.13.1
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome
     sources:
     - ingress
     - service

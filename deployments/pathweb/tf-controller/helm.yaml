@@ -29,6 +29,9 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome
     podAnnotations:
       io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
     replicaCount: 1

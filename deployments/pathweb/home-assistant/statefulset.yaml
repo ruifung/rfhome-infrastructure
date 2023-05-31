@@ -17,6 +17,9 @@ spec:
         k8s.v1.cni.cncf.io/networks: home-network/hass-iot-network
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>
     spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
       securityContext:
         fsGroup: 1000
       containers:

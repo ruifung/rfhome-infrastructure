@@ -24,6 +24,16 @@ spec:
       mon:
         disabled: false
         interval: 45s
+  placement:
+    all:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: location
+              operator: In
+              values:
+              - rfhome
   # optionally, the ceph-mgr IP address can be passed to gather metric from the prometheus exporter
   # monitoring:
   #   enabled: true

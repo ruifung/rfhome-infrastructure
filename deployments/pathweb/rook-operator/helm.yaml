@@ -31,6 +31,9 @@ spec:
   interval: 15m
   targetNamespace: kube-system
   values:
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome
     tolerations:
       - key: node-role.kubernetes.io/control-plane
         operator: Exists

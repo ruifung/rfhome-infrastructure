@@ -23,3 +23,7 @@ spec:
         name: emberstack
   interval: 15m
   targetNamespace: kube-system
+  values:
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome

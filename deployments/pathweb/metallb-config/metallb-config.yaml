@@ -15,3 +15,6 @@ metadata:
 spec:
   ipAddressPools:
   - service-addr-pool
+  nodeSelectors:
+    - matchLabels:
+        location: rfhome

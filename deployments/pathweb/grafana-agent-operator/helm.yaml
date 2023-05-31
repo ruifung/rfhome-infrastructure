@@ -14,4 +14,7 @@ spec:
         kind: HelmRepository
         name: grafana
   interval: 15m
-  
+  values:
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome

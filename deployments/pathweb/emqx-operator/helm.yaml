@@ -28,3 +28,8 @@ spec:
   targetNamespace: emqx-operator
   install:
     createNamespace: true
+  values:
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.io/arch=: amd64
+      location: rfhome

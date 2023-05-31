@@ -26,3 +26,7 @@ spec:
       version: 2.9.0
   interval: 15m
   targetNamespace: kube-system
+  values:
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome

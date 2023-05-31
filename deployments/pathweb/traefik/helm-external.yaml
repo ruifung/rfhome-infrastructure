@@ -33,6 +33,9 @@ spec:
   #             kind: Deployment
   #             name: traefik-external
   values:
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome
     additionalArguments:
       - "--providers.file.directory=/additional-configs"
       - "--providers.file.watch=true"

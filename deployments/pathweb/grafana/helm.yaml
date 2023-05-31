@@ -32,11 +32,17 @@ spec:
   values:
     imageRenderer:
       enabled: true
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
     persistence:
       accessMode: ReadWriteMany
       storageClass: cephfs
     grafana:
       replicaCount: 2
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
       updateStrategy:
         type: Recreate
       extraEnvVarsSecret: "grafana-config"
