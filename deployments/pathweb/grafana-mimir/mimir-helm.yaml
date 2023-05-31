@@ -64,6 +64,8 @@ spec:
         kubernetes.io/os: linux
         location: rfhome
     ingester:
+      zoneAwareReplication:
+        enabled: false
       persistentVolume:
         size: 8Gi
       replicas: 3
@@ -131,6 +133,8 @@ spec:
         kubernetes.io/os: linux
         location: rfhome
     store_gateway:
+      zoneAwareReplication:
+        enabled: false
       persistentVolume:
         size: 8Gi
       replicas: 3
