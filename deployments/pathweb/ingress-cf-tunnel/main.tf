@@ -14,7 +14,7 @@ resource "random_id" "ingress_tunnel_secret" {
   byte_length = 35
 }
 
-resource "cloudflare_argo_tunnel" "ingress_tunnel" {
+resource "cloudflare_tunnel" "ingress_tunnel" {
   account_id = var.cf_account_id
   name       = "rfhome-pathweb-ingress-tunnel"
   secret     = random_id.ingress_tunnel_secret.b64_std
@@ -45,7 +45,7 @@ resource "kubernetes_secret_v1" "tunnel_token" {
   }
 
   data = {
-    "token" = cloudflare_argo_tunnel.ingress_tunnel.tunnel_token
+    "token" = cloudflare_tunnel.ingress_tunnel.tunnel_token
   }
 }
 
@@ -61,7 +61,7 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = "~> 3.0"
+      version = "~> 4.0"
     }
 
     random = {
@@ -74,4 +74,9 @@ terraform {
       version = "2.20.0"
     }
   }
+}
+
+moved {
+  from = cloudflare_argo_tunnel.ingress_tunnel
+  to = cloudflare_tunnel.ingress_tunnel
 }
