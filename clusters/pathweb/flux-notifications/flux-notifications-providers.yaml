@@ -8,7 +8,7 @@ spec:
   type: github
   address: https://github.com/ruifung/rfhome-infrastructure
   secretRef:
-    name: fluxcd_github_token
+    name: fluxcd-github-token
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta2
 kind: Provider
