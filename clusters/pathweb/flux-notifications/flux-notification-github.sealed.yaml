@@ -2,15 +2,15 @@ apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
   creationTimestamp: null
-  name: fluxcd_github_token
+  name: fluxcd-github-token
   namespace: flux-system
 spec:
   encryptedData:
-    token: AgALZSoLM0MVo2agBvYsEDmwRGexS8+vT8PCFhwN4PQqbMlgjGTtRnz5C/cZJ5/CsqJu6k/wNQaNmvzX1JzoDPMgzNFgqWhuXrCdGn6YIfqJelM2QGcW0bkZR5D54uGBNhtjcUfJ8x3sfQSSxGqnhS+Uptj8qRm6eaRLiqNi6NK5CXHAVT9dfNBXHV7FIEMVlUqRr/JRYNLIqWs2mHd5z/5OFYm+exDCLAPo3z3sb2EPHVmg+j5akAH5yR7B1aOKplA7bzk4BkOK8JjgUIiuntJqES3s/Zjpzw/Kf56YD0GSLQu89tqr5w7Y1sG/QzW4/GNES9XsNMFds+9ZOVsR4EVChrQeMq68KVqRFRqGl4gYlCXODZCC+WVO1cu4Xj96+rHR07SU67S7GqqFprSUlXl1T/EnrdlewOE6FILC7m6zAiFGVAFH8HaNl7sLhxaI7Vi97iEuM+fI+6X9ij+8Iov0Z1HXUr8nqMwoZOLYE7IJv3IN3vRRlVXJzqlnucYEgYc4N9VDC72e5AlV5GH6g+U7LLWko5rugc6Fs6IexsrXF4Xqc8NwWClv/+PjYmTEhJ+sliLeFFpLM3TSF2PPeWy49pQ0SkFXoN2LBKCfjivsd7KwwBMxpdRgfFJQirq9KcLjdiO4fqQRMVYTqeC9JNmxGMtVZxYxy75U4L2WzLbkgArifIPiTFo8fQePF5/+8ra4IJu9oXoedhJtOvPaE9bvwHpYtj8bST01JVocshA2Gd0JumHdLbxZ
+    token: AgCNvQz7gb6Wwc53VixC7V7r7uwYwrprOW3J6WKk9s6gmS6Iz0wEhpRWV0nOvJjxbJBvvDugMN7VHomIBBpxxJjncdetWsaVL+Ht+URaJzXDg48Hqz0K5Xivkj3D857mq+TDE5dXNsAvHlYdm3vFSDhNLyvXWkyRmyLix7LDhV6EP1NVvLUuxjrM46V22HiIzHxzM+QaI/Z6vobChecjYCqw1XwdBoWxKXAxk0NOGaJno5xYmxVr9f0o9H9lsMAWc6O3T779WTODhlJQiHP+wKVi8YoqnXNny1XWVa/vudLmHRyOYLnEDFIQDPvIr19CcKf9HKffGAagabQICpCJ/+vt5eiVO8xyzxYEtYHzEf6ZxuDaUj4xLzU6w5eyYH1OYohS+WYdzgmgjzqD7Qq9bIwkNkNDKztPv5uK90tKNiNhVlI1sTJgVm1zEDOCkvGtPxk0JXt2KzS+KgY6vOsH7yfmd/vdf3F61k+O+nVLi070Z0JMSC14C1Muj4jN8cVmKSihFXlb/+hxDImNNbG8F/Yl1V09Zpy+xtP5iWtnD3ptvVry0dZyr20bXl2Ta5WL6TXXk/dxi38RG6WKye4gND07E/56FX8l2yjetV+IF3j4m8WXmxQjf+SiFc6l+CpgomJ8Xn8BItiyKpQ9YEYBw67f+4vCDqME4czv4u45+/pGfjjutm38glGWWRS1mKvzcosAc/5TSYnT7+TvpQudNL7IFPoFRavNPV7YJZRe0MQvpR1pSbp0yE2+
   template:
     metadata:
       creationTimestamp: null
-      name: fluxcd_github_token
+      name: fluxcd-github-token
       namespace: flux-system
     type: Opaque
 

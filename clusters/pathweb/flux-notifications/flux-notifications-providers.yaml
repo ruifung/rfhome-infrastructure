@@ -19,7 +19,7 @@ spec:
   type: github
   address: https://github.com/ruifung/rfhome-infrastructure-private
   secretRef:
-    name: fluxcd_github_token
+    name: fluxcd-github-token
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta2
 kind: Provider
@@ -31,4 +31,4 @@ spec:
   address: https://api.telegram.org
   channel: "-1001987631096"
   secretRef:
-    name: fluxcd_telegram_token
+    name: fluxcd-telegram-token
