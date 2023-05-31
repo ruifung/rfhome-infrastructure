@@ -34,7 +34,7 @@ resource "kubernetes_config_map_v1" "tunnel_info" {
   }
 
   data = {
-    "tunnel-cname" = cloudflare_argo_tunnel.ingress_tunnel.cname
+    "tunnel-cname" = cloudflare_tunnel.ingress_tunnel.cname
   }
 }
 
@@ -53,7 +53,7 @@ resource "cloudflare_record" "ingress_cname_record" {
   name    = "ingress-pathweb-clusters-home"
   proxied = true
   type    = "CNAME"
-  value   = cloudflare_argo_tunnel.ingress_tunnel.cname
+  value   = cloudflare_tunnel.ingress_tunnel.cname
   zone_id = "5bc68a047b2375ae7dbd5ccc3cc96912"
 }
 
