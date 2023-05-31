@@ -75,8 +75,3 @@ terraform {
     }
   }
 }
-
-moved {
-  from = cloudflare_argo_tunnel.ingress_tunnel
-  to = cloudflare_tunnel.ingress_tunnel
-}
