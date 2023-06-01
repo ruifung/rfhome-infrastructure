@@ -23,7 +23,6 @@ spec:
         kind: HelmRepository
         name: fairwinds-stable
   interval: 15m
-  targetNamespace: monitoring
   values:
     controller:
       nodeSelector:
