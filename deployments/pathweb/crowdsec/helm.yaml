@@ -44,9 +44,6 @@ spec:
                     reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "traefik"
   values:
     container_runtime: containerd
-    image:
-      repository: ghcr.io/ruifung/crowdsec
-      tag: fix-docker-start-20230114
     agent:
       nodeSelector:
         kubernetes.io/os: linux
