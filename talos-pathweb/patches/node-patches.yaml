@@ -4,9 +4,9 @@ machine:
     type: proxmox-x64
   network:
     kubespan:
-      enabled: true
+      enabled: false
       allowDownPeerBypass: false
-      advertiseKubernetesNetworks: true
+      advertiseKubernetesNetworks: false
   kubelet:
     extraArgs:
       rotate-server-certificates: true
