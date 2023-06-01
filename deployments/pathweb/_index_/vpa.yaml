@@ -11,5 +11,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-  targetNamespace: kube-system
+  targetNamespace: monitoring
   
