@@ -23,11 +23,11 @@ hubble:
       - http
     serviceMonitor:
       enabled: true
-tunnel: disabled
-ipv4NativeRoutingCIDR: 10.96.0.0/16
-loadBalancer:
-  mode: dsr
-autoDirectNodeRoutes: true
+tunnel: geneve
+# ipv4NativeRoutingCIDR: 10.96.0.0/16
+# loadBalancer:
+#   mode: dsr
+# autoDirectNodeRoutes: false
 ipam:
   mode: kubernetes
 securityContext:
@@ -46,3 +46,5 @@ operator:
     enabled: true
     serviceMonitor:
       enabled: true
+socketLB:
+  hostNamespaceOnly: true
