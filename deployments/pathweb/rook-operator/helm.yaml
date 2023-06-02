@@ -42,7 +42,7 @@ spec:
       clusterName: pathweb
       enableCSIHostNetwork: true
       provisionerReplicas: 1
-      pluginNodeAffinity: 
+      pluginNodeAffinity: |
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
