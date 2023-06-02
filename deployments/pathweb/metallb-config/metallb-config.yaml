@@ -25,7 +25,7 @@ metadata:
   name: rfhome-router
   namespace: kube-system
 spec:
-  myASN: 64512
+  myASN: 64513
   peerASN: 64512
   peerAddress: 10.229.16.1
 ---
