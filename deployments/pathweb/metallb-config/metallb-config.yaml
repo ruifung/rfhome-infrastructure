@@ -6,18 +6,19 @@ metadata:
 spec:
   addresses:
   - 10.229.30.0/24
-# ---
-# apiVersion: metallb.io/v1beta1
-# kind: L2Advertisement
-# metadata:
-#   name: service-addr-l2
-#   namespace: kube-system
-# spec:
-#   ipAddressPools:
-#   - service-addr-pool
-#   nodeSelectors:
-#     - matchLabels:
-#         location: rfhome
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: service-addr-l2
+  namespace: kube-system
+spec:
+  ipAddressPools:
+  - service-addr-pool
+  nodeSelectors:
+    - matchLabels:
+        location: rfhome
+        role: worker
 ---
 apiVersion: metallb.io/v1beta2
 kind: BGPPeer
