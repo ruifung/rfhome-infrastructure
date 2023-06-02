@@ -26,6 +26,16 @@ spec:
   interval: 15m
   targetNamespace: kube-system
   values:
+    speaker:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: DoesNotExist
+      tolerations:
+      - operator: Exists
     controller:
       nodeSelector:
         node-role.kubernetes.io/control-plane:
