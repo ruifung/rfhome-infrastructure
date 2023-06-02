@@ -71,6 +71,7 @@ spec:
       - name: additional-configs
         mountPath: /additional-configs
     service:
+      externalTrafficPolicy: Local
       annotations:
         metallb.universe.tf/loadBalancerIPs: 10.229.30.0
         external-dns.alpha.kubernetes.io/hostname: ingress.pathweb.clusters.home.yrf.me
