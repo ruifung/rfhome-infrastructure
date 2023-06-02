@@ -8,7 +8,6 @@ machine:
   sysctls:
     kernel.domainname: vsvc.home.arpa
   nodeLabels:
-    node-role.kubernetes.io/control-plane: control-plane
     role: control-plane
 cluster:
   clusterName: pathweb

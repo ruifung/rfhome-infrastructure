@@ -1,0 +1,25 @@
+machine:
+  nodeLabels:
+    type: cloud
+  network:
+    kubespan:
+      enabled: true
+      allowDownPeerBypass: false
+      advertiseKubernetesNetworks: true
+  kubelet:
+    extraArgs:
+      rotate-server-certificates: true
+cluster:
+  discovery:
+    enabled: true
+  controlPlane:
+    endpoint: https://10.229.17.0:6443
+  network:
+    cni:
+      name: none
+    podSubnets:
+      - 10.96.0.0/16
+    serviceSubnets:
+      - 10.97.0.0/16
+  proxy:
+    disabled: true

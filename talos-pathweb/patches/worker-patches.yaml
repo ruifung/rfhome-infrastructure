@@ -1,6 +1,5 @@
 ﻿machine:
   nodeLabels:
-    node-role.kubernetes.io/worker: worker
     role: worker
   network:
     interfaces:

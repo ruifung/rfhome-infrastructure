@@ -2,6 +2,7 @@ machine:
   nodeLabels:
     location: rfhome
     type: proxmox-x64
+    rook-csi-enabled: "true"
   network:
     kubespan:
       enabled: true

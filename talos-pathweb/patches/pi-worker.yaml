@@ -2,7 +2,6 @@
   nodeLabels:
     type: rpi4b
     role: worker
-    node-role.kubernetes.io/worker: worker
   network:
     interfaces:
       - interface: eth0

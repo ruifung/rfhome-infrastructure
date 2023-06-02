@@ -1,5 +1,5 @@
 kubeProxyReplacement: strict
-k8sServiceHost: controlplane.pathweb.clusters.home.yrf.me
+k8sServiceHost: 10.229.17.0
 k8sServicePort: 6443
 egressGateway:
   enabled: true
