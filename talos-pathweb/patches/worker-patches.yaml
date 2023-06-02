@@ -1,4 +1,6 @@
 ﻿machine:
+  nodeLabels:
+    role: worker
   network:
     interfaces:
       - interface: eth1
@@ -7,6 +9,7 @@
           - vlanId: 55
   sysctls:
     user.max_user_namespaces: "11255"
+    kernel.domainname: vsvc.home.arpa
   install:
     extensions:
       - image: ghcr.io/siderolabs/gvisor:20231214.0-v1.4.4

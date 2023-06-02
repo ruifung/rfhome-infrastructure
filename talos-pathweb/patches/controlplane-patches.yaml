@@ -5,6 +5,10 @@ machine:
         dhcp: true
         vip:
           ip: 10.229.17.0
+  sysctls:
+    kernel.domainname: vsvc.home.arpa
+  nodeLabels:
+    role: control-plane
 cluster:
   clusterName: pathweb
   apiServer:
