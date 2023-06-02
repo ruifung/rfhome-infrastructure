@@ -17,5 +17,3 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: home-network-unifi-ingress-transport@kubernetescrd
-spec:
-  externalTrafficPolicy: Local
