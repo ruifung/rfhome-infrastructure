@@ -1,10 +1,11 @@
 ﻿machine:
   nodeLabels:
-    node-role.kubernetes.io/worker: worker
+    type: rpi4b
     role: worker
+    node-role.kubernetes.io/worker: worker
   network:
     interfaces:
-      - interface: eth1
+      - interface: eth0
         dhcp: true
         vlans:
           - vlanId: 55
@@ -12,5 +13,6 @@
     user.max_user_namespaces: "11255"
     kernel.domainname: vsvc.home.arpa
   install:
+    disk: /dev/mmcblk0
     extensions:
       - image: ghcr.io/siderolabs/gvisor:20231214.0-v1.4.4

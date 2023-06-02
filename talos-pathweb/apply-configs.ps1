@@ -14,4 +14,5 @@ if (($mode -eq "worker") -or ($mode -eq "all")) {
     talosctl apply-config --talosconfig .\talosconfig --nodes 1.workers.$dnsSuffix --file .\base\worker.yaml -p @patches\node-patches.yaml,@patches\worker-patches.yaml,@patches\worker-1.yaml $extraArgs
     talosctl apply-config --talosconfig .\talosconfig --nodes 2.workers.$dnsSuffix --file .\base\worker.yaml -p @patches\node-patches.yaml,@patches\worker-patches.yaml,@patches\worker-2.yaml $extraArgs
     talosctl apply-config --talosconfig .\talosconfig --nodes 3.workers.$dnsSuffix --file .\base\worker.yaml -p @patches\node-patches.yaml,@patches\worker-patches.yaml,@patches\worker-3.yaml $extraArgs
+    talosctl apply-config --talosconfig .\talosconfig --nodes pathweb-piworker-1.vsvc.home.arpa --file .\base\worker.yaml -p @patches\node-patches.yaml,@patches\pi-worker.yaml,@patches\piworker-1.yaml $extraArgs
 }

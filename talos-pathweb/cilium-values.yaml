@@ -23,7 +23,7 @@ hubble:
       - http
     serviceMonitor:
       enabled: true
-tunnel: geneve
+tunnel: vxlan
 # ipv4NativeRoutingCIDR: 10.96.0.0/16
 # loadBalancer:
 #   mode: dsr

@@ -1,0 +1,6 @@
+﻿machine:
+  certSANs:
+    - pathweb-piworker-1.vsvc.home.arpa
+    - piworker-1.pathweb.clusters.home.yrf.me
+  network:
+    hostname: pathweb-piworker-1
