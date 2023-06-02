@@ -1,0 +1,11 @@
+﻿machine:
+  certSANs:
+    - cloud-1.pathweb.0spkl.dev
+  network:
+    hostname: pathweb-cloud-1
+    interfaces:
+      - deviceSelector:
+          hardwareAddr: 5a:00:04:76:0d:24
+        dhcp: false
+        addresses:
+          - 10.40.96.3/20
