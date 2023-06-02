@@ -40,5 +40,6 @@ spec:
   nodeSelectors:
     - matchLabels:
         location: rfhome
+        role: worker
   peers:
     - rfhome-router
