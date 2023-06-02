@@ -42,14 +42,7 @@ spec:
       clusterName: pathweb
       enableCSIHostNetwork: true
       provisionerReplicas: 1
-      pluginNodeAffinity: |
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: rook-csi-enabled
-              operator: In
-              values:
-              - "true"
+      pluginNodeAffinity: rook-csi-enabled=true
       csiRBDPluginResource: |
         - name : driver-registrar
           resource:
