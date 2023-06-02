@@ -63,6 +63,9 @@ spec:
           value: "crowdsecurity/traefik crowdsecurity/home-assistant"
         - name: PARSERS
           value: "crowdsecurity/cri-logs"
+      tolerations:
+        - key: type
+          operator: Exists
     lapi:
       nodeSelector:
         kubernetes.io/os: linux
