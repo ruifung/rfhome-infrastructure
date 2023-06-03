@@ -3,9 +3,6 @@
     role: worker
     location: vultr-sg
     provider: vultr
-  kubelet:
-    extraArgs:
-      rotate-server-certificates: true
   sysctls:
     user.max_user_namespaces: "11255"
     kernel.domainname: pathweb.cloud.yrf.me
