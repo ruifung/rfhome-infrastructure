@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: traefik
-  releaseName: traefik-external
+  releaseName: traefik-vultr
   chart:
     spec:
       chart: traefik
