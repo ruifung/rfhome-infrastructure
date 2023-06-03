@@ -5,6 +5,7 @@
     provider: vultr
   sysctls:
     user.max_user_namespaces: "11255"
-    kernel.domainname: pathweb.cloud.yrf.me
+    kernel.domainname: pathweb.0spkl.dev
   install:
-    disk: /dev/vda
+    diskSelector:
+      size: "> 16GB"
