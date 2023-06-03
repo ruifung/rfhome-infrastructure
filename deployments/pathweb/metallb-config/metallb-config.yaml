@@ -29,6 +29,9 @@ spec:
   myASN: 64513
   peerASN: 64512
   peerAddress: 10.229.16.1
+  nodeSelectors:
+    - matchLabels:
+        location: rfhome
 ---
 apiVersion: metallb.io/v1beta1
 kind: BGPAdvertisement
