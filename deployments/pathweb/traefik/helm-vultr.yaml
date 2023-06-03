@@ -50,12 +50,6 @@ spec:
             sources:
               - configMap:
                   name: traefik-additional-configs
-    service:
-      externalTrafficPolicy: Local
-      annotations:
-        metallb.universe.tf/address-pool: vultr-reserved-ips
-      labels:
-        external-dns: local-pdns
     volumes:
       - name: crowdsec-bouncer-tls
         mountPath: /crowdsec
@@ -63,25 +57,40 @@ spec:
     additionalVolumeMounts:       
       - name: additional-configs
         mountPath: /additional-configs
+    service:
+      externalTrafficPolicy: Local
+      annotations:
+        metallb.universe.tf/address-pool: vultr-reserved-ips
+      labels:
+        external-dns: cf-yrf-me
     ports:
       web:
+        port: 8080
+        exposedPort: 80
         expose: true
+        protocol: TCP
+        redirectTo: websecure
       websecure:
+        port: 8443
+        exposedPort: 443
         expose: true
+        protocol: TCP
+        http3:
+          enabled: true
     experimental:
       http3:
         enabled: true
       plugins:
         enabled: true
     providers:
-      kubernetesCRD:
-        ingressClass: traefik-vultr-sg
-        allowCrossNamespace: true
-        allowExternalNameServices: true
       kubernetesIngress:
         ingressClass: traefik-vultr-sg
         publishedService:
           enabled: true
+      kubernetesCRD:
+        ingressClass: traefik-vultr-sg
+        allowCrossNamespace: true
+        allowExternalNameServices: true
     ingressRoute:
       dashboard:
         annotations:
