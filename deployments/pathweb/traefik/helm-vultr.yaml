@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: traefik
-  releaseName: traefik-vultr
+  releaseName: traefik-vultr-sg
   chart:
     spec:
       chart: traefik
@@ -97,9 +97,10 @@ spec:
           kubernetes.io/ingress.class: traefik-vultr-sg
     logs:
       general:
+        level: debug
         format: json
       access:
-        enabled: true
+        enabled: false
         format: json
     metrics:
       prometheus:
