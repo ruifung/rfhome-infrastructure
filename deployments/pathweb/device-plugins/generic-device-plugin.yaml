@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: generic-device-plugin
+  namespace: kube-system
+  labels:
+    app.kubernetes.io/name: generic-device-plugin
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: generic-device-plugin
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: generic-device-plugin
+    spec:
+      priorityClassName: system-node-critical
+      tolerations:
+      - operator: "Exists"
+        effect: "NoExecute"
+      - operator: "Exists"
+        effect: "NoSchedule"
+      containers:
+      - image: squat/generic-device-plugin:7f23e30a01dbb549faa2f6672f2a85975490da5f
+        args:
+        - --device
+        - |
+          name: serial
+          groups:
+            - paths:
+                - path: /dev/ttyAMA*
+            - paths:
+                - path: /dev/ttyS*
+            - paths:
+                - path: /dev/ttyUSB*
+            - paths:
+                - path: /dev/ttyACM*
+            - paths:
+                - path: /dev/tty.usb*
+            - paths:
+                - path: /dev/cu.*
+            - paths:
+                - path: /dev/cuaU*
+            - paths:
+                - path: /dev/rfcomm*
+        - --device
+        - |
+          name: video
+          groups:
+            - paths:
+                - path: /dev/video0
+        - --device
+        - |
+          name: fuse
+          groups:
+            - count: 10
+              paths:
+                - path: /dev/fuse
+        - --device
+        - |
+          name: audio
+          groups:
+            - count: 10
+              paths:
+                - path: /dev/snd
+        - --device
+        - |
+          name: capture
+          groups:
+            - paths:
+                - path: /dev/snd/controlC0
+                - path: /dev/snd/pcmC0D0c
+            - paths:
+                - path: /dev/snd/controlC1
+                  mountPath: /dev/snd/controlC0
+                - path: /dev/snd/pcmC1D0c
+                  mountPath: /dev/snd/pcmC0D0c
+            - paths:
+                - path: /dev/snd/controlC2
+                  mountPath: /dev/snd/controlC0
+                - path: /dev/snd/pcmC2D0c
+                  mountPath: /dev/snd/pcmC0D0c
+            - paths:
+                - path: /dev/snd/controlC3
+                  mountPath: /dev/snd/controlC0
+                - path: /dev/snd/pcmC3D0c
+                  mountPath: /dev/snd/pcmC0D0c
+        name: generic-device-plugin
+        resources:
+          requests:
+            cpu: 50m
+            memory: 10Mi
+          limits:
+            cpu: 50m
+            memory: 10Mi
+        ports:
+        - containerPort: 8080
+          name: http
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: device-plugin
+          mountPath: /var/lib/kubelet/device-plugins
+        - name: dev
+          mountPath: /dev
+      volumes:
+      - name: device-plugin
+        hostPath:
+          path: /var/lib/kubelet/device-plugins
+      - name: dev
+        hostPath:
+          path: /dev
+  updateStrategy:
+    type: RollingUpdate
