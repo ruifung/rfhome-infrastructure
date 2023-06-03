@@ -75,17 +75,17 @@ spec:
         enabled: true
     providers:
       kubernetesCRD:
-        ingressClass: traefik-vultr
+        ingressClass: traefik-vultr-sg
         allowCrossNamespace: true
         allowExternalNameServices: true
       kubernetesIngress:
-        ingressClass: traefik-vultr
+        ingressClass: traefik-vultr-sg
         publishedService:
           enabled: true
     ingressRoute:
       dashboard:
         annotations:
-          kubernetes.io/ingress.class: traefik-vultr
+          kubernetes.io/ingress.class: traefik-vultr-sg
     logs:
       general:
         format: json
