@@ -1,0 +1,129 @@
+﻿---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: traefik-vultr-sg
+  namespace: flux-system
+spec:
+  targetNamespace: traefik
+  releaseName: traefik-external
+  chart:
+    spec:
+      chart: traefik
+      version: 23.0.1
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+  interval: 15m
+  install:
+    createNamespace: true
+    skipCRDs: true
+  dependsOn:
+    - name: traefik
+      namespace: flux-system
+  values:
+    nodeSelector:
+      kubernetes.io/os: linux
+      provider: vultr
+      location: vultr-sg
+    additionalArguments:
+      - "--providers.file.directory=/additional-configs"
+      - "--providers.file.watch=true"
+      - "--experimental.plugins.bouncer.modulename=github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
+      - "--experimental.plugins.bouncer.version=v1.1.7"
+      - "--experimental.plugins.rewriteHeaders.modulename=github.com/XciD/traefik-plugin-rewrite-headers"
+      - "--experimental.plugins.rewriteHeaders.version=v0.0.3"
+      - "--experimental.plugins.moveHeaders.modulename=github.com/che-incubator/header-rewrite-traefik-plugin"
+      - "--experimental.plugins.moveHeaders.version=v0.1.2"
+      - "--experimental.plugins.rewriteBody.modulename=github.com/packruler/rewrite-body"
+      - "--experimental.plugins.rewriteBody.version=v1.2.0"
+      - "--entrypoints.web.http.middlewares=crowdsec@file"
+      - "--entrypoints.websecure.http.middlewares=crowdsec@file"
+    deployment:
+      replicas: 1
+      podLabels:
+        velero.io/exclude-from-backup: "true"
+      additionalVolumes:
+        - name: additional-configs
+          projected:
+            sources:
+              - configMap:
+                  name: traefik-additional-configs
+    service:
+      externalTrafficPolicy: Local
+      annotations:
+        metallb.universe.tf/address-pool: vultr-reserved-ips
+      labels:
+        external-dns: local-pdns
+    volumes:
+      - name: crowdsec-bouncer-tls
+        mountPath: /crowdsec
+        type: secret
+    additionalVolumeMounts:       
+      - name: additional-configs
+        mountPath: /additional-configs
+    ports:
+      web:
+        expose: true
+      websecure:
+        expose: true
+    experimental:
+      http3:
+        enabled: true
+      plugins:
+        enabled: true
+    providers:
+      kubernetesCRD:
+        ingressClass: traefik-vultr
+        allowCrossNamespace: true
+        allowExternalNameServices: true
+      kubernetesIngress:
+        ingressClass: traefik-vultr
+        publishedService:
+          enabled: true
+    ingressRoute:
+      dashboard:
+        annotations:
+          kubernetes.io/ingress.class: traefik-vultr
+    logs:
+      general:
+        format: json
+      access:
+        enabled: true
+        format: json
+    metrics:
+      prometheus:
+        entryPoint: metrics
+        service:
+          enabled: true
+        serviceMonitor:
+          metricRelabelings:
+            - sourceLabels: [__name__]
+              separator: ;
+              regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
+              replacement: $1
+              action: drop
+          relabelings:
+            - sourceLabels: [__meta_kubernetes_pod_node_name]
+              separator: ;
+              regex: ^(.*)$
+              targetLabel: nodename
+              replacement: $1
+              action: replace
+          jobLabel: traefik-vultr
+          interval: 30s
+          honorLabels: true
+        prometheusRule:
+          additionalLabels: {}
+          namespace: "monitoring"
+          rules:
+            - alert: TraefikDown
+              expr: up{job="traefik-external-metrics"} == 0
+              for: 5m
+              labels:
+                context: traefik-vultr
+                severity: warning
+              annotations:
+                summary: "Traefik Down"
+                description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
