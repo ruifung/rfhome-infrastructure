@@ -41,6 +41,7 @@ spec:
       kind: Terraform
       name: ingress-cf-tunnel
       namespace: flux-system
+  timeout: 10m
   dependsOn:
     - name: tf-controller
 
