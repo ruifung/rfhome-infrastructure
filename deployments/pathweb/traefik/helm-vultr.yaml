@@ -145,10 +145,9 @@ spec:
           kubernetes.io/ingress.class: traefik-vultr-sg
     logs:
       general:
-        level: debug
         format: json
       access:
-        enabled: false
+        enabled: true
         format: json
     metrics:
       prometheus:
