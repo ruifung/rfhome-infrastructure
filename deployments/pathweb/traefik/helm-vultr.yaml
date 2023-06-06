@@ -19,10 +19,20 @@ spec:
   install:
     createNamespace: true
     skipCRDs: true
+  postRenderers:
+    - kustomize:
+        patches:
+          - patch: |
+              - op: "add"
+                path: "/spec/template/spec/runtimeClassName"
+                value: "gvisor"
+            target:
+              kind: Deployment
   dependsOn:
     - name: traefik
       namespace: flux-system
   values:
+    nameOverride: traefik-vultr-sg
     nodeSelector:
       kubernetes.io/os: linux
       provider: vultr

@@ -19,20 +19,20 @@ spec:
   install:
     createNamespace: true
     skipCRDs: true
+  postRenderers:
+    - kustomize:
+        patches:
+          - patch: |
+              - op: "add"
+                path: "/spec/template/spec/runtimeClassName"
+                value: "gvisor"
+            target:
+              kind: Deployment
   dependsOn:
     - name: traefik
       namespace: flux-system
-  # postRenderers:
-  #   - kustomize:
-  #       patchesJson6902:
-  #         - patch:
-  #             - op: "add"
-  #               path: "/spec/template/spec/runtimeClassName"
-  #               value: "gvisor"
-  #           target:
-  #             kind: Deployment
-  #             name: traefik-external
   values:
+    nameOverride: traefik-external
     nodeSelector:
       kubernetes.io/os: linux
       location: rfhome
