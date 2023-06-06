@@ -33,6 +33,7 @@ spec:
       namespace: flux-system
   values:
     nameOverride: traefik-external
+    fullNameOverride: traefik-external
     nodeSelector:
       kubernetes.io/os: linux
       location: rfhome

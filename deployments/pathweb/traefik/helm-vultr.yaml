@@ -33,6 +33,7 @@ spec:
       namespace: flux-system
   values:
     nameOverride: traefik-vultr-sg
+    fullNameOverride: traefik-vultr-sg
     nodeSelector:
       kubernetes.io/os: linux
       provider: vultr
