@@ -16,14 +16,19 @@ configMapGenerator:
       - "settings.js"
       - "extra-npm-modules.sh"
       - "extra-tools.sh"
-patchesStrategicMerge:
-  - "patches/statefulset.yaml"
-  - "patches/ingress-local-dns.yaml"
 patches:
   - target:
       kind: Ingress
       name: node-red
     path: "patches/ingress-host.json"
+  - target:
+      kind: StatefulSet
+      name: node-red
+    path: patches/statefulset.yaml
+  - target:
+      kind: Ingress
+      name: node-red
+    path: patches/ingress-local-dns.yaml
 commonLabels:
   app.kubernetes.io/instance: node-red
   app.kubernetes.io/name: node-red
