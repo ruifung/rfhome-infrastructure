@@ -9,7 +9,6 @@ spec:
     matchLabels:
       app.kubernetes.io/name: home-assistant
   serviceName: home-assistant
-  # replicas: 1
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
@@ -22,6 +21,7 @@ spec:
         k8s.v1.cni.cncf.io/networks: home-network/hass-iot-network
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>
     spec:
+      runtimeClassName: gvisor
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
