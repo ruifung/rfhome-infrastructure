@@ -4,6 +4,8 @@ metadata:
   name: home-assistant
   namespace: home-network
 spec:
+  selector:
+    app.kubernetes.io/name: home-assistant
   clusterIP: None
   ports:
   - port: 8123
