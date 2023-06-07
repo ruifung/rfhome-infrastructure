@@ -15,7 +15,7 @@ resources:
 - ingress.yaml
 - traefik-ingressroute.yaml
 - traefik-middleware.yaml
-- networkpolicy.yaml
+# - networkpolicy.yaml
 patchesStrategicMerge: []
 patches: []
 configMapGenerator:
