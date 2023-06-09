@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus
-      version: 8.10.4
+      version: 8.13.0
       sourceRef:
         kind: HelmRepository
         name: bitnami
@@ -17,11 +17,7 @@ spec:
   interval: 15m
   values:
     prometheus:
-      retention: 1h
-      # enableFeatures:
-      # - agent
-      remoteWrite:
-      - url: "http://mimir-nginx/api/v1/push"
+      enabled: false
     alertmanager:
       enabled: false
     node-exporter:

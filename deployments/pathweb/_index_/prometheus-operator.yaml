@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: grafana-agent-operator
+  name: prometheus-operator
   namespace: flux-system
 spec:
   interval: 15m
-  path: ./deployments/pathweb/grafana-agent-operator
+  path: ./deployments/pathweb/prometheus-operator
   prune: true
   sourceRef:
     kind: GitRepository
