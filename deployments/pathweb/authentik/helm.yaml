@@ -107,6 +107,9 @@ spec:
         create: false
     redis:
       enabled: true
+      master:
+        nodeSelector:
+          location: rfhome
     resources:
       server:
         requests:
