@@ -1,0 +1,31 @@
+﻿apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: go2rtc-policy
+  namespace: home-network
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: ha-code-server
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: traefik
+      ports:
+        - port: 8443
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - port: 53
+          protocol: UDP

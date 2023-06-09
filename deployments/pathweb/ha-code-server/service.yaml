@@ -1,0 +1,14 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: ha-code-server
+  namespace: home-network
+spec:
+  selector:
+    app.kubernetes.io/name: ha-code-server
+  clusterIP: None
+  ports:
+  - port: 8443
+    targetPort: 8443
+    name: web
+    protocol: TCP

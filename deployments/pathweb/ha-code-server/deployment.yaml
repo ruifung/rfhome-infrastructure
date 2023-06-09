@@ -1,0 +1,54 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ha-code-server
+  namespace: home-network
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ha-code-server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ha-code-server
+      annotations:
+        io.cilium.proxy-visibility: <Egress/53/UDP/DNS>,<Egress/80/TCP/HTTP>
+    spec:
+      nodeSelector:
+        location: rfhome
+      containers:
+      - name: code-server
+        image: lscr.io/linuxserver/code-server:4.13.0
+        env:
+          - name: PUID
+            value: "1000"
+          - name: PGID
+            value: "1000"
+          - name: TZ
+            value: "Asia/Kuala_Lumpur"
+          - name: PROXY_DOMAIN
+            value: ha-code-server.services.home.yrf.me
+          - name: DEFAULT_WORKSPACE
+            value: /config/workspace
+        volumeMounts:
+          - name: config
+            mountPath: /config
+          - name: home-assistant
+            mountPath: /config/workspace/home-assistant
+          - name: home-assistant
+            mountPath: /config/workspace/appdaemon
+            subPath: appdaemon
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8443
+          name: web
+      volumes:
+        - name: config
+          persistentVolumeClaim: 
+            claimName: ha-code-server-config
+        - name: home-assistant
+          persistentVolumeClaim: 
+            claimName: home-assistant-data

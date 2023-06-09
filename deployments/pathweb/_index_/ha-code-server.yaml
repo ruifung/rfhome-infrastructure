@@ -6,11 +6,11 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  path: ./deployments/pathweb/home-assistant
+  path: ./deployments/pathweb/ha-code-server
   prune: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
   targetNamespace: home-network
   dependsOn:
-    - name: rook-external-cluster
+    - name: home-assistant

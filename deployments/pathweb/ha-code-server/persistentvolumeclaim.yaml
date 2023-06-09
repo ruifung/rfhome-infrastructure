@@ -1,0 +1,13 @@
+﻿---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ha-code-server-config
+  namespace: home-network
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 4Gi
+  storageClassName: cephfs
