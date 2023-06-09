@@ -29,3 +29,9 @@ spec:
       ports:
         - port: 53
           protocol: UDP
+    - to:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: home-assistant
+      ports:
+        - port: 8123
