@@ -1,4 +1,0 @@
-﻿resources:
-  - "prometheus-helm.yaml"
-  - "thanos-helm.yaml"
-  - "config.yaml"
