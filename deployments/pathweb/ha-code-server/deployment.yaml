@@ -39,6 +39,9 @@ spec:
             mountPath: /config/workspace/appdaemon
             subPath: appdaemon
         resources:
+          requests:
+            memory: 128Mi
+            cpu: "0m"
           limits:
             memory: "1Gi"
             cpu: "500m"
