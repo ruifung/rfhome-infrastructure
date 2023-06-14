@@ -34,6 +34,11 @@ spec:
   values:
     nameOverride: traefik-vultr-sg
     fullNameOverride: traefik-vultr-sg
+    tolerations:
+      - key: type
+        operator: Equal
+        value: cloud
+        effect: NoExecute
     nodeSelector:
       kubernetes.io/os: linux
       provider: vultr
