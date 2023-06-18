@@ -20,25 +20,25 @@ $controlplane = @(
 )
 $workers = @(
     @{
-        fqdn = "1.workers.$homeDnsSuffix";
+        fqdn = "10.229.17.4";
         base = '.\base\worker.yaml';
         patches = @('@patches\node-patches.yaml','@patches\worker-patches.yaml','@patches\worker-1.yaml')
     },
     @{
-        fqdn = "2.workers.$homeDnsSuffix";
+        fqdn = "10.229.17.5";
         base = '.\base\worker.yaml';
         patches = @('@patches\node-patches.yaml','@patches\worker-patches.yaml','@patches\worker-2.yaml')
     },
     @{
-        fqdn = "3.workers.$homeDnsSuffix";
+        fqdn = "10.229.17.6";
         base = '.\base\worker.yaml';
         patches = @('@patches\node-patches.yaml','@patches\worker-patches.yaml','@patches\worker-3.yaml')
-    },
-    @{
-        fqdn = 'pathweb-piworker-1.vsvc.home.arpa';
-        base = '.\base\worker.yaml';
-        patches = @('@patches\node-patches.yaml','@patches\pi-worker.yaml','@patches\piworker-1.yaml')
     }
+    # @{
+    #     fqdn = 'pathweb-piworker-1.vsvc.home.arpa';
+    #     base = '.\base\worker.yaml';
+    #     patches = @('@patches\node-patches.yaml','@patches\pi-worker.yaml','@patches\piworker-1.yaml')
+    # }
 )
 $cloudworkers = @(
     @{

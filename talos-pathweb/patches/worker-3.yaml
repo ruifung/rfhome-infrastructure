@@ -1,6 +1,6 @@
 machine:
   certSANs:
-    - pathweb-worker-3.vsvc.home.arpa
+    - pathweb-worker-3.servers.home.yrf.me
     - 3.workers.pathweb.clusters.home.yrf.me
   network:
     hostname: pathweb-worker-3

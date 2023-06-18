@@ -1,6 +1,8 @@
 machine:
-  certSANs:
-    - pathweb-control-1.vsvc.home.arpa
-    - 1.controlplane.pathweb.clusters.home.yrf.me
   network:
     hostname: pathweb-control-1
+  certSANs:
+    - controlplane.pathweb.clusters.home.yrf.me
+    - pathweb-control-1.servers.home.yrf.me
+    - 1.controlplane.pathweb.clusters.home.yrf.me
+
