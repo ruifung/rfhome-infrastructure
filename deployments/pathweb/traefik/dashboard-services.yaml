@@ -1,0 +1,81 @@
+﻿---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: traefik-internal.pathweb.clusters.home.yrf.me
+    metallb.universe.tf/ip-allocated-from-pool: service-addr-pool
+  labels:
+    app.kubernetes.io/instance: traefik-traefik-traefik
+    app.kubernetes.io/name: traefik
+    external-dns: local-pdns
+  name: traefik-traefik-dashboard
+  namespace: traefik
+spec:
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: traefik
+    port: 9000
+    protocol: TCP
+    targetPort: traefik
+  selector:
+    app.kubernetes.io/instance: traefik-traefik-traefik
+    app.kubernetes.io/name: traefik
+  sessionAffinity: None
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: traefik-external.pathweb.clusters.home.yrf.me
+    metallb.universe.tf/ip-allocated-from-pool: service-addr-pool
+  labels:
+    app.kubernetes.io/instance: traefik-traefik-traefik
+    app.kubernetes.io/name: traefik
+    external-dns: local-pdns
+  name: traefik-external-dashboard
+  namespace: traefik
+spec:
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: traefik
+    port: 9000
+    protocol: TCP
+    targetPort: traefik
+  selector:
+    app.kubernetes.io/instance: traefik-external-traefik
+    app.kubernetes.io/name: traefik-external
+  sessionAffinity: None
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: traefik-vultr-sg.pathweb.clusters.home.yrf.me
+    metallb.universe.tf/ip-allocated-from-pool: service-addr-pool
+  labels:
+    app.kubernetes.io/instance: traefik-vultr-sg-traefik
+    app.kubernetes.io/name: traefik
+    external-dns: local-pdns
+  name: traefik-vultr-sg-dashboard
+  namespace: traefik
+spec:
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: traefik
+    port: 9000
+    protocol: TCP
+    targetPort: traefik
+  selector:
+    app.kubernetes.io/instance: traefik-vultr-sg-traefik
+    app.kubernetes.io/name: traefik-vultr-sg
+  sessionAffinity: None
+  type: LoadBalancer

@@ -2,3 +2,4 @@
   - "helm.yaml"
   - "helm-external.yaml"
   - "helm-vultr.yaml"
+  - "dashboard-services.yaml"
