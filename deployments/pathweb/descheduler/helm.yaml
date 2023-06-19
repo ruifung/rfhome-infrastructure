@@ -59,7 +59,7 @@ spec:
               thresholds:
                 cpu: 95
                 memory: 95
-                pods: 95
+                pods: 99
         LowNodeUtilization:
           enabled: true
           params:
