@@ -81,7 +81,7 @@ spec:
     provider: rfc2136
     policy: upsert-only
     rfc2136:
-      host: "10.229.31.53"
+      host: "10.229.97.53"
       port: 53
       zone: "services.home.yrf.me"
       secretName: local-rfc2136-key
@@ -132,7 +132,7 @@ spec:
     provider: rfc2136
     policy: upsert-only
     rfc2136:
-      host: "10.229.31.53"
+      host: "10.229.97.53"
       port: 53
       zone: "pi4-01.clusters.home.yrf.me"
       secretName: local-rfc2136-key
