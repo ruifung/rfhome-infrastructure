@@ -44,5 +44,5 @@ spec:
               name: traefik
   tls:
     - hosts:
-        - ".clusters.home.yrf.me"
+        - "*.pathweb.clusters.home.yrf.me"
       secretName: pathweb-wildcard-cert
