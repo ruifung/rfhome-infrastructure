@@ -33,6 +33,33 @@ spec:
       location: rfhome
     deschedulerPolicy:
       strategies:
+        RemoveDuplicates:
+          enabled: true
+        RemovePodsHavingTooManyRestarts:
+          enabled: true
+          params:
+            podsHavingTooManyRestarts:
+              podRestartThreshold: 100
+              includingInitContainers: true
+        RemovePodsViolatingNodeAffinity:
+          enabled: true
+          params:
+            nodeAffinityType:
+              - requiredDuringSchedulingIgnoredDuringExecution
+        RemovePodsViolatingInterPodAntiAffinity:
+          enabled: true
+        RemovePodsViolatingTopologySpreadConstraint:
+          enabled: true
+          params:
+            includeSoftConstraints: false
+        HighNodeUtilization:
+          enabled: true
+          params:
+            nodeResourceUtilizationThresholds:
+              thresholds:
+                cpu: 95
+                memory: 95
+                pods: 95
         LowNodeUtilization:
           enabled: true
           params:
