@@ -32,3 +32,17 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      ingress:
+        enabled: true
+        ingressClassName: traefik-traefik
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+        hosts:
+          - host: goldilocks.pathweb.clusters.home.yrf.me
+            paths:
+              - path: /
+                type: Prefix
+        tls:
+          - hosts:
+              - "goldilocks.pathweb.clusters.home.yrf.me"
+            secretName: pathweb-wildcard-cert
