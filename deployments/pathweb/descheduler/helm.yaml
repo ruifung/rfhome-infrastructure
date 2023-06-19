@@ -57,8 +57,8 @@ spec:
           params:
             nodeResourceUtilizationThresholds:
               thresholds:
-                cpu: 95
-                memory: 95
+                cpu: 99
+                memory: 99
                 pods: 99
         LowNodeUtilization:
           enabled: true
