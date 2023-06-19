@@ -1,0 +1,75 @@
+﻿---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metallb.universe.tf/ip-allocated-from-pool: service-addr-pool
+  labels:
+    app.kubernetes.io/instance: traefik-traefik-traefik
+    app.kubernetes.io/name: traefik
+  name: traefik-traefik-dashboard
+  namespace: traefik
+spec:
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: traefik
+    port: 9000
+    protocol: TCP
+    targetPort: traefik
+  selector:
+    app.kubernetes.io/instance: traefik-traefik-traefik
+    app.kubernetes.io/name: traefik
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metallb.universe.tf/ip-allocated-from-pool: service-addr-pool
+  labels:
+    app.kubernetes.io/instance: traefik-traefik-traefik
+    app.kubernetes.io/name: traefik
+  name: traefik-external-dashboard
+  namespace: traefik
+spec:
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: traefik
+    port: 9000
+    protocol: TCP
+    targetPort: traefik
+  selector:
+    app.kubernetes.io/instance: traefik-external-traefik
+    app.kubernetes.io/name: traefik-external
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metallb.universe.tf/ip-allocated-from-pool: service-addr-pool
+  labels:
+    app.kubernetes.io/instance: traefik-vultr-sg-traefik
+    app.kubernetes.io/name: traefik
+  name: traefik-vultr-sg-dashboard
+  namespace: traefik
+spec:
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: traefik
+    port: 9000
+    protocol: TCP
+    targetPort: traefik
+  selector:
+    app.kubernetes.io/instance: traefik-vultr-sg-traefik
+    app.kubernetes.io/name: traefik-vultr-sg
+  sessionAffinity: None
+  type: ClusterIP

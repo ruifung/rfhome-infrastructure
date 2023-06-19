@@ -1,0 +1,47 @@
+﻿---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: traefik-dashboard
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+  labels:
+    app.kubernetes.io/name: traefik-dashboard
+    external-dns: local-pdns
+spec:
+  ingressClassName: traefik-traefik
+  rules:
+  - host: traefik-internal.pathweb.clusters.home.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: traefik-traefik-dashboard
+            port: 
+              name: traefik
+  - host: traefik-external.pathweb.clusters.home.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: traefik-external-dashboard
+            port: 
+              name: traefik
+  - host: traefik-vultr-sg.pathweb.clusters.home.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: traefik-vultr-sg-dashboard
+            port: 
+              name: traefik
+  tls:
+    - hosts:
+        - ".clusters.home.yrf.me"
+      secretName: pathweb-wildcard-cert
