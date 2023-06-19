@@ -15,3 +15,24 @@ metadata:
 spec:
   ipAddressPools:
   - service-addr-pool
+---
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: rfhome-router
+  namespace: kube-system
+spec:
+  myASN: 64513
+  peerASN: 64512
+  peerAddress: 10.229.97.1
+---
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: service-addr-bgp
+  namespace: kube-system
+spec:
+  ipAddressPools:
+  - service-addr-pool
+  peers:
+    - rfhome-router
