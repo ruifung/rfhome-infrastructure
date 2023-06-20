@@ -52,12 +52,12 @@ spec:
                           valueFrom:
                             secretKeyRef:
                               name: "rfhome-postgres-ha-pguser-authentik"
-                              key: "pgbouncer-host"
+                              key: "host"
                         - name: AUTHENTIK_POSTGRESQL__PORT
                           valueFrom:
                             secretKeyRef:
                               name: "rfhome-postgres-ha-pguser-authentik"
-                              key: "pgbouncer-port"
+                              key: "port"
                         - name: AUTHENTIK_POSTGRESQL__USER
                           valueFrom:
                             secretKeyRef:
