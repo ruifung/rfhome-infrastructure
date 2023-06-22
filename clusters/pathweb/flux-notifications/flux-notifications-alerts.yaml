@@ -19,6 +19,8 @@ spec:
       matchLabels:
         kustomize.toolkit.fluxcd.io/name: 'rfhome-infrastructure-index'
         kustomize.toolkit.fluxcd.io/namespace: 'flux-system'
+  exclusionList:
+    - "etcdserver: request timed out.*"
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta2
 kind: Alert
@@ -37,6 +39,8 @@ spec:
       matchLabels:
         kustomize.toolkit.fluxcd.io/name: 'rfhome-infrastructure-private-index'
         kustomize.toolkit.fluxcd.io/namespace: 'flux-system'
+  exclusionList:
+    - "etcdserver: request timed out.*"
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta2
 kind: Alert
@@ -55,3 +59,5 @@ spec:
       name: '*'
     - kind: HelmRelease
       name: '*'
+  exclusionList:
+    - "etcdserver: request timed out.*"
