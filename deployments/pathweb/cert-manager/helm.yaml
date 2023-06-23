@@ -42,7 +42,7 @@ spec:
         memory: 105M
       limits:
         cpu: 150m
-        memory: 105M
+        memory: 200M
     cainjector:
       resources:
         requests:
@@ -58,4 +58,4 @@ spec:
           memory: 105M
         limits:
           cpu: 150m
-          memory: 105M
+          memory: 200M
