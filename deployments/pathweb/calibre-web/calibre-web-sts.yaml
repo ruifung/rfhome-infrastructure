@@ -68,11 +68,11 @@ spec:
           mountPath: /logs
         resources:
           requests:
-            cpu: 11m
-            memory: 88M
+            cpu: 10m
+            memory: 10M
           limits:
             cpu: 11m
-            memory: 88M
+            memory: 339M
       - name: calibre-web-access-log
         image: busybox:1.36
         args: [/bin/sh, -c, 'until [ -f /logs/access.log ]; do sleep 5; done; tail -n+1 -F /logs/access.log']
@@ -81,11 +81,11 @@ spec:
           mountPath: /logs
         resources:
           requests:
-            cpu: 11m
-            memory: 88M
+            cpu: 10m
+            memory: 10M
           limits:
             cpu: 11m
-            memory: 88M
+            memory: 339M
       volumes:
         - name: calibre-library
           persistentVolumeClaim:

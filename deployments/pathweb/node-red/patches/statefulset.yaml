@@ -26,11 +26,11 @@ spec:
               readOnly: true
           resources:
             requests:
-              cpu: 548m
-              memory: 549M
+              cpu: 15m
+              memory: 1169M
             limits:
-              cpu: 2048m
-              memory: 1G
+              cpu: 50m
+              memory: 1297M
       initContainers:
         - name: install-extra-modules
           image: nodered/node-red:latest

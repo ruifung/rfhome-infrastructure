@@ -52,17 +52,38 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 24m
+          memory: 105M
     compactor:
       persistentVolume:
         size: 4Gi
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      resources:
+        requests:
+          cpu: 22m
+          memory: 105M
+        limits:
+          cpu: 24m
+          memory: 105M
     distributor:
       replicas: 2
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      resources:
+        requests:
+          cpu: 22m
+          memory: 105M
+        limits:
+          cpu: 24m
+          memory: 105M
     ingester:
       zoneAwareReplication:
         enabled: false
@@ -70,6 +91,13 @@ spec:
         size: 8Gi
       replicas: 3
       topologySpreadConstraints: {}
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 24m
+          memory: 105M
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
@@ -117,21 +145,57 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 15m
+          memory: 105M
     querier:
       replicas: 1
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 24m
+          memory: 105M
     query_frontend:
       replicas: 1
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 15m
+          memory: 105M
+    query_scheduler:
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 15m
+          memory: 105M
     ruler:
       replicas: 1
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      resources:
+        requests:
+          cpu: 22m
+          memory: 105M
+        limits:
+          cpu: 24m
+          memory: 105M
     store_gateway:
       zoneAwareReplication:
         enabled: false
@@ -141,6 +205,13 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 24m
+          memory: 105M
       topologySpreadConstraints: {}
       affinity:
         podAntiAffinity:

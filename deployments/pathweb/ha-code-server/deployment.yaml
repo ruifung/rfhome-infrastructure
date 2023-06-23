@@ -40,11 +40,11 @@ spec:
             subPath: appdaemon
         resources:
           requests:
-            memory: 128Mi
-            cpu: "0m"
+            cpu: 15m
+            memory: 145M
           limits:
             memory: "1Gi"
-            cpu: "500m"
+            cpu: "1000m"
         ports:
         - containerPort: 8443
           name: web

@@ -36,12 +36,12 @@ spec:
               fieldRef:
                 fieldPath: status.podIP
         resources:
-          limits:
-            cpu: 2041m
-            memory: 4G
           requests:
-            memory: 263M
-            cpu: 25m
+            cpu: 15m
+            memory: 105M
+          limits:
+            cpu: 1024m
+            memory: 4G
         ports:
         - containerPort: 6052
           name: http

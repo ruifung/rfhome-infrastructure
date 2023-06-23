@@ -110,18 +110,25 @@ spec:
       master:
         nodeSelector:
           location: rfhome
+        resources:
+          requests:
+            cpu: 62m
+            memory: 105M
+          limits:
+            cpu: 81m
+            memory: 105M
     resources:
       server:
         requests:
-          cpu: 182m
-          memory: 443Mi
+          cpu: 22m
+          memory: 477M
         limits:
-          cpu: 47149m
-          memory: 1Gi
+          cpu: 212m
+          memory: 615M
       worker:
         requests:
-          cpu: 143m
-          memory: 1Gi
+          cpu: 15m
+          memory: 549M
         limits:
-          cpu: 63481m
-          memory: 2Gi
+          cpu: 131m
+          memory: 615M

@@ -33,3 +33,10 @@ spec:
       kubernetes.io/os: linux
       kubernetes.io/arch: amd64
       location: rfhome
+    resources:
+      requests:
+        cpu: 15m
+        memory: 273M
+      limits:
+        cpu: 24m
+        memory: 311M

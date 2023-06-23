@@ -23,11 +23,11 @@ spec:
             value: "Asia/Kuala_Lumpur"
           resources:
             requests:
-              cpu: 587m
-              memory: 765M
+              cpu: 10m
+              memory: 1556M
             limits:
-              cpu: '2'
-              memory: 2Gi
+              cpu: 24m
+              memory: 1627M
       #     volumeMounts:
       #       - mountPath: /etc/cont-init.d/20-config
       #         name: lsio-unifi-image-patches

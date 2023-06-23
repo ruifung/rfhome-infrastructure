@@ -5,6 +5,5 @@ data:
   maxMonId: "2"
 kind: ConfigMap
 metadata:
-  creationTimestamp: null
   name: rook-ceph-mon-endpoints
   namespace: rook-ceph-external

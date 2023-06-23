@@ -32,6 +32,13 @@ spec:
       registry: k8s.gcr.io/external-dns
       repository: external-dns
       tag: v0.13.1
+    resources:
+      requests:
+        cpu: 15m
+        memory: 105M
+      limits:
+        cpu: 15m
+        memory: 105M
     sources:
     - ingress
     - crd
@@ -79,6 +86,13 @@ spec:
       registry: k8s.gcr.io/external-dns
       repository: external-dns
       tag: v0.13.1
+    resources:
+      requests:
+        cpu: 15m
+        memory: 105M
+      limits:
+        cpu: 15m
+        memory: 105M
     nodeSelector:
       kubernetes.io/os: linux
       location: rfhome
@@ -133,6 +147,13 @@ spec:
       registry: k8s.gcr.io/external-dns
       repository: external-dns
       tag: v0.13.1
+    resources:
+      requests:
+        cpu: 15m
+        memory: 105M
+      limits:
+        cpu: 15m
+        memory: 105M
     nodeSelector:
       kubernetes.io/os: linux
       location: rfhome

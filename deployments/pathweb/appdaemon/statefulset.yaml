@@ -30,11 +30,11 @@ spec:
               subPath: appdaemon
           resources:
             requests:
-              cpu: 49m
-              memory: 263M
+              cpu: 15m
+              memory: 105M
             limits:
-              cpu: 2041m
-              memory: 512M
+              cpu: 15m
+              memory: 105M
       volumes:
         - name: hass-data
           persistentVolumeClaim:

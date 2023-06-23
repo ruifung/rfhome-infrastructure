@@ -28,10 +28,24 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      resources:
+        requests:
+          cpu: 34m
+          memory: 105M
+        limits:
+          cpu: 36m
+          memory: 105M
     dashboard:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 15m
+          memory: 105M
       ingress:
         enabled: true
         ingressClassName: traefik-traefik
