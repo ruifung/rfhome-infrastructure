@@ -47,117 +47,87 @@ spec:
         - name : driver-registrar
           resource:
             requests:
-              cpu: 50m
+              cpu: 1m
             limits:
-              cpu: 100m
+              cpu: 15m
         - name : csi-rbdplugin
           resource:
             requests:
-              cpu: 250m
+              cpu: 2m
             limits:
               cpu: 500m
-        - name : liveness-prometheus
-          resource:
-            requests:
-              cpu: 50m
-            limits:
-              cpu: 100m
       csiCephFSPluginResource: |
         - name : driver-registrar
           resource:
             requests:
-              cpu: 50m
+              cpu: 1m
             limits:
-              cpu: 100m
+              cpu: 15m
         - name : csi-cephfsplugin
           resource:
             requests:
-              cpu: 250m
+              cpu: 2m
             limits:
               cpu: 500m
-        - name : liveness-prometheus
-          resource:
-            requests:
-              cpu: 50m
-            limits:
-              cpu: 100m
       csiCephFSProvisionerResource: |
         - name : csi-provisioner
           resource:
             requests:
-              cpu: 100m
+              cpu: 2m
             limits:
-              cpu: 200m
+              cpu: 500m
         - name : csi-resizer
           resource:
             requests:
-              cpu: 100m
+              cpu: 2m
             limits:
-              cpu: 200m
+              cpu: 500m
         - name : csi-attacher
           resource:
             requests:
-              cpu: 100m
+              cpu: 2m
             limits:
-              cpu: 200m
+              cpu: 250m
         - name : csi-snapshotter
           resource:
             requests:
-              cpu: 100m
+              cpu: 2m
             limits:
-              cpu: 200m
+              cpu: 250m
         - name : csi-cephfsplugin
           resource:
             requests:
-              cpu: 250m
+              cpu: 1m
             limits:
               cpu: 500m
-        - name : liveness-prometheus
-          resource:
-            requests:
-              cpu: 50m
-            limits:
-              cpu: 100m
       csiRBDProvisionerResource: |
         - name : csi-provisioner
           resource:
             requests:
-              cpu: 100m
+              cpu: 2m
             limits:
-              cpu: 200m
+              cpu: 500m
         - name : csi-resizer
           resource:
             requests:
-              cpu: 100m
+              cpu: 2m
             limits:
-              cpu: 200m
+              cpu: 500m
         - name : csi-attacher
           resource:
             requests:
-              cpu: 100m
+              cpu: 2m
             limits:
-              cpu: 200m
+              cpu: 250m
         - name : csi-snapshotter
           resource:
             requests:
-              cpu: 100m
+              cpu: 2m
             limits:
-              cpu: 200m
+              cpu: 250m
         - name : csi-rbdplugin
           resource:
             requests:
-              cpu: 250m
+              cpu: 1m
             limits:
               cpu: 500m
-        - name : csi-omap-generator
-          resource:
-            requests:
-              cpu: 250m
-            limits:
-              cpu: 500m
-        - name : liveness-prometheus
-          resource:
-            requests:
-              cpu: 50m
-            limits:
-              cpu: 100m
