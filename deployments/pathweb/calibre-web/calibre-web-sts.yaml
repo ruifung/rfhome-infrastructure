@@ -82,10 +82,10 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 10M
+            memory: 200M
           limits:
-            cpu: 11m
-            memory: 339M
+            cpu: 500m
+            memory: 500M
       volumes:
         - name: calibre-library
           persistentVolumeClaim:
