@@ -41,7 +41,7 @@ spec:
         cpu: 15m
         memory: 105M
       limits:
-        cpu: 15m
+        cpu: 150m
         memory: 105M
     cainjector:
       resources:
@@ -49,7 +49,7 @@ spec:
           cpu: 15m
           memory: 110M
         limits:
-          cpu: 15m
+          cpu: 150m
           memory: 368M
     webhook:
       resources:
@@ -57,5 +57,5 @@ spec:
           cpu: 15m
           memory: 105M
         limits:
-          cpu: 15m
+          cpu: 150m
           memory: 105M
