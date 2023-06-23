@@ -123,12 +123,12 @@ spec:
           cpu: 22m
           memory: 477M
         limits:
-          cpu: 212m
+          cpu: 1000m
           memory: 615M
       worker:
         requests:
           cpu: 15m
           memory: 549M
         limits:
-          cpu: 131m
+          cpu: 1000m
           memory: 615M
