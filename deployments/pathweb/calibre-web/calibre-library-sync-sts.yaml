@@ -62,10 +62,10 @@ spec:
           subPath: onedrive-config
         resources:
           requests:
-            cpu: 15m
+            cpu: 170m
             memory: 204M
           limits:
-            cpu: 310m
+            cpu: 350m
             memory: 214M
       volumes:
         - name: calibre-library

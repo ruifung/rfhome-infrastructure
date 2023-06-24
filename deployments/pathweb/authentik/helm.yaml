@@ -127,8 +127,8 @@ spec:
           memory: 615M
       worker:
         requests:
-          cpu: 15m
-          memory: 549M
+          cpu: 50m
+          memory: 350M
         limits:
           cpu: 1000m
           memory: 615M

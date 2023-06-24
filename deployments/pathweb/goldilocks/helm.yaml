@@ -30,7 +30,7 @@ spec:
         location: rfhome
       resources:
         requests:
-          cpu: 34m
+          cpu: 100m
           memory: 105M
         limits:
           cpu: 500m
