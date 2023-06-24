@@ -28,7 +28,7 @@ metadata:
 spec:
   myASN: 64513
   peerASN: 64512
-  peerAddress: 10.229.16.1
+  peerAddress: 10.229.97.1
   nodeSelectors:
     - matchLabels:
         location: rfhome
