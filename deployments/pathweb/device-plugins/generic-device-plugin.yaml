@@ -88,7 +88,7 @@ spec:
         name: generic-device-plugin
         resources:
           requests:
-            cpu: 50m
+            cpu: 15m
             memory: 10Mi
           limits:
             cpu: 100m
