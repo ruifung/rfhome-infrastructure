@@ -40,7 +40,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: rfhome-postgres-ha-pguser-home-assistant
-                  key: pgbouncer-uri
+                  key: uri
             - name: POD_IP
               valueFrom:
                 fieldRef:
