@@ -6,6 +6,10 @@ machine:
       enabled: true
       allowDownPeerBypass: false
       advertiseKubernetesNetworks: true
+      filters:
+        endpoints:
+          - 0.0.0.0/0
+          - 2000::/3
   kubelet:
     extraArgs:
       rotate-server-certificates: true

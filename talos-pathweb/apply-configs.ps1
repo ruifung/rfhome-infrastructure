@@ -1,36 +1,36 @@
 $mode, $extraArgs = $args
 $extraArgs = $extraArgs -join " "
-$homeDnsSuffix = "pathweb.clusters.home.yrf.me"
+$homeDnsSuffix = "servers.home.yrf.me"
 $controlplane = @(
     @{
-        fqdn = "1.controlplane.$homeDnsSuffix";
+        fqdn = "pathweb-control-1.$homeDnsSuffix";
         base = '.\base\controlplane.yaml';
         patches = @('@patches\node-patches.yaml','@patches\controlplane-patches.yaml','@patches\control-1.yaml')
     },
     @{
-        fqdn = "2.controlplane.$homeDnsSuffix";
+        fqdn = "pathweb-control-2.$homeDnsSuffix";
         base = '.\base\controlplane.yaml';
         patches = @('@patches\node-patches.yaml','@patches\controlplane-patches.yaml','@patches\control-2.yaml')
     },
     @{
-        fqdn = "3.controlplane.$homeDnsSuffix";
+        fqdn = "pathweb-control-3.$homeDnsSuffix";
         base = '.\base\controlplane.yaml';
         patches = @('@patches\node-patches.yaml','@patches\controlplane-patches.yaml','@patches\control-3.yaml')
     }
 )
 $workers = @(
     @{
-        fqdn = "10.229.17.4";
+        fqdn = "pathweb-worker-1.$homeDnsSuffix";
         base = '.\base\worker.yaml';
         patches = @('@patches\node-patches.yaml','@patches\worker-patches.yaml','@patches\worker-1.yaml')
     },
     @{
-        fqdn = "10.229.17.5";
+        fqdn = "pathweb-worker-2.$homeDnsSuffix";
         base = '.\base\worker.yaml';
         patches = @('@patches\node-patches.yaml','@patches\worker-patches.yaml','@patches\worker-2.yaml')
     },
     @{
-        fqdn = "10.229.17.6";
+        fqdn = "pathweb-worker-3.$homeDnsSuffix";
         base = '.\base\worker.yaml';
         patches = @('@patches\node-patches.yaml','@patches\worker-patches.yaml','@patches\worker-3.yaml')
     }
