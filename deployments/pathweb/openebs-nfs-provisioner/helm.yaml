@@ -1,0 +1,39 @@
+﻿---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: openebs-nfs-provisioner
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://openebs.github.io/dynamic-nfs-provisioner
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: openebs-nfs-provisioner
+  namespace: flux-system
+spec:
+  releaseName: openebs-nfs-provisioner
+  chart:
+    spec:
+      chart: nfs-provisioner
+      version: 0.10.0
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: openebs-nfs-provisioner
+  interval: 1h
+  targetNamespace: openebs
+  install:
+    createNamespace: true
+  values:
+    nfsProvisioner:
+      tolerations:
+        - key: type
+          operator: Equal
+          value: cloud
+          effect: NoExecute
+    nfsStorageClass:
+      name: ceph-rbd-nfs
