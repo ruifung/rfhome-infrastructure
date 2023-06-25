@@ -16,6 +16,11 @@ parameters:
   csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph-external
 allowVolumeExpansion: true
 reclaimPolicy: Delete
+allowedTopologies:
+- matchLabelExpressions:
+  - key: location
+    values:
+    - rfhome
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -34,3 +39,8 @@ parameters:
   csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph-external
 allowVolumeExpansion: true
 reclaimPolicy: Retain
+allowedTopologies:
+- matchLabelExpressions:
+  - key: location
+    values:
+    - rfhome
