@@ -34,6 +34,8 @@ spec:
               value: "1000"
             - name: PGID
               value: "1000"
+            - name: PACKAGES
+              value: "iputils"
             - name: TZ
               value: Asia/Kuala_Lumpur
             - name: HASS_DB_URI
