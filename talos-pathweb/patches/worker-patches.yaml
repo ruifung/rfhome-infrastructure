@@ -3,10 +3,13 @@
     role: worker
   network:
     interfaces:
-      - interface: eth1
-        dhcp: true
+      - interface: eth0
+        dhcp: false
         vlans:
           - vlanId: 55
+      - interface: eth1
+        dhcp: true
+
   sysctls:
     user.max_user_namespaces: "11255"
     kernel.domainname: vsvc.home.arpa
