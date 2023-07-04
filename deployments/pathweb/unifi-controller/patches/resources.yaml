@@ -3,6 +3,7 @@ kind: StatefulSet
 metadata:
   name: unifi-controller
 spec:
+  replicas: 0
   template:
     metadata:
       annotations:
