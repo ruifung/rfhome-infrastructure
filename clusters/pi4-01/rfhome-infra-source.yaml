@@ -1,5 +1,5 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: rfhome-infrastructure
@@ -13,7 +13,7 @@ spec:
     name: flux-system # Use the flux-system credentials for this, since it's the same damn repo.
   url: ssh://git@github.com/ruifung/rfhome-infrastructure
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: rfhome-infrastructure-private

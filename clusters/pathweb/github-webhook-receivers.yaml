@@ -12,10 +12,10 @@ spec:
   secretRef:
     name: receiver-token
   resources:
-    - apiVersion: source.toolkit.fluxcd.io/v1beta2
+    - apiVersion: source.toolkit.fluxcd.io/v1
       kind: GitRepository
       name: flux-system
-    - apiVersion: source.toolkit.fluxcd.io/v1beta2
+    - apiVersion: source.toolkit.fluxcd.io/v1
       kind: GitRepository
       name: rfhome-infrastructure
 ---
@@ -32,6 +32,6 @@ spec:
   secretRef:
     name: receiver-token
   resources:
-    - apiVersion: source.toolkit.fluxcd.io/v1beta2
+    - apiVersion: source.toolkit.fluxcd.io/v1
       kind: GitRepository
       name: rfhome-infrastructure-private

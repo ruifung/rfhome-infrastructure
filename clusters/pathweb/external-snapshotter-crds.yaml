@@ -1,6 +1,6 @@
 # https://github.com/kubernetes-csi/external-snapshotter
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: k8s-external-snapshotter

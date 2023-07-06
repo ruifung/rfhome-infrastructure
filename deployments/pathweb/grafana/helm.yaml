@@ -11,7 +11,7 @@ spec:
       chart: grafana
       version: 8.4.6
       sourceRef:
-        apiVersion: source.toolkit.fluxcd.io/v1beta2
+        apiVersion: source.toolkit.fluxcd.io/v1
         kind: HelmRepository
         name: bitnami
         namespace: flux-system
