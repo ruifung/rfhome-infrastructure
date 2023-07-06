@@ -35,8 +35,8 @@ spec:
           cpu: 15m
           memory: 127M
         limits:
-          cpu: 24m
-          memory: 171M
+          cpu: 500m
+          memory: 500M
       upgrade:
         requests:
           cpu: 15m
