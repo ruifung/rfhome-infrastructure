@@ -1,5 +1,5 @@
 ﻿---
-apiVersion: notification.toolkit.fluxcd.io/v1beta2
+apiVersion: notification.toolkit.fluxcd.io/v1
 kind: Alert
 metadata:
   name: github-status
@@ -22,7 +22,7 @@ spec:
   exclusionList:
     - "etcdserver: request timed out.*"
 ---
-apiVersion: notification.toolkit.fluxcd.io/v1beta2
+apiVersion: notification.toolkit.fluxcd.io/v1
 kind: Alert
 metadata:
   name: github-status-private
@@ -42,7 +42,7 @@ spec:
   exclusionList:
     - "etcdserver: request timed out.*"
 ---
-apiVersion: notification.toolkit.fluxcd.io/v1beta2
+apiVersion: notification.toolkit.fluxcd.io/v1
 kind: Alert
 metadata:
   name: telegram
