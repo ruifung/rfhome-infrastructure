@@ -1,6 +1,6 @@
 ﻿images:
   - name: koenkk/zigbee2mqtt
-    newTag: 1.32.0
+    newTag: 1.32.1
 
 resources:
   - "statefulset.yaml"
