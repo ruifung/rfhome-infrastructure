@@ -15,4 +15,4 @@ patches:
           # exclude all
           /*
           # include deploy dir
-          !/clusters/pathweb
+          !/clusters/pi4-01
