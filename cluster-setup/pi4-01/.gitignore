@@ -2,3 +2,4 @@
 .terraform
 terraform.tfstate.backup
 terraform.tfstate
+ruifung-server-pi-01-k3s.yaml
