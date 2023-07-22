@@ -64,7 +64,7 @@ spec:
             - name: TUNNEL_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: ingress-cf-tunnel-token
+                  name: traefik-external-ingress-cf-tunnel-token
                   key: token
                   optional: false
       additionalVolumes:
