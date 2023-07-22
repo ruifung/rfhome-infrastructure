@@ -24,6 +24,8 @@ resource "kubectl_manifest" "multus" {
 # Bootstrap deployment of tf-controller, will be taken over by 
 # flux later.
 resource "helm_release" "tf_controller" {
+  depends_on = [ flux_bootstrap_git.flux_pathweb ]
+
   name       = "tf-controller"
   repository = "https://weaveworks.github.io/tf-controller/"
   chart      = "tf-controller"
