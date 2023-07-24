@@ -6,8 +6,8 @@ machine:
   network:
     kubespan:
       enabled: true
-      allowDownPeerBypass: false
-      advertiseKubernetesNetworks: true
+      allowDownPeerBypass: true
+      advertiseKubernetesNetworks: false
   kubelet:
     extraArgs:
       rotate-server-certificates: true

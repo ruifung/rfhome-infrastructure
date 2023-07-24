@@ -5,7 +5,7 @@ machine:
     kubespan:
       enabled: true
       allowDownPeerBypass: false
-      advertiseKubernetesNetworks: true
+      advertiseKubernetesNetworks: false
       filters:
         endpoints:
           - 0.0.0.0/0
