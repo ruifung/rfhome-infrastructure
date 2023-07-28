@@ -14,6 +14,7 @@ spec:
         kind: HelmRepository
         name: grafana
   interval: 15m
+  timeout: 1h
   valuesFrom:
     - kind: Secret
       name: mimir-s3-secrets
