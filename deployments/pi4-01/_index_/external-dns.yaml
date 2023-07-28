@@ -19,5 +19,9 @@ spec:
       namespace: external-dns
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
-      name: external-dns-local-pdns
+      name: external-dns-local-services
+      namespace: external-dns
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: external-dns-local-cluster
       namespace: external-dns

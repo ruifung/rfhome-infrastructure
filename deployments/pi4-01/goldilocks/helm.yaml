@@ -4,7 +4,7 @@ kind: HelmRepository
 metadata:
   name: fairwinds-stable
 spec:
-  interval: 24h
+  interval: 3h
   url: https://charts.fairwinds.com/stable
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1

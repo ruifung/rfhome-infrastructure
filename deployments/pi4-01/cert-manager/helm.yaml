@@ -4,7 +4,7 @@ kind: HelmRepository
 metadata:
   name: jetstack
 spec:
-  interval: 24h
+  interval: 3h
   url: https://charts.jetstack.io
 
 ---

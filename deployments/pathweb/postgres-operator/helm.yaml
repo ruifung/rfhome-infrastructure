@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   type: oci
-  interval: 24h
+  interval: 3h
   url: oci://registry.developers.crunchydata.com/crunchydata
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
