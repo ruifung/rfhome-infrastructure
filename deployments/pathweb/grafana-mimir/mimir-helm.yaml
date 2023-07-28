@@ -209,10 +209,10 @@ spec:
       resources:
         requests:
           cpu: 15m
-          memory: 105MiB
+          memory: 105M
         limits:
           cpu: 500m
-          memory: 500MiB
+          memory: 500M
       topologySpreadConstraints: {}
       affinity:
         podAntiAffinity:
