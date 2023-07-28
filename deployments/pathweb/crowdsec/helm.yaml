@@ -75,10 +75,10 @@ spec:
         - key: type
           operator: Exists
     lapi:
-      ingress:
-        enabled: true
-        ingressClassName: traefik-traefik
-        host: crowdsec-lapi.services.home.yrf.me
+      service:
+        type: LoadBalancer
+        annotations:
+          metallb.universe.tf/address-pool: service-addr-pool
       nodeSelector:
         kubernetes.io/os: linux
         kubernetes.io/arch: amd64
