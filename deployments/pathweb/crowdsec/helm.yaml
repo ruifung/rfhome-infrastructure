@@ -75,6 +75,10 @@ spec:
         - key: type
           operator: Exists
     lapi:
+      ingress:
+        enabled: true
+        ingressClassName: traefik-traefik
+        host: crowdsec-lapi.services.home.yrf.me
       nodeSelector:
         kubernetes.io/os: linux
         kubernetes.io/arch: amd64
@@ -86,6 +90,12 @@ spec:
         limits:
           cpu: 150m
           memory: 350M
+      dashboard:
+        enabled: true
+        ingress:
+          enabled: true
+          ingressClassName: traefik-traefik
+          host: crowdsec-dashboard.services.home.yrf.me
       env:
         - name: BOUNCERS_ALLOWED_OU
           value: "bouncer-ou"

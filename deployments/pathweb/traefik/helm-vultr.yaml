@@ -47,7 +47,7 @@ spec:
       - "--providers.file.directory=/additional-configs"
       - "--providers.file.watch=true"
       - "--experimental.plugins.bouncer.modulename=github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
-      - "--experimental.plugins.bouncer.version=v1.1.7"
+      - "--experimental.plugins.bouncer.version=v1.1.13"
       - "--experimental.plugins.rewriteHeaders.modulename=github.com/XciD/traefik-plugin-rewrite-headers"
       - "--experimental.plugins.rewriteHeaders.version=v0.0.3"
       - "--experimental.plugins.moveHeaders.modulename=github.com/che-incubator/header-rewrite-traefik-plugin"
