@@ -79,6 +79,8 @@ spec:
         type: LoadBalancer
         annotations:
           metallb.universe.tf/address-pool: service-addr-pool
+        labels:
+          external-dns: local-pdns
       nodeSelector:
         kubernetes.io/os: linux
         kubernetes.io/arch: amd64
@@ -96,6 +98,8 @@ spec:
           enabled: true
           ingressClassName: traefik-traefik
           host: crowdsec-dashboard.services.home.yrf.me
+          labels:
+            external-dns: local-pdns
       env:
         - name: BOUNCERS_ALLOWED_OU
           value: "bouncer-ou"
