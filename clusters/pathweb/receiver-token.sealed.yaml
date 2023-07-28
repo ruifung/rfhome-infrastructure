@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: receiver-token
+  namespace: flux-system
+spec:
+  encryptedData:
+    token: AgCjFXQsdIXnsA9Zbyr5ZcKcOUOgVimlQBbE/GJ6fJgN5q2HRrFnbPwFwcF+rjDt2SNuWYF732rNcb2Vl2aa63cw9x58dVC2pDK+CTTKQp2P4PydDMNCFKB4vS9cpDVyY6V5IbazTDv39hYacVs9z8QYyl1v+3UZVN7ztiWVAweG6vybnrFHKMqTFC90sjSemNwOT07S07rf9IIhbVjp8EW/DKBEwzh1VJ0rlAIXyueOA0x5GuJs4N03z+/6m5n29/UkPtbu4FOT8wIV54EISzi/tfUSPQRcgxsc5xQ1l27nMLYvtn1xld7bbONi+6EPPIfzcLVV4x+iN8nNLG7C6/CBD3iSleFhLUufbmt/StWmYfvm0j9dJdpo1VtsouGouDOpSGidXMI87PXTzK2JClqbVy2y9S82uTWTSYBclQ3hNvoIkLNnJwqwTiILhaeczwBEBwpxyB1M5TvyhVx4M8+HI80XS4wH8E0kYtU9F9w/ySYEMsUSmwxmEwLb3fk7cpciNOcISKfAyolJyGg70c6RJdDXLB5ggc01Z0rICTGdAUO21A1nOULCbWUItXi1FaEVn8y6s5ZCwSX8RQfqhmjWJQHRfO8GwFZNivGDcfzh2TfbmK5zY0yZKY/GEUWNB7HXDaC8pgRuHLm01dMsDUhDmklm4CIwvufNeT4EBBVDxRbpg9NhTeaQONfgi+GPkNqeFTk9KHkARK5qOZhZOGTx0qoyckrmPTyMjYJ5FC4la6lJu8PKgFqw
+  template:
+    metadata:
+      creationTimestamp: null
+      name: receiver-token
+      namespace: flux-system
+    type: Opaque
+
