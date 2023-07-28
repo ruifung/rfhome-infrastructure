@@ -206,13 +206,13 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
-      resources:
-        requests:
-          cpu: 15m
-          memory: 105M
-        limits:
-          cpu: 500m
-          memory: 500M
+      # resources:
+      #   requests:
+      #     cpu: 15m
+      #     memory: 105M
+      #   limits:
+      #     cpu: 500m
+      #     memory: 500M
       topologySpreadConstraints: {}
       affinity:
         podAntiAffinity:
