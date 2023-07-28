@@ -22,6 +22,7 @@ spec:
         kind: HelmRepository
         name: bitnami
   interval: 15m
+  timeout: 1h
   postRenderers:
     - kustomize:
         patchesStrategicMerge:
