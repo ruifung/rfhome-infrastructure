@@ -10,7 +10,8 @@ spec:
     spec:
       containers:
         - name: zigbee2mqtt
-          image: koenkk/zigbee2mqtt:1.32.1
+          # image: koenkk/zigbee2mqtt:1.32.1
+          image: ghcr.io/ruifung/zigbee2mqtt:20230805
           env:
             - name: TZ
               value: Asia/Kuala_Lumpur
