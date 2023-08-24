@@ -67,3 +67,4 @@ envoy:
   enabled: true
 bgpControlPlane:
   enabled: true
+localRedirectPolicy: true
