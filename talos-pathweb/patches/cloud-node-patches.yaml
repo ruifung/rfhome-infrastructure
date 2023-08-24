@@ -10,6 +10,10 @@ machine:
         endpoints:
           - 0.0.0.0/0
           - 2000::/3
+  features:
+    kubePrism:
+      enabled: true
+      port: 7445
   kubelet:
     extraArgs:
       rotate-server-certificates: true
@@ -17,7 +21,7 @@ cluster:
   discovery:
     enabled: true
   controlPlane:
-    endpoint: https://10.229.17.0:6443
+    endpoint: https://10.229.97.99:6443
   network:
     cni:
       name: none

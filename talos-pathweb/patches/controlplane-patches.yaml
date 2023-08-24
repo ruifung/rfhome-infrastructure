@@ -4,9 +4,9 @@ machine:
       - interface: eth0
         dhcp: true
         vip:
-          ip: 10.229.17.0
+          ip: 10.229.97.99
   sysctls:
-    kernel.domainname: vsvc.home.arpa
+    kernel.domainname: servers.home.yrf.me
   nodeLabels:
     role: control-plane
 cluster:
@@ -17,9 +17,9 @@ cluster:
       - 1.controlplane.pathweb.clusters.home.yrf.me
       - 2.controlplane.pathweb.clusters.home.yrf.me
       - 3.controlplane.pathweb.clusters.home.yrf.me
-      - pathweb-control-1.vsvc.home.arpa
-      - pathweb-control-2.vsvc.home.arpa
-      - pathweb-control-3.vsvc.home.arpa
+      - pathweb-control-1.servers.home.yrf.me
+      - pathweb-control-2.servers.home.yrf.me
+      - pathweb-control-3.servers.home.yrf.me
     admissionControl:
       - name: PodSecurity
         configuration:

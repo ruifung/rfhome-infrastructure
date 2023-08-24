@@ -1,6 +1,6 @@
 kubeProxyReplacement: strict
-k8sServiceHost: 10.229.17.0
-k8sServicePort: 6443
+k8sServiceHost: localhost
+k8sServicePort: 7445
 egressGateway:
   enabled: true
 bpf:
@@ -37,7 +37,7 @@ hubble:
       - http
     serviceMonitor:
       enabled: true
-tunnel: geneve
+tunnelProtocol: geneve
 # ipv4NativeRoutingCIDR: 10.96.0.0/16
 loadBalancer:
   serviceTopology: true
@@ -63,3 +63,7 @@ operator:
       enabled: true
 socketLB:
   hostNamespaceOnly: true
+envoy:
+  enabled: true
+bgpControlPlane:
+  enabled: true
