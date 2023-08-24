@@ -1,5 +1,5 @@
 Push-Location base
-$KUBE_VERSION="1.26.5"
+$KUBE_VERSION="1.27.5"
 $TALOS_VERSION="v1.5.1"
 talosctl gen config pathweb "https://controlplane.pathweb.clusters.home.yrf.me:6443" --output-dir _out --with-secrets secrets.yaml --with-docs=false --with-examples=false --with-kubespan --kubernetes-version $KUBE_VERSION --talos-version $TALOS_VERSION
 talosctl --talosconfig .\_out\talosconfig config endpoint controlplane.pathweb.clusters.home.yrf.me
