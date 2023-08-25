@@ -3,7 +3,7 @@ terraform {
     namespace      = "kube-system"
     secret_suffix  = "state"
     config_path    = "./ruifung-server-pi-01-k3s.yaml"
-    config_context = "portainer-ctx-server-pi-01-k3s"
+    config_context = "portainer-ctx-Pi4-01"
   }
 }
 
@@ -13,7 +13,7 @@ variable "kubeconfig_file" {
 }
 variable "kubeconfig_ctx" {
   type    = string
-  default = "portainer-ctx-server-pi-01-k3s"
+  default = "portainer-ctx-Pi4-01"
 }
 
 provider "kubernetes" {
