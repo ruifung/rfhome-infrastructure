@@ -21,9 +21,6 @@ machine:
       enabled: true
       port: 7445
   sysctls:
-    # Cilium SysctlFix
-    -net.ipv4.conf.lxc*.rp_filter: 0
-    -net.ipv4.conf.cilium_*.rp_filter: 0
     net.ipv4.conf.all.rp_filter: 0
   registries:
     mirrors:
