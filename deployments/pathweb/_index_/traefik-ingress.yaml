@@ -52,7 +52,7 @@ metadata:
   name: traefik-additional-configs
   namespace: flux-system
 spec:
-  interval: 5m
+  interval: 15m
   path: ./deployments/pathweb/traefik/config
   prune: true
   targetNamespace: traefik

@@ -5,7 +5,7 @@ metadata:
   name: openebs-nfs-provisioner
   namespace: flux-system
 spec:
-  interval: 3h
+  interval: 15m
   url: https://openebs.github.io/dynamic-nfs-provisioner
 
 ---
@@ -24,7 +24,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: openebs-nfs-provisioner
-  interval: 1h
+  interval: 15m
   targetNamespace: openebs
   install:
     createNamespace: true

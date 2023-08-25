@@ -24,7 +24,7 @@ metadata:
   name: metallb-config
   namespace: flux-system
 spec:
-  interval: 5m
+  interval: 15m
   path: ./deployments/pathweb/metallb-config
   prune: true
   sourceRef:

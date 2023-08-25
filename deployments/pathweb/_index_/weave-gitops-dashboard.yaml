@@ -5,7 +5,7 @@ metadata:
   name: weave-gitops
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 15m
   path: ./deployments/pathweb/weave-gitops
   prune: true
   sourceRef:

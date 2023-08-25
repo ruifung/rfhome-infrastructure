@@ -5,7 +5,7 @@ metadata:
   name: descheduler
   namespace: flux-system
 spec:
-  interval: 3h
+  interval: 15m
   url: https://kubernetes-sigs.github.io/descheduler/
 
 ---

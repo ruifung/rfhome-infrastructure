@@ -5,7 +5,7 @@ metadata:
   name: yandex-csi-s3
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 15m
   path: ./deployments/pathweb/yandex-csi-s3
   prune: true
   sourceRef:

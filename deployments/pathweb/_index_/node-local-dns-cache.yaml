@@ -5,7 +5,7 @@ metadata:
   name: node-local-dns-cache
   namespace: kube-system
 spec:
-  interval: 5m0s
+  interval: 15m
   path: ./deployments/pathweb/node-local-dns-cache
   prune: true
   sourceRef:

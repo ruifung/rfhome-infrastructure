@@ -5,7 +5,7 @@ metadata:
   name: node-red
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 15m
   path: ./deployments/pathweb/node-red
   prune: true
   sourceRef:

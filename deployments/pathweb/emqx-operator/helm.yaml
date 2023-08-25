@@ -5,7 +5,7 @@ metadata:
   name: emqx
   namespace: flux-system
 spec:
-  interval: 3h
+  interval: 15m
   url: https://repos.emqx.io/charts
 
 ---

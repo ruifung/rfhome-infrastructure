@@ -5,7 +5,7 @@ metadata:
   name: portainer
   namespace: flux-system
 spec:
-  interval: 3h
+  interval: 15m
   url: https://portainer.github.io/k8s/
 
 ---

@@ -5,7 +5,7 @@ metadata:
   name: vpa
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 15m
   path: ./deployments/pathweb/vpa
   prune: true
   sourceRef:

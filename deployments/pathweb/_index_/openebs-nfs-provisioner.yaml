@@ -5,7 +5,7 @@ metadata:
   name: openebs-nfs-provisioner
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 15m
   path: ./deployments/pathweb/openebs-nfs-provisioner
   prune: true
   sourceRef:

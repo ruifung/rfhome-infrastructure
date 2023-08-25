@@ -5,7 +5,7 @@ metadata:
   name: sealed-secrets
   namespace: flux-system
 spec:
-  interval: 3h
+  interval: 15m
   url: https://bitnami-labs.github.io/sealed-secrets
 
 ---
