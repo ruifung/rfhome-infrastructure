@@ -27,6 +27,7 @@ spec:
   interval: 15m
   targetNamespace: kube-system
   values:
+    kind: Deployment
     nodeSelector:
       kubernetes.io/os: linux
       kubernetes.io/arch: amd64
