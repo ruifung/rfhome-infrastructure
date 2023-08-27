@@ -1,5 +1,6 @@
 ﻿images:
   - name: koenkk/zigbee2mqtt
+    newName: ghcr.io/ruifung/zigbee2mqtt
     newTag: 1.32.2
 
 resources:
