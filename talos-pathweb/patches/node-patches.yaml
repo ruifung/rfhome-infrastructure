@@ -69,7 +69,7 @@ cluster:
   discovery:
     enabled: true
   controlPlane:
-    endpoint: https://controlplane.pathweb.clusters.home.yrf.me:6443
+    endpoint: https://10.229.97.99:6443
   network:
     cni:
       name: none
