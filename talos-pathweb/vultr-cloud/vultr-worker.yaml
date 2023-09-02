@@ -10,4 +10,4 @@
     diskSelector:
       size: "> 16GB"
     extensions:
-      - image: ghcr.io/siderolabs/gvisor:20231214.0-v1.4.5
+      - image: ghcr.io/siderolabs/gvisor:20231214.0-v1.5.1
