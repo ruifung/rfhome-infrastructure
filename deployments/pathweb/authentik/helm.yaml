@@ -25,6 +25,7 @@ spec:
         kind: HelmRepository
         name: authentik
   interval: 15m
+  timeout: 60m
   targetNamespace: home-network
   values:
     replicas: 2
