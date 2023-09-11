@@ -28,7 +28,7 @@ spec:
     image:
       registry: k8s.gcr.io/external-dns
       repository: external-dns
-      tag: v0.13.1
+      tag: v0.13.4
     sources:
     - ingress
     - crd
@@ -73,7 +73,7 @@ spec:
     image:
       registry: k8s.gcr.io/external-dns
       repository: external-dns
-      tag: v0.13.1
+      tag: v0.13.4
     sources:
     - ingress
     - service
@@ -124,7 +124,7 @@ spec:
     image:
       registry: k8s.gcr.io/external-dns
       repository: external-dns
-      tag: v0.13.1
+      tag: v0.13.4
     sources:
     - ingress
     - service
