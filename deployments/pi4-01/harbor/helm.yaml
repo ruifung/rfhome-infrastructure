@@ -57,7 +57,7 @@ spec:
       image:
         registry: docker.io
         repository: bitnami/postgresql
-        tag: 13.10.0-debian-11-r5
+        tag: 15.4.0-debian-11-r5
     portal:
       image:
         registry: docker.io
