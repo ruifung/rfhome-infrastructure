@@ -62,7 +62,7 @@ spec:
       image:
         registry: docker.io
         repository: bitnami/harbor-portal
-        tag: 2.7.1-debian-11-r2
+        tag: 2.9.0-debian-11-r2
     core:
       image:
         registry: docker.io
