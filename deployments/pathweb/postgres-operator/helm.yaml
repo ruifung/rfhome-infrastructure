@@ -25,6 +25,7 @@ spec:
         kind: HelmRepository
         name: crunchydata-pgo
   interval: 15m
+  timeout: 60m
   targetNamespace: crunchydata-pgo
   install:
     createNamespace: true

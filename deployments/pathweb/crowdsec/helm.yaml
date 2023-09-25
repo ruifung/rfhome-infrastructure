@@ -25,6 +25,7 @@ spec:
         kind: HelmRepository
         name: crowdsec
   interval: 15m
+  timeout: 60m
   install:
     createNamespace: true
   postRenderers:

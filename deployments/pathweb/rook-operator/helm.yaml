@@ -29,6 +29,7 @@ spec:
         kind: HelmRepository
         name: rook-release
   interval: 15m
+  timeout: 60m
   targetNamespace: kube-system
   values:
     nodeSelector:
