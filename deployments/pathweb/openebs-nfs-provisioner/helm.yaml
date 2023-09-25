@@ -19,7 +19,7 @@ spec:
   chart:
     spec:
       chart: nfs-provisioner
-      version: 0.10.0
+      version: 0.10.1
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
