@@ -67,7 +67,7 @@ spec:
       image:
         registry: docker.io
         repository: bitnami/harbor-core
-        tag: 2.7.1-debian-11-r3
+        tag: 2.8.4-debian-11-r3
     jobservice:
       image:
         registry: docker.io
