@@ -12,7 +12,7 @@ machine:
           - 2000::/3
   features:
     kubePrism:
-      enabled: false
+      enabled: true
       port: 7445
   kubelet:
     extraArgs:

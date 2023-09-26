@@ -18,7 +18,7 @@ machine:
       rotate-server-certificates: true
   features:
     kubePrism:
-      enabled: false
+      enabled: true
       port: 7445
   sysctls:
     net.ipv4.conf.all.rp_filter: 0

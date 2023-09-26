@@ -1,8 +1,8 @@
 kubeProxyReplacement: strict
-# k8sServiceHost: localhost
-# k8sServicePort: 7445
-k8sServiceHost: 10.229.97.99
-k8sServicePort: 6443
+k8sServiceHost: localhost
+k8sServicePort: 7445
+# k8sServiceHost: 10.229.97.99
+# k8sServicePort: 6443
 egressGateway:
   enabled: true
 bpf:
@@ -90,3 +90,4 @@ envoy:
 bgpControlPlane:
   enabled: true
 localRedirectPolicy: true
+upgradeCompatibility: "1.13"
