@@ -23,6 +23,7 @@ spec:
     - "etcdserver: request timed out.*"
     - "etcdserver: leader changed.*"
     - "read tcp 10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}->10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}: read: connection reset by peer"
+    - "InternalError: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\".*"
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta2
 kind: Alert
@@ -45,6 +46,7 @@ spec:
     - "etcdserver: request timed out.*"
     - "etcdserver: leader changed.*"
     - "read tcp 10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}->10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}: read: connection reset by peer"
+    - "InternalError: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\".*"
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta2
 kind: Alert
@@ -67,3 +69,4 @@ spec:
     - "etcdserver: request timed out.*"
     - "etcdserver: leader changed.*"
     - "read tcp 10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}->10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}: read: connection reset by peer"
+    - "InternalError: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\".*"
