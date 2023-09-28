@@ -63,7 +63,7 @@ spec:
             memory: 105M
           limits:
             cpu: 250m
-            memory: 105M
+            memory: 512M
     envFrom:
       - configMapRef:
           name: authentik-config
@@ -99,11 +99,11 @@ spec:
           memory: 477M
         limits:
           cpu: 1000m
-          memory: 615M
+          memory: 1024M
       worker:
         requests:
           cpu: 50m
           memory: 350M
         limits:
           cpu: 1000m
-          memory: 615M
+          memory: 1024M
