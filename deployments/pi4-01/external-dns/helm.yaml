@@ -60,7 +60,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 6.26.3
+      version: 6.26.4
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -111,7 +111,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 6.26.3
+      version: 6.26.4
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
