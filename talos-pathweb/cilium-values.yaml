@@ -3,7 +3,7 @@ k8sServiceHost: localhost
 k8sServicePort: 7445
 # k8sServiceHost: 10.229.97.99
 # k8sServicePort: 6443
-MTU: 1400
+MTU: 1412
 egressGateway:
   enabled: true
 bpf:
@@ -40,7 +40,7 @@ hubble:
       - http
     serviceMonitor:
       enabled: true
-tunnelProtocol: geneve
+tunnel: geneve
 # ipv4NativeRoutingCIDR: 10.96.0.0/16
 loadBalancer:
   serviceTopology: true
