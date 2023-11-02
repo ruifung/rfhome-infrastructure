@@ -85,7 +85,8 @@ spec:
         exposedPort: 80
         expose: true
         protocol: TCP
-        redirectTo: websecure
+        redirectTo:
+          port: websecure
         forwardedHeaders:
           trustedIPs:
           - 103.21.244.0/22
