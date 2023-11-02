@@ -13,6 +13,7 @@ machine:
       enabled: true
       allowDownPeerBypass: true
       advertiseKubernetesNetworks: false
+      mtu: 1384
   kubelet:
     extraArgs:
       rotate-server-certificates: true
