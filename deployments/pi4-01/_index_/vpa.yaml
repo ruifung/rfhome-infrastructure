@@ -5,7 +5,7 @@ metadata:
   name: vpa
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 1h
   path: ./deployments/pi4-01/vpa
   prune: true
   sourceRef:

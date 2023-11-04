@@ -13,4 +13,4 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: fairwinds-stable
-  interval: 15m
+  interval: 1h

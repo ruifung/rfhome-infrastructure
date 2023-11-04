@@ -22,5 +22,5 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: emberstack
-  interval: 15m
+  interval: 1h
   targetNamespace: kube-system

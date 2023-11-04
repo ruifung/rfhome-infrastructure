@@ -5,7 +5,7 @@ metadata:
   name: goldilocks
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 1h
   path: ./deployments/pi4-01/goldilocks
   prune: true
   sourceRef:

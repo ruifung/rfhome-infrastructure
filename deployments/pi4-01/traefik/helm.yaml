@@ -23,7 +23,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: traefik
-  interval: 15m
+  interval: 1h
   install:
     createNamespace: true
   # postRenderers:

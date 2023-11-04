@@ -24,6 +24,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: metallb
-  interval: 15m
+  interval: 1h
   targetNamespace: kube-system
   values: {}

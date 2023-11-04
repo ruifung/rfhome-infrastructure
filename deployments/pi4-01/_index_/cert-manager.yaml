@@ -5,7 +5,7 @@ metadata:
   name: cert-manager
   namespace: flux-system
 spec:
-  interval: 15m
+  interval: 1h
   path: ./deployments/pi4-01/cert-manager
   prune: true
   sourceRef:

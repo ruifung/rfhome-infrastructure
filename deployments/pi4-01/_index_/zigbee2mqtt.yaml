@@ -5,7 +5,7 @@ metadata:
   name: zigbee2mqtt
   namespace: flux-system
 spec:
-  interval: 15m
+  interval: 1h
   path: ./deployments/pi4-01/zigbee2mqtt
   prune: true
   sourceRef:
