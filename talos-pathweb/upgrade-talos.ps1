@@ -1,9 +1,11 @@
 $TALOS_VERSION="v1.5.4"
 $TALOS_FACTORY_SCHEMATIC_ID="8e8827b5b91420728f8415f3dc200fbf23b425ec07bf27cdc92a676367ee9edf"
 $TALOS_FACTORY_CLOUD_SCHEMATIC_ID="d9ff89777e246792e7642abd3220a616afb4e49822382e4213a2e528ab826fe5"
-$TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
-$TALOS_CLOUD_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_CLOUD_SCHEMATIC_ID}:${TALOS_VERSION}"
-
+# $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
+$TALOS_INSTALL_IMAGE="harbor.services.home.yrf.me/talos-image-factory/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
+# $TALOS_CLOUD_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_CLOUD_SCHEMATIC_ID}:${TALOS_VERSION}"
+$TALOS_CLOUD_IMAGE="harbor.services.home.yrf.me/talos-image-factory/installer/${TALOS_FACTORY_CLOUD_SCHEMATIC_ID}:${TALOS_VERSION}"
+# 
 $homeDnsSuffix = "servers.home.yrf.me"
 $mode, $extraArgs = $args
 $extraArgs = $extraArgs -join " "
