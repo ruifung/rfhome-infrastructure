@@ -13,5 +13,3 @@
     kernel.domainname: vsvc.home.arpa
   install:
     disk: /dev/mmcblk0
-    extensions:
-      - image: ghcr.io/siderolabs/gvisor:20231214.0-v1.4.5

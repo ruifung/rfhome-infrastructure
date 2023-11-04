@@ -1,7 +1,5 @@
 machine:
   install:
-    extensions:
-      - image: ghcr.io/siderolabs/qemu-guest-agent:8.0.2
     extraKernelArgs:
       - net.ifnames=0
   nodeLabels:

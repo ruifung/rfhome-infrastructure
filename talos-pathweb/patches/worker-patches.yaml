@@ -13,6 +13,3 @@
   sysctls:
     user.max_user_namespaces: "11255"
     kernel.domainname: servers.home.yrf.me
-  install:
-    extensions:
-      - image: ghcr.io/siderolabs/gvisor:20231214.0-v1.5.1

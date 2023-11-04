@@ -60,6 +60,10 @@ if (($mode -eq "workers") -or ($mode -eq "all")) {
 if (($mode -eq "cloud") -or ($mode -eq "all")) {
     $toApply = $toApply + $cloudworkers
 }
+#if toApply is empty, split mode by comma and append result to toApply after trimming excess whitespace
+if ($toApply.Count -eq 0) {
+    $toApply = $mode.Split(',') | ForEach-Object { $_.Trim() }
+}
 
 foreach ($node in $toApply) {
     Write-Output "Applying configuration for node: $($node.fqdn)"
