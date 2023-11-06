@@ -1,9 +1,0 @@
-﻿# apiVersion: v1
-# kind: Secret
-# metadata:
-#   name: ingress-cf-tunnel-tf-vars
-#   namespace: flux-system
-# type: Opaque
-# stringData:
-#   cf_account_id: ""
-#   cf_api_token: ""

@@ -21,30 +21,6 @@ spec:
       kind: HelmRelease
       name: traefik-external
       namespace: flux-system
-  # dependsOn:
-    # - name: ingress-cf-tunnel
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1
-# kind: Kustomization
-# metadata:
-#   name: ingress-cf-tunnel
-#   namespace: flux-system
-# spec:
-#   interval: 15m
-#   path: ./deployments/pathweb/ingress-cf-tunnel
-#   prune: true
-#   sourceRef:
-#     kind: GitRepository
-#     name: rfhome-infrastructure
-#   healthChecks:
-#     - apiVersion: infra.contrib.fluxcd.io/v1alpha1
-#       kind: Terraform
-#       name: ingress-cf-tunnel
-#       namespace: flux-system
-#   timeout: 30m
-#   dependsOn:
-#     - name: tf-controller
-
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
