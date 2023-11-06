@@ -30,11 +30,13 @@ spec:
               name: grafana
               namespace: home-network
   values:
-    imageRenderer:
-      enabled: true
-      nodeSelector:
-        kubernetes.io/os: linux
-        location: rfhome
+    # imageRenderer:
+    #   enabled: true
+    #   serverURL:
+    #   callbackURL: 
+    #   nodeSelector:
+    #     kubernetes.io/os: linux
+    #     location: rfhome
     persistence:
       accessMode: ReadWriteMany
       storageClass: cephfs
