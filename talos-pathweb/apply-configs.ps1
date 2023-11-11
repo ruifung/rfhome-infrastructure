@@ -62,7 +62,19 @@ if (($mode -eq "cloud") -or ($mode -eq "all")) {
 }
 #if toApply is empty, split mode by comma and append result to toApply after trimming excess whitespace
 if ($toApply.Count -eq 0) {
-    $toApply = $mode.Split(',') | ForEach-Object { $_.Trim() }
+    $targets = $mode.Split(',')
+    $toApply = $controlplane + $workers + $cloudworkers
+    # filter toApply by fqdn in $targets
+    $toApply = $toApply | Where-Object { $targets -contains $_.fqdn } 
+}
+# if toApply is still empty, print out all available fqdns
+if ($toApply.Count -eq 0) {
+    Write-Output "No nodes found for mode [$mode]"
+    Write-Output "Available nodes:"
+    Write-Output "controlplane: $($controlplane.fqdn -join ', ')"
+    Write-Output "workers: $($workers.fqdn -join ', ')"
+    Write-Output "cloud: $($cloudworkers.fqdn -join ', ')"
+    exit 1
 }
 
 foreach ($node in $toApply) {

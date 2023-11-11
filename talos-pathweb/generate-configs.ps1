@@ -1,6 +1,6 @@
 Push-Location base
 $KUBE_VERSION="1.28.3"
-$TALOS_VERSION="v1.5.4"
+$TALOS_VERSION="v1.5.5"
 $TALOS_FACTORY_SCHEMATIC_ID="8e8827b5b91420728f8415f3dc200fbf23b425ec07bf27cdc92a676367ee9edf"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE="harbor.services.home.yrf.me/talos-image-factory/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"

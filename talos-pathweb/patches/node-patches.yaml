@@ -9,7 +9,7 @@ machine:
   network:
     kubespan:
       enabled: true
-      allowDownPeerBypass: false
+      allowDownPeerBypass: true
       advertiseKubernetesNetworks: false
       mtu: 1412
   kubelet:
