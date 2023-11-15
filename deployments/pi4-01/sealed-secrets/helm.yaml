@@ -23,6 +23,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: sealed-secrets
-      version: 2.13.2
+      version: 2.13.3
   interval: 1h
   targetNamespace: kube-system
