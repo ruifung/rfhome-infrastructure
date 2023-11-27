@@ -32,16 +32,6 @@ spec:
             name: traefik-external-dashboard
             port: 
               name: traefik
-  - host: traefik-vultr-sg.pathweb.clusters.home.yrf.me
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: traefik-vultr-sg-dashboard
-            port: 
-              name: traefik
   tls:
     - hosts:
         - "*.pathweb.clusters.home.yrf.me"
