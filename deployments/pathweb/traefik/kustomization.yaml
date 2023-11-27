@@ -1,4 +1,3 @@
 ﻿resources:
   - "helm.yaml"
   - "helm-external.yaml"
-  - "helm-vultr.yaml"
