@@ -1,5 +1,0 @@
-﻿machine:
-  certSANs:
-    - cloud-1.pathweb.0spkl.dev
-  network:
-    hostname: cloud-1

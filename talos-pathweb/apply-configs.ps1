@@ -40,13 +40,6 @@ $workers = @(
     #     patches = @('@patches\node-patches.yaml','@patches\pi-worker.yaml','@patches\piworker-1.yaml')
     # }
 )
-$cloudworkers = @(
-    @{
-        fqdn = 'cloud-1.pathweb.0spkl.dev';
-        base = '.\base\worker.yaml';
-        patches = @('@patches\cloud-node-patches.yaml','@vultr-cloud\vultr-worker.yaml','@vultr-cloud\cloud-1.yaml')
-    }
-)
 
 Write-Output "Extra Args: $extraArgs"
 if ($extraArgs -eq "") { $extraArgs = "--mode=auto" }
@@ -57,13 +50,10 @@ if (($mode -eq "controlplane") -or ($mode -eq "all")) {
 if (($mode -eq "workers") -or ($mode -eq "all")) {
     $toApply = $toApply + $workers
 }
-if (($mode -eq "cloud") -or ($mode -eq "all")) {
-    $toApply = $toApply + $cloudworkers
-}
 #if toApply is empty, split mode by comma and append result to toApply after trimming excess whitespace
 if ($toApply.Count -eq 0) {
     $targets = $mode.Split(',')
-    $toApply = $controlplane + $workers + $cloudworkers
+    $toApply = $controlplane + $workers
     # filter toApply by fqdn in $targets
     $toApply = $toApply | Where-Object { $targets -contains $_.fqdn } 
 }
@@ -73,7 +63,6 @@ if ($toApply.Count -eq 0) {
     Write-Output "Available nodes:"
     Write-Output "controlplane: $($controlplane.fqdn -join ', ')"
     Write-Output "workers: $($workers.fqdn -join ', ')"
-    Write-Output "cloud: $($cloudworkers.fqdn -join ', ')"
     exit 1
 }
 
