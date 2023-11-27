@@ -24,6 +24,7 @@ spec:
         kind: HelmRepository
         name: metallb
   interval: 15m
+  timeout: 1h
   targetNamespace: kube-system
   values:
     speaker:
