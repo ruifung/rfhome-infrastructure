@@ -8,10 +8,7 @@ machine:
     rook-csi-enabled: "true"
   network:
     kubespan:
-      enabled: true
-      allowDownPeerBypass: true
-      advertiseKubernetesNetworks: false
-      mtu: 1352
+      enabled: false
   kubelet:
     extraArgs:
       rotate-server-certificates: true

@@ -3,7 +3,6 @@ k8sServiceHost: localhost
 k8sServicePort: 7445
 # k8sServiceHost: 10.229.97.99
 # k8sServicePort: 6443
-MTU: 1352
 egressGateway:
   enabled: true
 bpf:
