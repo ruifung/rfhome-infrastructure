@@ -27,8 +27,8 @@ spec:
   targetNamespace: kube-system
   values:
     speaker:
-      frr:
-        enabled: false
+      # frr:
+      #   enabled: false
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
