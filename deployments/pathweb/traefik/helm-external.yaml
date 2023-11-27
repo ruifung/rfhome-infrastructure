@@ -81,12 +81,28 @@ spec:
       - name: additional-configs
         mountPath: /additional-configs
     service:
-      enabled: false
+      enabled: true
+      externalTrafficPolicy: Local
+      annotations:
+        metallb.universe.tf/loadBalancerIPs: 10.229.30.1
+        external-dns.alpha.kubernetes.io/hostname: external-ingress.pathweb.clusters.home.yrf.me
+      labels:
+        external-dns: local-pdns
     ports:
       web:
-        expose: false
+        expose: true
+        proxyProtocol:
+          enabled: true
+          trustedIPs:
+          - fd96:618::1:1/128
+          - 2001:470:36:434::1/128
       websecure:
-        expose: false
+        expose: true
+        proxyProtocol:
+          enabled: true
+          trustedIPs:
+          - fd96:618::1:1/128
+          - 2001:470:36:434::1/128
       cloudflared:
         port: 8081
         expose: false
