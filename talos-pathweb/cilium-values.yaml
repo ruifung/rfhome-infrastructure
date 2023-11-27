@@ -43,7 +43,8 @@ tunnel: geneve
 # ipv4NativeRoutingCIDR: 10.96.0.0/16
 loadBalancer:
   serviceTopology: true
-#   mode: dsr
+  mode: dsr
+  dsrDispatch: geneve
 # autoDirectNodeRoutes: false
 ipam:
   mode: kubernetes

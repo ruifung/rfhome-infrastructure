@@ -95,14 +95,14 @@ spec:
           enabled: true
           trustedIPs:
           - fd96:618::1:1/128
-          - 2001:470:36:434::1/128
+          - 10.228.0.1/32
       websecure:
         expose: true
         proxyProtocol:
           enabled: true
           trustedIPs:
           - fd96:618::1:1/128
-          - 2001:470:36:434::1/128
+          - 10.228.0.1/32
       cloudflared:
         port: 8081
         expose: false
