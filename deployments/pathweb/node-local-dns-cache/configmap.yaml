@@ -14,7 +14,7 @@ data:
         }
         reload
         loop
-        bind 0.0.0.0
+        bind 0.0.0.0 ::
         forward . __PILLAR__CLUSTER__DNS__ {
                 force_tcp
         }
@@ -26,7 +26,7 @@ data:
         cache 30
         reload
         loop
-        bind 0.0.0.0
+        bind 0.0.0.0 ::
         forward . __PILLAR__CLUSTER__DNS__ {
                 force_tcp
         }
@@ -37,7 +37,7 @@ data:
         cache 30
         reload
         loop
-        bind 0.0.0.0
+        bind 0.0.0.0 ::
         forward . __PILLAR__CLUSTER__DNS__ {
                 force_tcp
         }
@@ -48,7 +48,7 @@ data:
         cache 30
         reload
         loop
-        bind 0.0.0.0
+        bind 0.0.0.0 ::
         forward . __PILLAR__UPSTREAM__SERVERS__
         prometheus :9253
         }
