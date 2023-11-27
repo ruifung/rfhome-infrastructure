@@ -9,7 +9,7 @@
         vlans:
           - vlanId: 55
   sysctls:
-    user.max_user_namespaces: "11255"
+    # user.max_user_namespaces: "11255"
     kernel.domainname: vsvc.home.arpa
   install:
     disk: /dev/mmcblk0

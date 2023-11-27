@@ -48,6 +48,8 @@ loadBalancer:
 # autoDirectNodeRoutes: false
 ipam:
   mode: kubernetes
+ipv6:
+  enabled: true
 securityContext:
   capabilities:
     ciliumAgent: 

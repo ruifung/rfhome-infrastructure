@@ -71,9 +71,9 @@ cluster:
       name: none
     podSubnets:
       - 10.96.0.0/16
-      # - fd96:9696:96::/48
+      - fd96:619:6b75:0110::/56
     serviceSubnets:
       - 10.97.0.0/16
-      # - fd96:9696:97::/48
+      - fd96:619:6b75:0120::/112
   proxy:
     disabled: true

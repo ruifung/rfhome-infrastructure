@@ -13,5 +13,5 @@
   sysctls:
     net.ipv6.conf.eth0.accept_ra: "0"
     # net.ipv6.conf.eth0/55.accept_ra: "0"
-    user.max_user_namespaces: "11255"
+    # user.max_user_namespaces: "11255"
     kernel.domainname: servers.home.yrf.me
