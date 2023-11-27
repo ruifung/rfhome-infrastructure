@@ -28,10 +28,10 @@ spec:
   install:
     createNamespace: true
   values:
-    image:
-      registry: k8s.gcr.io/external-dns
-      repository: external-dns
-      tag: v0.13.4
+    # image:
+    #   registry: k8s.gcr.io/external-dns
+    #   repository: external-dns
+    #   tag: v0.13.4
     resources:
       requests:
         cpu: 15m
@@ -82,10 +82,10 @@ spec:
   install:
     createNamespace: true
   values:
-    image:
-      registry: k8s.gcr.io/external-dns
-      repository: external-dns
-      tag: v0.13.4
+    # image:
+    #   registry: k8s.gcr.io/external-dns
+    #   repository: external-dns
+    #   tag: v0.13.4
     resources:
       requests:
         cpu: 15m
@@ -143,10 +143,10 @@ spec:
   install:
     createNamespace: true
   values:
-    image:
-      registry: k8s.gcr.io/external-dns
-      repository: external-dns
-      tag: v0.13.4
+    # image:
+    #   registry: k8s.gcr.io/external-dns
+    #   repository: external-dns
+    #   tag: v0.13.4
     resources:
       requests:
         cpu: 15m
