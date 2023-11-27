@@ -81,7 +81,6 @@ spec:
       - name: additional-configs
         mountPath: /additional-configs
     service:
-      enabled: true
       externalTrafficPolicy: Local
       annotations:
         metallb.universe.tf/loadBalancerIPs: 10.229.30.1
