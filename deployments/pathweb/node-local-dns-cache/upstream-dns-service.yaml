@@ -8,6 +8,10 @@ metadata:
     k8s-app: kube-dns
     kubernetes.io/name: "KubeDNSUpstream"
 spec:
+  IPFamilies:
+  - IPv4
+  - IPv6
+  IPFamilyPolicy: PreferDualStack
   ports:
   - name: dns
     port: 53
