@@ -36,6 +36,7 @@ spec:
     #         target:
     #           kind: Deployment
   values:
+    priorityClassName: rfhome-network-critical
     nodeSelector:
       kubernetes.io/os: linux
       location: rfhome

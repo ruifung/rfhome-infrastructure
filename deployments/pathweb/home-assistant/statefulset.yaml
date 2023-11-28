@@ -21,6 +21,7 @@ spec:
         k8s.v1.cni.cncf.io/networks: '[{"name":"hass-iot-network", "mac":"bc:24:11:fb:5b:bf"}]'
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>,<Egress/80/TCP/HTTP>
     spec:
+      priorityClassName: rfhome-home-critical
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome

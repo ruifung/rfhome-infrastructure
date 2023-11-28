@@ -38,6 +38,15 @@ spec:
               namespace: portainer
               labels:
                 external-dns: local-pdns
+          - apiVersion: apps/v1
+            kind: Deployment
+            metadata:
+              name: portainer
+              namespace: portainer
+            spec:
+              template:
+                spec:
+                  priorityClassName: rfhome-network-critical
   values:
     nodeSelector:
       kubernetes.io/os: linux

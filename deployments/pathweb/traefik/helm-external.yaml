@@ -34,6 +34,7 @@ spec:
   values:
     nameOverride: traefik-external
     fullNameOverride: traefik-external
+    priorityClassName: rfhome-home-critical
     nodeSelector:
       kubernetes.io/os: linux
       location: rfhome

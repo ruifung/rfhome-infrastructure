@@ -27,6 +27,7 @@ spec:
   interval: 15m
   targetNamespace: kube-system
   values:
+    priorityClassName: rfhome-network-critical
     nodeSelector:
       kubernetes.io/os: linux
       location: rfhome

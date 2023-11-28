@@ -36,6 +36,7 @@ spec:
       io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
     replicaCount: 1
     concurrency: 24
+    priorityClassName: rfhome-standard
     resources:
       limits:
         cpu: 1000m

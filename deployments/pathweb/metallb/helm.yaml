@@ -28,6 +28,7 @@ spec:
   targetNamespace: kube-system
   values:
     speaker:
+      priorityClassName: rfhome-network-critical
       # frr:
       #   enabled: false
       affinity:
@@ -40,6 +41,7 @@ spec:
       tolerations:
       - operator: Exists
     controller:
+      priorityClassName: rfhome-high-priority
       nodeSelector:
         node-role.kubernetes.io/control-plane:
       tolerations:

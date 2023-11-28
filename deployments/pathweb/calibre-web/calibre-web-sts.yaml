@@ -20,6 +20,7 @@ spec:
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>
     spec:
       # runtimeClassName: gvisor
+      priorityClassName: rfhome-low-priority
       nodeSelector:
         kubernetes.io/os: linux
         kubernetes.io/arch: amd64

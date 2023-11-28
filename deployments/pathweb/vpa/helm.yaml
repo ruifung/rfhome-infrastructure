@@ -15,6 +15,7 @@ spec:
         name: fairwinds-stable
   interval: 15m
   values:
+    priorityClassName: rfhome-high-priority
     recommender:
       resources:
         requests:

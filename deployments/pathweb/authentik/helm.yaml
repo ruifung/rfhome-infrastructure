@@ -29,8 +29,10 @@ spec:
   targetNamespace: home-network
   values:
     replicas: 2
+    priorityClassName: rfhome-network-critical
     worker:
       replicas: 2
+      priorityClassName: rfhome-high-priority
     nodeSelector:
       location: rfhome
     ingress:
@@ -55,6 +57,7 @@ spec:
     redis:
       enabled: true
       master:
+        priorityClassName: rfhome-network-critical
         nodeSelector:
           location: rfhome
         resources:

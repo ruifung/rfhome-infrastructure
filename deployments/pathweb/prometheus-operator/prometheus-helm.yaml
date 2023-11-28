@@ -16,6 +16,8 @@ spec:
         namespace: flux-system
   interval: 15m
   values:
+    operator:
+      priorityClassName: rfhome-standard
     prometheus:
       enabled: false
     alertmanager:

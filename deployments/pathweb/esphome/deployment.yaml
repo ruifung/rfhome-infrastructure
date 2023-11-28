@@ -11,6 +11,7 @@ spec:
       # annotations:
         # k8s.v1.cni.cncf.io/networks: home-network/esphome-iot-network
     spec:
+      priorityClassName: rfhome-low-priority
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome

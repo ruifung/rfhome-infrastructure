@@ -32,6 +32,7 @@ spec:
     #   registry: k8s.gcr.io/external-dns
     #   repository: external-dns
     #   tag: v0.13.4
+    priorityClassName: rfhome-standard
     resources:
       requests:
         cpu: 15m
@@ -86,6 +87,7 @@ spec:
     #   registry: k8s.gcr.io/external-dns
     #   repository: external-dns
     #   tag: v0.13.4
+    priorityClassName: rfhome-network-critical
     resources:
       requests:
         cpu: 15m
@@ -147,6 +149,7 @@ spec:
     #   registry: k8s.gcr.io/external-dns
     #   repository: external-dns
     #   tag: v0.13.4
+    priorityClassName: rfhome-network-critical
     resources:
       requests:
         cpu: 15m

@@ -23,6 +23,28 @@ spec:
         kind: HelmRepository
         name: fairwinds-stable
   interval: 15m
+  postRenderers:
+    - kustomize:
+        patchesStrategicMerge:
+          - apiVersion: apps/v1
+            kind: Deployment
+            metadata:
+              name: goldilocks-controller
+              namespace: monitoring
+            spec:
+              template:
+                spec:
+                  priorityClassName: rfhome-standard
+          - apiVersion: apps/v1
+            kind: Deployment
+            metadata:
+              name: goldilocks-dashboard
+              namespace: monitoring
+            spec:
+              template:
+                spec:
+                  priorityClassName: rfhome-low-priority
+
   values:
     controller:
       nodeSelector:
