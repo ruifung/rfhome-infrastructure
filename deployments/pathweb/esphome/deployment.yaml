@@ -31,6 +31,8 @@ spec:
         env:
           - name: TZ
             value: Asia/Kuala_Lumpur
+          - name: ESPHOME_DASHBOARD_USE_PING 
+            value: "true"
           - name: POD_IP
             valueFrom:
               fieldRef:
