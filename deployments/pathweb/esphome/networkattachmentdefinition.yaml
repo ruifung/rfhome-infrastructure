@@ -12,10 +12,6 @@ spec:
         "bridge": "br0",
         "vlan": 55,
         "ipam": {
-            "type": "static",
-            "addresses": [
-              {"address": "10.229.4.3/24", "gateway": "10.229.4.1"},
-              {"address": "fd96:619:4::3/64", "gateway": "fd96:619:4::1"}
-            ]
+            "type": "dhcp",
         }
     }
