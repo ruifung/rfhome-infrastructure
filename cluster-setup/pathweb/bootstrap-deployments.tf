@@ -16,10 +16,21 @@ data "kubectl_file_documents" "multus" {
   content = file("${path.module}/multus-cni.yaml")
 }
 
+data "kubectl_file_documents" "multus-dhcp" {
+  content = file("${path.module}/multus-cni-dhcp.yaml")
+}
+
+
 resource "kubectl_manifest" "multus" {
   for_each  = data.kubectl_file_documents.multus.manifests
   yaml_body = each.value
 }
+
+resource "kubectl_manifest" "multus-dhcp" {
+  for_each  = data.kubectl_file_documents.multus-dhcp.manifests
+  yaml_body = each.value
+}
+
 
 # Bootstrap deployment of tf-controller, will be taken over by 
 # flux later.
