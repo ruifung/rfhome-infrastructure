@@ -7,17 +7,10 @@
         dhcp: true
       - interface: eth1
         dhcp: false
-      - interface: br0
-        dhcp: false
-        bridge:
-          stp:
-            enabled: false
-          interfaces:
-            - eth1
-
+        vlans:
+          - vlanId: 55
   sysctls:
     net.ipv6.conf.eth1.accept_ra: "0"
-    net.ipv6.conf.br0.accept_ra: "0"
     # user.max_user_namespaces > 0 is required for gvisor usage.
     # talos defaults to 0 as ker KSPP.
     user.max_user_namespaces: "28633"
