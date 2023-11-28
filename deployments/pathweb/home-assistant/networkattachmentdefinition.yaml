@@ -8,8 +8,9 @@ spec:
   config: |-
     {
         "cniVersion": "0.3.0",
-        "type": "ipvlan",
+        "type": "macvlan",
         "master": "eth1.55",
+        "mode": "bridge",
         "ipam": {
             "type": "static",
             "addresses": [
