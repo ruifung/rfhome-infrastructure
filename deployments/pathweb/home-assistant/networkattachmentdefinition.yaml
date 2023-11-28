@@ -8,13 +8,14 @@ spec:
   config: |-
     {
         "cniVersion": "0.3.0",
-        "type": "macvlan",
-        "master": "eth0.55",
-        "mode": "bridge",
+        "type": "vlan",
+        "master": "eth1",
+        "vlan": 55,
         "ipam": {
             "type": "static",
             "addresses": [
-              {"address": "10.229.4.2/24", "gateway": "10.229.4.1"}
+              {"address": "10.229.4.2/24", "gateway": "10.229.4.1"},
+              {"address": "fd96:619:4::2/64", "gateway": "fd96:619:4::1"}
             ]
         }
     }
