@@ -14,11 +14,7 @@ spec:
           "master": "eth1.55",
           "mode": "bridge",
           "ipam": {
-            "type": "static",
-            "addresses": [
-              {"address": "10.229.4.2/24", "gateway": "10.229.4.1"},
-              {"address": "fd96:619:4::2/64", "gateway": "fd96:619:4::1"}
-            ]
+            "type": "dhcp"
           }
         },
         {
@@ -26,6 +22,10 @@ spec:
           "capabilities": {
             "mac": true
           }
+        },
+        {
+          "type" : "route-override",
+          "flushroutes" : true
         }
       ]
     }
