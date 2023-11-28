@@ -18,7 +18,7 @@ spec:
       labels:
         app.kubernetes.io/name: home-assistant
       annotations:
-        k8s.v1.cni.cncf.io/networks: home-network/hass-iot-network
+        k8s.v1.cni.cncf.io/networks: home-network/rfhome-iot-network
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>,<Egress/80/TCP/HTTP>
     spec:
       nodeSelector:

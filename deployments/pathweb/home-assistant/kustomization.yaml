@@ -13,7 +13,6 @@ resources:
 - statefulset.yaml
 - service.yaml
 - persistentvolumeclaim.yaml
-- networkattachmentdefinition.yaml
 - ingress.yaml
 - traefik-ingressroute.yaml
 - traefik-middleware.yaml

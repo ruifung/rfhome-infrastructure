@@ -2,7 +2,7 @@
 apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
-  name: hass-iot-network
+  name: rfhome-iot-network
   namespace: home-network
 spec:
   config: |-
@@ -12,10 +12,6 @@ spec:
         "bridge": "br0",
         "vlan": 55,
         "ipam": {
-            "type": "static",
-            "addresses": [
-              {"address": "10.229.4.2/24", "gateway": "10.229.4.1"},
-              {"address": "fd96:619:4::2/64", "gateway": "fd96:619:4::1"}
-            ]
+            "type": "dhcp"
         }
     }

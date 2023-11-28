@@ -7,7 +7,6 @@ resources:
   - pvc.yaml
   - service.yaml
   - ingress.yaml
-  - networkattachmentdefinition.yaml
 
 commonLabels:
   app.kubernetes.io/name: esphome
