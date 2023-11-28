@@ -9,7 +9,7 @@ spec:
   template:
     metadata:
       annotations:
-        k8s.v1.cni.cncf.io/networks: home-network/rfhome-iot-network
+        k8s.v1.cni.cncf.io/networks: home-network/esphome-iot-network
     spec:
       nodeSelector:
         kubernetes.io/os: linux
