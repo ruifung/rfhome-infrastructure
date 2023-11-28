@@ -19,6 +19,7 @@ spec:
                 {"address": "10.229.4.2/24", "gateway": "10.229.4.1"},
                 {"address": "fd96:619:4::2/64", "gateway": "fd96:619:4::1"}
               ]
+          }
         },
         {
           "type": "tuning",
