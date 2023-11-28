@@ -1,0 +1,56 @@
+﻿kubeProxyReplacement: strict
+k8sServiceHost: localhost
+k8sServicePort: 6443
+egressGateway:
+  enabled: true
+bpf:
+  masquerade: true
+  vlanBypass: "0"
+hubble:
+  enabled: true
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+tunnel: geneve
+loadBalancer:
+  serviceTopology: true
+  mode: dsr
+  dsrDispatch: geneve
+ipam:
+  mode: kubernetes
+ipv6:
+  enabled: false
+securityContext:
+  capabilities:
+    ciliumAgent:
+      - CHOWN
+      - KILL
+      - NET_ADMIN
+      - NET_RAW
+      - IPC_LOCK
+      - SYS_ADMIN
+      - SYS_RESOURCE
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+    cleanCiliumState:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_RESOURCE
+cgroup:
+  automount:
+    enabled: false
+  hostRoot: /sys/fs/cgroup
+endpointStatus:
+  enabled: true
+  status: "policy"
+cni:
+  exclusive: false
+operator:
+  replicas: 1
+socketLB:
+  hostNamespaceOnly: true
+localRedirectPolicy: true
+upgradeCompatibility: "1.14"
