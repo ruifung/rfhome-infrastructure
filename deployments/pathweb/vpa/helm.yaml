@@ -15,28 +15,28 @@ spec:
         name: fairwinds-stable
   interval: 15m
   values:
-    priorityClassName: rfhome-high-priority
+    priorityClassName: system-cluster-critical
     recommender:
       resources:
         requests:
-          cpu: 15m
+          cpu: 5m
           memory: 105M
         limits:
-          cpu: 24m
-          memory: 133M
+          cpu: 100m
+          memory: 150M
     updater:
       resources:
         requests:
-          cpu: 15m
-          memory: 105M
+          cpu: 5m
+          memory: 50M
         limits:
-          cpu: 15m
-          memory: 105M
+          cpu: 100m
+          memory: 150M
     admissionController:
       resources:
         requests:
           cpu: 15m
-          memory: 105M
+          memory: 50M
         limits:
-          cpu: 15m
-          memory: 105M
+          cpu: 500m
+          memory: 150M
