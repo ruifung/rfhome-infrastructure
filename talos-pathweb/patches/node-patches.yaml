@@ -10,6 +10,10 @@ machine:
     kubespan:
       enabled: false
   kubelet:
+    nodeIP:
+      validSubnets:
+        - 10.229.97.0/24
+        - fd96:619:97::/64
     extraArgs:
       rotate-server-certificates: true
   features:

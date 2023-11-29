@@ -7,8 +7,6 @@
         dhcp: true
       - interface: eth1
         dhcp: false
-        vlans:
-          - vlanId: 55
   sysctls:
     net.ipv6.conf.eth1.accept_ra: "0"
     # user.max_user_namespaces > 0 is required for gvisor usage.

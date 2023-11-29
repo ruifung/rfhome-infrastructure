@@ -1,5 +1,5 @@
 $TALOS_VERSION = "v1.5.5"
-$TALOS_FACTORY_SCHEMATIC_ID = "73aca3ec1ea78b5455244413f6f01e0eb3e17a18501dddf0a6ef8074ce5bcd04"
+$TALOS_FACTORY_SCHEMATIC_ID = "7c2c54e67216d672d98c72cb5c5dbc5da72c4c9ba8e308a1a7d7eb07b6ecd0e3"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE = "harbor.services.home.yrf.me/talos-image-factory/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
  
@@ -41,8 +41,8 @@ foreach ($node in $toApply) {
         $node,
         '--image',
         $IMAGE,
-        '--wait',
-        '--stage'
+        '--wait'
+        # '--stage'
     )
     # append extraArgs to args if extraArgs is not blank
     if ($extraArgs -ne "") {
