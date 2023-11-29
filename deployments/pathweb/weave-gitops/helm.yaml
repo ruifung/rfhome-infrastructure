@@ -47,7 +47,6 @@ spec:
         kind: Deployment
         metadata:
           name: ww-gitops-weave-gitops
-          namespace: flux-system
         spec:
           template:
             spec:
