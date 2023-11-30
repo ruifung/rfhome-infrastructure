@@ -35,6 +35,7 @@ spec:
     deschedulerPolicyAPIVersion: "descheduler/v1alpha2"
     deschedulerPolicy:
       nodeSelector: role=worker
+      maxNoOfPodsToEvictPerNode: 2
       profiles:
       - name: ProfileName
         pluginConfig:
