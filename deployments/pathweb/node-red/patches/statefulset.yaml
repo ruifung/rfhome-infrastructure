@@ -30,7 +30,7 @@ spec:
               cpu: 15m
               memory: 1169M
             limits:
-              cpu: 50m
+              cpu: '2'
               memory: 1297M
       initContainers:
         - name: install-extra-modules
