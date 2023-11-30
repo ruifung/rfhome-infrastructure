@@ -95,9 +95,6 @@ spec:
   - kind: Rule
     match: Host(`ebooks.yrf.me`) && PathPrefix(`/webhooks/onedrive-sync`)
     priority: 100
-    middlewares:
-    - name: calibre-web-static-caching-policy
-    - name: calibre-web-opds-cover-public
     services:
     - kind: TraefikService
       name: calibre-web-onedrive-sync-mirror
