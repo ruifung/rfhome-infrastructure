@@ -27,50 +27,71 @@ spec:
   interval: 15m
   targetNamespace: kube-system
   values:
-    kind: Deployment
+    kind: CronJob
     nodeSelector:
       kubernetes.io/os: linux
       kubernetes.io/arch: amd64
       location: rfhome
+    deschedulerPolicyAPIVersion: "descheduler/v1alpha2"
     deschedulerPolicy:
-      strategies:
-        RemoveDuplicates:
-          enabled: true
-        RemovePodsHavingTooManyRestarts:
-          enabled: true
-          params:
-            podsHavingTooManyRestarts:
-              podRestartThreshold: 100
-              includingInitContainers: true
-        RemovePodsViolatingNodeAffinity:
-          enabled: true
-          params:
+      nodeSelector: role=worker
+      profiles:
+      - name: ProfileName
+        pluginConfig:
+        - name: "DefaultEvictor"
+          args:
+            evictSystemCriticalPods: true
+            evictFailedBarePods: true
+            evictLocalStoragePods: true
+            nodeFit: true
+        - name: "LowNodeUtilization"
+          args:
+            useDeviationThresholds: true
+            thresholds:
+              cpu: 30
+              memory: 30
+              pods: 30
+            targetThresholds:
+              cpu: 50
+              memory: 50
+              pods: 50
+        - name: "RemovePodsViolatingInterPodAntiAffinity"
+        - name: "RemovePodsViolatingNodeAffinity"
+          args:
             nodeAffinityType:
-              - requiredDuringSchedulingIgnoredDuringExecution
-        RemovePodsViolatingInterPodAntiAffinity:
-          enabled: true
-        RemovePodsViolatingTopologySpreadConstraint:
-          enabled: true
-          params:
-            includeSoftConstraints: false
-        HighNodeUtilization:
-          enabled: true
-          params:
-            nodeResourceUtilizationThresholds:
-              thresholds:
-                cpu: 99
-                memory: 99
-                pods: 99
-        LowNodeUtilization:
-          enabled: true
-          params:
-            nodeResourceUtilizationThresholds:
-              useDeviationThresholds: true
-              thresholds:
-                cpu: 30
-                memory: 30
-                pods: 30
-              targetThresholds:
-                cpu: 50
-                memory: 50
-                pods: 50
+            - "requiredDuringSchedulingIgnoredDuringExecution"
+            - "preferredDuringSchedulingPreferredDuringExecution"
+        - name: "RemovePodsViolatingNodeTaints"
+          args:
+            excludedTaints:
+            - "node.kubernetes.io/unschedulable"
+        - name: "RemovePodsViolatingTopologySpreadConstraint"
+          args:
+            constraints:
+              - DoNotSchedule
+              - ScheduleAnyway
+            topologyBalanceNodeFit: false
+        - name: "RemovePodsHavingTooManyRestarts"
+          args:
+            podRestartThreshold: 100
+            includingInitContainers: true
+        - name: "RemoveFailedPods"
+          args:
+            includingInitContainers: true
+            excludeOwnerKinds:
+            - "Job"
+            minPodLifetimeSeconds: 3600
+        plugins:
+          balance:
+            enabled:
+            - "RemoveDuplicates"
+            - "LowNodeUtilization"
+          deschedule:
+            enabled:
+            - "RemovePodsViolatingInterPodAntiAffinity"
+            - "RemovePodsViolatingNodeAffinity"
+            - "RemovePodsViolatingNodeTaints"
+            - "RemovePodsViolatingTopologySpreadConstraint" 
+            - "RemovePodsHavingTooManyRestarts"
+            - "RemoveFailedPods"
+
