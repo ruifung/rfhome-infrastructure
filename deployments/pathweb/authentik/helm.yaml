@@ -78,11 +78,11 @@ spec:
       AUTHENTIK_POSTGRESQL__HOST:
         secretKeyRef:
           name: "rfhome-postgres-ha-pguser-authentik"
-          key: "host"
+          key: "pgbouncer-host"
       AUTHENTIK_POSTGRESQL__PORT:
         secretKeyRef:
           name: "rfhome-postgres-ha-pguser-authentik"
-          key: "port"
+          key: "pgbouncer-port"
       AUTHENTIK_POSTGRESQL__USER:
         secretKeyRef:
           name: "rfhome-postgres-ha-pguser-authentik"
