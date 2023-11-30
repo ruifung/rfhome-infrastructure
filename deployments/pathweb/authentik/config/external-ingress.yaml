@@ -22,7 +22,7 @@ spec:
             name: authentik
             port: 
               name: http
-      tls:
-        - secretName: authentik-public-cert
-          hosts:
-            - auth-home.yrf.me
+  tls:
+    - secretName: authentik-public-cert
+      hosts:
+        - auth-home.yrf.me
