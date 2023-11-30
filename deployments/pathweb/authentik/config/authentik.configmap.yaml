@@ -13,3 +13,4 @@ data:
   OUTPOSTS__CONTAINER_IMAGE_BASE: "ghcr.io/goauthentik/%(type)s:%(version)s"
   REDIS__HOST: "authentik-redis-master"
   POSTGRESQL__USE_PGBOUNCER: "true"
+  POSTGRESQL__SSLMODE: 'require'
