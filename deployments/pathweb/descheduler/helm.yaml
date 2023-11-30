@@ -40,7 +40,6 @@ spec:
         pluginConfig:
         - name: "DefaultEvictor"
           args:
-            evictSystemCriticalPods: true
             evictFailedBarePods: true
             evictLocalStoragePods: true
             nodeFit: true
