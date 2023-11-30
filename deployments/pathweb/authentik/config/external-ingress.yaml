@@ -3,8 +3,9 @@ kind: Ingress
 metadata:
   name: authentik-external
   annotations:
-    external-dns.alpha.kubernetes.io/target: pathweb-cloudlb.0spkl.dev
     cert-manager.io/cluster-issuer: le-yrf-me
+    external-dns.alpha.kubernetes.io/target: pathweb-cloudlb.0spkl.dev
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
   labels:
     app.kubernetes.io/instance: authentik
     app.kubernetes.io/name: authentik
