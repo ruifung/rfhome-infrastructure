@@ -33,6 +33,7 @@ spec:
           cpu: 100m
           memory: 150M
     admissionController:
+      replicaCount: 2
       resources:
         requests:
           cpu: 15m
