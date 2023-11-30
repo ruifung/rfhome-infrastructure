@@ -5,7 +5,7 @@ provider "flux" {
   }
   git = {
     url  = "ssh://git@github.com/ruifung/rfhome-infrastructure.git"
-    branch = "master"
+    branch = "flux-pathweb"
     ssh = {
       username    = "git"
       private_key = tls_private_key.rfhome_infra_deploy_key.private_key_pem
