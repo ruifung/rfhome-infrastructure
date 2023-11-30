@@ -17,6 +17,7 @@ resources:
   - "ingress.yaml"
   - "traefik-ingressroute.yaml"
   - "traefik-middleware.yaml"
+  - "traefik-service.yaml"
 
 configMapGenerator:
   - name: "calibre-library-sync-config"
