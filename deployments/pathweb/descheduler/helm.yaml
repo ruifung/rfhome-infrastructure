@@ -48,9 +48,9 @@ spec:
           args:
             useDeviationThresholds: true
             thresholds:
-              cpu: 10
-              memory: 10
-              pods: 10
+              cpu: 5
+              memory: 5
+              pods: 5
             targetThresholds:
               cpu: 10
               memory: 10
