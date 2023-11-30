@@ -4,6 +4,7 @@ metadata:
   name: authentik-external
   annotations:
     external-dns.alpha.kubernetes.io/target: pathweb-cloudlb.0spkl.dev
+    cert-manager.io/cluster-issue: le-yrf-me
   labels:
     app.kubernetes.io/instance: authentik
     app.kubernetes.io/name: authentik
@@ -21,3 +22,7 @@ spec:
             name: authentik
             port: 
               name: http
+      tls:
+        - secretName: authentik-public-cert
+          hosts:
+            - auth-home.yrf.me
