@@ -86,12 +86,12 @@ spec:
             enabled:
             - "RemoveDuplicates"
             - "LowNodeUtilization"
+            - "RemovePodsViolatingTopologySpreadConstraint" 
           deschedule:
             enabled:
             - "RemovePodsViolatingInterPodAntiAffinity"
             - "RemovePodsViolatingNodeAffinity"
             - "RemovePodsViolatingNodeTaints"
-            - "RemovePodsViolatingTopologySpreadConstraint" 
             - "RemovePodsHavingTooManyRestarts"
             - "RemoveFailedPods"
 
