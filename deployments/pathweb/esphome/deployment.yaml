@@ -43,7 +43,7 @@ spec:
             cpu: 15m
             memory: 105M
           limits:
-            cpu: 1024m
+            cpu: 3
             memory: 4G
         ports:
         - containerPort: 6052
