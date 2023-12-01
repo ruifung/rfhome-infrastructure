@@ -65,11 +65,11 @@ spec:
               subPath: venv-run
           resources:
             requests:
-              cpu: 50m
-              memory: 500M
+              cpu: 34m
+              memory: 1168M
             limits:
               cpu: '4'
-              memory: 2G
+              memory: 3Gi
       volumes:
         - name: hass-data
           persistentVolumeClaim:
