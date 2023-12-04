@@ -45,6 +45,13 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      resources:
+        requests:
+          cpu: 15m
+          memory: 127M
+        limits:
+          cpu: '1'
+          memory: 1G
       updateStrategy:
         type: Recreate
       extraEnvVarsSecret: "grafana-config"

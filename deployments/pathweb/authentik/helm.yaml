@@ -98,15 +98,15 @@ spec:
     resources:
       server:
         requests:
-          cpu: 22m
+          cpu: 34m
           memory: 477M
         limits:
-          cpu: 1000m
+          cpu: '1'
           memory: 1024M
       worker:
         requests:
-          cpu: 50m
-          memory: 350M
+          cpu: 15m
+          memory: 477M
         limits:
-          cpu: 1000m
-          memory: 1024M
+          cpu: '1'
+          memory: 553M

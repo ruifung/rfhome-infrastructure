@@ -31,7 +31,7 @@ spec:
               subPath: appdaemon
           resources:
             requests:
-              cpu: 15m
+              cpu: 48m
               memory: 105M
             limits:
               cpu: 300m

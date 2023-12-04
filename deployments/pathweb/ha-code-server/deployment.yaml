@@ -41,10 +41,10 @@ spec:
         resources:
           requests:
             cpu: 15m
-            memory: 145M
+            memory: 105M
           limits:
             memory: "1Gi"
-            cpu: "1000m"
+            cpu: "1"
         ports:
         - containerPort: 8443
           name: web
