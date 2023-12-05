@@ -10,7 +10,7 @@ data:
       middlewares:
         crowdsec:
           plugin:
-            bouncer:
+            crowdsec:
               crowdsecMode: "stream"
               crowdsecLapiHost: "crowdsec-service.monitoring:8080"
               crowdsecLapiScheme: "https"
