@@ -24,6 +24,7 @@ spec:
         kind: HelmRepository
         name: traefik
   interval: 15m
+  timeout: 1h
   install:
     createNamespace: true
   postRenderers: []
