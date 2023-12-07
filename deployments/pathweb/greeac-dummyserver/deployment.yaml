@@ -24,7 +24,7 @@ spec:
             - name: DOMAIN_NAME
               value: hk.dis.gree.com
             - name: EXTERNAL_IP
-              value: 10.229.30.0
+              value: 10.229.30.2
           resources:
             limits:
               memory: 512Mi
