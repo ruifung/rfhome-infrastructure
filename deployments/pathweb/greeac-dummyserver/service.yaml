@@ -1,0 +1,13 @@
+﻿
+apiVersion: v1
+kind: Service
+metadata:
+  name: greeac-dummyserver-service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: greeac-port
+      port: 5000
+      targetPort: greeac
+  selector:
+    app: greeac-dummyserver

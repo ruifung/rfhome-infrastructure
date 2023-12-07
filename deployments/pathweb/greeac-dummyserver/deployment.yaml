@@ -1,0 +1,31 @@
+﻿
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greeac-dummyserver
+  namespace: home-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greeac-dummyserver
+  template:
+    metadata:
+      labels:
+        app: greeac-dummyserver
+    spec:
+      containers:
+        - name: greeac-dummyserver
+          image: emtek/greeac-dummyserver:latest
+          ports:
+            - containerPort: 5000
+              name: greeac
+          env:
+            - name: DOMAIN_NAME
+              value: hk.dis.gree.com
+            - name: EXTERNAL_IP
+              value: 10.229.30.0
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
