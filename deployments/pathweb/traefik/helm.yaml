@@ -27,15 +27,15 @@ spec:
   timeout: 1h
   install:
     createNamespace: true
-  postRenderers:
-    - kustomize:
-        patches:
-          - patch: |
-              - op: "add"
-                path: "/spec/template/spec/runtimeClassName"
-                value: "gvisor"
-            target:
-              kind: Deployment
+  # postRenderers:
+  #   - kustomize:
+  #       patches:
+  #         - patch: |
+  #             - op: "add"
+  #               path: "/spec/template/spec/runtimeClassName"
+  #               value: "gvisor"
+  #           target:
+  #             kind: Deployment
   values:
     priorityClassName: rfhome-network-critical
     nodeSelector:
