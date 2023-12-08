@@ -36,6 +36,7 @@ spec:
                 value: "gvisor"
             target:
               kind: Deployment
+              name: authentik-server
   values:
     replicas: 2
     priorityClassName: rfhome-network-critical
