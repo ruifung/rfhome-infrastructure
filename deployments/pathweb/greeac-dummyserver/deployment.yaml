@@ -14,6 +14,7 @@ spec:
       labels:
         app: greeac-dummyserver
     spec:
+      runtimeClassName: gvisor
       containers:
         - name: greeac-dummyserver
           image: emtek/greeac-dummyserver:latest
