@@ -27,6 +27,15 @@ spec:
   interval: 15m
   timeout: 60m
   targetNamespace: home-network
+  postRenderers:
+    - kustomize:
+        patches:
+          - patch: |
+              - op: "add"
+                path: "/spec/template/spec/runtimeClassName"
+                value: "gvisor"
+            target:
+              kind: Deployment
   values:
     replicas: 2
     priorityClassName: rfhome-network-critical
