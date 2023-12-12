@@ -25,11 +25,60 @@ spec:
   interval: 15m
   values:
     ingress:
-      annotations:
-        kubernetes.io/ingress.class: traefik-traefik
-      spec:
-        ingressClassName: traefik-traefik
-      hosts:
-        - netdata.pathweb.clusters.home.yrf.me
+      enabled: false
     rbac:
       pspEnabled: false
+    parent:
+      enabled: false
+    child:
+      configs:
+        stream:
+          data: |
+            [stream]
+              enabled = yes
+              destination = netdata01.servers.home.yrf.me
+              api key = 4540129f-79d1-4ee3-964f-a989dc94e155
+              timeout seconds = 60
+              buffer size bytes = 1048576
+              reconnect delay seconds = 5
+              initial clock resync iterations = 60
+    k8sState:
+      configs:
+        netdata:  
+          data: |
+            [global]
+              hostname = pathweb-netdata-k8s-state
+            [db]
+              mode = ram
+            [health]
+              enabled = no
+            [ml]
+              enabled = no
+            [plugins]
+              timex = no
+              checks = no
+              idlejitter = no
+              tc = no
+              diskspace = no
+              proc = no
+              cgroups = no
+              enable running new plugins = no
+              slabinfo = no
+              perf = no
+              go.d = yes
+              ioping = no
+              ebpf = no
+              charts.d = no
+              apps = no
+              python.d = no
+              fping = no
+        stream:
+          data: |
+            [stream]
+              enabled = yes
+              destination = netdata01.servers.home.yrf.me
+              api key = 4540129f-79d1-4ee3-964f-a989dc94e155
+              timeout seconds = 60
+              buffer size bytes = 1048576
+              reconnect delay seconds = 5
+              initial clock resync iterations = 60
