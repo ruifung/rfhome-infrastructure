@@ -25,11 +25,11 @@ spec:
   interval: 15m
   values:
     ingress:
-      annotations: {}
+      annotations:
+        kubernetes.io/ingress.class: traefik-traefik
       spec:
         ingressClassName: traefik-traefik
       hosts:
         - netdata.pathweb.clusters.home.yrf.me
     rbac:
       pspEnabled: false
-    
