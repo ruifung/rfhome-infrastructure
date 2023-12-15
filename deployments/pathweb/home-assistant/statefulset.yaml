@@ -27,9 +27,19 @@ spec:
         location: rfhome
       securityContext:
         fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: home-assistant
           image: homeassistant/home-assistant:stable
+          securityContext:
+            allowPrivilegeEscalation: false
+            # capabilities:
+            #   drop:
+            #     - ALL
+              # add:
+              #   - NET_ADMIN
+              #   - NET_RAW
           env:
             - name: PUID
               value: "1000"
