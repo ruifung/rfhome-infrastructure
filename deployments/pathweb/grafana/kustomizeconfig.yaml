@@ -2,6 +2,6 @@
 - kind: ConfigMap
   fieldSpecs:
   - group: helm.toolkit.fluxcd.io
-    version: v2beta1
+    version: v2beta2
     kind: HelmRelease
     path: spec/values/config/grafanaIniConfigMap
