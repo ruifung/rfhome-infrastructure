@@ -34,20 +34,20 @@ resource "kubectl_manifest" "multus-dhcp" {
 
 # Bootstrap deployment of tf-controller, will be taken over by 
 # flux later.
-resource "helm_release" "tf_controller" {
-  depends_on = [ flux_bootstrap_git.flux_pathweb ]
+# resource "helm_release" "tf_controller" {
+#   depends_on = [ flux_bootstrap_git.flux_pathweb ]
 
-  name       = "tf-controller"
-  repository = "https://weaveworks.github.io/tf-controller/"
-  chart      = "tf-controller"
-  namespace  = "flux-system"
+#   name       = "tf-controller"
+#   repository = "https://weaveworks.github.io/tf-controller/"
+#   chart      = "tf-controller"
+#   namespace  = "flux-system"
 
-  values = [yamlencode({
-    replicaCount = 0
-  })]
+#   values = [yamlencode({
+#     replicaCount = 0
+#   })]
 
-  lifecycle {
-    # This will be managed by flux later.
-    ignore_changes = all
-  }
-}
+#   lifecycle {
+#     # This will be managed by flux later.
+#     ignore_changes = all
+#   }
+# }
