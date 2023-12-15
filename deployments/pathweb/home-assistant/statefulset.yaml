@@ -22,6 +22,7 @@ spec:
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>,<Egress/80/TCP/HTTP>
     spec:
       priorityClassName: rfhome-home-critical
+      runtimeClassName: gvisor
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
