@@ -28,10 +28,7 @@ spec:
   install:
     createNamespace: true
   values:
-    # image:
-    #   registry: k8s.gcr.io/external-dns
-    #   repository: external-dns
-    #   tag: v0.13.4
+
     priorityClassName: rfhome-standard
     resources:
       requests:
@@ -83,10 +80,7 @@ spec:
   install:
     createNamespace: true
   values:
-    # image:
-    #   registry: k8s.gcr.io/external-dns
-    #   repository: external-dns
-    #   tag: v0.13.4
+
     priorityClassName: rfhome-network-critical
     resources:
       requests:
@@ -145,10 +139,7 @@ spec:
   install:
     createNamespace: true
   values:
-    # image:
-    #   registry: k8s.gcr.io/external-dns
-    #   repository: external-dns
-    #   tag: v0.13.4
+
     priorityClassName: rfhome-network-critical
     resources:
       requests:
