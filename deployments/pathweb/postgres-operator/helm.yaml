@@ -9,7 +9,7 @@ spec:
   interval: 15m
   url: oci://registry.developers.crunchydata.com/crunchydata
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: crunchydata-pgo

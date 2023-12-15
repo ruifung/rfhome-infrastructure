@@ -8,7 +8,7 @@ spec:
   interval: 15m
   url: https://charts.bitnami.com/bitnami
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: external-dns-cf
@@ -60,7 +60,7 @@ spec:
       kind: DNSEndpoint
     dryRun: false
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: external-dns-local-services
@@ -119,7 +119,7 @@ spec:
       kind: DNSEndpoint
     dryRun: false
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: external-dns-local-cluster
