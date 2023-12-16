@@ -27,19 +27,6 @@ spec:
   timeout: 1h
   targetNamespace: kube-system
   values:
-    speaker:
-      priorityClassName: rfhome-network-critical
-      # frr:
-      #   enabled: false
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: node-role.kubernetes.io/control-plane
-                operator: DoesNotExist
-      tolerations:
-      - operator: Exists
     controller:
       priorityClassName: rfhome-high-priority
       nodeSelector:
@@ -48,3 +35,17 @@ spec:
       - key: node-role.kubernetes.io/control-plane
         operator: Exists
         effect: NoSchedule
+    speaker:
+      enabled: false
+      # priorityClassName: rfhome-network-critical
+      # frr:
+      #   enabled: false
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: node-role.kubernetes.io/control-plane
+      #           operator: DoesNotExist
+      # tolerations:
+      # - operator: Exists
