@@ -6,6 +6,7 @@ spec: # CiliumBGPPeeringPolicySpec
   nodeSelector:
     matchLabels:
       location: rfhome
+      role: worker
   virtualRouters: # []CiliumBGPVirtualRouter
     - localASN: 64513
       exportPodCIDR: false
@@ -23,4 +24,3 @@ spec: # CiliumBGPPeeringPolicySpec
       serviceSelector:
         matchExpressions:
           - {key: "lb-location", operator: "In", values: ["rfhome"]}
-          - {key: "role", operator: "In", values: ["worker"]}
