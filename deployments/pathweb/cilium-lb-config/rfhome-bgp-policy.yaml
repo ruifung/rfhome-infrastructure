@@ -10,7 +10,8 @@ spec: # CiliumBGPPeeringPolicySpec
     - localASN: 64513
       exportPodCIDR: false
       neighbors: # []CiliumBGPNeighbor
-        - peerAddress: "10.229.97.1/32"
+        # - peerAddress: "10.229.97.1/32"
+        - peerAddress: "fd96:619:97::1/128"
           peerASN: 64512
           eBGPMultihopTTL: 10
           connectRetryTimeSeconds: 120
