@@ -82,6 +82,7 @@ spec:
           metallb.universe.tf/address-pool: service-addr-pool
         labels:
           external-dns: local-pdns
+          lb-location: rfhome
       nodeSelector:
         kubernetes.io/os: linux
         kubernetes.io/arch: amd64

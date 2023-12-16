@@ -3,6 +3,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: greeac-dummyserver-service
+  labels:
+    app: greeac-dummyserver
+    lb-location: rfhome
 spec:
   type: LoadBalancer
   ports:

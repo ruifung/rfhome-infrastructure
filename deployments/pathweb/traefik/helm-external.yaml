@@ -81,6 +81,7 @@ spec:
         external-dns.alpha.kubernetes.io/hostname: external-ingress.pathweb.clusters.home.yrf.me
       labels:
         external-dns: local-pdns
+        lb-location: rfhome
       ipFamilyPolicy: PreferDualStack
       ipFamilies:
         - IPv4
