@@ -1,5 +1,5 @@
 $TALOS_VERSION = "v1.6.0"
-$TALOS_FACTORY_SCHEMATIC_ID = "4b0d16dfd41fa5a66f0b03db2a1afbc48944d56c424597e5ec719fc0a7fbeee6"
+$TALOS_FACTORY_SCHEMATIC_ID = "929605c3683ffc01a54239fc483eb5914b9c79e147ec909d33370afc8118c8f5"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE = "harbor.services.home.yrf.me/talos-image-factory/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
  
@@ -67,12 +67,12 @@ foreach ($node in $toApply) {
     $success = $false
     while ($success -eq $false) {
         # skip upgrade if node is already target version
-        $version = Get-TalosNodeVersion $node
-        if ($version -eq $TALOS_VERSION) {
-            Write-Output "Node [$node] is already at Talos version [$version], skipping upgrade"
-            $success = $true
-            continue
-        }
+        # $version = Get-TalosNodeVersion $node
+        # if ($version -eq $TALOS_VERSION) {
+        #     Write-Output "Node [$node] is already at Talos version [$version], skipping upgrade"
+        #     $success = $true
+        #     continue
+        # }
         talosctl $talosctlArgs
         $success = ($LASTEXITCODE -eq 0)
         if ($success) {
