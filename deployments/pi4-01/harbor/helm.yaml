@@ -23,16 +23,19 @@ spec:
         name: bitnami
   interval: 1h
   timeout: 1h
-  # postRenderers:
-  #   - kustomize:
-  #       patchesStrategicMerge:
-  #         - apiVersion: networking.k8s.io/v1
-  #           kind: Ingress
-  #           metadata:
-  #             name: harbor-ingress
-  #             namespace: harbor
-  #             labels:
-  #               external-dns: local-dns
+  postRenderers:
+    - kustomize:
+        patches:
+          - patch: |
+              - op: "add"
+                path: "/metadata/labels/external-dns"
+                value: "local-dns"
+              - op: "add"
+                path: "/metadata/labels/lb-location"
+                value: "rfhome"
+            target: 
+              kind: Service
+              name: harbor
   valuesFrom:
     - kind: Secret
       name: harbor-postgres-passwords
