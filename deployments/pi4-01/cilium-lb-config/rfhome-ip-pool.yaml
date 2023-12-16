@@ -6,3 +6,6 @@ spec:
   cidrs:
     - cidr: "10.229.29.0/24"
   disabled: false
+  serviceSelector:
+    matchLabels:
+      lb-location: rfhome
