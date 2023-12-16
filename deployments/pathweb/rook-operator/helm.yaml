@@ -45,8 +45,9 @@ spec:
       provisionerReplicas: 2
       pluginNodeAffinity: rook-csi-enabled=true
       pluginTolerations: |
-        - effect: NoExecute
-          key: node.kubernetes.io/not-ready
+        - key: node.kubernetes.io/not-ready
+          operator: Exists
+        - key: node.cilium.io/agent-not-ready
           operator: Exists
         - effect: NoExecute
           key: node.kubernetes.io/unreachable
