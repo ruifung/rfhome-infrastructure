@@ -82,6 +82,8 @@ prometheus:
   serviceMonitor:
       enabled: true
 operator:
+  nodeSelector:
+    role: control-plane
   prometheus:
     enabled: true
     serviceMonitor:
