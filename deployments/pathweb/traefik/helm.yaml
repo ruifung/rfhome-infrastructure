@@ -68,6 +68,7 @@ spec:
       externalTrafficPolicy: Local
       annotations:
         metallb.universe.tf/loadBalancerIPs: 10.229.30.5,fd96:619:6b75:0130::1
+        io.cilium/lb-ipam-ips: 10.229.30.5,fd96:619:6b75:0130::1
         external-dns.alpha.kubernetes.io/hostname: ingress.pathweb.clusters.home.yrf.me
       labels:
         external-dns: local-pdns
