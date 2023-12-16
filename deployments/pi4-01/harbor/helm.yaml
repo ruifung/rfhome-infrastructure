@@ -40,14 +40,22 @@ spec:
       targetPath: postgresql.auth.postgresPassword
   values:
     externalURL: https://harbor.services.home.yrf.me
-    exposureType: ingress
+    exposureType: proxy
     adminPassword: default-password-change-later
-    ingress:
-      core:
-        hostname: harbor.services.home.yrf.me
-        ingressClassName: traefik-internal
-        tls: true
-        annotations:
-          cert-manager.io/cluster-issuer: le-yrf-me
+    service:
+      annotations:
+        external-dns.alpha.kubernetes.io/hostname: harbor.services.home.yrf.me
+    nginx:
+      tls:
+        enabled: true
+        existingSecret: harbor.services.home.yrf.me-tls
+        commonName: harbor.services.home.yrf.me
+    # ingress:
+    #   core:
+    #     hostname: harbor.services.home.yrf.me
+    #     ingressClassName: traefik-internal
+    #     tls: true
+    #     annotations:
+    #       cert-manager.io/cluster-issuer: le-yrf-me
     chartmuseum:
       enabled: false
