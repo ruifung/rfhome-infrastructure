@@ -26,10 +26,10 @@ resource "kubectl_manifest" "multus" {
   yaml_body = each.value
 }
 
-resource "kubectl_manifest" "multus-dhcp" {
-  for_each  = data.kubectl_file_documents.multus-dhcp.manifests
-  yaml_body = each.value
-}
+# resource "kubectl_manifest" "multus-dhcp" {
+#   for_each  = data.kubectl_file_documents.multus-dhcp.manifests
+#   yaml_body = each.value
+# }
 
 
 # Bootstrap deployment of tf-controller, will be taken over by 
