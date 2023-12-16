@@ -1,7 +1,7 @@
 $TALOS_VERSION = "v1.6.0"
 $TALOS_FACTORY_SCHEMATIC_ID = "4b0d16dfd41fa5a66f0b03db2a1afbc48944d56c424597e5ec719fc0a7fbeee6"
-$TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
-# $TALOS_INSTALL_IMAGE = "harbor.services.home.yrf.me/talos-image-factory/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
+# $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
+$TALOS_INSTALL_IMAGE = "harbor.services.home.yrf.me/talos-image-factory/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
  
 $homeDnsSuffix = "servers.home.yrf.me"
 $mode, $extraArgs = $args
