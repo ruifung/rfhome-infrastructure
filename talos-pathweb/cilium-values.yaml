@@ -39,7 +39,7 @@ hubble:
       - http
     serviceMonitor:
       enabled: true
-tunnel: geneve
+tunnelProtocol: geneve
 # ipv4NativeRoutingCIDR: 10.96.0.0/16
 loadBalancer:
   serviceTopology: true
