@@ -16,7 +16,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 6.21.0
+      version: 6.28.6
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository

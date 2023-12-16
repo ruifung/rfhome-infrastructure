@@ -52,5 +52,7 @@ operator:
   replicas: 1
 socketLB:
   hostNamespaceOnly: true
+bgpControlPlane:
+  enabled: true
 localRedirectPolicy: true
 upgradeCompatibility: "1.14"
