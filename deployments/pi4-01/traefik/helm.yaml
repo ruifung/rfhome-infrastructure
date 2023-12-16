@@ -69,11 +69,11 @@ spec:
         mountPath: /additional-configs
     service:
       annotations:
-        metallb.universe.tf/loadBalancerIPs: 10.229.29.1
         io.cilium/lb-ipam-ips: 10.229.29.1
         external-dns.alpha.kubernetes.io/hostname: ingress.pi4-01.clusters.home.yrf.me
       labels:
         external-dns: local-dns
+        lb-location: rfhome
       spec:
         externalTrafficPolicy: Local
     ports:
