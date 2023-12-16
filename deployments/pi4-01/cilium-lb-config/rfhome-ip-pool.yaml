@@ -1,0 +1,8 @@
+﻿apiVersion: "cilium.io/v2alpha1"
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: "rfhome-service-addrs"
+spec:
+  cidrs:
+    - cidr: "10.229.29.0/24"
+  disabled: false

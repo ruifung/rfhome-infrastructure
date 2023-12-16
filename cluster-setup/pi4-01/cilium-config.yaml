@@ -12,7 +12,7 @@ hubble:
     enabled: true
   ui:
     enabled: true
-tunnel: geneve
+tunnelProtocol: geneve
 loadBalancer:
   serviceTopology: true
   mode: dsr
