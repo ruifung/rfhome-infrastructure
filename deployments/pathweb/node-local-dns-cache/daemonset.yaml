@@ -39,7 +39,7 @@ spec:
         resources:
           requests:
             cpu: 25m
-            memory: 5Mi
+            memory: 25Mi
         args: [ "-localip", "169.254.20.10,10.97.0.10", "-conf", "/etc/Corefile", "-upstreamsvc", "kube-dns-upstream", "-skipteardown=true", "-setupinterface=false", "-setupiptables=false" ]
         ports:
         - containerPort: 53
