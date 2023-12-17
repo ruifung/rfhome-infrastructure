@@ -102,6 +102,8 @@ spec:
           host: crowdsec-dashboard.services.home.yrf.me
           labels:
             external-dns: local-pdns
+      strategy:
+        type: Recreate
       env:
         - name: BOUNCERS_ALLOWED_OU
           value: "bouncer-ou"
