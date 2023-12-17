@@ -92,7 +92,15 @@ socketLB:
   hostNamespaceOnly: true
 envoy:
   enabled: true
+  resources:
+    requests:
+      memory: 20Mi
+      cpu: 5m
 bgpControlPlane:
   enabled: true
 localRedirectPolicy: true
 upgradeCompatibility: "1.13"
+resources:
+  requests:
+    memory: 345Mi
+    cpu: 50m
