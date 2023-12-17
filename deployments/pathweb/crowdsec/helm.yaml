@@ -90,12 +90,12 @@ spec:
       resources:
         requests:
           cpu: 15m
-          memory: 1500Mi
+          memory: 100Mi
         limits:
           cpu: 150m
-          memory: 350M
+          memory: 350Mi
       dashboard:
-        enabled: true
+        enabled: false
         ingress:
           enabled: true
           ingressClassName: traefik-traefik

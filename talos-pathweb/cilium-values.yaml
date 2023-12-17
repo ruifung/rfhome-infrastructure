@@ -91,6 +91,10 @@ operator:
     serviceMonitor:
       enabled: true
   rollOutPods: true
+  resources:
+    requests:
+      memory: 100Mi
+      cpu: 20m
 socketLB:
   hostNamespaceOnly: true
 envoy:
