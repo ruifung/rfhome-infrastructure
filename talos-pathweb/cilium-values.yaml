@@ -98,7 +98,7 @@ envoy:
   rollOutPods: true
   resources:
     requests:
-      memory: 20Mi
+      memory: 50Mi
       cpu: 5m
 bgpControlPlane:
   enabled: true
