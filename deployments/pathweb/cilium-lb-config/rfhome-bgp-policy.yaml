@@ -23,7 +23,7 @@ spec: # CiliumBGPPeeringPolicySpec
             restartTimeSeconds: 120
         - peerAddress: "fd96:619:97:0:da3a:ddff:fe1a:a662/128"
           peerASN: 64512
-          # eBGPMultihopTTL: 10
+          eBGPMultihopTTL: 10
           connectRetryTimeSeconds: 120
           holdTimeSeconds: 90
           keepAliveTimeSeconds: 30
