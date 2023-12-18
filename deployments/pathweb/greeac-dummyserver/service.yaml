@@ -8,6 +8,7 @@ metadata:
     lb-location: rfhome
 spec:
   type: LoadBalancer
+  externalTrafficPolicy: Local
   ports:
     - name: greeac-port
       port: 5000

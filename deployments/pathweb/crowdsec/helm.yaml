@@ -83,6 +83,7 @@ spec:
         labels:
           external-dns: local-pdns
           lb-location: rfhome
+        externalTrafficPolicy: Local
       nodeSelector:
         kubernetes.io/os: linux
         kubernetes.io/arch: amd64
