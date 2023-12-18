@@ -4,7 +4,7 @@ metadata:
   name: rfhome-bgp-policy
 spec: # CiliumBGPPeeringPolicySpec
   virtualRouters: # []CiliumBGPVirtualRouter
-    - localASN: 64513
+    - localASN: 64512
       exportPodCIDR: false
       neighbors: # []CiliumBGPNeighbor
         # - peerAddress: "10.229.97.1/32"
@@ -19,7 +19,7 @@ spec: # CiliumBGPPeeringPolicySpec
         #     restartTimeSeconds: 120
         - peerAddress: "127.0.0.1/32"
         # - peerAddress: "fd96:619:97::1/128"
-          peerASN: 64513
+          peerASN: 64512
           connectRetryTimeSeconds: 120
           holdTimeSeconds: 90
           keepAliveTimeSeconds: 30
