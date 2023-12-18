@@ -11,26 +11,8 @@ spec: # CiliumBGPPeeringPolicySpec
     - localASN: 64512
       exportPodCIDR: false
       neighbors: # []CiliumBGPNeighbor
-        - peerAddress: "fd96:619:97::1/128"
-          peerASN: 64512
-          eBGPMultihopTTL: 10
-          connectRetryTimeSeconds: 120
-          holdTimeSeconds: 90
-          keepAliveTimeSeconds: 30
-          gracefulRestart:
-            enabled: true
-            restartTimeSeconds: 120
-        # Peer with server-pi-01 so traffic from that won't need to go through router.
-        - peerAddress: "fd96:619:97:0:da3a:ddff:fe1a:a662/128"
-          peerASN: 64512
-          eBGPMultihopTTL: 10
-          connectRetryTimeSeconds: 120
-          holdTimeSeconds: 90
-          keepAliveTimeSeconds: 30
-          gracefulRestart:
-            enabled: true
-            restartTimeSeconds: 120
-        - peerAddress: "10.229.97.251/32"
+        # Peer with route reflector bgp-01
+        - peerAddress: "fd96:619:97:0:be24:11ff:fe91:de54/128"
           peerASN: 64512
           eBGPMultihopTTL: 10
           connectRetryTimeSeconds: 120
