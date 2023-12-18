@@ -12,9 +12,16 @@ spec: # CiliumBGPPeeringPolicySpec
       exportPodCIDR: false
       neighbors: # []CiliumBGPNeighbor
         # Peer with route reflector bgp-01
+        - peerAddress: "10.229.97.251/32"
+          peerASN: 64512
+          connectRetryTimeSeconds: 120
+          holdTimeSeconds: 90
+          keepAliveTimeSeconds: 30
+          gracefulRestart:
+            enabled: true
+            restartTimeSeconds: 120
         - peerAddress: "fd96:619:97:0:be24:11ff:fe91:de54/128"
           peerASN: 64512
-          eBGPMultihopTTL: 10
           connectRetryTimeSeconds: 120
           holdTimeSeconds: 90
           keepAliveTimeSeconds: 30
