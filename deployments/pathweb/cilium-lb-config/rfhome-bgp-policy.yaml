@@ -11,7 +11,6 @@ spec: # CiliumBGPPeeringPolicySpec
     - localASN: 64512
       exportPodCIDR: false
       neighbors: # []CiliumBGPNeighbor
-        # - peerAddress: "10.229.97.1/32"
         - peerAddress: "fd96:619:97::1/128"
           peerASN: 64512
           eBGPMultihopTTL: 10
@@ -21,6 +20,7 @@ spec: # CiliumBGPPeeringPolicySpec
           gracefulRestart:
             enabled: true
             restartTimeSeconds: 120
+        # Peer with server-pi-01 so traffic from that won't need to go through router.
         - peerAddress: "fd96:619:97:0:da3a:ddff:fe1a:a662/128"
           peerASN: 64512
           eBGPMultihopTTL: 10
