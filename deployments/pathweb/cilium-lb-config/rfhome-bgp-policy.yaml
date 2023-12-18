@@ -8,7 +8,7 @@ spec: # CiliumBGPPeeringPolicySpec
       location: rfhome
       role: worker
   virtualRouters: # []CiliumBGPVirtualRouter
-    - localASN: 64513
+    - localASN: 64512
       exportPodCIDR: false
       neighbors: # []CiliumBGPNeighbor
         # - peerAddress: "10.229.97.1/32"

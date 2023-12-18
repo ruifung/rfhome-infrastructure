@@ -19,7 +19,7 @@ spec: # CiliumBGPPeeringPolicySpec
         #     restartTimeSeconds: 120
         - peerAddress: "127.0.0.1/32"
         # - peerAddress: "fd96:619:97::1/128"
-          peerASN: 64513
+          peerASN: 64512
           connectRetryTimeSeconds: 120
           holdTimeSeconds: 90
           keepAliveTimeSeconds: 30
