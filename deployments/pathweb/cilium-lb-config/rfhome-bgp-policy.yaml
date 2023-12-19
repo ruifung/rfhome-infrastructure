@@ -44,6 +44,14 @@ spec: # CiliumBGPPeeringPolicySpec
           gracefulRestart:
             enabled: true
             restartTimeSeconds: 120
+        - peerAddress: "127.0.0.1/32"
+          peerASN: 64512
+          connectRetryTimeSeconds: 120
+          holdTimeSeconds: 90
+          keepAliveTimeSeconds: 30
+          gracefulRestart:
+            enabled: true
+            restartTimeSeconds: 120
       serviceSelector:
         matchExpressions:
           - {key: "lb-location", operator: "In", values: ["rfhome"]}
