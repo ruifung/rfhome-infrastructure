@@ -20,6 +20,8 @@ spec:
   install:
     createNamespace: true
     skipCRDs: true
+  driftDetection:
+    mode: enabled
   # postRenderers:
   #   - kustomize:
   #       patches:

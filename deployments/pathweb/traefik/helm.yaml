@@ -27,6 +27,8 @@ spec:
   timeout: 1h
   install:
     createNamespace: true
+  driftDetection:
+    mode: enabled
   # postRenderers:
     # - kustomize:
     #     patches:
