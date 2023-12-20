@@ -28,7 +28,6 @@ spec:
   install:
     createNamespace: true
   values:
-
     priorityClassName: rfhome-standard
     resources:
       requests:
@@ -80,7 +79,6 @@ spec:
   install:
     createNamespace: true
   values:
-
     priorityClassName: rfhome-network-critical
     resources:
       requests:
@@ -97,7 +95,7 @@ spec:
     - service
     - crd
     provider: rfc2136
-    policy: upsert-only
+    # policy: upsert-only
     rfc2136:
       host: "10.229.97.53"
       port: 53
@@ -110,7 +108,7 @@ spec:
     domainFilters:
     - services.home.yrf.me
     labelFilter: external-dns=local-pdns
-    registry: noop
+    registry: txt
     txtSuffix: .external-dns-txt
     txtOwnerId: "rfhome-cluster-pathweb"
     crd:
@@ -139,7 +137,6 @@ spec:
   install:
     createNamespace: true
   values:
-
     priorityClassName: rfhome-network-critical
     resources:
       requests:
@@ -156,7 +153,7 @@ spec:
     - service
     - crd
     provider: rfc2136
-    policy: upsert-only
+    # policy: upsert-only
     rfc2136:
       host: "10.229.97.53"
       port: 53
@@ -169,7 +166,8 @@ spec:
     domainFilters:
     - pathweb.clusters.home.yrf.me
     labelFilter: external-dns=local-pdns
-    registry: noop
+    registry: txt
+    txtSuffix: .external-dns-txt
     txtOwnerId: "rfhome-cluster-pathweb"
     crd:
       create: false
