@@ -17,7 +17,7 @@ terraform {
 
     flux = {
       source  = "fluxcd/flux"
-      version = "1.2.1"
+      version = "1.2.2"
     }
 
 
@@ -33,7 +33,7 @@ terraform {
 
     http = {
       source  = "hashicorp/http"
-      version = "3.4.0"
+      version = "3.4.1"
     }
   }
 }
