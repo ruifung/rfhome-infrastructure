@@ -31,27 +31,14 @@ spec:
   interval: 15m
   timeout: 60m
   targetNamespace: kube-system
-  postRenderers:
-    - kustomize:
-        patches:
-          - patch: |
-              - op: add
-                path: /spec/template/spec/tolerations/-
-                value:
-                  key: node-role.kubernetes.io/control-plane
-                  operator: Exists
-                  effect: NoSchedule
-            target:
-              kind: Deployment
-              name: rook-ceph-operator
   values:
     nodeSelector:
       kubernetes.io/os: linux
       location: rfhome
-    # tolerations:
-    #   - key: node-role.kubernetes.io/control-plane
-    #     operator: Exists
-    #     effect: NoSchedule
+    tolerations:
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
+        effect: NoSchedule
     csi:
       clusterName: pathweb
       enableCSIHostNetwork: true
