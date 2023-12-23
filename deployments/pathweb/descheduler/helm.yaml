@@ -47,14 +47,15 @@ spec:
         - name: "RemoveDuplicates"
         - name: "LowNodeUtilization"
           args:
+            useDeviationThresholds: true
             thresholds:
-              cpu: 50
-              memory: 50
-              pods: 50
+              cpu: 3
+              memory: 3
+              pods: 10
             targetThresholds:
-              cpu: 70
-              memory: 70
-              pods: 70
+              cpu: 2
+              memory: 2
+              pods: 10
         - name: "RemovePodsViolatingInterPodAntiAffinity"
         - name: "RemovePodsViolatingNodeAffinity"
           args:
