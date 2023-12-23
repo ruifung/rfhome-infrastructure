@@ -49,13 +49,13 @@ spec:
           args:
             useDeviationThresholds: true
             thresholds:
-              cpu: 3
-              memory: 3
-              pods: 10
+              cpu: 1
+              memory: 1
+              pods: 5
             targetThresholds:
-              cpu: 2
-              memory: 2
-              pods: 10
+              cpu: 5
+              memory: 5
+              pods: 5
         - name: "RemovePodsViolatingInterPodAntiAffinity"
         - name: "RemovePodsViolatingNodeAffinity"
           args:
