@@ -100,7 +100,7 @@ spec:
             memory: 10Mi
           limits:
             cpu: 100m
-            memory: 20Mi
+            memory: 50Mi
         ports:
         - containerPort: 8080
           name: http
