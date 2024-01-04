@@ -89,9 +89,9 @@ spec:
         - |
           name: gpu
           groups:
-            - paths:
+            - count: 10
+              paths:
                 - path: /dev/dri/card*
-            - paths:
                 - path: /dev/dri/render*
         name: generic-device-plugin
         resources:
