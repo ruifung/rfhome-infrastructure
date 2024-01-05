@@ -1,11 +1,11 @@
-﻿---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
-metadata:
-  name: fairwinds-stable
-spec:
-  interval: 3h
-  url: https://charts.fairwinds.com/stable
+﻿# ---
+# apiVersion: source.toolkit.fluxcd.io/v1beta2
+# kind: HelmRepository
+# metadata:
+#   name: fairwinds-stable
+# spec:
+#   interval: 3h
+#   url: https://charts.fairwinds.com/stable
 # ---
 # apiVersion: helm.toolkit.fluxcd.io/v2beta2
 # kind: HelmRelease
