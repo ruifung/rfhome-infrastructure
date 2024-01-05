@@ -34,6 +34,11 @@ $workers = @(
         base = '.\base\worker.yaml';
         patches = @('@patches\node-patches.yaml','@patches\worker-patches.yaml','@patches\worker-3.yaml', '@patches\harbor-rfhome.secret.yaml')
     }
+    @{
+        fqdn = "pathweb-worker-baldric.$homeDnsSuffix";
+        base = '.\base\worker.yaml';
+        patches = @('@patches\node-patches.yaml','@patches\worker-patches.yaml','@patches\worker-baldric.yaml', '@patches\harbor-rfhome.secret.yaml')
+    }
     # @{
     #     fqdn = 'pathweb-piworker-1.vsvc.home.arpa';
     #     base = '.\base\worker.yaml';
