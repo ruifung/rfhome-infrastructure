@@ -25,6 +25,7 @@ spec:
         kind: HelmRepository
         name: csi-driver-smb
   interval: 15m
+  timeout: 1h
   values:
     controller:
       replicas: 2
