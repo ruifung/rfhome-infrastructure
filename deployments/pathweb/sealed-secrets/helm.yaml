@@ -9,25 +9,25 @@ spec:
   url: https://bitnami-labs.github.io/sealed-secrets
 
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
-kind: HelmRelease
-metadata:
-  name: sealed-secrets
-  namespace: flux-system
-spec:
-  releaseName: sealed-secrets
-  chart:
-    spec:
-      chart: sealed-secrets
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: sealed-secrets
-      version: 2.14.1
-  interval: 15m
-  targetNamespace: kube-system
-  values:
-    priorityClassName: rfhome-network-critical
-    nodeSelector:
-      kubernetes.io/os: linux
-      location: rfhome
+# apiVersion: helm.toolkit.fluxcd.io/v2beta2
+# kind: HelmRelease
+# metadata:
+#   name: sealed-secrets
+#   namespace: flux-system
+# spec:
+#   releaseName: sealed-secrets
+#   chart:
+#     spec:
+#       chart: sealed-secrets
+#       reconcileStrategy: ChartVersion
+#       sourceRef:
+#         kind: HelmRepository
+#         name: sealed-secrets
+#       version: 2.14.1
+#   interval: 15m
+#   targetNamespace: kube-system
+#   values:
+#     priorityClassName: rfhome-network-critical
+#     nodeSelector:
+#       kubernetes.io/os: linux
+#       location: rfhome
