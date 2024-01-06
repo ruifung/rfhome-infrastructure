@@ -23,11 +23,6 @@ spec:
         name: harbor
   interval: 1h
   timeout: 1h
-  valuesFrom:
-    - kind: Secret
-      name: harbor-postgres-passwords
-      valuesKey: postgres-password
-      targetPath: database.internal.password
   values:
     expose:
       type: clusterIP
