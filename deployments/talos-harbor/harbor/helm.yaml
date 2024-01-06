@@ -23,6 +23,11 @@ spec:
         name: harbor
   interval: 1h
   timeout: 1h
+  valuesFrom:
+    - kind: Secret
+      name: harbor-secrets
+      valuesKey: databasePassword
+      targetPath: database.internal.password
   postRenderers:
     - kustomize:
         patches:
