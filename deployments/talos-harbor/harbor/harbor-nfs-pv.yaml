@@ -13,4 +13,4 @@ spec:
     - nfsvers=4.2
   nfs:
     server: okinawa.servers.home.yrf.me
-    path: /mnt/hdd/appplications/harbor
+    path: /mnt/hdd/applications/harbor
