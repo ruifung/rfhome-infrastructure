@@ -1,0 +1,16 @@
+﻿apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: harbor-nfs
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - hard
+    - nfsvers=4.2
+  nfs:
+    server: okinawa.servers.home.yrf.me
+    path: /mnt/hdd/appplications/harbor

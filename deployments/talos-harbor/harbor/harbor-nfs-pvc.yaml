@@ -1,0 +1,12 @@
+﻿apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: harbor-nfs
+spec:
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteMany
+  volumeName: harbor-nfs
