@@ -30,7 +30,7 @@ spec:
       targetPath: database.internal.password
   values:
     expose:
-      type: LoadBalancer
+      type: loadBalancer
       tls:
         enabled: true
         certSource: secret
