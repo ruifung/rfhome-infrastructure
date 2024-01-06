@@ -40,7 +40,7 @@ spec:
               name: harbor
   values:
     expose:
-      type: clusterIP
+      type: LoadBalancer
       tls:
         enabled: true
         certSource: secret
