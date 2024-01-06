@@ -56,7 +56,7 @@ spec:
             subPath: joblog
         database:
           existingClaim: harbor-nfs
-          subPath: postgres
+          subPath: postgres/pgdata
         redis:
           existingClaim: harbor-nfs
           subPath: redis
