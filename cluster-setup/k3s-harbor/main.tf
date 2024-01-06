@@ -2,18 +2,18 @@ terraform {
   backend "kubernetes" {
     namespace      = "kube-system"
     secret_suffix  = "state"
-    config_path    = "../../talos-harbor/kubeconfig"
-    config_context = "admin@talos-harbor"
+    config_path    = "./ruifung-k3s-harbor.yaml"
+    config_context = "portainer-ctx-k3s-harbor"
   }
 }
 
 variable "kubeconfig_file" {
   type    = string
-  default = "../../talos-harbor/kubeconfig"
+  default = "./ruifung-k3s-harbor.yaml"
 }
 variable "kubeconfig_ctx" {
   type    = string
-  default = "admin@talos-harbor"
+  default = "portainer-ctx-k3s-harbor"
 }
 
 provider "kubernetes" {

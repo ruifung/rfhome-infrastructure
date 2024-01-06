@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  path: ./deployments/talos-harbor/_index_
+  path: ./deployments/k3s-harbor/_index_
   prune: true
   sourceRef:
     kind: GitRepository

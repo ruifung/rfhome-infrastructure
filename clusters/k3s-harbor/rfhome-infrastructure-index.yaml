@@ -2,13 +2,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: harbor
+  name: rfhome-infrastructure-index
   namespace: flux-system
 spec:
-  interval: 1h
-  path: ./deployments/talos-harbor/harbor
+  interval: 15m
+  path: ./deployments/k3s-harbor/_index_
   prune: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-  targetNamespace: harbor
+  targetNamespace: flux-system

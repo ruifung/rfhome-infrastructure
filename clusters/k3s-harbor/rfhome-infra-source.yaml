@@ -16,9 +16,9 @@ spec:
     # exclude all
     /*
     # include deploy dir
-    !/deployments/talos-harbor
+    !/deployments/k3s-harbor
     # exclude file extensions from deploy dir
-    /deployments/talos-harbor/**/*.sample
+    /deployments/k3s-harbor/**/*.sample
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
@@ -37,4 +37,4 @@ spec:
     # exclude all
     /*
     # include deploy dir
-    !/deployments/talos-harbor
+    !/deployments/k3s-harbor

@@ -20,7 +20,7 @@ resource "tls_private_key" "rfhome_infra_deploy_key" {
 
 # Add a deploy key
 resource "github_repository_deploy_key" "rfhome_infra_deploy_key" {
-  title      = "Talos-Harbor Flux Deploy Key"
+  title      = "K3S-Harbor Flux Deploy Key"
   repository = "rfhome-infrastructure"
   key        = tls_private_key.rfhome_infra_deploy_key.public_key_openssh
   read_only  = "false"
@@ -29,7 +29,7 @@ resource "github_repository_deploy_key" "rfhome_infra_deploy_key" {
 resource "flux_bootstrap_git" "flux" {
   depends_on = [github_repository_deploy_key.rfhome_infra_deploy_key]
 
-  path = "clusters/talos-harbor"
+  path = "clusters/k3s-harbor"
   namespace = "flux-system"
   kustomization_override = file("${path.module}/flux-kustomization.yaml")
 }
