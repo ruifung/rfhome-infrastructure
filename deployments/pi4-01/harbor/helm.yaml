@@ -1,64 +1,64 @@
-﻿---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
-metadata:
-  name: bitnami
-spec:
-  interval: 3h
-  url: https://charts.bitnami.com/bitnami
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
-kind: HelmRelease
-metadata:
-  name: harbor
-  namespace: flux-system
-spec:
-  releaseName: harbor
-  chart:
-    spec:
-      chart: harbor
-      version: 18.0.3
-      sourceRef:
-        kind: HelmRepository
-        name: bitnami
-  interval: 1h
-  timeout: 1h
-  postRenderers:
-    - kustomize:
-        patches:
-          - patch: |
-              - op: "add"
-                path: "/metadata/labels/external-dns"
-                value: "local-dns"
-              - op: "add"
-                path: "/metadata/labels/lb-location"
-                value: "rfhome"
-            target: 
-              kind: Service
-              name: harbor
-  valuesFrom:
-    - kind: Secret
-      name: harbor-postgres-passwords
-      valuesKey: postgres-password
-      targetPath: postgresql.auth.postgresPassword
-  values:
-    externalURL: https://harbor.services.home.yrf.me
-    exposureType: proxy
-    adminPassword: default-password-change-later
-    service:
-      annotations:
-        external-dns.alpha.kubernetes.io/hostname: harbor.services.home.yrf.me
-    nginx:
-      tls:
-        enabled: true
-        existingSecret: harbor.services.home.yrf.me-tls
-        commonName: harbor.services.home.yrf.me
-    # ingress:
-    #   core:
-    #     hostname: harbor.services.home.yrf.me
-    #     ingressClassName: traefik-internal
-    #     tls: true
-    #     annotations:
-    #       cert-manager.io/cluster-issuer: le-yrf-me
-    chartmuseum:
-      enabled: false
+﻿# ---
+# apiVersion: source.toolkit.fluxcd.io/v1beta2
+# kind: HelmRepository
+# metadata:
+#   name: bitnami
+# spec:
+#   interval: 3h
+#   url: https://charts.bitnami.com/bitnami
+# ---
+# apiVersion: helm.toolkit.fluxcd.io/v2beta2
+# kind: HelmRelease
+# metadata:
+#   name: harbor
+#   namespace: flux-system
+# spec:
+#   releaseName: harbor
+#   chart:
+#     spec:
+#       chart: harbor
+#       version: 18.0.3
+#       sourceRef:
+#         kind: HelmRepository
+#         name: bitnami
+#   interval: 1h
+#   timeout: 1h
+#   postRenderers:
+#     - kustomize:
+#         patches:
+#           - patch: |
+#               - op: "add"
+#                 path: "/metadata/labels/external-dns"
+#                 value: "local-dns"
+#               - op: "add"
+#                 path: "/metadata/labels/lb-location"
+#                 value: "rfhome"
+#             target: 
+#               kind: Service
+#               name: harbor
+#   valuesFrom:
+#     - kind: Secret
+#       name: harbor-postgres-passwords
+#       valuesKey: postgres-password
+#       targetPath: postgresql.auth.postgresPassword
+#   values:
+#     externalURL: https://harbor.services.home.yrf.me
+#     exposureType: proxy
+#     adminPassword: default-password-change-later
+#     service:
+#       annotations:
+#         external-dns.alpha.kubernetes.io/hostname: harbor.services.home.yrf.me
+#     nginx:
+#       tls:
+#         enabled: true
+#         existingSecret: harbor.services.home.yrf.me-tls
+#         commonName: harbor.services.home.yrf.me
+#     # ingress:
+#     #   core:
+#     #     hostname: harbor.services.home.yrf.me
+#     #     ingressClassName: traefik-internal
+#     #     tls: true
+#     #     annotations:
+#     #       cert-manager.io/cluster-issuer: le-yrf-me
+#     chartmuseum:
+#       enabled: false
