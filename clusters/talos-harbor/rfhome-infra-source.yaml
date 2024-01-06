@@ -1,0 +1,40 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: rfhome-infrastructure
+  namespace: flux-system
+spec:
+  recurseSubmodules: false
+  interval: 3m0s
+  ref:
+    branch: master
+  secretRef:
+    name: flux-system # Use the flux-system credentials for this, since it's the same damn repo.
+  url: ssh://git@github.com/ruifung/rfhome-infrastructure
+  ignore: |
+    # exclude all
+    /*
+    # include deploy dir
+    !/deployments/talos-harbor
+    # exclude file extensions from deploy dir
+    /deployments/talos-harbor/**/*.sample
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: rfhome-infrastructure-private
+  namespace: flux-system
+spec:
+  recurseSubmodules: false
+  interval: 3m0s
+  ref:
+    branch: main
+  secretRef:
+    name: rfhome-private
+  url: ssh://git@github.com/ruifung/rfhome-infrastructure-private
+  ignore: |
+    # exclude all
+    /*
+    # include deploy dir
+    !/deployments/talos-harbor
