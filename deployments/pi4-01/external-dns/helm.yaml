@@ -84,7 +84,7 @@ spec:
     domainFilters:
     - services.home.yrf.me
     labelFilter: external-dns=local-dns
-    registry: noop
+    registry: txt
     txtSuffix: .external-dns-txt
     txtOwnerId: "rfhome-cluster-pi4-01"
     crd:
