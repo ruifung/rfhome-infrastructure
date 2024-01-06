@@ -28,7 +28,7 @@ spec:
         patches:
           - patch: |
               - op: "add"
-                path: "/spec/externalIPs/"
+                path: "/spec/externalIPs"
                 value: ["10.229.97.52", "fd96:619:97:0:be24:11ff:fe28:f4f3"]
             target:
               kind: Service
