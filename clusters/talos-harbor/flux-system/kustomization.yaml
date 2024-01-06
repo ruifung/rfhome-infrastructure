@@ -5,10 +5,13 @@ resources:
 - gotk-sync.yaml
 patches:
   - patch: |
-      kind: GitRepository
-      spec:
-        ignore: |
+      - op: "add"
+        path: "/spec/ignore"
+        value: |
           # exclude all
           /*
           # include deploy dir
           !/clusters/talos-harbor
+    target:
+      kind: GitRepository
+      name: flux-system
