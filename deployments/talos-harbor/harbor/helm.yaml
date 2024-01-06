@@ -27,7 +27,7 @@ spec:
     - kind: Secret
       name: harbor-postgres-passwords
       valuesKey: postgres-password
-      targetPath: postgresql.auth.postgresPassword
+      targetPath: database.internal.password
   values:
     expose:
       type: clusterIP
