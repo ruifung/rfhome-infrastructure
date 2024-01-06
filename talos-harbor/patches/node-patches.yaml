@@ -1,0 +1,17 @@
+machine:
+  nodeLabels:
+    location: rfhome
+    type: proxmox-x64
+  kubelet:
+    nodeIP:
+      validSubnets:
+        - 10.229.97.0/24
+        - fd96:619:97::/64
+  features:
+    kubePrism:
+      enabled: true
+      port: 7445
+  # sysctls:
+  #   net.ipv4.conf.all.rp_filter: 0
+cluster:
+  allowSchedulingOnControlPlanes: true
