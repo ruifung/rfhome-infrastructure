@@ -1,0 +1,7 @@
+﻿images:
+  - name: jellyfin/jellyfin
+    newTag: 10.8.13-1
+resources:
+  - statefulset.yaml
+  - service.yaml
+  - persistentvolumeclaims.yaml
