@@ -35,6 +35,7 @@ spec:
   ipFamilies:
   - IPv4
   - IPv6
+  externalTrafficPolicy: Local
   ports:
   - port: 80
     targetPort: http
