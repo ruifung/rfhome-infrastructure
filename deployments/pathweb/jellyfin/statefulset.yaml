@@ -14,7 +14,6 @@ spec:
       labels:
         app.kubernetes.io/name: jellyfin
     spec:
-      runtimeClassName: gvisor
       nodeSelector:
         kubernetes.io/hostname: pathweb-worker-baldric
       priorityClassName: rfhome-high-priority
