@@ -6,6 +6,8 @@ metadata:
   labels:
     app.kubernetes.io/name: jellyfin
 spec:
+  selector:
+    app.kubernetes.io/name: jellyfin
   clusterIP: None
   ipFamilyPolicy: PreferDualStack
   ipFamilies:
@@ -30,6 +32,8 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/hostname: jellyfin.services.home.yrf.me
 spec:
+  selector:
+    app.kubernetes.io/name: jellyfin
   type: LoadBalancer
   ipFamilyPolicy: PreferDualStack
   ipFamilies:
