@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: lscr.io/linuxserver/deluge:2.1.1
+        image: lscr.io/linuxserver/deluge:18.04.1
         env:
         - name: PUID
           value: "1000"
