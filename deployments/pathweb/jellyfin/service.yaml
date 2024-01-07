@@ -25,6 +25,7 @@ metadata:
   name: jellyfin
   labels:
     app.kubernetes.io/name: jellyfin
+    lb-location: rfhome
     external-dns: local-pdns
     external-dns.alpha.kubernetes.io/hostname: jellyfin.services.home.yrf.me
 spec:
