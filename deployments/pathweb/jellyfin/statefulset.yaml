@@ -28,13 +28,14 @@ spec:
         volumeMounts:
         - name: media
           mountPath: /media
-          readOnly: true
+          readOnly: false
         - name: config
           mountPath: /config
         - name: cache
           mountPath: /cache
         - name: tls-cert
           mountPath: /certs
+          readOnly: true
         # resources:
           #requests:
             #cpu: "4"
