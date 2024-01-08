@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  path: ./deployments/k3s-harbor/cert-manager
+  path: ./deployments/k3s-baldric/cert-manager
   prune: true
   sourceRef:
     kind: GitRepository
