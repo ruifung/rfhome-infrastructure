@@ -5,3 +5,4 @@ resources:
   - statefulset.yaml
   - service.yaml
   - persistentvolumeclaims.yaml
+  - plex-claim.sealed.yaml
