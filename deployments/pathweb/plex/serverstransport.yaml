@@ -1,0 +1,7 @@
+﻿apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: plex-transport
+  namespace: media-services
+spec:
+  serverName: 1-2-3-4.decc7107d9994975ae795246dc1f1eab.plex.direct

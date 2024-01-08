@@ -5,6 +5,9 @@ metadata:
   name: plex-headless
   labels:
     app.kubernetes.io/name: plex
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversTransport: media-services-plex-transport@kubernetescrd
+    traefik.ingress.kubernetes.io/service.serversscheme: https
 spec:
   selector:
     app.kubernetes.io/name: plex
