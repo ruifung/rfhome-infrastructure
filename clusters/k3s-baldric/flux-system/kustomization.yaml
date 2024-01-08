@@ -1,0 +1,17 @@
+﻿apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- gotk-components.yaml
+- gotk-sync.yaml
+patches:
+  - patch: |
+      - op: "add"
+        path: "/spec/ignore"
+        value: |
+          # exclude all
+          /*
+          # include deploy dir
+          !/clusters/k3s-harbor
+    target:
+      kind: GitRepository
+      name: flux-system
