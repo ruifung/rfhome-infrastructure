@@ -13,8 +13,6 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: plex
-      annotations:
-        io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
     spec:
       nodeSelector:
         kubernetes.io/hostname: pathweb-worker-baldric

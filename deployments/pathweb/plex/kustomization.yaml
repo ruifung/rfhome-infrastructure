@@ -5,5 +5,5 @@ resources:
   - statefulset.yaml
   - service.yaml
   - persistentvolumeclaims.yaml
-  - networkpolicy.yaml
+  - ciliumnetworkpolicy.yaml
   - ingress.yaml
