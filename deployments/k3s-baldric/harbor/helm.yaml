@@ -30,7 +30,10 @@ spec:
       targetPath: database.internal.password
   values:
     expose:
-      type: loadBalancer
+      type: ingress
+      ingress:
+        hosts:
+          core: harbor.services.home.yrf.me
       tls:
         enabled: true
         certSource: secret
