@@ -3,8 +3,9 @@ kind: Ingress
 metadata:
   name: plex
   labels:
-    name: plex
+    external-dns: local-pdns
 spec:
+  ingressClassName: traefik-traefik
   rules:
   - host: plex.services.home.yrf.me
     http:
