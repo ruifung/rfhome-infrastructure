@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: plex
+      annotations:
+        io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
     spec:
       nodeSelector:
         kubernetes.io/hostname: pathweb-worker-baldric
@@ -24,10 +26,7 @@ spec:
         - name: TZ
           value: Asia/Kuala_Lumpur
         - name: ADVERTISE_IP
-          value: "https://plex.services.home.yrf.me/,http://plexdirect.services.home.yrf.me:32400/"
-        envFrom:
-        - secretRef:
-            name: plex-claim
+          value: "https://plex.services.home.yrf.me/,http://plexdirect.services.home.yrf.me:32400/,https://plex-home.yrf.me/" # Yes I know it's a public URL. But it's already in the CT logs anyway.
         ports:
         - containerPort: 32400
           name: plex
