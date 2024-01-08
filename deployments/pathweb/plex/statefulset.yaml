@@ -58,6 +58,9 @@ spec:
           mountPath: /config
         - name: transcode
           mountPath: /transcode
+        - name: tls-cert
+          mountPath: /certs
+          readOnly: true
       volumes:
       - name: media
         persistentVolumeClaim:
@@ -68,3 +71,6 @@ spec:
       - name: transcode
         persistentVolumeClaim:
           claimName: plex-transcode
+      - name: tls-cert
+        secret:
+          secretName: services-wildcard-cert
