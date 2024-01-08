@@ -6,3 +6,4 @@ resources:
   - service.yaml
   - persistentvolumeclaims.yaml
   - plex-claim.sealed.yaml
+  - ingress.yaml
