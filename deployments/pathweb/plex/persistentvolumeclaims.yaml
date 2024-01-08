@@ -1,0 +1,26 @@
+﻿---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: plex-transcode
+spec:
+  resources:
+    requests:
+      storage: 10Gi
+  volumeMode: Filesystem
+  storageClassName: ceph-rbd
+  accessModes:
+    - ReadWriteOncePod
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: plex-data
+spec:
+  resources:
+    requests:
+      storage: 10Gi
+  volumeMode: Filesystem
+  storageClassName: cephfs-retain
+  accessModes:
+    - ReadWriteMany

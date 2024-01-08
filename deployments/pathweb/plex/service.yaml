@@ -1,0 +1,43 @@
+﻿---
+apiVersion: v1
+kind: Service
+metadata:
+  name: plex-headless
+  labels:
+    app.kubernetes.io/name: plex
+spec:
+  selector:
+    app.kubernetes.io/name: plex
+  clusterIP: None
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+  - IPv4
+  - IPv6
+  ports:
+  - port: 32400
+    targetPort: plex
+    name: plex
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin
+  labels:
+    app.kubernetes.io/name: plex
+    lb-location: rfhome
+    external-dns: local-pdns
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: plex.services.home.yrf.me
+spec:
+  selector:
+    app.kubernetes.io/name: plex
+  type: LoadBalancer
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+  - IPv4
+  - IPv6
+  externalTrafficPolicy: Local
+  ports:
+  - port: 32400
+    targetPort: plex
+    name: plex
