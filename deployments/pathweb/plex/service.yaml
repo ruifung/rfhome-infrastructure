@@ -41,3 +41,29 @@ spec:
   - port: 32400
     targetPort: plex
     name: plex
+  - port: 8324
+    targetPort: plex-roku
+    name: plex-roku
+  - port: 32469
+    targetPort: plex-dlna
+    name: plex-dlna
+  - port: 1900
+    targetPort: plex-upnp
+    name: plex-upnp
+    protocol: UDP
+  - port: 32410
+    targetPort: plex-gdm-1
+    name: plex-gdm-1
+    protocol: UDP
+  - port: 32412
+    targetPort: plex-gdm-2
+    name: plex-gdm-2
+    protocol: UDP
+  - port: 32413
+    targetPort: plex-gdm-3
+    name: plex-gdm-3
+    protocol: UDP
+  - port: 32414
+    targetPort: plex-gdm-4
+    name: plex-gdm-4
+    protocol: UDP
