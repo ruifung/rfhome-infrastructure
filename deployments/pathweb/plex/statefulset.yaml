@@ -24,7 +24,7 @@ spec:
         - name: TZ
           value: Asia/Kuala_Lumpur
         - name: ADVERTISE_IP
-          value: "http://plex.services.home.yrf.me:32400/"
+          value: "https://plex.services.home.yrf.me/,http://plexdirect.services.home.yrf.me:32400/"
         envFrom:
         - secretRef:
             name: plex-claim
