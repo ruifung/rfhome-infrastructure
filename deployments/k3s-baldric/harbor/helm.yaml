@@ -40,7 +40,7 @@ spec:
         secret:
           secretName: harbor.services.home.yrf.me-tls
     internalTLS:
-      enabled: true
+      enabled: false
       certSource: auto
     ipFamily:
       ipv4:
