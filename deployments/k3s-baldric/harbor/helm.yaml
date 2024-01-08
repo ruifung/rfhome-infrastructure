@@ -73,6 +73,12 @@ spec:
     existingSecretSecretKey: harbor-secrets
     # registry:
     #   relativeurls: true
+    core:
+      serviceAnnotations:
+        traefik.ingress.kubernetes.io/service.serverstransport: harbor-harbor-ingress-transport@kubernetescrd
+    portal:
+      serviceAnnotations:
+        traefik.ingress.kubernetes.io/service.serverstransport: harbor-harbor-ingress-transport@kubernetescrd
     trivy:
       enabled: true
     metrics:
