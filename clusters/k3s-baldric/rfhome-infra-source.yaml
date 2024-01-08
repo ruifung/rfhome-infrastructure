@@ -16,9 +16,9 @@ spec:
     # exclude all
     /*
     # include deploy dir
-    !/deployments/k3s-harbor
+    !/deployments/k3s-baldric
     # exclude file extensions from deploy dir
-    /deployments/k3s-harbor/**/*.sample
+    /deployments/k3s-baldric/**/*.sample
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
@@ -37,4 +37,4 @@ spec:
     # exclude all
     /*
     # include deploy dir
-    !/deployments/k3s-harbor
+    !/deployments/k3s-baldric

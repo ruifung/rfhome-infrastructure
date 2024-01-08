@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  path: ./deployments/k3s-harbor/_index_
+  path: ./deployments/k3s-baldric/_index_
   prune: true
   sourceRef:
     kind: GitRepository
