@@ -25,6 +25,15 @@ spec:
         kubernetes.io/os: linux
         kubernetes.io/arch: amd64
         location: rfhome
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 1
+          preference:
+            matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+              - pathweb-worker-baldric
       terminationGracePeriodSeconds: 10
       securityContext:
         fsGroup: 1000
@@ -46,8 +55,11 @@ spec:
         - containerPort: 8083
           name: http
         volumeMounts:
-        - name: calibre-library
+        # - name: calibre-library
+        #   mountPath: /books
+        - name: okinawa-media
           mountPath: /books
+          subPath: Books
         - name: cache
           mountPath: /cache
         - name: data
@@ -96,6 +108,9 @@ spec:
             claimName: calibre-web-cache
         - name: logs
           emptyDir: {}
+        - name: okinawa-media
+          persistentVolumeClaim:
+            claimName: okinawa-media
   volumeClaimTemplates:
   - metadata:
       name: data

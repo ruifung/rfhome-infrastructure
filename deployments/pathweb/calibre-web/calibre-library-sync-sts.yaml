@@ -22,6 +22,7 @@ spec:
         kubernetes.io/os: linux
         kubernetes.io/arch: amd64
         location: rfhome
+        kubernetes.io/hostname: pathweb-worker-baldric
       # runtimeClassName: gvisor
       priorityClassName: rfhome-low-priority
       terminationGracePeriodSeconds: 10
@@ -54,15 +55,15 @@ spec:
         volumeMounts:
         - name: onedrive-temp
           mountPath: /onedrive/data
-        - name: calibre-library
-          mountPath: /onedrive/data/Calibre Library
+        # - name: calibre-library
+        #   mountPath: /onedrive/data/Calibre Library
         - name: data
           mountPath: /onedrive/conf
         - name: onedrive-config
           mountPath: /onedrive/conf/config
           subPath: onedrive-config
         - name: okinawa-media
-          mountPath: /okinawa-media-books
+          mountPath: /onedrive/data/Calibre Library
           subPath: Books
         resources:
           requests:
@@ -72,9 +73,9 @@ spec:
             cpu: 350m
             memory: 214M
       volumes:
-        - name: calibre-library
-          persistentVolumeClaim:
-            claimName: calibre-library
+        # - name: calibre-library
+        #   persistentVolumeClaim:
+        #     claimName: calibre-library
         - name: onedrive-temp
           emptyDir: {}
         - name: onedrive-config
