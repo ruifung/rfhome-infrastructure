@@ -19,7 +19,8 @@ spec:
       annotations:
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>
     spec:
-      runtimeClassName: gvisor
+      # gvisor appears incompatible with NFS mounts. It can't see shit. Might be a permissions issue.
+      # runtimeClassName: gvisor
       priorityClassName: rfhome-standard
       nodeSelector:
         kubernetes.io/os: linux
@@ -100,9 +101,9 @@ spec:
             cpu: 17m
             memory: 35M
       volumes:
-        - name: calibre-library
-          persistentVolumeClaim:
-            claimName: calibre-library
+        # - name: calibre-library
+        #   persistentVolumeClaim:
+        #     claimName: calibre-library
         - name: cache
           persistentVolumeClaim:
             claimName: calibre-web-cache
