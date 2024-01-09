@@ -1,17 +1,17 @@
 ﻿
-apiVersion: v1
-kind: Service
-metadata:
-  name: greeac-dummyserver-service
-  labels:
-    app: greeac-dummyserver
-    lb-location: rfhome
-spec:
-  type: LoadBalancer
-  externalTrafficPolicy: Local
-  ports:
-    - name: greeac-port
-      port: 5000
-      targetPort: greeac
-  selector:
-    app: greeac-dummyserver
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: greeac-dummyserver-service
+#   labels:
+#     app: greeac-dummyserver
+#     lb-location: rfhome
+# spec:
+#   type: LoadBalancer
+#   externalTrafficPolicy: Local
+#   ports:
+#     - name: greeac-port
+#       port: 5000
+#       targetPort: greeac
+#   selector:
+#     app: greeac-dummyserver
