@@ -5,6 +5,8 @@ metadata:
   labels:
     app.kubernetes.io/name: sonarr
     external-dns: local-pdns
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
 spec:
   rules:
   - host: sonarr.services.home.yrf.me
