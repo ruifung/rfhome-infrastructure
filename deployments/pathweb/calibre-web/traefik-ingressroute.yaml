@@ -3,6 +3,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: calire-web-authentik-support
+  namespace: media-services
   annotations:
     kubernetes.io/ingress.class: traefik-traefik
 spec:
@@ -51,6 +52,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: calire-web-authentik-support-external
+  namespace: media-services
   annotations:
     kubernetes.io/ingress.class: traefik-external
 spec:
@@ -63,6 +65,7 @@ spec:
     services:
     - kind: Service
       name: ak-outpost-authentik-external-access
+      namespace: home-network
       port: http
   - kind: Rule
     match: Host(`ebooks.yrf.me`) && PathPrefix(`/logout`)

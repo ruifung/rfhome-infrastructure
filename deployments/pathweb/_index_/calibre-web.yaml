@@ -11,4 +11,4 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-  targetNamespace: home-network
+  targetNamespace: media-services

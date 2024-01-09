@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: calibre-library-sync
-  namespace: home-network
+  namespace: media-services
   labels:
     app.kubernetes.io/name: calibre-library-sync
 spec:

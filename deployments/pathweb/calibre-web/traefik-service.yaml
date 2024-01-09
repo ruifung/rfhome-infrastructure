@@ -2,13 +2,13 @@
 kind: TraefikService
 metadata:
   name: calibre-web-onedrive-sync-mirror
-  namespace: home-network
-
+  namespace: media-services
 spec:
   mirroring:
     name: calibre-library-sync
     port: webhook
     mirrors:
       - name: node-red
+        namespace: home-network
         port: http
         percent: 100

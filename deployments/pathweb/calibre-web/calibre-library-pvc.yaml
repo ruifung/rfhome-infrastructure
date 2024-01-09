@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: calibre-library
-  namespace: home-network
+  namespace: media-services
   labels:
     app.kubernetes.io/name: calibre-library-sync
 spec:
@@ -18,7 +18,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: calibre-web-cache
-  namespace: home-network
+  namespace: media-services
   labels:
     app.kubernetes.io/name: calibre-library-sync
 spec:
