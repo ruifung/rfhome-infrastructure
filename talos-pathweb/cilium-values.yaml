@@ -98,7 +98,7 @@ operator:
 socketLB:
   hostNamespaceOnly: true
 envoy:
-  enabled: true
+  enabled: false
   rollOutPods: true
   resources:
     requests:
