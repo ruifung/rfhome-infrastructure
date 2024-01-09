@@ -1,0 +1,56 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sonarr
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: sonarr
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sonarr
+  serviceName: sonarr-headless
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sonarr
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: pathweb-worker-baldric
+      containers:
+      - name: sonarr
+        image: linuxserver/sonarr:latest
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Asia/Kuala_Lumpur"
+        ports:
+        - containerPort: 8989
+          name: http
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: downloads
+          mountPath: /downloads
+        - name: media
+          mountPath: /tv
+          subPath: Series
+      volumes:
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: okinawa-downloads
+      - name: media
+        persistentVolumeClaim:
+          claimName: okinawa-media
+  volumeClaimTemplates:
+  - metadata:
+      name: config
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

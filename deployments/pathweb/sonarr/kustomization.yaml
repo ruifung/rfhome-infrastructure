@@ -1,0 +1,16 @@
+﻿images:
+  - name: linuxserver/sonarr
+    newName: ghcr.io/linuxserver/sonarr
+    newTag: version-4.0.0.748
+
+labels:
+  - pairs:
+      "app.kubernetes.io/name": sonarr
+    includeTemplates: true
+    includeSelectors: true
+
+resources:
+  - statefulset.yaml
+  - service.yaml
+  - ingress.yaml
+  - ciliumnetworkpolicy.yaml
