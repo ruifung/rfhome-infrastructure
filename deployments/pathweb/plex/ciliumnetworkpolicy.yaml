@@ -10,7 +10,7 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            io.kubernetes.pod.namespace: traefik
+            "k8s:io.kubernetes.pod.namespace": traefik
       toPorts:
         - ports:
             - port: "32400"
@@ -26,11 +26,11 @@ spec:
   egress:
     - toEndpoints:
         - matchLabels:
-            io.kubernetes.pod.namespace: kube-system
-            k8s-app: kube-dns
+            "k8s:io.kubernetes.pod.namespace": kube-system
+            "k8s:k8s-app": kube-dns
         - matchLabels:
-            io.kubernetes.pod.namespace: kube-system
-            k8s-app: node-local-dns
+            "k8s:io.kubernetes.pod.namespace": kube-system
+            "k8s:k8s-app": node-local-dns
       toPorts:
         - ports:
             - port: "53"
