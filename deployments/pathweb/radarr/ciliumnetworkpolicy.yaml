@@ -31,6 +31,7 @@ spec:
               - matchPattern: "*"
     - toEndpoints:
         - matchLabels:
+            "k8s:io.kubernetes.pod.namespace": home-network
             "k8s:app.kubernetes.io/component": database
             "k8s:app.kubernetes.io/part-of": rfhome-postgres-ha
       toPorts:
