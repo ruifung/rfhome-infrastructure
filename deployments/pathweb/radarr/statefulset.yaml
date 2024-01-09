@@ -1,0 +1,56 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: radarr
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: radarr
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: radarr
+  serviceName: radarr-headless
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: radarr
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: pathweb-worker-baldric
+      containers:
+      - name: radarr
+        image: linuxserver/radarr:latest
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Asia/Kuala_Lumpur"
+        ports:
+        - containerPort: 7878
+          name: http
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: downloads
+          mountPath: /downloads
+        - name: media
+          mountPath: /movies
+          subPath: Movies
+      volumes:
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: okinawa-downloads
+      - name: media
+        persistentVolumeClaim:
+          claimName: okinawa-media
+  volumeClaimTemplates:
+  - metadata:
+      name: config
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

@@ -1,0 +1,15 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: radarr-headless
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: radarr
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: radarr
+  ports:
+  - port: 7878
+    targetPort: http
+    name: http

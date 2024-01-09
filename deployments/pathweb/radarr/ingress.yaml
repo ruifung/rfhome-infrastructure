@@ -1,0 +1,25 @@
+﻿apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: radarr
+  labels:
+    app.kubernetes.io/name: radarr
+    external-dns: local-pdns
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+spec:
+  rules:
+  - host: radarr.services.home.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: radarr-headless
+            port: 
+              name: http
+  tls:
+  - hosts:
+    - radarr.services.home.yrf.me
+    secretName: services-wildcard-cert
