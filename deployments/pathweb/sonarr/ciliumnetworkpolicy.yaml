@@ -33,9 +33,9 @@ spec:
         - matchLabels:
             "k8s:app.kubernetes.io/component": database
             "k8s:app.kubernetes.io/part-of": rfhome-postgres-ha
-          ports:
+      toPorts:
+        - ports:
             - port: "5432"
-              protocol: TCP
     - toCIDRSet:
         - cidr: ::/0
           except:
