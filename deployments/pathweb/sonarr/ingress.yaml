@@ -19,3 +19,7 @@ spec:
             name: sonarr-headless
             port: 
               name: http
+  tls:
+  - hosts:
+    - sonarr.services.home.yrf.me
+    secretName: services-wildcard-cert
