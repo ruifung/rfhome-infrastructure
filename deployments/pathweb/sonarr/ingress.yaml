@@ -4,6 +4,7 @@ metadata:
   name: sonarr
   labels:
     app.kubernetes.io/name: sonarr
+    external-dns: local-pdns
 spec:
   rules:
   - host: sonarr.services.home.yrf.me
