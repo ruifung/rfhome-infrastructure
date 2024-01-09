@@ -61,6 +61,9 @@ spec:
         - name: onedrive-config
           mountPath: /onedrive/conf/config
           subPath: onedrive-config
+        - name: okinawa-media
+          mountPath: /okinawa-media-books
+          subPath: Books
         resources:
           requests:
             cpu: 15m
@@ -77,6 +80,9 @@ spec:
         - name: onedrive-config
           configMap:
             name: calibre-library-sync-config
+        - name: okinawa-media
+          persistentVolumeClaim:
+            claimName: okinawa-media
   volumeClaimTemplates:
   - metadata:
       name: data
