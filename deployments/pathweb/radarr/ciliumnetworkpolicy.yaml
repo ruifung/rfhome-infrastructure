@@ -19,7 +19,7 @@ spec:
   egress:
     - toEndpoints:
         - matchLabels:
-          "k8s:app.kubernetes.io/name": prowlarr
+            "k8s:app.kubernetes.io/name": prowlarr
     - toEndpoints:
         - matchLabels:
             "k8s:io.kubernetes.pod.namespace": kube-system
