@@ -11,36 +11,38 @@ spec:
     - fromEndpoints:
         - matchLabels:
             "k8s:io.kubernetes.pod.namespace": traefik
-        - matchLabels:
-            "k8s:app.kubernetes.io/name": sonarr
-        - matchLabels:
-            "k8s:app.kubernetes.io/name": radarr
-        - matchLabels:
-            "k8s:app.kubernetes.io/name": lidarr
-        - matchLabels:
-            "k8s:app.kubernetes.io/name": readarr
+        - matchExpressions:
+            - key: "k8s:app.kubernetes.io/name"
+              operator: In
+              values:
+              - sonarr
+              - radarr
+              - lidarr
+              - readarr
       toPorts:
         - ports:
             - port: "9696"
   egress:
     - toEndpoints:
-        - matchLabels:
-            "k8s:app.kubernetes.io/name": sonarr
-        - matchLabels:
-            "k8s:app.kubernetes.io/name": radarr
-        - matchLabels:
-            "k8s:app.kubernetes.io/name": lidarr
-        - matchLabels:
-            "k8s:app.kubernetes.io/name": readarr
-        - matchLabels:
-            "k8s:app.kubernetes.io/name": flaresolverr
+        - matchExpressions:
+            - key: "k8s:app.kubernetes.io/name"
+              operator: In
+              values:
+              - sonarr
+              - radarr
+              - lidarr
+              - readarr
+              - flaresolverr
+              - qbittorrent
     - toEndpoints:
         - matchLabels:
             "k8s:io.kubernetes.pod.namespace": kube-system
-            "k8s:k8s-app": kube-dns
-        - matchLabels:
-            "k8s:io.kubernetes.pod.namespace": kube-system
-            "k8s:k8s-app": node-local-dns
+          matchExpressions:
+            - key: "k8s:k8s-app"
+              operator: In
+              values:
+              - kube-dns
+              - node-local-dns
       toPorts:
         - ports:
             - port: "53"
