@@ -18,3 +18,19 @@ spec:
               - radarr
               - lidarr
               - readarr
+    - toEndpoints:
+        - matchLabels:
+            "k8s:io.kubernetes.pod.namespace": kube-system
+          matchExpressions:
+            - key: "k8s:k8s-app"
+              operator: In
+              values:
+              - kube-dns
+              - node-local-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
