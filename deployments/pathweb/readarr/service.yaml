@@ -1,0 +1,15 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: readarr-headless
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: readarr
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: readarr
+  ports:
+  - port: 8787
+    targetPort: http
+    name: http

@@ -1,0 +1,16 @@
+﻿images:
+  - name: linuxserver/readarr
+    newName: lscr.io/linuxserver/readarr
+    newTag: develop-version-0.3.14.2358
+
+labels:
+  - pairs:
+      "app.kubernetes.io/name": readarr
+    includeTemplates: true
+    includeSelectors: true
+
+resources:
+  - statefulset.yaml
+  - service.yaml
+  - ingress.yaml
+  - ciliumnetworkpolicy.yaml
