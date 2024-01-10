@@ -30,6 +30,10 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: deluge-torrent.services.home.yrf.me
 spec:
   type: LoadBalancer
+  ipFamilies:
+  - IPv4
+  - IPv6
+  ipFamilyPolicy: PreferDualStack
   selector:
     app.kubernetes.io/name: deluge
   ports:    
