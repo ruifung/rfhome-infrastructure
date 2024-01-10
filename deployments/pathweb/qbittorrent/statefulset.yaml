@@ -44,6 +44,9 @@ spec:
         - name: downloads
           mountPath: /downloads
           subPath: Torrents
+        - name: downloads
+          mountPath: /data
+          subPath: Torrents
       volumes:
       - name: downloads
         persistentVolumeClaim:
