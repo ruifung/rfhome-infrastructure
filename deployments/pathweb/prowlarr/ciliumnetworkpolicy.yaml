@@ -50,6 +50,14 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
+    - toCIDR:
+        - 10.229.97.0/24
+      toPorts:
+        - ports:
+            - port: "4444"
+              protocol: TCP
+            - port: "4445"
+              protocol: TCP
     - toEndpoints:
         - matchLabels:
             "k8s:io.kubernetes.pod.namespace": home-network

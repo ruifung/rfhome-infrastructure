@@ -48,14 +48,14 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
-    - toCIDRSet:
-        - cidr: 10.229.97.0/24
+    - toCIDR: 
+        - 10.229.97.0/24
       toPorts:
         - ports:
             - port: "7656"
               protocol: TCP
             - port: "7656"
-              protocol: TCP
+              protocol: UDP
     - toCIDRSet:
         - cidr: ::/0
           except:
