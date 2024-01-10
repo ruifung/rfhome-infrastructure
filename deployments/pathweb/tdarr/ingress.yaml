@@ -5,8 +5,8 @@ metadata:
   labels:
     app.kubernetes.io/name: tdarr
     external-dns: local-pdns
-  annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+  annotations: {}
+    # traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
 spec:
   rules:
   - host: tdarr.services.home.yrf.me
