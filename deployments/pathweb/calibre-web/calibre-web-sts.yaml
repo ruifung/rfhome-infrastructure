@@ -60,7 +60,6 @@ spec:
         #   mountPath: /books
         - name: okinawa-media
           mountPath: /books
-          subPath: Books/Calibre Library
         - name: cache
           mountPath: /cache
         - name: data
