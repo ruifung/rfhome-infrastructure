@@ -1,0 +1,16 @@
+﻿images:
+  - name: linuxserver/qbittorrent
+    newName: lscr.io/linuxserver/qbittorrent
+    newTag: version-4.6.2-r0
+
+labels:
+  - pairs:
+      "app.kubernetes.io/name": qbittorrent
+    includeTemplates: true
+    includeSelectors: true
+
+resources:
+  - statefulset.yaml
+  - service.yaml
+  - ingress.yaml
+  - ciliumnetworkpolicy.yaml

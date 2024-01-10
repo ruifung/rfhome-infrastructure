@@ -1,25 +1,25 @@
 ﻿apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: deluge
+  name: qbittorrent
   labels:
-    app.kubernetes.io/name: deluge
+    app.kubernetes.io/name: qbittorrent
     external-dns: local-pdns
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
 spec:
   rules:
-  - host: deluge.services.home.yrf.me
+  - host: qbittorrent.services.home.yrf.me
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: deluge
+            name: qbittorrent
             port: 
               name: http
   tls:
   - hosts:
-    - deluge.services.home.yrf.me
+    - qbittorrent.services.home.yrf.me
     secretName: services-wildcard-cert

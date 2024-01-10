@@ -1,26 +1,26 @@
 ﻿apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: deluge
+  name: qbittorrent
   namespace: media-services
   labels:
-    app.kubernetes.io/name: deluge
+    app.kubernetes.io/name: qbittorrent
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: deluge
-  serviceName: deluge
+      app.kubernetes.io/name: qbittorrent
+  serviceName: qbittorrent
   replicas: 1
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: deluge
+        app.kubernetes.io/name: qbittorrent
     spec:
       nodeSelector:
         kubernetes.io/hostname: pathweb-worker-baldric
       containers:
-      - name: deluge
-        image: linuxserver/deluge:latest
+      - name: qbittorrent
+        image: linuxserver/qbittorrent:latest
         env:
         - name: PUID
           value: "1000"
@@ -28,8 +28,10 @@ spec:
           value: "1000"
         - name: TZ
           value: "Asia/Kuala_Lumpur"
+        - name: WEBUI_PORT
+          value: "8080"
         ports:
-        - containerPort: 8112
+        - containerPort: 8080
           name: http
         - containerPort: 51130
           name: torrent-tcp

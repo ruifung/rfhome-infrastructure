@@ -1,12 +1,12 @@
 ﻿apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: deluge-network-policy
+  name: qbittorrent-network-policy
   namespace: media-services
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: deluge
+      app.kubernetes.io/name: qbittorrent
   ingress:
     - fromEndpoints:
         - matchLabels:
@@ -22,7 +22,7 @@ spec:
               - prowlarr
       toPorts:
         - ports:
-            - port: "8112"
+            - port: "8080"
     - fromEntities:
         - world
       toPorts:
