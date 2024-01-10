@@ -1,0 +1,20 @@
+﻿apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: unpackerr-network-policy
+  namespace: media-services
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: unpackerr
+  ingress: []
+  egress:
+    - toEndpoints:
+        - matchExpressions:
+            - key: "k8s:app.kubernetes.io/name"
+              operator: In
+              values:
+              - sonarr
+              - radarr
+              - lidarr
+              - readarr

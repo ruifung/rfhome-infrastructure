@@ -1,0 +1,7 @@
+﻿apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: unpackerr-config
+data:
+  UN_SONARR_0_URL: http://sonarr:8989
+  UN_RADARR_0_URL: http://radarr:7878

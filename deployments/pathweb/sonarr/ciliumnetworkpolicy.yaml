@@ -11,8 +11,12 @@ spec:
     - fromEndpoints:
         - matchLabels:
             "k8s:io.kubernetes.pod.namespace": traefik
-        - matchLabels:
-            "k8s:app.kubernetes.io/name": prowlarr
+        - matchExpressions:
+            - key: "k8s:app.kubernetes.io/name"
+              operator: In
+              values:
+              - prowlarr
+              - unpackerr
       toPorts:
         - ports:
             - port: "8989"
