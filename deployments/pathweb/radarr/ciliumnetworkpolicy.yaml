@@ -25,8 +25,7 @@ spec:
               - prowlarr
               - flaresolverr
               - qbittorrent
-        - matchLabels:
-            "k8s:app.kubernetes.io/name": prowlarr
+              - plex
     - toEndpoints:
         - matchLabels:
             "k8s:io.kubernetes.pod.namespace": kube-system
