@@ -1,7 +1,6 @@
 ﻿images:
-  - name: linuxserver/qbittorrent
-    newName: lscr.io/linuxserver/qbittorrent
-    newTag: version-4.6.2-r0
+  - name: ghcr.io/hotio/qbittorrent
+    newTag: release-4.6.2
 
 labels:
   - pairs:

@@ -20,16 +20,16 @@ spec:
         kubernetes.io/hostname: pathweb-worker-baldric
       containers:
       - name: qbittorrent
-        image: linuxserver/qbittorrent:latest
+        image: ghcr.io/hotio/qbittorrent:latest
         env:
         - name: PUID
           value: "1000"
         - name: PGID
           value: "1000"
+        - name: UMASK
+          value: "002"
         - name: TZ
           value: "Asia/Kuala_Lumpur"
-        - name: WEBUI_PORT
-          value: "8080"
         ports:
         - containerPort: 8080
           name: http
