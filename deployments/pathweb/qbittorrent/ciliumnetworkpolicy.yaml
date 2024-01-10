@@ -49,6 +49,14 @@ spec:
             dns:
               - matchPattern: "*"
     - toCIDRSet:
+        - cidr: 10.229.97.0/24
+      toPorts:
+        - ports:
+            - port: "7656"
+              protocol: TCP
+            - port: "7656"
+              protocol: TCP
+    - toCIDRSet:
         - cidr: ::/0
           except:
             - fc00::/7
