@@ -1,25 +1,25 @@
 ﻿apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: tdarr
+  name: fileflows
   labels:
-    app.kubernetes.io/name: tdarr
+    app.kubernetes.io/name: fileflows
     external-dns: local-pdns
   annotations: {}
     # traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
 spec:
   rules:
-  - host: tdarr.services.home.yrf.me
+  - host: fileflows.services.home.yrf.me
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: tdarr-headless
+            name: fileflows-headless
             port: 
-              name: tdarr-webui
+              name: http
   tls:
   - hosts:
-    - tdarr.services.home.yrf.me
+    - fileflows.services.home.yrf.me
     secretName: services-wildcard-cert

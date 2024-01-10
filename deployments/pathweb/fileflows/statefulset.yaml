@@ -1,0 +1,58 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: fileflows
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: fileflows
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: fileflows
+  serviceName: fileflows-headless
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: fileflows
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: pathweb-worker-baldric
+      containers:
+      - name: fileflows
+        image: revenz/fileflows:latest
+        env:
+        - name: TZ
+          value: "Asia/Kuala_Lumpur"
+        - name: TempPathHost
+          value: "/temp"
+        ports:
+        - containerPort: 5000
+          name: http
+        volumeMounts:
+        - name: data
+          mountPath: /app/Data
+          subPath: Data
+        - name: data
+          mountPath: /app/Logs
+          subPath: Logs
+        - name: media
+          mountPath: /media
+        - name: fileflows-workdir
+          mountPath: /temp
+      volumes:
+      - name: media
+        persistentVolumeClaim:
+          claimName: okinawa-media
+      - name: fileflows-workdir
+        nfs:
+          server: 10.229.229.12
+          path: /mnt/hdd/applications/fileflows
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 10Gi

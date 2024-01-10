@@ -1,10 +1,10 @@
 ﻿images:
-  - name: ghcr.io/haveagitgat/tdarr
-    newTag: 2.17.01
+  - name: revenz/fileflows
+    newTag: "23.12"
 
 labels:
   - pairs:
-      "app.kubernetes.io/name": tdarr
+      "app.kubernetes.io/name": fileflows
     includeTemplates: true
     includeSelectors: true
 
