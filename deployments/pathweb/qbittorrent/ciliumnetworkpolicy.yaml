@@ -56,6 +56,8 @@ spec:
               protocol: TCP
             - port: "7656"
               protocol: UDP
+            - port: "4444"
+              protocol: TCP
     - toCIDRSet:
         - cidr: ::/0
           except:
