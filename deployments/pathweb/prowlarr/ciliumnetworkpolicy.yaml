@@ -11,11 +11,27 @@ spec:
     - fromEndpoints:
         - matchLabels:
             "k8s:io.kubernetes.pod.namespace": traefik
-        - {}
+        - matchLabels:
+            "k8s:app.kubernetes.io/name": sonarr
+        - matchLabels:
+            "k8s:app.kubernetes.io/name": radarr
+        - matchLabels:
+            "k8s:app.kubernetes.io/name": lidarr
+        - matchLabels:
+            "k8s:app.kubernetes.io/name": readarr
       toPorts:
         - ports:
             - port: "9696"
   egress:
+    - toEndpoints:
+        - matchLabels:
+            "k8s:app.kubernetes.io/name": sonarr
+        - matchLabels:
+            "k8s:app.kubernetes.io/name": radarr
+        - matchLabels:
+            "k8s:app.kubernetes.io/name": lidarr
+        - matchLabels:
+            "k8s:app.kubernetes.io/name": readarr
     - toEndpoints:
         - matchLabels:
             "k8s:io.kubernetes.pod.namespace": kube-system
