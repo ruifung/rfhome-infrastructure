@@ -1,0 +1,16 @@
+﻿
+images:
+  - name: ghcr.io/flaresolverr/flaresolverr
+    newName: ghcr.io/flaresolverr/flaresolverr
+    newTag: v3.3.13
+
+labels:
+  - pairs:
+      "app.kubernetes.io/name": flaresolverr
+    includeTemplates: true
+    includeSelectors: true
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - ciliumnetworkpolicy.yaml

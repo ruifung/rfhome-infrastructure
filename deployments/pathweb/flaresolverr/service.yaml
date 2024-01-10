@@ -1,0 +1,14 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: flaresolverr
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: flaresolverr
+spec:
+  selector:
+    app.kubernetes.io/name: flaresolverr
+  ports:
+  - port: 8191
+    targetPort: http
+    name: http
