@@ -1,0 +1,15 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: lidarr-headless
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: lidarr
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: lidarr
+  ports:
+  - port: 8686
+    targetPort: http
+    name: http
