@@ -1,0 +1,25 @@
+﻿apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: deluge
+  labels:
+    app.kubernetes.io/name: deluge
+    external-dns: local-pdns
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+spec:
+  rules:
+  - host: deluge.services.home.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: deluge
+            port: 
+              name: http
+  tls:
+  - hosts:
+    - deluge.services.home.yrf.me
+    secretName: services-wildcard-cert

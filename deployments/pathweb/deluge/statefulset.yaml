@@ -1,0 +1,56 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: deluge
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: deluge
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: deluge
+  serviceName: deluge
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: deluge
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: pathweb-worker-baldric
+      containers:
+      - name: deluge
+        image: linuxserver/deluge:latest
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Asia/Kuala_Lumpur"
+        ports:
+        - containerPort: 8112
+          name: http
+        - containerPort: 51130
+          name: torrent-tcp
+        - containerPort: 51130
+          name: torrent-udp
+          protocol: UDP
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: downloads
+          mountPath: /downloads
+          subPath: Torrents
+      volumes:
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: okinawa-downloads
+  volumeClaimTemplates:
+  - metadata:
+      name: config
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

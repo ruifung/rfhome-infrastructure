@@ -1,0 +1,16 @@
+﻿images:
+  - name: linuxserver/deluge
+    newName: lscr.io/linuxserver/deluge
+    newTag: version-2.1.1-r8
+
+labels:
+  - pairs:
+      "app.kubernetes.io/name": deluge
+    includeTemplates: true
+    includeSelectors: true
+
+resources:
+  - statefulset.yaml
+  - service.yaml
+  - ingress.yaml
+  - ciliumnetworkpolicy.yaml

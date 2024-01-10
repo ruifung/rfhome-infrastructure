@@ -1,0 +1,24 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: deluge
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: deluge
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: deluge
+  ports:
+  - port: 8112
+    targetPort: http
+    name: http
+    protocol: TCP
+  - port: 51130
+    targetPort: torrent-tcp
+    name: torrent-tcp
+    protocol: TCP
+  - port: 51130
+    targetPort: torrent-udp
+    name: torrent-udp
+    protocol: UDP
