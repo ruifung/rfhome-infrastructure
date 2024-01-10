@@ -109,7 +109,7 @@ spec:
       server:
         requests:
           cpu: 34m
-          memory: 600M
+          memory: 700M
         limits:
           cpu: '1'
           memory: 1024M

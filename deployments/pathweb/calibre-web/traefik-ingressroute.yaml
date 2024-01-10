@@ -32,6 +32,7 @@ spec:
     middlewares:
     - name: calibre-web-static-caching-policy
     - name: calibre-web-opds-cover-public
+      namespace: home-network
     services:
     - kind: Service
       name: calibre-web
