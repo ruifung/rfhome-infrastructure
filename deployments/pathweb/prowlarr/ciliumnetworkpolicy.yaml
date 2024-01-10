@@ -14,7 +14,7 @@ spec:
         - {}
       toPorts:
         - ports:
-            - port: "7878"
+            - port: "9696"
   egress:
     - toEndpoints:
         - matchLabels:
