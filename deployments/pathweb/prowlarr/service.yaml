@@ -1,0 +1,15 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: prowlarr-headless
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: prowlarr
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: prowlarr
+  ports:
+  - port: 9696
+    targetPort: http
+    name: http

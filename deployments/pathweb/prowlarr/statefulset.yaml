@@ -1,0 +1,42 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: prowlarr
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: prowlarr
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prowlarr
+  serviceName: prowlarr-headless
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prowlarr
+    spec:
+      containers:
+      - name: prowlarr
+        image: linuxserver/prowlarr:latest
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Asia/Kuala_Lumpur"
+        ports:
+        - containerPort: 9696
+          name: http
+        volumeMounts:
+        - name: config
+          mountPath: /config
+  volumeClaimTemplates:
+  - metadata:
+      name: config
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

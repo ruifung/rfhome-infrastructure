@@ -1,0 +1,25 @@
+﻿apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prowlarr
+  labels:
+    app.kubernetes.io/name: prowlarr
+    external-dns: local-pdns
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+spec:
+  rules:
+  - host: prowlarr.services.home.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: prowlarr-headless
+            port: 
+              name: http
+  tls:
+  - hosts:
+    - prowlarr.services.home.yrf.me
+    secretName: services-wildcard-cert
