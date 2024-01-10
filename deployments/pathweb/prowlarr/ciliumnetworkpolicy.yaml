@@ -32,6 +32,8 @@ spec:
             "k8s:app.kubernetes.io/name": lidarr
         - matchLabels:
             "k8s:app.kubernetes.io/name": readarr
+        - matchLabels:
+            "k8s:app.kubernetes.io/name": flaresolverr
     - toEndpoints:
         - matchLabels:
             "k8s:io.kubernetes.pod.namespace": kube-system
