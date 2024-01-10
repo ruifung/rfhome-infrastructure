@@ -1,1 +1,15 @@
-﻿
+﻿images:
+  - name: ghcr.io/haveagitgat/tdarr
+    newTag: 2.17.01
+
+labels:
+  - pairs:
+      "app.kubernetes.io/name": tdarr
+    includeTemplates: true
+    includeSelectors: true
+
+resources:
+  - statefulset.yaml
+  - service.yaml
+  - ingress.yaml
+  - ciliumnetworkpolicy.yaml
