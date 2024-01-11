@@ -1,5 +1,6 @@
 ﻿images:
   - name: ghcr.io/hotio/qbittorrent
+    newName: harbor.services.home.yrf.me/library/hotio/qbittorrent
     newTag: release-4.6.2
 
 labels:
