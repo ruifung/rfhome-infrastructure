@@ -55,8 +55,8 @@ spec:
           - name: ONEDRIVE_GID
             value: "1000"
         volumeMounts:
-        - name: onedrive-temp
-          mountPath: /onedrive/data
+        # - name: onedrive-temp
+        #   mountPath: /onedrive/data
         # - name: calibre-library
         #   mountPath: /onedrive/data/Calibre Library
         - name: data
@@ -78,8 +78,8 @@ spec:
         # - name: calibre-library
         #   persistentVolumeClaim:
         #     claimName: calibre-library
-        - name: onedrive-temp
-          emptyDir: {}
+        # - name: onedrive-temp
+        #   emptyDir: {}
         - name: onedrive-config
           configMap:
             name: calibre-library-sync-config
