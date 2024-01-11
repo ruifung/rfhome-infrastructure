@@ -40,6 +40,10 @@ spec:
           mountPath: /media
         - name: fileflows-workdir
           mountPath: /temp
+        resources:
+          limits:
+            cpu: "16"
+            memory: 6Gi
       volumes:
       - name: media
         persistentVolumeClaim:
