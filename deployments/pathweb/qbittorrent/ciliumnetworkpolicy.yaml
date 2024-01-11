@@ -23,8 +23,9 @@ spec:
       toPorts:
         - ports:
             - port: "8080"
-    - fromEntities:
-        - world
+    - fromCIDRSet:
+        - cidr: 0.0.0.0/0
+        - cidr: ::/0
       toPorts:
         - ports:
             - port: "51130"
@@ -62,7 +63,6 @@ spec:
         - cidr: ::/0
           except:
             - fc00::/7
-    - toCIDRSet:
         - cidr: 0.0.0.0/0
           except:
             - 10.0.0.0/8
