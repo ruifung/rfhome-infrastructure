@@ -35,6 +35,13 @@ spec:
   routes:
     - match: Host(`qbittorrent.services.home.yrf.me`) && Path(`/sw.js`)
       kind: Rule
+      priority: 1000
+      services:
+        - name: noop@internal
+          kind: TraefikService
+    - match: Host(`qbittorrent.services.home.yrf.me`) && Path(`/registerSW.js`)
+      kind: Rule
+      priority: 1000
       services:
         - name: noop@internal
           kind: TraefikService
