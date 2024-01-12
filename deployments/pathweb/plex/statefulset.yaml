@@ -49,8 +49,7 @@ spec:
           protocol: UDP
         volumeMounts:
         - name: media
-          mountPath: /data
-          readOnly: false
+          mountPath: /media
         - name: config
           mountPath: /config
         - name: transcode

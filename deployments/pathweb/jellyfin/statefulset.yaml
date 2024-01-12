@@ -28,7 +28,6 @@ spec:
         volumeMounts:
         - name: media
           mountPath: /media
-          readOnly: false
         - name: config
           mountPath: /config
         - name: cache
