@@ -37,7 +37,7 @@ spec:
         - name: downloads
           mountPath: /downloads
         - name: media
-          mountPath: /music
+          mountPath: /media/Music
           subPath: Music
       volumes:
       - name: downloads

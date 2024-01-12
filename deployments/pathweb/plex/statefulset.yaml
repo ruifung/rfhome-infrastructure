@@ -65,6 +65,8 @@ spec:
       - name: tls-cert
         secret:
           secretName: services-wildcard-cert
+  persistentVolumeClaimRetentionPolicy:
+    delete: Retain
   volumeClaimTemplates:
   - metadata:
       name: config
