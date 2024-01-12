@@ -38,7 +38,6 @@ spec:
           mountPath: /downloads
         - name: empty
           mountPath: /media
-          readOnly: true
         - name: media
           mountPath: /media/Shows
           subPath: Shows
@@ -50,8 +49,7 @@ spec:
         persistentVolumeClaim:
           claimName: okinawa-media
       - name: empty
-        emptyDir:
-          medium: Memory
+        emptyDir: {}
   volumeClaimTemplates:
   - metadata:
       name: config
