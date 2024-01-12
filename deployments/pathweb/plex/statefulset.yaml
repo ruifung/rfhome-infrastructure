@@ -62,12 +62,21 @@ spec:
       - name: media
         persistentVolumeClaim:
           claimName: okinawa-media
-      - name: config
-        persistentVolumeClaim:
-          claimName: plex-data
-      - name: transcode
-        persistentVolumeClaim:
-          claimName: plex-transcode
       - name: tls-cert
         secret:
           secretName: services-wildcard-cert
+  volumeClaimTemplates:
+  - metadata:
+      name: config
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 10Gi
+  - metadata:
+      name: transcode
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 10Gi

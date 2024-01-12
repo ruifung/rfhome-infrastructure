@@ -4,7 +4,6 @@
 resources:
   - statefulset.yaml
   - service.yaml
-  - persistentvolumeclaims.yaml
   - ciliumnetworkpolicy.yaml
   - ingress.yaml
   - serverstransport.yaml
