@@ -4,4 +4,4 @@ metadata:
   name: plex-transport
   namespace: media-services
 spec:
-  serverName: 127-0-0-1.decc7107d9994975ae795246dc1f1eab.plex.direct
+  insecureSkipVerify: true # Ah, fuck it. It's in-cluster traffic anyway. Who needs to verify certs here.
