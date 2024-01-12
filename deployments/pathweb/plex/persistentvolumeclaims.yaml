@@ -21,6 +21,6 @@ spec:
     requests:
       storage: 10Gi
   volumeMode: Filesystem
-  storageClassName: cephfs-retain
+  storageClassName: ceph-rbd
   accessModes:
-    - ReadWriteMany
+    - ReadWrite Once
