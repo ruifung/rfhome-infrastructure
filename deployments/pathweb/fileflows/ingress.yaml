@@ -8,6 +8,7 @@ metadata:
   annotations: {}
     # traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
 spec:
+  ingressClassName: traefik-traefik
   rules:
   - host: fileflows.services.home.yrf.me
     http:
