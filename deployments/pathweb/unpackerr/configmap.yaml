@@ -6,3 +6,4 @@ data:
   UN_SONARR_0_URL: http://sonarr-headless:8989
   UN_RADARR_0_URL: http://radarr-headless:7878
   UN_LIDARR_0_URL: http://lidarr-headless:8686
+  UN_DEBUG: "true"
