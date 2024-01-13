@@ -1,6 +1,7 @@
 ﻿images:
   - name: golift/unpackerr
-    newTag: 0.12.0
+    newName: hotio/unpackerr
+    newTag: release-0.12.0
 
 labels:
   - pairs:
