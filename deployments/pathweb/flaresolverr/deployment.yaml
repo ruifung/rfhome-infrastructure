@@ -21,6 +21,8 @@ spec:
         env:
         - name: LOG_LEVEL
           value: "info"
+        - name: TZ
+          value: Asia/Kuala_Lumpur
         ports:
         - containerPort: 8191
           name: http
