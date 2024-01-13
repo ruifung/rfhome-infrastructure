@@ -17,6 +17,8 @@ spec:
       labels:
         app.kubernetes.io/name: unpackerr
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: pathweb-worker-baldric
       containers:
       - name: unpackerr
         image: golift/unpackerr:latest
