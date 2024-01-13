@@ -4,8 +4,5 @@ metadata:
   name: unpackerr-config
 data:
   UN_SONARR_0_URL: http://sonarr-headless:8989
-  UN_SONARR_0_PATHS: ""
   UN_RADARR_0_URL: http://radarr-headless:7878
-  UN_RADARR_0_PATHS: ""
   UN_LIDARR_0_URL: http://lidarr-headless:8686
-  UN_LIDARR_0_PATHS: ""
