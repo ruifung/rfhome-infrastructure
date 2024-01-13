@@ -20,6 +20,9 @@ spec:
       containers:
       - name: unpackerr
         image: golift/unpackerr:latest
+        env:
+        - name: TZ
+          value: Asia/Kuala_Lumpur
         envFrom:
         - configMapRef:
             name: unpackerr-config
