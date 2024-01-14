@@ -24,24 +24,24 @@ spec:
   - hosts:
     - qbittorrent.services.home.yrf.me
     secretName: services-wildcard-cert
----
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
-  name: qbittorrent-block-serviceworker
-  annotations:
-     kubernetes.io/ingress.class: traefik-traefik
-spec:
-  routes:
-    - match: Host(`qbittorrent.services.home.yrf.me`) && Path(`/sw.js`)
-      kind: Rule
-      priority: 1000
-      services:
-        - name: noop@internal
-          kind: TraefikService
-    - match: Host(`qbittorrent.services.home.yrf.me`) && Path(`/registerSW.js`)
-      kind: Rule
-      priority: 1000
-      services:
-        - name: noop@internal
-          kind: TraefikService
+# ---
+# apiVersion: traefik.io/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: qbittorrent-block-serviceworker
+#   annotations:
+#      kubernetes.io/ingress.class: traefik-traefik
+# spec:
+#   routes:
+#     - match: Host(`qbittorrent.services.home.yrf.me`) && Path(`/sw.js`)
+#       kind: Rule
+#       priority: 1000
+#       services:
+#         - name: noop@internal
+#           kind: TraefikService
+#     - match: Host(`qbittorrent.services.home.yrf.me`) && Path(`/registerSW.js`)
+#       kind: Rule
+#       priority: 1000
+#       services:
+#         - name: noop@internal
+#           kind: TraefikService
