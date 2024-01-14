@@ -29,6 +29,7 @@ spec:
               - prowlarr
               - flaresolverr
               - qbittorrent
+              - sabnzbd
               - plex
     - toEndpoints:
         - matchLabels:

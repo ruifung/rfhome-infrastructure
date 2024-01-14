@@ -34,6 +34,7 @@ spec:
               - readarr
               - flaresolverr
               - qbittorrent
+              - sabnzbd
     - toEndpoints:
         - matchLabels:
             "k8s:io.kubernetes.pod.namespace": kube-system
