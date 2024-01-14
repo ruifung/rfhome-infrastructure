@@ -16,7 +16,8 @@ $controlplane = @(
 $workers = @(
     "pathweb-worker-1.$homeDnsSuffix",
     "pathweb-worker-2.$homeDnsSuffix",
-    "pathweb-worker-3.$homeDnsSuffix"
+    "pathweb-worker-3.$homeDnsSuffix",
+    "pathweb-worker-baldric.$homeDnsSuffix"
 )
 
 Write-Output "Extra Args: $extraArgs"
@@ -40,8 +41,7 @@ foreach ($node in $toApply) {
         '--nodes',
         $node,
         '--image',
-        $IMAGE,
-        '--wait'
+        $IMAGE
         # '--stage'
     )
     # append extraArgs to args if extraArgs is not blank
