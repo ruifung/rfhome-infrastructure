@@ -64,6 +64,10 @@ spec:
       - name: tls-cert
         secret:
           secretName: services-wildcard-cert
+      - name: transcode
+        nfs:
+          server: 10.229.229.12
+          path: /mnt/hdd/applications/plex
   persistentVolumeClaimRetentionPolicy:
     delete: Retain
   volumeClaimTemplates:
@@ -75,10 +79,3 @@ spec:
       resources:
         requests:
           storage: 10Gi
-  - metadata:
-      name: transcode
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 100Gi
