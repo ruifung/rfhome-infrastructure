@@ -18,6 +18,7 @@ spec:
               - sonarr
               - radarr
               - lidarr
+              - tautulli
       toPorts:
         - ports:
             - port: "32400"
