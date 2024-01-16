@@ -19,6 +19,7 @@ spec:
               - radarr
               - lidarr
               - tautulli
+              - overseerr
       toPorts:
         - ports:
             - port: "32400"

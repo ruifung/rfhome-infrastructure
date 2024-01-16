@@ -1,36 +1,28 @@
 ﻿apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: radarr-network-policy
+  name: overseerr-network-policy
   namespace: media-services
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: radarr
+      app.kubernetes.io/name: overseerr
   ingress:
     - fromEndpoints:
         - matchLabels:
             "k8s:io.kubernetes.pod.namespace": traefik
-        - matchExpressions:
-            - key: "k8s:app.kubernetes.io/name"
-              operator: In
-              values:
-              - prowlarr
-              - unpackerr
-              - overseerr
       toPorts:
         - ports:
-            - port: "7878"
+            - port: "5055"
   egress:
     - toEndpoints:
         - matchExpressions:
             - key: "k8s:app.kubernetes.io/name"
               operator: In
               values:
-              - prowlarr
-              - flaresolverr
-              - qbittorrent
-              - sabnzbd
+              - radarr
+              - sonarr
+              - lidarr
               - plex
     - toEndpoints:
         - matchLabels:
@@ -48,14 +40,6 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
-    - toEndpoints:
-        - matchLabels:
-            "k8s:io.kubernetes.pod.namespace": home-network
-            "k8s:app.kubernetes.io/component": database
-            "k8s:app.kubernetes.io/part-of": rfhome-postgres-ha
-      toPorts:
-        - ports:
-            - port: "5432"
     - toCIDRSet:
         - cidr: ::/0
           except:

@@ -17,6 +17,7 @@ spec:
               values:
               - prowlarr
               - unpackerr
+              - overseerr
       toPorts:
         - ports:
             - port: "8686"

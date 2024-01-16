@@ -1,0 +1,15 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: overseerr-headless
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: overseerr
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: overseerr
+  ports:
+  - port: 5055
+    targetPort: http
+    name: http
