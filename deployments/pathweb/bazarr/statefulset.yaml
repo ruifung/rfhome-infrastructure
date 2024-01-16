@@ -1,0 +1,80 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: bazarr
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: bazarr
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: bazarr
+  serviceName: bazarr-headless
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: bazarr
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: pathweb-worker-baldric
+      containers:
+      - name: bazarr
+        image: linuxserver/bazarr:latest
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Asia/Kuala_Lumpur"
+        - name: POSTGRES_ENABLED
+          value: "True"
+        - name: POSTGRES_HOST
+          secretKeyRef:
+            name: rfhome-postgres-ha-pguser-bazarr
+            key: host
+        - name: POSTGRES_PORT
+          secretKeyRef:
+            name: rfhome-postgres-ha-pguser-bazarr
+            key: port
+        - name: POSTGRES_DATABASE
+          secretKeyRef:
+            name: rfhome-postgres-ha-pguser-bazarr
+            key: dbname
+        - name: POSTGRES_USERNAME
+          secretKeyRef:
+            name: rfhome-postgres-ha-pguser-bazarr
+            key: user
+        - name: POSTGRES_PASSWORD
+          secretKeyRef:
+            name: rfhome-postgres-ha-pguser-bazarr
+            key: password
+        ports:
+        - containerPort: 6767
+          name: http
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: empty
+          mountPath: /media
+        - name: media
+          mountPath: /media/Shows
+          subPath: Shows
+        - name: media
+          mountPath: /media/Movies
+          subPath: Movies
+      volumes:
+      - name: media
+        persistentVolumeClaim:
+          claimName: okinawa-media
+      - name: empty
+        emptyDir: {}
+  volumeClaimTemplates:
+  - metadata:
+      name: config
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
