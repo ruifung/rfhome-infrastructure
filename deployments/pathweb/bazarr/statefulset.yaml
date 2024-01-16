@@ -27,7 +27,7 @@ spec:
         - name: TZ
           value: "Asia/Kuala_Lumpur"
         - name: POSTGRES_ENABLED
-          value: "True"
+          value: "False"
         - name: POSTGRES_HOST
           valueFrom:
             secretKeyRef:
