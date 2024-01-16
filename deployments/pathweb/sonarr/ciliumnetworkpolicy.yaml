@@ -18,6 +18,7 @@ spec:
               - prowlarr
               - unpackerr
               - overseerr
+              - bazarr
       toPorts:
         - ports:
             - port: "8989"
