@@ -29,25 +29,30 @@ spec:
         - name: POSTGRES_ENABLED
           value: "True"
         - name: POSTGRES_HOST
-          secretKeyRef:
-            name: rfhome-postgres-ha-pguser-bazarr
-            key: host
+          valueFrom:
+            secretKeyRef:
+              name: rfhome-postgres-ha-pguser-bazarr
+              key: host
         - name: POSTGRES_PORT
-          secretKeyRef:
-            name: rfhome-postgres-ha-pguser-bazarr
-            key: port
+          valueFrom:
+            secretKeyRef:
+              name: rfhome-postgres-ha-pguser-bazarr
+              key: port
         - name: POSTGRES_DATABASE
-          secretKeyRef:
-            name: rfhome-postgres-ha-pguser-bazarr
-            key: dbname
+          valueFrom:
+            secretKeyRef:
+              name: rfhome-postgres-ha-pguser-bazarr
+              key: dbname
         - name: POSTGRES_USERNAME
-          secretKeyRef:
-            name: rfhome-postgres-ha-pguser-bazarr
-            key: user
+          valueFrom:
+            secretKeyRef:
+              name: rfhome-postgres-ha-pguser-bazarr
+              key: user
         - name: POSTGRES_PASSWORD
-          secretKeyRef:
-            name: rfhome-postgres-ha-pguser-bazarr
-            key: password
+          valueFrom:
+            secretKeyRef:
+              name: rfhome-postgres-ha-pguser-bazarr
+              key: password
         ports:
         - containerPort: 6767
           name: http
