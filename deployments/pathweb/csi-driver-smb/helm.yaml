@@ -19,7 +19,7 @@ spec:
   chart:
     spec:
       chart: csi-driver-smb
-      version: 1.13.0
+      version: v1.14.0
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
