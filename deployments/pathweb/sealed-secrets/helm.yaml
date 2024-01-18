@@ -23,7 +23,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: sealed-secrets
-      version: 2.14.1
+      version: 2.14.2
   interval: 15m
   targetNamespace: kube-system
   values:
