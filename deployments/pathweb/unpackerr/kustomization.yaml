@@ -1,7 +1,7 @@
 ﻿images:
-  - name: golift/unpackerr
-    newName: hotio/unpackerr
-    newTag: nightly-4eff86bc39797114b2c3512574396a06904c56f5
+  - name: hotio/unpackerr
+    newName: ghcr.io/hotio/unpackerr
+    newTag: release-0.13.0
 
 labels:
   - pairs:

@@ -6,6 +6,10 @@
       "versioning": "regex:^(?<compatibility>.*?)-(?<major>v?\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)[\\.-]*r?(?<build>\\d+)*-*r?(?<release>\\w+)*"
     },
     {
+      "packagePatterns": ["^ghcr.io\\/hotio\\/", "^hotio\\/"],
+      "versioning": "regex:^(?<compatibility>.*?)-(?<major>v?\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)[\\.-]*r?(?<build>\\d+)*-*r?(?<release>\\w+)*"
+    },
+    {
       "excludePackagePrefixes": ["ghcr.io/fluxcd/"]
     },
     {

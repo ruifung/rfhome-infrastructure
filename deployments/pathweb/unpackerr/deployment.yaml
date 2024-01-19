@@ -21,7 +21,7 @@ spec:
         kubernetes.io/hostname: pathweb-worker-baldric
       containers:
       - name: unpackerr
-        image: golift/unpackerr:latest
+        image: hotio/unpackerr:latest
         env:
         - name: TZ
           value: Asia/Kuala_Lumpur
