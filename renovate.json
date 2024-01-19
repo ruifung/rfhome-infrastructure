@@ -2,12 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
    "packageRules": [
     {
-      "matchPackageNames": ["lscr.io/linuxserver/calibre-web"],
-      "allowedVersions": "/^[0-9]+\\.[0-9]+\\.[0-9]+-ls[0-9]+?$/"
-    },
-    {
-      "matchPackageNames": ["ghcr.io/ruifung/lsio-calibre-web-mod"],
-      "allowedVersions": "/^[0-9]+\\.[0-9]+\\.[0-9]+-calibre-v[0-9]+\\.[0-9]+\\.[0-9]+$/"
+      "packagePatterns": ["^ghcr.io\\/linuxserver\\/", "^lscr.io\\/linuxserver\\/", "^linuxserver\\/"],
+      "versioning": "regex:^(?<compatibility>.*?)-(?<major>v?\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)[\\.-]*r?(?<build>\\d+)*-*r?(?<release>\\w+)*"
     },
     {
       "excludePackagePrefixes": ["ghcr.io/fluxcd/"]
