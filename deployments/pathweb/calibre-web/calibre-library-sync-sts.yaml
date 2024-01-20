@@ -65,8 +65,8 @@ spec:
           mountPath: /onedrive/conf/config
           subPath: onedrive-config
         - name: okinawa-media
-          mountPath: /onedrive/data
-          subPath: Books
+          mountPath: /onedrive/data/Calibre Library
+          subPath: Books/Calibre Library
         resources:
           requests:
             cpu: 15m
