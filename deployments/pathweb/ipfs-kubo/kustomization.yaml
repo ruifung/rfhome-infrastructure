@@ -1,7 +1,6 @@
 ﻿images:
-  - name: linuxserver/ipfs-kubo
-    newName: lscr.io/linuxserver/ipfs-kubo
-    newTag: version-v1.4.0
+  - name: ipfs/kubo
+    newTag: v0.25.0
 
 labels:
   - pairs:

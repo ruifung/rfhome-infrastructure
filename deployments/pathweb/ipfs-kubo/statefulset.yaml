@@ -19,15 +19,6 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: pathweb-worker-baldric
       containers:
-      - name: shell-helper
-        image: ubuntu:latest
-        command: ["/bin/bash", "-c", "--"]
-        args: ["trap : TERM INT; sleep infinity & wait"]
-        volumeMounts:
-        - name: data
-          mountPath: /data/ipfs
-        - name: ipfs-export
-          mountPath: /export
       - name: ipfs-kubo
         image: ipfs/kubo:latest
         env:
@@ -44,20 +35,10 @@ spec:
         - containerPort: 5001
           name: api
         volumeMounts:
-        - name: data
+        - name: ipfs-data
           mountPath: /data/ipfs
-        - name: ipfs-export
-          mountPath: /export
       volumes:
-      - name: ipfs-export
+      - name: ipfs-data
         nfs:
           server: 10.229.229.12
           path: /mnt/hdd/applications/ipfs
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 1Gi
