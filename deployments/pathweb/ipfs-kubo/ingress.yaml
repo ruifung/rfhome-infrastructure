@@ -1,16 +1,15 @@
-﻿apiVersion: networking.k8s.io/v1
+﻿---
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ipfs-kubo
+  name: ipfs-kubo-gateway
   labels:
     app.kubernetes.io/name: ipfs-kubo
     external-dns: local-pdns
-  # annotations:
-    # traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
 spec:
   ingressClassName: traefik-traefik
   rules:
-  - host: ipfs.services.home.yrf.me
+  - host: ipfs-gateway.services.home.yrf.me
     http:
       paths:
       - pathType: Prefix
@@ -22,5 +21,32 @@ spec:
               name: http
   tls:
   - hosts:
-    - ipfs.services.home.yrf.me
+    - ipfs-gateway.services.home.yrf.me
+    secretName: services-wildcard-cert
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ipfs-kubo-admin
+  labels:
+    app.kubernetes.io/name: ipfs-kubo
+    external-dns: local-pdns
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+spec:
+  ingressClassName: traefik-traefik
+  rules:
+  - host: ipfs-kubo.services.home.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: ipfs-kubo-headless
+            port: 
+              name: api
+  tls:
+  - hosts:
+    - ipfs-kubo.services.home.yrf.me
     secretName: services-wildcard-cert
