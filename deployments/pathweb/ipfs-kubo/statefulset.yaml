@@ -1,0 +1,54 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ipfs-kubo
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: ipfs-kubo
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ipfs-kubo
+  serviceName: ipfs-kubo-headless
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ipfs-kubo
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: pathweb-worker-baldric
+      containers:
+      - name: ipfs-kubo
+        image: ipfs/kubo:latest
+        env:
+        - name: TZ
+          value: "Asia/Kuala_Lumpur"
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 4001
+          name: swarm
+        - containerPort: 4001
+          name: swarm-udp
+          protocol: UDP
+        - containerPort: 5001
+          name: api
+        volumeMounts:
+        - name: data
+          mountPath: /data/ipfs
+        - name: ipfs-export
+          mountPath: /export
+      volumes:
+      - name: ipfs-export
+        nfs:
+          server: 10.229.229.12
+          path: /mnt/hdd/applications/ipfs
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

@@ -1,0 +1,54 @@
+﻿---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipfs-kubo-headless
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: ipfs-kubo
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: ipfs-kubo
+  ports:
+  - port: 8080
+    targetPort: http
+    name: http
+  - port: 4001
+    targetPort: swarm
+    name: swarm
+  - port: 4001
+    targetPort: swarm-udp
+    name: swarm-udp
+    protocol: UDP
+  - port: 5001
+    targetPort: api
+    name: api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipfs-kubo-swarm
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: ipfs-kubo
+    external-dns: local-pdns
+    lb-location: rfhome
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: ipfs-swarm.services.home.yrf.me
+spec:
+  type: LoadBalancer
+  ipFamilies:
+  - IPv4
+  - IPv6
+  ipFamilyPolicy: PreferDualStack
+  selector:
+    app.kubernetes.io/name: ipfs-kubo
+  ports:    
+  - port: 4001
+    targetPort: swarm
+    name: swarm
+  - port: 4001
+    targetPort: swarm-udp
+    name: swarm-udp
+    protocol: UDP
