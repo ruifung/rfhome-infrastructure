@@ -19,6 +19,15 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: pathweb-worker-baldric
       containers:
+      - name: shell-helper
+        image: ubuntu:latest
+        command: ["/bin/bash", "-c", "--"]
+        args: ["trap : TERM INT; sleep infinity & wait"]
+        volumeMounts:
+        - name: data
+          mountPath: /data/ipfs
+        - name: ipfs-export
+          mountPath: /export
       - name: ipfs-kubo
         image: ipfs/kubo:latest
         env:
