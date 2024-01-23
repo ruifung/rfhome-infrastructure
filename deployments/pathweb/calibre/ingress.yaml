@@ -1,0 +1,26 @@
+﻿apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: calibre
+  labels:
+    app.kubernetes.io/name: calibre
+    external-dns: local-pdns
+  # annotations:
+    # traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+spec:
+  ingressClassName: traefik-traefik
+  rules:
+  - host: calibre.services.home.yrf.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: calibre-headless
+            port: 
+              name: http-ui
+  tls:
+  - hosts:
+    - calibre.services.home.yrf.me
+    secretName: services-wildcard-cert

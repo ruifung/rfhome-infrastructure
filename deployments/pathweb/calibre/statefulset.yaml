@@ -1,0 +1,64 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: calibre
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: calibre
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: calibre
+  serviceName: calibre-headless
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: calibre
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: pathweb-worker-baldric
+      containers:
+      - name: calibre
+        image: linuxserver/calibre:latest
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Asia/Kuala_Lumpur"
+        ports:
+        - containerPort: 8080
+          name: http-ui
+        - containerPort: 8181
+          name: https-ui
+        - containerPort: 8081
+          name: http-ccs
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: downloads
+          mountPath: /downloads
+        - name: empty
+          mountPath: /media
+        - name: media
+          mountPath: /media/Books
+          subPath: Books
+      volumes:
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: okinawa-downloads
+      - name: media
+        persistentVolumeClaim:
+          claimName: okinawa-media
+      - name: empty
+        emptyDir: {}
+  volumeClaimTemplates:
+  - metadata:
+      name: config
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
