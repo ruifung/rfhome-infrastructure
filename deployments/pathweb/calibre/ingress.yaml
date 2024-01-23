@@ -5,8 +5,8 @@ metadata:
   labels:
     app.kubernetes.io/name: calibre
     external-dns: local-pdns
-  # annotations:
-    # traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
 spec:
   ingressClassName: traefik-traefik
   rules:
