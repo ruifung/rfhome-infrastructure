@@ -1,7 +1,7 @@
 ﻿images:
   - name: linuxserver/calibre
     newName: lscr.io/linuxserver/calibre
-    newTag: version-5.2.6.8376
+    newTag: version-v7.4.0
 
 labels:
   - pairs:
