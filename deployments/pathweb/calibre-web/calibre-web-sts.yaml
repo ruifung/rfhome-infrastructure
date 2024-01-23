@@ -61,6 +61,7 @@ spec:
         - name: okinawa-media
           mountPath: /books
           subPath: Books
+          readOnly: true
         - name: cache
           mountPath: /cache
         - name: data
