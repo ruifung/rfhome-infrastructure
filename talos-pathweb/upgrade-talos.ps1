@@ -1,4 +1,4 @@
-$TALOS_VERSION = "v1.6.1"
+$TALOS_VERSION = "v1.6.2"
 $TALOS_FACTORY_SCHEMATIC_ID = "20f0f58646bf4fbb1f4f4256484fbf4955dde1f0baf46306834b6ebdda71128d"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE = "harbor.services.home.yrf.me/talos-image-factory/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
@@ -34,8 +34,8 @@ if ($toApply.Count -eq 0) {
 }
 
 foreach ($node in $toApply) {
+    Write-Output "Preparing to upgrade node [$node]"
     $IMAGE = $TALOS_INSTALL_IMAGE
-    Write-Output "Upgrading node [$($node)] to Talos version [$TALOS_VERSION] using install image [$IMAGE]"
     $talosctlArgs = @(
         'upgrade',
         '--nodes',
@@ -63,23 +63,45 @@ foreach ($node in $toApply) {
         }
     }
 
+    function Get-TalosNodeSchematic {
+        param (
+            [Parameter(Mandatory = $true)]
+            [string]$node
+        )
+        $schematicExtension = talosctl get extensions --nodes $node --output yaml | ConvertFrom-Yaml -AllDocuments | Where-Object {$_.spec.metadata.name -eq "schematic" }
+        if ($null -eq $schematicExtension) {
+            throw "Failed to get schematic extension for node [$node]"
+        }
+        return $schematicExtension.spec.metadata.version
+    }
+
     # attempt upgrade until successful
     $success = $false
     while ($success -eq $false) {
         # skip upgrade if node is already target version
-        # $version = Get-TalosNodeVersion $node
-        # if ($version -eq $TALOS_VERSION) {
-        #     Write-Output "Node [$node] is already at Talos version [$version], skipping upgrade"
-        #     $success = $true
-        #     continue
-        # }
+        Write-Output "Checking existing version for node [$node]"
+        $version = Get-TalosNodeVersion $node
+        Write-Output "Checking existing schematic for node [$node]"
+        $schematic = Get-TalosNodeSchematic $node
+        if (($version -eq $TALOS_VERSION) -and ($schematic -eq $TALOS_FACTORY_SCHEMATIC_ID)) {
+            Write-Output "Node [$node] is already at Talos version [$version], schematic [$schematic], skipping upgrade."
+            $success = $true
+            continue
+        }
+        Write-Output "Upgrading node [$node] to Talos version [$TALOS_VERSION], schematic [$TALOS_FACTORY_SCHEMATIC_ID]."
+        Write-Output "Current version is [$version], current schematic is [$schematic]"
+        Write-Output "Using image: [$IMAGE]"
         talosctl $talosctlArgs
         $success = ($LASTEXITCODE -eq 0)
         if ($success) {
             $version = Get-TalosNodeVersion $node
+            $schematic = Get-TalosNodeSchematic $node
             # retry upgrade if version upgrade failed
             if ($version -ne $TALOS_VERSION) {
                 Write-Output "Talos version [$version] does not match expected version [$TALOS_VERSION], retrying upgrade"
+                $success = $false
+            } elseif ($schematic -ne $TALOS_FACTORY_SCHEMATIC_ID) {
+                Write-Output "Talos schematic [$schematic] does not match expected schematic [$TALOS_FACTORY_SCHEMATIC_ID], retrying upgrade"
                 $success = $false
             } else {
                 Write-Output "Successfully upgraded node [$node] to Talos version [$version]"
