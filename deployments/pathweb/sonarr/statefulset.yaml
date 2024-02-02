@@ -41,6 +41,11 @@ spec:
         - name: media
           mountPath: /media/Shows
           subPath: Shows
+        resources:
+          requests:
+            memory: "1.5Gi"
+          limits:
+            memory: "3Gi"
       volumes:
       - name: downloads
         persistentVolumeClaim:
