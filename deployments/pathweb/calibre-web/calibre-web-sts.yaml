@@ -23,9 +23,7 @@ spec:
       # runtimeClassName: gvisor
       priorityClassName: rfhome-standard
       nodeSelector:
-        kubernetes.io/os: linux
-        kubernetes.io/arch: amd64
-        location: rfhome
+        kubernetes.io/hostname: pathweb-worker-baldric
       nodeAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
         - weight: 1
