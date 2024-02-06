@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: readarr
   serviceName: readarr-headless
-  replicas: 0
+  replicas: 1
   template:
     metadata:
       labels:

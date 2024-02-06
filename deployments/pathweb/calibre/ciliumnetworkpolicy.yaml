@@ -15,6 +15,12 @@ spec:
         - ports:
             - port: "8080"
             - port: "8081"
+    - fromEndpoints:
+        - matchLabels:
+            "k8s:app.kubernetes.io/name": readarr
+      toPorts:
+        - ports:
+            - port: "8081"
   egress:
     - toEndpoints:
         - matchLabels:
