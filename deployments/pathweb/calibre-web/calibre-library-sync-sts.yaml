@@ -40,6 +40,7 @@ spec:
           - "Calibre Library"
           - --display-running-config
           # - --no-remote-delete
+          - --upload-only
           - --auth-files
           - /onedrive/conf/authUrl:/onedrive/conf/authResponse
           - --skip-file
