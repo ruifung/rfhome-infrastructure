@@ -13,6 +13,10 @@
       "excludePackagePrefixes": ["ghcr.io/fluxcd/"]
     },
     {
+      "matchPackageNames": ["plexinc/pms-docker"],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<build>\\d+)-(?<revision>[0-9a-fA-F]+)$"
+    },
+    {
       "matchPackageNames": ["kubernetes/autoscaler"],
       "matchPaths": ["dpeloyments/pathweb/vpa/kustomization.yaml"],
       "matchManagers": ["regex"],
