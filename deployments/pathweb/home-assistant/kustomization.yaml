@@ -8,7 +8,7 @@ labels:
     includeSelectors: false
 images:
 - name: homeassistant/home-assistant
-  newTag: "2024.2.1"
+  newTag: "2024.2.2"
 resources:
 - statefulset.yaml
 - service.yaml
