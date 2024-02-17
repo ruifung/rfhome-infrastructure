@@ -2,7 +2,7 @@
 images:
   - name: ghcr.io/flaresolverr/flaresolverr
     newName: ghcr.io/flaresolverr/flaresolverr
-    newTag: v3.3.13
+    newTag: v3.3.14
 
 labels:
   - pairs:
