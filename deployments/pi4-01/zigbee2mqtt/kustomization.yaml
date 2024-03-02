@@ -1,6 +1,6 @@
 ﻿images:
   - name: koenkk/zigbee2mqtt
-    newTag: 1.35.3
+    newTag: 1.36.0
     # newTag: latest-dev
     # digest: sha256:13deb9be3a27376fe4b2ab3b296c46d666cf38c38350e54671efa1995869e8ba
 
