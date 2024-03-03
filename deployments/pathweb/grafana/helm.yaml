@@ -15,7 +15,8 @@ spec:
         kind: HelmRepository
         name: bitnami
         namespace: flux-system
-  interval: 15m
+  interval: 30m
+  timeout: 1h
   targetNamespace: home-network
   postRenderers:
     - kustomize:
