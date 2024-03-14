@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: grafana-agent-operator
-      version: 0.3.18
+      version: 0.3.19
       sourceRef:
         kind: HelmRepository
         name: grafana
