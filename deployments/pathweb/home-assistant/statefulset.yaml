@@ -29,6 +29,9 @@ spec:
         fsGroup: 1000
         seccompProfile:
           type: RuntimeDefault
+        sysctls:
+          - name: net.ipv4.ping_group_range
+            value: "0 2147483647"
       containers:
         - name: home-assistant
           image: homeassistant/home-assistant:stable
