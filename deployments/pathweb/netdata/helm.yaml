@@ -23,6 +23,7 @@ spec:
         kind: HelmRepository
         name: netdata
   interval: 15m
+  timeout: 1h
   values:
     ingress:
       enabled: false
