@@ -18,7 +18,7 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: 26.1.0
+      version: 27.0.0
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -29,15 +29,6 @@ spec:
     createNamespace: true
   driftDetection:
     mode: enabled
-  # postRenderers:
-    # - kustomize:
-    #     patches:
-    #       - patch: |
-    #           - op: "add"
-    #             path: "/spec/template/spec/runtimeClassName"
-    #             value: "gvisor"
-    #         target:
-    #           kind: Deployment
   values:
     priorityClassName: rfhome-network-critical
     nodeSelector:
@@ -82,14 +73,16 @@ spec:
       web:
         port: 8080
         exposedPort: 80
-        expose: true
+        expose:
+          default: true
         protocol: TCP
         redirectTo:
           port: websecure
       websecure:
         port: 8443
         exposedPort: 443
-        expose: true
+        expose:
+          default: true
         protocol: TCP
         http3:
           enabled: true

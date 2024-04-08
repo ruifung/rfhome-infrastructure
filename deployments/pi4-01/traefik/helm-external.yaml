@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: 26.1.0
+      version: 27.0.0
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -21,16 +21,6 @@ spec:
   dependsOn:
     - name: traefik-internal
       namespace: traefik
-  # postRenderers:
-  #   - kustomize:
-  #       patchesJson6902:
-  #         - patch:
-  #             - op: "add"
-  #               path: "/spec/template/spec/runtimeClassName"
-  #               value: "gvisor"
-  #           target:
-  #             kind: Deployment
-  #             name: traefik-external
   values:
     additionalArguments:
       - "--providers.file.directory=/additional-configs"
@@ -71,9 +61,11 @@ spec:
       enabled: false
     ports:
       web:
-        expose: false
+        expose:
+          default: false
       websecure:
-        expose: false
+        expose:
+          default: false
       cloudflared:
         port: 8081
         expose: false

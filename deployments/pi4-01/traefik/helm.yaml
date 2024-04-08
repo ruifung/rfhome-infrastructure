@@ -18,7 +18,7 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: 26.1.0
+      version: 27.0.0
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -26,16 +26,6 @@ spec:
   interval: 1h
   install:
     createNamespace: true
-  # postRenderers:
-  #   - kustomize:
-  #       patchesJson6902:
-  #         - patch:
-  #             - op: "add"
-  #               path: "/spec/template/spec/runtimeClassName"
-  #               value: "gvisor"
-  #           target:
-  #             kind: Deployment
-  #             name: traefik-traefik
   values:
     additionalArguments:
       - "--providers.file.directory=/additional-configs"
@@ -72,14 +62,16 @@ spec:
       web:
         port: 8080
         exposedPort: 80
-        expose: true
+        expose:
+          default: true
         protocol: TCP
         redirectTo:
           port: websecure
       websecure:
         port: 8443
         exposedPort: 443
-        expose: true
+        expose:
+          default: true
         protocol: TCP
         http3:
           enabled: true

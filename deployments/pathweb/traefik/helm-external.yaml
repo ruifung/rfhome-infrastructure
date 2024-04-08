@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: 26.1.0
+      version: 27.0.0
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -22,15 +22,6 @@ spec:
     skipCRDs: true
   driftDetection:
     mode: enabled
-  # postRenderers:
-  #   - kustomize:
-  #       patches:
-  #         - patch: |
-  #             - op: "add"
-  #               path: "/spec/template/spec/runtimeClassName"
-  #               value: "gvisor"
-  #           target:
-  #             kind: Deployment
   dependsOn:
     - name: traefik
       namespace: flux-system
@@ -90,14 +81,16 @@ spec:
         - IPv6
     ports:
       web:
-        expose: true
+        expose:
+          default: true
         proxyProtocol:
           enabled: true
           trustedIPs:
           - fd96:618::1:1/128
           - 10.228.0.1/32
       websecure:
-        expose: true
+        expose:
+          default: true
         proxyProtocol:
           enabled: true
           trustedIPs:
@@ -105,7 +98,8 @@ spec:
           - 10.228.0.1/32
       cloudflared:
         port: 8081
-        expose: false
+        expose:
+          default: false
         protocol: TCP
         forwardedHeaders:
           trustedIPs:
