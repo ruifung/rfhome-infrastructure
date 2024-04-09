@@ -1,4 +1,4 @@
-$TALOS_VERSION = "v1.6.2"
+$TALOS_VERSION = "v1.6.7"
 $TALOS_FACTORY_SCHEMATIC_ID = "20f0f58646bf4fbb1f4f4256484fbf4955dde1f0baf46306834b6ebdda71128d"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE = "harbor.services.home.yrf.me/talos-image-factory/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
@@ -75,6 +75,21 @@ foreach ($node in $toApply) {
         return $schematicExtension.spec.metadata.version
     }
 
+    function Get-DeploymentStsReady {
+        $deployments = kubectl --context="admin@pathweb" get deployments,statefulsets -A -o json | ConvertFrom-Json
+        $ready = $True
+        foreach ($deployment in $deployments.items) {
+            if (($null -eq $deployment.status.readyReplicas) -and ($deployment.status.replicas -eq 0)) {
+                continue
+            }
+            if ($deployment.status.replicas -ne $deployment.status.readyReplicas) {
+                $ready = $False
+                break
+            }
+        }
+        return $ready
+    }
+
     # attempt upgrade until successful
     $success = $false
     while ($success -eq $false) {
@@ -105,6 +120,10 @@ foreach ($node in $toApply) {
                 $success = $false
             } else {
                 Write-Output "Successfully upgraded node [$node] to Talos version [$version]"
+            }
+            while(!(Get-DeploymentStsReady)) {
+                Write-Output "Deployment or StatefulSet not ready, sleeping for 5 seconds."
+                Start-Sleep -Seconds 5
             }
         }
         # Write-Output "Waiting for cilium on [$node] to become ready"
