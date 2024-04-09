@@ -20,7 +20,7 @@ spec:
         path: "/"
         backend:
           service:
-            name: authentik
+            name: authentik-server
             port: 
               name: http
   tls:
