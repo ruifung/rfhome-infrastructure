@@ -64,6 +64,11 @@ machine:
         endpoints:
           - https://harbor.services.home.yrf.me/v2/crunchydata/
           - https://registry.developers.crunchydata.com/v2/
+      factory.talos.dev:
+        overridePath: true
+        endpoints:
+          - https://harbor.services.home.yrf.me/v2/talos-image-factory/
+          - https://factory.talos.dev/v2/
 cluster:
   discovery:
     enabled: true

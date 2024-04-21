@@ -1,5 +1,23 @@
-$TALOS_VERSION = "v1.6.7"
-$TALOS_FACTORY_SCHEMATIC_ID = "20f0f58646bf4fbb1f4f4256484fbf4955dde1f0baf46306834b6ebdda71128d"
+<#
+Current Talos Image Factory Configuration
+-----------------------------------------
+customization:
+    extraKernelArgs:
+        - net.ifnames=0
+    systemExtensions:
+        officialExtensions:
+            - siderolabs/binfmt-misc
+            - siderolabs/fuse3
+            - siderolabs/gvisor
+            - siderolabs/iscsi-tools
+            - siderolabs/kata-containers
+            - siderolabs/qemu-guest-agent
+            - siderolabs/stargz-snapshotter
+            - siderolabs/wasmedge
+#>
+
+$TALOS_VERSION = "v1.7.0"
+$TALOS_FACTORY_SCHEMATIC_ID = "71fdc73baac9ae32e13435992ba56d469b4eaf3fb561125e1af41505210bdb35"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE = "harbor.services.home.yrf.me/talos-image-factory/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
  
