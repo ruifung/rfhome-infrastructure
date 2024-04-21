@@ -42,6 +42,7 @@ spec:
     deployment:
       # nameOverride: traefik-rfhome
       replicas: 2
+      runtimeClassName: gvisor
       podLabels:
         velero.io/exclude-from-backup: "true"
       additionalVolumes:
