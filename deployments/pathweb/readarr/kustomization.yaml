@@ -1,7 +1,7 @@
 ﻿images:
   - name: linuxserver/readarr
     newName: lscr.io/linuxserver/readarr
-    newTag: develop-version-0.3.22.2499
+    newTag: develop-version-0.3.23.2506
 
 labels:
   - pairs:
