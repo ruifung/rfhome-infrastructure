@@ -22,16 +22,17 @@ spec:
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>,<Egress/80/TCP/HTTP>
     spec:
       priorityClassName: rfhome-home-critical
+      runtimeClassName: kata
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
-      securityContext:
-        fsGroup: 1000
-        seccompProfile:
-          type: RuntimeDefault
-        sysctls:
-          - name: net.ipv4.ping_group_range
-            value: "0 2147483647"
+      # securityContext:
+        # fsGroup: 1000
+        # seccompProfile:
+        #   type: RuntimeDefault
+        # sysctls:
+        #   - name: net.ipv4.ping_group_range
+        #     value: "0 2147483647"
       containers:
         - name: home-assistant
           image: homeassistant/home-assistant:stable
@@ -73,9 +74,9 @@ spec:
           volumeMounts:
             - name: hass-data
               mountPath: /config
-            - name: homeassistant-docker-venv
-              mountPath: /etc/services.d/home-assistant/run
-              subPath: venv-run
+            # - name: homeassistant-docker-venv
+            #   mountPath: /etc/services.d/home-assistant/run
+            #   subPath: venv-run
           resources:
             requests:
               cpu: 34m
