@@ -37,6 +37,13 @@ spec:
             target:
               kind: Deployment
               name: authentik-server
+          - patch: |
+              - op: "add"
+                path: "/spec/template/spec/runtimeClassName"
+                value: "gvisor"
+            target:
+              kind: Deployment
+              name: authentik-worker
   values:
     global:
       priorityClassName: rfhome-network-critical
