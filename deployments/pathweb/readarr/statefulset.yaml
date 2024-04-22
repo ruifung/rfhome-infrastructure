@@ -18,6 +18,7 @@ spec:
     spec:
       nodeSelector:
         kubernetes.io/hostname: pathweb-worker-baldric
+      runtimeClassName: gvisor
       containers:
       - name: readarr
         image: linuxserver/readarr:latest
@@ -57,4 +58,4 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 1Gi
+          storage: 10Gi
