@@ -33,6 +33,10 @@ spec:
         sysctls:
           - name: net.ipv4.ping_group_range
             value: "0 2147483647"
+          - name: net.ipv6.conf.net1.autoconf
+            value: "0"
+          - name: net.ipv6.conf.net1.accept_ra
+            value: "0"
       containers:
         - name: home-assistant
           image: homeassistant/home-assistant:stable
