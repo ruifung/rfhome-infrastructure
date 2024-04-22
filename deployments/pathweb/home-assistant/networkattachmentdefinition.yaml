@@ -9,13 +9,6 @@ spec:
     {
       "cniVersion": "0.3.1",
       "plugins": [
-        {
-          "type": "tuning",
-          "sysctl": {
-            "net.ipv6.conf.IFNAME.accept_ra": "0",
-            "net.ipv6.conf.IFNAME.autoconf": "0"
-          }
-        },
         {         
           "type": "ipvlan",
           "master": "eth1",
@@ -26,6 +19,13 @@ spec:
               {"address": "10.229.4.2/24", "gateway": "10.229.4.1"},
               {"address": "fd96:619:4::2/64", "gateway": "fd96:619:4::1"}
             ]
+          }
+        },
+        {
+          "type": "tuning",
+          "sysctl": {
+            "net.ipv6.conf.IFNAME.accept_ra": "0",
+            "net.ipv6.conf.IFNAME.autoconf": "0"
           }
         }
       ]
