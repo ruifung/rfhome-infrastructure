@@ -19,6 +19,7 @@ spec:
     spec:
       nodeSelector:
         kubernetes.io/hostname: pathweb-worker-baldric
+      runtimeClassName: kata
       containers:
       - name: unpackerr
         image: hotio/unpackerr:latest

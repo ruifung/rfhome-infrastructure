@@ -16,6 +16,7 @@ spec:
       labels:
         app.kubernetes.io/name: prowlarr
     spec:
+      runtimeClassName: gvisor
       containers:
       - name: prowlarr
         image: linuxserver/prowlarr:latest
