@@ -18,7 +18,6 @@ spec:
     spec:
       nodeSelector:
         kubernetes.io/hostname: pathweb-worker-baldric
-      runtimeClassName: kata
       containers:
       - name: readarr
         image: linuxserver/readarr:latest
