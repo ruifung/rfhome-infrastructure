@@ -24,7 +24,7 @@ spec:
         {
           "type": "tuning",
           "sysctl": {
-            "net.ipv6.conf.IFNAME.accept_ra": "0"
+            "net.ipv6.conf.IFNAME.accept_ra": "0",
             "net.ipv6.conf.IFNAME.autoconf": "0"
           }
         }
