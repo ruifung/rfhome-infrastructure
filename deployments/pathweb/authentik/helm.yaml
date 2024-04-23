@@ -89,7 +89,7 @@ spec:
           cpu: 34m
           memory: 700M
         limits:
-          cpu: '1'
+          cpu: '2'
           memory: 1024M
       ingress:
         enabled: true
