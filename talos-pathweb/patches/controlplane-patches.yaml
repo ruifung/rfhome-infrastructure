@@ -26,7 +26,6 @@ cluster:
           exemptions:
             namespaces:
               - monitoring
-              - openebs
             runtimeClasses: []
             usernames: []
           kind: PodSecurityConfiguration

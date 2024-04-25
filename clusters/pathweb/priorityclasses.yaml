@@ -29,7 +29,7 @@ kind: PriorityClass
 metadata:
   name: rfhome-standard
 preemptionPolicy: Never
-globalDefault: true
+globalDefault: false
 value: 0
 ---
 apiVersion: scheduling.k8s.io/v1
