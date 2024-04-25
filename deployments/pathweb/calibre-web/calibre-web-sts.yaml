@@ -24,15 +24,16 @@ spec:
       priorityClassName: rfhome-standard
       nodeSelector:
         kubernetes.io/hostname: pathweb-worker-baldric
-      nodeAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 1
-          preference:
-            matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-              - pathweb-worker-baldric
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - pathweb-worker-baldric
       terminationGracePeriodSeconds: 10
       securityContext:
         fsGroup: 1000
