@@ -108,7 +108,7 @@ spec:
         serviceMonitor:
           enabled: true
     worker:
-      replicas: 2
+      replicas: 1
       resources:
         requests:
           cpu: 15m
