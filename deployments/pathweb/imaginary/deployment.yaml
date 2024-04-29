@@ -19,8 +19,7 @@ spec:
       containers:
       - name: imaginary
         image: h2non/imaginary:latest
-        args:
-        - -enable-url-source -concurrency 50
+        args: [-enable-url-source, -concurrency, "50"]
         env:
         - name: PORT
           value: "9000"
