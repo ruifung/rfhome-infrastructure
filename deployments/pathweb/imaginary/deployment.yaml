@@ -16,6 +16,15 @@ spec:
         app.kubernetes.io/name: imaginary
     spec:
       runtimeClassName: kata
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values: [pathweb-worker-baldric]
+              weight: 100
       containers:
       - name: imaginary
         image: h2non/imaginary:latest
