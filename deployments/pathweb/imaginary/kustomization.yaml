@@ -11,5 +11,4 @@ labels:
 resources:
   - deployment.yaml
   - service.yaml
-  - ingress.yaml
   - ciliumnetworkpolicy.yaml
