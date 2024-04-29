@@ -109,6 +109,34 @@ spec:
       metrics:
         serviceMonitor:
           enabled: true
+      livenessProbe:
+        failureThreshold: 10
+        periodSeconds: 30
+      readinessProbe:
+        failureThreshold: 10
+        periodSeconds: 30
+      startupProbe:
+        failureThreshold: 100
+        initialDelaySeconds: 60
+        periodSeconds: 30
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values: [pathweb-worker-baldric]
+              weight: 50
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/instance: authentik
+                  app.kubernetes.io/name: authentik
+              topologyKey: kubernetes.io/hostname
+            weight: 50
     worker:
       replicas: 1
       resources:
@@ -118,6 +146,34 @@ spec:
         limits:
           cpu: '1'
           memory: 553M
+      livenessProbe:
+        failureThreshold: 10
+        periodSeconds: 30
+      readinessProbe:
+        failureThreshold: 10
+        periodSeconds: 30
+      startupProbe:
+        failureThreshold: 100
+        initialDelaySeconds: 60
+        periodSeconds: 30
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values: [pathweb-worker-baldric]
+              weight: 50
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/instance: authentik
+                  app.kubernetes.io/name: authentik
+              topologyKey: kubernetes.io/hostname
+            weight: 50
     prometheus:
       rules:
         enabled: false
