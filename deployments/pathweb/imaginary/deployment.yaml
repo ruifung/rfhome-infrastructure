@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imaginary
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: imaginary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: imaginary
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: imaginary
+    spec:
+      runtimeClassName: kata
+      containers:
+      - name: imaginary
+        image: h2non/imaginary:latest
+        args:
+        - -enable-url-source -concurrency 50
+        env:
+        - name: PORT
+          value: "9000"
+        ports:
+        - containerPort: 9000
+          name: http

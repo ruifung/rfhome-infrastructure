@@ -1,0 +1,15 @@
+﻿images:
+  - name: h2non/imaginary:latest
+    newTag: 1.2.4
+
+labels:
+  - pairs:
+      "app.kubernetes.io/name": imaginary
+    includeTemplates: true
+    includeSelectors: true
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+  - ciliumnetworkpolicy.yaml

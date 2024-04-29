@@ -1,0 +1,46 @@
+﻿apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: imaginary
+  namespace: home-network
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: imaginary
+  ingress:
+    - fromEntities:
+        - cluster
+      toPorts:
+        - ports:
+            - port: "9000"
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
+    - toEndpoints:
+        - matchLabels:
+            k8s-app: node-local-dns
+          matchExpressions:
+            - key: io.kubernetes.pod.namespace
+              operator: Exists
+      toPorts:
+        - ports:
+            - port: "53"
+    - toCIDRSet:
+        - cidr: ::/0
+          except:
+            - fc00::/7
+    - toCIDRSet:
+        - cidr: 0.0.0.0/0
+          except:
+            - 10.0.0.0/8
+            - 192.168.0.0/16
+            - 172.16.0.0/12

@@ -1,0 +1,14 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: imaginary
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: imaginary
+spec:
+  selector:
+    app.kubernetes.io/name: imaginary
+  ports:
+  - port: 9000
+    targetPort: http
+    name: http
