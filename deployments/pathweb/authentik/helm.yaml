@@ -128,15 +128,6 @@ spec:
                     operator: In
                     values: [pathweb-worker-baldric]
               weight: 50
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/instance: authentik
-                  app.kubernetes.io/name: authentik
-              topologyKey: kubernetes.io/hostname
-            weight: 50
     worker:
       replicas: 1
       resources:
@@ -165,15 +156,6 @@ spec:
                     operator: In
                     values: [pathweb-worker-baldric]
               weight: 50
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/instance: authentik
-                  app.kubernetes.io/name: authentik
-              topologyKey: kubernetes.io/hostname
-            weight: 50
     prometheus:
       rules:
         enabled: false
