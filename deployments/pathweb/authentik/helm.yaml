@@ -57,11 +57,13 @@ spec:
             name: authentik-secrets
           prefix: AUTHENTIK_
       env:
+        - name: AUTHENTIK_POSTGRESQL__USE_PGBOUNCER
+          value: "true"
         - name: AUTHENTIK_POSTGRESQL__HOST
           valueFrom:
             secretKeyRef:
               name: "rfhome-postgres-ha-pguser-authentik"
-              key: "host"
+              key: "pgbouncer-host"
         - name: AUTHENTIK_POSTGRESQL__PORT
           valueFrom:
             secretKeyRef:
