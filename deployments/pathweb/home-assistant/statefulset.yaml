@@ -57,11 +57,6 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: rfhome-postgres-ha-pguser-home-assistant
-                  key: uri
-            - name: HASS_DB_PGBOUNCER_URI
-              valueFrom:
-                secretKeyRef:
-                  name: rfhome-postgres-ha-pguser-home-assistant
                   key: pgbouncer-uri
             - name: POD_IP
               valueFrom:
