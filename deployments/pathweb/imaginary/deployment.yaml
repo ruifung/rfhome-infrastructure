@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: imaginary
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app.kubernetes.io/name: imaginary
@@ -24,7 +24,15 @@ spec:
                   - key: kubernetes.io/hostname
                     operator: In
                     values: [pathweb-worker-baldric]
-              weight: 100
+              weight: 50
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: imaginary
+                topologyKey: kubernetes.io/hostname
+              weight: 50
       containers:
       - name: imaginary
         image: h2non/imaginary:latest
