@@ -1,9 +1,9 @@
-﻿apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mimir-s3-config
-  namespace: monitoring
-data:
-  blocks_bucket: pathweb-mimir-blocks
-  alertmanager_bucket: pathweb-mimir-alertmanager
-  ruler_bucket: pathweb-mimir-ruler
+﻿# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: mimir-s3-config
+#   namespace: monitoring
+# data:
+#   blocks_bucket: pathweb-mimir-blocks
+#   alertmanager_bucket: pathweb-mimir-alertmanager
+#   ruler_bucket: pathweb-mimir-ruler
