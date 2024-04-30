@@ -12,5 +12,3 @@ spec:
     kind: GitRepository
     name: rfhome-infrastructure
   targetNamespace: home-network
-  dependsOn:
-    - name: home-assistant
