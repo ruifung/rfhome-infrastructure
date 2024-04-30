@@ -65,14 +65,11 @@ spec:
         - namespace: home-network
           podName: home-assistant-*
           program: home-assistant
-        - namespace: home-network
-          podName: nextcloud-*
-          program: nginx
       # Those are ENV variables
       env:
         # As we are running Nginx, we want to install the Nginx collection
         - name: COLLECTIONS
-          value: "crowdsecurity/traefik crowdsecurity/home-assistant crowdsecurity/nextcloud crowdsecurity/nginx"
+          value: "crowdsecurity/traefik crowdsecurity/home-assistant"
         - name: PARSERS
           value: "crowdsecurity/cri-logs"
       tolerations:
