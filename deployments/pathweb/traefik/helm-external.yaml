@@ -131,10 +131,10 @@ spec:
       plugins:
         crowdsec:
           moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
-          version: v1.1.13
+          version: v1.3.0
         rewriteHeaders:
           moduleName: github.com/XciD/traefik-plugin-rewrite-headers
-          version: v0.0.3
+          version: v0.0.4
         moveHeaders:
           moduleName: github.com/che-incubator/header-rewrite-traefik-plugin
           version: v0.1.2
