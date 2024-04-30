@@ -65,11 +65,23 @@ spec:
         - namespace: home-network
           podName: home-assistant-*
           program: home-assistant
+        - namespace: home-network
+          podName: nextcloud-*
+          program: nginx
+        - namespace: home-network
+          podName: nextcloud-*
+          program: Nextcloud
+        - namespace: home-network
+          podName: authentik-*
+          program: authentik
+        - namespace: home-network
+          podName: vaultwarden-*
+          program: Vaultwarden
       # Those are ENV variables
       env:
         # As we are running Nginx, we want to install the Nginx collection
         - name: COLLECTIONS
-          value: "crowdsecurity/traefik crowdsecurity/home-assistant"
+          value: "crowdsecurity/traefik crowdsecurity/home-assistant crowdsecurity/nextcloud crowdsecurity/nginx firix/authentik Dominic-Wagner/vaultwarden-logs"
         - name: PARSERS
           value: "crowdsecurity/cri-logs"
       tolerations:
