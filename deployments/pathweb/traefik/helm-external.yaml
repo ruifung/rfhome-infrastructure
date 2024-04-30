@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: 27.0.2
+      version: 28.0.0
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -128,8 +128,6 @@ spec:
           - 2a06:98c0::/29
           - 2c0f:f248::/32
     experimental:
-      http3:
-        enabled: true
       plugins:
         crowdsec:
           moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
