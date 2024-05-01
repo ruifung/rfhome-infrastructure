@@ -110,11 +110,11 @@ spec:
           version: v1.2.0
     providers:
       kubernetesIngress:
-        ingressClass: traefik-traefik
+        ingressClass: "traefik-traefik"
         publishedService:
           enabled: true
       kubernetesCRD:
-        ingressClass: traefik-traefik
+        ingressClass: "traefik-traefik"
         allowCrossNamespace: true
         allowExternalNameServices: true
     ingressRoute:
@@ -124,8 +124,9 @@ spec:
     logs:
       general:
         format: json
+        level: TRACE
       access:
-        enabled: true
+        enabled: false
         format: json
     metrics:
       prometheus:
