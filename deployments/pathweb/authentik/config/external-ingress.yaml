@@ -4,8 +4,8 @@ metadata:
   name: authentik-external
   annotations:
     cert-manager.io/cluster-issuer: le-yrf-me
-    external-dns.alpha.kubernetes.io/target: pathweb-cloudlb.0spkl.dev
-    external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+    external-dns.alpha.kubernetes.io/target: ingress-pathweb-clusters-home.yrf.medev
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
   labels:
     app.kubernetes.io/instance: authentik
     app.kubernetes.io/name: authentik
