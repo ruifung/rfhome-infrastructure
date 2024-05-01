@@ -19,7 +19,7 @@ spec:
         path: "/"
         backend:
           service:
-            name: traefik-traefik-dashboard
+            name: traefik-dashboard
             port: 
               name: traefik
   - host: traefik-external.pathweb.clusters.home.yrf.me
