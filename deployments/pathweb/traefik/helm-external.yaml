@@ -21,9 +21,6 @@ spec:
     skipCRDs: true
   driftDetection:
     mode: enabled
-  dependsOn:
-    - name: traefik
-      namespace: flux-system
   values:
     nameOverride: traefik-external
     fullNameOverride: traefik-external
