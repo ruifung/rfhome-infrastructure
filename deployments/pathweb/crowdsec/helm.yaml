@@ -81,7 +81,7 @@ spec:
       env:
         # As we are running Nginx, we want to install the Nginx collection
         - name: COLLECTIONS
-          value: "crowdsecurity/traefik crowdsecurity/home-assistant crowdsecurity/nextcloud crowdsecurity/nginx firix/authentik Dominic-Wagner/vaultwarden-logs"
+          value: "crowdsecurity/traefik crowdsecurity/home-assistant crowdsecurity/nextcloud crowdsecurity/nginx firix/authentik Dominic-Wagner/vaultwarden"
         - name: PARSERS
           value: "crowdsecurity/cri-logs"
       tolerations:
