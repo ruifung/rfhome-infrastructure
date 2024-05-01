@@ -27,3 +27,10 @@ spec:
         ports:
         - containerPort: 8191
           name: http
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "300Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"

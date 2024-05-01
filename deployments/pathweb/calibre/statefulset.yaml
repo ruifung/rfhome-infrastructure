@@ -45,6 +45,13 @@ spec:
         - name: media
           mountPath: /media/Books
           subPath: Books
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "400Mi"
+          limits:
+            cpu: "4"
+            memory: "4Gi"
       volumes:
       - name: downloads
         persistentVolumeClaim:

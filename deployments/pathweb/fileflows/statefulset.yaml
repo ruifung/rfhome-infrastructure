@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: fileflows
   serviceName: fileflows-headless
-  replicas: 0
+  replicas: 1
   template:
     metadata:
       labels:
@@ -41,6 +41,9 @@ spec:
         - name: fileflows-workdir
           mountPath: /temp
         resources:
+          requests:
+            cpu: "100m"
+            memory: "300Mi"
           limits:
             cpu: "16"
             memory: 6Gi

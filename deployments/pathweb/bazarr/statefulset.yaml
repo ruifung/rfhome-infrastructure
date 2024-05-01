@@ -69,6 +69,13 @@ spec:
         - name: media
           mountPath: /media/Movies
           subPath: Movies
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "250Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"
       volumes:
       - name: media
         persistentVolumeClaim:

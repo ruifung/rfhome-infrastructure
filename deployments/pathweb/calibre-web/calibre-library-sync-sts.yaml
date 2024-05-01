@@ -67,8 +67,8 @@ spec:
           subPath: Books/Calibre Library
         resources:
           requests:
-            cpu: 15m
-            memory: 105M
+            cpu: 50m
+            memory: 60Mi
           limits:
             cpu: 350m
             memory: 214M
