@@ -62,21 +62,27 @@ spec:
         - namespace: traefik
           podName: traefik-*
           program: traefik
+          poll_without_inotify: true
         - namespace: home-network
           podName: home-assistant-*
           program: home-assistant
+          poll_without_inotify: true
         - namespace: home-network
           podName: nextcloud-*
           program: nginx
+          poll_without_inotify: true
         - namespace: home-network
           podName: nextcloud-*
           program: Nextcloud
+          poll_without_inotify: true
         - namespace: home-network
           podName: authentik-*
           program: authentik
+          poll_without_inotify: true
         - namespace: home-network
           podName: vaultwarden-*
           program: Vaultwarden
+          poll_without_inotify: true
       # Those are ENV variables
       env:
         # As we are running Nginx, we want to install the Nginx collection
