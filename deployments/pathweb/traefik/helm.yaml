@@ -26,7 +26,8 @@ spec:
   interval: 15m
   timeout: 1h
   install:
-    createNamespace: true
+    createNamespace: false
+    skipCRDs: true
   driftDetection:
     mode: enabled
   values:
@@ -50,7 +51,7 @@ spec:
           projected:
             sources:
               - configMap:
-                  name: traefik-additional-configs
+                  name: traefik-configs
     volumes:
       - name: crowdsec-bouncer-tls
         mountPath: /crowdsec

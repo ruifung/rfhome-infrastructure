@@ -18,7 +18,7 @@ spec:
   interval: 15m
   timeout: 1h
   install:
-    createNamespace: true
+    createNamespace: false
     skipCRDs: true
   driftDetection:
     mode: enabled
@@ -60,7 +60,7 @@ spec:
           projected:
             sources:
               - configMap:
-                  name: traefik-additional-configs
+                  name: traefik-configs
     volumes:
       - name: crowdsec-bouncer-tls
         mountPath: /crowdsec
@@ -92,6 +92,8 @@ spec:
       websecure:
         expose:
           default: true
+        http3:
+          enabled: true
         proxyProtocol:
           enabled: true
           trustedIPs:
@@ -99,12 +101,10 @@ spec:
           - 10.228.0.1/32
       cloudflared:
         port: 8081
-        expose:
-          default: false
         protocol: TCP
         forwardedHeaders:
           trustedIPs:
-          - 127.0.0.0/8
+          - 10.96.0.0/16
           - 103.21.244.0/22
           - 103.22.200.0/22
           - 103.31.4.0/22
@@ -120,6 +120,7 @@ spec:
           - 190.93.240.0/20
           - 197.234.240.0/22
           - 198.41.128.0/17
+          - fd96:619:6b75:0110::/56
           - 2400:cb00::/32
           - 2606:4700::/32
           - 2803:f800::/32

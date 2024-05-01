@@ -1,0 +1,16 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: traefik-ingress-cf-tunnel-token
+  namespace: traefik
+spec:
+  encryptedData:
+    token: AgBNhAko9pJyAZFgS8wgsY3V5drMLKmXyYn7D3tKquxUpg7x4hQCKsSSuvHfhM9OP3c0AnWcC/cE3HsoS6vLM8wtHarL10dNbW5NkocGAIohFzjcKDdskw4ahmWYa+u0Ij3Qasrd63S3klwlIkDZhV9JnIm99cdOvbUN1LT0TG4V80bAGKZ9K9a8gMUo40zHzYJQB8l8oMs38CY81kZtUBUFZwm8/83N0/zFkiVy0zjrZZ5RcZHZXasEmTijszVuI7M7BAX6kp+75Uw4YQVqikM6mRP05n42ihD9QWX+iLZfm5BqnEaUzAQh2i9bF06Ccb8NWt0La49TQaKMsaVII7toqMXVlJnXivuFSaoRGlE5xh29Y76nKL7fG2THdFuQQk9TE9+KW+hZn8PblHTUHH9LZSGzdDZSON/s8iYEaNUY6LlxFejDuE4tBbzltAjZ68Z36skFCFbp91SOElyqMXWN7XWwzYkN+NLO6s8M/ScQ3YAmuXwv+Jc4JIIbfSI3HP3e55GwxTx72axLf97nyH5gu1yNBC5ZmKdjrR9JYZrP6jaOainirU6LxBRYZOPlqwod5si9G6lfRTf4H0wg89zvkTbYe7EzCrKFpkxzqQ7wuSHDuautpZJX49Yq7VuEpSdo4SBCxy1iqMTNEwR2XqiVcOgTvEzBzUfhT5Ra8D00tJWUNogo65FR8hYl9FJqXhUw0OQIP74lmVUxdlHAN+7/tsrDCtnv5nBuXEzaqOfOR0ARgY1EfD7fRVWQV9GbGirJ9/aOjTzVaVXsAdbKFVJppBlDeUNLIoj+sre1hSV6pPwOzg4noYeYvAY2dnh7RaaBxsabIKhyvLNZHn5u3efvMQUoTBYxFy8Ox8H8Mim03LLcnE54RnGrhivF9yFYmBB8aV6kTya0ca+e50XL0TJjaMuWYya9aqw2aT9jzBiB3wDGKW6GHYuv
+  template:
+    metadata:
+      creationTimestamp: null
+      name: traefik-ingress-cf-tunnel-token
+      namespace: traefik
+    type: Opaque

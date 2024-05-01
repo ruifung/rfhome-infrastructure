@@ -1,3 +1,22 @@
-﻿resources:
+﻿images:
+  - name: cloudflare/cloudflared
+    newTag: 2024.4.1
+
+resources:
+  - "crds"
   - "helm.yaml"
   - "helm-external.yaml"
+  - "ciliumnetworkpolicy.yaml"
+  - "cloudflare-tunnel/deployment.yaml"
+  - "cloudflare-tunnel/tunnel-token.sealed.yaml"
+  - "dashboard/middlewares.yaml"
+  - "dashboard/services.yaml"
+  - "dashboard/ingresses.yaml"
+
+configurations:
+  - "kustomizeconfig.yaml"
+
+configMapGenerator:
+  - name: traefik-configs
+    files:
+      - "config/crowdsec-bouncer.yaml"

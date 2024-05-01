@@ -1,0 +1,7 @@
+﻿nameReference:
+- kind: ConfigMap
+  fieldSpecs:
+  - group: helm.toolkit.fluxcd.io
+    version: v2beta2
+    kind: HelmRelease
+    path: spec/values/deployment/additionalVolumes/projected/sources/configMap/name
