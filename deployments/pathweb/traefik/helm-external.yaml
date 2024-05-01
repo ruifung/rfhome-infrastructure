@@ -28,6 +28,12 @@ spec:
     nodeSelector:
       kubernetes.io/os: linux
       location: rfhome
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - topologyKey: kubernetes.io/hostname
+            labelSelector:
+              app.kubernetes.io/name: traefik-external
     additionalArguments:
       - "--providers.file.directory=/additional-configs"
       - "--providers.file.watch=true"
@@ -39,24 +45,6 @@ spec:
       runtimeClassName: gvisor
       podLabels:
         velero.io/exclude-from-backup: "true"
-      additionalContainers:
-        - name: cloudflared
-          image: cloudflare/cloudflared:latest
-          imagePullPolicy: Always
-          args: ["tunnel", "run", "--url", "127.0.0.1:8081"]
-          env:
-            - name: TUNNEL_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: traefik-external-ingress-cf-tunnel-token
-                  key: token
-                  optional: false
-      additionalVolumes:
-        - name: additional-configs
-          projected:
-            sources:
-              - configMap:
-                  name: traefik-configs
     volumes:
       - name: crowdsec-bouncer-tls
         mountPath: /crowdsec

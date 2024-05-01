@@ -15,10 +15,17 @@ spec:
     spec:
       affinity:
         podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 50
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  app.kubernetes.io/name: traefik-external
+        podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             - topologyKey: kubernetes.io/hostname
               labelSelector:
-                app.kubernetes.io/name: traefik-external
+                app.kubernetes.io/name: external-ingress-cf-tunnel
       containers:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
