@@ -39,7 +39,8 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution:
           - topologyKey: kubernetes.io/hostname
             labelSelector:
-              app.kubernetes.io/name: traefik
+              matcHlabels:
+                app.kubernetes.io/name: traefik
     additionalArguments:
       - "--providers.file.directory=/additional-configs"
       - "--providers.file.watch=true"
