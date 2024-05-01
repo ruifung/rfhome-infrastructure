@@ -1,64 +1,64 @@
-﻿# ---
-# apiVersion: cilium.io/v2
-# kind: CiliumNetworkPolicy
-# metadata:
-#   name: traefik-external
-#   namespace: traefik
-# spec:
-#   endpointSelector:
-#     matchLabels:
-#       app.kubernetes.io/name: traefik-external
-#   ingress:
-#     - fromEntities:
-#         - world
-#       toPorts:
-#         - ports:
-#             - port: "8000"
-#             - port: "8443"
-#     - fromEndpoints:
-#         - matchLabels:
-#             app.kubernetes.io/name: external-ingress-cf-tunnel
-#       toPorts:
-#         - ports:
-#             - port: "8081"
-#     - fromEndpoints:
-#         - {}
-#       toPorts:
-#         - ports:
-#             - port: "9000"
-#     - fromEntities:
-#         - cluster
-#       toPorts:
-#         - ports:
-#             - port: "8000"
-#             - port: "8443"
-#             - port: "9100"
-# ---
-# apiVersion: cilium.io/v2
-# kind: CiliumNetworkPolicy
-# metadata:
-#   name: traefik
-#   namespace: traefik
-# spec:
-#   endpointSelector:
-#     matchLabels:
-#       app.kubernetes.io/name: traefik
-#   ingress:
-#     - fromEntities:
-#         - world
-#       toPorts:
-#         - ports:
-#             - port: "8000"
-#             - port: "8443"
-#     - fromEndpoints:
-#         - {}
-#       toPorts:
-#         - ports:
-#             - port: "9000"
-#     - fromEntities:
-#         - cluster
-#       toPorts:
-#         - ports:
-#             - port: "8000"
-#             - port: "8443"
-#             - port: "9100"
+﻿---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: traefik-external
+  namespace: traefik
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: traefik-external
+  ingress:
+    - fromEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "8000"
+            - port: "8443"
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: external-ingress-cf-tunnel
+      toPorts:
+        - ports:
+            - port: "8081"
+    - fromEndpoints:
+        - {}
+      toPorts:
+        - ports:
+            - port: "9000"
+    - fromEntities:
+        - cluster
+      toPorts:
+        - ports:
+            - port: "8000"
+            - port: "8443"
+            - port: "9100"
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: traefik
+  namespace: traefik
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: traefik
+  ingress:
+    - fromEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "8000"
+            - port: "8443"
+    - fromEndpoints:
+        - {}
+      toPorts:
+        - ports:
+            - port: "9000"
+    - fromEntities:
+        - cluster
+      toPorts:
+        - ports:
+            - port: "8000"
+            - port: "8443"
+            - port: "9100"
