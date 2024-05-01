@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: fileflows
   serviceName: fileflows-headless
-  replicas: 1
+  replicas: 0
   template:
     metadata:
       labels:

@@ -5,7 +5,7 @@ metadata:
   namespace: media-services
 spec:
   serviceName: jellyfin-headless
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app.kubernetes.io/name: jellyfin
