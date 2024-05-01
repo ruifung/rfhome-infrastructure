@@ -71,6 +71,9 @@ spec:
       ipFamilies:
         - IPv4
         - IPv6
+      additionalServices:
+        cf-tunnel:
+          type: ClusterIP
     ports:
       web:
         expose:
@@ -93,6 +96,9 @@ spec:
       cloudflared:
         port: 8081
         protocol: TCP
+        expose:
+          cf-tunnel: true
+        exposedPort: 8081
         forwardedHeaders:
           trustedIPs:
           - 10.96.0.0/16
