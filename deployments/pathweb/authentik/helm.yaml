@@ -88,11 +88,11 @@ spec:
       replicas: 2
       resources:
         requests:
-          cpu: 34m
-          memory: 700M
+          cpu: "1"
+          memory: 800Mi
         limits:
           cpu: '2'
-          memory: 1024M
+          memory: 2Gi
       ingress:
         enabled: true
         ingressClassName: traefik-traefik
@@ -133,10 +133,10 @@ spec:
       resources:
         requests:
           cpu: 500m
-          memory: 477M
+          memory: 550Mi
         limits:
-          cpu: '1'
-          memory: 553M
+          cpu: '2'
+          memory: 1Gi
       livenessProbe:
         failureThreshold: 10
         periodSeconds: 30
