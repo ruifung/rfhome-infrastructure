@@ -45,6 +45,12 @@ spec:
       runtimeClassName: gvisor
       podLabels:
         velero.io/exclude-from-backup: "true"
+      additionalVolumes:
+        - name: additional-configs
+          projected:
+            sources:
+              - configMap:
+                  name: traefik-configs
     volumes:
       - name: crowdsec-bouncer-tls
         mountPath: /crowdsec
