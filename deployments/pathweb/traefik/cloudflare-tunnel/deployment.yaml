@@ -32,7 +32,7 @@ spec:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
         imagePullPolicy: Always
-        args: ["tunnel", "run", "--url", "127.0.0.1:8081"]
+        args: ["tunnel", "run", "--url", "traefik-external-cf-tunnel:8081"]
         env:
           - name: TUNNEL_TOKEN
             valueFrom:
