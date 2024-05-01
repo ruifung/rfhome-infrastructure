@@ -92,8 +92,6 @@ spec:
         expose:
           default: true
         protocol: TCP
-        http3:
-          enabled: true
     experimental:
       plugins:
         crowdsec:
@@ -111,10 +109,13 @@ spec:
     providers:
       kubernetesIngress:
         ingressClass: "traefik-traefik"
+        allowEmptyServices: true
+        disableIngressClassLookup: false
         publishedService:
           enabled: true
       kubernetesCRD:
         ingressClass: "traefik-traefik"
+        allowEmptyServices: true
         allowCrossNamespace: true
         allowExternalNameServices: true
     ingressRoute:
