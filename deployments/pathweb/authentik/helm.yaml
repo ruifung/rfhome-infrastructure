@@ -132,7 +132,7 @@ spec:
       replicas: 1
       resources:
         requests:
-          cpu: 15m
+          cpu: 500m
           memory: 477M
         limits:
           cpu: '1'
