@@ -1,0 +1,71 @@
+﻿---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: democratic-csi
+  namespace: kube-system
+spec:
+  interval: 12h
+  url: https://democratic-csi.github.io/charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: democratic-csi-okinawa-nfs
+  namespace: kube-system
+spec:
+  releaseName: democratic-csi-okinawa-nfs
+  chart:
+    spec:
+      chart: democratic-csi
+      version: 0.14.6
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: democratic-csi
+  interval: 15m
+  timeout: 60m
+  valuesFrom:
+  - kind: ConfigMap
+    name: democratic-csi-okinawa-values
+    valuesKey: democratic-csi-common-values.yaml
+  - kind: ConfigMap
+    name: democratic-csi-okinawa-values
+    valuesKey: okinawa-nfs-values.yaml
+  - kind: Secret
+    name: democratic-csi-okinawa
+    valuesKey: okinawa-api-values.yaml
+  - kind: Secret
+    name: democratic-csi-okinawa
+    valuesKey: okinawa-nfs-values.yaml
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: democratic-csi-okinawa-iscsi
+  namespace: kube-system
+spec:
+  releaseName: democratic-csi-okinawa-iscsi
+  chart:
+    spec:
+      chart: democratic-csi
+      version: 0.14.6
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: democratic-csi
+  interval: 15m
+  timeout: 60m
+  valuesFrom:
+  - kind: ConfigMap
+    name: democratic-csi-okinawa-values
+    valuesKey: democratic-csi-common-values.yaml
+  - kind: ConfigMap
+    name: democratic-csi-okinawa-values
+    valuesKey: okinawa-iscsi-values.yaml
+  - kind: Secret
+    name: democratic-csi-okinawa
+    valuesKey: okinawa-api-values.yaml
+  - kind: Secret
+    name: democratic-csi-okinawa
+    valuesKey: okinawa-iscsi-values.yaml

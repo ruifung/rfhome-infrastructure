@@ -1,0 +1,7 @@
+﻿controller:
+  driver:
+    image: docker.io/democraticcsi/democratic-csi:v1.9.0
+
+node:
+  driver: 
+    image: docker.io/democraticcsi/democratic-csi:v1.9.0

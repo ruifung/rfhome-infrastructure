@@ -1,0 +1,90 @@
+﻿csiDriver:
+  # should be globally unique for a given cluster
+  name: "org.democratic-csi.nfs.okinawa"
+  fsGroupPolicy: File
+
+controller:
+  priorityClassName: system-cluster-critical
+
+node:
+  priorityClassName: system-node-critical
+
+# add note here about volume expansion requirements
+storageClasses:
+  - name: okinawa-hdd-nfs
+    defaultClass: false
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+    parameters:
+      # for block-based storage can be ext3, ext4, xfs
+      # for nfs should be nfs
+      fsType: nfs
+
+      # if true, volumes created from other snapshots will be
+      # zfs send/received instead of zfs cloned
+      # detachedVolumesFromSnapshots: "false"
+
+      # if true, volumes created from other volumes will be
+      # zfs send/received instead of zfs cloned
+      # detachedVolumesFromVolumes: "false"
+
+    mountOptions:
+      - noatime
+      - nfsvers=4.2
+      - soft
+    secrets:
+      provisioner-secret:
+      controller-publish-secret:
+      node-stage-secret:
+      node-publish-secret:
+      controller-expand-secret:
+  - name: okinawa-hdd-nfs-retain
+    defaultClass: false
+    reclaimPolicy: Retain
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+    parameters:
+      fsType: nfs
+
+    mountOptions:
+      - noatime
+      - nfsvers=4.2
+      - soft
+    secrets:
+      provisioner-secret:
+      controller-publish-secret:
+      node-stage-secret:
+      node-publish-secret:
+      controller-expand-secret:
+
+# if your cluster supports snapshots you may enable below
+volumeSnapshotClasses: []
+#- name: freenas-nfs-csi
+#  parameters:
+#  # if true, snapshots will be created with zfs send/receive
+#  # detachedSnapshots: "false"
+#  secrets:
+#    snapshotter-secret:
+
+driver:
+  config:
+    # please see the most up-to-date example of the corresponding config here:
+    # https://github.com/democratic-csi/democratic-csi/tree/master/examples
+    # YOU MUST COPY THE DATA HERE INLINE!
+    driver: freenas-api-nfs
+    instance_id: okinawa-nfs
+    zfs:
+      datasetParentName: hdd/k8s-pw/nfs
+      # do NOT make datasetParentName and detachedSnapshotsDatasetParentName overlap
+      # they may be siblings, but neither should be nested in the other
+      # do NOT comment this option out even if you don't plan to use snapshots, just leave it with dummy value
+      detachedSnapshotsDatasetParentName: hdd/k8s-pw/nfs-snaps
+      datasetEnableQuotas: true
+      datasetEnableReservation: false
+      datasetPermissionsMode: "0777"
+      datasetPermissionsUser: 0
+      datasetPermissionsGroup: 0
+
+    nfs:
+      shareCommentTemplate: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
