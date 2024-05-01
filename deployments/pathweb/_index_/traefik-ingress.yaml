@@ -17,12 +17,12 @@ spec:
     kind: GitRepository
     name: rfhome-infrastructure
   targetNamespace: traefik
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: traefik
-      namespace: flux-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: traefik-external
-      namespace: flux-system
+  # healthChecks:
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+  #     kind: HelmRelease
+  #     name: traefik
+  #     namespace: flux-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+  #     kind: HelmRelease
+  #     name: traefik-external
+  #     namespace: flux-system
