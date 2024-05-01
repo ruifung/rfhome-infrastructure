@@ -91,6 +91,8 @@ spec:
         exposedPort: 443
         expose:
           default: true
+        http3:
+          enabled: true
         protocol: TCP
     experimental:
       plugins:
@@ -106,11 +108,13 @@ spec:
         rewriteBody:
           moduleName: github.com/packruler/rewrite-body
           version: v1.2.0
+    ingressClass:
+      name: traefik-traefik
+      isDefaultClass: true
     providers:
       kubernetesIngress:
         ingressClass: "traefik-traefik"
         allowEmptyServices: true
-        disableIngressClassLookup: false
         publishedService:
           enabled: true
       kubernetesCRD:
@@ -125,9 +129,8 @@ spec:
     logs:
       general:
         format: json
-        level: TRACE
       access:
-        enabled: false
+        enabled: true
         format: json
     metrics:
       prometheus:
