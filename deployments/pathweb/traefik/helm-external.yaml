@@ -43,7 +43,7 @@ spec:
       - "--entrypoints.cloudflared.http.middlewares=crowdsec@file"
     deployment:
       replicas: 2
-      runtimeClassName: gvisor
+      # runtimeClassName: gvisor
       podLabels:
         velero.io/exclude-from-backup: "true"
       additionalVolumes:
