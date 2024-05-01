@@ -1,4 +1,4 @@
-# https://github.com/kubernetes-csi/external-snapshotter
+﻿# https://github.com/kubernetes-csi/external-snapshotter
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
@@ -19,8 +19,21 @@ metadata:
 spec:
   interval: 15m
   path: ./client/config/crd
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: k8s-external-snapshotter
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: external-snapshotter
+  namespace: flux-system
+spec:
+  interval: 15m
+  path: ./deploy/kubernetes/snapshot-controller 
   prune: true
   sourceRef:
     kind: GitRepository
     name: k8s-external-snapshotter
-  targetNamespace: home-network
+  targetNamespace: kube-system
