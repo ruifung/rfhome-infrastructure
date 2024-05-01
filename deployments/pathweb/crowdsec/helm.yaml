@@ -93,11 +93,15 @@ spec:
       tolerations:
         - key: type
           operator: Exists
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
     lapi:
       service:
         type: LoadBalancer
         annotations:
-          metallb.universe.tf/address-pool: service-addr-pool
+          external-dns.alpha.kubernetes.io/hostname: crowdsec-lapi.services.home.yrf.me
         labels:
           external-dns: local-pdns
           lb-location: rfhome
@@ -132,6 +136,10 @@ spec:
           value: '["bouncer-ou"]'
         - name: "agents_allowed_yaml"
           value: '["agent-ou"]'
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
     tls:
       enabled: true
       certManager:
