@@ -139,7 +139,7 @@ driver:
       # full iqn limit is 223 bytes, plan accordingly
       # default is "{{ name }}"
       #nameTemplate: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
-      namePrefix: csi-
+      namePrefix: k8s-pw-csi-
       nameSuffix: ""
 
       # add as many as needed
