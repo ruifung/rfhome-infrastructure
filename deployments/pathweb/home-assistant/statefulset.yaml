@@ -91,6 +91,9 @@ spec:
         - name: hass-data
           persistentVolumeClaim:
             claimName: home-assistant-data
+        - name: hass-backup
+          persistentVolumeClaim:
+            claimName: home-assistant-backup
         - name: homeassistant-docker-venv
           configMap:
             name: homeassistant-docker-venv
