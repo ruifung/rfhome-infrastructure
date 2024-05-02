@@ -14,12 +14,29 @@ customization:
             - siderolabs/qemu-guest-agent
             - siderolabs/stargz-snapshotter
             - siderolabs/wasmedge
+------------------------------------------
+Pi Node Image Factory C0nfiguration
+------------------------------------------
+overlay:
+    image: siderolabs/sbc-raspberrypi
+    name: rpi_generic
+customization:
+    systemExtensions:
+        officialExtensions:
+            - siderolabs/binfmt-misc
+            - siderolabs/fuse3
+            - siderolabs/gvisor
+            - siderolabs/iscsi-tools
+            - siderolabs/kata-containers
+            - siderolabs/wasmedge
 #>
-
-$TALOS_VERSION = "v1.7.0"
-$TALOS_FACTORY_SCHEMATIC_ID = "71fdc73baac9ae32e13435992ba56d469b4eaf3fb561125e1af41505210bdb35"
+$KUBE_CTX = "admin@pathweb"
+$TALOS_VERSION = "v1.7.1"
+$TALOS_FACTORY_SCHEMATIC_ID = "ff4c7c9e75f037073e593e00f43c862d66f98a465f5afe10fa513d4fb54b5479"
+$RPI_FACTORY_SCHEMATIC_ID = "15d3da5525ae052a575d21c83c16544631b9eb7e95283eccc254ddf8eb2c4fd3"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
-$TALOS_INSTALL_IMAGE = "harbor.services.home.yrf.me/talos-image-factory/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
+$TALOS_INSTALL_IMAGE = "factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
+$RPI_INSTALL_IMAGE = "factory.talos.dev/installer/${RPI_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
  
 $homeDnsSuffix = "servers.home.yrf.me"
 $mode, $extraArgs = $args
@@ -38,13 +55,17 @@ $workers = @(
     "pathweb-worker-baldric.$homeDnsSuffix"
 )
 
+$piworkers = @(
+    "pathweb-worker-pi4-01.$homeDnsSuffix"
+)
+
 Write-Output "Extra Args: $extraArgs"
 $toApply = @()
 if (($mode -eq "controlplane") -or ($mode -eq "all")) {
     $toApply = $toApply + $controlplane
 }
 if (($mode -eq "workers") -or ($mode -eq "all")) {
-    $toApply = $toApply + $workers
+    $toApply = $toApply + $workers + $piworkers
 }
 #if toApply is empty, split mode by comma and append result to toApply after trimming excess whitespace
 if ($toApply.Count -eq 0) {
@@ -53,7 +74,13 @@ if ($toApply.Count -eq 0) {
 
 foreach ($node in $toApply) {
     Write-Output "Preparing to upgrade node [$node]"
+    $SCHEMATIC = $TALOS_FACTORY_SCHEMATIC_ID
     $IMAGE = $TALOS_INSTALL_IMAGE
+    if ($piworkers.Contains($node)) {
+        Write-Output "Upgrading Listed RPi Node. Using RPi options."
+        $SCHEMATIC = $RPI_FACTORY_SCHEMATIC_ID
+        $IMAGE = $RPI_INSTALL_IMAGE
+    }
     $talosctlArgs = @(
         'upgrade',
         '--nodes',
@@ -94,7 +121,7 @@ foreach ($node in $toApply) {
     }
 
     function Get-DeploymentStsReady {
-        $deployments = kubectl --context="admin@pathweb" get deployments,statefulsets -A -o json | ConvertFrom-Json
+        $deployments = kubectl --context=$KUBE_CTX get deployments,statefulsets -A -o json | ConvertFrom-Json
         $ready = $True
         foreach ($deployment in $deployments.items) {
             if (($null -eq $deployment.status.readyReplicas) -and ($deployment.status.replicas -eq 0)) {
@@ -116,25 +143,25 @@ foreach ($node in $toApply) {
         $version = Get-TalosNodeVersion $node
         Write-Output "Checking existing schematic for node [$node]"
         $schematic = Get-TalosNodeSchematic $node
-        if (($version -eq $TALOS_VERSION) -and ($schematic -eq $TALOS_FACTORY_SCHEMATIC_ID)) {
+        if (($version -eq $TALOS_VERSION) -and ($schematic -eq $SCHEMATIC)) {
             Write-Output "Node [$node] is already at Talos version [$version], schematic [$schematic], skipping upgrade."
             $success = $true
             continue
         }
-        Write-Output "Upgrading node [$node] to Talos version [$TALOS_VERSION], schematic [$TALOS_FACTORY_SCHEMATIC_ID]."
+        Write-Output "Upgrading node [$node] to Talos version [$TALOS_VERSION], schematic [$SCHEMATIC]."
         Write-Output "Current version is [$version], current schematic is [$schematic]"
         Write-Output "Using image: [$IMAGE]"
         talosctl $talosctlArgs
         $success = ($LASTEXITCODE -eq 0)
-        if ($success) {
+        if ($success -and (-not ($controlplane.Contains($node)))) {
             $version = Get-TalosNodeVersion $node
             $schematic = Get-TalosNodeSchematic $node
             # retry upgrade if version upgrade failed
             if ($version -ne $TALOS_VERSION) {
                 Write-Output "Talos version [$version] does not match expected version [$TALOS_VERSION], retrying upgrade"
                 $success = $false
-            } elseif ($schematic -ne $TALOS_FACTORY_SCHEMATIC_ID) {
-                Write-Output "Talos schematic [$schematic] does not match expected schematic [$TALOS_FACTORY_SCHEMATIC_ID], retrying upgrade"
+            } elseif ($schematic -ne $SCHEMATIC) {
+                Write-Output "Talos schematic [$schematic] does not match expected schematic [$SCHEMATIC], retrying upgrade"
                 $success = $false
             } else {
                 Write-Output "Successfully upgraded node [$node] to Talos version [$version]"
