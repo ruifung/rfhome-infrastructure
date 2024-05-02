@@ -10,9 +10,8 @@ spec:
       "cniVersion": "0.3.1",
       "plugins": [
         {         
-          "type": "ipvlan",
-          "master": "eth1",
-          "mode": "l2",
+          "type": "bridge",
+          "bridge": "iot",
           "ipam": {
             "type": "static",
             "addresses": [
