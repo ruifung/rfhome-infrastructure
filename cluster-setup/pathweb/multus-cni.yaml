@@ -219,7 +219,7 @@ spec:
               mountPath: /host/opt/cni/bin
               mountPropagation: Bidirectional
         - name: install-cni-plugins
-          image: ghcr.io/ruifung/cni-plugins-installer:20230112
+          image: ghcr.io/ruifung/cni-plugins-installer:v1.4.1
           resources:
             requests:
               cpu: "10m"
