@@ -1,0 +1,96 @@
+version: v1alpha1
+debug: false
+persist: true
+machine:
+    type: controlplane
+    token: p02lr9.p14ogl2cqz717nkx
+    ca:
+        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJQakNCOGFBREFnRUNBaEJxMTliRisyS28rZ3FsUnA2U3JjcEpNQVVHQXl0bGNEQVFNUTR3REFZRFZRUUsKRXdWMFlXeHZjekFlRncweU16QXhNVEl3TWpBNE1EZGFGdzB6TXpBeE1Ea3dNakE0TURkYU1CQXhEakFNQmdOVgpCQW9UQlhSaGJHOXpNQ293QlFZREsyVndBeUVBTVJKWVhXNThTd3JJYXVvMzVnYlE2N2lBMENrUnpIeDcyMW9rClZVVlVRd0dqWVRCZk1BNEdBMVVkRHdFQi93UUVBd0lDaERBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUkKS3dZQkJRVUhBd0l3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFkQmdOVkhRNEVGZ1FVcmlsUFRCbnpQVUozRm1UcAp0SWdYTGp1VWFZVXdCUVlESzJWd0EwRUFnelpWcUVZRkdxbU9VUXdYb0JMY2FqcnM1N256L0JNdnlmcHp3WUJGCjVzUURLWUF1VkVHbmxqTTkwRmd4RXY5RVl5bGYzaXMyK2NwSk1vMW9DaEVuQmc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        key: LS0tLS1CRUdJTiBFRDI1NTE5IFBSSVZBVEUgS0VZLS0tLS0KTUM0Q0FRQXdCUVlESzJWd0JDSUVJR0JqWmEweWJPS3pZWjdweDFrMFZRa2NVSVIzUXRrUFkzdlBod0k5WHo2VwotLS0tLUVORCBFRDI1NTE5IFBSSVZBVEUgS0VZLS0tLS0K
+    certSANs: []
+    kubelet:
+        image: ghcr.io/siderolabs/kubelet:v1.29.3
+        defaultRuntimeSeccompProfileEnabled: true
+        disableManifestsDirectory: true
+    network:
+        kubespan:
+            enabled: true
+    install:
+        disk: /dev/sda
+        image: factory.talos.dev/installer/71fdc73baac9ae32e13435992ba56d469b4eaf3fb561125e1af41505210bdb35:v1.7.0
+        wipe: false
+    features:
+        rbac: true
+        stableHostname: true
+        apidCheckExtKeyUsage: true
+        diskQuotaSupport: true
+        kubePrism:
+            enabled: true
+            port: 7445
+        hostDNS:
+            enabled: true
+cluster:
+    id: t8o1aHbirJIG_dyrI81xFGgQHf34oL52jd-ov-OkQDU=
+    secret: MYZdYvRvFeRtaV3w35i5DpsyYgFd3sJQLmSamoZevMI=
+    controlPlane:
+        endpoint: https://controlplane.pathweb.clusters.home.yrf.me:6443
+    clusterName: pathweb
+    network:
+        dnsDomain: cluster.local
+        podSubnets:
+            - 10.244.0.0/16
+        serviceSubnets:
+            - 10.96.0.0/12
+    token: znaasm.vxm3h1toym5j2wi0
+    secretboxEncryptionSecret: YSBZbuKEM1c39Rwf/HE2UX+Lx6nZfDixuDFo8azMcJY=
+    ca:
+        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpRENDQVMrZ0F3SUJBZ0lRQTU5NmNIRkt6aU9haHJoN0VUTjBnakFLQmdncWhrak9QUVFEQWpBVk1STXcKRVFZRFZRUUtFd3ByZFdKbGNtNWxkR1Z6TUI0WERUSXpNREV4TWpBeU1EZ3dOMW9YRFRNek1ERXdPVEF5TURndwpOMW93RlRFVE1CRUdBMVVFQ2hNS2EzVmlaWEp1WlhSbGN6QlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VICkEwSUFCTjJjZkl0VUcwcHhKeVl1dXBxMUpuM3pIdVRldkdKMHMvVFNRZHhONWdqTXdvUlJyMlg5VXhQZktqM0sKbkxPanFKK2REV05Wam5rdFlXQWtCRUFoSFhHallUQmZNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQWRCZ05WSFNVRQpGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFCkZnUVVqdjg2SmNTQzByQjRLeGR0VUxuMzcyQVBWOGd3Q2dZSUtvWkl6ajBFQXdJRFJ3QXdSQUlnUmZCZ1pnaGYKei9hNDJZbisxRDhNK3QxSXZ5OVZHblpFWUJXTjNET0xGYWdDSUg1ZUE3ektXM3l1a2dPeG9xOUM0MVMxV2ZhVQpCT2l1RkFMWURycldNbUNQCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+        key: LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSU5GT3ZKbTBqZ1JlUnhWakw0elRjc29scDFjTG4ycUhEQmNBU1NZVGtGblJvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFM1p4OGkxUWJTbkVuSmk2Nm1yVW1mZk1lNU42OFluU3o5TkpCM0UzbUNNekNoRkd2WmYxVApFOThxUGNxY3M2T29uNTBOWTFXT2VTMWhZQ1FFUUNFZGNRPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo=
+    aggregatorCA:
+        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJZVENDQVFhZ0F3SUJBZ0lSQUtSdWs4cWRHbnU2cVR6NkplbG0zczh3Q2dZSUtvWkl6ajBFQXdJd0FEQWUKRncweU16QXhNVEl3TWpBNE1EZGFGdzB6TXpBeE1Ea3dNakE0TURkYU1BQXdXVEFUQmdjcWhrak9QUUlCQmdncQpoa2pPUFFNQkJ3TkNBQVRxQVNrYXljRXJvRE5BdEN6VzFMZGZqM0ZNakF2MUNGeVJWNXNJS2MrSFlZYUFxSXZBCk5iY0xLY0h5d3BzUjNFbGpSN2JCMm1tSkJqa2hXSUV5QXJGdG8yRXdYekFPQmdOVkhROEJBZjhFQkFNQ0FvUXcKSFFZRFZSMGxCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01BOEdBMVVkRXdFQi93UUZNQU1CQWY4dwpIUVlEVlIwT0JCWUVGSXRqTENJcHZSWDlOd1U5MDRra2RDUkxkeVFETUFvR0NDcUdTTTQ5QkFNQ0Ewa0FNRVlDCklRQ1pRUmFZV0kyWnZrb2lQaHpOaUJYaEtNNlZrMlRFbmw4YmpQeHFiWEFnOUFJaEFKMGJsUk5jNVdBOXdCdisKdVZRS3lQU1M2VHZ1a2tZNlJFRVVDK050YytGdwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        key: LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSUpSRFJHSDkxbnA2cWd1WCtMUnFSZlNhN2NCSFFDak5YeUFtaEFGRWIxVFRvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFNmdFcEdzbkJLNkF6UUxRczF0UzNYNDl4VEl3TDlRaGNrVmViQ0NuUGgyR0dnS2lMd0RXMwpDeW5COHNLYkVkeEpZMGUyd2RwcGlRWTVJVmlCTWdLeGJRPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo=
+    serviceAccount:
+        key: LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSU1yajZiQXk4di9pNmZ5S2xtbnlISDZmSFpsRXVCazVWQ3BYcTFYclBKWHdvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFeThxN3hYTFJjVGVTU042MXNFaVBpSzBpbmllU2hwMzlQTVpFdzRzQmVvTlNIRWYxeDJLdAozRjNkcis4WVJucDE1RWV0ejY4V1d1M1FxSFd1L1lyUGJnPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo=
+    apiServer:
+        image: registry.k8s.io/kube-apiserver:v1.29.3
+        certSANs:
+            - controlplane.pathweb.clusters.home.yrf.me
+        disablePodSecurityPolicy: true
+        admissionControl:
+            - name: PodSecurity
+              configuration:
+                apiVersion: pod-security.admission.config.k8s.io/v1alpha1
+                defaults:
+                    audit: restricted
+                    audit-version: latest
+                    enforce: baseline
+                    enforce-version: latest
+                    warn: restricted
+                    warn-version: latest
+                exemptions:
+                    namespaces:
+                        - kube-system
+                    runtimeClasses: []
+                    usernames: []
+                kind: PodSecurityConfiguration
+        auditPolicy:
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
+                - level: Metadata
+    controllerManager:
+        image: registry.k8s.io/kube-controller-manager:v1.29.3
+    proxy:
+        image: registry.k8s.io/kube-proxy:v1.29.3
+    scheduler:
+        image: registry.k8s.io/kube-scheduler:v1.29.3
+    discovery:
+        enabled: true
+        registries:
+            kubernetes:
+                disabled: true
+            service: {}
+    etcd:
+        ca:
+            crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJmakNDQVNTZ0F3SUJBZ0lSQVA3NTlBVytuTmpKR2dHanBUNFhUekF3Q2dZSUtvWkl6ajBFQXdJd0R6RU4KTUFzR0ExVUVDaE1FWlhSalpEQWVGdzB5TXpBeE1USXdNakE0TURkYUZ3MHpNekF4TURrd01qQTRNRGRhTUE4eApEVEFMQmdOVkJBb1RCR1YwWTJRd1dUQVRCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJCd05DQUFUQnMxbGFVTUhUCjNLZEwxaUlWc2tscCtmWFdFZ1BLNVUxQmFvc2V0TjladVhSZEwwQ2VCa1dza2U2YmRkV3c3VDFmUDBJS0Vmc1IKSXE5TEViNzlVbkMxbzJFd1h6QU9CZ05WSFE4QkFmOEVCQU1DQW9Rd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSApBd0VHQ0NzR0FRVUZCd01DTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkZHU3ZTVVZmL0UvCk5XZkxPQ0JOamgwOHNHUkNNQW9HQ0NxR1NNNDlCQU1DQTBnQU1FVUNJQ3dEdHNiSDFXZDRFUDZpUUkvbVcwakkKUW1zY1NJdHdCSGZ3RUxmM3FxNHhBaUVBMjR4bS9nRkFSYU12cC9KQ3pqOTFvSjJqSTVwaE02WnpML2Q0dGtKbQoyNmM9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+            key: LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSURNNUY1aVQ4bkE0ejdtb0RyczBTMGt3WE5mYTAyRVAzRkJyT2R3SzZOb3ZvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFd2JOWldsREIwOXluUzlZaUZiSkphZm4xMWhJRHl1Vk5RV3FMSHJUZldibDBYUzlBbmdaRgpySkh1bTNYVnNPMDlYejlDQ2hIN0VTS3ZTeEcrL1ZKd3RRPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo=

@@ -1,4 +1,7 @@
 machine:
+  nodeLabels:
+    location: rfhome
+    node-group: voyager
   certSANs:
     - pathweb-worker-baldric.servers.home.yrf.me
     - baldric.workers.pathweb.clusters.home.yrf.me

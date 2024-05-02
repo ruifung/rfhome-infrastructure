@@ -39,11 +39,11 @@ $workers = @(
         base = '.\base\worker.yaml';
         patches = @('@patches\node-patches.yaml','@patches\worker-patches.yaml','@patches\worker-baldric.yaml', '@patches\harbor-rfhome.secret.yaml')
     }
-    # @{
-    #     fqdn = 'pathweb-piworker-1.vsvc.home.arpa';
-    #     base = '.\base\worker.yaml';
-    #     patches = @('@patches\node-patches.yaml','@patches\pi-worker.yaml','@patches\piworker-1.yaml')
-    # }
+    @{
+        fqdn = "pathweb-worker-pi4-01.$homeDnsSuffix";
+        base = '.\base\worker.yaml';
+        patches = @('@patches\node-patches.yaml','@patches\worker-pi4-patches.yaml','@patches\worker-pi4-01.yaml', '@patches\harbor-rfhome.secret.yaml')
+    }
 )
 
 Write-Output "Extra Args: $extraArgs"
@@ -60,7 +60,7 @@ if ($toApply.Count -eq 0) {
     $targets = $mode.Split(',')
     $toApply = $controlplane + $workers
     # filter toApply by fqdn in $targets
-    $toApply = $toApply | Where-Object { $targets -contains $_.fqdn } 
+    $toApply = $toApply | Where-Object { ($targets -contains $_.fqdn) -or ($targets -contains ($_.fqdn -replace "\.$homeDnsSuffix","")) } 
 }
 # if toApply is still empty, print out all available fqdns
 if ($toApply.Count -eq 0) {
@@ -73,5 +73,17 @@ if ($toApply.Count -eq 0) {
 
 foreach ($node in $toApply) {
     Write-Output "Applying configuration for node: $($node.fqdn)"
-    talosctl apply-config --talosconfig .\talosconfig --nodes $($node.fqdn) --file $($node.base) -p $($node.patches -join ',') $extraArgs
+    $bootstrapIpPattern = "--bootstrap-ip=([a-fA-F0-9:.]+)+"
+    $targetNode = $node.fqdn
+    $bootstrapIp = ""
+    if ($extraArgs -contains "--insecure" -and $extraArgs -match $bootstrapIpPattern) {
+        $bootstrapIp = ($extraArgs | Select-String -Pattern $bootstrapIpPattern).Matches.Groups[1].Value
+        $extraArgs = $extraArgs -replace $bootstrapIpPattern,"-e $bootstrapIp"
+        $targetNode = $bootstrapIp
+        Write-Output "Bootstraping node at address: $bootstrapIp"
+    }
+    $extraArgs = $extraArgs -split " "
+    if ($targetNode -ne "") {
+        talosctl apply-config --talosconfig .\talosconfig --nodes $($targetNode) --file $($node.base) -p $($node.patches -join ',') @extraArgs
+    }
 }

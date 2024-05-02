@@ -1,4 +1,7 @@
 machine:
+  nodeLabels:
+    location: rfhome
+    node-group: voyager
   certSANs:
     - pathweb-worker-2.servers.home.yrf.me
     - 2.workers.pathweb.clusters.home.yrf.me
