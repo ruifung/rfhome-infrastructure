@@ -40,31 +40,31 @@ spec:
                 - path: /dev/fuse
         - --device
         - |
-          name: serial-pi-AMA0
+          name: serial-pi-ama0
           groups:
             - paths:
                 - path: /dev/ttyAMA0
         - --device
         - |
-          name: serial-pi-S0
+          name: serial-pi-s0
           groups:
             - paths:
                 - path: /dev/ttyS0
         - --device
         - |
-          name: serial-pi-S1
+          name: serial-pi-s1
           groups:
             - paths:
                 - path: /dev/ttyS1
         - --device
         - |
-          name: serial-pi-S2
+          name: serial-pi-s2
           groups:
             - paths:
                 - path: /dev/ttyS2
         - --device
         - |
-          name: serial-pi-S3
+          name: serial-pi-s3
           groups:
             - paths:
                 - path: /dev/ttyS3
