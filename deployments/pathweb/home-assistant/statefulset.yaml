@@ -26,6 +26,14 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-group
+                    operator: In
+                    values: [baldric, voyager]
       securityContext:
         fsGroup: 1000
         seccompProfile:
