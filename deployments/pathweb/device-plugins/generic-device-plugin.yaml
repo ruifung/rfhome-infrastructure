@@ -14,6 +14,14 @@ spec:
       labels:
         app.kubernetes.io/name: generic-device-plugin
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: type
+                    operator: In
+                    values: [proxmox-x64]
       priorityClassName: system-node-critical
       tolerations:
       - operator: "Exists"
