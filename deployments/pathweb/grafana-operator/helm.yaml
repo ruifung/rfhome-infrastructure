@@ -5,6 +5,7 @@ metadata:
   name: grafana-oci
   namespace: grafana
 spec:
+  type: oci
   interval: 15m
   url: oci://ghcr.io/grafana/helm-charts
 ---
