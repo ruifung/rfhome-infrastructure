@@ -20,7 +20,7 @@ spec:
     skipCRDs: false
   chart:
     spec:
-      chart: grafana
+      chart: grafana-operator
       version: v5.9.0
       sourceRef:
         apiVersion: source.toolkit.fluxcd.io/v1
