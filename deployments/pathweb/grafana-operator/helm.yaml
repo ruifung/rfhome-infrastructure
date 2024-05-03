@@ -15,10 +15,12 @@ metadata:
   namespace: home-network
 spec:
   releaseName: grafana-operator
+  install:
+    skipCRDs: false
   chart:
     spec:
       chart: grafana
-      version: v5.9.0
+      version: v5.8.1
       sourceRef:
         apiVersion: source.toolkit.fluxcd.io/v1
         kind: HelmRepository
