@@ -1,0 +1,50 @@
+﻿---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: victoria-metrics
+  namespace: monitoring
+spec:
+  interval: 15m
+  url: https://victoriametrics.github.io/helm-charts/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: victoria-metrics-stack
+  namespace: monitoring
+spec:
+  releaseName: vm-stack
+  chart:
+    spec:
+      chart: victoria-metrics-k8s-stack
+      version: 0.21.3
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: victoria-metrics
+  interval: 15m
+  timeout: 1h
+  install:
+    createNamespace: false
+  driftDetection:
+    mode: enabled
+  valuesFrom:
+  - kind: "ConfigMap"
+    name: "victoria-metrics-stack-values"
+    valuesKey: "values.yaml"
+  - kind: "ConfigMap"
+    name: "victoria-metrics-stack-values"
+    valuesKey: "vmsingle-values.yaml"
+  - kind: "ConfigMap"
+    name: "victoria-metrics-stack-values"
+    valuesKey: "vmalert-values.yaml"
+  - kind: "ConfigMap"
+    name: "victoria-metrics-stack-values"
+    valuesKey: "alertmanager-values.yaml"
+  - kind: "ConfigMap"
+    name: "victoria-metrics-stack-values"
+    valuesKey: "vmagent-values.yaml"
+  - kind: "ConfigMap"
+    name: "victoria-metrics-stack-values"
+    valuesKey: "servicemonitor-values.yaml"

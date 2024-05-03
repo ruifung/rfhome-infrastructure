@@ -1,0 +1,57 @@
+﻿vmagent:
+  enabled: true
+  annotations: {}
+  # https://docs.victoriametrics.com/operator/api.html#vmagentremotewritespec
+  # defined spec will be added to the remoteWrite configuration of VMAgent
+  additionalRemoteWrites:
+    []
+    #- url: http://some-remote-write/api/v1/write
+  # spec for VMAgent crd
+  # https://docs.victoriametrics.com/operator/api.html#vmagentspec
+  spec:
+    selectAllByDefault: true
+    image:
+      tag: v1.101.0
+    scrapeInterval: 20s
+    externalLabels:
+      cluster: cluster-name
+    extraArgs:
+      promscrape.streamParse: "true"
+      # Do not store original labels in vmagent's memory by default. This reduces the amount of memory used by vmagent
+      # but makes vmagent debugging UI less informative. See: https://docs.victoriametrics.com/vmagent/#relabel-debug
+      promscrape.dropOriginalLabels: "true"
+  ingress:
+    enabled: false
+    # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+    # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+    # ingressClassName: nginx
+    # Values can be templated
+    annotations:
+      {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    labels: {}
+    path: /
+    # pathType is only for k8s > 1.19
+    pathType: Prefix
+
+    hosts:
+      - vmagent.domain.com
+    ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
+    extraPaths: []
+    # - path: /*
+    #   backend:
+    #     serviceName: ssl-redirect
+    #     servicePort: use-annotation
+    ## Or for k8s > 1.19
+    # - path: /*
+    #   pathType: Prefix
+    #   backend:
+    #     service:
+    #       name: ssl-redirect
+    #       port:
+    #         name: service
+    tls: []
+    #  - secretName: vmagent-ingress-tls
+    #    hosts:
+    #      - vmagent.domain.com

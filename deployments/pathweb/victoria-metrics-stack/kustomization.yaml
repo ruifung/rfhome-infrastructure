@@ -1,0 +1,15 @@
+﻿configurations:
+  - "kustomizeconfig.yaml"
+
+resources:
+  - "helm.yaml"
+
+configMapGenerator:
+  - name: victoria-metrics-stack-values
+    files:
+      - "values/values.yaml"
+      - "values/vmsingle-values.yaml"
+      - "values/vmalert-values.yaml"
+      - "values/alertmanager-values.yaml"
+      - "values/vmagent-values.yaml"
+      - "values/servicemonitor-values.yaml"

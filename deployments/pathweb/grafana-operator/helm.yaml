@@ -1,0 +1,31 @@
+﻿---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: grafana-operator
+  namespace: grafana
+spec:
+  interval: 15m
+  url: oci://ghcr.io/grafana/helm-charts/grafana-operator
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: grafana-operator
+  namespace: home-network
+spec:
+  releaseName: grafana-operator
+  chart:
+    spec:
+      chart: grafana
+      version: v5.9.0
+      sourceRef:
+        apiVersion: source.toolkit.fluxcd.io/v1
+        kind: HelmRepository
+        name: grafana-operator
+  interval: 30m
+  timeout: 1h
+  values:
+    priorityClassName: rfhome-low-priority
+    serviceMonitor:
+      enabled: true

@@ -1,0 +1,144 @@
+﻿# -- victoria-metrics-operator dependency chart configuration.
+# -- For possible values refer to https://github.com/VictoriaMetrics/helm-charts/tree/master/charts/victoria-metrics-operator#parameters
+# -- also checkout here possible ENV variables to configure operator behaviour https://docs.victoriametrics.com/operator/vars.html
+victoria-metrics-operator:
+  enabled: true
+  # -- Tells helm to clean up vm cr resources when uninstalling
+  cleanupCRD: true
+  cleanupImage:
+    repository: gcr.io/google_containers/hyperkube
+    tag: v1.18.0
+    pullPolicy: IfNotPresent
+
+  createCRD: false # we disable crd creation by operator chart as we create them in this chart
+  operator:
+    # -- By default, operator converts prometheus-operator objects.
+    disable_prometheus_converter: false
+
+
+## -- Create default rules for monitoring the cluster
+defaultRules:
+  create: true
+  rules:
+    etcd: true
+    general: true
+    k8s: true
+    kubeApiserver: true
+    kubeApiserverAvailability: true
+    kubeApiserverBurnrate: true
+    kubeApiserverHistogram: true
+    kubeApiserverSlos: true
+    kubelet: true
+    kubePrometheusGeneral: true
+    kubePrometheusNodeRecording: true
+    kubernetesApps: true
+    kubernetesResources: true
+    kubernetesStorage: true
+    kubernetesSystem: true
+    kubeScheduler: true
+    kubeStateMetrics: true
+    network: true
+    node: true
+    vmagent: true
+    vmsingle: true
+    vmcluster: true
+    vmhealth: true
+    alertmanager: true
+
+  # -- Runbook url prefix for default rules
+  runbookUrl: https://runbooks.prometheus-operator.dev/runbooks
+
+  # Disabled VMRules
+  disabled: {}
+
+  ## Reduce app namespace alert scope
+  appNamespacesTarget: ".*"
+
+  # -- Labels for default rules
+  labels: {}
+  # -- Annotations for default rules
+  annotations: {}
+
+  # -- Additional labels for PrometheusRule alerts
+  additionalRuleLabels: {}
+
+  # -- Optional HTTP URL parameters added to each rule request
+  params: {}
+
+## -- Create default dashboards
+defaultDashboardsEnabled: true
+
+## -- Create experimental dashboards
+experimentalDashboardsEnabled: true
+
+## -- Create dashboards as CRDs (reuqires grafana-operator to be installed)
+grafanaOperatorDashboardsFormat:
+  enabled: true
+  instanceSelector:
+    matchLabels:
+      dashboards: "grafana"
+  allowCrossNamespaceImport: false
+
+# Provide custom recording or alerting rules to be deployed into the cluster.
+additionalVictoriaMetricsMap:
+#    rule-name:
+#     groups:
+#     - name: my_group
+#       rules:
+#       - record: my_record
+#         expr: 100 * my_record
+
+##############
+
+
+#################################################
+###              dependencies               #####
+#################################################
+
+# Grafana dependency chart configuration. For possible values refer to https://github.com/grafana/helm-charts/tree/main/charts/grafana#configuration
+grafana:
+  enabled: false
+
+# prometheus-node-exporter dependency chart configuration. For possible values refer to https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus-node-exporter/values.yaml
+prometheus-node-exporter:
+  enabled: true
+
+  ## all values for prometheus-node-exporter helm chart can be specified here
+  podLabels:
+    ## Add the 'node-exporter' label to be used by serviceMonitor to match standard common usage in rules and grafana dashboards
+    ##
+    jobLabel: node-exporter
+  extraArgs:
+    - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
+    - --collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
+
+  vmServiceScrape:
+    # whether we should create a service scrape resource for node-exporter
+    enabled: true
+
+    # spec for VMServiceScrape crd
+    # https://docs.victoriametrics.com/operator/api.html#vmservicescrapespec
+    spec:
+      jobLabel: jobLabel
+      endpoints:
+        - port: metrics
+          metricRelabelConfigs:
+            - action: drop
+              source_labels: [mountpoint]
+              regex: "/var/lib/kubelet/pods.+"
+
+# kube-state-metrics dependency chart configuration. For possible values refer to https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-state-metrics/values.yaml
+kube-state-metrics:
+  enabled: true
+  ## all values for kube-state-metrics helm chart can be specified here
+
+  # spec for VMServiceScrape crd
+  # https://docs.victoriametrics.com/operator/api.html#vmservicescrapespec
+  vmServiceScrape:
+    spec: {}
+
+  #TODO: selector override for kube-state-metrics deployed separatelly
+
+## install vm operator crds
+crds:
+  enabled: true

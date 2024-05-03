@@ -1,0 +1,13 @@
+﻿nameReference:
+- kind: ConfigMap
+  fieldSpecs:
+  - group: helm.toolkit.fluxcd.io
+    version: v2beta2
+    kind: HelmRelease
+    path: spec/valuesFrom/name
+- kind: Secret
+  fieldSpecs:
+  - group: helm.toolkit.fluxcd.io
+    version: v2beta2
+    kind: HelmRelease
+    path: spec/valuesFrom/name
