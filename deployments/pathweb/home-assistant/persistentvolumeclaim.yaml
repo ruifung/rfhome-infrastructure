@@ -23,4 +23,4 @@ spec:
   resources:
     requests:
       storage: 16Gi
-  storageClassName: okinawa-hdd-nfs
+  storageClassName: okinawa-hdd-nfs-retain
