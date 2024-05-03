@@ -77,6 +77,8 @@ spec:
           volumeMounts:
             - name: hass-data
               mountPath: /config
+            - name: hass-backup
+              mountPath: /config/backups
             - name: homeassistant-docker-venv
               mountPath: /etc/services.d/home-assistant/run
               subPath: venv-run
@@ -91,6 +93,9 @@ spec:
         - name: hass-data
           persistentVolumeClaim:
             claimName: home-assistant-data
+        - name: hass-backup
+          persistentVolumeClaim:
+            claimName: home-assistant-backup
         - name: homeassistant-docker-venv
           configMap:
             name: homeassistant-docker-venv
