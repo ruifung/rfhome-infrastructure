@@ -124,9 +124,9 @@ kubeEtcd:
   ## If your etcd is not deployed as a pod, specify IPs it can be found on
   ##
   endpoints:
-  - pathweb-control-1.servers.home.yrf.me
-  - pathweb-control-2.servers.home.yrf.me
-  - pathweb-control-3.servers.home.yrf.me
+  - 10.229.97.31
+  - 10.229.97.32
+  - 10.229.97.33
 
   ## Etcd service. If using kubeEtcd.endpoints only the port and targetPort are used
   ##
