@@ -9,8 +9,10 @@ machine:
     kernel.domainname: servers.home.yrf.me
   nodeLabels:
     role: control-plane
+
 cluster:
   clusterName: pathweb
+  acceptedCAs: []
   apiServer:
     certSANs:
       - controlplane.pathweb.clusters.home.yrf.me
