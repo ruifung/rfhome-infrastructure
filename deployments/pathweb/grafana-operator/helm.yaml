@@ -2,11 +2,11 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: grafana-operator
+  name: grafana-oci
   namespace: grafana
 spec:
   interval: 15m
-  url: oci://ghcr.io/grafana/helm-charts/grafana-operator
+  url: oci://ghcr.io/grafana/helm-charts
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
@@ -20,11 +20,11 @@ spec:
   chart:
     spec:
       chart: grafana
-      version: v5.8.1
+      version: v5.9.0
       sourceRef:
         apiVersion: source.toolkit.fluxcd.io/v1
         kind: HelmRepository
-        name: grafana-operator
+        name: grafana-oci
   interval: 30m
   timeout: 1h
   values:
