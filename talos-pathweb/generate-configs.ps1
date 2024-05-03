@@ -1,6 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 Push-Location base
+
 $KUBE_VERSION="1.29.3"
 $TALOS_VERSION="v1.7.0"
 $TALOS_FACTORY_SCHEMATIC_ID="71fdc73baac9ae32e13435992ba56d469b4eaf3fb561125e1af41505210bdb35"
@@ -10,10 +11,11 @@ talosctl gen config pathweb "https://controlplane.pathweb.clusters.home.yrf.me:6
 talosctl --talosconfig .\_out\talosconfig config endpoint controlplane.pathweb.clusters.home.yrf.me
 talosctl --talosconfig .\_out\talosconfig config node pathweb-control-1.servers.home.yrf.me pathweb-control-2.servers.home.yrf.me pathweb-control-3.servers.home.yrf.me pathweb-worker-1.servers.home.yrf.me pathweb-worker-2.servers.home.yrf.me pathweb-worker-3.servers.home.yrf.me
 
-Move-Item .\_out\talosconfig ..\talosconfig -Force
-Move-Item .\_out\controlplane.yaml ..\controlplane.yaml -Force
-Move-Item .\_out\worker.yaml ..\worker.yaml -Force
+Move-Item _out\talosconfig ..\talosconfig -Force
+Move-Item _out\controlplane.yaml controlplane.yaml -Force
+Move-Item _out\worker.yaml worker.yaml -Force
 Remove-Item _out
+
 Pop-Location
 
 $nodes = Get-Content nodes.json -Raw | ConvertFrom-Json
