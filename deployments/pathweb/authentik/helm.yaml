@@ -33,14 +33,14 @@ spec:
           - patch: |
               - op: "add"
                 path: "/spec/template/spec/runtimeClassName"
-                value: "kata"
+                value: "gvisor"
             target:
               kind: Deployment
               name: authentik-server
           - patch: |
               - op: "add"
                 path: "/spec/template/spec/runtimeClassName"
-                value: "kata"
+                value: "gvisor"
             target:
               kind: Deployment
               name: authentik-worker
