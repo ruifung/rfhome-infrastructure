@@ -38,7 +38,7 @@ spec:
       expected_claims: "{}"
       auto_sign_up: "true"
     auth.anonymous:
-      enabled: true
+      enabled: "true"
       org_name: Public Access
       org_role: Viewer
       hide_version: "true"
@@ -70,45 +70,46 @@ spec:
         - grafana.services.home.yrf.me
         secretName: services-wildcard-cert
   deployment:
-    template:
-      spec:
-        runtimeClassName: gvisor
-        containers:
-        - name: grafana
-          env:
-          - name: AUTH_CLIENT_ID
-            valueFrom:
-              secretKeyRef:
-                name: grafana-secrets
-                key: client-id
-          - name: AUTH_CLIENT_SECRET
-            valueFrom:
-              secretKeyRef:
-                name: grafana-secrets
-                key: client-secret
-          - name: DB_HOST
-            valueFrom:
-              secretKeyRef:
-                name: rfhome-postgres-ha-pguser-grafana
-                key: pgbouncer-host
-          - name: DB_PORT
-            valueFrom:
-              secretKeyRef:
-                name: rfhome-postgres-ha-pguser-grafana
-                key: pgbouncer-port
-          - name: DB_NAME
-            valueFrom:
-              secretKeyRef:
-                name: rfhome-postgres-ha-pguser-grafana
-                key: dbname
-          - name: DB_USER
-            valueFrom:
-              secretKeyRef:
-                name: rfhome-postgres-ha-pguser-grafana
-                key: user
-          - name: DB_PASS
-            valueFrom:
-              secretKeyRef:
-                name: rfhome-postgres-ha-pguser-grafana
-                key: password
+    spec:
+      template:
+        spec:
+          runtimeClassName: gvisor
+          containers:
+          - name: grafana
+            env:
+            - name: AUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: grafana-secrets
+                  key: client-id
+            - name: AUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: grafana-secrets
+                  key: client-secret
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: rfhome-postgres-ha-pguser-grafana
+                  key: pgbouncer-host
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: rfhome-postgres-ha-pguser-grafana
+                  key: pgbouncer-port
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: rfhome-postgres-ha-pguser-grafana
+                  key: dbname
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: rfhome-postgres-ha-pguser-grafana
+                  key: user
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: rfhome-postgres-ha-pguser-grafana
+                  key: password
         
