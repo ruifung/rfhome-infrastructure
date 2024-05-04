@@ -96,12 +96,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: rfhome-postgres-ha-pguser-grafana
-                  key: pgbouncer-host
+                  key: host
             - name: DB_PORT
               valueFrom:
                 secretKeyRef:
                   name: rfhome-postgres-ha-pguser-grafana
-                  key: pgbouncer-port
+                  key: port
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
