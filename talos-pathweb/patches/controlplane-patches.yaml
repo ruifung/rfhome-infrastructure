@@ -28,7 +28,6 @@ cluster:
           exemptions:
             namespaces:
               - monitoring
-              - home-network
             runtimeClasses: []
             usernames: []
           kind: PodSecurityConfiguration
