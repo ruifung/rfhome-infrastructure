@@ -29,6 +29,7 @@ spec:
           resources:
             limits:
               squat.ai/serial-pi-ama0: "1"
+              squat.ai/serial-pi-s0: "1"
   volumeClaimTemplates:
     - metadata:
         name: data
