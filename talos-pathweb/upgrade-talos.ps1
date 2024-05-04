@@ -32,11 +32,12 @@ customization:
 $KUBE_CTX = "admin@pathweb"
 $TALOS_VERSION = "v1.7.1"
 $TALOS_FACTORY_SCHEMATIC_ID = "ff4c7c9e75f037073e593e00f43c862d66f98a465f5afe10fa513d4fb54b5479"
-$RPI_FACTORY_SCHEMATIC_ID = "15d3da5525ae052a575d21c83c16544631b9eb7e95283eccc254ddf8eb2c4fd3"
+# $RPI_FACTORY_SCHEMATIC_ID = "15d3da5525ae052a575d21c83c16544631b9eb7e95283eccc254ddf8eb2c4fd3"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE = "factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
-$RPI_INSTALL_IMAGE = "factory.talos.dev/installer/${RPI_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
- 
+# $RPI_INSTALL_IMAGE = "factory.talos.dev/installer/${RPI_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
+$RPI_FACTORY_SCHEMATIC_ID = "CUSTOMIMAGE"
+$RPI_INSTALL_IMAGE = "harbor.services.home.yrf.me/local-images/talos/installer:v1.7.1.rpi_generic_nouartconsole_pathweb" # GENERATED ON 2024-05-04T21:13 To get around the stupid console being enabled on ttyAMA0 by default.
 $homeDnsSuffix = "servers.home.yrf.me"
 $mode, $extraArgs = $args
 $extraArgs = $extraArgs -join " "
@@ -73,13 +74,15 @@ if ($toApply.Count -eq 0) {
 
 foreach ($node in $toApply) {
     Write-Output "Preparing to upgrade node [$node]"
-    $SCHEMATIC = $TALOS_FACTORY_SCHEMATIC_ID
-    $IMAGE = $TALOS_INSTALL_IMAGE
     if ($piworkers.Contains($node)) {
         Write-Output "Upgrading Listed RPi Node. Using RPi options."
         $SCHEMATIC = $RPI_FACTORY_SCHEMATIC_ID
         $IMAGE = $RPI_INSTALL_IMAGE
+    } else {
+        $SCHEMATIC = $TALOS_FACTORY_SCHEMATIC_ID
+        $IMAGE = $TALOS_INSTALL_IMAGE
     }
+    Write-Output "Target Schematic: [$SCHEMATIC]"
     $talosctlArgs = @(
         'upgrade',
         '--nodes',
@@ -141,26 +144,26 @@ foreach ($node in $toApply) {
         Write-Output "Checking existing version for node [$node]"
         $version = Get-TalosNodeVersion $node
         Write-Output "Checking existing schematic for node [$node]"
-        $schematic = Get-TalosNodeSchematic $node
-        if (($version -eq $TALOS_VERSION) -and ($schematic -eq $SCHEMATIC)) {
-            Write-Output "Node [$node] is already at Talos version [$version], schematic [$schematic], skipping upgrade."
+        $current_schematic = Get-TalosNodeSchematic $node
+        if (($version -eq $TALOS_VERSION) -and ($current_schematic -eq $SCHEMATIC)) {
+            Write-Output "Node [$node] is already at Talos version [$version], schematic [$current_schematic], skipping upgrade."
             $success = $true
             continue
         }
         Write-Output "Upgrading node [$node] to Talos version [$TALOS_VERSION], schematic [$SCHEMATIC]."
-        Write-Output "Current version is [$version], current schematic is [$schematic]"
+        Write-Output "Current version is [$version], current schematic is [$current_schematic]"
         Write-Output "Using image: [$IMAGE]"
         talosctl $talosctlArgs
         $success = ($LASTEXITCODE -eq 0)
         if ($success -and (-not ($controlplane.Contains($node)))) {
             $version = Get-TalosNodeVersion $node
-            $schematic = Get-TalosNodeSchematic $node
+            $current_schematic = Get-TalosNodeSchematic $node
             # retry upgrade if version upgrade failed
             if ($version -ne $TALOS_VERSION) {
                 Write-Output "Talos version [$version] does not match expected version [$TALOS_VERSION], retrying upgrade"
                 $success = $false
             } elseif ($schematic -ne $SCHEMATIC) {
-                Write-Output "Talos schematic [$schematic] does not match expected schematic [$SCHEMATIC], retrying upgrade"
+                Write-Output "Talos schematic [$current_schematic] does not match expected schematic [$SCHEMATIC], retrying upgrade"
                 $success = $false
             } else {
                 Write-Output "Successfully upgraded node [$node] to Talos version [$version]"
