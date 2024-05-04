@@ -27,7 +27,7 @@ spec:
             - name: data
               mountPath: /app/data
           resources:
-            requests:
+            limits:
               squat.ai/serial-pi-ama0: "1"
   volumeClaimTemplates:
     - metadata:
