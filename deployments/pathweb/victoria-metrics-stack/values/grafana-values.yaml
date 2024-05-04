@@ -18,7 +18,7 @@ grafana:
       multicluster: false
 
   ## ForceDeployDatasource Create datasource configmap even if grafana deployment has been disabled
-  forceDeployDatasource: false
+  forceDeployDatasource: true
 
   ## Configure additional grafana datasources (passed through tpl)
   ## ref: http://docs.grafana.org/administration/provisioning/#datasources
