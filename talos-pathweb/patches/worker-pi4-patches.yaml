@@ -9,23 +9,27 @@
         type: sd
       image: factory.talos.dev/installer/1f3513bc03ebe7a9a4654bf209f8bd323684de5f6656dca7492d7f2b8d426c44:v1.7.0
       wipe: false
-  # network:
-    # interfaces:
-      # - interface: eth0
-      #   dhcp: true
-      # - interface: eth1
-      #   dhcp: false
-      # - interface: br0
-      #   dhcp: false
-      #   bridge:
-      #     interfaces:
-      #       - eth1
+  network:
+    interfaces:
+      - interface: eth0
+        dhcp: false
+        vlans:
+        - vlanId: 97
+          dhcp: true
+        - vlanId: 55
+          dhcp: false
+      - interface: iot
+        dhcp: false
+        bridge:
+          interfaces:
+            - eth0.55
   sysctls:
-    # net.ipv6.conf.eth1.accept_ra: "0"
-    # net.ipv6.conf.default.accept_ra: "0"
-    # net.ipv6.conf.br0.accept_ra: "0"
+    net/ipv6/conf/eth0/accept_ra: "0"
+    net/ipv6/conf/eth0.97/accept_ra: "2"
+    net/ipv6/conf/default/accept_ra: "0"
+    net/ipv6/conf/iot/accept_ra: "0"
     # user.max_user_namespaces > 0 is required for gvisor usage.
     # talos defaults to 0 as ker KSPP.
-    net.ipv4.conf.all.arp_announce: "2"
-    user.max_user_namespaces: "28633"
-    kernel.domainname: servers.home.yrf.me
+    net/ipv4/conf/all/arp_announce: "2"
+    user/max_user_namespaces: "28633"
+    kernel/domainname: servers.home.yrf.me

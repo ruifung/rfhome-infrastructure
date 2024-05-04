@@ -12,7 +12,6 @@ customization:
             - siderolabs/iscsi-tools
             - siderolabs/kata-containers
             - siderolabs/qemu-guest-agent
-            - siderolabs/stargz-snapshotter
             - siderolabs/wasmedge
 ------------------------------------------
 Pi Node Image Factory C0nfiguration
