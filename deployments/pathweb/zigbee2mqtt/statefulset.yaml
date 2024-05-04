@@ -20,16 +20,25 @@ spec:
               value: Asia/Kuala_Lumpur
           # command: ["/bin/sh"]
           # args: ["-c", "trap : TERM INT; sleep infinity & wait"]
+          securityContext:
+            privileged: true
           ports:
             - containerPort: 80
               name: http
           volumeMounts:
             - name: data
               mountPath: /app/data
-          resources:
-            limits:
-              squat.ai/serial-pi-ama0: "1"
-              squat.ai/serial-pi-s0: "1"
+            - name: serial
+              mountPath: /dev/ttyAMA0
+          # resources:
+          #   limits:
+          #     squat.ai/serial-pi-ama0: "1"
+          #     squat.ai/serial-pi-s0: "1"
+      volumes:
+        - name: serial
+          hostPath:
+            path: /dev/ttyAMA0
+            type: CharDevice
   volumeClaimTemplates:
     - metadata:
         name: data
