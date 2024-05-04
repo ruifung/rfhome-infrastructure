@@ -1,0 +1,40 @@
+﻿apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zigbee2mqtt
+  namespace: home-network
+spec:
+  selector: {}
+  serviceName: zigbee2mqtt
+  replicas: 1
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: pathweb-worker-pi4-01
+      containers:
+        - name: zigbee2mqtt
+          image: koenkk/zigbee2mqtt:latest
+          # image: ghcr.io/ruifung/zigbee2mqtt:20230805
+          env:
+            - name: TZ
+              value: Asia/Kuala_Lumpur
+          command: ["/bin/sh"]
+          args: ["-c", "trap : TERM INT; sleep infinity & wait"]
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+          resources:
+            requests:
+              squat.ai/serial-pi-ama0: "1"
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        storageClassName: ceph-rbd-retain
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
