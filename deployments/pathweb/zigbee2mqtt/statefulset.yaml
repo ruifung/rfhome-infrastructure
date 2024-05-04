@@ -18,8 +18,8 @@ spec:
           env:
             - name: TZ
               value: Asia/Kuala_Lumpur
-          command: ["/bin/sh"]
-          args: ["-c", "trap : TERM INT; sleep infinity & wait"]
+          # command: ["/bin/sh"]
+          # args: ["-c", "trap : TERM INT; sleep infinity & wait"]
           ports:
             - containerPort: 80
               name: http
