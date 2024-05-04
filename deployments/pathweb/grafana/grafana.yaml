@@ -8,6 +8,8 @@ spec:
   config:
     log:
       mode: console
+    sever:
+      root_url: https://grafana.services.home.yrf.me
     auth:
       disable_login_form: "true"
       oauth_auto_login: "true"
@@ -52,6 +54,9 @@ spec:
       password: "${DB_PASS}"
       ssl_mode: "require"
   ingress:
+    metadata:
+      labels:
+        external-dns: local-pdns
     spec:
       ingressClassName: traefik-traefik
       rules:
