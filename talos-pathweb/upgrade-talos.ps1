@@ -117,7 +117,7 @@ foreach ($node in $toApply) {
         )
         $schematicExtension = talosctl get extensions --nodes $node --output yaml | ConvertFrom-Yaml -AllDocuments | Where-Object {$_.spec.metadata.name -eq "schematic" }
         if ($null -eq $schematicExtension) {
-            throw "Failed to get schematic extension for node [$node]"
+            return "NOSCHEMATIC"
         }
         return $schematicExtension.spec.metadata.version
     }

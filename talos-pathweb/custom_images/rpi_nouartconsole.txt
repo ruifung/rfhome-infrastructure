@@ -11,7 +11,14 @@ customization:
             - siderolabs/kata-containers
             - siderolabs/wasmedge
 
-1. Build and push modified overlay to harbor.services.home.yrf.me/local-images/talos/sbc-raspberrypi:v0.1.0-beta.nouartconsole
-2. docker run --rm -t -v $PWD/_out:/out ghcr.io/siderolabs/imager:v1.7.1 installer --arch arm64 --system-extension-image ghcr.io/siderolabs/binfmt-misc:v1.7.1 --system-extension-image ghcr.io/siderolabs/fuse3:3.16.2 --system-extension-image ghcr.io/siderolabs/gvisor:20240325.0 --system-extension-image ghcr.io/siderolabs/iscsi-tools:v0.1.4 --system-extension-image ghcr.io/siderolabs/kata-containers:3.3.0 --system-extension-image ghcr.io/siderolabs/wasmedge:v0.3.0 --overlay-image harbor.services.home.yrf.me/local-images/talos/sbc-raspberrypi:v0.1.0-beta.nouartconsole --overlay-name=rpi_generic
-3. docker load the tar
-4. docker push it to harbor.services.home.yrf.me/local-images/talos/installer:v1.7.1.rpi_generic_nouartconsole_pathweb
+1. Build and push modified overlay to harbor.services.home.yrf.me/local-images/talos/sbc-raspberrypi-noconsole:v0.1.0
+2. docker run --rm -t -v $PWD/_out:/out -v /dev:/dev --privileged ghcr.io/siderolabs/imager:v1.7.1 rpi_generic --arch arm64 --system-extension-image ghcr.io/siderolabs/binfmt-misc:v1.7.1 --system-extension-image ghcr.io/siderolabs/fuse3:3.16.2 \
+ --system-extension-image ghcr.io/siderolabs/gvisor:20240325.0 --system-extension-image ghcr.io/siderolabs/iscsi-tools:v0.1.4 --system-extension-image ghcr.io/siderolabs/kata-containers:3.3.0 \
+ --system-extension-image ghcr.io/siderolabs/wasmedge:v0.3.0 --overlay-image harbor.services.home.yrf.me/local-images/talos/sbc-raspberrypi-noconsole:v0.1.0 --overlay-name=rpi_generic
+
+2. docker run --rm -t -v $PWD/_out:/out ghcr.io/siderolabs/imager:v1.7.1 installer --arch arm64 --system-extension-image ghcr.io/siderolabs/binfmt-misc:v1.7.1 --system-extension-image ghcr.io/siderolabs/fuse3:3.16.2 \
+ --system-extension-image ghcr.io/siderolabs/gvisor:20240325.0 --system-extension-image ghcr.io/siderolabs/iscsi-tools:v0.1.4 --system-extension-image ghcr.io/siderolabs/kata-containers:3.3.0 \
+ --system-extension-image ghcr.io/siderolabs/wasmedge:v0.3.0 --overlay-image harbor.services.home.yrf.me/local-images/talos/sbc-raspberrypi-noconsole:v0.1.0 --overlay-name=rpi_generic
+3. docker load -i _out/installer-arm64.tar 
+4. docker tag ghcr.io/siderolabs/installer:v1.7.1 harbor.services.home.yrf.me/local-images/talos/installer:v1.7.1.rpi_generic_nouartconsole_pathweb
+5. docker push harbor.services.home.yrf.me/local-images/talos/installer:v1.7.1.rpi_generic_nouartconsole_pathweb
