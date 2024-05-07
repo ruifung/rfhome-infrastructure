@@ -60,10 +60,12 @@ ingress:
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
-name: etcd-metrics
+name: metrics
 portSelector:
   ports:
     - 2381
+    - 10257
+    - 10259
   protocol: tcp
 ingress:
   - subnet: 10.229.97.0/24
