@@ -40,34 +40,10 @@ spec:
                 - path: /dev/fuse
         - --device
         - |
-          name: serial-pi-ama0
+          name: serial-ama0
           groups:
             - paths:
                 - path: /dev/ttyAMA0
-        - --device
-        - |
-          name: serial-pi-s0
-          groups:
-            - paths:
-                - path: /dev/ttyS0
-        - --device
-        - |
-          name: serial-pi-s1
-          groups:
-            - paths:
-                - path: /dev/ttyS1
-        - --device
-        - |
-          name: serial-pi-s2
-          groups:
-            - paths:
-                - path: /dev/ttyS2
-        - --device
-        - |
-          name: serial-pi-s3
-          groups:
-            - paths:
-                - path: /dev/ttyS3
         name: generic-device-plugin
         resources:
           requests:

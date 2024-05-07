@@ -131,21 +131,16 @@ kubeEtcd:
   ## Etcd service. If using kubeEtcd.endpoints only the port and targetPort are used
   ##
   service:
-    port: 2379
-    targetPort: 2379
+    port: 2381
+    targetPort: 2381
 
   # spec for VMServiceScrape crd
   # https://docs.victoriametrics.com/operator/api.html#vmservicescrapespec
   spec:
     jobLabel: jobLabel
     endpoints:
-      - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
-        # bearerTokenSecret:
-        #   key: ""
-        port: http-metrics
-        scheme: https
-        tlsConfig:
-          caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      - port: http-metrics
+        scheme: http
 
 ## Component scraping kube scheduler
 ##
