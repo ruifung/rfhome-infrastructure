@@ -5,17 +5,17 @@ $controlplane = @(
     @{
         fqdn = "pathweb-control-1.$homeDnsSuffix";
         base = '.\base\controlplane.yaml';
-        patches = @('@patches\node-patches.yaml', '@patches\controlplane-firewall.yaml','@patches\controlplane-patches.yaml','@patches\control-1.yaml', '@patches\harbor-rfhome.secret.yaml')
+        patches = @('@patches\node-patches.yaml','@patches\controlplane-firewall.yaml','@patches\controlplane-patches.yaml','@patches\control-1.yaml', '@patches\harbor-rfhome.secret.yaml')
     },
     @{
         fqdn = "pathweb-control-2.$homeDnsSuffix";
         base = '.\base\controlplane.yaml';
-        patches = @('@patches\node-patches.yaml','@patches\controlplane-patches.yaml','@patches\control-2.yaml', '@patches\harbor-rfhome.secret.yaml')
+        patches = @('@patches\node-patches.yaml','@patches\controlplane-firewall.yaml','@patches\controlplane-patches.yaml','@patches\control-2.yaml', '@patches\harbor-rfhome.secret.yaml')
     },
     @{
         fqdn = "pathweb-control-3.$homeDnsSuffix";
         base = '.\base\controlplane.yaml';
-        patches = @('@patches\node-patches.yaml','@patches\controlplane-patches.yaml','@patches\control-3.yaml', '@patches\harbor-rfhome.secret.yaml')
+        patches = @('@patches\node-patches.yaml','@patches\controlplane-firewall.yaml','@patches\controlplane-patches.yaml','@patches\control-3.yaml', '@patches\harbor-rfhome.secret.yaml')
     }
 )
 $workers = @(

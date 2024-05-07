@@ -16,6 +16,7 @@
         "patches": [
             "patches/node-patches.yaml",
             "patches/controlplane-patches.yaml",
+            "patches/controlplane-firewall.yaml",
             "patches/control-2.yaml",
             "patches/harbor-rfhome.secret.yaml"
         ]
@@ -26,6 +27,7 @@
         "patches": [
             "patches/node-patches.yaml",
             "patches/controlplane-patches.yaml",
+            "patches/controlplane-firewall.yaml",
             "patches/control-3.yaml",
             "patches/harbor-rfhome.secret.yaml"
         ]
