@@ -12,6 +12,8 @@ portSelector:
 ingress:
   - subnet: 10.229.97.0/24
   - subnet: fd96:619:97::/64
+  - subnet: 10.96.0.0/16
+  - subnet: fd96:619:6b75:0110::/56
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
@@ -60,7 +62,7 @@ ingress:
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
-name: metrics
+name: controlplane-metrics
 portSelector:
   ports:
     - 2381
@@ -70,6 +72,48 @@ portSelector:
 ingress:
   - subnet: 10.229.97.0/24
   - subnet: fd96:619:97::/64
+  - subnet: 10.96.0.0/16
+  - subnet: fd96:619:6b75:0110::/56
+---
+apiVersion: v1alpha1
+kind: NetworkRuleConfig
+name: cilium-operator-metrics
+portSelector:
+  ports:
+    - 9963
+  protocol: tcp
+ingress:
+  - subnet: 10.229.97.0/24
+  - subnet: fd96:619:97::/64
+  - subnet: 10.96.0.0/16
+  - subnet: fd96:619:6b75:0110::/56
+---
+apiVersion: v1alpha1
+kind: NetworkRuleConfig
+name: cilium-metrics
+portSelector:
+  ports:
+    - 9962
+    - 9965
+  protocol: tcp
+ingress:
+  - subnet: 10.229.97.0/24
+  - subnet: fd96:619:97::/64
+  - subnet: 10.96.0.0/16
+  - subnet: fd96:619:6b75:0110::/56
+---
+apiVersion: v1alpha1
+kind: NetworkRuleConfig
+name: node-metrics
+portSelector:
+  ports:
+    - 9100
+  protocol: tcp
+ingress:
+  - subnet: 10.229.97.0/24
+  - subnet: fd96:619:97::/64
+  - subnet: 10.96.0.0/16
+  - subnet: fd96:619:6b75:0110::/56
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
