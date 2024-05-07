@@ -1,3 +1,4 @@
+---
 machine:
   network:
     interfaces:
@@ -35,6 +36,12 @@ cluster:
       requests:
         cpu: 300m
         memory: 2Gi
+  controllerManager:
+    extraArgs:
+      bind-address: "0.0.0.0"
+  scheduler:
+      extraArgs:
+        bind-address: "0.0.0.0"
   etcd:
     extraArgs:
       election-timeout: "5000"

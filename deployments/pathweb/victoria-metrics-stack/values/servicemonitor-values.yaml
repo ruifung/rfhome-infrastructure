@@ -97,7 +97,7 @@ kubeControllerManager:
         scheme: https
         tlsConfig:
           caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-          serverName: kubernetes
+          serverName: localhost
 
 # -- Component scraping coreDns. Use either this or kubeDns
 coreDns:
@@ -177,3 +177,4 @@ kubeScheduler:
         scheme: https
         tlsConfig:
           caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+          serverName: localhost

@@ -5,6 +5,7 @@
         "patches": [
             "patches/node-patches.yaml",
             "patches/controlplane-patches.yaml",
+            "patches/controlplane-firewall.yaml",
             "patches/control-1.yaml",
             "patches/harbor-rfhome.secret.yaml"
         ]
