@@ -147,8 +147,10 @@ spec:
         ingressClass: traefik-external
         allowCrossNamespace: true
         allowExternalNameServices: true
+        allowEmptyServices: true
       kubernetesIngress:
         ingressClass: traefik-external
+        allowEmptyServices: true
         publishedService:
           enabled: true
     ingressRoute:
