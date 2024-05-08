@@ -14,4 +14,4 @@ spec:
         name: vm-stack-victoria-metrics-k8s-stack
         namespace: monitoring
       paths:
-      - /influx/api/v2/write
+      - /api/v2/write
