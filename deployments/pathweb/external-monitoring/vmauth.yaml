@@ -8,6 +8,8 @@ spec:
   ingress:
     class_name: traefik-traefik # <-- change this to your ingress-controller
     host: vm.services.home.yrf.me # <-- change this to your domain
+    labels:
+      external-dns: local-pdns
     tlsHosts:
     - vm.services.home.yrf.me
     tlsSecretName: services-wildcard-cert
