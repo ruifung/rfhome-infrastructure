@@ -6,7 +6,7 @@ spec:
   username: proxmox
   generatePassword: true
   tokenRef:
-    name: vmauth-proxmox-token.yaml
+    name: vmauth-proxmox-token
     key: token
   targetRefs:
     - crd:
