@@ -1,0 +1,17 @@
+﻿apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMUser
+metadata:
+  name: proxmox
+spec:
+  username: proxmox
+  generatePassword: true
+  tokenRef:
+    name: vmauth-proxmox-token.yaml
+    key: token
+  targetRefs:
+    - crd:
+        kind: VMSingle
+        name: vm-stack-victoria-metrics-k8s-stack
+        namespace: monitoring
+      paths:
+      - /influx/api/v2/write

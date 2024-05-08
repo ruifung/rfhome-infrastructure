@@ -1,0 +1,16 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: vmauth-proxmox-token
+  namespace: home-network
+spec:
+  encryptedData:
+    token: AgDBktK8l2G03/s8TXvhOKEgwil6i+Rd2GK5U9V4pCfhWJoGcJ88d3pdFF0S2LWTxm7YyNr0T5nKNIPzhKcUId4yzPm3Bp0og1vm8qGC5CalXLgS9z2ct/4CrG8JSZMNJOYNBehM5FSkmVtbCRq+fjCYo7uakcFIMfOJfiOgQnd3WW2ur+uOD6K1+QVKkWj4nA+6Y4r6dIo4WDsjQXfCeO6PduWcfjQ/JRI5jpLlPy9avd8Io2N7ho+1twe1uv7JLd6rLwYTlamb68mjIfA9jRQZlf/EZX0N0XtNM6gHdUUuS9IouyrjfpgqVGaxPqV9HiFvVavb8InywZn4jX+wJI9L7Z9ElR/4qAWe/yx1q1GidfZqpWj3rL3KnLfATNbCmAvvyEtIOHzIyrdf1beMJhAYfTsfNiFZWkJLr8OwHkdZoGgCP0iBZXulQAnM6wL3NRsxDT28+6AwN/SiO8Y9yyQ0eAjsPTdqCyuHws/u2yhP81/2T1MPibXiZtQXVM7uHs+8qTG4iUsXBq+2Etu+cCZYcPAca2JL1vMypL+EaS3MlL55Q/ma41wNr2sY+UV0E9C1y3irEsJ/egbnIxSUxX7sOyVWAactUsOZDtcU0FBfwKsYnGRAh/tMWgcjZvNgHao3zyn4LMWsb+DwXYd3I6HmzbL4+0J2nt1I3AAEvmmPknfx8qW0I/GuM0JuHUTwTMN/WBZe6EDDNzLpS6d5qON6VZ4d6Lu7w/pA+iO9eqUmecfVf3Y=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: vmauth-proxmox-token
+      namespace: home-network
+    type: Opaque
