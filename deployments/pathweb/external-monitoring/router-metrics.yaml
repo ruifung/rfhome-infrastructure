@@ -1,0 +1,11 @@
+﻿apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMStaticScrape
+metadata:
+  name: rfhome-router
+  namespace: home-network
+spec:
+  jobName: static
+  targetEndpoints:
+    - targets: ["10.229.97.1:9100"]
+      labels:
+        host: rfhome-router01

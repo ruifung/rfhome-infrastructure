@@ -125,3 +125,14 @@ portSelector:
 ingress:
   - subnet: 10.229.97.0/24
   - subnet: fd96:619:97::/64
+---
+apiVersion: v1alpha1
+kind: NetworkRuleConfig
+name: kubespan-wg
+portSelector:
+  ports:
+    - 51820 
+  protocol: udp
+ingress:
+  - subnet: 0.0.0.0/0
+  - subnet: ::/0
