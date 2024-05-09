@@ -7,7 +7,8 @@
             "patches/controlplane-patches.yaml",
             "patches/controlplane-firewall.yaml",
             "patches/control-1.yaml",
-            "patches/harbor-rfhome.secret.yaml"
+            "patches/harbor-rfhome.secret.yaml",
+            "patches/watchdog.yaml"
         ]
     },
     {
@@ -18,7 +19,8 @@
             "patches/controlplane-patches.yaml",
             "patches/controlplane-firewall.yaml",
             "patches/control-2.yaml",
-            "patches/harbor-rfhome.secret.yaml"
+            "patches/harbor-rfhome.secret.yaml",
+            "patches/watchdog.yaml"
         ]
     },
     {
@@ -29,7 +31,8 @@
             "patches/controlplane-patches.yaml",
             "patches/controlplane-firewall.yaml",
             "patches/control-3.yaml",
-            "patches/harbor-rfhome.secret.yaml"
+            "patches/harbor-rfhome.secret.yaml",
+            "patches/watchdog.yaml"
         ]
     },
     {
@@ -39,7 +42,8 @@
             "patches/node-patches.yaml",
             "patches/worker-patches.yaml",
             "patches/worker-1.yaml",
-            "patches/harbor-rfhome.secret.yaml"
+            "patches/harbor-rfhome.secret.yaml",
+            "patches/watchdog.yaml"
         ]
     },
     {
@@ -49,7 +53,8 @@
             "patches/node-patches.yaml",
             "patches/worker-patches.yaml",
             "patches/worker-2.yaml",
-            "patches/harbor-rfhome.secret.yaml"
+            "patches/harbor-rfhome.secret.yaml",
+            "patches/watchdog.yaml"
         ]
     },
     {
@@ -59,7 +64,8 @@
             "patches/node-patches.yaml",
             "patches/worker-patches.yaml",
             "patches/worker-3.yaml",
-            "patches/harbor-rfhome.secret.yaml"
+            "patches/harbor-rfhome.secret.yaml",
+            "patches/watchdog.yaml"
         ]
     },
     {
@@ -69,10 +75,12 @@
             "patches/node-patches.yaml",
             "patches/worker-patches.yaml",
             "patches/worker-baldric.yaml",
-            "patches/harbor-rfhome.secret.yaml"
+            "patches/harbor-rfhome.secret.yaml",
+            "patches/watchdog.yaml"
         ]
     },
     {
+        "ignore": true,
         "fqdn": "pathweb-worker-pi4-01.servers.home.yrf.me",
         "role": "worker",
         "patches": [
