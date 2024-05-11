@@ -9,8 +9,18 @@ spec:
     rewriteHeaders:
       rewrites:
         - header: Location
-          regex: "^(?:https?://)?(.*)/login"
+          regex: "^(?:https?://)?(.*)/login$"
           replacement: "/outpost.goauthentik.io/sign_out"
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: calibre-web-redirect-login-page
+  namespace: media-services
+spec:
+  redirectRegex:
+    regex: ^(?:https?://)?(.*)/login$
+    replacement: /
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware

@@ -5,7 +5,7 @@ metadata:
   name: calibre-web
   namespace: media-services
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: media-services-calibre-web-redirect-login-page@kubernetescrd, home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
   labels:
     app.kubernetes.io/name: calibre-web
     external-dns: local-pdns
