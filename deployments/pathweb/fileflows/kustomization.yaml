@@ -1,6 +1,6 @@
 ﻿images:
   - name: revenz/fileflows
-    newTag: "24.04"
+    newTag: "24.05"
 
 labels:
   - pairs:
