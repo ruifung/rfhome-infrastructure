@@ -30,5 +30,6 @@ resource "flux_bootstrap_git" "flux_pathweb" {
 
   path = "clusters/pathweb"
   namespace = "flux-system"
+  embedded_manifests = true
   kustomization_override = file("${path.module}/flux-kustomization.yaml")
 }
