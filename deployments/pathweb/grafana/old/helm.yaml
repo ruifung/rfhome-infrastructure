@@ -20,16 +20,21 @@ spec:
   targetNamespace: home-network
   postRenderers:
     - kustomize:
-        patchesStrategicMerge:
-          - apiVersion: networking.k8s.io/v1
-            kind: Ingress
-            metadata:
-              labels:
-                external-dns: local-pdns
-              annotations:
-                traefik.ingress.kubernetes.io/router.middlewares: home-network-grafana-rewrite-inject-remove-public-footer-css@kubernetescrd
+        patches:
+          - target:
+              group: networking.k8s.io
+              version: v1
+              kind: Ingress
               name: grafana
-              namespace: home-network
+            patch: |-
+              apiVersion: networking.k8s.io/v1
+              kind: Ingress
+              metadata:
+                name: grafana
+                labels:
+                  external-dns: local-pdns
+                annotations:
+                  traefik.ingress.kubernetes.io/router.middlewares: home-network-grafana-rewrite-inject-remove-public-footer-css@kubernetescrd
   values:
     # imageRenderer:
     #   enabled: true

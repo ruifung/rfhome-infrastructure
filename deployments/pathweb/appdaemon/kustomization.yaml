@@ -10,5 +10,4 @@ images:
 resources:
 - statefulset.yaml
 - service.yaml
-patchesStrategicMerge: []
 patches: []

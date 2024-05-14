@@ -18,7 +18,6 @@ resources:
 - traefik-ingressroute.yaml
 - traefik-middleware.yaml
 - networkpolicy.yaml
-patchesStrategicMerge: []
 patches: []
 configMapGenerator:
   - name: homeassistant-docker-venv

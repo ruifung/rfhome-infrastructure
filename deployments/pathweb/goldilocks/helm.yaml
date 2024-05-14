@@ -25,26 +25,25 @@ spec:
   interval: 15m
   postRenderers:
     - kustomize:
-        patchesStrategicMerge:
-          - apiVersion: apps/v1
-            kind: Deployment
-            metadata:
+        patches:
+          - target: 
+              group: apps
+              version: v1
+              kind: Deployment
               name: goldilocks-controller
-              namespace: monitoring
-            spec:
-              template:
-                spec:
-                  priorityClassName: rfhome-standard
-          - apiVersion: apps/v1
-            kind: Deployment
-            metadata:
+            patch: |-
+              - op: add
+                path: /spec/template/spec/priorityClassName
+                value: rfhome-standard
+          - target: 
+              group: apps
+              version: v1
+              kind: Deployment
               name: goldilocks-dashboard
-              namespace: monitoring
-            spec:
-              template:
-                spec:
-                  priorityClassName: rfhome-low-priority
-
+            patch: |-
+              - op: add
+                path: /spec/template/spec/priorityClassName
+                value: rfhome-low-priority
   values:
     controller:
       nodeSelector:

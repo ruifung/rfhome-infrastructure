@@ -30,23 +30,25 @@ spec:
     createNamespace: true
   postRenderers:
     - kustomize:
-        patchesStrategicMerge:
-          - apiVersion: networking.k8s.io/v1
-            kind: Ingress
-            metadata:
+        patches:
+          - target:
+              group: networking.k8s.io
+              version: v1
+              kind: Ingress
               name: portainer
-              namespace: portainer
-              labels:
-                external-dns: local-pdns
-          - apiVersion: apps/v1
-            kind: Deployment
-            metadata:
+            patch: |-
+              - op: add
+                path: /metadata/labels/external-dns
+                value: local-pdns
+          - target:
+              group: apps
+              version: v1
+              kind: Deployment
               name: portainer
-              namespace: portainer
-            spec:
-              template:
-                spec:
-                  priorityClassName: rfhome-network-critical
+            patch: |-
+              - op: add
+                path: /spec/template/spec/priorityClassName
+                value: rfhome-network-critical
   values:
     nodeSelector:
       kubernetes.io/os: linux
