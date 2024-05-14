@@ -1,7 +1,9 @@
 ﻿---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
+kind: OCIRepository
 metadata:
+  name: ww-gitops-chart
+  namespace: flux-system
   annotations:
     metadata.weave.works/description: This is the source location for the Weave GitOps
       Dashboard's helm chart.
@@ -10,14 +12,16 @@ metadata:
     app.kubernetes.io/created-by: weave-gitops-cli
     app.kubernetes.io/name: weave-gitops-dashboard
     app.kubernetes.io/part-of: weave-gitops
-  name: ww-gitops
-  namespace: flux-system
 spec:
-  interval: 15m
-  type: oci
-  url: oci://ghcr.io/weaveworks/charts
+  interval: 24h
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+  url: oci://ghcr.io/weaveworks/charts/weave-gitops
+  ref:
+    tag: 4.0.36
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   annotations:
@@ -26,13 +30,9 @@ metadata:
   name: ww-gitops
   namespace: flux-system
 spec:
-  chart:
-    spec:
-      chart: weave-gitops
-      version: 4.0.36
-      sourceRef:
-        kind: HelmRepository
-        name: ww-gitops
+  chartRef:
+    kind: OCIRepository
+    name: ww-gitops-chart
   interval: 15m
   postRenderers:
   - kustomize:

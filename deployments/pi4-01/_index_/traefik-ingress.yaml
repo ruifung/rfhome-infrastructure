@@ -13,11 +13,11 @@ spec:
     name: rfhome-infrastructure
   targetNamespace: traefik
   healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+    - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
       name: traefik-internal
       namespace: traefik
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+    - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
       name: traefik-external
       namespace: traefik

@@ -13,15 +13,15 @@ spec:
     name: rfhome-infrastructure
   targetNamespace: external-dns
   healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+    - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
       name: external-dns-cf
       namespace: external-dns
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+    - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
       name: external-dns-local-services
       namespace: external-dns
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+    - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
       name: external-dns-local-cluster
       namespace: external-dns

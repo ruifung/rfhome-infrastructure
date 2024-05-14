@@ -1,29 +1,28 @@
 ﻿---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
+kind: OCIRepository
 metadata:
-  name: crunchydata-pgo
+  name: crunchydata-pgo-chart
   namespace: flux-system
 spec:
-  type: oci
-  interval: 15m
-  url: oci://registry.developers.crunchydata.com/crunchydata
+  interval: 24h
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+  url: oci://registry.developers.crunchydata.com/crunchydata/pgo
+  ref:
+    tag: 5.5.1
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: crunchydata-pgo
   namespace: flux-system
 spec:
   releaseName: crunchydata-pgo
-  chart:
-    spec:
-      chart: pgo
-      version: 5.5.1
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: crunchydata-pgo
+  chartRef:
+    kind: OCIRepository
+    name: crunchydata-pgo-chart
   interval: 15m
   timeout: 60m
   targetNamespace: crunchydata-pgo
