@@ -3,6 +3,21 @@ k8sServiceHost: localhost
 k8sServicePort: 6443
 egressGateway:
   enabled: true
+cluster:
+  name: pi4-01
+  id: 2
+# clustermesh:
+#   apiserver:
+#     kvstoremesh:
+#       enabled: false
+#     service:
+#       type: NodePort
+#     tls:
+#       auto:
+#         enabled: true
+#         method: cronJob
+#         schedule: 0 0 1 */4 *
+#   useAPIServer: true
 bpf:
   masquerade: true
   vlanBypass: "0"
