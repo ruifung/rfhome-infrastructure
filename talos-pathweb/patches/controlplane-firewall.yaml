@@ -128,6 +128,17 @@ ingress:
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
+name: cilium-health
+portSelector:
+  ports:
+    - 4240 
+  protocol: tcp
+ingress:
+  - subnet: 10.229.97.0/24
+  - subnet: fd96:619:97::/64
+---
+apiVersion: v1alpha1
+kind: NetworkRuleConfig
 name: kubespan-wg
 portSelector:
   ports:
