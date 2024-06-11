@@ -94,6 +94,9 @@ spec:
         http3:
           enabled: true
         protocol: TCP
+        transport:
+          respondingTimeouts:
+            readTimeout: 300s
     experimental:
       plugins:
         crowdsec:
