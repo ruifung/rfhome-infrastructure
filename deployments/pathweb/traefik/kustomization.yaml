@@ -1,6 +1,6 @@
 ﻿images:
   - name: cloudflare/cloudflared
-    newTag: 2024.6.0
+    newTag: 2024.6.1
 
 resources:
   - "crds"
