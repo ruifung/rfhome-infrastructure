@@ -1,7 +1,7 @@
 ﻿images:
   - name: linuxserver/prowlarr
     newName: lscr.io/linuxserver/prowlarr
-    newTag: version-1.18.0.4543
+    newTag: version-1.19.0.4568
 
 labels:
   - pairs:
