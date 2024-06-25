@@ -102,6 +102,6 @@ spec:
       hosts:
       - firefly-iii.services.home.yrf.me
       tls:
-      - secretName: firefly-iii-tls
+      - secretName: services-wildcard-cert
         hosts:
         - firefly-iii.services.home.yrf.me
