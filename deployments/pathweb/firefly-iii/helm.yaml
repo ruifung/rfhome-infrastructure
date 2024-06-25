@@ -56,11 +56,11 @@ spec:
         DB_HOST:
           secretKeyRef:
             name: rfhome-postgres-ha-pguser-firefly-iii
-            key: pgbouncer-host
+            key: host
         DB_PORT:
           secretKeyRef:
             name: rfhome-postgres-ha-pguser-firefly-iii
-            key: pgbouncer-port
+            key: port
         DB_USERNAME:
           secretKeyRef:
             name: rfhome-postgres-ha-pguser-firefly-iii
