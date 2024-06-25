@@ -1,0 +1,16 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: firefly-iii-cronjob
+  namespace: home-network
+spec:
+  encryptedData:
+    token: AgBcauzyMe4H8q47jXJN/GIxGcfkYzAoz0v5EkSigICY7AF5uaH7rpfJ35LfydSdII/wi++8bR3KylVv68F9eFd8OEMAr/4U9WkdN0WSeijuOjaconeMEqi1FcorLnFakodY1J/d1nbThFOBBhK2B3Pwom2VdAKKKg/pySkhYf4Ak8UvY1gT6HX60plf1lakYYVH1yD2Qs6hcuObUs3Z5yPhMzF2jEoL9PJ2+TrFDbs5nss60PKR20QGwlNqvSw0occxfU3hMjT3boHmdpR62g+Ns+YE/Qc+JvEHtpAsq9voLUwT/Eelv4/ynPQ4LD45wSQMS1iwOb1h4Na1OE3VStdV1rfIP07SUZRktWTqdsJMcugOmXcynryAQIVAhQo2u22hTpYKgJpg/DxKpOzCRpnIDN1FqYvs+afVhUWv7SJUWJrMNHHDY7GQdoB95/C+1TY6JIjpd2K3ZIGlsQefGmdtQu+XvsrpwJBqg/YveMf2NBATctvEUhnb6rTg6HW+rjkVVj0PjWzE9kz2BMJyR4Wzig6xiQOCdOqV0S+jjtD/V+Dq5jKHcs0gUEKoSa8yObIa9jJlU60PphvFSmtqzs5kRTOg9U7zsdAcDQGl2lIMVik16c1ZCkSEI+iFCWNnFmA43plXQY2fC8LDD5ayFkm4x7zp2oQm/XYhf5g14wkMaW4K7vAXojgESsfhaBnYjaQeHLHZ6HRU8OENh8WGDHsiBSwBJ5/NnOQarnbOmzzcGw==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: firefly-iii-cronjob
+      namespace: home-network
+    type: Opaque
