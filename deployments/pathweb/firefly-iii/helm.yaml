@@ -18,8 +18,8 @@ spec:
   releaseName: firefly-iii
   chart:
     spec:
-      chart: firefly-iii-stack
-      version: 0.7.3
+      chart: firefly-iii
+      version: 1.8.1
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -47,58 +47,53 @@ spec:
             target:
               kind: Ingress
   values:
-    firefly-db:
-      enabled: false
-    firefly-iii:
-      persistence:
-        storageClassName: ceph-rbd-retain
-        storage: 10Gi
-      config:
-        existingSecret: firefly-iii-config
-        envValueFrom:
-          DB_HOST:
-            secretKeyRef:
-              name: rfhome-postgres-ha-pguser-firefly-iii
-              key: pgbouncer-host
-          DB_PORT:
-            secretKeyRef:
-              name: rfhome-postgres-ha-pguser-firefly-iii
-              key: pgbouncer-port
-          DB_USERNAME:
-            secretKeyRef:
-              name: rfhome-postgres-ha-pguser-firefly-iii
-              key: user
-          DB_PASSWORD:
-            secretKeyRef:
-              name: rfhome-postgres-ha-pguser-firefly-iii
-              key: password
-          DB_DATABASE:
-            secretKeyRef:
-              name: rfhome-postgres-ha-pguser-firefly-iii
-              key: dbname
-        env:
-          DB_CONNECTION: pgsql
-          TZ: Asia/Kuala_Lumpur
-          DEFAULT_LANGUAGE: "en_GB"
-      cronjob:
-        enabled: true
-        auth:
-          existingSecret: firefly-iii-cronjob
-      # securityContext:
-      #   capabilities:
-      #     drop:
-      #     - ALL
-      #   readOnlyRootFilesystem: true
-      #   runAsNonRoot: true
-      #   runAsUser: 1000
-      ingress:
-        enabled: true
-        className: traefik-traefik
+    persistence:
+      storageClassName: ceph-rbd-retain
+      storage: 10Gi
+    config:
+      existingSecret: firefly-iii-config
+      envValueFrom:
+        DB_HOST:
+          secretKeyRef:
+            name: rfhome-postgres-ha-pguser-firefly-iii
+            key: pgbouncer-host
+        DB_PORT:
+          secretKeyRef:
+            name: rfhome-postgres-ha-pguser-firefly-iii
+            key: pgbouncer-port
+        DB_USERNAME:
+          secretKeyRef:
+            name: rfhome-postgres-ha-pguser-firefly-iii
+            key: user
+        DB_PASSWORD:
+          secretKeyRef:
+            name: rfhome-postgres-ha-pguser-firefly-iii
+            key: password
+        DB_DATABASE:
+          secretKeyRef:
+            name: rfhome-postgres-ha-pguser-firefly-iii
+            key: dbname
+      env:
+        DB_CONNECTION: pgsql
+        TZ: Asia/Kuala_Lumpur
+        DEFAULT_LANGUAGE: "en_GB"
+    cronjob:
+      enabled: true
+      auth:
+        existingSecret: firefly-iii-cronjob
+    # securityContext:
+    #   capabilities:
+    #     drop:
+    #     - ALL
+    #   readOnlyRootFilesystem: true
+    #   runAsNonRoot: true
+    #   runAsUser: 1000
+    ingress:
+      enabled: true
+      className: traefik-traefik
+      hosts:
+      - firefly-iii.services.home.yrf.me
+      tls:
+      - secretName: firefly-iii-tls
         hosts:
         - firefly-iii.services.home.yrf.me
-        tls:
-        - secretName: firefly-iii-tls
-          hosts:
-          - firefly-iii.services.home.yrf.me
-    importer:
-
