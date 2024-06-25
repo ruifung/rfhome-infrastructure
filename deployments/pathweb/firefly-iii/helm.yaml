@@ -47,6 +47,9 @@ spec:
             target:
               kind: Ingress
   values:
+    image:
+      repository: fireflyiii/core
+      tag: version-6.1.18
     persistence:
       storageClassName: ceph-rbd-retain
       storage: 10Gi
