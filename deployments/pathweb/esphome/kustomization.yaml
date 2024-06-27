@@ -1,6 +1,6 @@
 ﻿images:
   - name: esphome/esphome
-    newTag: 2024.6.3
+    newTag: 2024.6.4
 
 resources:
   - deployment.yaml
