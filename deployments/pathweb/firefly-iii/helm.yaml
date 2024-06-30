@@ -51,6 +51,7 @@ spec:
       repository: fireflyiii/core
       tag: version-6.1.18
     persistence:
+      accessModes: ReadWriteMany
       storageClassName: okinawa-hdd-nfs-retain
       storage: 50Gi
     config:
