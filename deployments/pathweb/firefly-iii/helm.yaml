@@ -51,8 +51,8 @@ spec:
       repository: fireflyiii/core
       tag: version-6.1.18
     persistence:
-      storageClassName: ceph-rbd-retain
-      storage: 10Gi
+      storageClassName: okinawa-hdd-nfs-retain
+      storage: 50Gi
     config:
       existingSecret: firefly-iii-config
       envValueFrom:
