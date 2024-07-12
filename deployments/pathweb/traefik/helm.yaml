@@ -127,6 +127,7 @@ spec:
         allowExternalNameServices: true
     ingressRoute:
       dashboard:
+        enabled: true
         annotations:
           kubernetes.io/ingress.class: traefik-traefik
     logs:
