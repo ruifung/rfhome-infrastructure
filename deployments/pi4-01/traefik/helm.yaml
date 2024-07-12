@@ -18,7 +18,7 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: 27.0.2
+      version: 28.0.0
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -76,15 +76,13 @@ spec:
         http3:
           enabled: true
     experimental:
-      http3:
-        enabled: true
       plugins:
         bouncer:
           moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
-          version: v1.1.13
+          version: v1.3.0
         rewriteHeaders:
           moduleName: github.com/XciD/traefik-plugin-rewrite-headers
-          version: v0.0.3
+          version: v0.0.4
         moveHeaders:
           moduleName: github.com/che-incubator/header-rewrite-traefik-plugin
           version: v0.1.2
