@@ -1,0 +1,8 @@
+{
+    "version": "v1.7.1",
+    "schematics": {
+        "proxmox": "ff4c7c9e75f037073e593e00f43c862d66f98a465f5afe10fa513d4fb54b5479",
+        "rpi": "15d3da5525ae052a575d21c83c16544631b9eb7e95283eccc254ddf8eb2c4fd3"
+    },
+    "image_override": {}
+}

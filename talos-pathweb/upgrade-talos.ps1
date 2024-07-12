@@ -30,8 +30,8 @@ customization:
             - siderolabs/wasmedge
 #>
 $KUBE_CTX = "admin@pathweb"
-$TALOS_VERSION = "v1.7.1"
-$TALOS_FACTORY_SCHEMATIC_ID = "ff4c7c9e75f037073e593e00f43c862d66f98a465f5afe10fa513d4fb54b5479"
+$TALOS_VERSION = "v1.7.5"
+$TALOS_FACTORY_SCHEMATIC_ID = "ffbf0c0617238fbed4b1a4179f86b3461aed8c9578a11a14eee074264db9d323"
 # $RPI_FACTORY_SCHEMATIC_ID = "15d3da5525ae052a575d21c83c16544631b9eb7e95283eccc254ddf8eb2c4fd3"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE = "factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
@@ -126,7 +126,7 @@ foreach ($node in $toApply) {
         $deployments = kubectl --context=$KUBE_CTX get deployments,statefulsets -A -o json | ConvertFrom-Json
         $ready = $True
         foreach ($deployment in $deployments.items) {
-            if (($null -eq $deployment.status.readyReplicas) -and ($deployment.status.replicas -eq 0)) {
+            if (($deployment.status.replicas -eq 0) -or ($null -eq $deployment.status.readyReplicas)) {
                 continue
             }
             if ($deployment.status.replicas -ne $deployment.status.readyReplicas) {
