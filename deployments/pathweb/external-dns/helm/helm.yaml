@@ -18,7 +18,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 7.3.2
+      version: 7.3.3
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -27,6 +27,16 @@ spec:
   targetNamespace: external-dns
   install:
     createNamespace: true
+  postRenderers:
+    - kustomize:
+        patches:
+          - patch: |
+              - op: "add"
+                path: "/metadata/annotations/api-approved.kubernetes.io"
+                value: "https://github.com/kubernetes-sigs/external-dns/pull/2007"
+            target:
+              kind: CustomResourceDefinition
+              name: dnsendpoints.externaldns.k8s.io
   values:
     priorityClassName: rfhome-standard
     resources:
@@ -69,7 +79,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 7.3.2
+      version: 7.3.3
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -127,7 +137,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 7.3.2
+      version: 7.3.3
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
