@@ -128,8 +128,6 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
-        annotations:
-          kubernetes.io/ingress.class: traefik-traefik
     logs:
       general:
         format: json
