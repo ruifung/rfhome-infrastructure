@@ -1,7 +1,7 @@
 ﻿images:
   - name: linuxserver/lidarr
     newName: lscr.io/linuxserver/lidarr
-    newTag: version-2.3.3.4204
+    newTag: version-2.4.3.4248
 
 labels:
   - pairs:
