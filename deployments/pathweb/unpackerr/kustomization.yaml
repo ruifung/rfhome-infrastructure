@@ -1,7 +1,7 @@
 ﻿images:
   - name: hotio/unpackerr
     newName: ghcr.io/hotio/unpackerr
-    newTag: release-0.14.0
+    newTag: release-0.14.2
 
 labels:
   - pairs:
