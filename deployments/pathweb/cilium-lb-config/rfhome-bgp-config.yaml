@@ -1,0 +1,43 @@
+﻿---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPClusterConfig
+metadata:
+  name: rfhome-bgp
+spec:
+  nodeSelector:
+    matchLabels:
+      location: rfhome
+      role: worker
+  bgpInstances:
+  - name: "rfhome-bgp"
+    localASN: 64512
+    peers:
+    - name: "rfhome-local-bird"
+      peerASN: 64512
+      peerAddress: 127.0.0.1
+      peerConfigRef:
+        name: "rfhome-local-bird"
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPPeerConfig
+metadata:
+  name: rfhome-local-bird
+spec:
+  timers:
+    holdTimeSeconds: 90
+    keepAliveTimeSeconds: 30
+    connectRetryTimeSeconds: 120
+  gracefulRestart:
+    enabled: true
+    restartTimeSeconds: 120
+  families:
+    - afi: ipv4
+      safi: unicast
+      advertisements:
+        matchLabels:
+          advertise: rfhome-bgp
+    - afi: ipv6
+      safi: unicast
+      advertisements:
+        matchLabels:
+          advertise: rfhome-bgp

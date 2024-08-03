@@ -1,0 +1,36 @@
+﻿---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPNodeConfigOverride
+metadata:
+  name: pathweb-worker-1
+spec:
+  bgpInstances:
+    - name: "rfhome-bgp"
+      routerID: "10.229.255.34"
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPNodeConfigOverride
+metadata:
+  name: pathweb-worker-2
+spec:
+  bgpInstances:
+    - name: "rfhome-bgp"
+      routerID: "10.229.255.35"
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPNodeConfigOverride
+metadata:
+  name: pathweb-worker-3
+spec:
+  bgpInstances:
+    - name: "rfhome-bgp"
+      routerID: "10.229.255.36"
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPNodeConfigOverride
+metadata:
+  name: pathweb-worker-baldric
+spec:
+  bgpInstances:
+    - name: "rfhome-bgp"
+      routerID: "10.229.255.37"
