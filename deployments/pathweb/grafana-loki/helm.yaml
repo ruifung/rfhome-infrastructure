@@ -69,7 +69,17 @@ spec:
       enabled: false
     ingress:
       enabled: true
-
+      ingressClassName: traefik-traefik
+      hosts:
+      - loki.services.home.yrf.me
+      tls:
+      - hosts:
+        - loki.services.home.yrf.me
+        secretName: services-wildcard-cert
+    resultsCache:
+      enabled: false
+    chunksCache:
+      enabled: false
     # Ensure minio is disabled
     minio:
       enabled: false
