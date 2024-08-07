@@ -65,3 +65,17 @@ spec:
     deploymentMode: SingleBinary
     singleBinary:
       replicas: 3
+    gateway:
+      enabled: false
+    ingress:
+      enabled: true
+
+    # Ensure minio is disabled
+    minio:
+      enabled: false
+    backend:
+      replicas: 0
+    read:
+      replicas: 0
+    write:
+      replicas: 0
