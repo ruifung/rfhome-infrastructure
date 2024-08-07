@@ -70,6 +70,8 @@ spec:
     ingress:
       enabled: true
       ingressClassName: traefik-traefik
+      labels:
+        external-dns: local-pdns
       hosts:
       - loki.services.home.yrf.me
       tls:
