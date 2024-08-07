@@ -72,6 +72,8 @@ spec:
       ingressClassName: traefik-traefik
       labels:
         external-dns: local-pdns
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
       hosts:
       - loki.services.home.yrf.me
       tls:
