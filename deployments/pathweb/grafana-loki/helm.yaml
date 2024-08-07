@@ -1,0 +1,66 @@
+﻿---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: grafana-charts
+  namespace: monitoring
+spec:
+  interval: 15m
+  url: https://grafana.github.io/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: grafana-loki
+  namespace: monitoring
+spec:
+  releaseName: grafana-loki
+  install:
+    skipCRDs: false
+  chart:
+    spec:
+      chart: loki
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        name: grafana-charts
+      version: 6.8.0
+  interval: 30m
+  timeout: 1h
+  valuesFrom:
+    - kind: Secret
+      name: grafana-loki-s3-credentials
+      valuesKey: accessKeyId
+      targetPath: loki.storage.s3.accessKeyId
+    - kind: Secret
+      name: grafana-loki-s3-credentials
+      valuesKey: secretAccessKey
+      targetPath: loki.storage.s3.secretAccessKey
+  values:
+    loki:
+      commonConfig:
+        replication_factor: 3
+      schemaConfig:
+        configs:
+        - from: "2024-01-01"
+          store: tsdb
+          index:
+            prefix: loki_index_
+            period: 24h
+          object_store: s3
+          schema: v13
+      storage:
+        type: s3
+        bucketNames:
+          chunks: rfhome-loki-chunks
+          ruler: rfhome-loki-ruler
+          admin: rfhome-loki-admin
+        s3:
+          endpoint: okinawa-s3.services.home.yrf.me:9000
+          region: rfhome
+          # secretAccessKey: ""
+          # accessKeyId: ""
+          s3ForcePathStyle: false
+          insecure: false
+    deploymentMode: SingleBinary
+    singleBinary:
+      replicas: 3

@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: grafana-loki
+  namespace: monitoring
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/grafana-loki
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: monitoring
+
