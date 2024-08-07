@@ -1,4 +1,5 @@
-﻿apiVersion: grafana.integreatly.org/v1beta1
+﻿---
+apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
   name: victoria-metrics-k8s-stack
@@ -17,3 +18,17 @@ spec:
       manageAlerts: true
       prometheusType: Prometheus
       incrementalQueryOverlapWindow: 10m
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: grafana-loki
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "grafana"
+  datasource:
+    name: rfhome-loki
+    type: loki
+    access: proxy
+    url: http://grafana-loki.monitoring.svc:3100
