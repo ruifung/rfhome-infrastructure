@@ -49,7 +49,7 @@ spec:
       limits_config:
         retention_period: 740h
         allow_structured_metadata: true
-      ruler:
+      rulerConfig:
         remote_write:
           enabled: true
           client:
