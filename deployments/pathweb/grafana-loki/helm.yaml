@@ -50,6 +50,8 @@ spec:
         retention_period: 740h
         allow_structured_metadata: true
       rulerConfig:
+        wal:
+          dir: /var/loki/ruler-wal
         remote_write:
           enabled: true
           client:
