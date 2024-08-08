@@ -63,7 +63,7 @@ spec:
           region: rfhome
           # secretAccessKey: ""
           # accessKeyId: ""
-          s3ForcePathStyle: true
+          s3ForcePathStyle: false
           insecure: false
     deploymentMode: SingleBinary
     singleBinary:
