@@ -14,7 +14,7 @@ machine:
     nodeIP:
       validSubnets:
         - 10.229.97.0/24
-        - fd96:619:97::/64
+        - fd96:619:803e:6100::/64
     extraArgs:
       rotate-server-certificates: true
   features:
