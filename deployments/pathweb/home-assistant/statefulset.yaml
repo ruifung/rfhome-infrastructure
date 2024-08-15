@@ -88,7 +88,7 @@ spec:
               memory: 1168M
             limits:
               cpu: '4'
-              memory: 3Gi
+              memory: 4Gi
       volumes:
         - name: hass-data
           persistentVolumeClaim:
