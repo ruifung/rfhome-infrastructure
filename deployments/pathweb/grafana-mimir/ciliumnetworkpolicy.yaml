@@ -22,3 +22,14 @@ spec:
         - matchLabels:
             "k8s:app.kubernetes.io/name": mimir
             "k8s:app.kubernetes.io/instance": "grafana-mimir"
+    - fromEndpoints:
+      - matchLabels:
+          "k8s:app.kubernetes.io/name": vmagent
+      toPorts:
+      - ports:
+        - port: "8080"
+          protocol: TCP
+        rules:
+          http:
+          - method: "POST"
+            path: "/api/v1/push"
