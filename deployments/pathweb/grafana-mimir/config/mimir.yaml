@@ -52,3 +52,6 @@ server:
 
 usage_stats:
   enabled: false
+
+limits:
+  max_global_series_per_user: 0
