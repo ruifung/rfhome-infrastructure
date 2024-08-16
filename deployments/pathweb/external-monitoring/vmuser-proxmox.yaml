@@ -10,7 +10,7 @@ spec:
     key: token
   targetRefs:
     - crd:
-        kind: VMSingle
+        kind: VMAgent
         name: vm-stack-victoria-metrics-k8s-stack
         namespace: monitoring
       paths:
