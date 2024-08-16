@@ -38,6 +38,16 @@ spec:
         - containerPort: 7946
           name: http-memberlist
           protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /ready
+            port: http
+          initialDelaySeconds: 45
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: http
+          initialDelaySeconds: 45
         volumeMounts:
         - name: mimir-data
           mountPath: /data
