@@ -47,10 +47,10 @@ spec:
           value: "1000"
         - name: PGID
           value: "1000"
-        - name: OAUTHLIB_RELAX_TOKEN_SCOPE
-          value: "1"
         - name: CACHE_DIR
           value: /cache
+        - name: OAUTHLIB_RELAX_TOKEN_SCOPE
+          value: "1"
         ports:
         - containerPort: 8083
           name: http
