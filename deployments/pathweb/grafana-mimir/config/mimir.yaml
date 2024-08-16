@@ -46,7 +46,7 @@ alertmanager:
   external_url: http://mimir-headless:8080/alertmanager
 
 server:
-  log_level: warn
+  log_level: info
   log_source_ips_enabled: true
   proxy_protocol_enabled: true
 
