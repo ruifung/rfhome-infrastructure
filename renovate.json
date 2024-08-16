@@ -3,7 +3,11 @@
    "packageRules": [
     {
       "packagePatterns": ["^ghcr.io\\/linuxserver\\/", "^lscr.io\\/linuxserver\\/", "^linuxserver\\/"],
-      "versioning": "regex:^(?<compatibility>.*?)-v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)[.-]*r?(?<build>\\d+)*-*r?(?<release>\\w+)*"
+      "versioning": "regex:^(?:(?P<compatibility>.+)-)?v?(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)(?:\\.(?P<build>\\d+))?-?r?(?P<release>\\w+)?"
+    },
+    {
+      "matchPackageNames": ["ghcr.io/ruifung/lsio-calibre-web-mod"],
+      "versioning": "loose"
     },
     {
       "packagePatterns": ["^ghcr.io\\/hotio\\/", "^hotio\\/"],
