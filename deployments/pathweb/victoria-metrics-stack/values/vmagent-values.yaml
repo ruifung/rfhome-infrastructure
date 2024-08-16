@@ -4,7 +4,7 @@
   # https://docs.victoriametrics.com/operator/api.html#vmagentremotewritespec
   # defined spec will be added to the remoteWrite configuration of VMAgent
   additionalRemoteWrites:
-    - http://grafana-mimir:8080/api/v1/push
+    - "http://grafana-mimir:8080/api/v1/push"
     #- url: http://some-remote-write/api/v1/write
   # spec for VMAgent crd
   # https://docs.victoriametrics.com/operator/api.html#vmagentspec
