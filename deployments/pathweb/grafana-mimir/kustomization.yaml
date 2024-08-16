@@ -16,4 +16,5 @@ resources:
 configMapGenerator:
   - name: mimir-config
     files:
-      - "mimir.yaml"
+      - "config/mimir.yaml"
+      - "config/alertmanager-fallback-config.yaml"
