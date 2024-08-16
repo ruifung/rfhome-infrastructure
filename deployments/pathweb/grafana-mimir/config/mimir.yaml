@@ -55,5 +55,5 @@ usage_stats:
 
 limits:
   max_global_series_per_user: 0
-  ingestion_rate: 20000
-  ingestion_burst_size: 400000
+  ingestion_rate: 50000
+  ingestion_burst_size: 1000000
