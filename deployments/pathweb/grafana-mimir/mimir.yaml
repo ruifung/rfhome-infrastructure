@@ -22,7 +22,7 @@ blocks_storage:
   tsdb:
     dir: /data/tsdb
   bucket_store:
-    dir: /data/tsdb-sync
+    sync_dir: /data/tsdb-sync
 
 alertmanager_storage:
   s3:
@@ -50,5 +50,5 @@ server:
   log_source_ips_enabled: true
   proxy_protocol_enabled: true
 
-usage-stats:
+usage_stats:
   enabled: false
