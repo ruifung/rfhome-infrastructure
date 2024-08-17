@@ -50,6 +50,8 @@ spec:
         volumeMounts:
         - name: media
           mountPath: /media
+        - name: media-smb
+          mountPath: /media-smb
         - name: config
           mountPath: /config
         - name: transcode
@@ -68,6 +70,9 @@ spec:
       - name: media
         persistentVolumeClaim:
           claimName: okinawa-media
+      - name: media-smb
+        persistentVolumeClaim:
+          claimName: okinawa-media-smb
       - name: tls-cert
         secret:
           secretName: services-wildcard-cert
