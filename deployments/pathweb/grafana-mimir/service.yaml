@@ -11,6 +11,7 @@ spec:
   - IPv4
   ipFamilyPolicy: SingleStack
   sessionAffinity: None
+  publishNotReadyAddresses: true
   selector:
       app.kubernetes.io/name: mimir 
       app.kubernetes.io/instance: grafana-mimir 
