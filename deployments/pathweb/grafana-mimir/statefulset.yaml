@@ -55,7 +55,7 @@ spec:
             path: /ready
             port: http
           initialDelaySeconds: 45
-          failureThreshold: 30
+          failureThreshold: 360
         volumeMounts:
         - name: mimir-data
           mountPath: /data
