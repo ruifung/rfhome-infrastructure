@@ -48,10 +48,8 @@ spec:
           name: plex-gdm-4
           protocol: UDP
         volumeMounts:
-        - name: media
-          mountPath: /media
         - name: media-smb
-          mountPath: /media-smb
+          mountPath: /media
         - name: config
           mountPath: /config
         - name: transcode
@@ -67,9 +65,6 @@ spec:
             cpu: "16"
             memory: "6Gi"
       volumes:
-      - name: media
-        persistentVolumeClaim:
-          claimName: okinawa-media
       - name: media-smb
         persistentVolumeClaim:
           claimName: okinawa-media-smb
