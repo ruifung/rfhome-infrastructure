@@ -43,11 +43,13 @@ spec:
             path: /ready
             port: http
           initialDelaySeconds: 45
+          failureThreshold: 10
         readinessProbe:
           httpGet:
             path: /ready
             port: http
           initialDelaySeconds: 45
+          failureThreshold: 10
         volumeMounts:
         - name: mimir-data
           mountPath: /data
