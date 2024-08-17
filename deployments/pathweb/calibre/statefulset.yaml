@@ -42,9 +42,8 @@ spec:
           mountPath: /downloads
         - name: empty
           mountPath: /media
-        - name: media
+        - name: okinawa-books
           mountPath: /media/Books
-          subPath: Books
         resources:
           requests:
             cpu: "10m"
@@ -56,9 +55,9 @@ spec:
       - name: downloads
         persistentVolumeClaim:
           claimName: okinawa-downloads-smb
-      - name: media
+      - name: okinawa-books
         persistentVolumeClaim:
-          claimName: okinawa-media-smb
+          claimName: okinawa-media-books
       - name: empty
         emptyDir: {}
   volumeClaimTemplates:

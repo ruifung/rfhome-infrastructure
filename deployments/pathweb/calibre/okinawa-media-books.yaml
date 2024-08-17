@@ -1,0 +1,38 @@
+﻿---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: okinawa-media-books
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - dir_mode=0777
+    - file_mode=0666
+    - nobrl
+  csi:
+    driver: smb.csi.k8s.io
+    volumeHandle: 10.229.229.12#Books#Media
+    volumeAttributes:
+      source: //10.229.229.12/Media
+      subDir: Books
+    nodeStageSecretRef:
+      name: okinawa-smb-media-secret
+      namespace: media-services
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: okinawa-media-books
+  namespace: media-services
+spec:
+  resources:
+    requests:
+      storage: 1Mi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteMany
+  volumeName: okinawa-media-books

@@ -14,3 +14,4 @@ resources:
   - service.yaml
   - ingress.yaml
   - ciliumnetworkpolicy.yaml
+  - okinawa-media-books.yaml
