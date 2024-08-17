@@ -111,7 +111,7 @@ spec:
           emptyDir: {}
         - name: okinawa-media
           persistentVolumeClaim:
-            claimName: okinawa-media
+            claimName: okinawa-media-smb
   volumeClaimTemplates:
   - metadata:
       name: data

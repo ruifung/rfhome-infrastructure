@@ -51,10 +51,10 @@ spec:
       volumes:
       - name: downloads
         persistentVolumeClaim:
-          claimName: okinawa-downloads
+          claimName: okinawa-downloads-smb
       - name: media
         persistentVolumeClaim:
-          claimName: okinawa-media
+          claimName: okinawa-media-smb
       - name: empty
         emptyDir: {}
   volumeClaimTemplates:

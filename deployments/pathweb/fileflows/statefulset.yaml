@@ -50,7 +50,7 @@ spec:
       volumes:
       - name: media
         persistentVolumeClaim:
-          claimName: okinawa-media
+          claimName: okinawa-media-smb
       - name: fileflows-workdir
         nfs:
           server: 10.229.229.12
