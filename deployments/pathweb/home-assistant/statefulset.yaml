@@ -85,10 +85,9 @@ spec:
           resources:
             requests:
               cpu: 200m
-              memory: 1168M
+              memory: 3500M
             limits:
-              cpu: '4'
-              memory: 4Gi
+              memory: 5Gi
       volumes:
         - name: hass-data
           persistentVolumeClaim:
