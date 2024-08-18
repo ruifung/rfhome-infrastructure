@@ -19,7 +19,11 @@ spec:
             - name: TZ
               value: Asia/Kuala_Lumpur
           envFrom:
-            - secretRef:
+            - prefix: "ZIGBEE2MQTT_CONFIG_"
+              configMapRef:
+                name: z2m-config
+            - prefix: "ZIGBEE2MQTT_CONFIG_"
+              secretRef:
                 name: z2m-secrets
           ports:
             - containerPort: 80
@@ -27,14 +31,7 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /app/data
-            - name: config
-              subPath: configuration.yaml
-              mountPath: /app/data/configuration.yaml
-              readOnly: true
       volumes:
-        - name: config
-          configMap:
-            name: z2m-config
         - name: data
           persistentVolumeClaim:
             claimName: zigbee2mqtt-data

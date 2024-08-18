@@ -10,12 +10,9 @@ resources:
   - "ingress.yaml"
   - "z2m-secrets.sealed.yaml"
   - "pvc.yaml"
+  - "configmap.yaml"
 
 commonLabels:
   app.kubernetes.io/name: zigbee2mqtt
   app.kubernetes.io/instance: sonoff-zb3-01
 
-configMapGenerator:
-  - name: z2m-config
-    files:
-      - "config/configuration.yaml"
