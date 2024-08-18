@@ -4,12 +4,10 @@ metadata:
   name: zigbee2mqtt
   labels:
     external-dns: local-pdns
-  annotations:
-    cert-manager.io/cluster-issuer: le-yrf-me
 spec:
   ingressClassName: traefik-traefik
   rules:
-  - host: z2m.services.home.yrf.me
+  - host: z2m-2.services.home.yrf.me
     http:
       paths:
       - pathType: Prefix
@@ -21,5 +19,5 @@ spec:
               name: http
   tls:
   - hosts:
-    - z2m.services.home.yrf.me
+    - z2m-2.services.home.yrf.me
     secretName: services-wildcard-cert

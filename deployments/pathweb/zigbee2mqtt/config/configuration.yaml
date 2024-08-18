@@ -1,0 +1,44 @@
+﻿serial:
+  adapter: ember
+  port: tcp://sonoff-zigbee-bridge.servers.home.yrf.me:20108
+mqtt:
+  base_topic: z2m-sonoff-zb01
+  client_id: z2m-sonoff-zb01
+  keepalive: 60
+  version: 5
+  include_device_information: false
+  reject_unauthorized: true
+homeassistant:
+  discovery_topic: homeassistant/discovery
+  status_topic: homeassistant/status
+  legacy_entity_attributes: false
+  legacy_triggers: false
+permit_join: false
+frontend:
+  port: 80
+  host: 0.0.0.0
+devices: devices.yaml
+groups: groups.yaml
+advanced:
+  channel: 11
+  log_level: info
+  log_symlink_current: true
+  ikea_ota_use_test_url: false
+  log_syslog:
+    app_name: Zigbee2MQTT
+    eol: /n
+    host: localhost
+    localhost: localhost
+    path: /dev/log
+    pid: process.pid
+    port: 123
+    protocol: tcp4
+    type: '5424'
+  last_seen: ISO_8601
+  legacy_api: false
+  legacy_availability_payload: false
+availability:
+  active:
+    timeout: 30
+  passive:
+    timeout: 1500

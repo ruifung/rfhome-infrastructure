@@ -1,0 +1,37 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zigbee2mqtt
+  namespace: home-network
+spec:
+  selector: {}
+  template:
+    spec:
+      nodeSelector:
+        location: rfhome
+      containers:
+        - name: zigbee2mqtt
+          image: koenkk/zigbee2mqtt:latest
+          env:
+            - name: TZ
+              value: Asia/Kuala_Lumpur
+          envFrom:
+            - secretRef:
+                name: z2m-secrets
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+            - name: config
+              subPath: configuration.yaml
+              mountPath: /app/data/configuration.yaml
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: z2m-config
+        - name: data
+          persistentVolumeClaim:
+            claimName: zigbee2mqtt-data
