@@ -44,10 +44,9 @@ spec:
           subPath: Books
         resources:
           requests:
-            cpu: "100m"
+            cpu: "1"
             memory: "250Mi"
           limits:
-            cpu: "500m"
             memory: "1Gi"
       volumes:
       - name: downloads
