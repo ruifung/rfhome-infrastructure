@@ -17,7 +17,7 @@ spec:
         app.kubernetes.io/name: sonarr
     spec:
       nodeSelector:
-        kubernetes.io/hostname: pathweb-worker-baldric
+        node-group: baldric
       containers:
       - name: sonarr
         image: linuxserver/sonarr:latest

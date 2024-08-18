@@ -54,6 +54,7 @@ $workers = @(
     "pathweb-worker-2.$homeDnsSuffix",
     "pathweb-worker-3.$homeDnsSuffix",
     "pathweb-worker-baldric.$homeDnsSuffix"
+    "pathweb-worker-baldric-2.$homeDnsSuffix"
 )
 
 $piworkers = @(

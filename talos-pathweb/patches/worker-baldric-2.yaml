@@ -1,0 +1,9 @@
+machine:
+  nodeLabels:
+    location: rfhome
+    node-group: baldric
+  certSANs:
+    - pathweb-worker-baldric-2.servers.home.yrf.me
+    - baldric-2.workers.pathweb.clusters.home.yrf.me
+  network:
+    hostname: pathweb-worker-baldric-2

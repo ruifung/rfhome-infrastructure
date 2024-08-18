@@ -17,7 +17,7 @@ spec:
         app.kubernetes.io/name: lidarr
     spec:
       nodeSelector:
-        kubernetes.io/hostname: pathweb-worker-baldric
+        node-group: baldric
       containers:
       - name: lidarr
         image: linuxserver/lidarr:latest

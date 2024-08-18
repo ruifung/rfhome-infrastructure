@@ -17,7 +17,7 @@ spec:
         app.kubernetes.io/name: ipfs-kubo
     spec:
       nodeSelector:
-        kubernetes.io/hostname: pathweb-worker-baldric
+        node-group: baldric
       containers:
       - name: ipfs-kubo
         image: ipfs/kubo:latest

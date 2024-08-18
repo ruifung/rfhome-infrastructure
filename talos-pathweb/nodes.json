@@ -87,6 +87,18 @@
         ]
     },
     {
+        "fqdn": "pathweb-worker-baldric-2.servers.home.yrf.me",
+        "role": "worker",
+        "type": "proxmox",
+        "patches": [
+            "patches/node-patches.yaml",
+            "patches/worker-patches.yaml",
+            "patches/worker-baldric-2.yaml",
+            "patches/harbor-rfhome.secret.yaml",
+            "patches/watchdog.yaml"
+        ]
+    },
+    {
         "ignore": true,
         "fqdn": "pathweb-worker-pi4-01.servers.home.yrf.me",
         "role": "worker",

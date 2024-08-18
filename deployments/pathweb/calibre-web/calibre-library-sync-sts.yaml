@@ -19,7 +19,7 @@ spec:
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>
     spec:
       nodeSelector:
-        kubernetes.io/hostname: pathweb-worker-baldric
+        node-group: baldric
       # runtimeClassName: gvisor
       priorityClassName: rfhome-low-priority
       terminationGracePeriodSeconds: 10

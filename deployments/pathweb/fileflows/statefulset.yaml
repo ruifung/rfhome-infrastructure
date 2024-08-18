@@ -17,7 +17,7 @@ spec:
         app.kubernetes.io/name: fileflows
     spec:
       nodeSelector:
-        kubernetes.io/hostname: pathweb-worker-baldric
+        node-group: baldric
       containers:
       - name: fileflows
         image: revenz/fileflows:latest

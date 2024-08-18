@@ -46,7 +46,7 @@ foreach ($node in $toApply) {
     $targetNode = $node.fqdn
     $bootstrapIp = ""
 
-    if ($extraArgs -contains "--insecure" -and $extraArgs -match $bootstrapIpPattern) {
+    if ($extraArgs.Contains("--insecure") -and $extraArgs -match $bootstrapIpPattern) {
         $bootstrapIp = ($extraArgs | Select-String -Pattern $bootstrapIpPattern).Matches.Groups[1].Value
         $extraArgs = $extraArgs -replace $bootstrapIpPattern,"-e $bootstrapIp"
         $targetNode = $bootstrapIp

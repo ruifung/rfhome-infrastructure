@@ -21,9 +21,9 @@ spec:
           preferredDuringSchedulingIgnoredDuringExecution:
             - preference:
                 matchExpressions:
-                  - key: kubernetes.io/hostname
+                  - key: node-group
                     operator: In
-                    values: [pathweb-worker-baldric]
+                    values: [baldric]
               weight: 50
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:

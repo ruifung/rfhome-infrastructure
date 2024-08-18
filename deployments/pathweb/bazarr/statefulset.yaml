@@ -17,7 +17,7 @@ spec:
         app.kubernetes.io/name: bazarr
     spec:
       nodeSelector:
-        kubernetes.io/hostname: pathweb-worker-baldric
+        node-group: baldric
       containers:
       - name: bazarr
         image: linuxserver/bazarr:latest
