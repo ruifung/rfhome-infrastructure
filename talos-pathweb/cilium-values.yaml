@@ -106,7 +106,7 @@ operator:
   resources:
     requests:
       memory: 100Mi
-      cpu: 20m
+      cpu: 10m
 socketLB:
   hostNamespaceOnly: true
 envoy:
@@ -115,13 +115,13 @@ envoy:
   resources:
     requests:
       memory: 50Mi
-      cpu: 5m
+      cpu: 20m
 bgpControlPlane:
   enabled: true
 localRedirectPolicy: true
 upgradeCompatibility: "1.15"
 resources:
   requests:
-    memory: 345Mi
-    cpu: 50m
+    memory: 450Mi
+    cpu: 200m
 rollOutCiliumPods: true
