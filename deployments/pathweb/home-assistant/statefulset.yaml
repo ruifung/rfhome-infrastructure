@@ -84,7 +84,7 @@ spec:
               subPath: venv-run
           resources:
             requests:
-              cpu: 34m
+              cpu: 200m
               memory: 1168M
             limits:
               cpu: '4'
