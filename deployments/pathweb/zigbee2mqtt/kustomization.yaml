@@ -5,7 +5,7 @@
     # digest: sha256:13deb9be3a27376fe4b2ab3b296c46d666cf38c38350e54671efa1995869e8ba
 
 resources:
-  - "statefulset.yaml"
+  - "deployment.yaml"
   - "service.yaml"
   - "ingress.yaml"
   - "z2m-secrets.sealed.yaml"
