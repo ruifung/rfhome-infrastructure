@@ -91,7 +91,7 @@ foreach ($node in $toApply) {
         $node,
         '--image',
         $IMAGE
-        # '--stage'
+        '--stage'
     )
     # append extraArgs to args if extraArgs is not blank
     if ($extraArgs -ne "") {

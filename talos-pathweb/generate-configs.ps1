@@ -2,9 +2,9 @@ $ErrorActionPreference = "Stop"
 
 Push-Location base
 
-$KUBE_VERSION="1.29.3"
-$TALOS_VERSION="v1.7.0"
-$TALOS_FACTORY_SCHEMATIC_ID="71fdc73baac9ae32e13435992ba56d469b4eaf3fb561125e1af41505210bdb35"
+$KUBE_VERSION="1.30.3"
+$TALOS_VERSION="v1.7.6"
+$TALOS_FACTORY_SCHEMATIC_ID="b163a2cb417fe411140810366fcc5ff07764bc15e895c70877bcc50ff35b465f"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 talosctl gen config pathweb "https://controlplane.pathweb.clusters.home.yrf.me:6443" --output-dir _out --with-secrets secrets.yaml --with-docs=false --with-examples=false --with-kubespan --kubernetes-version $KUBE_VERSION --talos-version $TALOS_VERSION --install-image $TALOS_INSTALL_IMAGE
