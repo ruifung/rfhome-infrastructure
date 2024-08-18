@@ -65,6 +65,10 @@ spec:
     additionalVolumeMounts:       
       - name: additional-configs
         mountPath: /additional-configs
+    resources:
+      requests:
+        cpu: '1.5'
+        memory: 350Mi
     service:
       externalTrafficPolicy: Local
       annotations:
