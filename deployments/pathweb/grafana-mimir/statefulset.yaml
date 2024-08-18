@@ -38,6 +38,10 @@ spec:
         - containerPort: 7946
           name: http-memberlist
           protocol: TCP
+        resources:
+          requests:
+            cpu: 300m
+            memory: 1700M
         livenessProbe:
           httpGet:
             path: /ready
