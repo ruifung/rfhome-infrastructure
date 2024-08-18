@@ -35,10 +35,9 @@ spec:
           mountPath: /config
         resources:
           requests:
-            cpu: "250m"
+            cpu: "1"
             memory: "300Mi"
           limits:
-            cpu: "500m"
             memory: "1Gi"
   volumeClaimTemplates:
   - metadata:
