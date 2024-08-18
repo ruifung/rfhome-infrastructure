@@ -34,11 +34,15 @@ cluster:
           kind: PodSecurityConfiguration
     resources:
       requests:
-        cpu: 300m
-        memory: 2Gi
+        cpu: 500m
+        memory: 1.5Gi
   controllerManager:
     extraArgs:
       bind-address: "0.0.0.0"
+    resources:
+      requests:
+        cpu: 100m
+        memory: 200Mi
   scheduler:
       extraArgs:
         bind-address: "0.0.0.0"
