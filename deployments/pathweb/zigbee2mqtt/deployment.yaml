@@ -10,6 +10,7 @@ spec:
     type: Recreate
   template:
     spec:
+      priorityClassName: rfhome-home-critical
       nodeSelector:
         location: rfhome
       containers:
