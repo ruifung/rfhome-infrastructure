@@ -120,10 +120,9 @@ spec:
       resources:
         requests:
           cpu: 15m
-          memory: 100Mi
+          memory: 600Mi
         limits:
-          cpu: 150m
-          memory: 500Mi
+          memory: 1Gi
       dashboard:
         enabled: true
         ingress:
