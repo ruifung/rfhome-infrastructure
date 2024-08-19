@@ -177,6 +177,7 @@ spec:
       - operator: Exists
         effect: NoExecute
       serviceAccountName: multus
+      priorityClassName: system-node-critical
       containers:
       - name: kube-multus
         image: ghcr.io/k8snetworkplumbingwg/multus-cni:snapshot
@@ -187,8 +188,8 @@ spec:
         - "--cni-conf-dir=/host/etc/cni/net.d"
         resources:
           requests:
-            cpu: "100m"
-            memory: "50Mi"
+            cpu: "10m"
+            memory: "5Mi"
           limits:
             cpu: "100m"
             memory: "50Mi"
