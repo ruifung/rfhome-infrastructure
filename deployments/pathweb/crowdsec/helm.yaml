@@ -104,6 +104,7 @@ spec:
         serviceMonitor:
           enabled: true
     lapi:
+      priorityClassName: system-cluster-critical
       service:
         type: LoadBalancer
         annotations:
