@@ -162,7 +162,7 @@ spec:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            - labeLSelector:
+            - labelSelector:
                 app.kubernetes.io/name: authentik
                 app.kubernetes.io/instance: authentik
               topologyKey: node-group
