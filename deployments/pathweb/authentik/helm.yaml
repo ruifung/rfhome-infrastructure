@@ -130,15 +130,17 @@ spec:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
-                app.kubernetes.io/name: authentik
-                app.kubernetes.io/instance: authentik
-                app.kubernetes.io/component: server
+                matchLabels:
+                  app.kubernetes.io/name: authentik
+                  app.kubernetes.io/instance: authentik
+                  app.kubernetes.io/component: server
               topologyKey: kubernetes.io/hostname
           preferredDuringSchedulingIgnoredDuringExecution:
             - podAffinityTerm:
                 labelSelector:
-                  app.kubernetes.io/name: authentik
-                  app.kubernetes.io/instance: authentik
+                  matchLabels:
+                    app.kubernetes.io/name: authentik
+                    app.kubernetes.io/instance: authentik
                 topologyKey: node-group
               weight: 100
     worker:
@@ -163,8 +165,9 @@ spec:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
-                app.kubernetes.io/name: authentik
-                app.kubernetes.io/instance: authentik
+                matchLabels:
+                  app.kubernetes.io/name: authentik
+                  app.kubernetes.io/instance: authentik
               topologyKey: node-group
     prometheus:
       rules:
