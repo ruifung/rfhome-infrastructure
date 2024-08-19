@@ -123,9 +123,9 @@ spec:
           preferredDuringSchedulingIgnoredDuringExecution:
             - preference:
                 matchExpressions:
-                  key: node-group
-                  operator: In
-                  values: [baldric]
+                  - key: node-group
+                    operator: In
+                    values: [baldric]
               weight: 100
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
