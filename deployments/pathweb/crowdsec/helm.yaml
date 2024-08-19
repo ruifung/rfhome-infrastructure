@@ -53,6 +53,7 @@ spec:
     # image:
     #   tag: v1.5.2
     agent:
+      priorityClassName: system-node-critical
       nodeSelector:
         kubernetes.io/os: linux
       requests:
