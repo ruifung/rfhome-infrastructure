@@ -6,13 +6,10 @@ customization:
         - net.ifnames=0
     systemExtensions:
         officialExtensions:
-            - siderolabs/binfmt-misc
             - siderolabs/fuse3
             - siderolabs/gvisor
             - siderolabs/iscsi-tools
-            - siderolabs/kata-containers
             - siderolabs/qemu-guest-agent
-            - siderolabs/wasmedge
 ------------------------------------------
 Pi Node Image Factory C0nfiguration
 ------------------------------------------
@@ -20,25 +17,24 @@ overlay:
     image: siderolabs/sbc-raspberrypi
     name: rpi_generic
 customization:
+    extraKernelArgs:
+        - net.ifnames=0
     systemExtensions:
         officialExtensions:
-            - siderolabs/binfmt-misc
             - siderolabs/fuse3
             - siderolabs/gvisor
             - siderolabs/iscsi-tools
-            - siderolabs/kata-containers
-            - siderolabs/wasmedge
 #>
 $IMAGE_REGISTRY="harbor.services.home.yrf.me/talos-image-factory"
 $KUBE_CTX = "admin@pathweb"
 $TALOS_VERSION = "v1.7.6"
 $TALOS_FACTORY_SCHEMATIC_ID = "b163a2cb417fe411140810366fcc5ff07764bc15e895c70877bcc50ff35b465f"
-# $RPI_FACTORY_SCHEMATIC_ID = "15d3da5525ae052a575d21c83c16544631b9eb7e95283eccc254ddf8eb2c4fd3"
+$RPI_FACTORY_SCHEMATIC_ID = "23f3d7a1bb5611c73aef9886ec18d18d8d58b28f276b7a7e6a858e4232393c86"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE = "${IMAGE_REGISTRY}/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
-# $RPI_INSTALL_IMAGE = "${IMAGE_REGISTRY}/installer/${RPI_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
-$RPI_FACTORY_SCHEMATIC_ID = "CUSTOMIMAGE"
-$RPI_INSTALL_IMAGE = "harbor.services.home.yrf.me/local-images/talos/installer:v1.7.1.rpi_generic_nouartconsole_pathweb" # GENERATED ON 2024-05-04T21:13 To get around the stupid console being enabled on ttyAMA0 by default.
+$RPI_INSTALL_IMAGE = "${IMAGE_REGISTRY}/installer/${RPI_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
+# $RPI_FACTORY_SCHEMATIC_ID = "CUSTOMIMAGE"
+# $RPI_INSTALL_IMAGE = "harbor.services.home.yrf.me/local-images/talos/installer:v1.7.1.rpi_generic_nouartconsole_pathweb" # GENERATED ON 2024-05-04T21:13 To get around the stupid console being enabled on ttyAMA0 by default.
 $homeDnsSuffix = "servers.home.yrf.me"
 $mode, $extraArgs = $args
 $extraArgs = $extraArgs -join " "

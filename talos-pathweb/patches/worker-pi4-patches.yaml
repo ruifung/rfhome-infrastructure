@@ -7,7 +7,7 @@
       disk: null
       diskSelector:
         type: sd
-      image: factory.talos.dev/installer/1f3513bc03ebe7a9a4654bf209f8bd323684de5f6656dca7492d7f2b8d426c44:v1.7.0
+      image: factory.talos.dev/installer/23f3d7a1bb5611c73aef9886ec18d18d8d58b28f276b7a7e6a858e4232393c86:v1.7.6
       wipe: false
   network:
     interfaces:

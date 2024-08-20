@@ -99,7 +99,7 @@
         ]
     },
     {
-        "ignore": true,
+        "ignore": false,
         "fqdn": "pathweb-worker-pi4-01.servers.home.yrf.me",
         "role": "worker",
         "type": "rpi",
