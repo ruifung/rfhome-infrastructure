@@ -38,12 +38,6 @@ spec:
             - count: 10
               paths:
                 - path: /dev/fuse
-        - --device
-        - |
-          name: serial-ama0
-          groups:
-            - paths:
-                - path: /dev/ttyAMA0
         name: generic-device-plugin
         resources:
           requests:
