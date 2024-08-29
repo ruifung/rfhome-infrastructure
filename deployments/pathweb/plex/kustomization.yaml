@@ -1,6 +1,6 @@
 ﻿images:
   - name: plexinc/pms-docker
-    newTag: 1.40.5.8897-e5987a19d
+    newTag: 1.40.5.8921-836b34c27
 resources:
   - statefulset.yaml
   - service.yaml
