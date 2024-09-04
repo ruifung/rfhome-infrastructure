@@ -8,6 +8,7 @@ spec:
   interval: 15m
   path: ./deployments/pathweb/grafana-mimir
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
