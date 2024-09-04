@@ -49,7 +49,6 @@ spec:
             cpu: "10m"
             memory: "400Mi"
           limits:
-            cpu: "4"
             memory: "4Gi"
       volumes:
       - name: downloads
