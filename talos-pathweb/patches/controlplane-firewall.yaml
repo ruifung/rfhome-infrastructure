@@ -11,7 +11,7 @@ portSelector:
   protocol: tcp
 ingress:
   - subnet: 10.229.97.0/24
-  - subnet: fd96:619:97::/64
+  - subnet: fd96:619:803e:6100::/64
   - subnet: 10.96.0.0/16
   - subnet: fd96:619:6b75:0110::/56
 ---
@@ -35,7 +35,7 @@ portSelector:
   protocol: tcp
 ingress:
   - subnet: 10.229.97.0/24
-  - subnet: fd96:619:97::/64
+  - subnet: fd96:619:803e:6100::/64
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
@@ -71,22 +71,8 @@ portSelector:
   protocol: tcp
 ingress:
   - subnet: 10.229.97.0/24
-  - subnet: fd96:619:97::/64
+  - subnet: fd96:619:803e:6100::/64
   - subnet: 10.96.0.0/16
-  - subnet: fd96:619:6b75:0110::/56
----
-apiVersion: v1alpha1
-kind: NetworkRuleConfig
-name: cilium-operator-metrics
-portSelector:
-  ports:
-    - 9963
-  protocol: tcp
-ingress:
-  - subnet: 10.229.97.0/24
-  - subnet: fd96:619:97::/64
-  - subnet: 10.96.0.0/16
-  - subnet: fd96:619:6b75:0110::/56
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
@@ -94,11 +80,13 @@ name: cilium-metrics
 portSelector:
   ports:
     - 9962
+    - 9963
+    - 9964
     - 9965
   protocol: tcp
 ingress:
   - subnet: 10.229.97.0/24
-  - subnet: fd96:619:97::/64
+  - subnet: fd96:619:803e:6100::/64
   - subnet: 10.96.0.0/16
   - subnet: fd96:619:6b75:0110::/56
 ---
@@ -111,7 +99,7 @@ portSelector:
   protocol: tcp
 ingress:
   - subnet: 10.229.97.0/24
-  - subnet: fd96:619:97::/64
+  - subnet: fd96:619:803e:6100::/64
   - subnet: 10.96.0.0/16
   - subnet: fd96:619:6b75:0110::/56
 ---
@@ -124,7 +112,7 @@ portSelector:
   protocol: udp
 ingress:
   - subnet: 10.229.97.0/24
-  - subnet: fd96:619:97::/64
+  - subnet: fd96:619:803e:6100::/64
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
@@ -135,7 +123,30 @@ portSelector:
   protocol: tcp
 ingress:
   - subnet: 10.229.97.0/24
-  - subnet: fd96:619:97::/64
+  - subnet: fd96:619:803e:6100::/64
+---
+apiVersion: v1alpha1
+kind: NetworkRuleConfig
+name: cilium-hubble
+portSelector:
+  ports:
+    - 4244
+    - 4245
+  protocol: tcp
+ingress:
+  - subnet: 10.229.97.0/24
+  - subnet: fd96:619:803e:6100::/64
+---
+apiVersion: v1alpha1
+kind: NetworkRuleConfig
+name: cilium-mtls
+portSelector:
+  ports:
+    - 4250
+  protocol: tcp
+ingress:
+  - subnet: 10.229.97.0/24
+  - subnet: fd96:619:803e:6100::/64
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
