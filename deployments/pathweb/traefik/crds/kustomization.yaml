@@ -1,5 +1,5 @@
 ﻿resources:
-  - "https://github.com/traefik/traefik-helm-chart.git//traefik/crds?ref=v31.0.0"
+  - "https://github.com/traefik/traefik-helm-chart.git//traefik/crds?ref=v31.1.1"
 
 commonAnnotations:
   kustomize.toolkit.fluxcd.io/prune: disabled
