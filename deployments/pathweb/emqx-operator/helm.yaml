@@ -19,7 +19,7 @@ spec:
   chart:
     spec:
       chart: emqx-operator
-      version: 2.2.23
+      version: 2.2.24
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
