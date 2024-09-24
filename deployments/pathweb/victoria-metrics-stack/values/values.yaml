@@ -4,7 +4,9 @@
 victoria-metrics-operator:
   enabled: true
   # -- Tells helm to clean up vm cr resources when uninstalling
-  cleanupCRD: true
+  crd:
+    cleanup:
+      enabled: true
   cleanupImage:
     repository: gcr.io/google_containers/hyperkube
     tag: v1.18.6
