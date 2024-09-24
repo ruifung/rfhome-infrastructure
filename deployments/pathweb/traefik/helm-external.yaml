@@ -71,6 +71,7 @@ spec:
         cpu: '200m'
         memory: 350Mi
     service:
+      single: true
       externalTrafficPolicy: Local
       annotations:
         # io.cilium/lb-ipam-ips: 10.229.30.2,fd96:619:6b75:0130::2
@@ -85,6 +86,7 @@ spec:
       additionalServices:
         cf-tunnel:
           type: ClusterIP
+          single: true
     ports:
       web:
         expose:
