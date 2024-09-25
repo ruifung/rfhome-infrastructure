@@ -5,10 +5,10 @@ victoria-metrics-operator:
   enabled: true
   # -- Tells helm to clean up vm cr resources when uninstalling
   crd:
+    create: true
     cleanup:
       enabled: true
 
-  createCRD: false # we disable crd creation by operator chart as we create them in this chart
   operator:
     # -- By default, operator converts prometheus-operator objects.
     disable_prometheus_converter: false
