@@ -4,10 +4,6 @@
 victoria-metrics-operator:
   enabled: true
   # -- Tells helm to clean up vm cr resources when uninstalling
-  crd:
-    create: true
-    cleanup:
-      enabled: true
 
   operator:
     # -- By default, operator converts prometheus-operator objects.
