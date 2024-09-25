@@ -35,9 +35,9 @@ spec:
           - --single-directory
           - "Calibre Library"
           - --display-running-config
-          - --auth-files
-          - /onedrive/conf/authUrl:/onedrive/conf/authResponse
-          # - --resync
+          # - --auth-files
+          # - /onedrive/conf/authUrl:/onedrive/conf/authResponse
+          - --resync
           # - --resync-auth
         env:
           - name: ONEDRIVE_UID

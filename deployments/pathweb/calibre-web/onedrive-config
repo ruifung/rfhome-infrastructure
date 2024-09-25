@@ -1,7 +1,6 @@
 webhook_enabled = "true"
 webhook_public_url = "https://ebooks.yrf.me/webhooks/onedrive-sync"
 sync_dir = "/onedrive/data"
-monitor_interval = "60"
 upload_only = "true"
 no_remote_delete = "false"
 skip_file = "~*|.~*|*.tmp|*.partial"
