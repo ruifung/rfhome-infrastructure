@@ -27,6 +27,7 @@ spec:
   timeout: 1h
   install:
     createNamespace: false
+    crds: CreateReplace
   driftDetection:
     mode: enabled
   dependsOn:
