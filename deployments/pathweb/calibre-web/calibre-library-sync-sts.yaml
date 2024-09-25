@@ -30,21 +30,13 @@ spec:
         image: driveone/onedrive:debian
         args:
           - --monitor
-          - --monitor-interval
-          - "60"
           - --confdir
           - /onedrive/conf
-          - --syncdir
-          - /onedrive/data
           - --single-directory
           - "Calibre Library"
           - --display-running-config
-          # - --no-remote-delete
-          - --upload-only
           - --auth-files
           - /onedrive/conf/authUrl:/onedrive/conf/authResponse
-          - --skip-file
-          - ~*|.~*|*.tmp|*.partial
           # - --resync
           # - --resync-auth
         env:
