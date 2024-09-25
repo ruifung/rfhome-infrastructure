@@ -37,8 +37,8 @@ spec:
           - --display-running-config
           # - --auth-files
           # - /onedrive/conf/authUrl:/onedrive/conf/authResponse
-          # - --resync
-          # - --resync-auth
+          - --resync
+          - --resync-auth
         env:
           - name: ONEDRIVE_UID
             value: "1000"
