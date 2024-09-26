@@ -143,6 +143,10 @@ foreach ($node in $toApply) {
         # skip upgrade if node is already target version
         Write-Output "Checking existing version for node [$node]"
         $version = Get-TalosNodeVersion $node
+        if ($version -eq "") {
+            Start-Sleep -Seconds 5
+            continue
+        }
         Write-Output "Checking existing schematic for node [$node]"
         $current_schematic = Get-TalosNodeSchematic $node
         if (($version -eq $TALOS_VERSION) -and ($current_schematic -eq $SCHEMATIC)) {
