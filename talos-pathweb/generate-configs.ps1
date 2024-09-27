@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 
 Push-Location base
 
-$KUBE_VERSION="1.30.3"
+$KUBE_VERSION="1.31.1"
 $TALOS_VERSION="v1.8.0"
 $TALOS_FACTORY_SCHEMATIC_ID="e61f6fc713c290a492e8f4303e9620e83cb7f814f1623b1a0e8be9202b7dec9a"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
