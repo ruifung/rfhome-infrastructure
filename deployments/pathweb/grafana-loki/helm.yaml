@@ -38,8 +38,6 @@ spec:
       targetPath: loki.storage.s3.secretAccessKey
   values:
     loki:
-      image:
-        tag: 3.0.0
       auth_enabled: false
       commonConfig:
         replication_factor: 3
