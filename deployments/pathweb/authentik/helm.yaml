@@ -46,6 +46,8 @@ spec:
               name: authentik-worker
   values:
     global:
+      deploymentStrategy:
+        type: Recreate
       priorityClassName: rfhome-network-critical
       nodeSelector:
         location: rfhome
