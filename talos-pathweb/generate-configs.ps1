@@ -4,7 +4,7 @@ Push-Location base
 
 $KUBE_VERSION="1.31.1"
 $TALOS_VERSION="v1.8.0"
-$TALOS_FACTORY_SCHEMATIC_ID="e61f6fc713c290a492e8f4303e9620e83cb7f814f1623b1a0e8be9202b7dec9a"
+$TALOS_FACTORY_SCHEMATIC_ID="b163a2cb417fe411140810366fcc5ff07764bc15e895c70877bcc50ff35b465f"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 talosctl gen config pathweb "https://controlplane.pathweb.clusters.home.yrf.me:6443" --output-dir _out --with-secrets secrets.yaml --with-docs=false --with-examples=false --with-kubespan --kubernetes-version $KUBE_VERSION --talos-version $TALOS_VERSION --install-image $TALOS_INSTALL_IMAGE

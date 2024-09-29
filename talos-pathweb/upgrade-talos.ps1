@@ -6,7 +6,6 @@ customization:
         - net.ifnames=0
     systemExtensions:
         officialExtensions:
-            - siderolabs/crun
             - siderolabs/fuse3
             - siderolabs/gvisor
             - siderolabs/iscsi-tools
@@ -30,7 +29,7 @@ customization:
 $IMAGE_REGISTRY="harbor.services.home.yrf.me/talos-image-factory"
 $KUBE_CTX = "admin@pathweb"
 $TALOS_VERSION = "v1.8.0"
-$TALOS_FACTORY_SCHEMATIC_ID = "e61f6fc713c290a492e8f4303e9620e83cb7f814f1623b1a0e8be9202b7dec9a"
+$TALOS_FACTORY_SCHEMATIC_ID = "b163a2cb417fe411140810366fcc5ff07764bc15e895c70877bcc50ff35b465f"
 $RPI_FACTORY_SCHEMATIC_ID = "8b298fd9da26e326d3394305bbc0e233373d1baa08d915597f980fde69396cd8"
 # $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 $TALOS_INSTALL_IMAGE = "${IMAGE_REGISTRY}/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
