@@ -65,7 +65,7 @@ spec:
             cpu: '2'
             memory: 1G
       - name: calibre-web-log
-        image: busybox:1.36
+        image: busybox:1.37
         args: [/bin/sh, -c, 'until [ -f /logs/calibre-web.log ]; do sleep 5; done; tail -n+1 -F /logs/calibre-web.log']
         volumeMounts:
         - name: logs
@@ -78,7 +78,7 @@ spec:
             cpu: 17m
             memory: 35M
       - name: calibre-web-access-log
-        image: busybox:1.36
+        image: busybox:1.37
         args: [/bin/sh, -c, 'until [ -f /logs/access.log ]; do sleep 5; done; tail -n+1 -F /logs/access.log']
         volumeMounts:
         - name: logs
