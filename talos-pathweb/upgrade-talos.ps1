@@ -153,9 +153,8 @@ function Invoke-TalosNodeUpgrade {
         '--stage'
     )
     # append extraArgs to args if extraArgs is not blank
-    if ($extraArgs -ne "") {
-        $talosctlArgs = $talosctlArgs + $extraArgs
-    }    
+    $talosctlArgs = $talosctlArgs + $extraArgs 
+
 
     $success = $false
     while ($success -eq $false) {
