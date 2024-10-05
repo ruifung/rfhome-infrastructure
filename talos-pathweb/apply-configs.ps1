@@ -2,7 +2,6 @@ $ErrorActionPreference = "Stop"
 
 $mode, $extraArgs = $args
 $extraArgs = $extraArgs -join " "
-$homeDnsSuffix = "servers.home.yrf.me"
 
 $nodes = Get-Content nodes.json -Raw | ConvertFrom-Json | Where-Object {$_.ignore -ne $true}
 
@@ -28,7 +27,7 @@ if ($toApply.Count -eq 0) {
     # filter toApply by fqdn in $targets
     $toApply = $nodes | Where-Object { 
         $node = $_
-        ($targets -contains $node.fqdn) -or (($targets | Where-Object { "$_.$homeDnsSuffix" -eq $node.fqdn }).Count -gt 0)
+        ($targets -contains $node.fqdn) -or (($targets | Where-Object { $node.fqdn.StartsWith("$_.") }).Count -gt 0)
     } 
 }
 # if toApply is still empty, print out all available fqdns

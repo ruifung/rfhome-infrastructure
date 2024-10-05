@@ -25,12 +25,13 @@ customization:
             - siderolabs/gvisor
             - siderolabs/iscsi-tools
 #>
-$IMAGE_REGISTRY = "harbor.services.home.yrf.me/talos-image-factory"
 $KUBE_CTX = "admin@pathweb"
 
 $mode, $extraArgs = $args
-$force = $extraArgs.Contains("--force")
-$extraArgs = $extraArgs.Remove($extraArgs.IndexOf("--force"))
+if ($null -ne $extraArgs) {
+    $force = $extraArgs.Contains("--force")
+    $extraArgs = $extraArgs.Remove($extraArgs.IndexOf("--force"))
+}
 
 $nodes = Get-Content nodes.json -Raw | ConvertFrom-Json | Where-Object { $_.ignore -ne $true }
 $versions = Get-Content talos-version.json -Raw | ConvertFrom-Json 
@@ -88,7 +89,7 @@ function Start-SleepWithProgress {
     )
     $count = 0
     while ($count -lt $seconds) {
-        Write-Progress $message -SecondsRemaining $seconds-$count -PercentComplete ($count/$seconds)*100
+        Write-Progress $message -SecondsRemaining $($seconds-$count) -PercentComplete ($count/$seconds)*100
         $count += 1
         Start-Sleep -Seconds 1
     }
@@ -202,6 +203,7 @@ function Invoke-TalosNodeUpgrade {
 
 foreach ($node in $nodes) {
     $upgradeThisNode = $false
+    if ($mode -eq "all:") { $upgradeThisNode = $true }
     if ($mode -eq "role:$($node.role)") { $upgradeThisNode = $true }
     if ($mode -eq "type:$($node.type)") { $upgradeThisNode = $true }
     if ($node.fqdn.StartsWith($mode)) { $upgradeThisNode = $true }

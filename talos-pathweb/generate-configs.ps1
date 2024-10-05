@@ -1,14 +1,12 @@
 $ErrorActionPreference = "Stop"
 
-Push-Location base
 
 $versions = Get-Content talos-version.json -Raw | ConvertFrom-Json 
 $TALOS_VERSION=$versions.version
 $KUBE_VERSION=$versions.k8s_version
-$TALOS_FACTORY_SCHEMATIC_ID=$versions.schematics.$($versions.default_type)
-$TALOS_INSTALL_IMAGE="$($versions.factory_image_registry)/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
 
-talosctl gen config pathweb "https://controlplane.pathweb.clusters.home.yrf.me:6443" --output-dir _out --with-secrets secrets.yaml --with-docs=false --with-examples=false --with-kubespan --kubernetes-version $KUBE_VERSION --talos-version $TALOS_VERSION --install-image $TALOS_INSTALL_IMAGE
+Push-Location base
+talosctl gen config pathweb "https://controlplane.pathweb.clusters.home.yrf.me:6443" --output-dir _out --with-secrets secrets.yaml --with-docs=false --with-examples=false --with-kubespan --kubernetes-version $KUBE_VERSION --talos-version $TALOS_VERSION
 talosctl --talosconfig .\_out\talosconfig config endpoint controlplane.pathweb.clusters.home.yrf.me
 talosctl --talosconfig .\_out\talosconfig config node pathweb-control-1.servers.home.yrf.me pathweb-control-2.servers.home.yrf.me pathweb-control-3.servers.home.yrf.me pathweb-worker-1.servers.home.yrf.me pathweb-worker-2.servers.home.yrf.me pathweb-worker-3.servers.home.yrf.me pathweb-worker-baldric.servers.home.yrf.me
 
@@ -36,6 +34,26 @@ foreach ($node in $nodes) {
         $patchArgs.Add($_) | Out-Null
     }
 
-    Write-Output "Generating MachineConfig for node $($node.fqdn) with patch set [$($node.patches)]"
+    $VERSION = $versions.version
+    if ($versions.image_override.$($node.type) -is [string]) {
+        $SCHEMATIC = $null
+        $IMAGE = $versions.image_override.$($node.type)
+    }
+    else {
+        $SCHEMATIC = $versions.schematics.$($node.type)
+        $IMAGE = "$($versions.factory_image_registry)/installer/${SCHEMATIC}:${VERSION}"
+    }
+    $ImagePatch = @{
+        machine = @{
+            install = @{
+                image = $IMAGE
+            }
+        }
+    }
+    $ImagePatchJson = ConvertTo-Json $ImagePatch -Compress 
+    $patchArgs.Add("-p") | Out-Null
+    $patchArgs.Add($ImagePatchJson) | Out-Null
+
+    Write-Output "Generating MachineConfig for node $($node.fqdn) with patch set [$($node.patches)] and installer image [$IMAGE]"
     talosctl machineconfig patch @patchArgs
 }
