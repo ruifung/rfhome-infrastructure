@@ -21,174 +21,205 @@ customization:
         - net.ifnames=0
     systemExtensions:
         officialExtensions:
-            - siderolabs/crun
             - siderolabs/fuse3
             - siderolabs/gvisor
             - siderolabs/iscsi-tools
 #>
-$IMAGE_REGISTRY="harbor.services.home.yrf.me/talos-image-factory"
+$IMAGE_REGISTRY = "harbor.services.home.yrf.me/talos-image-factory"
 $KUBE_CTX = "admin@pathweb"
-$TALOS_VERSION = "v1.8.0"
-$TALOS_FACTORY_SCHEMATIC_ID = "b163a2cb417fe411140810366fcc5ff07764bc15e895c70877bcc50ff35b465f"
-$RPI_FACTORY_SCHEMATIC_ID = "8b298fd9da26e326d3394305bbc0e233373d1baa08d915597f980fde69396cd8"
-# $TALOS_INSTALL_IMAGE="factory.talos.dev/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
-$TALOS_INSTALL_IMAGE = "${IMAGE_REGISTRY}/installer/${TALOS_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
-$RPI_INSTALL_IMAGE = "${IMAGE_REGISTRY}/installer/${RPI_FACTORY_SCHEMATIC_ID}:${TALOS_VERSION}"
-# $RPI_FACTORY_SCHEMATIC_ID = "CUSTOMIMAGE"
-# $RPI_INSTALL_IMAGE = "harbor.services.home.yrf.me/local-images/talos/installer:v1.7.1.rpi_generic_nouartconsole_pathweb" # GENERATED ON 2024-05-04T21:13 To get around the stupid console being enabled on ttyAMA0 by default.
-$homeDnsSuffix = "servers.home.yrf.me"
+
 $mode, $extraArgs = $args
-$extraArgs = $extraArgs -join " "
+$force = $extraArgs.Contains("--force")
+$extraArgs = $extraArgs.Remove($extraArgs.IndexOf("--force"))
 
-$controlplane = @(
-    "pathweb-control-1.$homeDnsSuffix",
-    "pathweb-control-2.$homeDnsSuffix",
-    "pathweb-control-3.$homeDnsSuffix"
-)
+$nodes = Get-Content nodes.json -Raw | ConvertFrom-Json | Where-Object { $_.ignore -ne $true }
+$versions = Get-Content talos-version.json -Raw | ConvertFrom-Json 
 
-$workers = @(
-    "pathweb-worker-1.$homeDnsSuffix",
-    "pathweb-worker-2.$homeDnsSuffix",
-    "pathweb-worker-3.$homeDnsSuffix",
-    "pathweb-worker-baldric.$homeDnsSuffix"
-    "pathweb-worker-baldric-2.$homeDnsSuffix"
-)
-
-$piworkers = @(
-    "pathweb-worker-pi4-01.$homeDnsSuffix"
-)
-
-Write-Output "Extra Args: $extraArgs"
-$toApply = @()
-if (($mode -eq "controlplane") -or ($mode -eq "all")) {
-    $toApply = $toApply + $controlplane
-}
-if (($mode -eq "workers") -or ($mode -eq "all")) {
-    $toApply = $toApply + $workers + $piworkers
-}
-#if toApply is empty, split mode by comma and append result to toApply after trimming excess whitespace
-if ($toApply.Count -eq 0) {
-    $toApply = $mode.Split(',') | ForEach-Object { $_.Trim() }
-}
-
-foreach ($node in $toApply) {
-    Write-Output "Preparing to upgrade node [$node]"
-    if ($piworkers.Contains($node)) {
-        Write-Output "Upgrading Listed RPi Node. Using RPi options."
-        $SCHEMATIC = $RPI_FACTORY_SCHEMATIC_ID
-        $IMAGE = $RPI_INSTALL_IMAGE
-    } else {
-        $SCHEMATIC = $TALOS_FACTORY_SCHEMATIC_ID
-        $IMAGE = $TALOS_INSTALL_IMAGE
+function Get-TalosNodeVersion {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$node
+    )
+    $versionOutput = $(talosctl version --nodes $node --short) -join ""
+    if ($LASTEXITCODE -eq 0 && $versionOutput -match 'Server:[\s\S\n]*Tag:\s*(v\d+\.\d\.\d)' && $Matches -ne $null) {
+        return $Matches[1]
     }
-    Write-Output "Target Schematic: [$SCHEMATIC]"
+    else {
+        throw "Failed to get Talos version for node [$node]"
+    }
+}
+
+function Get-TalosNodeSchematic {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$node
+    )
+    $schematicExtension = talosctl get extensions --nodes $node --output yaml | ConvertFrom-Yaml -AllDocuments | Where-Object { $_.spec.metadata.name -eq "schematic" }
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to get Talos schematic for node [$node]"
+    }
+    if ($null -eq $schematicExtension) {
+        return $null
+    }
+    return $schematicExtension.spec.metadata.version
+}
+
+function Get-DeploymentStsReady {
+    $deployments = kubectl --context=$KUBE_CTX get deployments, statefulsets -A -o json | ConvertFrom-Json
+    $ready = $True
+    foreach ($deployment in $deployments.items) {
+        if (($deployment.status.replicas -eq 0) -or ($null -eq $deployment.status.readyReplicas)) {
+            continue
+        }
+        if ($deployment.status.replicas -ne $deployment.status.readyReplicas) {
+            $ready = $False
+            break
+        }
+    }
+    return $ready
+}
+
+function Start-SleepWithProgress {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$message,
+        [Parameter(Mandatory = $true)]
+        [int]$seconds
+    )
+    $count = 0
+    while ($count -lt $seconds) {
+        Write-Progress $message -SecondsRemaining $seconds-$count -PercentComplete ($count/$seconds)*100
+        $count += 1
+        Start-Sleep -Seconds 1
+    }
+}
+
+function Wait-ForDeploymentStsReady {
+    while(!(Get-DeploymentStsReady)) {
+        Start-SleepWithProgress "Waiting for all Deployments or StatefulSets to be ready." 5
+    }
+}
+
+function Confirm-TalosVersionAndSchematic {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$node,
+        [Parameter(Mandatory = $true)]
+        [string]$expectedVersion,
+        [Parameter(Mandatory = $true)]
+        [string]$expectedSchematic,
+        [Parameter(Mandatory = $false)]
+        [ref]$currentVersionRef,
+        [Parameter(Mandatory = $false)]
+        [ref]$currentSchematicRef
+    )
+    $currentVersion = Get-TalosNodeVersion $node
+    $currentSchematic = Get-TalosNodeSchematic $node
+
+    if ($null -ne $currentVersionRef) {
+        $currentVersionRef.Value = $currentVersion
+    }
+    if ($null -ne $currentSchematicRef) {
+        $currentSchematicRef.Value = $currentSchematic
+    }
+
+    $versionMatch = $expectedVersion -eq $currentVersion
+    $schematicMatch = $expectedSchematic -eq $currentSchematic
+
+    return $versionMatch -and $schematicMatch
+}
+
+function Invoke-TalosNodeUpgrade {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$node,
+        [Parameter(Mandatory = $true)]
+        [string]$role,
+        [Parameter(Mandatory = $true)]
+        [string]$image,
+        [Parameter(Mandatory = $true)]
+        [string]$imageVersion,
+        [Parameter(Mandatory = $false)]
+        [string]$imageSchematic
+    )
     $talosctlArgs = @(
         'upgrade',
+        '--talosconfig',
+        '.\talosconfig',
         '--nodes',
         $node,
         '--image',
-        $IMAGE
+        $image
         '--stage'
     )
     # append extraArgs to args if extraArgs is not blank
     if ($extraArgs -ne "") {
-        $talosctlArgs = $talosctlArgs + $extraArgs.Split(' ')
-    }
+        $talosctlArgs = $talosctlArgs + $extraArgs
+    }    
 
-    function Get-TalosNodeVersion {
-        param (
-            [Parameter(Mandatory = $true)]
-            [string]$node
-        )
-        $versionOutput = $(talosctl version --nodes $node --short) -join ""
-        if ($LASTEXITCODE -eq 0 && $versionOutput -match 'Server:[\s\S\n]*Tag:\s*(v\d+\.\d\.\d)' && $Matches -ne $null) {
-            return $Matches[1]
-        }
-        else {
-            throw "Failed to get Talos version for node [$node]"
-        }
-    }
-
-    function Get-TalosNodeSchematic {
-        param (
-            [Parameter(Mandatory = $true)]
-            [string]$node
-        )
-        $schematicExtension = talosctl get extensions --nodes $node --output yaml | ConvertFrom-Yaml -AllDocuments | Where-Object {$_.spec.metadata.name -eq "schematic" }
-        if ($null -eq $schematicExtension) {
-            return "NOSCHEMATIC"
-        }
-        return $schematicExtension.spec.metadata.version
-    }
-
-    function Get-DeploymentStsReady {
-        $deployments = kubectl --context=$KUBE_CTX get deployments,statefulsets -A -o json | ConvertFrom-Json
-        $ready = $True
-        foreach ($deployment in $deployments.items) {
-            if (($deployment.status.replicas -eq 0) -or ($null -eq $deployment.status.readyReplicas)) {
-                continue
-            }
-            if ($deployment.status.replicas -ne $deployment.status.readyReplicas) {
-                $ready = $False
-                break
-            }
-        }
-        return $ready
-    }
-
-    # attempt upgrade until successful
     $success = $false
     while ($success -eq $false) {
-        # skip upgrade if node is already target version
-        Write-Output "Checking existing version for node [$node]"
-        $version = Get-TalosNodeVersion $node
-        if ($version -eq "") {
-            Start-Sleep -Seconds 5
-            continue
-        }
-        Write-Output "Checking existing schematic for node [$node]"
-        $current_schematic = Get-TalosNodeSchematic $node
-        if (($version -eq $TALOS_VERSION) -and ($current_schematic -eq $SCHEMATIC)) {
-            Write-Output "Node [$node] is already at Talos version [$version], schematic [$current_schematic], skipping upgrade."
-            $success = $true
-            continue
-        }
-        Write-Output "Upgrading node [$node] to Talos version [$TALOS_VERSION], schematic [$SCHEMATIC]."
-        Write-Output "Current version is [$version], current schematic is [$current_schematic]"
-        Write-Output "Using image: [$IMAGE]"
-        talosctl $talosctlArgs
-        $success = ($LASTEXITCODE -eq 0)
-        if ($success -and (-not ($controlplane.Contains($node)))) {
-            $version = Get-TalosNodeVersion $node
-            $current_schematic = Get-TalosNodeSchematic $node
-            # retry upgrade if version upgrade failed
-            if ($version -ne $TALOS_VERSION) {
-                Write-Output "Talos version [$version] does not match expected version [$TALOS_VERSION], retrying upgrade"
-                $success = $false
-            } elseif ($schematic -ne $SCHEMATIC) {
-                Write-Output "Talos schematic [$current_schematic] does not match expected schematic [$SCHEMATIC], retrying upgrade"
-                $success = $false
-            } else {
-                Write-Output "Successfully upgraded node [$node] to Talos version [$version]"
+        try {
+            $currentVersion = $null
+            $currentSchematic = $null
+            if (Confirm-TalosVersionAndSchematic $node $imageVersion $imageSchematic ([ref]$currentVersion) ([ref]$currentSchematic)) {
+                if (-not $force) {
+                    Write-Output "Node [$node] is already at Talos version [$imageVersion], schematic [$imageSchematic], skipping upgrade."
+                    $success = $true
+                    continue
+                }
             }
-            while(!(Get-DeploymentStsReady)) {
-                Write-Output "Deployment or StatefulSet not ready, sleeping for 5 seconds."
-                Start-Sleep -Seconds 5
+
+            Write-Output "Upgrading node [$node] to Talos version [$imageVersion], schematic [$imageSchematic]."
+            Write-Output "Current version: $currentVersion"
+            Write-Output "Current schematic: $currentSchematic"
+            talosctl $talosctlArgs
+            $success = $LASTEXITCODE -eq 0
+            if ($success) {
+                $success = Confirm-TalosVersionAndSchematic $node $imageVersion $imageSchematic ([ref]$currentVersion) ([ref]$currentSchematic)
+                if (-not $success) {
+                    Write-Output "Post-upgrade version: $currentVersion"
+                    Write-Output "Post-upgrade schematic: $currentSchematic"
+                    Write-Output "Post-upgrade version/schematic mismatch. Retrying upgrade."
+                    continue
+                }
+
+                if ($role -ne "controlplane") {
+                    Wait-ForDeploymentStsReady
+                }
             }
         }
-        # Write-Output "Waiting for cilium on [$node] to become ready"
-        # cilium status --wait --wait-duration 24h
-
-        # resolve node domain to IP address if required
-        # if ($node -match '^[a-zA-Z0-9\-\.]+$') {
-            # $node = [System.Net.Dns]::GetHostAddresses($node) | Where-Object { $_.AddressFamily -eq 'InterNetwork' } | Select-Object -First 1 -ExpandProperty IPAddressToString
-        # }
-        # find node in kubernetes with matching IP
-        # $node = kubectl get nodes -o jsonpath="{.items[?(@.status.addresses[?(@.type=='InternalIP')].address=='$node')].metadata.name}"
-
-        # wait for node to be ready
-        # Write-Output "Waiting for node [$node] to become ready"
-        # kubectl wait --for=condition=Ready node/$node --timeout=24h
-        
+        catch {
+            Start-SleepWithProgress "Failed to perform upgrade. Retry in 10 seconds." 10
+            continue
+        }
     }
+}
+
+foreach ($node in $nodes) {
+    $upgradeThisNode = $false
+    if ($mode -eq "role:$($node.role)") { $upgradeThisNode = $true }
+    if ($mode -eq "type:$($node.type)") { $upgradeThisNode = $true }
+    if ($node.fqdn.StartsWith($mode)) { $upgradeThisNode = $true }
+    if (-not $upgradeThisNode) { continue }
+
+    Write-Output "Preparing to upgrade node [$($node.fqdn)]"
+    Write-Output "Node Type: $($node.type)"
+    Write-Output "Node Role: $($node.role)"
+    $VERSION = $versions.version
+    if ($versions.image_override.$($node.type) -is [string]) {
+        $SCHEMATIC = $null
+        $IMAGE = $versions.image_override.$($node.type)
+    }
+    else {
+        $SCHEMATIC = $versions.schematics.$($node.type)
+        $IMAGE = "${IMAGE_REGISTRY}/installer/${SCHEMATIC}:${VERSION}"
+    }
+    Write-Output "Version: $VERSION"
+    if ($null -ne $SCHEMATIC) {
+        Write-Output "Schematic: $SCHEMATIC"
+    }
+    Write-Output "Image: $IMAGE"
+
+    Invoke-TalosNodeUpgrade $node.fqdn $node.role $IMAGE $VERSION $SCHEMATIC
 }

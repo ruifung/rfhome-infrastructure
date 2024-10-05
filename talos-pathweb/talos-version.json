@@ -1,8 +1,12 @@
 {
-    "version": "v1.7.1",
+    "version": "v1.8.0",
+    "k8s_version": "v1.31.1",
+    "default_type": "proxmox",
+    "factory_image_registry": "harbor.services.home.yrf.me/talos-image-factory",
     "schematics": {
-        "proxmox": "ff4c7c9e75f037073e593e00f43c862d66f98a465f5afe10fa513d4fb54b5479",
-        "rpi": "15d3da5525ae052a575d21c83c16544631b9eb7e95283eccc254ddf8eb2c4fd3"
+        "proxmox": "b163a2cb417fe411140810366fcc5ff07764bc15e895c70877bcc50ff35b465f",
+        "rpi": "23f3d7a1bb5611c73aef9886ec18d18d8d58b28f276b7a7e6a858e4232393c86"
     },
-    "image_override": {}
+    "image_override": {
+    }
 }
