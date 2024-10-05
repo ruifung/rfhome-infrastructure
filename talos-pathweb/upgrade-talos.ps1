@@ -153,7 +153,9 @@ function Invoke-TalosNodeUpgrade {
         '--stage'
     )
     # append extraArgs to args if extraArgs is not blank
-    $talosctlArgs = $talosctlArgs + $extraArgs 
+    if ($extraArgs -ne "") {
+        $talosctlArgs = $talosctlArgs + $extraArgs 
+    }
 
 
     $success = $false
@@ -181,7 +183,10 @@ function Invoke-TalosNodeUpgrade {
                     Write-Output "Post-upgrade schematic: $currentSchematic"
                     Write-Output "Post-upgrade version/schematic mismatch. Retrying upgrade."
                     continue
+                } else {
+                    Write-Output "Node [$node] successfully upgraded to Talos version [$imageVersion], schematic [$imageSchematic]."
                 }
+
 
                 if ($role -ne "controlplane") {
                     Wait-ForDeploymentStsReady
