@@ -1,7 +1,7 @@
 ﻿images:
   - name: linuxserver/radarr
     newName: lscr.io/linuxserver/radarr
-    newTag: version-5.11.0.9244
+    newTag: version-5.12.2.9335
 
 labels:
   - pairs:
