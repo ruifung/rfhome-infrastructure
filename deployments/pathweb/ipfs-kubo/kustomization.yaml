@@ -1,6 +1,6 @@
 ﻿images:
   - name: ipfs/kubo
-    newTag: v0.30.0
+    newTag: v0.31.0
 
 labels:
   - pairs:
