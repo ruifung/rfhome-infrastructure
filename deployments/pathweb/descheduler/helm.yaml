@@ -44,6 +44,7 @@ spec:
             evictFailedBarePods: true
             evictLocalStoragePods: true
             nodeFit: true
+            minPodAge: 30m
         - name: "RemoveDuplicates"
         - name: "LowNodeUtilization"
           args:
