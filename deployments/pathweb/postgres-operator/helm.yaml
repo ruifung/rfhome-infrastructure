@@ -11,7 +11,7 @@ spec:
     operation: copy
   url: oci://registry.developers.crunchydata.com/crunchydata/pgo
   ref:
-    tag: 5.6.1
+    tag: 5.7.0
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
