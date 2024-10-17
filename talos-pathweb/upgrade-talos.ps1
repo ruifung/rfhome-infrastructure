@@ -151,7 +151,7 @@ function Invoke-TalosNodeUpgrade {
         $node,
         '--image',
         $image
-        '--stage'
+        # '--stage'
     )
     # append extraArgs to args if extraArgs is not blank
     if ($extraArgs -ne "") {
@@ -219,7 +219,7 @@ foreach ($node in $nodes) {
     }
     else {
         $SCHEMATIC = $versions.schematics.$($node.type)
-        $IMAGE = "${IMAGE_REGISTRY}/installer/${SCHEMATIC}:${VERSION}"
+        $IMAGE = "$($versions.factory_image_registry)/installer/${SCHEMATIC}:${VERSION}"
     }
     Write-Output "Version: $VERSION"
     if ($null -ne $SCHEMATIC) {
