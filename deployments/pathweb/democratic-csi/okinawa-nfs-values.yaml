@@ -59,13 +59,13 @@ storageClasses:
       controller-expand-secret:
 
 # if your cluster supports snapshots you may enable below
-volumeSnapshotClasses: []
-#- name: freenas-nfs-csi
-#  parameters:
-#  # if true, snapshots will be created with zfs send/receive
-#  # detachedSnapshots: "false"
-#  secrets:
-#    snapshotter-secret:
+volumeSnapshotClasses:
+  - name: okinawa-hdd-nfs-snapshot
+    parameters:
+    # if true, snapshots will be created with zfs send/receive
+    # detachedSnapshots: "false"
+    secrets:
+      snapshotter-secret:
 
 driver:
   config:
