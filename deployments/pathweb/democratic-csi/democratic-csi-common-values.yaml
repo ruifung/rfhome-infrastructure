@@ -1,6 +1,7 @@
 ﻿controller:
   driver:
     image: docker.io/democraticcsi/democratic-csi:v1.9.3
+    logLevel: debug
 
 node:
   driver: 
