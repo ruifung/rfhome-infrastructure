@@ -67,6 +67,8 @@ volumeSnapshotClasses:
     parameters:
     # if true, snapshots will be created with zfs send/receive
     # detachedSnapshots: "false"
+    labels:
+      velero.io/csi-volumesnapshot-class: "true"
     secrets:
       snapshotter-secret:
 

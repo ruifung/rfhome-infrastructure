@@ -3,6 +3,8 @@ apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotClass
 metadata:
   name: cephfs-snapshot
+  labels:
+    velero.io/csi-volumesnapshot-class: "true"
 driver: kube-system.cephfs.csi.ceph.com # csi-provisioner-name
 parameters:
   # Specify a string that identifies your cluster. Ceph CSI supports any
