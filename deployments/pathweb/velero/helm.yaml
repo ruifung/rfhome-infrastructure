@@ -52,7 +52,7 @@ spec:
             key: credentials
           config:
             region: rfhome
-            s3Url: okinawa-s3.services.home.yrf.me:9000
+            s3Url: https://okinawa-s3.services.home.yrf.me:9000
       features: "EnableCSI"
     credentials:
       useSecret: false
