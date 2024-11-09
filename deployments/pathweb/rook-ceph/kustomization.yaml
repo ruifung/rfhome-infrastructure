@@ -6,6 +6,8 @@ resources:
 - cluster-external.yaml
 - storageclass/ceph-rbd.yaml
 - storageclass/cephfs.yaml
+- snapshotclass/ceph-rbd.yaml
+- snapshotclass/cephfs.yaml
 - configmap/rook-ceph-mon-endpoints.yaml
 - secrets/csi-cephfs-node.sealed.yaml
 - secrets/csi-cephfs-provisioner.sealed.yaml
