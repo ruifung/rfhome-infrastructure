@@ -53,6 +53,8 @@ spec:
           config:
             region: rfhome
             s3Url: https://okinawa-s3.services.home.yrf.me:9000
+      volumeSnapshotLocation: []
+      defaultSnapshotMoveData: true
       features: "EnableCSI"
     credentials:
       useSecret: false
