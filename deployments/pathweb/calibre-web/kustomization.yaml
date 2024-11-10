@@ -6,7 +6,7 @@ images:
     newTag: "2.5-debian"
   - name: lscr.io/linuxserver/calibre-web
     newName: ghcr.io/ruifung/lsio-calibre-web-mod
-    newTag: "0.6.23-calibre-v7.20.0"
+    newTag: "0.6.23-calibre-v7.21.0"
 
 resources:
   - "calibre-library-pvc.yaml"
