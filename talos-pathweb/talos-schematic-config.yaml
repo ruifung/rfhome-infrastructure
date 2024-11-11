@@ -1,0 +1,26 @@
+---
+# proxmox
+customization:
+    extraKernelArgs:
+        - net.ifnames=0
+    systemExtensions:
+        officialExtensions:
+            - siderolabs/crun
+            - siderolabs/fuse3
+            - siderolabs/gvisor
+            - siderolabs/iscsi-tools
+            - siderolabs/qemu-guest-agent
+---
+# rpi
+overlay:
+    image: siderolabs/sbc-raspberrypi
+    name: rpi_generic
+customization:
+    extraKernelArgs:
+        - net.ifnames=0
+    systemExtensions:
+        officialExtensions:
+            - siderolabs/crun
+            - siderolabs/fuse3
+            - siderolabs/gvisor
+            - siderolabs/iscsi-tools

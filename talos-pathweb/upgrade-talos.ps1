@@ -1,30 +1,3 @@
-<#
-Current Talos Image Factory Configuration
------------------------------------------
-customization:
-    extraKernelArgs:
-        - net.ifnames=0
-    systemExtensions:
-        officialExtensions:
-            - siderolabs/fuse3
-            - siderolabs/gvisor
-            - siderolabs/iscsi-tools
-            - siderolabs/qemu-guest-agent
-------------------------------------------
-Pi Node Image Factory C0nfiguration
-------------------------------------------
-overlay:
-    image: siderolabs/sbc-raspberrypi
-    name: rpi_generic
-customization:
-    extraKernelArgs:
-        - net.ifnames=0
-    systemExtensions:
-        officialExtensions:
-            - siderolabs/fuse3
-            - siderolabs/gvisor
-            - siderolabs/iscsi-tools
-#>
 $KUBE_CTX = "admin@pathweb"
 
 $mode, $extraArgs = $args
