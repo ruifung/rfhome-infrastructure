@@ -3,7 +3,9 @@ $KUBE_CTX = "admin@pathweb"
 $mode, $extraArgs = $args
 if ($null -ne $extraArgs) {
     $force = $extraArgs.Contains("--force")
-    $extraArgs = $extraArgs.Remove($extraArgs.IndexOf("--force"))
+    if ($force) {
+        $extraArgs = $extraArgs.Remove($extraArgs.IndexOf("--force"))
+    }
 }
 
 $nodes = Get-Content nodes.json -Raw | ConvertFrom-Json | Where-Object { $_.ignore -ne $true }
