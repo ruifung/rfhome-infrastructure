@@ -25,7 +25,7 @@ spec:
         image: ghcr.io/flaresolverr/flaresolverr:latest
         securityContext:
           allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
+          readOnlyRootFilesystem: false
         env:
         - name: LOG_LEVEL
           value: "info"
@@ -41,13 +41,3 @@ spec:
           limits:
             cpu: "2"
             memory: "1Gi"
-        volumeMounts:
-        - mountPath: /tmp
-          name: tmpdir
-          subPath: tmp
-        - mountPath: /app/.local
-          name: tmpdir
-          subpath: .local
-      volumes:
-        - name: tmpdir
-          emptyDir: {}
