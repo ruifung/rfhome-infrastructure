@@ -93,7 +93,7 @@ spec:
         port: 9000
         exposedPort: 9000
       web:
-        port: 8080
+        port: 80
         exposedPort: 80
         expose:
           default: true
@@ -101,7 +101,7 @@ spec:
         redirectTo:
           port: websecure
       websecure:
-        port: 8443
+        port: 443
         exposedPort: 443
         expose:
           default: true
