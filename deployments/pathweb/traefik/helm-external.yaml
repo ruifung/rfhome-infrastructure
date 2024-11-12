@@ -176,6 +176,8 @@ spec:
           enabled: true
       kubernetesGateway:
         enabled: true
+        labelselector:
+          app.kubernetes.io/name: traefik-external
     gateway:
       enabled: false
     ingressRoute:
