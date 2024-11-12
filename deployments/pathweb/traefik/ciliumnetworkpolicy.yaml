@@ -13,8 +13,8 @@ spec:
         - world
       toPorts:
         - ports:
-            - port: "8000"
-            - port: "8443"
+            - port: "80"
+            - port: "443"
     - fromEndpoints:
         - matchLabels:
             app.kubernetes.io/name: external-ingress-cf-tunnel
@@ -30,8 +30,8 @@ spec:
         - cluster
       toPorts:
         - ports:
-            - port: "8000"
-            - port: "8443"
+            - port: "80"
+            - port: "443"
             - port: "9100"
 ---
 apiVersion: cilium.io/v2
@@ -48,8 +48,8 @@ spec:
         - world
       toPorts:
         - ports:
-            - port: "8000"
-            - port: "8443"
+            - port: "80"
+            - port: "443"
     - fromEndpoints:
         - {}
       toPorts:
@@ -59,6 +59,6 @@ spec:
         - cluster
       toPorts:
         - ports:
-            - port: "8000"
-            - port: "8443"
+            - port: "80"
+            - port: "443"
             - port: "9100"
