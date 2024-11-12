@@ -16,9 +16,14 @@ spec:
         app.kubernetes.io/name: flaresolverr
     spec:
       # runtimeClassName: gvisor
+      securityContext:
+        runAsNonRoot: true
       containers:
       - name: flaresolverr
         image: ghcr.io/flaresolverr/flaresolverr:latest
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
         env:
         - name: LOG_LEVEL
           value: "info"
