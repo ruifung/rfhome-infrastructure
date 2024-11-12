@@ -46,5 +46,4 @@ spec:
           name: tmpdir
       volumes:
         - name: tmpdir
-          emptyDir:
-            medium: "Memory"
+          emptyDir: {}
