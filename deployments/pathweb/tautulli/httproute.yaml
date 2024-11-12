@@ -28,3 +28,10 @@ spec:
       backendRefs:
         - name: tautulli-headless
           port: 8181
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /images/
+      backendRefs:
+      - name: tautulli-headless
+        port: 8181
