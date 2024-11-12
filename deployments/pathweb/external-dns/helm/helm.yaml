@@ -49,6 +49,7 @@ spec:
     sources:
     - ingress
     - crd
+    - gateway-httproute
     nodeSelector:
       kubernetes.io/os: linux
     provider: cloudflare
@@ -104,6 +105,10 @@ spec:
     - ingress
     - service
     - crd
+    - gateway-httproute
+    - gateway-tlsroute
+    - gateway-tcproute
+    - gateway-udproute
     provider: rfc2136
     # policy: upsert-only
     rfc2136:
@@ -162,6 +167,10 @@ spec:
     - ingress
     - service
     - crd
+    - gateway-httproute
+    - gateway-tlsroute
+    - gateway-tcproute
+    - gateway-udproute
     provider: rfc2136
     # policy: upsert-only
     rfc2136:
