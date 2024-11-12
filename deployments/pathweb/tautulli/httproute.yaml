@@ -1,0 +1,28 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: tautulli
+  labels:
+    app.kubernetes.io/name: tautulli
+    external-dns: local-pdns
+spec:
+  parentRefs:
+    - name: rfhome-services-gateway
+      sectionName: https
+      kind: Gateway
+  hostnames:
+    - tautulli.services.home.yrf.me
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      filters:
+        - extensionRef:
+            group: traefik.io/v1alpha1
+            kind: Middleware
+            name: ak-outpost-authentik-embedded-outpost
+      backendRefs:
+        - name: tautulli-headless
+          port: 8181

@@ -12,5 +12,6 @@ labels:
 resources:
   - statefulset.yaml
   - service.yaml
-  - ingress.yaml
+  # - ingress.yaml
+  - httproute.yaml
   - ciliumnetworkpolicy.yaml
