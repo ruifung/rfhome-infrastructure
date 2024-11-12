@@ -92,6 +92,8 @@ spec:
         port: 9000
         exposedPort: 9000
       web:
+        port: 80
+        exposedPort: 80
         expose:
           default: true
         proxyProtocol:
@@ -100,6 +102,8 @@ spec:
           - fd96:618::1:1/128
           - 10.228.0.1/32
       websecure:
+        port: 443
+        exposedPort: 443
         expose:
           default: true
         http3:
