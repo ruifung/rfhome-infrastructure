@@ -19,7 +19,8 @@ spec:
             type: PathPrefix
             value: /
       filters:
-        - extensionRef:
+        - type: ExtensionRef
+          extensionRef:
             group: traefik.io
             kind: Middleware
             name: ak-outpost-authentik-embedded-outpost
