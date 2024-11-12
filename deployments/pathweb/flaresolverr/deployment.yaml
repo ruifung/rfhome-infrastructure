@@ -41,3 +41,10 @@ spec:
           limits:
             cpu: "2"
             memory: "1Gi"
+        volumeMounts:
+        - mountPath: /tmp
+          name: tmpdir
+      volumes:
+        - name: tmpdir
+          emptyDir:
+            medium: "Memory"
