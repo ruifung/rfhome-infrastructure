@@ -109,6 +109,8 @@ operator:
       cpu: 10m
 socketLB:
   hostNamespaceOnly: true
+gatewayAPI:
+  enabled: true
 envoy:
   enabled: true
   rollOutPods: true
