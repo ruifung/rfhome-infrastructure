@@ -143,8 +143,7 @@ spec:
         allowExternalNameServices: true
       kubernetesGateway:
         enabled: true
-        labelselector:
-          app.kubernetes.io/name: traefik
+        labelselector: "app.kubernetes.io/name=traefik-external"
     gateway:
       enabled: false
     ingressRoute:
