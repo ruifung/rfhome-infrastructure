@@ -27,7 +27,7 @@ spec:
   interval: 15m
   timeout: 60m
   targetNamespace: home-network
-  postRenderers:
+  # postRenderers:
     # - kustomize:
     #     patches:
     #       - patch: |
