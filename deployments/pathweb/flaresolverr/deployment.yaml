@@ -44,6 +44,10 @@ spec:
         volumeMounts:
         - mountPath: /tmp
           name: tmpdir
+          subPath: tmp
+        - mountPath: /app/.local
+          name: tmpdir
+          subpath: .local
       volumes:
         - name: tmpdir
           emptyDir: {}
