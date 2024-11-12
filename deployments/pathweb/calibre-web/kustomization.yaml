@@ -7,7 +7,7 @@ images:
   - name: lscr.io/linuxserver/calibre-web
     # newName: ghcr.io/ruifung/lsio-calibre-web-mod
     # newTag: "0.6.23-calibre-v7.21.0"
-    newTag: "0.6.22"
+    newTag: "2021.12.16"
 
 resources:
   - "calibre-library-pvc.yaml"
