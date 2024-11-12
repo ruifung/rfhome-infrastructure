@@ -51,6 +51,13 @@ spec:
       priorityClassName: rfhome-network-critical
       nodeSelector:
         location: rfhome
+      containerSecurityContext:
+        runAsNonRoot: true
+        readOnlyRootFilesystem: true
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
       envFrom:
         - configMapRef:
             name: authentik-config
