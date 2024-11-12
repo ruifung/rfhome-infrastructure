@@ -15,7 +15,7 @@ spec:
       labels:
         app.kubernetes.io/name: flaresolverr
     spec:
-      runtimeClassName: gvisor
+      # runtimeClassName: gvisor
       containers:
       - name: flaresolverr
         image: ghcr.io/flaresolverr/flaresolverr:latest

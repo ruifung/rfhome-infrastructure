@@ -19,7 +19,7 @@ spec:
     spec:
       nodeSelector:
         node-group: baldric
-      runtimeClassName: gvisor
+      # runtimeClassName: gvisor
       containers:
       - name: unpackerr
         image: hotio/unpackerr:latest

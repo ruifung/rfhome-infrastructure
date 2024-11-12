@@ -15,7 +15,7 @@ spec:
       labels:
         app.kubernetes.io/name: imaginary
     spec:
-      runtimeClassName: gvisor
+      # runtimeClassName: gvisor
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:

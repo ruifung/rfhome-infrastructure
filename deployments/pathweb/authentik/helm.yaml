@@ -28,22 +28,22 @@ spec:
   timeout: 60m
   targetNamespace: home-network
   postRenderers:
-    - kustomize:
-        patches:
-          - patch: |
-              - op: "add"
-                path: "/spec/template/spec/runtimeClassName"
-                value: "gvisor"
-            target:
-              kind: Deployment
-              name: authentik-server
-          - patch: |
-              - op: "add"
-                path: "/spec/template/spec/runtimeClassName"
-                value: "gvisor"
-            target:
-              kind: Deployment
-              name: authentik-worker
+    # - kustomize:
+    #     patches:
+    #       - patch: |
+    #           - op: "add"
+    #             path: "/spec/template/spec/runtimeClassName"
+    #             value: "gvisor"
+    #         target:
+    #           kind: Deployment
+    #           name: authentik-server
+    #       - patch: |
+    #           - op: "add"
+    #             path: "/spec/template/spec/runtimeClassName"
+    #             value: "gvisor"
+    #         target:
+    #           kind: Deployment
+    #           name: authentik-worker
   values:
     global:
       deploymentStrategy:
