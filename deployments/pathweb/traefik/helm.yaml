@@ -17,7 +17,7 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: 32.1.1
+      version: 33.0.0
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -89,6 +89,9 @@ spec:
         - IPv4
         - IPv6
     ports:
+      traefik:
+        port: 9000
+        exposedPort: 9000
       web:
         port: 8080
         exposedPort: 80
@@ -136,6 +139,20 @@ spec:
         allowEmptyServices: true
         allowCrossNamespace: true
         allowExternalNameServices: true
+      kubernetesGateway:
+        enabled: true
+    gateway:
+      enabled: true
+      listeners:
+        web:
+          port: 8080
+          protocol: HTTP
+        websecure:
+          port: 8443
+          protocol: HTTPS
+        traefik:
+          port: 9000
+          protocol: HTTP
     ingressRoute:
       dashboard:
         enabled: true

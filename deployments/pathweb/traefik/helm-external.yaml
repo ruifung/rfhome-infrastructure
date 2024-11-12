@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: 32.1.1
+      version: 33.0.0
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -88,6 +88,9 @@ spec:
           type: ClusterIP
           single: true
     ports:
+      traefik:
+        port: 9000
+        exposedPort: 9000
       web:
         expose:
           default: true
@@ -169,6 +172,23 @@ spec:
         allowEmptyServices: true
         publishedService:
           enabled: true
+      kubernetesGateway:
+        enabled: true
+    gateway:
+      enabled: true
+      listeners:
+        web:
+          port: 8080
+          protocol: HTTP
+        websecure:
+          port: 8443
+          protocol: HTTPS
+        cloudflared:
+          port: 8081
+          protocol: HTTP
+        traefik:
+          port: 9000
+          protocol: HTTP
     ingressRoute:
       dashboard:
         enabled: true
