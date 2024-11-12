@@ -142,17 +142,7 @@ spec:
       kubernetesGateway:
         enabled: true
     gateway:
-      enabled: true
-      listeners:
-        web:
-          port: 8080
-          protocol: HTTP
-        websecure:
-          port: 8443
-          protocol: HTTPS
-        traefik:
-          port: 9000
-          protocol: HTTP
+      enabled: false
     ingressRoute:
       dashboard:
         enabled: true
