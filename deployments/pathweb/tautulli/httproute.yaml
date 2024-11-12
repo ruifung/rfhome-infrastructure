@@ -20,7 +20,7 @@ spec:
             value: /
       filters:
         - extensionRef:
-            group: traefik.io/v1alpha1
+            group: traefik.io
             kind: Middleware
             name: ak-outpost-authentik-embedded-outpost
       backendRefs:
