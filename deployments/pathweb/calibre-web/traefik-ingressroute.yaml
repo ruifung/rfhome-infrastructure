@@ -30,9 +30,20 @@ spec:
       name: calibre-web
       port: http
   - kind: Rule
-    match: Host(`ebooks.services.home.yrf.me`) && (PathPrefix(`/static`) || PathPrefix(`/cover`))
+    match: Host(`ebooks.services.home.yrf.me`) && (PathPrefix(`/static`))
     priority: 100
     middlewares:
+    - name: calibre-web-static-caching-policy
+    services:
+    - kind: Service
+      name: calibre-web
+      port: http
+  - kind: Rule
+    match: Host(`ebooks.services.home.yrf.me`) &&  PathPrefix(`/cover`))
+    priority: 100
+    middlewares:
+    - name: ak-outpost-authentik-embedded-outpost
+      namespace: home-network
     - name: calibre-web-static-caching-policy
     services:
     - kind: Service
@@ -72,9 +83,20 @@ spec:
       name: calibre-web
       port: http
   - kind: Rule
-    match: Host(`ebooks.yrf.me`) && (PathPrefix(`/static`) || PathPrefix(`/cover`))
+    match: Host(`ebooks.yrf.me`) && (PathPrefix(`/static`))
     priority: 100
     middlewares:
+    - name: calibre-web-static-caching-policy
+    services:
+    - kind: Service
+      name: calibre-web
+      port: http
+  - kind: Rule
+    match: Host(`ebooks.yrf.me`) &&  PathPrefix(`/cover`))
+    priority: 100
+    middlewares:
+    - name: ak-outpost-authentik-embedded-outpost
+      namespace: home-network
     - name: calibre-web-static-caching-policy
     services:
     - kind: Service
