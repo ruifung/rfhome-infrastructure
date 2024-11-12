@@ -161,6 +161,8 @@ spec:
     ingressClass:
       name: traefik-external
       isDefaultClass: true
+    gatewayClass:
+      name: traefik-external
     providers:
       kubernetesCRD:
         ingressClass: traefik-external
