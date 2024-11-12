@@ -9,6 +9,7 @@ metadata:
 spec:
   parentRefs:
     - name: rfhome-services-gateway
+      namespace: home-network
       sectionName: https
       kind: Gateway
   hostnames:
