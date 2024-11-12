@@ -18,6 +18,8 @@ spec:
       # runtimeClassName: gvisor
       securityContext:
         runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
       containers:
       - name: flaresolverr
         image: ghcr.io/flaresolverr/flaresolverr:latest
