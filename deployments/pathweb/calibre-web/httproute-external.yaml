@@ -12,7 +12,7 @@ spec:
   parentRefs:
     - name: yrf-me-cloudflare-tunnel
       namespace: home-network
-      sectionName: https
+      sectionName: http
       kind: Gateway
   hostnames:
     - ebooks.yrf.me
