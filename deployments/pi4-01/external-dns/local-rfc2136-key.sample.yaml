@@ -1,8 +1,0 @@
-﻿# apiVersion: v1
-# kind: Secret
-# metadata:
-#   name: local-rfc2136-key
-#   namespace: external-dns
-# type: Opaque
-# stringData:
-#   rfc2136_tsig_secret: ""

@@ -1,4 +1,0 @@
-﻿resources:
-  - "helm.yaml"
-  # - "helm-external.yaml"
-  # - "ingress-cf-tunnel-token.sealed.yaml"
