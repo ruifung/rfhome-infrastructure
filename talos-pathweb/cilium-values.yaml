@@ -109,8 +109,17 @@ operator:
       cpu: 10m
 socketLB:
   hostNamespaceOnly: true
+ingressController:
+  enabled: true
+  loadbalancerMode: shared
+  enforceHttps: true
+  service:
+    labels:
+      lb-location: rfhome
 gatewayAPI:
   enabled: true
+  enableAlpn: true
+  enableAppprotocol: true
 envoy:
   enabled: true
   rollOutPods: true
