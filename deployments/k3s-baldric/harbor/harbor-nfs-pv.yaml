@@ -7,11 +7,11 @@ spec:
   capacity:
     storage: 10Gi
   accessModes:
-    - ReadWriteMany
+  - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   mountOptions:
-    - hard
-    - nfsvers=4.2
+  - hard
+  - nfsvers=4.2
   nfs:
     server: okinawa.servers.home.yrf.me
     path: /mnt/hdd/applications/harbor
@@ -24,12 +24,12 @@ spec:
   capacity:
     storage: 10Gi
   accessModes:
-    - ReadWriteMany
+  - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   mountOptions:
-    - hard
-    - nfsvers=4.2
-    - sync
+  - hard
+  - nfsvers=4.2
+  - sync
   nfs:
     server: okinawa.servers.home.yrf.me
     path: /mnt/hdd/applications/harbor/postgres

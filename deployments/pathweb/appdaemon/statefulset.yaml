@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -19,24 +20,24 @@ spec:
         kubernetes.io/os: linux
         location: rfhome
       containers:
-        - name: appdaemon
-          image: acockburn/appdaemon:latest
-          ports:
-            - containerPort: 80
-              name: http
-              protocol: TCP
-          volumeMounts:
-            - name: hass-data
-              mountPath: /conf/
-              subPath: appdaemon
-          resources:
-            requests:
-              cpu: 48m
-              memory: 105M
-            limits:
-              cpu: 300m
-              memory: 300M
-      volumes:
+      - name: appdaemon
+        image: acockburn/appdaemon:latest
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        volumeMounts:
         - name: hass-data
-          persistentVolumeClaim:
-            claimName: home-assistant-data
+          mountPath: /conf/
+          subPath: appdaemon
+        resources:
+          requests:
+            cpu: 48m
+            memory: 105M
+          limits:
+            cpu: 300m
+            memory: 300M
+      volumes:
+      - name: hass-data
+        persistentVolumeClaim:
+          claimName: home-assistant-data

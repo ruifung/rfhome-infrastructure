@@ -5,8 +5,8 @@ metadata:
   name: "rfhome-service-addrs"
 spec:
   blocks:
-    - cidr: "10.229.30.0/24"
-    - cidr: "fd96:619:6b75:0130::/112"
+  - cidr: "10.229.30.0/24"
+  - cidr: "fd96:619:6b75:0130::/112"
   disabled: false
   serviceSelector:
     matchLabels:

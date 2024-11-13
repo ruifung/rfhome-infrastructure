@@ -2,10 +2,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 labels:
-  - pairs:
-      app.kubernetes.io/version: "2023.9.2"
-    includeTemplates: true
-    includeSelectors: false
+- pairs:
+    app.kubernetes.io/version: "2023.9.2"
+  includeTemplates: true
+  includeSelectors: false
 images:
 - name: homeassistant/home-assistant
   newTag: "2024.11.1"
@@ -20,6 +20,6 @@ resources:
 - networkpolicy.yaml
 patches: []
 configMapGenerator:
-  - name: homeassistant-docker-venv
-    files:
-      - "venv-run"
+- name: homeassistant-docker-venv
+  files:
+  - "venv-run"

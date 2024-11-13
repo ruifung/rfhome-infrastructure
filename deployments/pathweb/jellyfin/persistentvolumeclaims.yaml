@@ -10,7 +10,7 @@ spec:
   volumeMode: Filesystem
   storageClassName: cephfs
   accessModes:
-    - ReadWriteMany
+  - ReadWriteMany
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -23,4 +23,4 @@ spec:
   volumeMode: Filesystem
   storageClassName: cephfs-retain
   accessModes:
-    - ReadWriteMany
+  - ReadWriteMany

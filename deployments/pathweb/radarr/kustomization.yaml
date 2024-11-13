@@ -1,16 +1,15 @@
+---
 images:
-  - name: linuxserver/radarr
-    newName: lscr.io/linuxserver/radarr
-    newTag: version-5.14.0.9383
-
+- name: linuxserver/radarr
+  newName: lscr.io/linuxserver/radarr
+  newTag: version-5.14.0.9383
 labels:
-  - pairs:
-      "app.kubernetes.io/name": radarr
-    includeTemplates: true
-    includeSelectors: true
-
+- pairs:
+    "app.kubernetes.io/name": radarr
+  includeTemplates: true
+  includeSelectors: true
 resources:
-  - statefulset.yaml
-  - service.yaml
-  - ingress.yaml
-  - ciliumnetworkpolicy.yaml
+- statefulset.yaml
+- service.yaml
+- ingress.yaml
+- ciliumnetworkpolicy.yaml

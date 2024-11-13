@@ -18,7 +18,7 @@ spec:
     name: rfhome-infrastructure
   targetNamespace: tailscale
   healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: tailscale-operator
-      namespace: tailscale
+  - apiVersion: helm.toolkit.fluxcd.io/v2
+    kind: HelmRelease
+    name: tailscale-operator
+    namespace: tailscale

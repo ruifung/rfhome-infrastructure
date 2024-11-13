@@ -25,6 +25,7 @@ spec:
       - operator: Exists
         effect: NoSchedule
       # serviceAccountName: dhcp
+
       initContainers:
       - name: clean-up
         image: busybox
@@ -38,6 +39,7 @@ spec:
       containers:
       - name: kube-dhcp
         # Based on: https://github.com/k8snetworkplumbingwg/reference-deployment/blob/master/multus-dhcp/Dockerfile
+
         image: quay.io/aneeshkp/cni-dhcp-daemon:latest
         resources:
           requests:
@@ -57,12 +59,12 @@ spec:
           mountPath: /host/var/run/netns
           mountPropagation: HostToContainer
       volumes:
-        - name: socketpath
-          hostPath:
-            path: /run/cni
-        - name: procpath
-          hostPath:
-            path: /proc
-        - name: netnspath
-          hostPath:
-            path: /var/run/netns
+      - name: socketpath
+        hostPath:
+          path: /run/cni
+      - name: procpath
+        hostPath:
+          path: /proc
+      - name: netnspath
+        hostPath:
+          path: /var/run/netns

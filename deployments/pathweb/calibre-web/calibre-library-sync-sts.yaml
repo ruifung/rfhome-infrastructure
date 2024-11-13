@@ -21,6 +21,7 @@ spec:
       nodeSelector:
         node-group: baldric
       # runtimeClassName: gvisor
+
       priorityClassName: rfhome-low-priority
       terminationGracePeriodSeconds: 10
       securityContext:
@@ -29,21 +30,22 @@ spec:
       - name: onedrive
         image: driveone/onedrive:debian
         args:
-          - --monitor
-          - --confdir
-          - /onedrive/conf
-          - --single-directory
-          - "Calibre Library"
-          - --display-running-config
-          # - --auth-files
-          # - /onedrive/conf/authUrl:/onedrive/conf/authResponse
-          - --resync
-          - --resync-auth
+        - --monitor
+        - --confdir
+        - /onedrive/conf
+        - --single-directory
+        - "Calibre Library"
+        - --display-running-config
+        # - --auth-files
+
+        # - /onedrive/conf/authUrl:/onedrive/conf/authResponse
+        - --resync
+        - --resync-auth
         env:
-          - name: ONEDRIVE_UID
-            value: "1000"
-          - name: ONEDRIVE_GID
-            value: "1000"
+        - name: ONEDRIVE_UID
+          value: "1000"
+        - name: ONEDRIVE_GID
+          value: "1000"
         volumeMounts:
         # - name: onedrive-temp
         #   mountPath: /onedrive/data
@@ -65,22 +67,22 @@ spec:
             cpu: 350m
             memory: 214M
       volumes:
-        # - name: calibre-library
-        #   persistentVolumeClaim:
-        #     claimName: calibre-library
-        # - name: onedrive-temp
-        #   emptyDir: {}
-        - name: onedrive-config
-          configMap:
-            name: calibre-library-sync-config
-        - name: okinawa-media
-          persistentVolumeClaim:
-            claimName: okinawa-media-smb
+      # - name: calibre-library
+      #   persistentVolumeClaim:
+      #     claimName: calibre-library
+      # - name: onedrive-temp
+      #   emptyDir: {}
+      - name: onedrive-config
+        configMap:
+          name: calibre-library-sync-config
+      - name: okinawa-media
+        persistentVolumeClaim:
+          claimName: okinawa-media-smb
   volumeClaimTemplates:
   - metadata:
       name: data
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: ["ReadWriteOnce"]
       storageClassName: "ceph-rbd"
       resources:
         requests:

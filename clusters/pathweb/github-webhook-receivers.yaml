@@ -7,17 +7,17 @@ metadata:
 spec:
   type: github
   events:
-    - "ping"
-    - "push"
+  - "ping"
+  - "push"
   secretRef:
     name: receiver-token
   resources:
-    - apiVersion: source.toolkit.fluxcd.io/v1
-      kind: GitRepository
-      name: flux-system
-    - apiVersion: source.toolkit.fluxcd.io/v1
-      kind: GitRepository
-      name: rfhome-infrastructure
+  - apiVersion: source.toolkit.fluxcd.io/v1
+    kind: GitRepository
+    name: flux-system
+  - apiVersion: source.toolkit.fluxcd.io/v1
+    kind: GitRepository
+    name: rfhome-infrastructure
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1
 kind: Receiver
@@ -27,11 +27,11 @@ metadata:
 spec:
   type: github
   events:
-    - "ping"
-    - "push"
+  - "ping"
+  - "push"
   secretRef:
     name: receiver-token
   resources:
-    - apiVersion: source.toolkit.fluxcd.io/v1
-      kind: GitRepository
-      name: rfhome-infrastructure-private
+  - apiVersion: source.toolkit.fluxcd.io/v1
+    kind: GitRepository
+    name: rfhome-infrastructure-private

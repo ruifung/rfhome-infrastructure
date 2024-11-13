@@ -1,7 +1,8 @@
+---
 machine:
   network:
     hostname: pathweb-control-2
   certSANs:
-    - controlplane.pathweb.clusters.home.yrf.me
-    - pathweb-control-2.servers.home.yrf.me
-    - 2.controlplane.pathweb.clusters.home.yrf.me
+  - controlplane.pathweb.clusters.home.yrf.me
+  - pathweb-control-2.servers.home.yrf.me
+  - 2.controlplane.pathweb.clusters.home.yrf.me

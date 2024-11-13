@@ -1,9 +1,10 @@
+---
 images:
-  - name: plexinc/pms-docker
-    newTag: 1.41.1.9057-af5eaea7a
+- name: plexinc/pms-docker
+  newTag: 1.41.1.9057-af5eaea7a
 resources:
-  - statefulset.yaml
-  - service.yaml
-  - ciliumnetworkpolicy.yaml
-  - ingress.yaml
-  - serverstransport.yaml
+- statefulset.yaml
+- service.yaml
+- ciliumnetworkpolicy.yaml
+- ingress.yaml
+- serverstransport.yaml

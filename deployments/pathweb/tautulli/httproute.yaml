@@ -8,30 +8,30 @@ metadata:
     external-dns: local-pdns
 spec:
   parentRefs:
-    - name: rfhome-services-gateway
-      namespace: home-network
-      sectionName: https
-      kind: Gateway
+  - name: rfhome-services-gateway
+    namespace: home-network
+    sectionName: https
+    kind: Gateway
   hostnames:
-    - tautulli.services.home.yrf.me
+  - tautulli.services.home.yrf.me
   rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      filters:
-        - type: ExtensionRef
-          extensionRef:
-            group: traefik.io
-            kind: Middleware
-            name: ak-outpost-authentik-embedded-outpost
-      backendRefs:
-        - name: tautulli-headless
-          port: 8181
-    - matches:
-      - path:
-          type: PathPrefix
-          value: /images/
-      backendRefs:
-      - name: tautulli-headless
-        port: 8181
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    filters:
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: ak-outpost-authentik-embedded-outpost
+    backendRefs:
+    - name: tautulli-headless
+      port: 8181
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /images/
+    backendRefs:
+    - name: tautulli-headless
+      port: 8181

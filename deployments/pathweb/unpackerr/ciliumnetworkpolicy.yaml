@@ -1,3 +1,4 @@
+---
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
@@ -9,28 +10,28 @@ spec:
       app.kubernetes.io/name: unpackerr
   ingress: []
   egress:
-    - toEndpoints:
-        - matchExpressions:
-            - key: "k8s:app.kubernetes.io/name"
-              operator: In
-              values:
-              - sonarr
-              - radarr
-              - lidarr
-              - readarr
-    - toEndpoints:
-        - matchLabels:
-            "k8s:io.kubernetes.pod.namespace": kube-system
-          matchExpressions:
-            - key: "k8s:k8s-app"
-              operator: In
-              values:
-              - kube-dns
-              - node-local-dns
-      toPorts:
-        - ports:
-            - port: "53"
-              protocol: UDP
-          rules:
-            dns:
-              - matchPattern: "*"
+  - toEndpoints:
+    - matchExpressions:
+      - key: "k8s:app.kubernetes.io/name"
+        operator: In
+        values:
+        - sonarr
+        - radarr
+        - lidarr
+        - readarr
+  - toEndpoints:
+    - matchLabels:
+        "k8s:io.kubernetes.pod.namespace": kube-system
+      matchExpressions:
+      - key: "k8s:k8s-app"
+        operator: In
+        values:
+        - kube-dns
+        - node-local-dns
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: UDP
+      rules:
+        dns:
+        - matchPattern: "*"

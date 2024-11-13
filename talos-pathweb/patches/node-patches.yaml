@@ -1,8 +1,9 @@
+---
 machine:
   acceptedCAs: []
   install:
     extraKernelArgs:
-      - net.ifnames=0
+    - net.ifnames=0
   nodeLabels:
     location: rfhome
     type: proxmox-x64
@@ -13,8 +14,8 @@ machine:
   kubelet:
     nodeIP:
       validSubnets:
-        - 10.229.97.0/24
-        - fd96:619:803e:6100::/64
+      - 10.229.97.0/24
+      - fd96:619:803e:6100::/64
     extraArgs:
       rotate-server-certificates: true
   features:
@@ -31,54 +32,54 @@ machine:
       docker.io:
         overridePath: true
         endpoints:
-          - https://harbor.services.home.yrf.me/v2/dockerhub/
-          - https://registry.hub.docker.com/v2/
+        - https://harbor.services.home.yrf.me/v2/dockerhub/
+        - https://registry.hub.docker.com/v2/
       gcr.io:
         overridePath: true
         endpoints:
-          - https://harbor.services.home.yrf.me/v2/gcr/
-          - https://gcr.io/v2/
+        - https://harbor.services.home.yrf.me/v2/gcr/
+        - https://gcr.io/v2/
       ghcr.io:
         overridePath: true
         endpoints:
-          - https://harbor.services.home.yrf.me/v2/ghcr/
-          - https://ghcr.io/v2/
+        - https://harbor.services.home.yrf.me/v2/ghcr/
+        - https://ghcr.io/v2/
       k8s.gcr.io:
         overridePath: true
         endpoints:
-          - https://harbor.services.home.yrf.me/v2/k8s/
-          - https://registry.k8s.io/v2/
+        - https://harbor.services.home.yrf.me/v2/k8s/
+        - https://registry.k8s.io/v2/
       registry.k8s.io:
         overridePath: true
         endpoints:
-          - https://harbor.services.home.yrf.me/v2/k8s/
-          - https://registry.k8s.io/v2/
+        - https://harbor.services.home.yrf.me/v2/k8s/
+        - https://registry.k8s.io/v2/
       lscr.io:
         overridePath: true
         endpoints:
-          - https://harbor.services.home.yrf.me/v2/lscr/
-          - https://lscr.io/v2/
+        - https://harbor.services.home.yrf.me/v2/lscr/
+        - https://lscr.io/v2/
       quay.io:
         overridePath: true
         endpoints:
-          - https://harbor.services.home.yrf.me/v2/quayio/
-          - https://quay.io/v2/
+        - https://harbor.services.home.yrf.me/v2/quayio/
+        - https://quay.io/v2/
       registry.developers.crunchydata.com:
         overridePath: true
         endpoints:
-          - https://harbor.services.home.yrf.me/v2/crunchydata/
-          - https://registry.developers.crunchydata.com/v2/
+        - https://harbor.services.home.yrf.me/v2/crunchydata/
+        - https://registry.developers.crunchydata.com/v2/
       factory.talos.dev:
         overridePath: true
         endpoints:
-          - https://harbor.services.home.yrf.me/v2/talos-image-factory/
-          - https://factory.talos.dev/v2/
+        - https://harbor.services.home.yrf.me/v2/talos-image-factory/
+        - https://factory.talos.dev/v2/
   files:
-    - path: /etc/cri/conf.d/20-customization.part
-      op: create
-      content: |
-        [plugins."io.containerd.cri.v1.runtime".containerd]
-          default_runtime_name = "crun"
+  - path: /etc/cri/conf.d/20-customization.part
+    op: create
+    content: |
+      [plugins."io.containerd.cri.v1.runtime".containerd]
+        default_runtime_name = "crun"
 cluster:
   discovery:
     enabled: true
@@ -88,10 +89,10 @@ cluster:
     cni:
       name: none
     podSubnets:
-      - 10.96.0.0/16
-      - fd96:619:6b75:0110::/56
+    - 10.96.0.0/16
+    - fd96:619:6b75:0110::/56
     serviceSubnets:
-      - 10.97.0.0/16
-      - fd96:619:6b75:0120::/112
+    - 10.97.0.0/16
+    - fd96:619:6b75:0120::/112
   proxy:
     disabled: true

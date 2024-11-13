@@ -1,16 +1,15 @@
+---
 images:
-  - name: linuxserver/prowlarr
-    newName: lscr.io/linuxserver/prowlarr
-    newTag: version-1.25.4.4818
-
+- name: linuxserver/prowlarr
+  newName: lscr.io/linuxserver/prowlarr
+  newTag: version-1.25.4.4818
 labels:
-  - pairs:
-      "app.kubernetes.io/name": prowlarr
-    includeTemplates: true
-    includeSelectors: true
-
+- pairs:
+    "app.kubernetes.io/name": prowlarr
+  includeTemplates: true
+  includeSelectors: true
 resources:
-  - statefulset.yaml
-  - service.yaml
-  - ingress.yaml
-  - ciliumnetworkpolicy.yaml
+- statefulset.yaml
+- service.yaml
+- ingress.yaml
+- ciliumnetworkpolicy.yaml

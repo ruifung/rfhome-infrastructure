@@ -33,6 +33,6 @@ spec:
             port:
               name: traefik
   tls:
-    - hosts:
-        - "*.pathweb.clusters.home.yrf.me"
-      secretName: pathweb-wildcard-cert
+  - hosts:
+    - "*.pathweb.clusters.home.yrf.me"
+    secretName: pathweb-wildcard-cert

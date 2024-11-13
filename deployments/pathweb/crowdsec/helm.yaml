@@ -29,28 +29,29 @@ spec:
   install:
     createNamespace: true
   postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              group: cert-manager.io
-              version: v1
-              kind: Certificate
-              name: crowdsec-bouncer
-            patch: |-
-              apiVersion: cert-manager.io/v1
-              kind: Certificate
-              metadata:
-                name: crowdsec-bouncer
-              spec:
-                secretTemplate:
-                  annotations:
-                      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
-                      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "traefik"
-                      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
-                      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "traefik"
+  - kustomize:
+      patches:
+      - target:
+          group: cert-manager.io
+          version: v1
+          kind: Certificate
+          name: crowdsec-bouncer
+        patch: |-
+          apiVersion: cert-manager.io/v1
+          kind: Certificate
+          metadata:
+            name: crowdsec-bouncer
+          spec:
+            secretTemplate:
+              annotations:
+                  reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+                  reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "traefik"
+                  reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+                  reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "traefik"
   values:
     container_runtime: containerd
     # image:
+
     #   tag: v1.5.2
     agent:
       priorityClassName: system-node-critical
@@ -63,42 +64,44 @@ spec:
         cpu: 150m
         memory: 305M
       # To specify each pod you want to process it logs (pods present in the node)
+
       acquisition:
-        # The namespace where the pod is located
-        - namespace: traefik
-          podName: traefik-*
-          program: traefik
-          poll_without_inotify: true
-        - namespace: home-network
-          podName: home-assistant-*
-          program: home-assistant
-          poll_without_inotify: true
-        - namespace: home-network
-          podName: nextcloud-*
-          program: nginx
-          poll_without_inotify: true
-        - namespace: home-network
-          podName: nextcloud-*
-          program: Nextcloud
-          poll_without_inotify: true
-        - namespace: home-network
-          podName: authentik-*
-          program: authentik
-          poll_without_inotify: true
-        - namespace: home-network
-          podName: vaultwarden-*
-          program: Vaultwarden
-          poll_without_inotify: true
+      # The namespace where the pod is located
+      - namespace: traefik
+        podName: traefik-*
+        program: traefik
+        poll_without_inotify: true
+      - namespace: home-network
+        podName: home-assistant-*
+        program: home-assistant
+        poll_without_inotify: true
+      - namespace: home-network
+        podName: nextcloud-*
+        program: nginx
+        poll_without_inotify: true
+      - namespace: home-network
+        podName: nextcloud-*
+        program: Nextcloud
+        poll_without_inotify: true
+      - namespace: home-network
+        podName: authentik-*
+        program: authentik
+        poll_without_inotify: true
+      - namespace: home-network
+        podName: vaultwarden-*
+        program: Vaultwarden
+        poll_without_inotify: true
       # Those are ENV variables
+
       env:
-        # As we are running Nginx, we want to install the Nginx collection
-        - name: COLLECTIONS
-          value: "crowdsecurity/traefik crowdsecurity/home-assistant crowdsecurity/nextcloud crowdsecurity/nginx firix/authentik Dominic-Wagner/vaultwarden"
-        - name: PARSERS
-          value: "crowdsecurity/cri-logs"
+      # As we are running Nginx, we want to install the Nginx collection
+      - name: COLLECTIONS
+        value: "crowdsecurity/traefik crowdsecurity/home-assistant crowdsecurity/nextcloud crowdsecurity/nginx firix/authentik Dominic-Wagner/vaultwarden"
+      - name: PARSERS
+        value: "crowdsecurity/cri-logs"
       tolerations:
-        - key: type
-          operator: Exists
+      - key: type
+        operator: Exists
       metrics:
         enabled: true
         serviceMonitor:
@@ -134,14 +137,14 @@ spec:
       strategy:
         type: Recreate
       env:
-        - name: BOUNCERS_ALLOWED_OU
-          value: "bouncer-ou"
-        - name: AGENTS_ALLOWED_OU
-          value: "agent-ou"
-        - name: "bouncers_allowed_yaml"
-          value: '["bouncer-ou"]'
-        - name: "agents_allowed_yaml"
-          value: '["agent-ou"]'
+      - name: BOUNCERS_ALLOWED_OU
+        value: "bouncer-ou"
+      - name: AGENTS_ALLOWED_OU
+        value: "agent-ou"
+      - name: "bouncers_allowed_yaml"
+        value: '["bouncer-ou"]'
+      - name: "agents_allowed_yaml"
+        value: '["agent-ou"]'
       metrics:
         enabled: true
         serviceMonitor:

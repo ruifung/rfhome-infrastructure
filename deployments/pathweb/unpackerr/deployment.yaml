@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,6 +21,7 @@ spec:
       nodeSelector:
         node-group: baldric
       # runtimeClassName: gvisor
+
       containers:
       - name: unpackerr
         image: hotio/unpackerr:latest

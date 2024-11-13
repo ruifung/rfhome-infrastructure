@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -8,11 +9,12 @@ spec:
     type: Recreate
   template:
     # metadata:
-      # annotations:
-        # k8s.v1.cni.cncf.io/networks: home-network/esphome-iot-network
+    # annotations:
+    # k8s.v1.cni.cncf.io/networks: home-network/esphome-iot-network
     spec:
       priorityClassName: rfhome-low-priority
       # runtimeClassName: gvisor
+
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
@@ -24,21 +26,21 @@ spec:
       - name: esphome
         image: esphome/esphome
         args:
-          - "dashboard"
-          - "/config"
-          - "--address"
-          - "$(POD_IP)"
-          - "--port"
-          - "6052"
+        - "dashboard"
+        - "/config"
+        - "--address"
+        - "$(POD_IP)"
+        - "--port"
+        - "6052"
         env:
-          - name: TZ
-            value: Asia/Kuala_Lumpur
-          - name: ESPHOME_DASHBOARD_USE_PING
-            value: "true"
-          - name: POD_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
+        - name: TZ
+          value: Asia/Kuala_Lumpur
+        - name: ESPHOME_DASHBOARD_USE_PING
+          value: "true"
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         resources:
           requests:
             cpu: 15m
@@ -50,17 +52,17 @@ spec:
         - containerPort: 6052
           name: http
         volumeMounts:
-          - mountPath: /config
-            name: data
-          - mountPath: /.platformio
-            name: temp
-            subPath: .platformio
-          - mountPath: /piolibs
-            name: temp
-            subPath: piolibs
+        - mountPath: /config
+          name: data
+        - mountPath: /.platformio
+          name: temp
+          subPath: .platformio
+        - mountPath: /piolibs
+          name: temp
+          subPath: piolibs
       volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: esphome-data
-        - name: temp
-          emptyDir: {}
+      - name: data
+        persistentVolumeClaim:
+          claimName: esphome-data
+      - name: temp
+        emptyDir: {}

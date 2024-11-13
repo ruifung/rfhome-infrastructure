@@ -7,7 +7,7 @@ metadata:
     kubernetes.io/ingress.class: traefik-traefik
 spec:
   entryPoints:
-    - websecure
+  - websecure
   routes:
   # - kind: Rule
   #   match: Host(`hass.services.home.yrf.me`) && PathPrefix(`/outpost.goauthentik.io`)
@@ -29,8 +29,8 @@ spec:
     match: Host(`hass.services.home.yrf.me`) && PathPrefix(`/auth`) && !Path(`/auth/token`)
     priority: 100
     middlewares:
-      - name: ak-outpost-authentik-embedded-outpost
+    - name: ak-outpost-authentik-embedded-outpost
     services:
-      - kind: Service
-        name: home-assistant
-        port: http
+    - kind: Service
+      name: home-assistant
+      port: http

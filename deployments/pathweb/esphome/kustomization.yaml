@@ -1,13 +1,12 @@
+---
 images:
-  - name: esphome/esphome
-    newTag: 2024.10.3
-
+- name: esphome/esphome
+  newTag: 2024.10.3
 resources:
-  - deployment.yaml
-  - pvc.yaml
-  - service.yaml
-  - ingress.yaml
-  - networkattachmentdefinition.yaml
-
+- deployment.yaml
+- pvc.yaml
+- service.yaml
+- ingress.yaml
+- networkattachmentdefinition.yaml
 commonLabels:
   app.kubernetes.io/name: esphome

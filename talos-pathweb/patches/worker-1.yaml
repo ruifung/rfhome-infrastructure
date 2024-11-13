@@ -1,9 +1,10 @@
+---
 machine:
   nodeLabels:
     location: rfhome
     node-group: voyager
   certSANs:
-    - pathweb-worker-1.servers.home.yrf.me
-    - 1.workers.pathweb.clusters.home.yrf.me
+  - pathweb-worker-1.servers.home.yrf.me
+  - 1.workers.pathweb.clusters.home.yrf.me
   network:
     hostname: pathweb-worker-1

@@ -7,12 +7,12 @@ metadata:
     advertise: rfhome-bgp
 spec:
   advertisements:
-    - advertisementType: "Service"
-      service:
-        addresses:
-        - LoadBalancerIP
-      selector:
-        matchExpressions:
-          - {key: "lb-location", operator: "In", values: ["rfhome"]}
-      attributes:
-        localPreference: 99
+  - advertisementType: "Service"
+    service:
+      addresses:
+      - LoadBalancerIP
+    selector:
+      matchExpressions:
+      - {key: "lb-location", operator: "In", values: ["rfhome"]}
+    attributes:
+      localPreference: 99

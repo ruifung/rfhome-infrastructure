@@ -8,22 +8,22 @@ spec:
   providerRef:
     name: github-status
   eventSources:
-    - kind: GitRepository
-      name: 'flux-system'
-      namespace: 'flux-system'
-    - kind: GitRepository
-      name: 'rfhome-infrastructure'
-      namespace: 'flux-system'
-    - kind: Kustomization
-      name: '*'
-      matchLabels:
-        kustomize.toolkit.fluxcd.io/name: 'rfhome-infrastructure-index'
-        kustomize.toolkit.fluxcd.io/namespace: 'flux-system'
+  - kind: GitRepository
+    name: 'flux-system'
+    namespace: 'flux-system'
+  - kind: GitRepository
+    name: 'rfhome-infrastructure'
+    namespace: 'flux-system'
+  - kind: Kustomization
+    name: '*'
+    matchLabels:
+      kustomize.toolkit.fluxcd.io/name: 'rfhome-infrastructure-index'
+      kustomize.toolkit.fluxcd.io/namespace: 'flux-system'
   exclusionList:
-    - "etcdserver: request timed out.*"
-    - "etcdserver: leader changed.*"
-    - "read tcp 10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}->10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}: read: connection reset by peer"
-    - "InternalError: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\".*"
+  - "etcdserver: request timed out.*"
+  - "etcdserver: leader changed.*"
+  - "read tcp 10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}->10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}: read: connection reset by peer"
+  - "InternalError: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\".*"
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
@@ -34,19 +34,19 @@ spec:
   providerRef:
     name: github-status-private
   eventSources:
-    - kind: GitRepository
-      name: 'rfhome-infrastructure-private'
-      namespace: 'flux-system'
-    - kind: Kustomization
-      name: '*'
-      matchLabels:
-        kustomize.toolkit.fluxcd.io/name: 'rfhome-infrastructure-private-index'
-        kustomize.toolkit.fluxcd.io/namespace: 'flux-system'
+  - kind: GitRepository
+    name: 'rfhome-infrastructure-private'
+    namespace: 'flux-system'
+  - kind: Kustomization
+    name: '*'
+    matchLabels:
+      kustomize.toolkit.fluxcd.io/name: 'rfhome-infrastructure-private-index'
+      kustomize.toolkit.fluxcd.io/namespace: 'flux-system'
   exclusionList:
-    - "etcdserver: request timed out.*"
-    - "etcdserver: leader changed.*"
-    - "read tcp 10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}->10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}: read: connection reset by peer"
-    - "InternalError: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\".*"
+  - "etcdserver: request timed out.*"
+  - "etcdserver: leader changed.*"
+  - "read tcp 10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}->10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}: read: connection reset by peer"
+  - "InternalError: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\".*"
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
@@ -59,14 +59,14 @@ spec:
     name: rfhome-infrastructure-telegram
   eventSeverity: error
   eventSources:
-    - kind: GitRepository
-      name: '*'
-    - kind: Kustomization
-      name: '*'
-    - kind: HelmRelease
-      name: '*'
+  - kind: GitRepository
+    name: '*'
+  - kind: Kustomization
+    name: '*'
+  - kind: HelmRelease
+    name: '*'
   exclusionList:
-    - "etcdserver: request timed out.*"
-    - "etcdserver: leader changed.*"
-    - "read tcp 10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}->10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}: read: connection reset by peer"
-    - "InternalError: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\".*"
+  - "etcdserver: request timed out.*"
+  - "etcdserver: leader changed.*"
+  - "read tcp 10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}->10\\.(?:\\d{1,3}\\.?){3}:\\d{1,5}: read: connection reset by peer"
+  - "InternalError: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\".*"

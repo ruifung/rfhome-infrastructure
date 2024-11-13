@@ -1,6 +1,7 @@
+---
 machine:
   certSANs:
-    - pathweb-worker-pi4-01.servers.home.yrf.me
-    - pi4-01.workers.pathweb.clusters.home.yrf.me
+  - pathweb-worker-pi4-01.servers.home.yrf.me
+  - pi4-01.workers.pathweb.clusters.home.yrf.me
   network:
     hostname: pathweb-worker-pi4-01

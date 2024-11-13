@@ -14,7 +14,7 @@ spec:
     namespace: flux-system
   targetNamespace: monitoring
   healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: crowdsec
-      namespace: monitoring
+  - apiVersion: helm.toolkit.fluxcd.io/v2
+    kind: HelmRelease
+    name: crowdsec
+    namespace: monitoring

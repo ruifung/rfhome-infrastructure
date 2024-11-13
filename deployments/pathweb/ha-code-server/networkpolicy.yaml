@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -8,36 +9,36 @@ spec:
     matchLabels:
       app.kubernetes.io/name: ha-code-server
   policyTypes:
-    - Ingress
-    - Egress
+  - Ingress
+  - Egress
   ingress:
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: traefik
-      ports:
-        - port: 8443
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: traefik
+    ports:
+    - port: 8443
   egress:
-    - to:
-        - ipBlock:
-            cidr: 0.0.0.0/0
-        - ipBlock:
-            cidr: ::/0
-    - to:
-        - namespaceSelector: {}
-          podSelector:
-            matchLabels:
-              k8s-app: kube-dns
-        - namespaceSelector: {}
-          podSelector:
-            matchLabels:
-              k8s-app: node-local-dns
-      ports:
-        - port: 53
-          protocol: UDP
-    - to:
-        - podSelector:
-            matchLabels:
-              app.kubernetes.io/name: home-assistant
-      ports:
-        - port: 8123
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+    - ipBlock:
+        cidr: ::/0
+  - to:
+    - namespaceSelector: {}
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    - namespaceSelector: {}
+      podSelector:
+        matchLabels:
+          k8s-app: node-local-dns
+    ports:
+    - port: 53
+      protocol: UDP
+  - to:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: home-assistant
+    ports:
+    - port: 8123

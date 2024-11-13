@@ -7,7 +7,6 @@ metadata:
 spec:
   interval: 15m
   url: https://firefly-iii.github.io/kubernetes/
-
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -26,26 +25,26 @@ spec:
         name: firefly-iii
   interval: 15m
   postRenderers:
-    - kustomize:
-        patches:
-          # - patch: |
-          #     - op: "add"
-          #       path: "/spec/template/spec/runtimeClassName"
-          #       value: "gvisor"
-          #   target:
-          #     kind: Deployment
-          # - patch: |
-          #     - op: "add"
-          #       path: "/spec/jobTemplate/spec/template/spec/runtimeClassName"
-          #       value: "gvisor"
-          #   target:
-          #     kind: CronJob
-          - patch: |
-              - op: "add"
-                path: "/metadata/labels/external-dns"
-                value: "local-pdns"
-            target:
-              kind: Ingress
+  - kustomize:
+      patches:
+      # - patch: |
+      #     - op: "add"
+      #       path: "/spec/template/spec/runtimeClassName"
+      #       value: "gvisor"
+      #   target:
+      #     kind: Deployment
+      # - patch: |
+      #     - op: "add"
+      #       path: "/spec/jobTemplate/spec/template/spec/runtimeClassName"
+      #       value: "gvisor"
+      #   target:
+      #     kind: CronJob
+      - patch: |
+          - op: "add"
+            path: "/metadata/labels/external-dns"
+            value: "local-pdns"
+        target:
+          kind: Ingress
   values:
     image:
       repository: fireflyiii/core
@@ -89,6 +88,7 @@ spec:
       auth:
         existingSecret: firefly-iii-cronjob
     # securityContext:
+
     #   capabilities:
     #     drop:
     #     - ALL

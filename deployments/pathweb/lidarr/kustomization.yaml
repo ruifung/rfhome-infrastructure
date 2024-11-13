@@ -1,16 +1,15 @@
+---
 images:
-  - name: linuxserver/lidarr
-    newName: lscr.io/linuxserver/lidarr
-    newTag: version-2.7.1.4417
-
+- name: linuxserver/lidarr
+  newName: lscr.io/linuxserver/lidarr
+  newTag: version-2.7.1.4417
 labels:
-  - pairs:
-      "app.kubernetes.io/name": lidarr
-    includeTemplates: true
-    includeSelectors: true
-
+- pairs:
+    "app.kubernetes.io/name": lidarr
+  includeTemplates: true
+  includeSelectors: true
 resources:
-  - statefulset.yaml
-  - service.yaml
-  - ingress.yaml
-  - ciliumnetworkpolicy.yaml
+- statefulset.yaml
+- service.yaml
+- ingress.yaml
+- ciliumnetworkpolicy.yaml

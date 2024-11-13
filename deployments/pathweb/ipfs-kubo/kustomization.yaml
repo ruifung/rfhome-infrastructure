@@ -1,15 +1,14 @@
+---
 images:
-  - name: ipfs/kubo
-    newTag: v0.31.0
-
+- name: ipfs/kubo
+  newTag: v0.31.0
 labels:
-  - pairs:
-      "app.kubernetes.io/name": ipfs-kubo
-    includeTemplates: true
-    includeSelectors: true
-
+- pairs:
+    "app.kubernetes.io/name": ipfs-kubo
+  includeTemplates: true
+  includeSelectors: true
 resources:
-  - statefulset.yaml
-  - service.yaml
-  - ingress.yaml
-  - ciliumnetworkpolicy.yaml
+- statefulset.yaml
+- service.yaml
+- ingress.yaml
+- ciliumnetworkpolicy.yaml

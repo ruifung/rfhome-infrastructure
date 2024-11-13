@@ -1,17 +1,17 @@
+---
 images:
-  - name: linuxserver/tautulli
-    newName: lscr.io/linuxserver/tautulli
-    newTag: version-v2.14.6
-
+- name: linuxserver/tautulli
+  newName: lscr.io/linuxserver/tautulli
+  newTag: version-v2.14.6
 labels:
-  - pairs:
-      "app.kubernetes.io/name": tautulli
-    includeTemplates: true
-    includeSelectors: true
-
+- pairs:
+    "app.kubernetes.io/name": tautulli
+  includeTemplates: true
+  includeSelectors: true
 resources:
-  - statefulset.yaml
-  - service.yaml
-  # - ingress.yaml
-  - httproute.yaml
-  - ciliumnetworkpolicy.yaml
+- statefulset.yaml
+- service.yaml
+# - ingress.yaml
+
+- httproute.yaml
+- ciliumnetworkpolicy.yaml

@@ -1,2 +1,3 @@
+---
 - op: remove
   path: "/machine/sysctls/net.ipv6.conf.br0.accept_ra"

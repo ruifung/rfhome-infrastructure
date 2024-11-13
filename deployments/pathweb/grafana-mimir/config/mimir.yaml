@@ -1,11 +1,12 @@
+---
 # Do not use this configuration in production.
 # It is for demonstration purposes only.
 # Run Mimir in single process mode, with all components running in 1 process.
 target: all,alertmanager
 multitenancy_enabled: false
 no_auth_tenant: ${MIMIR_DEFAULT_TENANT}
-
 # Configure Mimir to use Minio as object storage backend.
+
 common:
   storage:
     backend: s3
@@ -14,8 +15,8 @@ common:
       region: ${MIMIR_S3_REGION}
       access_key_id: ${MIMIR_S3_ACCESS_KEY_ID}
       secret_access_key: ${MIMIR_S3_SECRET_ACCESS_KEY}
-
 # Blocks storage requires a prefix when using a common object storage bucket.
+
 blocks_storage:
   s3:
     bucket_name: ${MIMIR_S3_BLOCKS_BUCKET}
@@ -23,36 +24,29 @@ blocks_storage:
     dir: /data/tsdb
   bucket_store:
     sync_dir: /data/tsdb-sync
-
 alertmanager_storage:
   s3:
     bucket_name: ${MIMIR_S3_ALERTMANAGER_BUCKET}
-
 ruler_storage:
   s3:
     bucket_name: ${MIMIR_S3_RULER_BUCKET}
-
 # Use memberlist, a gossip-based protocol, to enable the 3 Mimir replicas to communicate
+
 memberlist:
   join_members: [mimir-memberlist]
-
 ruler:
   rule_path: /data/ruler
   alertmanager_url: http://127.0.0.1:8080/alertmanager
-
 alertmanager:
   data_dir: /data/alertmanager
   fallback_config_file: /config/alertmanager-fallback-config.yaml
   external_url: http://mimir-headless:8080/alertmanager
-
 server:
   log_level: info
   log_source_ips_enabled: true
   proxy_protocol_enabled: true
-
 usage_stats:
   enabled: false
-
 limits:
   max_global_series_per_user: 0
   ingestion_rate: 200000

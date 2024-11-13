@@ -8,9 +8,9 @@ spec:
   plugin:
     rewriteHeaders:
       rewrites:
-        - header: Location
-          regex: "^(?:https?://)?(.*)/login$"
-          replacement: "/outpost.goauthentik.io/sign_out"
+      - header: Location
+        regex: "^(?:https?://)?(.*)/login$"
+        replacement: "/outpost.goauthentik.io/sign_out"
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware

@@ -1,13 +1,12 @@
+---
 configurations:
-  - "kustomizeconfig.yaml"
-
+- "kustomizeconfig.yaml"
 resources:
-  - "helm.yaml"
-  - "okinawa-csi.sealed.yaml"
-
+- "helm.yaml"
+- "okinawa-csi.sealed.yaml"
 configMapGenerator:
-  - name: democratic-csi-okinawa-values
-    files:
-      - "democratic-csi-common-values.yaml"
-      - "okinawa-iscsi-values.yaml"
-      - "okinawa-nfs-values.yaml"
+- name: democratic-csi-okinawa-values
+  files:
+  - "democratic-csi-common-values.yaml"
+  - "okinawa-iscsi-values.yaml"
+  - "okinawa-nfs-values.yaml"

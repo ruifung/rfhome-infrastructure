@@ -1,5 +1,5 @@
-# https://github.com/kubernetes-csi/external-snapshotter
 ---
+# https://github.com/kubernetes-csi/external-snapshotter
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:

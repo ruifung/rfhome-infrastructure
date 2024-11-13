@@ -1,16 +1,15 @@
+---
 images:
-  - name: linuxserver/overseerr
-    newName: lscr.io/linuxserver/overseerr
-    newTag: version-v1.33.2
-
+- name: linuxserver/overseerr
+  newName: lscr.io/linuxserver/overseerr
+  newTag: version-v1.33.2
 labels:
-  - pairs:
-      "app.kubernetes.io/name": overseerr
-    includeTemplates: true
-    includeSelectors: true
-
+- pairs:
+    "app.kubernetes.io/name": overseerr
+  includeTemplates: true
+  includeSelectors: true
 resources:
-  - statefulset.yaml
-  - service.yaml
-  - ingress.yaml
-  - ciliumnetworkpolicy.yaml
+- statefulset.yaml
+- service.yaml
+- ingress.yaml
+- ciliumnetworkpolicy.yaml

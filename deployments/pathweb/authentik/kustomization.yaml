@@ -1,3 +1,4 @@
+---
 resources:
-  - "helm.yaml"
-  - "config.yaml"
+- "helm.yaml"
+- "config.yaml"

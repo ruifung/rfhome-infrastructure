@@ -1,22 +1,20 @@
+---
 images:
-  - name: cloudflare/cloudflared
-    newTag: 2024.11.0
-
+- name: cloudflare/cloudflared
+  newTag: 2024.11.0
 resources:
-  - "crds"
-  - "helm.yaml"
-  - "helm-external.yaml"
-  - "ciliumnetworkpolicy.yaml"
-  - "cloudflare-tunnel/deployment.yaml"
-  - "cloudflare-tunnel/tunnel-token.sealed.yaml"
-  - "dashboard/middlewares.yaml"
-  - "dashboard/services.yaml"
-  - "dashboard/ingresses.yaml"
-
+- "crds"
+- "helm.yaml"
+- "helm-external.yaml"
+- "ciliumnetworkpolicy.yaml"
+- "cloudflare-tunnel/deployment.yaml"
+- "cloudflare-tunnel/tunnel-token.sealed.yaml"
+- "dashboard/middlewares.yaml"
+- "dashboard/services.yaml"
+- "dashboard/ingresses.yaml"
 configurations:
-  - "kustomizeconfig.yaml"
-
+- "kustomizeconfig.yaml"
 configMapGenerator:
-  - name: traefik-configs
-    files:
-      - "config/crowdsec-bouncer.yaml"
+- name: traefik-configs
+  files:
+  - "config/crowdsec-bouncer.yaml"

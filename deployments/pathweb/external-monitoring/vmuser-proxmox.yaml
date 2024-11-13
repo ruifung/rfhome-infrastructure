@@ -1,3 +1,4 @@
+---
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMUser
 metadata:
@@ -9,9 +10,9 @@ spec:
     name: vmauth-proxmox-token
     key: token
   targetRefs:
-    - crd:
-        kind: VMAgent
-        name: vm-stack-victoria-metrics-k8s-stack
-        namespace: monitoring
-      paths:
-      - /api/v2/write
+  - crd:
+      kind: VMAgent
+      name: vm-stack-victoria-metrics-k8s-stack
+      namespace: monitoring
+    paths:
+    - /api/v2/write

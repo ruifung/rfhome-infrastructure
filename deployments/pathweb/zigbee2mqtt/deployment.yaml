@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,25 +15,25 @@ spec:
       nodeSelector:
         location: rfhome
       containers:
-        - name: zigbee2mqtt
-          image: koenkk/zigbee2mqtt:latest
-          env:
-            - name: TZ
-              value: Asia/Kuala_Lumpur
-          envFrom:
-            - prefix: "ZIGBEE2MQTT_CONFIG_"
-              configMapRef:
-                name: z2m-config
-            - prefix: "ZIGBEE2MQTT_CONFIG_"
-              secretRef:
-                name: z2m-secrets
-          ports:
-            - containerPort: 80
-              name: http
-          volumeMounts:
-            - name: data
-              mountPath: /app/data
-      volumes:
+      - name: zigbee2mqtt
+        image: koenkk/zigbee2mqtt:latest
+        env:
+        - name: TZ
+          value: Asia/Kuala_Lumpur
+        envFrom:
+        - prefix: "ZIGBEE2MQTT_CONFIG_"
+          configMapRef:
+            name: z2m-config
+        - prefix: "ZIGBEE2MQTT_CONFIG_"
+          secretRef:
+            name: z2m-secrets
+        ports:
+        - containerPort: 80
+          name: http
+        volumeMounts:
         - name: data
-          persistentVolumeClaim:
-            claimName: zigbee2mqtt-data
+          mountPath: /app/data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: zigbee2mqtt-data

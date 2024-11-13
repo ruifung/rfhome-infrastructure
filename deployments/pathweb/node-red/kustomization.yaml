@@ -2,33 +2,33 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - "https://github.com/ruifung/node-red-kustomize.git"
-  - "resources/envs.sealed.yaml"
+- "https://github.com/ruifung/node-red-kustomize.git"
+- "resources/envs.sealed.yaml"
 images:
-  - name: nodered/node-red
-    newTag: 4.0.5
+- name: nodered/node-red
+  newTag: 4.0.5
 configMapGenerator:
-  - name: node-red-env
-    literals:
-      - "TZ=Asia/Kuala_Lumpur"
-  - name: node-red-settings
-    files:
-      - "settings.js"
-      - "extra-npm-modules.sh"
-      - "extra-tools.sh"
+- name: node-red-env
+  literals:
+  - "TZ=Asia/Kuala_Lumpur"
+- name: node-red-settings
+  files:
+  - "settings.js"
+  - "extra-npm-modules.sh"
+  - "extra-tools.sh"
 patches:
-  - target:
-      kind: Ingress
-      name: node-red
-    path: "patches/ingress-host.json"
-  - target:
-      kind: StatefulSet
-      name: node-red
-    path: patches/statefulset.yaml
-  - target:
-      kind: Ingress
-      name: node-red
-    path: patches/ingress-local-dns.yaml
+- target:
+    kind: Ingress
+    name: node-red
+  path: "patches/ingress-host.json"
+- target:
+    kind: StatefulSet
+    name: node-red
+  path: patches/statefulset.yaml
+- target:
+    kind: Ingress
+    name: node-red
+  path: patches/ingress-local-dns.yaml
 commonLabels:
   app.kubernetes.io/instance: node-red
   app.kubernetes.io/name: node-red

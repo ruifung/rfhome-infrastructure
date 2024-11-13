@@ -30,8 +30,8 @@ spec:
       image: velero/velero-plugin-for-aws:v1.11.0
       imagePullPolicy: IfNotPresent
       volumeMounts:
-        - mountPath: /target
-          name: plugins
+      - mountPath: /target
+        name: plugins
     metrics:
       serviceMonitor:
         enabled: true
@@ -41,18 +41,18 @@ spec:
         enabled: true
     configuration:
       backupStorageLocation:
-        - name: okinawa-s3
-          provider: aws
-          bucket: rfhome-velero-backup
-          prefix: pathweb/
-          default: true
-          accessMode: ReadWrite
-          credential:
-            name: velero-okinawa-s3-credentials
-            key: credentials
-          config:
-            region: rfhome
-            s3Url: https://okinawa-s3.services.home.yrf.me:9000
+      - name: okinawa-s3
+        provider: aws
+        bucket: rfhome-velero-backup
+        prefix: pathweb/
+        default: true
+        accessMode: ReadWrite
+        credential:
+          name: velero-okinawa-s3-credentials
+          key: credentials
+        config:
+          region: rfhome
+          s3Url: https://okinawa-s3.services.home.yrf.me:9000
       volumeSnapshotLocation: []
       defaultSnapshotMoveData: true
       features: "EnableCSI"
@@ -62,22 +62,23 @@ spec:
     nodeAgent:
       priorityClassName: system-node-critical
     # schedules:
-    #   rfhome-backup:
-    #     disabled: false
-    #     labels:
-    #       velero-backup: rfhome-backup
-    #     annotations:
-    #       myenv: foo
-    #     schedule: "0 0 * * *"
-    #     useOwnerReferencesInBackup: false
-    #     paused: false
-    #     template:
-    #       ttl: "240h"
-    #       storageLocation: default
-    #       includedNamespaces:
-    #       - foo
-    #       # See: https://velero.io/docs/v1.14/resource-filtering/#excludes
-    #       excludedNamespaceScopedResources:
-    #       - persistentVolumeClaims
-    #       excludedClusterScopedResources:
-    #       - persistentVolumes
+
+#   rfhome-backup:
+#     disabled: false
+#     labels:
+#       velero-backup: rfhome-backup
+#     annotations:
+#       myenv: foo
+#     schedule: "0 0 * * *"
+#     useOwnerReferencesInBackup: false
+#     paused: false
+#     template:
+#       ttl: "240h"
+#       storageLocation: default
+#       includedNamespaces:
+#       - foo
+#       # See: https://velero.io/docs/v1.14/resource-filtering/#excludes
+#       excludedNamespaceScopedResources:
+#       - persistentVolumeClaims
+#       excludedClusterScopedResources:
+#       - persistentVolumes

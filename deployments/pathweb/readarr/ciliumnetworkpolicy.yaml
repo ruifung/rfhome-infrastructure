@@ -1,3 +1,4 @@
+---
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
@@ -8,60 +9,60 @@ spec:
     matchLabels:
       app.kubernetes.io/name: readarr
   ingress:
-    - fromEndpoints:
-        - matchLabels:
-            "k8s:io.kubernetes.pod.namespace": traefik
-        - matchExpressions:
-            - key: "k8s:app.kubernetes.io/name"
-              operator: In
-              values:
-              - prowlarr
-              - unpackerr
-      toPorts:
-        - ports:
-            - port: "8787"
+  - fromEndpoints:
+    - matchLabels:
+        "k8s:io.kubernetes.pod.namespace": traefik
+    - matchExpressions:
+      - key: "k8s:app.kubernetes.io/name"
+        operator: In
+        values:
+        - prowlarr
+        - unpackerr
+    toPorts:
+    - ports:
+      - port: "8787"
   egress:
-    - toEndpoints:
-        - matchExpressions:
-            - key: "k8s:app.kubernetes.io/name"
-              operator: In
-              values:
-              - prowlarr
-              - flaresolverr
-              - qbittorrent
-              - sabnzbd
-              - calibre
-    - toEndpoints:
-        - matchLabels:
-            "k8s:io.kubernetes.pod.namespace": kube-system
-          matchExpressions:
-            - key: "k8s:k8s-app"
-              operator: In
-              values:
-              - kube-dns
-              - node-local-dns
-      toPorts:
-        - ports:
-            - port: "53"
-              protocol: UDP
-          rules:
-            dns:
-              - matchPattern: "*"
-    - toEndpoints:
-        - matchLabels:
-            "k8s:io.kubernetes.pod.namespace": home-network
-            "k8s:app.kubernetes.io/component": database
-            "k8s:app.kubernetes.io/part-of": rfhome-postgres-ha
-      toPorts:
-        - ports:
-            - port: "5432"
-    - toCIDRSet:
-        - cidr: ::/0
-          except:
-            - fc00::/7
-    - toCIDRSet:
-        - cidr: 0.0.0.0/0
-          except:
-            - 10.0.0.0/8
-            - 192.168.0.0/16
-            - 172.16.0.0/12
+  - toEndpoints:
+    - matchExpressions:
+      - key: "k8s:app.kubernetes.io/name"
+        operator: In
+        values:
+        - prowlarr
+        - flaresolverr
+        - qbittorrent
+        - sabnzbd
+        - calibre
+  - toEndpoints:
+    - matchLabels:
+        "k8s:io.kubernetes.pod.namespace": kube-system
+      matchExpressions:
+      - key: "k8s:k8s-app"
+        operator: In
+        values:
+        - kube-dns
+        - node-local-dns
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: UDP
+      rules:
+        dns:
+        - matchPattern: "*"
+  - toEndpoints:
+    - matchLabels:
+        "k8s:io.kubernetes.pod.namespace": home-network
+        "k8s:app.kubernetes.io/component": database
+        "k8s:app.kubernetes.io/part-of": rfhome-postgres-ha
+    toPorts:
+    - ports:
+      - port: "5432"
+  - toCIDRSet:
+    - cidr: ::/0
+      except:
+      - fc00::/7
+  - toCIDRSet:
+    - cidr: 0.0.0.0/0
+      except:
+      - 10.0.0.0/8
+      - 192.168.0.0/16
+      - 172.16.0.0/12

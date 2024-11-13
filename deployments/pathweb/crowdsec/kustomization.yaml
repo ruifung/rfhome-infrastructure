@@ -1,4 +1,5 @@
+---
 resources:
-  - "helm.yaml"
-  - "metrics-service.yaml"
-  - "servicemonitor.yaml"
+- "helm.yaml"
+- "metrics-service.yaml"
+- "servicemonitor.yaml"

@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -24,6 +25,6 @@ spec:
             port:
               name: http
   tls:
-    - secretName: authentik-public-cert
-      hosts:
-        - auth-home.yrf.me
+  - secretName: authentik-public-cert
+    hosts:
+    - auth-home.yrf.me

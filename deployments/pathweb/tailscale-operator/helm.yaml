@@ -7,7 +7,6 @@ metadata:
 spec:
   interval: 15m
   url: https://pkgs.tailscale.com/helmcharts
-
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease

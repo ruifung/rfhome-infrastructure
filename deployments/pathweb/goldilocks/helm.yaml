@@ -24,26 +24,26 @@ spec:
         name: fairwinds-stable
   interval: 15m
   postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              group: apps
-              version: v1
-              kind: Deployment
-              name: goldilocks-controller
-            patch: |-
-              - op: add
-                path: /spec/template/spec/priorityClassName
-                value: rfhome-standard
-          - target:
-              group: apps
-              version: v1
-              kind: Deployment
-              name: goldilocks-dashboard
-            patch: |-
-              - op: add
-                path: /spec/template/spec/priorityClassName
-                value: rfhome-low-priority
+  - kustomize:
+      patches:
+      - target:
+          group: apps
+          version: v1
+          kind: Deployment
+          name: goldilocks-controller
+        patch: |-
+          - op: add
+            path: /spec/template/spec/priorityClassName
+            value: rfhome-standard
+      - target:
+          group: apps
+          version: v1
+          kind: Deployment
+          name: goldilocks-dashboard
+        patch: |-
+          - op: add
+            path: /spec/template/spec/priorityClassName
+            value: rfhome-low-priority
   values:
     controller:
       nodeSelector:
@@ -72,11 +72,11 @@ spec:
         annotations:
           traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
         hosts:
-          - host: goldilocks.pathweb.clusters.home.yrf.me
-            paths:
-              - path: /
-                type: Prefix
+        - host: goldilocks.pathweb.clusters.home.yrf.me
+          paths:
+          - path: /
+            type: Prefix
         tls:
-          - hosts:
-              - "goldilocks.pathweb.clusters.home.yrf.me"
-            secretName: pathweb-wildcard-cert
+        - hosts:
+          - "goldilocks.pathweb.clusters.home.yrf.me"
+          secretName: pathweb-wildcard-cert

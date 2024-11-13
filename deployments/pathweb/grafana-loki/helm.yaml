@@ -28,14 +28,14 @@ spec:
   interval: 30m
   timeout: 1h
   valuesFrom:
-    - kind: Secret
-      name: grafana-loki-s3-credentials
-      valuesKey: accessKeyId
-      targetPath: loki.storage.s3.accessKeyId
-    - kind: Secret
-      name: grafana-loki-s3-credentials
-      valuesKey: secretAccessKey
-      targetPath: loki.storage.s3.secretAccessKey
+  - kind: Secret
+    name: grafana-loki-s3-credentials
+    valuesKey: accessKeyId
+    targetPath: loki.storage.s3.accessKeyId
+  - kind: Secret
+    name: grafana-loki-s3-credentials
+    valuesKey: secretAccessKey
+    targetPath: loki.storage.s3.secretAccessKey
   values:
     loki:
       auth_enabled: false
@@ -73,6 +73,7 @@ spec:
           endpoint: https://okinawa-s3.services.home.yrf.me:9000
           region: rfhome
           # secretAccessKey: ""
+
           # accessKeyId: ""
           s3ForcePathStyle: false
           insecure: false
@@ -99,6 +100,7 @@ spec:
     chunksCache:
       enabled: false
     # Ensure minio is disabled
+
     minio:
       enabled: false
     backend:

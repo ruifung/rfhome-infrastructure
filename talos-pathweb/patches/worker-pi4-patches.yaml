@@ -1,32 +1,32 @@
+---
 machine:
   nodeLabels:
     location: rfhome
     type: pi4
     node-group: pi4
   install:
-      disk: null
-      diskSelector:
-        type: sd
-      wipe: false
+    disk: null
+    diskSelector:
+      type: sd
+    wipe: false
   network:
     interfaces:
-      - interface: eth0
+    - interface: eth0
+      dhcp: false
+      vlans:
+      - vlanId: 97
+        dhcp: true
+      - vlanId: 55
         dhcp: false
-        vlans:
-        - vlanId: 97
-          dhcp: true
-        - vlanId: 55
-          dhcp: false
-      - interface: iot
-        dhcp: false
-        bridge:
-          interfaces:
-            - eth0.55
+    - interface: iot
+      dhcp: false
+      bridge:
+        interfaces:
+        - eth0.55
   sysctls:
     # user.max_user_namespaces > 0 is required for gvisor usage.
     # talos defaults to 0 as ker KSPP.
     user.max_user_namespaces: "28633"
-
     net.ipv6.conf.eth0.accept_ra: "0"
     net/ipv6/conf/eth0.97/accept_ra: "2"
     net.ipv6.conf.iot.accept_ra: "0"

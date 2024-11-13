@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,19 +17,19 @@ spec:
       affinity:
         podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            - topologyKey: kubernetes.io/hostname
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/name: traefik-external
+          - topologyKey: kubernetes.io/hostname
+            labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: traefik-external
       containers:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
         imagePullPolicy: Always
         args: ["tunnel", "run", "--url", "traefik-external-cf-tunnel:8081"]
         env:
-          - name: TUNNEL_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: traefik-ingress-cf-tunnel-token
-                key: token
-                optional: false
+        - name: TUNNEL_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: traefik-ingress-cf-tunnel-token
+              key: token
+              optional: false

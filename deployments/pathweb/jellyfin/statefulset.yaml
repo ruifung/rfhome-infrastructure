@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -35,13 +36,13 @@ spec:
         - name: tls-cert
           mountPath: /certs
           readOnly: true
-        # resources:
-          #requests:
-            #cpu: "4"
-            #memory: 1Gi
-          # limits:
-            # cpu: "4"
-            # memory: 2Gi
+          # resources:
+      #requests:
+      #cpu: "4"
+      #memory: 1Gi
+      # limits:
+      # cpu: "4"
+      # memory: 2Gi
       volumes:
       - name: media
         persistentVolumeClaim:

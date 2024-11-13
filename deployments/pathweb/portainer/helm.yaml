@@ -7,7 +7,6 @@ metadata:
 spec:
   interval: 15m
   url: https://portainer.github.io/k8s/
-
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -29,26 +28,26 @@ spec:
   install:
     createNamespace: true
   postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              group: networking.k8s.io
-              version: v1
-              kind: Ingress
-              name: portainer
-            patch: |-
-              - op: add
-                path: /metadata/labels/external-dns
-                value: local-pdns
-          - target:
-              group: apps
-              version: v1
-              kind: Deployment
-              name: portainer
-            patch: |-
-              - op: add
-                path: /spec/template/spec/priorityClassName
-                value: rfhome-network-critical
+  - kustomize:
+      patches:
+      - target:
+          group: networking.k8s.io
+          version: v1
+          kind: Ingress
+          name: portainer
+        patch: |-
+          - op: add
+            path: /metadata/labels/external-dns
+            value: local-pdns
+      - target:
+          group: apps
+          version: v1
+          kind: Deployment
+          name: portainer
+        patch: |-
+          - op: add
+            path: /spec/template/spec/priorityClassName
+            value: rfhome-network-critical
   values:
     nodeSelector:
       kubernetes.io/os: linux
@@ -59,10 +58,10 @@ spec:
       enabled: true
       ingressClassName: traefik-traefik
       hosts:
-        - host: portainer.pathweb.clusters.home.yrf.me
-          paths:
-            - path: /
+      - host: portainer.pathweb.clusters.home.yrf.me
+        paths:
+        - path: /
       tls:
-        - secretName: pathweb-wildcard-cert
-          hosts:
-            - portainer.pathweb.clusters.home.yrf.me
+      - secretName: pathweb-wildcard-cert
+        hosts:
+        - portainer.pathweb.clusters.home.yrf.me

@@ -8,90 +8,90 @@ metadata:
     external-dns: local-pdns
 spec:
   parentRefs:
-    - name: rfhome-services-gateway
-      namespace: home-network
-      sectionName: https
-      kind: Gateway
+  - name: rfhome-services-gateway
+    namespace: home-network
+    sectionName: https
+    kind: Gateway
   hostnames:
-    - ebooks.services.home.yrf.me
+  - ebooks.services.home.yrf.me
   rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      filters:
-        - type: ExtensionRef
-          extensionRef:
-            group: traefik.io
-            kind: Middleware
-            name: ak-outpost-authentik-embedded-outpost
-        - type: ExtensionRef
-          extensionRef:
-            group: traefik.io
-            kind: Middleware
-            name: calibre-web-redirect-login-page
-      backendRefs:
-        - name: calibre-web
-          port: 8083
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /logout
-      filters:
-        - type: ExtensionRef
-          extensionRef:
-            group: traefik.io
-            kind: Middleware
-            name: calibre-web-rewrite-logout-redirect
-      backendRefs:
-        - name: calibre-web
-          port: 8083
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /opds/cover
-      filters:
-        - type: ExtensionRef
-          extensionRef:
-            group: traefik.io
-            kind: Middleware
-            name: calibre-web-opds-cover-public
-        - type: ExtensionRef
-          extensionRef:
-            group: traefik.io
-            kind: Middleware
-            name: calibre-web-static-caching-policy
-      backendRefs:
-        - name: calibre-web
-          port: 8083
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /static
-      filters:
-        - type: ExtensionRef
-          extensionRef:
-            group: traefik.io
-            kind: Middleware
-            name: calibre-web-static-caching-policy
-      backendRefs:
-        - name: calibre-web
-          port: 8083
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /cover
-      filters:
-        - type: ExtensionRef
-          extensionRef:
-            group: traefik.io
-            kind: Middleware
-            name: ak-outpost-authentik-embedded-outpost
-        - type: ExtensionRef
-          extensionRef:
-            group: traefik.io
-            kind: Middleware
-            name: calibre-web-static-caching-policy
-      backendRefs:
-        - name: calibre-web
-          port: 8083
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    filters:
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: ak-outpost-authentik-embedded-outpost
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: calibre-web-redirect-login-page
+    backendRefs:
+    - name: calibre-web
+      port: 8083
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /logout
+    filters:
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: calibre-web-rewrite-logout-redirect
+    backendRefs:
+    - name: calibre-web
+      port: 8083
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /opds/cover
+    filters:
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: calibre-web-opds-cover-public
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: calibre-web-static-caching-policy
+    backendRefs:
+    - name: calibre-web
+      port: 8083
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /static
+    filters:
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: calibre-web-static-caching-policy
+    backendRefs:
+    - name: calibre-web
+      port: 8083
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /cover
+    filters:
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: ak-outpost-authentik-embedded-outpost
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: calibre-web-static-caching-policy
+    backendRefs:
+    - name: calibre-web
+      port: 8083

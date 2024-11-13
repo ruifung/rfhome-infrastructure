@@ -7,7 +7,6 @@ metadata:
 spec:
   interval: 12h
   url: https://charts.jetstack.io
-
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease

@@ -1,17 +1,16 @@
+---
 images:
-  - name: linuxserver/calibre
-    newName: lscr.io/linuxserver/calibre
-    newTag: version-v7.21.0
-
+- name: linuxserver/calibre
+  newName: lscr.io/linuxserver/calibre
+  newTag: version-v7.21.0
 labels:
-  - pairs:
-      "app.kubernetes.io/name": calibre
-    includeTemplates: true
-    includeSelectors: true
-
+- pairs:
+    "app.kubernetes.io/name": calibre
+  includeTemplates: true
+  includeSelectors: true
 resources:
-  - statefulset.yaml
-  - service.yaml
-  - ingress.yaml
-  - ciliumnetworkpolicy.yaml
-  - okinawa-media-books.yaml
+- statefulset.yaml
+- service.yaml
+- ingress.yaml
+- ciliumnetworkpolicy.yaml
+- okinawa-media-books.yaml

@@ -1,16 +1,15 @@
+---
 images:
-  - name: linuxserver/bazarr
-    newName: lscr.io/linuxserver/bazarr
-    newTag: version-v1.4.5
-
+- name: linuxserver/bazarr
+  newName: lscr.io/linuxserver/bazarr
+  newTag: version-v1.4.5
 labels:
-  - pairs:
-      "app.kubernetes.io/name": bazarr
-    includeTemplates: true
-    includeSelectors: true
-
+- pairs:
+    "app.kubernetes.io/name": bazarr
+  includeTemplates: true
+  includeSelectors: true
 resources:
-  - statefulset.yaml
-  - service.yaml
-  - ingress.yaml
-  - ciliumnetworkpolicy.yaml
+- statefulset.yaml
+- service.yaml
+- ingress.yaml
+- ciliumnetworkpolicy.yaml

@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -23,6 +24,7 @@ spec:
     spec:
       priorityClassName: rfhome-home-critical
       # runtimeClassName: gvisor
+
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
@@ -30,72 +32,72 @@ spec:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
-              - matchExpressions:
-                  - key: node-group
-                    operator: In
-                    values: [baldric, voyager]
+            - matchExpressions:
+              - key: node-group
+                operator: In
+                values: [baldric, voyager]
       securityContext:
         fsGroup: 1000
         seccompProfile:
           type: RuntimeDefault
         sysctls:
-          - name: net.ipv4.ping_group_range
-            value: "0 2147483647"
+        - name: net.ipv4.ping_group_range
+          value: "0 2147483647"
       containers:
-        - name: home-assistant
-          image: homeassistant/home-assistant:stable
-          securityContext:
-            allowPrivilegeEscalation: false
-            # capabilities:
-            #   drop:
-            #     - ALL
-              # add:
-              #   - NET_ADMIN
-              #   - NET_RAW
-          env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
-            - name: PACKAGES
-              value: "iputils"
-            - name: TZ
-              value: Asia/Kuala_Lumpur
-            - name: HASS_DB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: rfhome-postgres-ha-pguser-home-assistant
-                  key: pgbouncer-uri
-            - name: POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
-          ports:
-            - containerPort: 8123
-              name: http
-              protocol: TCP
-          volumeMounts:
-            - name: hass-data
-              mountPath: /config
-            - name: hass-backup
-              mountPath: /config/backups
-            - name: homeassistant-docker-venv
-              mountPath: /etc/services.d/home-assistant/run
-              subPath: venv-run
-          resources:
-            requests:
-              cpu: 200m
-              memory: 3500M
-            limits:
-              memory: 5Gi
-      volumes:
+      - name: home-assistant
+        image: homeassistant/home-assistant:stable
+        securityContext:
+          allowPrivilegeEscalation: false
+          # capabilities:
+        #   drop:
+        #     - ALL
+        # add:
+        #   - NET_ADMIN
+        #   - NET_RAW
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: PACKAGES
+          value: "iputils"
+        - name: TZ
+          value: Asia/Kuala_Lumpur
+        - name: HASS_DB_URI
+          valueFrom:
+            secretKeyRef:
+              name: rfhome-postgres-ha-pguser-home-assistant
+              key: pgbouncer-uri
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        ports:
+        - containerPort: 8123
+          name: http
+          protocol: TCP
+        volumeMounts:
         - name: hass-data
-          persistentVolumeClaim:
-            claimName: home-assistant-data
+          mountPath: /config
         - name: hass-backup
-          persistentVolumeClaim:
-            claimName: home-assistant-backup
+          mountPath: /config/backups
         - name: homeassistant-docker-venv
-          configMap:
-            name: homeassistant-docker-venv
-            defaultMode: 0755
+          mountPath: /etc/services.d/home-assistant/run
+          subPath: venv-run
+        resources:
+          requests:
+            cpu: 200m
+            memory: 3500M
+          limits:
+            memory: 5Gi
+      volumes:
+      - name: hass-data
+        persistentVolumeClaim:
+          claimName: home-assistant-data
+      - name: hass-backup
+        persistentVolumeClaim:
+          claimName: home-assistant-backup
+      - name: homeassistant-docker-venv
+        configMap:
+          name: homeassistant-docker-venv
+          defaultMode: 0755

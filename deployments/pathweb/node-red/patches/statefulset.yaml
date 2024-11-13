@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -14,62 +15,62 @@ spec:
         kubernetes.io/os: linux
         location: rfhome
       containers:
-        - name: node-red
-          env:
-          - name: "TZ"
-            value: "Asia/Kuala_Lumpur"
-          volumeMounts:
-            - mountPath: /data/settings.js
-              name: settings
-              subPath: settings.js
-            - mountPath: /extra-tools
-              name: extra-tools
-              readOnly: true
-          resources:
-            requests:
-              cpu: '500m'
-              memory: 500M
-            limits:
-              cpu: '1'
-              memory: 2G
+      - name: node-red
+        env:
+        - name: "TZ"
+          value: "Asia/Kuala_Lumpur"
+        volumeMounts:
+        - mountPath: /data/settings.js
+          name: settings
+          subPath: settings.js
+        - mountPath: /extra-tools
+          name: extra-tools
+          readOnly: true
+        resources:
+          requests:
+            cpu: '500m'
+            memory: 500M
+          limits:
+            cpu: '1'
+            memory: 2G
       initContainers:
-        - name: install-extra-modules
-          image: nodered/node-red:latest
-          command: ["/bin/bash"]
-          args:
-            - "/data/extra-npm-modules.sh"
-          volumeMounts:
-            - mountPath: /data
-              name: data
-            - mountPath: /data/extra-npm-modules.sh
-              name: settings
-              subPath: extra-npm-modules.sh
-        - name: load-extra-tools
-          image: nodered/node-red:latest
-          env:
-            - name: SPEEDTEST_VERSION
-              value: 1.2.0
-          command: ["/bin/bash"]
-          args:
-            - "/extra-tools/setup.sh"
-          volumeMounts:
-            - mountPath: /extra-tools
-              name: extra-tools
-            - mountPath: /extra-tools/setup.sh
-              name: settings
-              subPath: extra-tools.sh
-      volumes:
-        - name: settings
-          configMap:
-            name: node-red-settings
-        - name: extra-tools
-          emptyDir: {}
-    volumeClaimTemplates:
-      - metadata:
+      - name: install-extra-modules
+        image: nodered/node-red:latest
+        command: ["/bin/bash"]
+        args:
+        - "/data/extra-npm-modules.sh"
+        volumeMounts:
+        - mountPath: /data
           name: data
-        spec:
-          storageClassName: "ceph-rbd"
-          accessModes: [ "ReadWriteOnce" ]
-          resources:
-            requests:
-              storage: 5Gi
+        - mountPath: /data/extra-npm-modules.sh
+          name: settings
+          subPath: extra-npm-modules.sh
+      - name: load-extra-tools
+        image: nodered/node-red:latest
+        env:
+        - name: SPEEDTEST_VERSION
+          value: 1.2.0
+        command: ["/bin/bash"]
+        args:
+        - "/extra-tools/setup.sh"
+        volumeMounts:
+        - mountPath: /extra-tools
+          name: extra-tools
+        - mountPath: /extra-tools/setup.sh
+          name: settings
+          subPath: extra-tools.sh
+      volumes:
+      - name: settings
+        configMap:
+          name: node-red-settings
+      - name: extra-tools
+        emptyDir: {}
+    volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        storageClassName: "ceph-rbd"
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi

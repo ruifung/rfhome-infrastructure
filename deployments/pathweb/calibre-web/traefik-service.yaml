@@ -1,3 +1,4 @@
+---
 apiVersion: traefik.io/v1alpha1
 kind: TraefikService
 metadata:
@@ -8,7 +9,7 @@ spec:
     name: calibre-library-sync
     port: webhook
     mirrors:
-      - name: node-red
-        namespace: home-network
-        port: http
-        percent: 100
+    - name: node-red
+      namespace: home-network
+      port: http
+      percent: 100

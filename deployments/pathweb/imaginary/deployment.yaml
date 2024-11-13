@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,20 +20,20 @@ spec:
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-            - preference:
-                matchExpressions:
-                  - key: node-group
-                    operator: In
-                    values: [baldric]
-              weight: 50
+          - preference:
+              matchExpressions:
+              - key: node-group
+                operator: In
+                values: [baldric]
+            weight: 50
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-            - podAffinityTerm:
-                labelSelector:
-                  matchLabels:
-                    app.kubernetes.io/name: imaginary
-                topologyKey: kubernetes.io/hostname
-              weight: 50
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: imaginary
+              topologyKey: kubernetes.io/hostname
+            weight: 50
       containers:
       - name: imaginary
         image: h2non/imaginary:latest

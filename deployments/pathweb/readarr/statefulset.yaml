@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -19,6 +20,7 @@ spec:
       nodeSelector:
         node-group: baldric
       # runtimeClassName: gvisor
+
       containers:
       - name: readarr
         image: linuxserver/readarr:latest
@@ -61,7 +63,7 @@ spec:
   - metadata:
       name: config
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: ["ReadWriteOnce"]
       resources:
         requests:
           storage: 10Gi

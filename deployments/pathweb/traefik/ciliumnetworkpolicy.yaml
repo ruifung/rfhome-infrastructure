@@ -9,30 +9,30 @@ spec:
     matchLabels:
       app.kubernetes.io/name: traefik-external
   ingress:
-    - fromEntities:
-        - world
-      toPorts:
-        - ports:
-            - port: "80"
-            - port: "443"
-    - fromEndpoints:
-        - matchLabels:
-            app.kubernetes.io/name: external-ingress-cf-tunnel
-      toPorts:
-        - ports:
-            - port: "8081"
-    - fromEndpoints:
-        - {}
-      toPorts:
-        - ports:
-            - port: "9000"
-    - fromEntities:
-        - cluster
-      toPorts:
-        - ports:
-            - port: "80"
-            - port: "443"
-            - port: "9100"
+  - fromEntities:
+    - world
+    toPorts:
+    - ports:
+      - port: "80"
+      - port: "443"
+  - fromEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: external-ingress-cf-tunnel
+    toPorts:
+    - ports:
+      - port: "8081"
+  - fromEndpoints:
+    - {}
+    toPorts:
+    - ports:
+      - port: "9000"
+  - fromEntities:
+    - cluster
+    toPorts:
+    - ports:
+      - port: "80"
+      - port: "443"
+      - port: "9100"
 ---
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
@@ -44,21 +44,21 @@ spec:
     matchLabels:
       app.kubernetes.io/name: traefik
   ingress:
-    - fromEntities:
-        - world
-      toPorts:
-        - ports:
-            - port: "80"
-            - port: "443"
-    - fromEndpoints:
-        - {}
-      toPorts:
-        - ports:
-            - port: "9000"
-    - fromEntities:
-        - cluster
-      toPorts:
-        - ports:
-            - port: "80"
-            - port: "443"
-            - port: "9100"
+  - fromEntities:
+    - world
+    toPorts:
+    - ports:
+      - port: "80"
+      - port: "443"
+  - fromEndpoints:
+    - {}
+    toPorts:
+    - ports:
+      - port: "9000"
+  - fromEntities:
+    - cluster
+    toPorts:
+    - ports:
+      - port: "80"
+      - port: "443"
+      - port: "9100"

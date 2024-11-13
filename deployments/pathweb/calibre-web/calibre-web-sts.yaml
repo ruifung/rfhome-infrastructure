@@ -91,22 +91,22 @@ spec:
             cpu: 17m
             memory: 35M
       volumes:
-        # - name: calibre-library
-        #   persistentVolumeClaim:
-        #     claimName: calibre-library
-        - name: cache
-          persistentVolumeClaim:
-            claimName: calibre-web-cache
-        - name: logs
-          emptyDir: {}
-        - name: okinawa-media
-          persistentVolumeClaim:
-            claimName: okinawa-media-smb
+      # - name: calibre-library
+      #   persistentVolumeClaim:
+      #     claimName: calibre-library
+      - name: cache
+        persistentVolumeClaim:
+          claimName: calibre-web-cache
+      - name: logs
+        emptyDir: {}
+      - name: okinawa-media
+        persistentVolumeClaim:
+          claimName: okinawa-media-smb
   volumeClaimTemplates:
   - metadata:
       name: data
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: ["ReadWriteOnce"]
       storageClassName: "ceph-rbd"
       resources:
         requests:

@@ -7,5 +7,5 @@ metadata:
 spec:
   insecureSkipVerify: true
   rootCAsSecrets:
-    - harbor-core-internal-tls
-    - harbor-portal-internal-tls
+  - harbor-core-internal-tls
+  - harbor-portal-internal-tls

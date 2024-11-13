@@ -1,16 +1,15 @@
+---
 images:
-  - name: hotio/unpackerr
-    newName: ghcr.io/hotio/unpackerr
-    newTag: release-0.14.5
-
+- name: hotio/unpackerr
+  newName: ghcr.io/hotio/unpackerr
+  newTag: release-0.14.5
 labels:
-  - pairs:
-      "app.kubernetes.io/name": unpackerr
-    includeTemplates: true
-    includeSelectors: true
-
+- pairs:
+    "app.kubernetes.io/name": unpackerr
+  includeTemplates: true
+  includeSelectors: true
 resources:
-  - deployment.yaml
-  - ciliumnetworkpolicy.yaml
-  - configmap.yaml
-  - unpackerr-secrets.sealed.yaml
+- deployment.yaml
+- ciliumnetworkpolicy.yaml
+- configmap.yaml
+- unpackerr-secrets.sealed.yaml

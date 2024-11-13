@@ -19,6 +19,6 @@ spec:
             port:
               name: http
   tls:
-    - hosts:
-      - hass.services.home.yrf.me
-      secretName: services-wildcard-cert
+  - hosts:
+    - hass.services.home.yrf.me
+    secretName: services-wildcard-cert

@@ -7,7 +7,6 @@ metadata:
 spec:
   interval: 15m
   url: https://charts.goauthentik.io
-
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -28,22 +27,23 @@ spec:
   timeout: 60m
   targetNamespace: home-network
   # postRenderers:
-    # - kustomize:
-    #     patches:
-    #       - patch: |
-    #           - op: "add"
-    #             path: "/spec/template/spec/runtimeClassName"
-    #             value: "gvisor"
-    #         target:
-    #           kind: Deployment
-    #           name: authentik-server
-    #       - patch: |
-    #           - op: "add"
-    #             path: "/spec/template/spec/runtimeClassName"
-    #             value: "gvisor"
-    #         target:
-    #           kind: Deployment
-    #           name: authentik-worker
+
+  # - kustomize:
+  #     patches:
+  #       - patch: |
+  #           - op: "add"
+  #             path: "/spec/template/spec/runtimeClassName"
+  #             value: "gvisor"
+  #         target:
+  #           kind: Deployment
+  #           name: authentik-server
+  #       - patch: |
+  #           - op: "add"
+  #             path: "/spec/template/spec/runtimeClassName"
+  #             value: "gvisor"
+  #         target:
+  #           kind: Deployment
+  #           name: authentik-worker
   values:
     global:
       deploymentStrategy:
@@ -59,40 +59,40 @@ spec:
           drop:
           - ALL
       envFrom:
-        - configMapRef:
-            name: authentik-config
-          prefix: AUTHENTIK_
-        - secretRef:
-            name: authentik-secrets
-          prefix: AUTHENTIK_
+      - configMapRef:
+          name: authentik-config
+        prefix: AUTHENTIK_
+      - secretRef:
+          name: authentik-secrets
+        prefix: AUTHENTIK_
       env:
-        - name: AUTHENTIK_POSTGRESQL__USE_PGBOUNCER
-          value: "true"
-        - name: AUTHENTIK_POSTGRESQL__HOST
-          valueFrom:
-            secretKeyRef:
-              name: "rfhome-postgres-ha-pguser-authentik"
-              key: "pgbouncer-host"
-        - name: AUTHENTIK_POSTGRESQL__PORT
-          valueFrom:
-            secretKeyRef:
-              name: "rfhome-postgres-ha-pguser-authentik"
-              key: "port"
-        - name: AUTHENTIK_POSTGRESQL__USER
-          valueFrom:
-            secretKeyRef:
-              name: "rfhome-postgres-ha-pguser-authentik"
-              key: "user"
-        - name: AUTHENTIK_POSTGRESQL__PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: "rfhome-postgres-ha-pguser-authentik"
-              key: "password"
-        - name: AUTHENTIK_POSTGRESQL__NAME
-          valueFrom:
-            secretKeyRef:
-              name: "rfhome-postgres-ha-pguser-authentik"
-              key: "dbname"
+      - name: AUTHENTIK_POSTGRESQL__USE_PGBOUNCER
+        value: "true"
+      - name: AUTHENTIK_POSTGRESQL__HOST
+        valueFrom:
+          secretKeyRef:
+            name: "rfhome-postgres-ha-pguser-authentik"
+            key: "pgbouncer-host"
+      - name: AUTHENTIK_POSTGRESQL__PORT
+        valueFrom:
+          secretKeyRef:
+            name: "rfhome-postgres-ha-pguser-authentik"
+            key: "port"
+      - name: AUTHENTIK_POSTGRESQL__USER
+        valueFrom:
+          secretKeyRef:
+            name: "rfhome-postgres-ha-pguser-authentik"
+            key: "user"
+      - name: AUTHENTIK_POSTGRESQL__PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: "rfhome-postgres-ha-pguser-authentik"
+            key: "password"
+      - name: AUTHENTIK_POSTGRESQL__NAME
+        valueFrom:
+          secretKeyRef:
+            name: "rfhome-postgres-ha-pguser-authentik"
+            key: "dbname"
     server:
       replicas: 2
       resources:
@@ -107,13 +107,13 @@ spec:
         labels:
           external-dns: local-pdns
         hosts:
-          - auth.services.home.yrf.me
+        - auth.services.home.yrf.me
         paths:
-          - /
+        - /
         tls:
-          - secretName: services-wildcard-cert
-            hosts:
-              - auth.services.home.yrf.me
+        - secretName: services-wildcard-cert
+          hosts:
+          - auth.services.home.yrf.me
       metrics:
         serviceMonitor:
           enabled: true
@@ -130,28 +130,28 @@ spec:
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-            - preference:
-                matchExpressions:
-                  - key: node-group
-                    operator: In
-                    values: [baldric]
-              weight: 100
+          - preference:
+              matchExpressions:
+              - key: node-group
+                operator: In
+                values: [baldric]
+            weight: 100
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
+          - labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: authentik
+                app.kubernetes.io/instance: authentik
+                app.kubernetes.io/component: server
+            topologyKey: kubernetes.io/hostname
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
                 matchLabels:
                   app.kubernetes.io/name: authentik
                   app.kubernetes.io/instance: authentik
-                  app.kubernetes.io/component: server
-              topologyKey: kubernetes.io/hostname
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - podAffinityTerm:
-                labelSelector:
-                  matchLabels:
-                    app.kubernetes.io/name: authentik
-                    app.kubernetes.io/instance: authentik
-                topologyKey: node-group
-              weight: 100
+              topologyKey: node-group
+            weight: 100
     worker:
       replicas: 1
       resources:
@@ -173,11 +173,11 @@ spec:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchLabels:
-                  app.kubernetes.io/name: authentik
-                  app.kubernetes.io/instance: authentik
-              topologyKey: node-group
+          - labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: authentik
+                app.kubernetes.io/instance: authentik
+            topologyKey: node-group
     prometheus:
       rules:
         enabled: false

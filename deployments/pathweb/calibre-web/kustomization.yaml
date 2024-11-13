@@ -1,25 +1,23 @@
+---
 commonLabels:
   app.kubernetes.io/part-of: calibre-web
-
 images:
-  - name: driveone/onedrive
-    newTag: "2.5-debian"
-  - name: lscr.io/linuxserver/calibre-web
-    newName: ghcr.io/ruifung/lsio-calibre-web-mod
-    newTag: "0.6.23-calibre-v7.21.0"
-
+- name: driveone/onedrive
+  newTag: "2.5-debian"
+- name: lscr.io/linuxserver/calibre-web
+  newName: ghcr.io/ruifung/lsio-calibre-web-mod
+  newTag: "0.6.23-calibre-v7.21.0"
 resources:
-  - "calibre-library-pvc.yaml"
-  - "calibre-web-sts.yaml"
-  - "calibre-web-svc.yaml"
-  - "calibre-library-sync-sts.yaml"
-  - "calibre-library-sync-svc.yaml"
-  - "traefik-middleware.yaml"
-  - "traefik-service.yaml"
-  - "httproute.yaml"
-  - "httproute-external.yaml"
-
+- "calibre-library-pvc.yaml"
+- "calibre-web-sts.yaml"
+- "calibre-web-svc.yaml"
+- "calibre-library-sync-sts.yaml"
+- "calibre-library-sync-svc.yaml"
+- "traefik-middleware.yaml"
+- "traefik-service.yaml"
+- "httproute.yaml"
+- "httproute-external.yaml"
 configMapGenerator:
-  - name: "calibre-library-sync-config"
-    files:
-      - "onedrive-config"
+- name: "calibre-library-sync-config"
+  files:
+  - "onedrive-config"

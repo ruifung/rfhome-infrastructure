@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -11,6 +12,6 @@ spec:
   type: ClusterIP
   clusterIP: None
   ports:
-    - port: 8888
-      name: webhook
-      targetPort: 8888
+  - port: 8888
+    name: webhook
+    targetPort: 8888

@@ -1,49 +1,53 @@
+---
 vmalert:
   annotations: {}
   enabled: true
-
   # Controls whether VMAlert should use VMAgent or VMInsert as a target for remotewrite
+
   remoteWriteVMAgent: false
   # spec for VMAlert crd
+
   # https://docs.victoriametrics.com/operator/api.html#vmalertspec
   spec:
     selectAllByDefault: true
     image:
       tag: v1.101.0
     evaluationInterval: 15s
-
     # External labels to add to all generated recording rules and alerts
+
     externalLabels: {}
-
   # extra vmalert annotation templates
-  templateFiles:
-    {}
-    # template_1.tmpl: |-
-    #   {{ define "hello" -}}
-    #   hello, Victoria!
-    #   {{- end }}
-    # template_2.tmpl: ""
 
+  templateFiles: {}
+  # template_1.tmpl: |-
+
+  #   {{ define "hello" -}}
+  #   hello, Victoria!
+  #   {{- end }}
+  # template_2.tmpl: ""
   ingress:
     enabled: false
     # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+
     # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
     # ingressClassName: nginx
     # Values can be templated
-    annotations:
-      {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+    annotations: {}
+    # kubernetes.io/ingress.class: nginx
+
+    # kubernetes.io/tls-acme: "true"
     labels: {}
     path: /
     # pathType is only for k8s > 1.19
-    pathType: Prefix
 
+    pathType: Prefix
     hosts:
-      - vmalert.domain.com
+    - vmalert.domain.com
     ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
+
     extraPaths: []
     # - path: /*
+
     #   backend:
     #     serviceName: ssl-redirect
     #     servicePort: use-annotation
@@ -57,5 +61,6 @@ vmalert:
     #         name: service
     tls: []
     #  - secretName: vmalert-ingress-tls
-    #    hosts:
-    #      - vmalert.domain.com
+
+#    hosts:
+#      - vmalert.domain.com

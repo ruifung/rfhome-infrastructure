@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,24 +22,24 @@ spec:
       - name: code-server
         image: lscr.io/linuxserver/code-server:4.95.2
         env:
-          - name: PUID
-            value: "1000"
-          - name: PGID
-            value: "1000"
-          - name: TZ
-            value: "Asia/Kuala_Lumpur"
-          - name: PROXY_DOMAIN
-            value: ha-code-server.services.home.yrf.me
-          - name: DEFAULT_WORKSPACE
-            value: /config/workspace
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Asia/Kuala_Lumpur"
+        - name: PROXY_DOMAIN
+          value: ha-code-server.services.home.yrf.me
+        - name: DEFAULT_WORKSPACE
+          value: /config/workspace
         volumeMounts:
-          - name: config
-            mountPath: /config
-          - name: home-assistant
-            mountPath: /config/workspace/home-assistant
-          - name: home-assistant
-            mountPath: /config/workspace/appdaemon
-            subPath: appdaemon
+        - name: config
+          mountPath: /config
+        - name: home-assistant
+          mountPath: /config/workspace/home-assistant
+        - name: home-assistant
+          mountPath: /config/workspace/appdaemon
+          subPath: appdaemon
         resources:
           requests:
             cpu: "1"
@@ -50,9 +51,9 @@ spec:
         - containerPort: 8443
           name: web
       volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: ha-code-server-config
-        - name: home-assistant
-          persistentVolumeClaim:
-            claimName: home-assistant-data
+      - name: config
+        persistentVolumeClaim:
+          claimName: ha-code-server-config
+      - name: home-assistant
+        persistentVolumeClaim:
+          claimName: home-assistant-data

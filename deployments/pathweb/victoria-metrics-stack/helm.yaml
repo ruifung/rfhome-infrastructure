@@ -30,8 +30,8 @@ spec:
   driftDetection:
     mode: enabled
   dependsOn:
-    - name: grafana-operator
-      namespace: grafana
+  - name: grafana-operator
+    namespace: grafana
   valuesFrom:
   - kind: "ConfigMap"
     name: "victoria-metrics-stack-values"

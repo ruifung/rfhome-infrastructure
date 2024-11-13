@@ -31,41 +31,42 @@ spec:
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
-          - topologyKey: kubernetes.io/hostname
+        - topologyKey: kubernetes.io/hostname
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: traefik-external
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            topologyKey: node-group
             labelSelector:
               matchLabels:
                 app.kubernetes.io/name: traefik-external
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              topologyKey: node-group
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/name: traefik-external
     additionalArguments:
-      - "--providers.file.directory=/additional-configs"
-      - "--providers.file.watch=true"
-      - "--entrypoints.web.http.middlewares=crowdsec@file"
-      - "--entrypoints.websecure.http.middlewares=crowdsec@file"
-      - "--entrypoints.cloudflared.http.middlewares=crowdsec@file"
+    - "--providers.file.directory=/additional-configs"
+    - "--providers.file.watch=true"
+    - "--entrypoints.web.http.middlewares=crowdsec@file"
+    - "--entrypoints.websecure.http.middlewares=crowdsec@file"
+    - "--entrypoints.cloudflared.http.middlewares=crowdsec@file"
     deployment:
       replicas: 2
       # runtimeClassName: gvisor
+
       podLabels:
         velero.io/exclude-from-backup: "true"
       additionalVolumes:
-        - name: additional-configs
-          projected:
-            sources:
-              - configMap:
-                  name: traefik-configs
-    volumes:
-      - name: crowdsec-bouncer-tls
-        mountPath: /crowdsec
-        type: secret
-    additionalVolumeMounts:
       - name: additional-configs
-        mountPath: /additional-configs
+        projected:
+          sources:
+          - configMap:
+              name: traefik-configs
+    volumes:
+    - name: crowdsec-bouncer-tls
+      mountPath: /crowdsec
+      type: secret
+    additionalVolumeMounts:
+    - name: additional-configs
+      mountPath: /additional-configs
     resources:
       requests:
         cpu: '200m'
@@ -81,8 +82,8 @@ spec:
         lb-location: rfhome
       ipFamilyPolicy: PreferDualStack
       ipFamilies:
-        - IPv4
-        - IPv6
+      - IPv4
+      - IPv6
       additionalServices:
         cf-tunnel:
           type: ClusterIP
@@ -199,18 +200,18 @@ spec:
           enabled: true
         serviceMonitor:
           metricRelabelings:
-            - sourceLabels: [__name__]
-              separator: ;
-              regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
-              replacement: $1
-              action: drop
+          - sourceLabels: [__name__]
+            separator: ;
+            regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
+            replacement: $1
+            action: drop
           relabelings:
-            - sourceLabels: [__meta_kubernetes_pod_node_name]
-              separator: ;
-              regex: ^(.*)$
-              targetLabel: nodename
-              replacement: $1
-              action: replace
+          - sourceLabels: [__meta_kubernetes_pod_node_name]
+            separator: ;
+            regex: ^(.*)$
+            targetLabel: nodename
+            replacement: $1
+            action: replace
           jobLabel: traefik
           interval: 30s
           honorLabels: true
@@ -218,12 +219,12 @@ spec:
           additionalLabels: {}
           namespace: "monitoring"
           rules:
-            - alert: TraefikDown
-              expr: up{job="traefik-external-metrics"} == 0
-              for: 5m
-              labels:
-                context: traefik
-                severity: warning
-              annotations:
-                summary: "Traefik Down"
-                description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
+          - alert: TraefikDown
+            expr: up{job="traefik-external-metrics"} == 0
+            for: 5m
+            labels:
+              context: traefik
+              severity: warning
+            annotations:
+              summary: "Traefik Down"
+              description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"

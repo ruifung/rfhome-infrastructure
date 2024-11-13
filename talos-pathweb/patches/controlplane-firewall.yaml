@@ -1,3 +1,4 @@
+---
 apiVersion: v1alpha1
 kind: NetworkDefaultActionConfig
 ingress: block
@@ -7,158 +8,159 @@ kind: NetworkRuleConfig
 name: kubelet-ingress
 portSelector:
   ports:
-    - 10250
+  - 10250
   protocol: tcp
 ingress:
-  - subnet: 10.229.97.0/24
-  - subnet: fd96:619:803e:6100::/64
-  - subnet: 10.96.0.0/16
-  - subnet: fd96:619:6b75:0110::/56
+- subnet: 10.229.97.0/24
+- subnet: fd96:619:803e:6100::/64
+- subnet: 10.96.0.0/16
+- subnet: fd96:619:6b75:0110::/56
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: apid-ingress
 portSelector:
   ports:
-    - 50000
+  - 50000
   protocol: tcp
 ingress:
-  - subnet: 0.0.0.0/0
-  - subnet: ::/0
+- subnet: 0.0.0.0/0
+- subnet: ::/0
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: trustd-ingress
 portSelector:
   ports:
-    - 50001
+  - 50001
   protocol: tcp
 ingress:
-  - subnet: 10.229.97.0/24
-  - subnet: fd96:619:803e:6100::/64
+- subnet: 10.229.97.0/24
+- subnet: fd96:619:803e:6100::/64
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: kubernetes-api-ingress
 portSelector:
   ports:
-    - 6443
+  - 6443
   protocol: tcp
 ingress:
-  - subnet: 0.0.0.0/0
-  - subnet: ::/0
+- subnet: 0.0.0.0/0
+- subnet: ::/0
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: etcd-ingress
 portSelector:
   ports:
-    - 2379-2380
+  - 2379-2380
   protocol: tcp
 ingress:
-  - subnet: 10.229.97.31/32
-  - subnet: 10.229.97.32/32
-  - subnet: 10.229.97.33/32
+- subnet: 10.229.97.31/32
+- subnet: 10.229.97.32/32
+- subnet: 10.229.97.33/32
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: controlplane-metrics
 portSelector:
   ports:
-    - 2381
-    - 10257
-    - 10259
+  - 2381
+  - 10257
+  - 10259
   protocol: tcp
 ingress:
-  - subnet: 10.229.97.0/24
-  - subnet: fd96:619:803e:6100::/64
-  - subnet: 10.96.0.0/16
+- subnet: 10.229.97.0/24
+- subnet: fd96:619:803e:6100::/64
+- subnet: 10.96.0.0/16
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: cilium-metrics
 portSelector:
   ports:
-    - 9962
-    - 9963
-    - 9964
-    - 9965
+  - 9962
+  - 9963
+  - 9964
+  - 9965
   protocol: tcp
 ingress:
-  - subnet: 10.229.97.0/24
-  - subnet: fd96:619:803e:6100::/64
-  - subnet: 10.96.0.0/16
-  - subnet: fd96:619:6b75:0110::/56
+- subnet: 10.229.97.0/24
+- subnet: fd96:619:803e:6100::/64
+- subnet: 10.96.0.0/16
+- subnet: fd96:619:6b75:0110::/56
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: node-metrics
 portSelector:
   ports:
-    - 9100
+  - 9100
   protocol: tcp
 ingress:
-  - subnet: 10.229.97.0/24
-  - subnet: fd96:619:803e:6100::/64
-  - subnet: 10.96.0.0/16
-  - subnet: fd96:619:6b75:0110::/56
+- subnet: 10.229.97.0/24
+- subnet: fd96:619:803e:6100::/64
+- subnet: 10.96.0.0/16
+- subnet: fd96:619:6b75:0110::/56
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: cni-geneve
 portSelector:
   ports:
-    - 6081
+  - 6081
   protocol: udp
 ingress:
-  - subnet: 10.229.97.0/24
-  - subnet: fd96:619:803e:6100::/64
+- subnet: 10.229.97.0/24
+- subnet: fd96:619:803e:6100::/64
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: cilium-health
 portSelector:
   ports:
-    - 4240
+  - 4240
   protocol: tcp
 ingress:
-  - subnet: 10.229.97.0/24
-  - subnet: fd96:619:803e:6100::/64
+- subnet: 10.229.97.0/24
+- subnet: fd96:619:803e:6100::/64
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: cilium-hubble
 portSelector:
   ports:
-    - 4244
-    - 4245
+  - 4244
+  - 4245
   protocol: tcp
 ingress:
-  - subnet: 10.229.97.0/24
-  - subnet: fd96:619:803e:6100::/64
+- subnet: 10.229.97.0/24
+- subnet: fd96:619:803e:6100::/64
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: cilium-mtls
 portSelector:
   ports:
-    - 4250
+  - 4250
   protocol: tcp
 ingress:
-  - subnet: 10.229.97.0/24
-  - subnet: fd96:619:803e:6100::/64
+- subnet: 10.229.97.0/24
+- subnet: fd96:619:803e:6100::/64
 ---
 apiVersion: v1alpha1
 kind: NetworkRuleConfig
 name: kubespan-wg
 portSelector:
   ports:
-    - 51820
+  - 51820
   protocol: udp
 ingress:
-  - subnet: 0.0.0.0/0
-  - subnet: ::/0
+- subnet: 0.0.0.0/0
+- subnet: ::/0
 # ---
+
 # apiVersion: v1alpha1
 # kind: NetworkRuleConfig
 # name: cilium-clustermesh

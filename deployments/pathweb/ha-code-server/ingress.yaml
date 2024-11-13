@@ -21,6 +21,6 @@ spec:
             port:
               name: web
   tls:
-    - hosts:
-      - ha-code-server.services.home.yrf.me
-      secretName: services-wildcard-cert
+  - hosts:
+    - ha-code-server.services.home.yrf.me
+    secretName: services-wildcard-cert

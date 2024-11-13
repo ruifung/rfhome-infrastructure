@@ -19,22 +19,22 @@ spec:
   timeout: 1h
   targetNamespace: home-network
   postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              group: networking.k8s.io
-              version: v1
-              kind: Ingress
-              name: grafana
-            patch: |-
-              apiVersion: networking.k8s.io/v1
-              kind: Ingress
-              metadata:
-                name: grafana
-                labels:
-                  external-dns: local-pdns
-                annotations:
-                  traefik.ingress.kubernetes.io/router.middlewares: home-network-grafana-rewrite-inject-remove-public-footer-css@kubernetescrd
+  - kustomize:
+      patches:
+      - target:
+          group: networking.k8s.io
+          version: v1
+          kind: Ingress
+          name: grafana
+        patch: |-
+          apiVersion: networking.k8s.io/v1
+          kind: Ingress
+          metadata:
+            name: grafana
+            labels:
+              external-dns: local-pdns
+            annotations:
+              traefik.ingress.kubernetes.io/router.middlewares: home-network-grafana-rewrite-inject-remove-public-footer-css@kubernetescrd
   values:
     # imageRenderer:
     #   enabled: true
@@ -62,14 +62,14 @@ spec:
         type: Recreate
       extraEnvVarsSecret: "grafana-config"
       extraVolumes:
-        - name: db-config
-          secret:
-            secretName: rfhome-postgres-ha-pguser-grafana
-            optional: false
+      - name: db-config
+        secret:
+          secretName: rfhome-postgres-ha-pguser-grafana
+          optional: false
       extraVolumeMounts:
-        - name: db-config
-          mountPath: /db-config
-          readOnly: true
+      - name: db-config
+        mountPath: /db-config
+        readOnly: true
     config:
       useGrafanaIniFile: true
       grafanaIniConfigMap: "grafana-config"
@@ -77,10 +77,10 @@ spec:
       secretDefinition:
         apiVersion: 1
         datasources:
-          - name: Thanos
-            type: prometheus
-            url: http://mimir-nginx.monitoring/prometheus
-            isDefault: true
+        - name: Thanos
+          type: prometheus
+          url: http://mimir-nginx.monitoring/prometheus
+          isDefault: true
     ingress:
       enabled: true
       pathType: Prefix
@@ -100,12 +100,12 @@ spec:
         enabled: false
         namespace: monitoring
         rules:
-          - alert: Grafana-Down
-            annotations:
-              message: "Grafana instance is down"
-              summary: Grafana instance is down
-            expr: absent(up{job="grafana"} == 1)
-            labels:
-              severity: warning
-              service: grafana
-            for: 5m
+        - alert: Grafana-Down
+          annotations:
+            message: "Grafana instance is down"
+            summary: Grafana instance is down
+          expr: absent(up{job="grafana"} == 1)
+          labels:
+            severity: warning
+            service: grafana
+          for: 5m
