@@ -14,10 +14,10 @@ resources:
   - "calibre-web-svc.yaml"
   - "calibre-library-sync-sts.yaml"
   - "calibre-library-sync-svc.yaml"
-  - "ingress.yaml"
-  - "traefik-ingressroute.yaml"
   - "traefik-middleware.yaml"
   - "traefik-service.yaml"
+  - "httproute.yaml"
+  - "httproute-external.yaml"
 
 configMapGenerator:
   - name: "calibre-library-sync-config"
