@@ -1,4 +1,4 @@
-﻿---
+---
 apiVersion: traefik.io/v1alpha1
 kind: ServersTransport
 metadata:
@@ -6,6 +6,6 @@ metadata:
   namespace: harbor
 spec:
   insecureSkipVerify: true
-  rootCAsSecrets: 
+  rootCAsSecrets:
     - harbor-core-internal-tls
     - harbor-portal-internal-tls

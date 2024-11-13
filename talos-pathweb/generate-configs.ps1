@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 
-$versions = Get-Content talos-version.json -Raw | ConvertFrom-Json 
+$versions = Get-Content talos-version.json -Raw | ConvertFrom-Json
 $TALOS_VERSION=$versions.version
 $KUBE_VERSION=$versions.k8s_version
 
@@ -50,7 +50,7 @@ foreach ($node in $nodes) {
             }
         }
     }
-    $ImagePatchJson = ConvertTo-Json $ImagePatch -Compress 
+    $ImagePatchJson = ConvertTo-Json $ImagePatch -Compress
     $patchArgs.Add("-p") | Out-Null
     $patchArgs.Add($ImagePatchJson) | Out-Null
 

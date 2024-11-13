@@ -1,4 +1,4 @@
-﻿---
+---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
@@ -86,4 +86,4 @@ spec:
     trace:
       enabled: false
     cache:
-      enabled: false 
+      enabled: false

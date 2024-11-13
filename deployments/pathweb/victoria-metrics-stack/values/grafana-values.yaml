@@ -1,4 +1,4 @@
-﻿# Grafana dependency chart configuration. For possible values refer to https://github.com/grafana/helm-charts/tree/main/charts/grafana#configuration
+# Grafana dependency chart configuration. For possible values refer to https://github.com/grafana/helm-charts/tree/main/charts/grafana#configuration
 grafana:
   enabled: false
   ## all values for grafana helm chart can be specified here

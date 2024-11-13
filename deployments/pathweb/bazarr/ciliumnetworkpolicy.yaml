@@ -1,4 +1,4 @@
-﻿apiVersion: cilium.io/v2
+apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
   name: bazarr-network-policy

@@ -1,4 +1,4 @@
-﻿images:
+images:
   - name: linuxserver/sonarr
     newName: lscr.io/linuxserver/sonarr
     newTag: version-4.0.10.2544

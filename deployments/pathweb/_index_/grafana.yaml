@@ -14,4 +14,3 @@ spec:
   targetNamespace: home-network
   dependsOn:
   - name: grafana-operator
-

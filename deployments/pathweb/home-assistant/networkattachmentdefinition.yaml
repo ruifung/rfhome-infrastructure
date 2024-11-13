@@ -1,4 +1,4 @@
-﻿---
+---
 apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
@@ -9,7 +9,7 @@ spec:
     {
       "cniVersion": "0.3.1",
       "plugins": [
-        {         
+        {
           "type": "bridge",
           "bridge": "iot",
           "ipam": {

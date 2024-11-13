@@ -1,4 +1,4 @@
-﻿alertmanager:
+alertmanager:
   enabled: true
   annotations: {}
   # spec for VMAlertmanager crd

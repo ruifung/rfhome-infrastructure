@@ -13,4 +13,3 @@
 #     kind: GitRepository
 #     name: rfhome-infrastructure
 #   targetNamespace: monitoring
-

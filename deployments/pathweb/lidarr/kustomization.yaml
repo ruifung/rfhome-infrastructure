@@ -1,4 +1,4 @@
-﻿images:
+images:
   - name: linuxserver/lidarr
     newName: lscr.io/linuxserver/lidarr
     newTag: version-2.7.1.4417

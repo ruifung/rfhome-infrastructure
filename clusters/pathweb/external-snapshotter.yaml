@@ -1,4 +1,4 @@
-﻿# https://github.com/kubernetes-csi/external-snapshotter
+# https://github.com/kubernetes-csi/external-snapshotter
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
@@ -31,7 +31,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  path: ./deploy/kubernetes/snapshot-controller 
+  path: ./deploy/kubernetes/snapshot-controller
   prune: true
   sourceRef:
     kind: GitRepository

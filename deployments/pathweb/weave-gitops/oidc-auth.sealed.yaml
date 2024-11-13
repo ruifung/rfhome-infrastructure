@@ -16,4 +16,3 @@ spec:
       name: oidc-auth
       namespace: flux-system
     type: Opaque
-

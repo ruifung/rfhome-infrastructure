@@ -1,4 +1,4 @@
-﻿# apiVersion: "cilium.io/v2"
+# apiVersion: "cilium.io/v2"
 # kind: CiliumLocalRedirectPolicy
 # metadata:
 #   name: "node-local-dns"

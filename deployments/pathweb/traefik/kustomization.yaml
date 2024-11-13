@@ -1,4 +1,4 @@
-﻿images:
+images:
   - name: cloudflare/cloudflared
     newTag: 2024.11.0
 

@@ -1,4 +1,4 @@
-# Bootstrap deployment of sealed-secrets, will be taken over by 
+# Bootstrap deployment of sealed-secrets, will be taken over by
 # flux later.
 resource "helm_release" "sealed_secrets" {
   name       = "sealed-secrets"
@@ -32,7 +32,7 @@ resource "kubectl_manifest" "multus" {
 # }
 
 
-# Bootstrap deployment of tf-controller, will be taken over by 
+# Bootstrap deployment of tf-controller, will be taken over by
 # flux later.
 # resource "helm_release" "tf_controller" {
 #   depends_on = [ flux_bootstrap_git.flux_pathweb ]

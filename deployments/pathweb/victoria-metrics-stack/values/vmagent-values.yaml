@@ -1,4 +1,4 @@
-﻿vmagent:
+vmagent:
   enabled: true
   annotations: {}
   # https://docs.victoriametrics.com/operator/api.html#vmagentremotewritespec

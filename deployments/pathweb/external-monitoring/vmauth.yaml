@@ -1,4 +1,4 @@
-﻿apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMAuth
 metadata:
   name: external-monitoring-vmauth

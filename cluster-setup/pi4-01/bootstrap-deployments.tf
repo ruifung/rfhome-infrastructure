@@ -1,4 +1,4 @@
-# Bootstrap deployment of sealed-secrets, will be taken over by 
+# Bootstrap deployment of sealed-secrets, will be taken over by
 # flux later.
 resource "helm_release" "sealed_secrets" {
   name       = "sealed-secrets"
@@ -21,11 +21,11 @@ resource "kubectl_manifest" "multus" {
   yaml_body = each.value
 }
 
-# Bootstrap deployment of tf-controller, will be taken over by 
+# Bootstrap deployment of tf-controller, will be taken over by
 # flux later.
 # resource "helm_release" "tf_controller" {
 #   depends_on = [ flux_bootstrap_git.flux ]
-  
+
 #   name       = "tf-controller"
 #   repository = "https://weaveworks.github.io/tf-controller/"
 #   chart      = "tf-controller"

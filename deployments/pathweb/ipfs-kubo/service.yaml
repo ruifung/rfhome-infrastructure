@@ -1,4 +1,4 @@
-﻿---
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -44,7 +44,7 @@ spec:
   ipFamilyPolicy: PreferDualStack
   selector:
     app.kubernetes.io/name: ipfs-kubo
-  ports:    
+  ports:
   - port: 4001
     targetPort: swarm
     name: swarm

@@ -1,4 +1,4 @@
-﻿images:
+images:
   - name: linuxserver/overseerr
     newName: lscr.io/linuxserver/overseerr
     newTag: version-v1.33.2

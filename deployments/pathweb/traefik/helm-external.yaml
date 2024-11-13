@@ -1,4 +1,4 @@
-﻿---
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -63,7 +63,7 @@ spec:
       - name: crowdsec-bouncer-tls
         mountPath: /crowdsec
         type: secret
-    additionalVolumeMounts:       
+    additionalVolumeMounts:
       - name: additional-configs
         mountPath: /additional-configs
     resources:

@@ -19,4 +19,3 @@ spec:
       name: node-red-env
       namespace: home-network
     type: Opaque
-

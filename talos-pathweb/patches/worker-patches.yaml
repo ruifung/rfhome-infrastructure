@@ -1,4 +1,4 @@
-﻿machine:
+machine:
   nodeLabels:
     role: worker
   network:

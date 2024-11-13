@@ -1,4 +1,4 @@
-﻿images:
+images:
   - name: hotio/unpackerr
     newName: ghcr.io/hotio/unpackerr
     newTag: release-0.14.5

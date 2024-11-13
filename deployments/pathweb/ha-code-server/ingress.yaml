@@ -1,4 +1,4 @@
-﻿---
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -18,7 +18,7 @@ spec:
         backend:
           service:
             name: ha-code-server
-            port: 
+            port:
               name: web
   tls:
     - hosts:

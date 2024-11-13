@@ -13,4 +13,3 @@ spec:
       name: fluxcd-github-token
       namespace: flux-system
     type: Opaque
-

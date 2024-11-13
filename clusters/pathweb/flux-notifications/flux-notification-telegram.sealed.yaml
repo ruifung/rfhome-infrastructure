@@ -13,4 +13,3 @@ spec:
       name: fluxcd-telegram-token
       namespace: flux-system
     type: Opaque
-

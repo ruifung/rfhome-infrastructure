@@ -1,4 +1,4 @@
-﻿resources:
+resources:
   - "grafana.yaml"
   - "grafana-datasource.yaml"
   - "grafana.sealed.yaml"

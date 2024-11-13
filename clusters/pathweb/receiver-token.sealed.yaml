@@ -13,4 +13,3 @@ spec:
       name: receiver-token
       namespace: flux-system
     type: Opaque
-

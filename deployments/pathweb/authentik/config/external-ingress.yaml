@@ -1,4 +1,4 @@
-﻿apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: authentik-external
@@ -21,7 +21,7 @@ spec:
         backend:
           service:
             name: authentik-server
-            port: 
+            port:
               name: http
   tls:
     - secretName: authentik-public-cert

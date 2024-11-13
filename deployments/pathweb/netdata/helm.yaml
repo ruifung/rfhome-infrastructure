@@ -1,4 +1,4 @@
-﻿---
+---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
@@ -52,7 +52,7 @@ spec:
               initial clock resync iterations = 60
     k8sState:
       configs:
-        netdata:  
+        netdata:
           data: |
             [global]
               hostname = pathweb-netdata-k8s-state

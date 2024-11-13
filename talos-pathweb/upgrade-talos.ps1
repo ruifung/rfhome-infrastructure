@@ -9,7 +9,7 @@ if ($null -ne $extraArgs) {
 }
 
 $nodes = Get-Content nodes.json -Raw | ConvertFrom-Json | Where-Object { $_.ignore -ne $true }
-$versions = Get-Content talos-version.json -Raw | ConvertFrom-Json 
+$versions = Get-Content talos-version.json -Raw | ConvertFrom-Json
 
 function Get-TalosNodeVersion {
     param (
@@ -130,7 +130,7 @@ function Invoke-TalosNodeUpgrade {
     )
     # append extraArgs to args if extraArgs is not blank
     if ($extraArgs -ne "") {
-        $talosctlArgs = $talosctlArgs + $extraArgs 
+        $talosctlArgs = $talosctlArgs + $extraArgs
     }
 
 

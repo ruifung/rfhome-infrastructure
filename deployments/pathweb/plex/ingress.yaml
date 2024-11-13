@@ -1,4 +1,4 @@
-﻿apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: plex
@@ -15,7 +15,7 @@ spec:
         backend:
           service:
             name: plex-headless
-            port: 
+            port:
               name: plex
   tls:
   - hosts:

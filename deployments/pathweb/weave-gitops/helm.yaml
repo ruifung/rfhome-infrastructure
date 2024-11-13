@@ -1,4 +1,4 @@
-﻿---
+---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
@@ -75,12 +75,9 @@ spec:
           pathType: Prefix
       tls:
       - secretName: pathweb-wildcard-cert
-        hosts: 
+        hosts:
         - gitops.pathweb.clusters.home.yrf.me
     adminUser:
       create: true
       createSecret: false
       username: ruifung
-
-
-

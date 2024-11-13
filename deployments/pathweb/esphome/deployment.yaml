@@ -1,4 +1,4 @@
-﻿apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: esphome
@@ -33,7 +33,7 @@ spec:
         env:
           - name: TZ
             value: Asia/Kuala_Lumpur
-          - name: ESPHOME_DASHBOARD_USE_PING 
+          - name: ESPHOME_DASHBOARD_USE_PING
             value: "true"
           - name: POD_IP
             valueFrom:

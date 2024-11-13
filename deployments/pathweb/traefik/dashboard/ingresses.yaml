@@ -1,4 +1,4 @@
-﻿---
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -20,7 +20,7 @@ spec:
         backend:
           service:
             name: traefik-dashboard
-            port: 
+            port:
               name: traefik
   - host: traefik-external.pathweb.clusters.home.yrf.me
     http:
@@ -30,7 +30,7 @@ spec:
         backend:
           service:
             name: traefik-external-dashboard
-            port: 
+            port:
               name: traefik
   tls:
     - hosts:

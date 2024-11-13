@@ -1,4 +1,4 @@
-﻿images:
+images:
   - name: ipfs/kubo
     newTag: v0.31.0
 

@@ -1,4 +1,4 @@
-﻿images:
+images:
   - name: koenkk/zigbee2mqtt
     newTag: 1.41.0
     # newTag: latest-dev
@@ -15,4 +15,3 @@ resources:
 commonLabels:
   app.kubernetes.io/name: zigbee2mqtt
   app.kubernetes.io/instance: sonoff-zb3-01
-

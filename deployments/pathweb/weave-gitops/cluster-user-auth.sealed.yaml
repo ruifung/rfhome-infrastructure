@@ -16,4 +16,3 @@ spec:
       name: cluster-user-auth
       namespace: flux-system
     type: Opaque
-

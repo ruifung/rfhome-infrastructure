@@ -1,4 +1,4 @@
-﻿serial:
+serial:
   adapter: ember
   port: tcp://sonoff-zigbee-bridge.servers.home.yrf.me:20108
 mqtt:

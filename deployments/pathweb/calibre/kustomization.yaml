@@ -1,4 +1,4 @@
-﻿images:
+images:
   - name: linuxserver/calibre
     newName: lscr.io/linuxserver/calibre
     newTag: version-v7.21.0

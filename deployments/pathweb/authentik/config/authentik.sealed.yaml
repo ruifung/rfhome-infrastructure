@@ -20,4 +20,3 @@ spec:
       name: authentik-secrets
       namespace: home-network
     type: Opaque
-

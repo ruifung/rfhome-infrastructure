@@ -1,4 +1,4 @@
-﻿---
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -13,9 +13,9 @@ spec:
   sessionAffinity: None
   publishNotReadyAddresses: true
   selector:
-      app.kubernetes.io/name: mimir 
-      app.kubernetes.io/instance: grafana-mimir 
-      app.kubernetes.io/part-of: memberlist 
+      app.kubernetes.io/name: mimir
+      app.kubernetes.io/instance: grafana-mimir
+      app.kubernetes.io/part-of: memberlist
   ports:
   - name: tcp
     port: 7946
@@ -31,7 +31,7 @@ spec:
   clusterIPs:
   - None
   selector:
-      app.kubernetes.io/name: mimir 
+      app.kubernetes.io/name: mimir
       app.kubernetes.io/instance: grafana-mimir
 ---
 apiVersion: v1
@@ -53,6 +53,5 @@ spec:
     protocol: TCP
     targetPort: grpc
   selector:
-      app.kubernetes.io/name: mimir 
+      app.kubernetes.io/name: mimir
       app.kubernetes.io/instance: grafana-mimir
-      

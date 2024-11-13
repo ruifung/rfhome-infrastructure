@@ -1,4 +1,4 @@
-﻿machine:
+machine:
   nodeLabels:
     location: rfhome
     type: pi4
@@ -26,7 +26,7 @@
     # user.max_user_namespaces > 0 is required for gvisor usage.
     # talos defaults to 0 as ker KSPP.
     user.max_user_namespaces: "28633"
-  
+
     net.ipv6.conf.eth0.accept_ra: "0"
     net/ipv6/conf/eth0.97/accept_ra: "2"
     net.ipv6.conf.iot.accept_ra: "0"

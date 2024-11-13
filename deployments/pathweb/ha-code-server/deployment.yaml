@@ -1,4 +1,4 @@
-﻿apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ha-code-server
@@ -51,8 +51,8 @@ spec:
           name: web
       volumes:
         - name: config
-          persistentVolumeClaim: 
+          persistentVolumeClaim:
             claimName: ha-code-server-config
         - name: home-assistant
-          persistentVolumeClaim: 
+          persistentVolumeClaim:
             claimName: home-assistant-data

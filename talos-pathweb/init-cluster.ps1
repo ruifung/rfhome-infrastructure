@@ -1,7 +1,7 @@
 .\apply-config.ps1 all --insecure
 Write-Host "Bootstrapping Talos Cluster"
 talosctl bootstrap --talosconfig .\talosconfig --nodes pathweb-control-1.servers.home.yrf.me
-function Check-ApiServer([string]$Target) {     
+function Check-ApiServer([string]$Target) {
     Try {
         Invoke-RestMethod $target -SkipCertificateCheck -SkipHttpErrorCheck
         return $True

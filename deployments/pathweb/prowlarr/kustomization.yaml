@@ -1,4 +1,4 @@
-﻿images:
+images:
   - name: linuxserver/prowlarr
     newName: lscr.io/linuxserver/prowlarr
     newTag: version-1.25.4.4818

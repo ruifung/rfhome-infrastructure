@@ -1,4 +1,4 @@
-﻿images:
+images:
   - name: h2non/imaginary:latest
     newTag: 1.2.4
 

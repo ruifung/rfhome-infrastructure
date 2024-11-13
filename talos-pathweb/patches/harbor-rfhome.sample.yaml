@@ -1,4 +1,4 @@
-﻿machine:
+machine:
   registries:
     config:
       harbor.services.home.yrf.me:

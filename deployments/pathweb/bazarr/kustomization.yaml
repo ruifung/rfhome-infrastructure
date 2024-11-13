@@ -1,4 +1,4 @@
-﻿images:
+images:
   - name: linuxserver/bazarr
     newName: lscr.io/linuxserver/bazarr
     newTag: version-v1.4.5

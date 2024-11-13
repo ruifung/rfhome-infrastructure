@@ -1,4 +1,4 @@
-﻿kubeProxyReplacement: strict
+kubeProxyReplacement: strict
 k8sServiceHost: localhost
 k8sServicePort: 6443
 egressGateway:

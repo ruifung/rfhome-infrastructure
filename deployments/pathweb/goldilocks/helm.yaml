@@ -1,4 +1,4 @@
-﻿---
+---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
@@ -26,7 +26,7 @@ spec:
   postRenderers:
     - kustomize:
         patches:
-          - target: 
+          - target:
               group: apps
               version: v1
               kind: Deployment
@@ -35,7 +35,7 @@ spec:
               - op: add
                 path: /spec/template/spec/priorityClassName
                 value: rfhome-standard
-          - target: 
+          - target:
               group: apps
               version: v1
               kind: Deployment

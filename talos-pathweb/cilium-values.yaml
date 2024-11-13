@@ -43,7 +43,7 @@ hubble:
       - hubbleui.pathweb.clusters.home.yrf.me
       tls:
       - secretName: pathweb-wildcard-cert
-        hosts: 
+        hosts:
         - hubbleui.pathweb.clusters.home.yrf.me
   metrics:
     enabled:
@@ -69,7 +69,7 @@ ipv6:
   enabled: true
 securityContext:
   capabilities:
-    ciliumAgent: 
+    ciliumAgent:
       - CHOWN
       - KILL
       - NET_ADMIN
@@ -81,7 +81,7 @@ securityContext:
       - FOWNER
       - SETGID
       - SETUID
-    cleanCiliumState: 
+    cleanCiliumState:
       - NET_ADMIN
       - SYS_ADMIN
       - SYS_RESOURCE

@@ -25,10 +25,10 @@ if (($mode -eq "controlplane") -or ($mode -eq "all")) {
 if ($toApply.Count -eq 0) {
     $targets = $mode.Split(',') | Where-Object { $_ -ne "" }
     # filter toApply by fqdn in $targets
-    $toApply = $nodes | Where-Object { 
+    $toApply = $nodes | Where-Object {
         $node = $_
         ($targets -contains $node.fqdn) -or (($targets | Where-Object { $node.fqdn.StartsWith("$_.") }).Count -gt 0)
-    } 
+    }
 }
 # if toApply is still empty, print out all available fqdns
 if ($toApply.Count -eq 0) {

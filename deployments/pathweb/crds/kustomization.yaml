@@ -1,4 +1,4 @@
-﻿## List of URL's to CRDs to install independently of any helm or kustomize deployment.
+## List of URL's to CRDs to install independently of any helm or kustomize deployment.
 ## I.e. prometheus operator CRDs which are widely consumed by ServiceMonitor, PodMonitor, etc.
 resources:
   - "https://github.com/prometheus-operator/prometheus-operator/releases/download/v0.73.2/stripped-down-crds.yaml"

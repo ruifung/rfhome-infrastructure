@@ -1,4 +1,4 @@
-﻿# -- victoria-metrics-operator dependency chart configuration.
+# -- victoria-metrics-operator dependency chart configuration.
 # -- For possible values refer to https://github.com/VictoriaMetrics/helm-charts/tree/master/charts/victoria-metrics-operator#parameters
 # -- also checkout here possible ENV variables to configure operator behaviour https://docs.victoriametrics.com/operator/vars.html
 victoria-metrics-operator:

@@ -19,7 +19,7 @@
 
 
   <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/light-719f1193e0c0.css" /><link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/dark-0c343b529849.css" /><link data-color-theme="dark_dimmed" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed-f22da508b62a.css" /><link data-color-theme="dark_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_high_contrast-188ef1de59e6.css" /><link data-color-theme="dark_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind-bc6bf4eea850.css" /><link data-color-theme="light_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind-527658dec362.css" /><link data-color-theme="light_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_high_contrast-c7a7fe0cd8ec.css" /><link data-color-theme="light_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia-6aa855bdae0f.css" /><link data-color-theme="dark_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia-6aa5e25aacc0.css" />
-  
+
     <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-e357a4095c32.css" />
     <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/global-de4f252acb9b.css" />
     <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/github-7cfc9d43e891.css" />
@@ -66,13 +66,13 @@
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_decorators_js-node_modules_scroll-anchoring_di-e71893-c446bed4261b.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_diffs_blob-lines_ts-app_assets_modules_github_diffs_linkable-line-n-dca161-bf0171cec2b2.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/diffs-3fb71f896836.js"></script>
-  
+
 
   <title>rook/create-external-cluster-resources.py at e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4 · rook/rook</title>
 
 
 
-    
+
 
   <meta name="request-id" content="FCBD:3B06:FEA1C8:126B6FF:63AAC39E" data-turbo-transient="true" /><meta name="html-safe-nonce" content="fb8694036585a56d27e07aecb47913d9dd2fb772b04943312351c1f3f8850f0d" data-turbo-transient="true" /><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vcm9vay5pby8iLCJyZXF1ZXN0X2lkIjoiRkNCRDozQjA2OkZFQTFDODoxMjZCNkZGOjYzQUFDMzlFIiwidmlzaXRvcl9pZCI6IjE1MTc5OTE4MjU3ODkxNzMzMyIsInJlZ2lvbl9lZGdlIjoic291dGhlYXN0YXNpYSIsInJlZ2lvbl9yZW5kZXIiOiJpYWQifQ==" data-turbo-transient="true" /><meta name="visitor-hmac" content="7c34ed9a07211e0bf3b1e8f0c0505eeb1ed91dff5e75fa7b7856d8b92e36e19a" data-turbo-transient="true" />
 
@@ -81,7 +81,7 @@
 
 
   <meta name="github-keyboard-shortcuts" content="repository,source-code,file-tree" data-turbo-transient="true" />
-  
+
 
   <meta name="selected-link" value="repo_source" data-turbo-transient>
 
@@ -95,19 +95,19 @@
 
   <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-turbo-transient="true" />
 
-  
 
 
 
 
-  
+
+
 
     <meta name="user-login" content="ruifung">
 
   <link rel="sudo-modal" href="/sessions/sudo_modal">
 
     <meta name="viewport" content="width=device-width">
-    
+
       <meta name="description" content="Storage Orchestration for Kubernetes. Contribute to rook/rook development by creating an account on GitHub.">
       <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
@@ -115,7 +115,7 @@
     <meta name="apple-itunes-app" content="app-id=1477376905" />
       <meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/62921553/b2663580-9e05-11eb-9413-e442179d601d" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="rook/create-external-cluster-resources.py at e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4 · rook/rook" /><meta name="twitter:description" content="Storage Orchestration for Kubernetes. Contribute to rook/rook development by creating an account on GitHub." />
       <meta property="og:image" content="https://repository-images.githubusercontent.com/62921553/b2663580-9e05-11eb-9413-e442179d601d" /><meta property="og:image:alt" content="Storage Orchestration for Kubernetes. Contribute to rook/rook development by creating an account on GitHub." /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="rook/create-external-cluster-resources.py at e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4 · rook/rook" /><meta property="og:url" content="https://github.com/rook/rook" /><meta property="og:description" content="Storage Orchestration for Kubernetes. Contribute to rook/rook development by creating an account on GitHub." />
-      
+
     <link rel="assets" href="https://github.githubassets.com/">
       <link rel="shared-web-socket" href="wss://alive.github.com/_sockets/u/1073945/ws?session=eyJ2IjoiVjMiLCJ1IjoxMDczOTQ1LCJzIjoxMDEzNzk5NjIxLCJjIjoxNzI5NTI5MDg4LCJ0IjoxNjcyMTM1NTg4fQ==--bbdb77a8c3de4b3d4586ce0da9ecd464b8be06a05274d9b5b216f69d694cd8ef" data-refresh-url="/_alive" data-session-id="9a44ee8dce6002c4a69c3fa777b6f0925f9e9326d249296cca9d3f68d4b1c6f1">
       <link rel="shared-web-socket-src" href="/assets-cdn/worker/socket-worker-b87581f5816c.js">
@@ -171,15 +171,15 @@
 
   <body class="logged-in env-production page-responsive page-blob" style="word-wrap: break-word;">
     <div data-turbo-body class="logged-in env-production page-responsive page-blob" style="word-wrap: break-word;">
-      
+
 
 
     <div class="position-relative js-header-wrapper ">
       <a href="#start-of-content" class="p-3 color-bg-accent-emphasis color-fg-on-emphasis show-on-focus js-skip-to-content">Skip to content</a>
       <span data-view-component="true" class="progress-pjax-loader Progress position-fixed width-full">
     <span style="width: 0%;" data-view-component="true" class="Progress-item progress-pjax-loader-bar left-0 top-0 color-bg-accent-emphasis"></span>
-</span>      
-      
+</span>
+
 
 
         <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_decorators_js-node_modules_github_command-pale-4090c9-182f0b6e3cd6.js"></script>
@@ -212,7 +212,7 @@
 </button>    </div>
 
     <div class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
-              
+
 
 
 
@@ -246,9 +246,9 @@
 
 
           <div class="Box position-absolute overflow-hidden d-none jump-to-suggestions js-jump-to-suggestions-container">
-            
+
 <ul class="d-none js-jump-to-suggestions-template-container">
-  
+
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-suggestion" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="suggestion">
@@ -295,7 +295,7 @@
 </ul>
 
 <ul id="jump-to-results" role="listbox" class="p-0 m-0 js-navigation-container jump-to-suggestions-results-container js-jump-to-suggestions-results-container">
-  
+
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-scoped-search d-none" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="scoped_search">
@@ -333,7 +333,7 @@
   </a>
 </li>
 
-  
+
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-owner-scoped-search d-none" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="owner_scoped_search">
@@ -371,7 +371,7 @@
   </a>
 </li>
 
-  
+
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-global-search d-none" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="global_search">
@@ -480,13 +480,13 @@
     </div>
 
     <div class="Header-item mr-0 mr-md-3 flex-order-1 flex-md-order-none">
-        
+
 
 <notification-indicator data-channel="eyJjIjoibm90aWZpY2F0aW9uLWNoYW5nZWQ6MTA3Mzk0NSIsInQiOjE2NzIxMzU1ODh9--91c36374a7d96d249698b02b5c756a8e2a50dd05a1041918fe2da0084e28a8ff" data-indicator-mode="global" data-tooltip-global="You have unread notifications" data-tooltip-unavailable="Notifications are unavailable at the moment." data-tooltip-none="You have no unread notifications" data-view-component="true" class="js-socket-channel">
   <a id="AppHeader-notifications-button" href="/notifications"
     class="Header-link notification-indicator position-relative tooltipped tooltipped-sw"
 
-    
+
 
     data-hotkey="g n"
     data-target="notification-indicator.link"
@@ -521,7 +521,7 @@
 </svg> <span class="dropdown-caret"></span>
   </summary>
   <details-menu class="dropdown-menu dropdown-menu-sw">
-    
+
 <a role="menuitem" class="dropdown-item" href="/new" data-ga-click="Header, create new repository">
   New repository
 </a>
@@ -550,7 +550,7 @@
     </div>
 
     <div class="Header-item position-relative mr-0 d-none d-md-flex">
-        
+
   <details class="details-overlay details-reset js-feature-preview-indicator-container" data-feature-preview-indicator-src="/users/ruifung/feature_preview/indicator_check">
 
   <summary
@@ -565,7 +565,7 @@
   <details-menu
       class="dropdown-menu dropdown-menu-sw"
       style="width: 180px"
-      
+
       preload>
       <include-fragment src="/users/1073945/menu" loading="lazy">
         <p class="text-center mt-3" data-hide-on-error>
@@ -587,7 +587,7 @@
     </div>
 </header>
 
-            
+
     </div>
 
   <div id="start-of-content" class="show-on-focus"></div>
@@ -605,7 +605,7 @@
 
 
   <template class="js-flash-template">
-    
+
 <div class="flash flash-full   {{ className }}">
   <div class="px-2" >
     <button autofocus class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
@@ -614,7 +614,7 @@
 </svg>
     </button>
     <div aria-atomic="true" role="alert" class="js-flash-alert">
-      
+
       <div>{{ message }}</div>
 
     </div>
@@ -624,7 +624,7 @@
 </div>
 
 
-    
+
   <include-fragment class="js-notification-shelf-include-fragment" data-base-src="https://github.com/notifications/beta/shelf"></include-fragment>
 
 
@@ -1389,7 +1389,7 @@
             data-src="/command_palette/commands"
           data-supported-modes="[]"
             data-supports-commands
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
         <server-defined-provider
@@ -1398,7 +1398,7 @@
             data-src="/command_palette/jump_to_page_navigation"
           data-supported-modes="[&quot;&quot;]"
             data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
         <server-defined-provider
@@ -1407,7 +1407,7 @@
             data-src="/command_palette/issues"
           data-supported-modes="[&quot;#&quot;,&quot;#&quot;]"
             data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;,&quot;&quot;]"
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
         <server-defined-provider
@@ -1416,7 +1416,7 @@
             data-src="/command_palette/jump_to"
           data-supported-modes="[&quot;@&quot;,&quot;@&quot;]"
             data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
         <server-defined-provider
@@ -1425,7 +1425,7 @@
             data-src="/command_palette/jump_to_members_only"
           data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
             data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
         <server-defined-provider
@@ -1434,7 +1434,7 @@
             data-src="/command_palette/jump_to_members_only_prefetched"
           data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
             data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
         <server-defined-provider
@@ -1443,7 +1443,7 @@
             data-src="/command_palette/files"
           data-supported-modes="[&quot;/&quot;]"
             data-supported-scope-types="[&quot;repository&quot;]"
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
         <server-defined-provider
@@ -1452,7 +1452,7 @@
             data-src="/command_palette/discussions"
           data-supported-modes="[&quot;#&quot;]"
             data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
         <server-defined-provider
@@ -1461,7 +1461,7 @@
             data-src="/command_palette/projects"
           data-supported-modes="[&quot;#&quot;,&quot;!&quot;]"
             data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
         <server-defined-provider
@@ -1470,7 +1470,7 @@
             data-src="/command_palette/recent_issues"
           data-supported-modes="[&quot;#&quot;,&quot;#&quot;]"
             data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;,&quot;&quot;]"
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
         <server-defined-provider
@@ -1479,7 +1479,7 @@
             data-src="/command_palette/teams"
           data-supported-modes="[&quot;@&quot;,&quot;&quot;]"
             data-supported-scope-types="[&quot;owner&quot;]"
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
         <server-defined-provider
@@ -1488,7 +1488,7 @@
             data-src="/command_palette/name_with_owner_repository"
           data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
             data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
-          
+
           data-targets="command-palette.serverDefinedProviderElements"
           ></server-defined-provider>
     </command-palette>
@@ -1556,12 +1556,6 @@
   >
         <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
     <main id="js-repo-pjax-container" >
-      
-  
-
-
-    
-    
 
 
 
@@ -1569,18 +1563,24 @@
 
 
 
-  
+
+
+
+
+
+
+
   <div id="repository-container-header"  class="pt-3 hide-full-screen" style="background-color: var(--color-page-header-bg);" data-turbo-replace>
 
       <div class="d-flex flex-wrap flex-justify-end mb-3  px-3 px-md-4 px-lg-5" style="gap: 1rem;">
 
         <div class="flex-auto min-width-0 width-fit mr-3">
-            
+
   <div class=" d-flex flex-wrap flex-items-center wb-break-word f3 text-normal">
       <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo color-fg-muted mr-2">
     <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
 </svg>
-    
+
     <span class="author flex-self-stretch" itemprop="author">
       <a class="url fn" rel="author" data-hovercard-type="organization" data-hovercard-url="/orgs/rook/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/rook">rook</a>
     </span>
@@ -1597,7 +1597,7 @@
 
           <ul class="pagehead-actions flex-shrink-0 d-none d-md-inline" style="padding: 2px 0;">
 
-      
+
 
   <li>
           <notifications-list-subscription-form
@@ -1613,7 +1613,7 @@
         <summary data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;WATCH_BUTTON&quot;,&quot;repository_id&quot;:62921553,&quot;originating_url&quot;:&quot;https://github.com/rook/rook/blob/HEAD/deploy/examples/create-external-cluster-resources.py&quot;,&quot;user_id&quot;:1073945}}" data-hydro-click-hmac="d102717c25ac0ac34524e7326d23ebb350f7dd80895c46007ec1df334fc4ebc4" data-ga-click="Repository, click Watch settings, action:blob#show" aria-label="Notification settings" data-view-component="true" class="btn-sm btn">    <span data-menu-button>
             <span
               hidden
-              
+
               data-target="notifications-list-subscription-form.unwatchButtonCopy"
             >
               <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye">
@@ -1623,7 +1623,7 @@
             </span>
             <span
               hidden
-              
+
               data-target="notifications-list-subscription-form.stopIgnoringButtonCopy"
             >
               <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bell-slash">
@@ -1632,8 +1632,8 @@
               Stop ignoring
             </span>
             <span
-              
-              
+
+
               data-target="notifications-list-subscription-form.watchButtonCopy"
             >
               <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye">
@@ -1649,7 +1649,7 @@
           class="SelectMenu  "
           role="menu"
           data-target="notifications-list-subscription-form.menu"
-          
+
         >
           <div class="SelectMenu-modal notifications-component-menu-modal">
             <header class="SelectMenu-header">
@@ -1674,7 +1674,7 @@
                   role="menuitemradio"
                   aria-checked="true"
                   data-targets="notifications-list-subscription-form.subscriptionButtons"
-                  
+
                 >
                   <span class="f5">
                     <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
@@ -1747,7 +1747,7 @@
                 data-action="click:notifications-list-subscription-form#openCustomDialog"
                 aria-haspopup="true"
                 aria-checked="false"
-                
+
               >
                 <span class="f5">
                   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
@@ -1834,7 +1834,7 @@
                         value="Issue"
                         data-targets="notifications-list-subscription-form.threadTypeCheckboxes"
                         data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated"
-                        
+
                       >
                       Issues
                     </label>
@@ -1849,7 +1849,7 @@
                         value="PullRequest"
                         data-targets="notifications-list-subscription-form.threadTypeCheckboxes"
                         data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated"
-                        
+
                       >
                       Pull requests
                     </label>
@@ -1864,7 +1864,7 @@
                         value="Release"
                         data-targets="notifications-list-subscription-form.threadTypeCheckboxes"
                         data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated"
-                        
+
                       >
                       Releases
                     </label>
@@ -1879,7 +1879,7 @@
                         value="Discussion"
                         data-targets="notifications-list-subscription-form.threadTypeCheckboxes"
                         data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated"
-                        
+
                       >
                       Discussions
                     </label>
@@ -1894,7 +1894,7 @@
                         value="SecurityAlert"
                         data-targets="notifications-list-subscription-form.threadTypeCheckboxes"
                         data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated"
-                        
+
                       >
                       Security alerts
                     </label>
@@ -1936,9 +1936,9 @@
   <details-menu
     class="SelectMenu right-0"
       src="/rook/rook/my_forks_menu_content?can_fork=true"
-      
+
       role="menu"
-      
+
 >
     <div class="SelectMenu-modal">
         <button class="SelectMenu-closeButton position-absolute right-0 m-2" type="button" aria-label="Close menu" data-toggle-for="details-a46c43">
@@ -1961,7 +1961,7 @@
 </svg>
             </include-fragment>
         </div>
-        
+
       </div>
     </div>
   </details-menu>
@@ -2005,9 +2005,9 @@
   <details-menu
     class="SelectMenu right-0"
       src="/rook/rook/lists"
-      
+
       role="menu"
-      
+
 >
     <div class="SelectMenu-modal">
         <button class="SelectMenu-closeButton position-absolute right-0 m-2" type="button" aria-label="Close menu" data-toggle-for="details-6ee0b9">
@@ -2030,7 +2030,7 @@
 </svg>
             </include-fragment>
         </div>
-        
+
       </div>
     </div>
   </details-menu>
@@ -2052,9 +2052,9 @@
   <details-menu
     class="SelectMenu right-0"
       src="/rook/rook/lists"
-      
+
       role="menu"
-      
+
 >
     <div class="SelectMenu-modal">
         <button class="SelectMenu-closeButton position-absolute right-0 m-2" type="button" aria-label="Close menu" data-toggle-for="details-6ee0b9">
@@ -2077,7 +2077,7 @@
 </svg>
             </include-fragment>
         </div>
-        
+
       </div>
     </div>
   </details-menu>
@@ -2085,7 +2085,7 @@
 </div></div>
   </li>
 
-    
+
 
 </ul>
 
@@ -2100,7 +2100,7 @@
   <ul data-view-component="true" class="UnderlineNav-body list-style-none">
       <li data-view-component="true" class="d-inline-flex">
   <a id="code-tab" href="/rook/rook" data-tab-item="i0code-tab" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments /rook/rook" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g c" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Code&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" aria-current="page" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected">
-    
+
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path>
 </svg>
@@ -2108,11 +2108,11 @@
           <span id="code-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="issues-tab" href="/rook/rook/issues" data-tab-item="i1issues-tab" data-selected-links="repo_issues repo_labels repo_milestones /rook/rook/issues" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g i" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Issues&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened UnderlineNav-octicon d-none d-sm-inline">
     <path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path><path fill-rule="evenodd" d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z"></path>
 </svg>
@@ -2120,11 +2120,11 @@
           <span id="issues-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="115" data-view-component="true" class="Counter">115</span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="pull-requests-tab" href="/rook/rook/pulls" data-tab-item="i2pull-requests-tab" data-selected-links="repo_pulls checks /rook/rook/pulls" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g p" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Pull requests&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path>
 </svg>
@@ -2132,11 +2132,11 @@
           <span id="pull-requests-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="37" data-view-component="true" class="Counter">37</span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="discussions-tab" href="/rook/rook/discussions" data-tab-item="i3discussions-tab" data-selected-links="repo_discussions /rook/rook/discussions" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g g" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Discussions&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-comment-discussion UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M1.5 2.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25h-3.5a.75.75 0 00-.53.22L3.5 11.44V9.25a.75.75 0 00-.75-.75h-1a.25.25 0 01-.25-.25v-5.5zM1.75 1A1.75 1.75 0 000 2.75v5.5C0 9.216.784 10 1.75 10H2v1.543a1.457 1.457 0 002.487 1.03L7.061 10h3.189A1.75 1.75 0 0012 8.25v-5.5A1.75 1.75 0 0010.25 1h-8.5zM14.5 4.75a.25.25 0 00-.25-.25h-.5a.75.75 0 110-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0114.25 12H14v1.543a1.457 1.457 0 01-2.487 1.03L9.22 12.28a.75.75 0 111.06-1.06l2.22 2.22v-2.19a.75.75 0 01.75-.75h1a.25.25 0 00.25-.25v-5.5z"></path>
 </svg>
@@ -2144,11 +2144,11 @@
           <span id="discussions-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="actions-tab" href="/rook/rook/actions" data-tab-item="i4actions-tab" data-selected-links="repo_actions /rook/rook/actions" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g a" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Actions&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-play UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zM6.379 5.227A.25.25 0 006 5.442v5.117a.25.25 0 00.379.214l4.264-2.559a.25.25 0 000-.428L6.379 5.227z"></path>
 </svg>
@@ -2156,11 +2156,11 @@
           <span id="actions-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="projects-tab" href="/rook/rook/projects" data-tab-item="i5projects-tab" data-selected-links="repo_projects new_repo_project repo_project /rook/rook/projects" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g b" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Projects&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-table UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0114.25 16H1.75A1.75 1.75 0 010 14.25V1.75zM1.5 6.5v7.75c0 .138.112.25.25.25H5v-8H1.5zM5 5H1.5V1.75a.25.25 0 01.25-.25H5V5zm1.5 1.5v8h7.75a.25.25 0 00.25-.25V6.5h-8zm8-1.5h-8V1.5h7.75a.25.25 0 01.25.25V5z"></path>
 </svg>
@@ -2168,22 +2168,22 @@
           <span id="projects-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="4" data-view-component="true" class="Counter">4</span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="security-tab" href="/rook/rook/security" data-tab-item="i6security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /rook/rook/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Security&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-shield UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M7.467.133a1.75 1.75 0 011.066 0l5.25 1.68A1.75 1.75 0 0115 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.7 1.7 0 01-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 011.217-1.667l5.25-1.68zm.61 1.429a.25.25 0 00-.153 0l-5.25 1.68a.25.25 0 00-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.2.2 0 00.154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.25.25 0 00-.174-.237l-5.25-1.68zM9 10.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.75a.75.75 0 10-1.5 0v3a.75.75 0 001.5 0v-3z"></path>
 </svg>
         <span data-content="Security">Security</span>
           <include-fragment src="/rook/rook/security/overall-count" accept="text/fragment+html"></include-fragment>
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="insights-tab" href="/rook/rook/pulse" data-tab-item="i7insights-tab" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /rook/rook/pulse" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Insights&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-graph UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M1.5 1.75a.75.75 0 00-1.5 0v12.5c0 .414.336.75.75.75h14.5a.75.75 0 000-1.5H1.5V1.75zm14.28 2.53a.75.75 0 00-1.06-1.06L10 7.94 7.53 5.47a.75.75 0 00-1.06 0L3.22 8.72a.75.75 0 001.06 1.06L7 7.06l2.47 2.47a.75.75 0 001.06 0l5.25-5.25z"></path>
 </svg>
@@ -2191,7 +2191,7 @@
           <span id="insights-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
 
 
-    
+
 </a></li>
 </ul>
     <div style="visibility:hidden;" data-view-component="true" class="UnderlineNav-actions js-responsive-underlinenav-overflow position-absolute pr-3 pr-md-4 pr-lg-5 right-0">      <details data-view-component="true" class="details-overlay details-reset position-relative">
@@ -2242,7 +2242,7 @@
 
   </div>
 
-  
+
 
 
 
@@ -2253,23 +2253,23 @@
 
 
 
-    
-      
+
+
   <div class="clearfix container-xl px-3 px-md-4 px-lg-5 mt-4">
-    
-    
+
+
 <div data-test-selector="blob-container">
-  
-
-  
 
 
 
-    
+
+
+
+
 <a class="d-none js-permalink-shortcut" data-hotkey="y" href="/rook/rook/blob/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py">Permalink</a>
 
 <div class="d-flex flex-items-start flex-shrink-0 pb-3 flex-wrap flex-md-nowrap flex-justify-between flex-md-justify-start">
-  
+
 <div class="position-relative">
   <details
     class="js-branch-select-menu details-reset details-overlay mr-0 mb-0 "
@@ -2285,7 +2285,7 @@
       <span class="dropdown-caret"></span>
     </summary>
 
-    
+
 <div class="SelectMenu">
   <div class="SelectMenu-modal">
     <header class="SelectMenu-header">
@@ -2326,7 +2326,7 @@
               focus-list:ref-selector#focusFirstListMember
             "
             query-endpoint="/rook/rook/refs"
-            
+
             cache-key="v0:1672056282.986948"
             current-committish="ZTFjNmIxODc2OTZlYjViNmU2YTM1MWMxOWNmYjM2MTRhMWQxYjJiNA=="
             default-branch="bWFzdGVy"
@@ -2352,7 +2352,7 @@
               </div>
             </div>
 
-              
+
 
 <template data-target="ref-selector.itemTemplate">
   <a href="https://github.com/rook/rook/blob/{{ urlEncodedRefName }}/deploy/examples/create-external-cluster-resources.py" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}" >
@@ -2394,7 +2394,7 @@
               <div class="SelectMenu-message" data-index="{{ index }}">Nothing to show</div>
             </template>
 
-              
+
 
 <template data-target="ref-selector.itemTemplate">
   <a href="https://github.com/rook/rook/blob/{{ urlEncodedRefName }}/deploy/examples/create-external-cluster-resources.py" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}" >
@@ -2443,7 +2443,7 @@
         </div>
       </header>
     <div class="Overlay-body ">
-      
+
           <div data-view-component="true">      A tag already exists with the provided branch name. Many Git commands accept both tag and branch names, so creating this branch may cause unexpected behavior. Are you sure you want to create this branch?
 </div>
 
@@ -2865,13 +2865,13 @@
         <li class="dropdown-divider" role="none"></li>
         <li>
           <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy path" value="deploy/examples/create-external-cluster-resources.py" data-view-component="true" class="dropdown-item cursor-pointer">
-    
+
             Copy path
 
 </clipboard-copy>        </li>
         <li>
           <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy permalink" value="https://github.com/rook/rook/blob/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py" data-view-component="true" class="dropdown-item cursor-pointer">
-    
+
             <span class="d-flex flex-items-baseline">
               <span class="flex-auto">Copy permalink</span>
             </span>
@@ -2887,8 +2887,8 @@
 
     <div id="spoof-warning" class="mt-0 pb-3" hidden aria-hidden>
   <div data-view-component="true" class="flash flash-warn mt-0 clearfix">
-  
-  
+
+
     <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert float-left mt-1">
     <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
 </svg>
@@ -2896,13 +2896,13 @@
       <div class="overflow-hidden">This commit does not belong to any branch on this repository, and may belong to a fork outside of the repository.</div>
 
 
-  
+
 </div></div>
 
     <include-fragment src="/rook/rook/spoofed_commit_check/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4" data-test-selector="spoofed-commit-check"></include-fragment>
 
     <div class="Box d-flex flex-column flex-shrink-0 mb-3">
-  
+
   <div class="Box-header Details js-details-container">
       <div class="d-flex flex-items-center">
         <span class="flex-shrink-0 ml-n1 mr-n1 mt-n1 mb-n1">
@@ -2965,7 +2965,7 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
     <path fill-rule="evenodd" d="M5.5 3.5a2 2 0 100 4 2 2 0 000-4zM2 5.5a3.5 3.5 0 115.898 2.549 5.507 5.507 0 013.034 4.084.75.75 0 11-1.482.235 4.001 4.001 0 00-7.9 0 .75.75 0 01-1.482-.236A5.507 5.507 0 013.102 8.05 3.49 3.49 0 012 5.5zM11 4a.75.75 0 100 1.5 1.5 1.5 0 01.666 2.844.75.75 0 00-.416.672v.352a.75.75 0 00.574.73c1.2.289 2.162 1.2 2.522 2.372a.75.75 0 101.434-.44 5.01 5.01 0 00-2.56-3.012A3 3 0 0011 4z"></path>
 </svg>
         <strong>9</strong>
-        
+
         contributors
       </summary>
       <details-dialog
@@ -2992,23 +2992,23 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
     </details>
       <span class="">
     <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/parth-gr/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/rook/rook/commits/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py?author=parth-gr">
-      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/50455445?s=48&amp;v=4" width="24" height="24" alt="@parth-gr" /> 
+      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/50455445?s=48&amp;v=4" width="24" height="24" alt="@parth-gr" />
 </a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/subhamkrai/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/rook/rook/commits/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py?author=subhamkrai">
-      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/34444611?s=48&amp;v=4" width="24" height="24" alt="@subhamkrai" /> 
+      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/34444611?s=48&amp;v=4" width="24" height="24" alt="@subhamkrai" />
 </a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/vavuthu/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/rook/rook/commits/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py?author=vavuthu">
-      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/32730619?s=48&amp;v=4" width="24" height="24" alt="@vavuthu" /> 
+      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/32730619?s=48&amp;v=4" width="24" height="24" alt="@vavuthu" />
 </a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/leseb/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/rook/rook/commits/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py?author=leseb">
-      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/912735?s=48&amp;v=4" width="24" height="24" alt="@leseb" /> 
+      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/912735?s=48&amp;v=4" width="24" height="24" alt="@leseb" />
 </a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/BlaineEXE/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/rook/rook/commits/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py?author=BlaineEXE">
-      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/3989526?s=48&amp;v=4" width="24" height="24" alt="@BlaineEXE" /> 
+      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/3989526?s=48&amp;v=4" width="24" height="24" alt="@BlaineEXE" />
 </a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/travisn/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/rook/rook/commits/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py?author=travisn">
-      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/1048514?s=48&amp;v=4" width="24" height="24" alt="@travisn" /> 
+      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/1048514?s=48&amp;v=4" width="24" height="24" alt="@travisn" />
 </a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/CO-lhageman/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/rook/rook/commits/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py?author=CO-lhageman">
-      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/69451843?s=48&amp;v=4" width="24" height="24" alt="@CO-lhageman" /> 
+      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/69451843?s=48&amp;v=4" width="24" height="24" alt="@CO-lhageman" />
 </a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/degorenko/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/rook/rook/commits/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py?author=degorenko">
-      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/4005275?s=48&amp;v=4" width="24" height="24" alt="@degorenko" /> 
+      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/4005275?s=48&amp;v=4" width="24" height="24" alt="@degorenko" />
 </a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/jsoref/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/rook/rook/commits/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py?author=jsoref">
-      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/2119212?s=48&amp;v=4" width="24" height="24" alt="@jsoref" /> 
+      <img class="avatar mr-2 avatar-user" src="https://avatars.githubusercontent.com/u/2119212?s=48&amp;v=4" width="24" height="24" alt="@jsoref" />
 </a>
 </span>
 
@@ -3017,7 +3017,6 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
 
 
 
-      
 
 
 
@@ -3026,12 +3025,13 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
 
 
 
-  
+
+
     <div data-target="readme-toc.content" class="Box mt-3 position-relative">
-      
+
   <div
     class="Box-header js-blob-header py-2 pr-2 d-flex flex-shrink-0 flex-md-row flex-items-center"
-    
+
   >
 
 
@@ -3043,7 +3043,7 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
   </div>
 
   <div class="d-flex py-1 py-md-0 flex-auto flex-order-1 flex-md-order-2 flex-sm-grow-0 flex-justify-between hide-sm hide-md">
-      
+
 
     <div class="BtnGroup">
         <a href="/rook/rook/raw/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py" id="raw-url" data-view-component="true" class="btn-sm btn BtnGroup-item">    Raw
@@ -3051,7 +3051,7 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
 </a>    </div>
 
     <div class="d-flex">
-        
+
 <div class="ml-1" data-test-selector="edit-dropdown-menu-component">
   <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="BtnGroup-parent js-update-url-with-hash " data-turbo="false" action="/rook/rook/edit/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="__5lCrGtkFFWUx3PjCu8a9P7zUbnDY6OTE5bVtdka_9NGCRb8utSdMLk_jetQYOgzHLe6-0LRkm8ehzrHBcLjw" autocomplete="off" />
       <button disabled="disabled" title="You must be on a branch to make or propose changes to this file" data-hotkey="e" data-disable-with="" data-test-selector="edit-icon-button" type="submit" data-view-component="true" class="btn-sm BtnGroup-item btn">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-pencil">
@@ -3079,10 +3079,10 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
 </div>
 
 
-        
+
 <div data-test-selector="remote-clipboard-copy">
   <remote-clipboard-copy class="d-inline-block btn-octicon" style="height: 26px" data-src="/rook/rook/raw/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py" data-action="click:remote-clipboard-copy#remoteCopy">
-  
+
 
   <span data-target="remote-clipboard-copy.idle">      <span class="tooltipped tooltipped-nw cursor-pointer" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;COPY_RAW_CONTENTS_BUTTON&quot;,&quot;repository_id&quot;:62921553,&quot;originating_url&quot;:&quot;https://github.com/rook/rook/blob/HEAD/deploy/examples/create-external-cluster-resources.py&quot;,&quot;user_id&quot;:1073945}}" data-hydro-click-hmac="a0cba13b78f39c955a2ec09b06d3065800f568e96b97107cf472de10ab166494" aria-label="Copy raw contents">
         <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy">
@@ -3142,7 +3142,7 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
           </li>
             <li>
               <remote-clipboard-copy class="dropdown-item" data-src="/rook/rook/raw/e1c6b187696eb5b6e6a351c19cfb3614a1d1b2b4/deploy/examples/create-external-cluster-resources.py" data-action="click:remote-clipboard-copy#remoteCopy">
-  
+
 
   <span data-target="remote-clipboard-copy.idle">                  <span class="cursor-pointer" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;COPY_RAW_CONTENTS_BUTTON&quot;,&quot;repository_id&quot;:62921553,&quot;originating_url&quot;:&quot;https://github.com/rook/rook/blob/HEAD/deploy/examples/create-external-cluster-resources.py&quot;,&quot;user_id&quot;:1073945}}" data-hydro-click-hmac="a0cba13b78f39c955a2ec09b06d3065800f568e96b97107cf472de10ab166494">
                     Copy raw contents
@@ -3178,10 +3178,10 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
 </div>
 
 
-      
+
     <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  gist-border-0">
 
-        
+
 <div class="js-check-bidi js-blob-code-container blob-code-content">
 
   <template class="js-file-alert-template">
@@ -3189,7 +3189,7 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
     <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
 </svg>
-  
+
     <span>
       This file contains bidirectional Unicode text that may be interpreted or compiled differently than what appears below. To review, open the file in an editor that reveals hidden Unicode characters.
       <a href="https://github.co/hiddenchars" target="_blank">Learn more about bidirectional Unicode characters</a>
@@ -10121,7 +10121,7 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
     </div>
 
 
-  
+
 
   <details class="details-reset details-overlay details-overlay-dark" id="jumpto-line-details-dialog">
     <summary data-hotkey="l" aria-label="Jump to line"></summary>
@@ -10273,4 +10273,3 @@ Signed-off-by: parth-gr &lt;paarora@redhat.com&gt;</pre></div>
     <div id="js-global-screen-reader-notice" class="sr-only" aria-live="polite" ></div>
   </body>
 </html>
-
