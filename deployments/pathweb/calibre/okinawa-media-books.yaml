@@ -3,6 +3,8 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: okinawa-media-books
+  labels:
+    velero.io/exclude-from-backup: "true"
 spec:
   capacity:
     storage: 1Mi
@@ -28,6 +30,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: okinawa-media-books
   namespace: media-services
+  labels:
+    velero.io/exclude-from-backup: "true"
 spec:
   resources:
     requests:
