@@ -1,6 +1,0 @@
----
-nameReference:
-- kind: ConfigMap
-  fieldSpecs:
-  - kind: HelmRelease
-    path: spec/values/config/grafanaIniConfigMap
