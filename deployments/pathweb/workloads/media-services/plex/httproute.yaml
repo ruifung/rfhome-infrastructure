@@ -1,0 +1,20 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: plex
+  labels:
+    app.kubernetes.io/name: plex
+    external-dns: local-pdns
+spec:
+  parentRefs:
+  - name: rfhome-services-gateway
+    namespace: home-network
+    sectionName: https
+    kind: Gateway
+  hostnames:
+  - plex.services.home.yrf.me
+  rules:
+  - backendRefs:
+    - name: plex-headless
+      port: 32400

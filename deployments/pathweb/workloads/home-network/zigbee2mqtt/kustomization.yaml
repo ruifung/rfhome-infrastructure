@@ -7,7 +7,7 @@ images:
 resources:
 - "deployment.yaml"
 - "service.yaml"
-- "ingress.yaml"
+- "httproute.yaml"
 - "z2m-secrets.sealed.yaml"
 - "pvc.yaml"
 - "configmap.yaml"

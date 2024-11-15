@@ -6,5 +6,5 @@ resources:
 - statefulset.yaml
 - service.yaml
 - ciliumnetworkpolicy.yaml
-- ingress.yaml
+- httproute.yaml
 - serverstransport.yaml
