@@ -35,6 +35,10 @@ spec:
     extraArgs:
     - --dns01-recursive-nameservers-only
     - --dns01-recursive-nameservers=1.1.1.1:53,9.9.9.9:53
+    config:
+      apiVersion: controller.config.cert-manager.io/v1alpha1
+      kind: ControllerConfiguration
+      enableGatewayAPI: true
     resources:
       requests:
         cpu: 15m
