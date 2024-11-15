@@ -1,0 +1,16 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: grafana
+  namespace: flux-system
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/home-network/grafana
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: home-network
+  dependsOn:
+  - name: grafana-operator

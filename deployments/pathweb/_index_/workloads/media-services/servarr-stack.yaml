@@ -1,0 +1,126 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: prowlarr
+  namespace: flux-system
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/media-services/prowlarr
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: media-services
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: sonarr
+  namespace: flux-system
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/media-services/sonarr
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: media-services
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radarr
+  namespace: flux-system
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/media-services/radarr
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: media-services
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: lidarr
+  namespace: flux-system
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/media-services/lidarr
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: media-services
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: readarr
+  namespace: flux-system
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/media-services/readarr
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: media-services
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: unpackerr
+  namespace: flux-system
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/media-services/unpackerr
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: media-services
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: flaresolverr
+  namespace: flux-system
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/media-services/flaresolverr
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: media-services
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: overseerr
+  namespace: flux-system
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/media-services/overseerr
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: media-services
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: bazarr
+  namespace: flux-system
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/media-services/bazarr
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: media-services
