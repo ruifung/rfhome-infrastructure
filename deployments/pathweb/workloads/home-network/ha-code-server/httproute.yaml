@@ -1,0 +1,30 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: ha-code-server
+  labels:
+    app.kubernetes.io/name: ha-code-server
+    external-dns: local-pdns
+spec:
+  parentRefs:
+  - name: rfhome-services-gateway
+    namespace: home-network
+    sectionName: https
+    kind: Gateway
+  hostnames:
+  - ha-code-server.services.home.yrf.me
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    filters:
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: ak-outpost-authentik-embedded-outpost
+    backendRefs:
+    - name: ha-code-server
+      port: 8443

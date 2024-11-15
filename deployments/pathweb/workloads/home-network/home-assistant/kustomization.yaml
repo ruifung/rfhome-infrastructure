@@ -14,9 +14,7 @@ resources:
 - service.yaml
 - persistentvolumeclaim.yaml
 - networkattachmentdefinition.yaml
-- ingress.yaml
-- traefik-ingressroute.yaml
-- traefik-middleware.yaml
+- httproute.yaml
 - networkpolicy.yaml
 patches: []
 configMapGenerator:
