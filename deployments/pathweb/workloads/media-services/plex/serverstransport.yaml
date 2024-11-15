@@ -1,8 +1,0 @@
----
-apiVersion: traefik.io/v1alpha1
-kind: ServersTransport
-metadata:
-  name: plex-transport
-  namespace: media-services
-spec:
-  insecureSkipVerify: true # Ah, fuck it. It's in-cluster traffic anyway. Who needs to verify certs here.
