@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: bitnami
-  namespace: flux-system
+  namespace: external-dns
 spec:
   interval: 15m
   url: https://charts.bitnami.com/bitnami
@@ -12,7 +12,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: external-dns-cf
-  namespace: flux-system
+  namespace: external-dns
 spec:
   releaseName: external-dns-cf
   chart:
@@ -24,7 +24,6 @@ spec:
         kind: HelmRepository
         name: bitnami
   interval: 15m
-  targetNamespace: external-dns
   install:
     createNamespace: true
   postRenderers:
@@ -74,7 +73,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: external-dns-local-services
-  namespace: flux-system
+  namespace: external-dns
 spec:
   releaseName: external-dns-local-services
   chart:
@@ -137,7 +136,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: external-dns-local-cluster
-  namespace: flux-system
+  namespace: external-dns
 spec:
   releaseName: external-dns-local-cluster
   chart:
