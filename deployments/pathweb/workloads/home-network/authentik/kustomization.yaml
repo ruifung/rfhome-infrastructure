@@ -1,4 +1,0 @@
----
-resources:
-- "helm.yaml"
-- "config.yaml"
