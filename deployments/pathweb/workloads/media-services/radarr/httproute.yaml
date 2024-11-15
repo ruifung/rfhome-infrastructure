@@ -1,0 +1,26 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: radarr
+  labels:
+    app.kubernetes.io/name: radarr
+    external-dns: local-pdns
+spec:
+  parentRefs:
+  - name: rfhome-services-gateway
+    namespace: home-network
+    sectionName: https
+    kind: Gateway
+  hostnames:
+  - radarr.services.home.yrf.me
+  rules:
+  - filters:
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: ak-outpost-authentik-embedded-outpost
+    backendRefs:
+    - name: radarr-headless
+      port: 7878

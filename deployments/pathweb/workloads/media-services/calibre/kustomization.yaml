@@ -11,6 +11,6 @@ labels:
 resources:
 - statefulset.yaml
 - service.yaml
-- ingress.yaml
+- httproute.yaml
 - ciliumnetworkpolicy.yaml
 - okinawa-media-books.yaml
