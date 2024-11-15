@@ -183,11 +183,7 @@ spec:
         enabled: false
     redis:
       enabled: true
-      architecture: replication
-      sentinel:
-        enabled: true
-      replica:
-        replicaCount: 3
+      master:
         priorityClassName: rfhome-network-critical
         nodeSelector:
           location: rfhome
