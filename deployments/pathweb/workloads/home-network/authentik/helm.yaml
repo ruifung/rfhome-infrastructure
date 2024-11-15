@@ -186,19 +186,8 @@ spec:
       architecture: replication
       sentinel:
         enabled: true
-      master:
-        priorityClassName: rfhome-network-critical
-        nodeSelector:
-          location: rfhome
-        resources:
-          requests:
-            cpu: 70m
-            memory: 150M
-          limits:
-            cpu: 250m
-            memory: 512M
       replica:
-        replicaCount: 2
+        replicaCount: 3
         priorityClassName: rfhome-network-critical
         nodeSelector:
           location: rfhome
