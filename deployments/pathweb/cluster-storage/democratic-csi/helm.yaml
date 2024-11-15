@@ -18,7 +18,7 @@ spec:
   chart:
     spec:
       chart: democratic-csi
-      version: 0.14.6
+      version: 0.14.7
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -49,7 +49,7 @@ spec:
   chart:
     spec:
       chart: democratic-csi
-      version: 0.14.6
+      version: 0.14.7
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
