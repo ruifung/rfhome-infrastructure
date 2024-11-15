@@ -1,9 +1,14 @@
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: external-dns
+---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: external-dns
-  namespace: external-dns
+  namespace: flux-system
 spec:
   interval: 15m
   path: ./deployments/pathweb/cluster-services/external-dns
@@ -12,3 +17,4 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
+  targetNamespace: external-dns
