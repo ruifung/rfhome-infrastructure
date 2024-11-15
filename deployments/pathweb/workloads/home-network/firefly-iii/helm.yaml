@@ -49,6 +49,20 @@ spec:
     image:
       repository: fireflyiii/core
       tag: version-6.1.18
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: location
+              operator: In
+              values:
+              - "rfhome"
+          - matchExpressions:
+            - key: node-group
+              operator: NotIn
+              values:
+              - "pi4"
     persistence:
       accessModes: ReadWriteMany
       storageClassName: okinawa-hdd-nfs-retain
