@@ -181,9 +181,6 @@ spec:
     prometheus:
       rules:
         enabled: false
-    authentik:
-      redis:
-        host: "authentik-redis"
     redis:
       enabled: true
       architecture: replication
