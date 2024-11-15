@@ -8,7 +8,8 @@ spec:
   interval: 15m
   path: ./deployments/pathweb/workloads/home-network/authentik
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-  targetNamespace: flux-system
+  targetNamespace: home-network
