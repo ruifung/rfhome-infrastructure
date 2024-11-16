@@ -12,6 +12,7 @@ resources:
 - "dashboard/middlewares.yaml"
 - "dashboard/services.yaml"
 - "dashboard/httproute.yaml"
+- "dashboard/healthcheck.yaml"
 configurations:
 - "kustomizeconfig.yaml"
 configMapGenerator:
