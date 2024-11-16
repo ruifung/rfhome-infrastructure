@@ -8,3 +8,14 @@ spec:
   redirectRegex:
     regex: ^https://(.*)\.pathweb\.clusters\.home\.yrf\.me/$
     replacement: https://${1}.pathweb.clusters.home.yrf.me/dashboard/
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: ak-outpost-authentik-embedded-outpost
+  namespace: traefik
+spec:
+  chain:
+    middlewares:
+    - name: ak-outpost-authentik-embedded-outpost
+      namespace: home-network
