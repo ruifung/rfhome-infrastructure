@@ -36,6 +36,7 @@ spec:
             path: /
             port: 9696
           periodSeconds: 3
+          failureThreshold: 20
         livenessProbe:
           httpGet:
             path: /

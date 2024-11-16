@@ -49,6 +49,7 @@ spec:
             path: /
             port: 8083
           periodSeconds: 3
+          failureThreshold: 20
         livenessProbe:
           httpGet:
             path: /

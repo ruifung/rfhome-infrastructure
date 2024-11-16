@@ -35,6 +35,7 @@ spec:
             path: /
             port: 8181
           periodSeconds: 3
+          failureThreshold: 20
         livenessProbe:
           httpGet:
             path: /

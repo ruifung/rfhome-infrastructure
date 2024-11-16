@@ -38,6 +38,7 @@ spec:
             path: /
             port: 8787
           periodSeconds: 3
+          failureThreshold: 20
         livenessProbe:
           httpGet:
             path: /
