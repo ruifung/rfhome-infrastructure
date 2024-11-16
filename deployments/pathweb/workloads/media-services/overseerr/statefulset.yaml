@@ -30,6 +30,16 @@ spec:
         ports:
         - containerPort: 5055
           name: http
+        startupProbe:
+          httpGet:
+            path: /
+            port: 5055
+          periodSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5055
+          periodSeconds: 60
         volumeMounts:
         - name: config
           mountPath: /config

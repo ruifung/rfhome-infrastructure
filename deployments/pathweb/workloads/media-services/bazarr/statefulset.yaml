@@ -59,6 +59,16 @@ spec:
         ports:
         - containerPort: 6767
           name: http
+        startupProbe:
+          httpGet:
+            path: /
+            port: 6767
+          periodSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 6767
+          periodSeconds: 60
         volumeMounts:
         - name: config
           mountPath: /config

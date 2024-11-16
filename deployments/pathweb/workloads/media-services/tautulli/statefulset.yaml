@@ -30,6 +30,16 @@ spec:
         ports:
         - containerPort: 8181
           name: http
+        startupProbe:
+          httpGet:
+            path: /
+            port: 8181
+          periodSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8181
+          periodSeconds: 60
         volumeMounts:
         - name: config
           mountPath: /config

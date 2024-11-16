@@ -44,6 +44,16 @@ spec:
         ports:
         - containerPort: 8083
           name: http
+        startupProbe:
+          httpGet:
+            path: /
+            port: 8083
+          periodSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8083
+          periodSeconds: 60
         volumeMounts:
         # - name: calibre-library
         #   mountPath: /books

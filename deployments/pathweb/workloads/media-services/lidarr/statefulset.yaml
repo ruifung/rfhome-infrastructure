@@ -32,6 +32,16 @@ spec:
         ports:
         - containerPort: 8686
           name: http
+        startupProbe:
+          httpGet:
+            path: /
+            port: 8686
+          periodSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8686
+          periodSeconds: 60
         volumeMounts:
         - name: config
           mountPath: /config

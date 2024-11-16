@@ -20,7 +20,6 @@ spec:
       nodeSelector:
         node-group: baldric
       # runtimeClassName: gvisor
-
       containers:
       - name: readarr
         image: linuxserver/readarr:latest
@@ -34,6 +33,16 @@ spec:
         ports:
         - containerPort: 8787
           name: http
+        startupProbe:
+          httpGet:
+            path: /
+            port: 8787
+          periodSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8787
+          periodSeconds: 60
         volumeMounts:
         - name: config
           mountPath: /config
