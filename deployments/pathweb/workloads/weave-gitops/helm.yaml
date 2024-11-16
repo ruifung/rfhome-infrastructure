@@ -66,7 +66,7 @@ spec:
       enabled: true
       className: "traefik-traefik"
       annotations:
-        ingress.kubernetes.io/whitelist-source-range: 10.229.2.0/24,10.229.51.0/24
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
       hosts:
       - host: gitops.pathweb.clusters.home.yrf.me
         paths:
