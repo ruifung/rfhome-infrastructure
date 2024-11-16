@@ -23,8 +23,8 @@ spec:
         kind: Middleware
         name: ak-outpost-authentik-embedded-outpost
     backendRefs:
-    - name: api@internal
-      kind: TraefikService
+    - name: traefik-internal-dashboard
+      port: 9000
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
