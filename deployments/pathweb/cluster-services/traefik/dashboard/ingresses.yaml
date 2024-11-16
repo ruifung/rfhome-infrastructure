@@ -6,6 +6,7 @@ metadata:
   namespace: traefik
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd,traefik-traefik-dashboard-redirect@kubernetescrd
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
   labels:
     app.kubernetes.io/name: traefik-dashboard
     external-dns: local-pdns
