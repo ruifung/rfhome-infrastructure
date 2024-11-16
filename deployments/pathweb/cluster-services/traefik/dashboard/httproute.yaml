@@ -1,0 +1,54 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: traefik-internal-dashboard
+  namespace: traefik
+  labels:
+    app.kubernetes.io/name: traefik
+    external-dns: local-pdns
+spec:
+  parentRefs:
+  - name: pathweb-cluster-gateway
+    namespace: home-network
+    sectionName: https
+    kind: Gateway
+  hostnames:
+  - traefik-internal.pathweb.clusters.home.yrf.me
+  rules:
+  - filters:
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: ak-outpost-authentik-embedded-outpost
+    backendRefs:
+    - name: api@internal
+      kind: TraefikService
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: traefik-external-dashboard
+  namespace: traefik
+  labels:
+    app.kubernetes.io/name: traefik
+    external-dns: local-pdns
+spec:
+  parentRefs:
+  - name: pathweb-cluster-gateway
+    namespace: home-network
+    sectionName: https
+    kind: Gateway
+  hostnames:
+  - traefik-external.pathweb.clusters.home.yrf.me
+  rules:
+  - filters:
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: ak-outpost-authentik-embedded-outpost
+    backendRefs:
+    - name: traefik-external-dashboard
+      port: 9000

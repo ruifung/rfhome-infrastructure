@@ -11,7 +11,7 @@ resources:
 - "cloudflare-tunnel/tunnel-token.sealed.yaml"
 - "dashboard/middlewares.yaml"
 - "dashboard/services.yaml"
-- "dashboard/ingresses.yaml"
+- "dashboard/httproute.yaml"
 configurations:
 - "kustomizeconfig.yaml"
 configMapGenerator:
