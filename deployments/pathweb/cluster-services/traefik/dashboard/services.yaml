@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: traefik-traefik
     app.kubernetes.io/name: traefik
-  name: traefik-dashboard
+  name: traefik-internal-dashboard
   namespace: traefik
 spec:
   ipFamilies:
