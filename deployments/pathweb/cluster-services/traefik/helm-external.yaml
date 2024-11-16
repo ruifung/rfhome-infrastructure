@@ -180,6 +180,7 @@ spec:
       kubernetesIngress:
         ingressClass: traefik-external
         allowEmptyServices: true
+        allowExternalNameServices: true
         publishedService:
           enabled: true
       kubernetesGateway:

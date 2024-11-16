@@ -138,6 +138,7 @@ spec:
         allowEmptyServices: true
         publishedService:
           enabled: true
+        allowExternalNameServices: true
       kubernetesCRD:
         ingressClass: "traefik-traefik"
         allowEmptyServices: true
