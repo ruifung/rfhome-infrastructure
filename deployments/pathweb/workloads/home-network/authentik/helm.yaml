@@ -128,6 +128,13 @@ spec:
         periodSeconds: 30
       affinity:
         nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-group
+                operator: NotIn
+                values:
+                - "pi4"
           preferredDuringSchedulingIgnoredDuringExecution:
           - preference:
               matchExpressions:
