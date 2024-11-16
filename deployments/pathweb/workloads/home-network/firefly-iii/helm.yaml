@@ -114,6 +114,7 @@ spec:
       className: traefik-traefik
       annotations:
         traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
       hosts:
       - firefly-iii.services.home.yrf.me
       tls:

@@ -39,6 +39,9 @@ spec:
           - op: add
             path: /metadata/labels/external-dns
             value: local-pdns
+          - op: add
+            path: "/metadata/annotations/traefik.ingress.kubernetes.io~1router.entrypoints"
+            value: websecure
       - target:
           group: apps
           version: v1

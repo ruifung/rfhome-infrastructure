@@ -71,6 +71,7 @@ spec:
         ingressClassName: traefik-traefik
         annotations:
           traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
         - host: goldilocks.pathweb.clusters.home.yrf.me
           paths:

@@ -37,7 +37,7 @@ hubble:
     ingress:
       enabled: true
       annotations:
-        ingress.kubernetes.io/whitelist-source-range: 10.229.2.0/24,10.229.51.0/24
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
       labels:
         external-dns: local-pdns

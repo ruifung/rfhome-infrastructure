@@ -58,6 +58,8 @@ spec:
     metadata:
       labels:
         external-dns: local-pdns
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
     spec:
       ingressClassName: traefik-traefik
       rules:

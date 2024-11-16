@@ -134,6 +134,8 @@ spec:
           host: crowdsec-dashboard.services.home.yrf.me
           labels:
             external-dns: local-pdns
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
       strategy:
         type: Recreate
       env:
