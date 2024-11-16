@@ -71,7 +71,7 @@ function Start-SleepWithProgress {
 }
 
 function Wait-ForDeploymentStsReady {
-    while(!(Get-DeploymentStsReady)) {
+    while(-not (Get-DeploymentStsReady)) {
         Start-SleepWithProgress "Waiting for all Deployments or StatefulSets to be ready." 5
     }
 }

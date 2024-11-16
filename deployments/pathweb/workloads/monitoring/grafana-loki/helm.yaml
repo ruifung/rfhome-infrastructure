@@ -89,6 +89,7 @@ spec:
         external-dns: local-pdns
       annotations:
         traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
       hosts:
       - loki.services.home.yrf.me
       tls:

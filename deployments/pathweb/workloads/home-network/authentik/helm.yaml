@@ -105,6 +105,8 @@ spec:
         ingressClassName: traefik-traefik
         labels:
           external-dns: local-pdns
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
         - auth.services.home.yrf.me
         paths:

@@ -11,6 +11,8 @@ spec:
     host: vm.services.home.yrf.me # <-- change this to your domain
     labels:
       external-dns: local-pdns
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
     tlsHosts:
     - vm.services.home.yrf.me
     tlsSecretName: services-wildcard-cert
