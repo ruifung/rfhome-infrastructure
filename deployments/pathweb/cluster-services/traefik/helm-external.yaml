@@ -97,6 +97,8 @@ spec:
         exposedPort: 80
         expose:
           default: true
+        redirectTo:
+          port: websecure
         proxyProtocol:
           enabled: true
           trustedIPs:
