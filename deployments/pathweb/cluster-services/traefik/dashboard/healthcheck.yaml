@@ -14,6 +14,7 @@ spec:
   routes:
   - kind: Rule
     match: Host(`ingress.pathweb.clusters.home.yrf.me`) && Path(`/ping`)
+    priority: 2000000000
     services:
     - kind: TraefikService
       name: ping@internal
@@ -33,6 +34,7 @@ spec:
   routes:
   - kind: Rule
     match: Host(`external-ingress.pathweb.clusters.home.yrf.me`) && Path(`/ping`)
+    priority: 2000000000
     services:
     - kind: TraefikService
       name: ping@internal

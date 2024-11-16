@@ -101,6 +101,7 @@ spec:
         protocol: TCP
         redirectTo:
           port: websecure
+          priority: 1000000000
       websecure:
         port: 443
         exposedPort: 443

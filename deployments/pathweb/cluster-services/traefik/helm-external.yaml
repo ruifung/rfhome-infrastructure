@@ -99,6 +99,7 @@ spec:
           default: true
         redirectTo:
           port: websecure
+          priority: 1000000000
         proxyProtocol:
           enabled: true
           trustedIPs:
