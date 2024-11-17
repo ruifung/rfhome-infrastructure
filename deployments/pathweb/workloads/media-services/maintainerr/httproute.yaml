@@ -15,6 +15,12 @@ spec:
   hostnames:
   - maintainerr.services.home.yrf.me
   rules:
-  - backendRefs:
+  - filters:
+    - type: ExtensionRef
+      extensionRef:
+        group: traefik.io
+        kind: Middleware
+        name: ak-outpost-authentik-embedded-outpost
+    backendRefs:
     - name: maintainerr-headless
       port: 6246
