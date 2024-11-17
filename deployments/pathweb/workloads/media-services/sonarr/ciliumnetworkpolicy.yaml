@@ -20,6 +20,7 @@ spec:
         - unpackerr
         - overseerr
         - bazarr
+        - maintainerr
     toPorts:
     - ports:
       - port: "8989"

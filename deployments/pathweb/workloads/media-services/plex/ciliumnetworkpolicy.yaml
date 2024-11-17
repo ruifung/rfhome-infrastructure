@@ -21,6 +21,7 @@ spec:
         - lidarr
         - tautulli
         - overseerr
+        - maintainerr
     toPorts:
     - ports:
       - port: "32400"
