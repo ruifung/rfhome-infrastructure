@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: maintainerr-headless
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: maintainerr
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: maintainerr
+  ports:
+  - port: 6246
+    targetPort: http
+    name: http

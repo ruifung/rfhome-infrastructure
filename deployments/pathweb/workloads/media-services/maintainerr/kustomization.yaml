@@ -1,0 +1,14 @@
+---
+images:
+- name: ghcr.io/jorenn92/maintainerr
+  newTag: 2.2.1
+labels:
+- pairs:
+    "app.kubernetes.io/name": maintainerr
+  includeTemplates: true
+  includeSelectors: true
+resources:
+- statefulset.yaml
+- service.yaml
+- httproute.yaml
+- ciliumnetworkpolicy.yaml
