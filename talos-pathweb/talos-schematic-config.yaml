@@ -9,6 +9,7 @@ customization:
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/iscsi-tools
+    - siderolabs/kata-containers
     - siderolabs/qemu-guest-agent
 
 # rpi
@@ -25,3 +26,4 @@ customization:
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/iscsi-tools
+    - siderolabs/kata-containers
