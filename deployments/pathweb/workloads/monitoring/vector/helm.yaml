@@ -55,6 +55,7 @@ spec:
             .node = .kubernetes.pod_node_name
             .container_image = .kubernetes.container_image
             .pod_ips = .kubernetes.pod_ips
+            .pod_owner = .kubernetes.pod_owner
             log_format = .kubernetes.pod_annotations.log_format
             if is_string(log_format) {
                 log_format = downcase(string!(log_format))
@@ -95,5 +96,6 @@ spec:
             "namespace": "{{ `{{ namespace }}` }}"
             "pod": "{{ `{{ pod }}` }}"
             "container": "{{ `{{ container }}` }}"
+            "pod_owner": "{{ `{{ pod_owner }}` }}"
           encoding:
             codec: json
