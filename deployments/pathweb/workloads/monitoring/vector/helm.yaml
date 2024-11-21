@@ -89,7 +89,7 @@ spec:
             "cluster": "pathweb"
             "node": "{{ `{{ node }}` }}"
             "namespace": "{{ `{{ namespace }}` }}"
-            "pod": "{{ `{{ pod }}"
+            "pod": "{{ `{{ pod }}` }}"
             "container": "{{ `{{ container }}` }}"
           encoding:
             codec: json
