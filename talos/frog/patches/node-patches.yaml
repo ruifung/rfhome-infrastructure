@@ -1,0 +1,50 @@
+---
+machine:
+  acceptedCAs: []
+  install:
+    extraKernelArgs:
+    - net.ifnames=0
+  nodeLabels:
+    location: rfhome
+    type: proxmox-x64
+  network:
+    kubespan:
+      enabled: false
+  kubelet:
+    nodeIP:
+      validSubnets:
+      - 10.229.97.0/24
+      - fd96:619:803e:6100::/64
+    extraArgs:
+      rotate-server-certificates: true
+  features:
+    hostDNS:
+      enabled: true
+      forwardKubeDNSToHost: true
+    kubePrism:
+      enabled: true
+      port: 7445
+  sysctls:
+    net.ipv4.conf.all.rp_filter: 0
+  files:
+  - path: /etc/cri/conf.d/20-customization.part
+    op: create
+    content: |
+      [plugins."io.containerd.cri.v1.runtime".containerd]
+        default_runtime_name = "crun"
+cluster:
+  discovery:
+    enabled: true
+  controlPlane:
+    endpoint: https://frog.clusters.home.yrf.me:6443
+  network:
+    cni:
+      name: none
+    podSubnets:
+    - 10.201.0.0/16
+    - fd96:619:6b75:0210::/56
+    serviceSubnets:
+    - 10.202.0.0/16
+    - fd96:619:6b75:0220::/112
+  proxy:
+    disabled: true
