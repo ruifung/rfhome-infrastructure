@@ -47,7 +47,7 @@ spec:
           source: |
             parsed_message, err = parse_json(.message) ?? parse_logfmt(.message) ?? parse_klog(.message) ?? parse_glog(.message) ?? parse_syslog(.message)
             if (err == null) {
-                .message = encode_logfmt!(parsed_message, ["ts", "time", "timestamp", "level"])
+                .message = parsed_message
             }
       sinks:
         prom_exporter:
