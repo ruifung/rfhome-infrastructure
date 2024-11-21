@@ -41,14 +41,34 @@ spec:
         internal_metrics:
           type: internal_metrics
       transforms:
-        try_parse_log_messages:
+        handle_k8s_pod_logs:
           type: remap
           inputs: ["kubernetes_logs"]
           source: |
-            parsed_message, err = parse_json(.message) ?? parse_logfmt(.message) ?? parse_klog(.message) ?? parse_glog(.message) ?? parse_syslog(.message)
-            if (err == null) {
-                .message = parsed_message
+            .namespace = .kubernetes.pod_namespace
+            .pod = .kubernetes.pod_name
+            .container = .kubernetes.container_name
+            .node = .kubernetes.pod_node_name
+            .container_image = .kubernetes.container_image
+            .pod_ips = .kubernetes.pod_ips
+            log_format = .kubernetes.pod_annotations.log_format
+            if is_string(log_format) {
+                log_format = downcase(string!(log_format))
             }
+            if log_format == "json" {
+                .message = parse_json(.message) ?? .message
+            } else if log_format == "logfmt" {
+                .message = parse_logfmt(.message) ?? .message
+            } else if log_format == "klog" {
+                .message = parse_klog(.message) ?? .message
+            } else if log_format == "glog" {
+                .message = parse_glog(.message) ?? .message
+            } else if log_format == "syslog" {
+                .message = parse_syslog(.message) ?? .message
+            } else if log_format == "clf" {
+                .message = parse_common_log(.message) ?? .message
+            }
+            .kubernetes = null
       sinks:
         prom_exporter:
           type: prometheus_exporter
@@ -56,6 +76,6 @@ spec:
           address: 0.0.0.0:9090
         stdout:
           type: console
-          inputs: [try_parse_log_messages]
+          inputs: [handle_k8s_pod_logs]
           encoding:
-            codec: logfmt
+            codec: json
