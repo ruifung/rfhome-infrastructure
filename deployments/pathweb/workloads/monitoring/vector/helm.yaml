@@ -68,7 +68,8 @@ spec:
             } else if log_format == "clf" {
                 .message = parse_common_log(.message) ?? .message
             }
-            .kubernetes = null
+            del(.kubernetes)
+            del(.file)
       sinks:
         prom_exporter:
           type: prometheus_exporter
@@ -77,5 +78,11 @@ spec:
         stdout:
           type: console
           inputs: [handle_k8s_pod_logs]
+          encoding:
+            codec: json
+        loki:
+          type: loki
+          inputs: [handle_k8s_pod_logs]
+          endpoint: "http://grafana-loki:3100"
           encoding:
             codec: json
