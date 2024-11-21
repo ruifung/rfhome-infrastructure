@@ -29,4 +29,32 @@ spec:
   timeout: 1h
   values:
     role: Agent
-    customConfig: {}
+    customConfig:
+      data_dir: /vector-data-dir
+      api:
+        enabled: true
+        address: 127.0.0.1:8686
+        playground: false
+      sources:
+        kubernetes_logs:
+          type: kubernetes_logs
+        internal_metrics:
+          type: internal_metrics
+      transforms:
+        try_parse_log_messages:
+          type: remap
+          inputs: ["kubernetes_logs"]
+          source: |
+            parsed_message, err = parse_json(.message) ?? parse_logfmt(.message) ?? parse_klog(.message) ?? parse_glog(.message) ?? parse_syslog(.message)
+            if (err == null)
+                .message = encode_logfmt!(parsed_message, ["ts", "time", "timestamp", "level"])
+      sinks:
+        prom_exporter:
+          type: prometheus_exporter
+          inputs: [internal_metrics]
+          address: 0.0.0.0:9090
+        stdout:
+          type: console
+          inputs: [try_parse_log_messages]
+          encoding:
+            codec: logfmt
