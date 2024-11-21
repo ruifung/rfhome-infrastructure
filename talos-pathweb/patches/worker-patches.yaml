@@ -13,6 +13,8 @@ machine:
       bridge:
         interfaces:
         - eth1
+  certSANs:
+  - '*.workers.pathweb.clusters.home.yrf.me'
   sysctls:
     net.ipv6.conf.eth1.accept_ra: "0"
     net.ipv6.conf.default.accept_ra: "0"

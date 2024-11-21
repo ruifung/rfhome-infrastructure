@@ -1,5 +1,30 @@
 [
     {
+        "fqdn": "generic-proxmox-controlplane",
+        "role": "controlplane",
+        "type": "proxmox",
+        "ignore": true,
+        "patches": [
+            "patches/node-patches.yaml",
+            "patches/controlplane-patches.yaml",
+            "patches/controlplane-firewall.yaml",
+            "patches/harbor-rfhome.secret.yaml",
+            "patches/watchdog.yaml"
+        ]
+    },
+    {
+        "fqdn": "generic-proxmox-worker",
+        "role": "worker",
+        "type": "proxmox",
+        "ignore": true,
+        "patches": [
+            "patches/node-patches.yaml",
+            "patches/worker-patches.yaml",
+            "patches/harbor-rfhome.secret.yaml",
+            "patches/watchdog.yaml"
+        ]
+    },
+    {
         "fqdn": "pathweb-control-1.servers.home.yrf.me",
         "role": "controlplane",
         "type": "proxmox",

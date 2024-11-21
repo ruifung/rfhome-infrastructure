@@ -10,6 +10,9 @@ machine:
     kernel.domainname: servers.home.yrf.me
   nodeLabels:
     role: control-plane
+  certSANs:
+  - controlplane.pathweb.clusters.home.yrf.me
+  - '*.controlplane.pathweb.clusters.home.yrf.me'
 cluster:
   clusterName: pathweb
   acceptedCAs: []
