@@ -1,0 +1,32 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: vector
+  namespace: monitoring
+spec:
+  interval: 15m
+  url: https://helm.vector.dev
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: vector
+  namespace: monitoring
+spec:
+  releaseName: vector
+  install:
+    skipCRDs: false
+  chart:
+    spec:
+      chart: vector
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: vector
+      version: 0.37.0
+  interval: 30m
+  timeout: 1h
+  values:
+    role: Agent
+    customConfig: {}
