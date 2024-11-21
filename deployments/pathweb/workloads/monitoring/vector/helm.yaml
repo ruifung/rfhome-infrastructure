@@ -80,9 +80,16 @@ spec:
           inputs: [handle_k8s_pod_logs]
           encoding:
             codec: json
-        loki:
+        loki_k8s:
           type: loki
           inputs: [handle_k8s_pod_logs]
           endpoint: "http://grafana-loki:3100"
+          labels:
+            "job": "k8s-pod-logs"
+            "cluster": "pathweb"
+            "node": "{{ node }}"
+            "namespace": "{{ namespace }}"
+            "pod": "{{ pod }}"
+            "container": "{{ container }}"
           encoding:
             codec: json
