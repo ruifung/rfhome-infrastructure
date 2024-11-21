@@ -87,9 +87,9 @@ spec:
           labels:
             "job": "k8s-pod-logs"
             "cluster": "pathweb"
-            "node": "{{ node }}"
-            "namespace": "{{ namespace }}"
-            "pod": "{{ pod }}"
-            "container": "{{ container }}"
+            "node": "{{ `{{ node }}` }}"
+            "namespace": "{{ `{{ namespace }}` }}"
+            "pod": "{{ `{{ pod }}"
+            "container": "{{ `{{ container }}` }}"
           encoding:
             codec: json
