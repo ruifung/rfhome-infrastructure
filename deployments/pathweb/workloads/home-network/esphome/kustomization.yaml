@@ -1,7 +1,7 @@
 ---
 images:
 - name: esphome/esphome
-  newTag: 2024.11.0
+  newTag: 2024.11.1
 resources:
 - deployment.yaml
 - pvc.yaml
