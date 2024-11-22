@@ -26,5 +26,5 @@ spec:
         kind: Middleware
         name: ak-outpost-authentik-embedded-outpost
     backendRefs:
-    - name: calibre-web
+    - name: esphome
       port: 6052
