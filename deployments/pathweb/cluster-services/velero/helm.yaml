@@ -22,7 +22,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: vmware-tanzu
-      version: 8.0.0
+      version: 8.1.0
   interval: 15m
   values:
     initContainers:
