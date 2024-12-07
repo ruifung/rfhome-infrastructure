@@ -30,6 +30,9 @@ spec:
         - name: hass-data
           mountPath: /conf/
           subPath: appdaemon
+        - name: hass-data
+          mountPath: /data/shared-data
+          subPath: shared-data
         resources:
           requests:
             cpu: 48m

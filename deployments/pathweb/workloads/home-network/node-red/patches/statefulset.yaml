@@ -26,6 +26,9 @@ spec:
         - mountPath: /extra-tools
           name: extra-tools
           readOnly: true
+        - mountPath: /data/shared-data
+          name: hass-data
+          subPath: shared-data
         resources:
           requests:
             cpu: '500m'
@@ -65,6 +68,9 @@ spec:
           name: node-red-settings
       - name: extra-tools
         emptyDir: {}
+      - name: hass-data
+        persistentVolumeClaim:
+          claimName: home-assistant-data
     volumeClaimTemplates:
     - metadata:
         name: data
