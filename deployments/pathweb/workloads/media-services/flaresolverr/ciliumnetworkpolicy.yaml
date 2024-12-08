@@ -15,6 +15,13 @@ spec:
     toPorts:
     - ports:
       - port: "8191"
+  - fromEndpoints:
+    - matchLabels:
+        "k8s:io.kubernetes.pod.namespace": home-network
+        "k8s:app.kubernetes.io/name": node-red
+    toPorts:
+    - ports:
+      - port: "8191"
   egress:
   - toEndpoints:
     - matchLabels:
