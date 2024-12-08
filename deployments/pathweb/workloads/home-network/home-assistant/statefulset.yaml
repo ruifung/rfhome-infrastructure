@@ -90,6 +90,20 @@ spec:
             memory: 3500M
           limits:
             memory: 5Gi
+        livenessProbe:
+          failureThreshold: 30
+          periodSeconds: 10
+          httpGet:
+            port: 8123
+            path: /
+            scheme: HTTP
+        startupProbe:
+          failureThreshold: 30
+          periodSeconds: 10
+          httpGet:
+            port: 8123
+            path: /
+            scheme: HTTP
       volumes:
       - name: hass-data
         persistentVolumeClaim:
