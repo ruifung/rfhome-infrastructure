@@ -33,6 +33,20 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /app/data
+      livenessProbe:
+        failureThreshold: 30
+        httpGet:
+          path: /
+          port: web
+        timeoutSeconds: 10
+        periodSeconds: 10
+      startupProbe:
+        failureThreshold: 30
+        httpGet:
+          path: /
+          port: web
+        timeoutSeconds: 10
+        periodSeconds: 10
       volumes:
       - name: data
         persistentVolumeClaim:
