@@ -24,7 +24,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: vector
-      version: 0.38.0
+      version: 0.38.1
   interval: 30m
   timeout: 1h
   values:
