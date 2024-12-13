@@ -74,20 +74,16 @@ kubeControllerManager:
   ## If your kube controller manager is not deployed as a pod, specify IPs it can be found on
 
   ##
-  endpoints: []
-  # - 10.141.4.22
-
-  # - 10.141.4.23
-  # - 10.141.4.24
+  endpoints:
+  - 10.229.97.31
+  - 10.229.97.32
+  - 10.229.97.33
   ## If using kubeControllerManager.endpoints only the port and targetPort are used
   ##
   service:
     enabled: true
     port: 10257
     targetPort: 10257
-    selector:
-      k8s-app: kube-controller-manager
-      #   component: kube-controller-manager
   # spec for VMServiceScrape crd
   # https://docs.victoriametrics.com/operator/api.html#vmservicescrapespec
   vmScrape:
@@ -118,7 +114,7 @@ coreDns:
   # https://docs.victoriametrics.com/operator/api.html#vmservicescrapespec
   vmScrape:
     spec:
-      jobLabel: component
+      jobLabel: k8s-app
       endpoints:
       - port: http-metrics
         bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
@@ -157,20 +153,16 @@ kubeScheduler:
   ## If your kube scheduler is not deployed as a pod, specify IPs it can be found on
 
   ##
-  endpoints: []
-  # - 10.141.4.22
-
-  # - 10.141.4.23
-  # - 10.141.4.24
+  endpoints:
+  - 10.229.97.31
+  - 10.229.97.32
+  - 10.229.97.33
   ## If using kubeScheduler.endpoints only the port and targetPort are used
   ##
   service:
     enabled: true
     port: 10259
     targetPort: 10259
-    selector:
-      k8s-app: kube-scheduler
-      #   component: kube-scheduler
   # spec for VMServiceScrape crd
   # https://docs.victoriametrics.com/operator/api.html#vmservicescrapespec
   vmScrape:
