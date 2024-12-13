@@ -6,14 +6,9 @@ metadata:
   namespace: traefik
 spec:
   releaseName: traefik-external
-  chart:
-    spec:
-      chart: traefik
-      version: 33.2.0
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: traefik
+  chartRef:
+    kind: OCIRepository
+    name: traefik-chart
   interval: 15m
   timeout: 1h
   install:

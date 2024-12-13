@@ -4,6 +4,7 @@ images:
   newTag: 2024.12.1
 resources:
 - "crds"
+- "ocirepository.yaml"
 - "helm.yaml"
 - "helm-external.yaml"
 - "ciliumnetworkpolicy.yaml"

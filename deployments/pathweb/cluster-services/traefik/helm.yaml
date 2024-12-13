@@ -1,27 +1,13 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: traefik
-  namespace: traefik
-spec:
-  interval: 15m
-  url: https://helm.traefik.io/traefik
----
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: traefik
   namespace: traefik
 spec:
-  chart:
-    spec:
-      chart: traefik
-      version: 33.2.0
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: traefik
+  chartRef:
+    kind: OCIRepository
+    name: traefik-chart
   interval: 15m
   timeout: 1h
   install:
