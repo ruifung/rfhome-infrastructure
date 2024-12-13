@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 24h
-  url: oci://harbor.services.home.yrf.me/chartproxy/bitnami-labs.github.io/sealed-secrets
+  url: oci://harbor.services.home.yrf.me/chartproxy/bitnami-labs.github.io/sealed-secrets/sealed-secrets
   ref:
     tag: 2.17.0
 ---
