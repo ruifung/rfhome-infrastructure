@@ -1,6 +1,17 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-   "packageRules": [
+  "registryAliases": {
+    "harbor.services.home.yrf.me/chartproxy": "chartproxy.container-registry.com",
+    "harbor.services.home.yrf.me/dockerhub": "docker.io",
+    "harbor.services.home.yrf.me/gcr": "gcr.io",
+    "harbor.services.home.yrf.me/ghcr": "ghcr.io",
+    "harbor.services.home.yrf.me/k8s": "registry.k8s.io",
+    "harbor.services.home.yrf.me/lscr": "lscr.io",
+    "harbor.services.home.yrf.me/quayio": "quay.io",
+    "harbor.services.home.yrf.me/crunchydata": "registry.developers.crunchydata.com",
+    "harbor.services.home.yrf.me/talos-image-factory": "factory.talos.dev"
+  },
+  "packageRules": [
     {
       "packagePatterns": ["^ghcr.io\\/linuxserver\\/", "^lscr.io\\/linuxserver\\/", "^linuxserver\\/"],
       "versioning": "regex:^(?:(?P<compatibility>.+)-)?v?(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)(?:\\.(?P<build>\\d+))?-?r?(?P<release>\\w+)?"
