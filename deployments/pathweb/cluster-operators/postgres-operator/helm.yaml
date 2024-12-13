@@ -9,7 +9,7 @@ spec:
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
-  url: oci://registry.developers.crunchydata.com/crunchydata/pgo
+  url: oci://harbor.services.home.yrf.me/crunchydata/crunchydata/pgo
   ref:
     tag: 5.7.1
 ---

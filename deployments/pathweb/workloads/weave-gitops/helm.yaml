@@ -16,7 +16,7 @@ spec:
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
-  url: oci://ghcr.io/weaveworks/charts/weave-gitops
+  url: oci://harbor.services.home.yrf.me/ghcr/weaveworks/charts/weave-gitops
   ref:
     tag: 4.0.36
 ---
