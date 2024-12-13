@@ -88,7 +88,7 @@ kubeControllerManager:
   # https://docs.victoriametrics.com/operator/api.html#vmservicescrapespec
   vmScrape:
     spec:
-      jobLabel: component
+      jobLabel: jobLabel
       endpoints:
       - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
         # bearerTokenSecret:
@@ -114,7 +114,7 @@ coreDns:
   # https://docs.victoriametrics.com/operator/api.html#vmservicescrapespec
   vmScrape:
     spec:
-      jobLabel: k8s-app
+      jobLabel: jobLabel
       endpoints:
       - port: http-metrics
         bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
@@ -141,7 +141,7 @@ kubeEtcd:
   # https://docs.victoriametrics.com/operator/api.html#vmservicescrapespec
   vmScrape:
     spec:
-      jobLabel: component
+      jobLabel: jobLabel
       endpoints:
       - port: http-metrics
         scheme: http
@@ -167,7 +167,7 @@ kubeScheduler:
   # https://docs.victoriametrics.com/operator/api.html#vmservicescrapespec
   vmScrape:
     spec:
-      jobLabel: component
+      jobLabel: jobLabel
       endpoints:
       - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
         # bearerTokenSecret:
