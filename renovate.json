@@ -13,32 +13,53 @@
   },
   "packageRules": [
     {
-      "packagePatterns": ["^ghcr.io\\/linuxserver\\/", "^lscr.io\\/linuxserver\\/", "^linuxserver\\/"],
-      "versioning": "regex:^(?:(?P<compatibility>.+)-)?v?(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)(?:\\.(?P<build>\\d+))?-?r?(?P<release>\\w+)?"
+      "versioning": "regex:^(?:(?P<compatibility>.+)-)?v?(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)(?:\\.(?P<build>\\d+))?-?r?(?P<release>\\w+)?",
+      "matchPackageNames": [
+        "/^ghcr.io\\/linuxserver\\//",
+        "/^lscr.io\\/linuxserver\\//",
+        "/^linuxserver\\//"
+      ]
     },
     {
-      "matchPackageNames": ["ghcr.io/ruifung/lsio-calibre-web-mod"],
+      "matchPackageNames": [
+        "ghcr.io/ruifung/lsio-calibre-web-mod"
+      ],
       "versioning": "loose"
     },
     {
-      "packagePatterns": ["^ghcr.io\\/hotio\\/", "^hotio\\/"],
-      "versioning": "regex:^(?<compatibility>.*?)-(?<major>v?\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)[.-]*r?(?<build>\\d+)*-*r?(?<release>\\w+)*"
+      "versioning": "regex:^(?<compatibility>.*?)-(?<major>v?\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)[.-]*r?(?<build>\\d+)*-*r?(?<release>\\w+)*",
+      "matchPackageNames": [
+        "/^ghcr.io\\/hotio\\//",
+        "/^hotio\\//"
+      ]
     },
     {
-      "excludePackagePrefixes": ["ghcr.io/fluxcd/"]
+      "matchPackageNames": [
+        "!ghcr.io/fluxcd/{/,}**"
+      ]
     },
     {
-      "matchPackageNames": ["plexinc/pms-docker"],
+      "matchPackageNames": [
+        "plexinc/pms-docker"
+      ],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<build>\\d+)-(?<revision>[0-9a-fA-F]+)$"
     },
     {
-      "matchPackageNames": ["kubernetes/autoscaler"],
-      "matchPaths": ["dpeloyments/pathweb/vpa/kustomization.yaml"],
-      "matchManagers": ["regex"],
+      "matchPackageNames": [
+        "kubernetes/autoscaler"
+      ],
+      "matchFileNames": [
+        "dpeloyments/pathweb/vpa/kustomization.yaml"
+      ],
+      "matchManagers": [
+        "custom.regex"
+      ],
       "allowedVersions": "^vertical-pod-autoscaler\\/v[0-9]+\\.[0-9]+\\.[0-9]+(\\.[0-9]+)?$"
     },
     {
-      "matchUpdateTypes": ["patch"],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "matchCurrentVersion": "!/^0/",
       "automerge": true,
       "automergeType": "pr",
@@ -46,22 +67,35 @@
     }
   ],
   "flux": {
-    "fileMatch": ["clusters/.+/.+\\.yaml$", "deployments/.+/.+\\.yaml$"]
+    "fileMatch": [
+      "clusters/.+/.+\\.yaml$",
+      "deployments/.+/.+\\.yaml$"
+    ]
   },
   "helm-values": {
-    "fileMatch": ["clusters/.+/.+\\.yaml$", "deployments/.+/.+\\.yaml$"]
+    "fileMatch": [
+      "clusters/.+/.+\\.yaml$",
+      "deployments/.+/.+\\.yaml$"
+    ]
   },
   "kubernetes": {
-    "fileMatch": ["clusters/.+/.+\\.yaml$", "deployments/.+/.+\\.yaml$"]
+    "fileMatch": [
+      "clusters/.+/.+\\.yaml$",
+      "deployments/.+/.+\\.yaml$"
+    ]
   },
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": "kustomization.yaml",
-      "matchStrings": ["github\\.com\\\/(?<depName>.*\\/.*?)\\/\\/vertical-pod-autoscaler\\/deploy\\/\\?ref=(?<currentValue>.*)"],
+      "matchStrings": [
+        "github\\.com\\/(?<depName>.*\\/.*?)\\/\\/vertical-pod-autoscaler\\/deploy\\/\\?ref=(?<currentValue>.*)"
+      ],
       "datasourceTemplate": "github-tags"
     }
   ],
   "extends": [
-    "config:base", ":dependencyDashboard"
+    "config:recommended",
+    ":dependencyDashboard"
   ]
 }
