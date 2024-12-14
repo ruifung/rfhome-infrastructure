@@ -26,6 +26,10 @@ kubelet:
         regex: (uid)
       - action: labeldrop
         regex: (id|name)
+      - action: labeldrop
+        regex: (beta_kubernetes_io_os|beta_kubernetes_io_arch)
+      - action: labeldrop
+        regex: (extensions_talos_dev_.+)
       - action: drop
         source_labels: [__name__]
         regex: (rest_client_request_duration_seconds_bucket|rest_client_request_duration_seconds_sum|rest_client_request_duration_seconds_count)
