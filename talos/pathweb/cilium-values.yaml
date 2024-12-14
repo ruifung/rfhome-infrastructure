@@ -52,11 +52,11 @@ hubble:
     enabled:
     - dns
     - drop
-    - tcp
     - flow
-    - port-distribution
+    - flows-to-world
+    - httpV2
     - icmp
-    - http
+    - tcp
     serviceMonitor:
       enabled: true
 tunnelProtocol: geneve
