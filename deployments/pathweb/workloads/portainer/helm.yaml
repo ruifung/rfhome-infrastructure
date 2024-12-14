@@ -1,12 +1,14 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
 metadata:
-  name: portainer
+  name: portainer-chart
   namespace: flux-system
 spec:
-  interval: 15m
-  url: https://portainer.github.io/k8s/
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/chartproxy/portainer.github.io/k8s/portainer
+  ref:
+    tag: 1.0.58
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -15,14 +17,9 @@ metadata:
   namespace: flux-system
 spec:
   releaseName: portainer
-  chart:
-    spec:
-      chart: portainer
-      version: 1.0.58
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: portainer
+  chartRef:
+    kind: OCIRepository
+    name: portainer-chart
   interval: 15m
   targetNamespace: portainer
   install:

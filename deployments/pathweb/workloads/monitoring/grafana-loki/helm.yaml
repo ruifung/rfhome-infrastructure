@@ -1,12 +1,14 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
 metadata:
-  name: grafana-charts
+  name: grafana-loki-chart
   namespace: monitoring
 spec:
-  interval: 15m
-  url: https://grafana.github.io/helm-charts
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/chartproxy/grafana.github.io/helm-charts/loki
+  ref:
+    tag: 6.23.0
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -17,14 +19,9 @@ spec:
   releaseName: grafana-loki
   install:
     skipCRDs: false
-  chart:
-    spec:
-      chart: loki
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: grafana-charts
-      version: 6.23.0
+  chartRef:
+    kind: OCIRepository
+    name: grafana-loki-chart
   interval: 30m
   timeout: 1h
   valuesFrom:

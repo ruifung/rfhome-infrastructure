@@ -1,12 +1,14 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
 metadata:
-  name: vector
+  name: vector-chart
   namespace: monitoring
 spec:
-  interval: 15m
-  url: https://helm.vector.dev
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/chartproxy/helm.vector.dev/vector
+  ref:
+    tag: 0.38.1
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -17,14 +19,9 @@ spec:
   releaseName: vector
   install:
     skipCRDs: false
-  chart:
-    spec:
-      chart: vector
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: vector
-      version: 0.38.1
+  chartRef:
+    kind: OCIRepository
+    name: vector-chart
   interval: 30m
   timeout: 1h
   values:

@@ -1,12 +1,14 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
 metadata:
-  name: democratic-csi
+  name: democratic-csi-chart
   namespace: kube-system
 spec:
-  interval: 12h
-  url: https://democratic-csi.github.io/charts
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/chartproxy/democratic-csi.github.io/charts/democratic-csi
+  ref:
+    tag: 0.14.7
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -15,14 +17,9 @@ metadata:
   namespace: kube-system
 spec:
   releaseName: democratic-csi-okinawa-nfs
-  chart:
-    spec:
-      chart: democratic-csi
-      version: 0.14.7
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: democratic-csi
+  chartRef:
+    kind: OCIRepository
+    name: democratic-csi-chart
   interval: 15m
   timeout: 60m
   valuesFrom:
@@ -46,14 +43,9 @@ metadata:
   namespace: kube-system
 spec:
   releaseName: democratic-csi-okinawa-iscsi
-  chart:
-    spec:
-      chart: democratic-csi
-      version: 0.14.7
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: democratic-csi
+  chartRef:
+    kind: OCIRepository
+    name: democratic-csi-chart
   interval: 15m
   timeout: 60m
   valuesFrom:

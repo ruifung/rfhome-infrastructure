@@ -1,12 +1,14 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
 metadata:
-  name: firefly-iii
+  name: firefly-iii-chart
   namespace: home-network
 spec:
-  interval: 15m
-  url: https://firefly-iii.github.io/kubernetes/
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/chartproxy/firefly-iii.github.io/kubernetes/firefly-iii
+  ref:
+    tag: 1.8.2
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -15,14 +17,9 @@ metadata:
   namespace: home-network
 spec:
   releaseName: firefly-iii
-  chart:
-    spec:
-      chart: firefly-iii
-      version: 1.8.2
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: firefly-iii
+  chartRef:
+    kind: OCIRepository
+    name: firefly-iii-chart
   interval: 15m
   postRenderers:
   - kustomize:

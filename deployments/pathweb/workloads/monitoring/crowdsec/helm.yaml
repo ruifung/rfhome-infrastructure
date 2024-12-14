@@ -1,12 +1,14 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
 metadata:
-  name: crowdsec
+  name: crowdsec-chart
   namespace: flux-system
 spec:
-  interval: 15m
-  url: https://crowdsecurity.github.io/helm-charts
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/chartproxy/crowdsecurity.github.io/helm-charts/crowdsec
+  ref:
+    tag: 0.15.0
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -16,14 +18,9 @@ metadata:
 spec:
   targetNamespace: monitoring
   releaseName: crowdsec
-  chart:
-    spec:
-      chart: crowdsec
-      version: 0.15.0
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: crowdsec
+  chartRef:
+    kind: OCIRepository
+    name: crowdsec-chart
   interval: 15m
   timeout: 60m
   install:
