@@ -28,6 +28,9 @@ spec:
   targetNamespace: crunchydata-pgo
   install:
     createNamespace: true
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
   postRenderers:
   - kustomize:
       patches:
