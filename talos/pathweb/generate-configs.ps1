@@ -56,4 +56,11 @@ foreach ($node in $nodes) {
 
     Write-Output "Generating MachineConfig for node $($node.fqdn) with patch set [$($node.patches)] and installer image [$IMAGE]"
     talosctl machineconfig patch @patchArgs
+    Write-Output "Uploading generated MachineConfig to S3."
+    mc cp -q --checksum SHA256 $machineConfigFile okinawa-s3/rfhome-talos-config/pathweb/machineconfig/
 }
+
+Write-Output "Syncronizing generated MachineConfigs to S3."
+mc mirror -q --checksum SHA256 --remove --overwrite --exclude .gitignore base okinawa-s3/rfhome-talos-config/pathweb/base
+mc mirror -q --checksum SHA256 --remove --overwrite --exclude .gitignore patches okinawa-s3/rfhome-talos-config/pathweb/patches
+mc mirror -q --checksum SHA256 --remove --exclude .gitignore machineconfig okinawa-s3/rfhome-talos-config/pathweb/machineconfig

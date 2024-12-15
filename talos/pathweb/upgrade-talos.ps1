@@ -41,13 +41,16 @@ function Get-TalosNodeSchematic {
 }
 
 function Get-DeploymentStsReady {
-    $deployments = kubectl --context=$KUBE_CTX get deployments, statefulsets -A -o json | ConvertFrom-Json
+    $deployments = kubectl --context=$KUBE_CTX get deployments,statefulsets -A -o json | ConvertFrom-Json
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to get dpeloyment and statefulset status."
+    }
     $ready = $True
     foreach ($deployment in $deployments.items) {
-        if (($deployment.status.replicas -eq 0) -or ($null -eq $deployment.status.readyReplicas)) {
+        if ($deployment.spec.replicas -eq 0) {
             continue
         }
-        if ($deployment.status.replicas -ne $deployment.status.readyReplicas) {
+        if ($deployment.status.availableReplicas -eq 0) {
             $ready = $False
             break
         }
@@ -146,7 +149,9 @@ function Invoke-TalosNodeUpgrade {
                     continue
                 }
             }
-
+            if ($role -ne "controlplane") {
+                Wait-ForDeploymentStsReady
+            }
             Write-Output "Upgrading node [$node] to Talos version [$imageVersion], schematic [$imageSchematic]."
             Write-Output "Current version: $currentVersion"
             Write-Output "Current schematic: $currentSchematic"
@@ -161,11 +166,6 @@ function Invoke-TalosNodeUpgrade {
                     continue
                 } else {
                     Write-Output "Node [$node] successfully upgraded to Talos version [$imageVersion], schematic [$imageSchematic]."
-                }
-
-
-                if ($role -ne "controlplane") {
-                    Wait-ForDeploymentStsReady
                 }
             }
         }
