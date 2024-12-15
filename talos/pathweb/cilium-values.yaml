@@ -13,19 +13,18 @@ bpf:
 cluster:
   name: pathweb
   id: 1
-# clustermesh:
-
-#   apiserver:
-#     kvstoremesh:
-#       enabled: true
-#     service:
-#       type: NodePort
-#     tls:
-#       auto:
-#         enabled: true
-#         method: cronJob
-#         schedule: 0 0 1 */4 *
-#   useAPIServer: true
+clustermesh:
+  apiserver:
+    kvstoremesh:
+      enabled: true
+    service:
+      type: NodePort
+    tls:
+      auto:
+        enabled: true
+        method: cronJob
+        schedule: 0 0 1 */4 *
+  useAPIServer: true
 hubble:
   enabled: true
   relay:
