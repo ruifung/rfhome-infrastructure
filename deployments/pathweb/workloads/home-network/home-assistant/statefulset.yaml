@@ -108,6 +108,7 @@ spec:
       - name: matter-server
         image: ghcr.io/home-assistant-libs/python-matter-server:stable
         restartPolicy: Always
+        args: ["--storage-path", "/data", "--paa-root-cert-dir", "/data/credentials", "--primary-interface", "net1", "--listen-address", "127.0.0.1"]
         volumeMounts:
         - name: hass-data
           mountPath: /data
