@@ -9,6 +9,8 @@ labels:
 images:
 - name: homeassistant/home-assistant
   newTag: "2024.12.5"
+- name: ghcr.io/home-assistant-libs/python-matter-server
+  newTag: "6.6.1"
 resources:
 - statefulset.yaml
 - service.yaml

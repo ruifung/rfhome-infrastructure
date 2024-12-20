@@ -104,6 +104,14 @@ spec:
             port: 8123
             path: /
             scheme: HTTP
+      initContainers:
+      - name: matter-server
+        image: ghcr.io/home-assistant-libs/python-matter-server:stable
+        restartPolicy: Always
+        volumeMounts:
+        - name: hass-data
+          mountPath: /data
+          subPath: matter-server
       volumes:
       - name: hass-data
         persistentVolumeClaim:
