@@ -4,11 +4,11 @@ $mode, $extraArgs = $args
 if ($null -ne $extraArgs) {
     $force = $extraArgs.Contains("--force")
     if ($force) {
-        $extraArgs = $extraArgs.Remove($extraArgs.IndexOf("--force"))
+        $extraArgs = $extraArgs | Where-Object {$_ -ne "--force"}
     }
     $skipWorkloadChecks = $extraArgs.Contains("--skip-workload-checks")
     if ($skipWorkloadChecks) {
-        $extraArgs = $extraArgs.Remove($extraArgs.IndexOf("--skip-workload-checks"))
+        $extraArgs = $extraArgs | Where-Object {$_ -ne "--skip-workload-checks"}
     }
 }
 
