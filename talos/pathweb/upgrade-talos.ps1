@@ -6,6 +6,10 @@ if ($null -ne $extraArgs) {
     if ($force) {
         $extraArgs = $extraArgs.Remove($extraArgs.IndexOf("--force"))
     }
+    $skipWorkloadChecks = $extraArgs.Contains("--skip-workload-checks")
+    if ($skipWorkloadChecks) {
+        $extraArgs = $extraArgs.Remove($extraArgs.IndexOf("--skip-workload-checks"))
+    }
 }
 
 $nodes = Get-Content nodes.json -Raw | ConvertFrom-Json | Where-Object { $_.ignore -ne $true }
@@ -149,7 +153,7 @@ function Invoke-TalosNodeUpgrade {
                     continue
                 }
             }
-            if ($role -ne "controlplane") {
+            if ($role -ne "controlplane" -and -not $skipWorkloadChecks) {
                 Wait-ForDeploymentStsReady
             }
             Write-Output "Upgrading node [$node] to Talos version [$imageVersion], schematic [$imageSchematic]."
