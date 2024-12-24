@@ -11,16 +11,3 @@ spec:
     requests:
       storage: 16Gi
   storageClassName: cephfs
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: home-assistant-backup
-  namespace: home-network
-spec:
-  accessModes:
-  - ReadWriteMany
-  resources:
-    requests:
-      storage: 16Gi
-  storageClassName: okinawa-hdd-nfs-retain
