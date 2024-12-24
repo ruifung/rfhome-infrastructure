@@ -18,6 +18,7 @@ resources:
 - networkattachmentdefinition.yaml
 - httproute.yaml
 - networkpolicy.yaml
+- backup-credentials.sealed.yaml
 patches: []
 configMapGenerator:
 - name: homeassistant-docker-venv
