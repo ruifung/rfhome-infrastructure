@@ -42,7 +42,7 @@ spec:
           value: /tmp
         args:
         - --model
-        - distil-small.en
+        - base-int8
         - --language
         - en
         - --data-dir
