@@ -1,0 +1,9 @@
+---
+images:
+- name: rhasspy/wyoming-whisper
+  newTag: 2.4.0
+resources:
+- deployment.yaml
+- service.yaml
+- persistentvolumeclaim.yaml
+- ciliumnetworkpolicy.yaml
