@@ -41,7 +41,8 @@ spec:
         - name: HF_HUB_CACHE
           value: /tmp
         args:
-        - --model tiny-int8
+        - --model
+        - tiny-int8
         - --language
         - en
         - --data-dir
