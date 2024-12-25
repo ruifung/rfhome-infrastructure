@@ -50,6 +50,7 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /data
+      volumes:
       - name: data
         persistentVolumeClaim:
           claimName: wyoming-piper-data
