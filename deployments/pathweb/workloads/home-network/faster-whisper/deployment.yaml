@@ -29,7 +29,7 @@ spec:
               - key: node-group
                 operator: In
                 values: [baldric]
-            weight: 1000
+            weight: 100
       containers:
       - name: faster-whisper
         image: rhasspy/wyoming-whisper
