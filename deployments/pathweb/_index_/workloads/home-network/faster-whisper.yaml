@@ -11,4 +11,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
+    namespace: flux-system
   targetNamespace: home-network
