@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wyoming-piper
+  namespace: home-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: wyoming-piper
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: wyoming-piper
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        runAsNonRoot: true
+        seccompProfile:
+          type: "RuntimeDefault"
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - preference:
+              matchExpressions:
+              - key: node-group
+                operator: In
+                values: [baldric]
+            weight: 100
+      containers:
+      - name: piper
+        image: rhasspy/wyoming-piper
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
+        args:
+        - --voice
+        - en_GB-cori-high
+        - --max-piper-procs
+        - '3'
+        - --data-dir
+        - /data
+        ports:
+        - containerPort: 10200
+          name: wyoming
+        volumeMounts:
+        - name: data
+          mountPath: /data
+      - name: data
+        persistentVolumeClaim:
+          claimName: wyoming-piper-data
