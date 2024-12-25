@@ -69,3 +69,6 @@ spec:
     - podSelector:
         matchLabels:
           app.kubernetes.io/name: go2rtc
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: faster-whisper
