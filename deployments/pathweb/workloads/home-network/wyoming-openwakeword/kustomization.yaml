@@ -1,0 +1,9 @@
+---
+images:
+- name: rhasspy/wyoming-openwakeword
+  newTag: 1.10.0
+resources:
+- deployment.yaml
+- service.yaml
+- persistentvolumeclaim.yaml
+- ciliumnetworkpolicy.yaml

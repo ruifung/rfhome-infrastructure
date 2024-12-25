@@ -1,0 +1,46 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: wyoming-openwakeword-policy
+  namespace: home-network
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: wyoming-openwakeword
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        "k8s:io.kubernetes.pod.namespace": home-network
+        app.kubernetes.io/name: home-assistant
+    toPorts:
+    - ports:
+      - port: "10400"
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        "k8s:io.kubernetes.pod.namespace": kube-system
+      matchExpressions:
+      - key: "k8s:k8s-app"
+        operator: In
+        values:
+        - kube-dns
+        - node-local-dns
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: UDP
+      rules:
+        dns:
+        - matchPattern: "*"
+  - toCIDRSet:
+    - cidr: ::/0
+      except:
+      - fc00::/7
+      - fe80::/10
+  - toCIDRSet:
+    - cidr: 0.0.0.0/0
+      except:
+      - 10.0.0.0/8
+      - 192.168.0.0/16
+      - 172.16.0.0/12
