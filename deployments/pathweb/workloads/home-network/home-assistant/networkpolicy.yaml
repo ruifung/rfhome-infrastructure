@@ -72,3 +72,6 @@ spec:
     - podSelector:
         matchLabels:
           app.kubernetes.io/name: faster-whisper
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: wyoming-piper
