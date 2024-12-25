@@ -42,12 +42,10 @@ spec:
           value: /tmp
         args:
         - --model
-        - tiny-int8
+        - auto
         - --language
         - en
         - --data-dir
-        - /data
-        - --download-dir
         - /data
         ports:
         - containerPort: 10300
