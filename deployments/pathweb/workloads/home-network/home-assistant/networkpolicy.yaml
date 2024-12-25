@@ -75,3 +75,6 @@ spec:
     - podSelector:
         matchLabels:
           app.kubernetes.io/name: wyoming-piper
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: wyoming-openwakeword
