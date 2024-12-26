@@ -9,6 +9,9 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          labels:
+            restrict-egress: internet-only
         spec:
           securityContext:
             runAsNonRoot: true
