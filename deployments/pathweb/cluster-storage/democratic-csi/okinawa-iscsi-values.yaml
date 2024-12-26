@@ -150,7 +150,7 @@ driver:
       - targetGroupPortalGroup: 2
         # get the correct ID from the "initiators" section in the UI
 
-        targetGroupInitiatorGroup: 3
+        targetGroupInitiatorGroup: 5
         # None, CHAP, or CHAP Mutual
 
         targetGroupAuthType: None
