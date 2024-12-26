@@ -1,0 +1,15 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: deny-storage-network-access
+spec:
+  endpointSelector:
+    matchExpressions:
+    - key: requires-storage-network-access
+      operator: DoesNotExist
+  enableDefaultDeny:
+    egress: false
+  egressDeny:
+  - toCIDRSet:
+    - cidr: 10.229.229.0/24
