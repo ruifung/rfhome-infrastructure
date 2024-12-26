@@ -11,7 +11,7 @@ spec:
       template:
         metadata:
           labels:
-            restrict-egress: internet-only
+            preset-egress-policy: internet-only
         spec:
           securityContext:
             runAsNonRoot: true

@@ -6,7 +6,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      restrict-egress: internet-only
+      preset-egress-policy: internet-only
   egress:
   - toCIDRSet:
     - cidr: ::/0
