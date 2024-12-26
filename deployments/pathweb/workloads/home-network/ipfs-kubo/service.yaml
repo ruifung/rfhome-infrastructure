@@ -42,6 +42,7 @@ spec:
   - IPv4
   - IPv6
   ipFamilyPolicy: PreferDualStack
+  externalTrafficPolicy: Local
   selector:
     app.kubernetes.io/name: ipfs-kubo
   ports:

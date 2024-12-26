@@ -64,17 +64,18 @@ spec:
         cpu: '1.5'
         memory: 350Mi
     service:
-      externalTrafficPolicy: Local
+      spec:
+        externalTrafficPolicy: Local
+        ipFamilyPolicy: PreferDualStack
+        ipFamilies:
+        - IPv4
+        - IPv6
       annotations:
         # io.cilium/lb-ipam-ips: 10.229.30.1,fd96:619:6b75:0130::1
         external-dns.alpha.kubernetes.io/hostname: ingress.pathweb.clusters.home.yrf.me
       labels:
         external-dns: local-pdns
         lb-location: rfhome
-      ipFamilyPolicy: PreferDualStack
-      ipFamilies:
-      - IPv4
-      - IPv6
     ports:
       traefik:
         port: 9000
