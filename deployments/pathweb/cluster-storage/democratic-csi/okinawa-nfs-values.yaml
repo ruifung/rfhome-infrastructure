@@ -71,6 +71,8 @@ driver:
     driver: freenas-api-nfs
     instance_id: okinawa-nfs
     zfs:
+      datasetProperties:
+        "org.freenas:description": "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}/{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
       datasetParentName: hdd/k8s-pw/nfs
       # do NOT make datasetParentName and detachedSnapshotsDatasetParentName overlap
 
