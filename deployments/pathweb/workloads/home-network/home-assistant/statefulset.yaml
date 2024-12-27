@@ -23,7 +23,6 @@ spec:
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>,<Egress/80/TCP/HTTP>
     spec:
       priorityClassName: rfhome-home-critical
-      hostUsers: false
       # runtimeClassName: gvisor
       nodeSelector:
         kubernetes.io/os: linux
@@ -36,8 +35,10 @@ spec:
               - key: node-group
                 operator: In
                 values: [baldric, voyager]
+      hostUsers: false
       securityContext:
         fsGroup: 1000
+        runAsNonRoot: true
         seccompProfile:
           type: RuntimeDefault
           # sysctls:

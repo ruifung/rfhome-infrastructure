@@ -18,9 +18,16 @@ spec:
       # runtimeClassName: gvisor
       nodeSelector:
         location: rfhome
+      hostUsers: false
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: code-server
         image: lscr.io/linuxserver/code-server:4.96.2
+        securityContext:
+          allowPrivilegeEscalation: false
         env:
         - name: PUID
           value: "1000"

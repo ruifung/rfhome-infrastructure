@@ -14,8 +14,15 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      hostUsers: false
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: node-red
+        securityContext:
+          allowPrivilegeEscalation: false
         env:
         - name: "TZ"
           value: "Asia/Kuala_Lumpur"
@@ -39,6 +46,8 @@ spec:
       initContainers:
       - name: install-extra-modules
         image: nodered/node-red:latest
+        securityContext:
+          allowPrivilegeEscalation: false
         command: ["/bin/bash"]
         args:
         - "/data/extra-npm-modules.sh"
@@ -50,6 +59,8 @@ spec:
           subPath: extra-npm-modules.sh
       - name: load-extra-tools
         image: nodered/node-red:latest
+        securityContext:
+          allowPrivilegeEscalation: false
         env:
         - name: SPEEDTEST_VERSION
           value: 1.2.0

@@ -19,9 +19,16 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      hostUsers: false
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: appdaemon
         image: acockburn/appdaemon:latest
+        securityContext:
+          allowPrivilegeEscalation: false
         ports:
         - containerPort: 80
           name: http
