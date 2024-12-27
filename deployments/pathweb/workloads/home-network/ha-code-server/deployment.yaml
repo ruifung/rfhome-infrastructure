@@ -20,7 +20,6 @@ spec:
         location: rfhome
       hostUsers: false
       securityContext:
-        runAsNonRoot: true
         seccompProfile:
           type: RuntimeDefault
       containers:
