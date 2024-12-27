@@ -17,6 +17,8 @@ cluster:
   clusterName: pathweb
   acceptedCAs: []
   apiServer:
+    extraArgs:
+      feature-gates: UserNamespacesSupport=true,UserNamespacesPodSecurityStandards=true
     certSANs:
     - controlplane.pathweb.clusters.home.yrf.me
     - 1.controlplane.pathweb.clusters.home.yrf.me

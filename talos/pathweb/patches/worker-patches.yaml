@@ -23,5 +23,4 @@ machine:
 
     # talos defaults to 0 as ker KSPP.
     net.ipv4.conf.all.arp_announce: "2"
-    user.max_user_namespaces: "28633"
     kernel.domainname: servers.home.yrf.me

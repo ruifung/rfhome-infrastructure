@@ -18,6 +18,10 @@ machine:
       - fd96:619:803e:6100::/64
     extraArgs:
       rotate-server-certificates: true
+    extraConfig:
+      featureGates:
+        UserNamespacesSupport: true
+        UserNamespacesPodSecurityStandards: true
   features:
     hostDNS:
       enabled: true
@@ -27,6 +31,7 @@ machine:
       port: 7445
   sysctls:
     net.ipv4.conf.all.rp_filter: 0
+    user.max_user_namespaces: "11255"
   registries:
     mirrors:
       docker.io:
