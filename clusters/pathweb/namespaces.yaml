@@ -5,6 +5,10 @@ metadata:
   name: home-network
   labels:
     goldilocks.fairwinds.com/enabled: "true"
+    pod-security.kubernetes.io/enforce: "baseline"
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/warn: "restricted"
+    pod-security.kubernetes.io/warn-version: latest
 ---
 apiVersion: v1
 kind: Namespace
@@ -12,6 +16,8 @@ metadata:
   name: external-dns
   labels:
     goldilocks.fairwinds.com/enabled: "true"
+    pod-security.kubernetes.io/enforce: "restricted"
+    pod-security.kubernetes.io/enforce-version: latest
 ---
 apiVersion: v1
 kind: Namespace
@@ -19,6 +25,8 @@ metadata:
   name: monitoring
   labels:
     goldilocks.fairwinds.com/enabled: "true"
+    pod-security.kubernetes.io/enforce: "privileged"
+    pod-security.kubernetes.io/enforce-version: latest
 ---
 apiVersion: v1
 kind: Namespace
@@ -26,3 +34,7 @@ metadata:
   name: media-services
   labels:
     goldilocks.fairwinds.com/enabled: "true"
+    pod-security.kubernetes.io/enforce: "baseline"
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/warn: "restricted"
+    pod-security.kubernetes.io/warn-version: latest
