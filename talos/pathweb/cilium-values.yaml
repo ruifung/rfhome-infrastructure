@@ -63,6 +63,7 @@ tunnelProtocol: geneve
 # ipv4NativeRoutingCIDR: 10.96.0.0/16
 
 loadBalancer:
+  acceleration: best-effort
   serviceTopology: true
   mode: snat
   dsrDispatch: geneve
