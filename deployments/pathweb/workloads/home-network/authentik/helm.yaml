@@ -54,6 +54,13 @@ spec:
         capabilities:
           drop:
           - ALL
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: "topology.kubernetes.io/zone"
+        whenUnsatisfiable: DoNotSchedule
+      - maxSkew: 1
+        topologyKey: "physical-node"
+        whenUnsatisfiable: DoNotSchedule
       envFrom:
       - configMapRef:
           name: authentik-config
@@ -149,14 +156,6 @@ spec:
                 app.kubernetes.io/instance: authentik
                 app.kubernetes.io/component: server
             topologyKey: kubernetes.io/hostname
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/name: authentik
-                  app.kubernetes.io/instance: authentik
-              topologyKey: node-group
-            weight: 100
     worker:
       replicas: 1
       resources:
