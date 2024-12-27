@@ -4,6 +4,9 @@ machine:
     location: rfhome
     type: pi4
     node-group: pi4
+    physical-node: rfhome-pi4-01
+    topology.kubernetes.io/region: rfhome
+    topology.kubernetes.io/zone: rfhome-pi4
   install:
     disk: null
     diskSelector:

@@ -3,6 +3,9 @@ machine:
   nodeLabels:
     location: rfhome
     node-group: voyager
+    physical-node: rfhome-voyager-1
+    topology.kubernetes.io/region: rfhome
+    topology.kubernetes.io/zone: rfhome-voyager
   certSANs:
   - pathweb-worker-1.servers.home.yrf.me
   - 1.workers.pathweb.clusters.home.yrf.me
