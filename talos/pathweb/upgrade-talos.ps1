@@ -192,9 +192,9 @@ foreach ($node in $nodes) {
     Write-Output "Node Type: $($node.type)"
     Write-Output "Node Role: $($node.role)"
     $VERSION = $versions.version
-    if ($versions.image_override.$($node.type) -is [string]) {
+    if ($versions.image_override.$($node.fqdn) -is [string]) {
         $SCHEMATIC = $null
-        $IMAGE = $versions.image_override.$($node.type)
+        $IMAGE = $versions.image_override.$($node.fqdn)
     }
     else {
         $SCHEMATIC = $versions.schematics.$($node.type)

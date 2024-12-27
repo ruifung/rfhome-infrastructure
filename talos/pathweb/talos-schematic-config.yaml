@@ -11,9 +11,51 @@ customization:
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
     - siderolabs/qemu-guest-agent
-
-# rpi
 ---
+# proxmox-amdgpu
+customization:
+  extraKernelArgs:
+  - net.ifnames=0
+  systemExtensions:
+    officialExtensions:
+    - siderolabs/amdgpu
+    - siderolabs/crun
+    - siderolabs/fuse3
+    - siderolabs/gvisor
+    - siderolabs/iscsi-tools
+    - siderolabs/kata-containers
+    - siderolabs/qemu-guest-agent
+---
+# proxmox-i915
+customization:
+  extraKernelArgs:
+  - net.ifnames=0
+  systemExtensions:
+    officialExtensions:
+    - siderolabs/crun
+    - siderolabs/fuse3
+    - siderolabs/gvisor
+    - siderolabs/i915
+    - siderolabs/iscsi-tools
+    - siderolabs/kata-containers
+    - siderolabs/qemu-guest-agent
+---
+# proxmox-nvidia
+customization:
+  extraKernelArgs:
+  - net.ifnames=0
+  systemExtensions:
+    officialExtensions:
+    - siderolabs/crun
+    - siderolabs/fuse3
+    - siderolabs/gvisor
+    - siderolabs/iscsi-tools
+    - siderolabs/kata-containers
+    - siderolabs/nvidia-container-toolkit-production
+    - siderolabs/nvidia-open-gpu-kernel-modules-production
+    - siderolabs/qemu-guest-agent
+---
+# rpi
 overlay:
   image: siderolabs/sbc-raspberrypi
   name: rpi_generic
