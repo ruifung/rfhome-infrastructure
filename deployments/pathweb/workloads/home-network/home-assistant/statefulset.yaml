@@ -35,6 +35,7 @@ spec:
               - key: node-group
                 operator: In
                 values: [baldric, voyager]
+      automountServiceAccountToken: false
       hostUsers: false
       securityContext:
         fsGroup: 1000
@@ -48,19 +49,7 @@ spec:
         image: homeassistant/home-assistant:stable
         securityContext:
           allowPrivilegeEscalation: false
-          # capabilities:
-        #   drop:
-        #     - ALL
-        # add:
-        #   - NET_ADMIN
-        #   - NET_RAW
         env:
-        - name: PUID
-          value: "1000"
-        - name: PGID
-          value: "1000"
-        # - name: PACKAGES
-        #   value: "iputils"
         - name: TZ
           value: Asia/Kuala_Lumpur
         - name: HASS_DB_URI
@@ -72,6 +61,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        command: ["/bin/sh", "-c", "touch /.dockerenv && source /init"]
         ports:
         - containerPort: 8123
           name: http
