@@ -10,6 +10,7 @@ egressGateway:
 bpf:
   masquerade: true
   vlanBypass: [0]
+  datapathMode: netkit
 cluster:
   name: pathweb
   id: 1
