@@ -31,8 +31,7 @@ cluster:
     - name: PodSecurity
       configuration:
         exemptions:
-          namespaces:
-          - monitoring
+          namespaces: []
           runtimeClasses: []
           usernames: []
         kind: PodSecurityConfiguration
