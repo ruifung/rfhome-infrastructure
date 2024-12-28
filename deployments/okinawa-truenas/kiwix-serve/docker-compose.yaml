@@ -1,0 +1,33 @@
+---
+networks:
+  frontend:
+    external: True
+services:
+  kiwix-serve:
+    command:
+    - '*.zim'
+    environment:
+      TZ: Asia/Kuala_Lumpur
+    image: harbor.services.home.yrf.me/ghcr/kiwix/kiwix-serve:3.7.0
+    networks:
+    - frontend
+    ports:
+    - host_ip: 0.0.0.0
+      mode: ingress
+      protocol: tcp
+      published: 8080
+      target: 8080
+    privileged: False
+    pull_policy: missing
+    restart: unless-stopped
+    volumes:
+    - bind:
+        create_host_path: False
+        propagation: rprivate
+      read_only: False
+      source: /mnt/hdd/media/kiwix-library
+      target: /data
+      type: bind
+volumes: {}
+x-notes: Kiwix Server for offline sites
+x-portals: []
