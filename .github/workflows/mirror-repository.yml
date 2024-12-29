@@ -1,11 +1,13 @@
 ---
 name: mirror-repository
-on: [push]
+on:
+  push:
+    branches:
+    - master
 jobs:
   push-to-forgejo:
     runs-on: ubuntu-latest
     # Only run this on GitHub.
-
     if: contains(github.server_url, 'github.com')
     steps:
     - uses: actions/checkout@v4
@@ -16,3 +18,4 @@ jobs:
         REMOTE: "https://git.yrf.me/ruifung/rfhome-infrastructure.git"
         GIT_USERNAME: github-sync
         GIT_PASSWORD: ${{ secrets.RF_FORGEJO_TOKEN }}
+        PUSH_ALL_REFS: "false"
