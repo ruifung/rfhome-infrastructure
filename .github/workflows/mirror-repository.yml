@@ -15,7 +15,7 @@ jobs:
         fetch-depth: 0
     - uses: yesolutions/mirror-action@master
       with:
-        REMOTE: "https://git.yrf.me/ruifung/rfhome-infrastructure.git"
+        REMOTE: "https://git.yrf.me/rf-homelab/infrastructure-gitops.git"
         GIT_USERNAME: github-sync
         GIT_PASSWORD: ${{ secrets.RF_FORGEJO_TOKEN }}
         PUSH_ALL_REFS: "false"
