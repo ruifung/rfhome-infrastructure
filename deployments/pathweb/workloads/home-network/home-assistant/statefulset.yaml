@@ -61,6 +61,8 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        - name: PYTHONUSERBASE
+          value: /config/python_user_base/
         command: ["/bin/sh", "-c", "touch /.dockerenv && source /init"]
         ports:
         - containerPort: 8123
@@ -69,6 +71,9 @@ spec:
         volumeMounts:
         - name: hass-data
           mountPath: /config
+        - name: hass-data
+          mountPath: /config/python_user_base/
+          subPath: python_user_base/
         # - name: homeassistant-docker-venv
         #   mountPath: /etc/services.d/home-assistant/run
         #   subPath: venv-run
