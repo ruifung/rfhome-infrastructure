@@ -85,6 +85,13 @@ spec:
             port: 8123
             path: /
             scheme: HTTP
+        readinessProbe:
+          failureThreshold: 30
+          periodSeconds: 10
+          httpGet:
+            port: 8123
+            path: /
+            scheme: HTTP
         startupProbe:
           failureThreshold: 30
           periodSeconds: 10
