@@ -12,10 +12,10 @@ unset UV_SYSTEM_PYTHON
 # Ensure /venv/ directory exists.
 mkdir -p /venv/
 # Create venv if required.
-uv venv --system-site-packages --link-mode=symlink --allow-existing --prompt  "${pyenv_hash:0:8}-$arch" $venv_path
+uv venv --system-site-packages --allow-existing --prompt  "${pyenv_hash:0:8}-$arch" $venv_path
 # Activate the venv
-ln -fs $venv_path /venv/current_venv
 source /venv/current_venv/bin/activate
+ln -Tfs $venv_path /venv/current_venv
 # Install uv into the venv if required. This is needed for home-assistant to properly invoke uv to install additional deps.
 uv pip freeze --system | grep ^uv= | xargs uv pip install
 # Log the current architecture and hash of the system python environment.
