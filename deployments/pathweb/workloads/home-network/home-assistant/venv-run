@@ -1,7 +1,28 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# Start Home Assistant service
+# Start Home Assistant service with venv
 # ==============================================================================
+
+# Compute VENV path from installed package list hash and architecture
+pyenv_hash=$(uv pip list | sha256sum | cut -d " " -f 1 )
+arch=$(uname -m)
+venv_path="/venv/$pyenv_hash/$arch"
+# Clear this env var that's equivalent to running --system on all uv calls. This can interfere with venv operation.
+unset UV_SYSTEM_PYTHON
+# Ensure /venv/ directory exists.
+mkdir -p /venv/
+# Create venv if required.
+uv venv --system-site-packages --link-mode=symlink --prompt "${pyenv_hash:0:8}-$arch" $venv_path
+# Activate the venv
+ln -fs $venv_path /venv/current_venv
+source /venv/current_venv/bin/activate
+# Install uv into the venv if required. This is needed for home-assistant to properly invoke uv to install additional deps.
+uv pip freeze --system | grep ^uv= | xargs uv pip install
+# Log the current architecture and hash of the system python environment.
+echo $arch > /venv/LASTARCH
+echo $pyenv_hash > /venv/LAST_PYENV_HASH
+
+## EVERYTHING BELOW THIS LINE IS FROM https://github.com/home-assistant/core/blob/dev/rootfs/etc/services.d/home-assistant/run ##
 
 cd /config || bashio::exit.nok "Can't find config folder!"
 
@@ -10,17 +31,5 @@ if [[ -z "${DISABLE_JEMALLOC+x}" ]]; then
   export LD_PRELOAD="/usr/local/lib/libjemalloc.so.2"
   export MALLOC_CONF="background_thread:true,metadata_thp:auto,dirty_decay_ms:20000,muzzy_decay_ms:20000"
 fi
-
-pyenv_hash=$(uv pip list | sha256sum | cut -d " " -f 1 )
-arch=$(uname -m)
-venv_path="/venv/$pyenv_hash/$arch"
-unset UV_SYSTEM_PYTHON
-mkdir -p /venv/
-uv venv --system-site-packages --link-mode=symlink --prompt "${pyenv_hash:0:8}-$arch" $venv_path
-ln -fs $venv_path /venv/current_venv
-source /venv/current_venv/bin/activate
-uv pip freeze --system | grep ^uv= | xargs uv pip install
-echo $arch > /venv/LASTARCH
-echo $pyenv_hash > /venv/LAST_PYENV_HASH
 
 exec python3 -m homeassistant --config /config
