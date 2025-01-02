@@ -36,8 +36,11 @@ spec:
         - name: tls-cert
           mountPath: /certs
           readOnly: true
-          # resources:
-      #requests:
+        resources:
+          requests:
+            squat.ai/gpu: "1"
+          limits:
+            squat.ai/gpu: "1"
       #cpu: "4"
       #memory: 1Gi
       # limits:
