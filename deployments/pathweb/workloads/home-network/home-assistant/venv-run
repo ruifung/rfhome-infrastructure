@@ -19,7 +19,7 @@ mkdir -p /venv/
 uv venv --system-site-packages --link-mode=symlink --prompt "${pyenv_hash:0:8}-$arch" $venv_path
 ln -fs $venv_path /venv/current_venv
 source /venv/current_venv/bin/activate
-uv pip install uv
+uv pip freeze --system | grep ^uv= | xargs uv pip install
 echo $arch > /venv/LASTARCH
 echo $pyenv_hash > /venv/LAST_PYENV_HASH
 
