@@ -12,7 +12,7 @@ unset UV_SYSTEM_PYTHON
 # Ensure /venv/ directory exists.
 mkdir -p /venv/
 # Create venv if required.
-uv venv --system-site-packages --link-mode=symlink --prompt "${pyenv_hash:0:8}-$arch" $venv_path
+uv venv --system-site-packages --link-mode=symlink --prompt --allow-existing "${pyenv_hash:0:8}-$arch" $venv_path
 # Activate the venv
 ln -fs $venv_path /venv/current_venv
 source /venv/current_venv/bin/activate
