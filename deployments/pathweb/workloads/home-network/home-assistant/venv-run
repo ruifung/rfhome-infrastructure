@@ -17,10 +17,10 @@ venv_path="/venv/$pyenv_hash/$arch"
 unset UV_SYSTEM_PYTHON
 mkdir -p /venv/
 uv venv --system-site-packages --link-mode=symlink --prompt "${pyenv_hash:0:8}-$arch" $venv_path
+ln -fs $venv_path /venv/current_venv
 source /venv/current_venv/bin/activate
 uv pip install uv
 echo $arch > /venv/LASTARCH
 echo $pyenv_hash > /venv/LAST_PYENV_HASH
-ln -s $venv_path /venv/current_venv
 
 exec python3 -m homeassistant --config /config
