@@ -69,8 +69,8 @@ spec:
         - name: hass-data
           mountPath: /config
         - name: hass-data
-          mountPath: /config/python_user_base/
-          subPath: python_user_base/
+          mountPath: /config/venv/
+          subPath: venv/
         - name: homeassistant-docker-venv
           mountPath: /etc/services.d/home-assistant/run
           subPath: venv-run
