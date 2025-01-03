@@ -167,21 +167,6 @@ spec:
                 operator: NotIn
                 values:
                 - "pi4"
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - preference:
-              matchExpressions:
-              - key: node-group
-                operator: In
-                values: [baldric]
-            weight: 100
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: authentik
-                app.kubernetes.io/instance: authentik
-                app.kubernetes.io/component: server
-            topologyKey: kubernetes.io/hostname
     worker:
       replicas: 1
       resources:
