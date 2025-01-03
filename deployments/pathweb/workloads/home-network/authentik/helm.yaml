@@ -55,7 +55,7 @@ spec:
           drop:
           - ALL
       topologySpreadConstraints:
-      - maxSkew: 2
+      - maxSkew: 1
         topologyKey: "topology.kubernetes.io/zone"
         whenUnsatisfiable: DoNotSchedule
       - maxSkew: 1
@@ -192,7 +192,7 @@ spec:
               matchLabels:
                 app.kubernetes.io/name: authentik
                 app.kubernetes.io/instance: authentik
-            topologyKey: node-group
+            topologyKey: kubernetes.io/hostname
     prometheus:
       rules:
         enabled: false
