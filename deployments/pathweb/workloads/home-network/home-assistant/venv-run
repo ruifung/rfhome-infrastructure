@@ -7,20 +7,37 @@
 pyenv_hash=$(uv pip list | sha256sum | cut -d " " -f 1 )
 arch=$(uname -m)
 venv_path="/venv/$pyenv_hash/$arch"
+curr_pyenv_file="/venv/CURRENT_PYENV_HASH"
+prev_pyenv_file="/venv/PREVIOUS_PYENV_HASH"
+
 # Clear this env var that's equivalent to running --system on all uv calls. This can interfere with venv operation.
 unset UV_SYSTEM_PYTHON
 # Ensure /venv/ directory exists.
 mkdir -p /venv/
+# If there is a CURRENT_PYENV_HASH marker present, read it and move it to PREVIOUS if it doesn't match the current pyenv_hash.
+if [[ -f $curr_pyenv_file ]]; then
+  IFS= read -r prev_pyenv_hash < $curr_pyenv_file
+  if [[ "$prev_pyenv_hash" != "$pyenv_hash" ]]; then
+    if [[ -f $prev_pyenv_file ]]; then
+      # Cleanup the n-2 python virtualenv.
+      IFS= read -r prev_prev_pyenv_hash < $prev_pyenv_file
+      if [[ -d "/venv/$prev_prev_pyenv_hash"]]; then
+        echo "Cleaning up old environment /venv/$prev_prev_pyenv_hash"
+        rm -r /venv/$prev_prev_pyenv_hash;
+      fi
+    fi
+    cp $curr_pyenv_file $prev_pyenv_file
+  fi
+fi
 # Create venv if required.
 uv venv --system-site-packages --allow-existing --prompt  "${pyenv_hash:0:8}-$arch" $venv_path
 # Activate the venv
-source /venv/current_venv/bin/activate
+source $venv_path/bin/activate
 ln -Tfs $venv_path /venv/current_venv
 # Install uv into the venv if required. This is needed for home-assistant to properly invoke uv to install additional deps.
 uv pip freeze --system | grep ^uv= | xargs uv pip install
-# Log the current architecture and hash of the system python environment.
-echo $arch > /venv/LASTARCH
-echo $pyenv_hash > /venv/LAST_PYENV_HASH
+# Log the current hash of the system python environment.
+echo $pyenv_hash > $curr_pyenv_file
 
 ## EVERYTHING BELOW THIS LINE IS FROM https://github.com/home-assistant/core/blob/dev/rootfs/etc/services.d/home-assistant/run ##
 
