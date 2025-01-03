@@ -18,6 +18,7 @@ mkdir -p /venv/
 if [[ -f $curr_pyenv_file ]]; then
   IFS= read -r prev_pyenv_hash < $curr_pyenv_file
   if [[ "$prev_pyenv_hash" != "$pyenv_hash" ]]; then
+    # If the PREVIOUS_PYENV_HASH marker is present, read it and delete the environments referenced in it.
     if [[ -f $prev_pyenv_file ]]; then
       # Cleanup the n-2 python virtualenv.
       IFS= read -r prev_prev_pyenv_hash < $prev_pyenv_file
