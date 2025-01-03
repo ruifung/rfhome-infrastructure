@@ -49,7 +49,6 @@ spec:
         image: homeassistant/home-assistant:stable
         securityContext:
           allowPrivilegeEscalation: false
-        command: ["sh", "-c", "touch /.dockerenv && source /init"]
         env:
         - name: TZ
           value: Asia/Kuala_Lumpur
