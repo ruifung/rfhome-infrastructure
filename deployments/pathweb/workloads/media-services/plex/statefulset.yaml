@@ -62,11 +62,9 @@ spec:
           requests:
             cpu: "600m"
             memory: "250Mi"
-            squat.ai/gpu: "1"
           limits:
             cpu: "16"
             memory: "6Gi"
-            squat.ai/gpu: "1"
       volumes:
       - name: media-smb
         persistentVolumeClaim:
