@@ -21,7 +21,7 @@ if [[ -f $curr_pyenv_file ]]; then
     if [[ -f $prev_pyenv_file ]]; then
       # Cleanup the n-2 python virtualenv.
       IFS= read -r prev_prev_pyenv_hash < $prev_pyenv_file
-      if [[ -d "/venv/$prev_prev_pyenv_hash"]]; then
+      if [[ -d "/venv/$prev_prev_pyenv_hash" ]]; then
         echo "Cleaning up old environment /venv/$prev_prev_pyenv_hash"
         rm -r /venv/$prev_prev_pyenv_hash;
       fi
