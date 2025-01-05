@@ -4,10 +4,8 @@ kind: Namespace
 metadata:
   name: tailscale
   labels:
-    pod-security.kubernetes.io/enforce: "baseline"
+    pod-security.kubernetes.io/enforce: "privileged"
     pod-security.kubernetes.io/enforce-version: latest
-    pod-security.kubernetes.io/warn: "restricted"
-    pod-security.kubernetes.io/warn-version: latest
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
