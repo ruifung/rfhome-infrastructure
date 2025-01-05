@@ -19,9 +19,13 @@ spec:
     spec:
       nodeSelector:
         node-group: baldric
-      hostUsers: false
+      # SMB mounts don't support idmap for now
+      hostUsers: true
       securityContext:
         fsGroup: 1000
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
         seccompProfile:
           type: RuntimeDefault
       containers:
