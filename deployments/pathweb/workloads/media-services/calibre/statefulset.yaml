@@ -34,10 +34,10 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
         env:
-        - name: PUID
-          value: "1000"
-        - name: PGID
-          value: "1000"
+        # - name: PUID
+        #   value: "1000"
+        # - name: PGID
+        #   value: "1000"
         - name: TZ
           value: "Asia/Kuala_Lumpur"
         ports:
