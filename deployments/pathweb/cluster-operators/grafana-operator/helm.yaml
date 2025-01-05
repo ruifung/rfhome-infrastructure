@@ -31,3 +31,7 @@ spec:
     priorityClassName: rfhome-low-priority
     serviceMonitor:
       enabled: true
+    podSecurityContext:
+      runAsNonRoot: true
+      seccompProfile:
+        type: RuntimeDefault
