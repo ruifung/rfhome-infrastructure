@@ -42,10 +42,10 @@ spec:
         env:
         - name: TZ
           value: Asia/Kuala_Lumpur
-        - name: PUID
-          value: "1000"
-        - name: PGID
-          value: "1000"
+        # - name: PUID
+        #   value: "1000"
+        # - name: PGID
+        #   value: "1000"
         - name: CACHE_DIR
           value: /cache
         - name: OAUTHLIB_RELAX_TOKEN_SCOPE
@@ -77,6 +77,8 @@ spec:
           mountPath: /config
         - name: logs
           mountPath: /logs
+        - name: run
+          mountPath: /run
         resources:
           requests:
             cpu: 10m
@@ -122,6 +124,9 @@ spec:
       - name: okinawa-media
         persistentVolumeClaim:
           claimName: okinawa-media-smb
+      - name: run
+        emptyDir:
+          medium: Memory
   volumeClaimTemplates:
   - metadata:
       name: data
