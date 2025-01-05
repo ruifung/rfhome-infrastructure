@@ -48,12 +48,16 @@ spec:
         - containerPort: 8081
           name: http-ccs
         volumeMounts:
+        - name: empty
+          mountPath: /run
+          subPath: run
         - name: config
           mountPath: /config
         - name: downloads
           mountPath: /downloads
         - name: empty
           mountPath: /media
+          subPath: empty-media
         - name: okinawa-books
           mountPath: /media/Books
         resources:
@@ -71,7 +75,8 @@ spec:
           # Calibre's sqlite DB doesn't work well over SMB.
           claimName: okinawa-media-books-nfs
       - name: empty
-        emptyDir: {}
+        emptyDir:
+          medium: Memory
   volumeClaimTemplates:
   - metadata:
       name: config
