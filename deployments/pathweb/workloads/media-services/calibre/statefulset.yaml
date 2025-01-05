@@ -23,9 +23,6 @@ spec:
       hostUsers: true
       securityContext:
         fsGroup: 1000
-        runAsUser: 1000
-        runAsGroup: 1000
-        runAsNonRoot: true
         seccompProfile:
           type: RuntimeDefault
       containers:
@@ -34,10 +31,10 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
         env:
-        # - name: PUID
-        #   value: "1000"
-        # - name: PGID
-        #   value: "1000"
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
         - name: TZ
           value: "Asia/Kuala_Lumpur"
         ports:
@@ -48,16 +45,13 @@ spec:
         - containerPort: 8081
           name: http-ccs
         volumeMounts:
-        - name: empty
-          mountPath: /run
-          subPath: run
         - name: config
           mountPath: /config
         - name: downloads
           mountPath: /downloads
         - name: empty
           mountPath: /media
-          subPath: empty-media
+          readOnly: true
         - name: okinawa-books
           mountPath: /media/Books
         resources:
