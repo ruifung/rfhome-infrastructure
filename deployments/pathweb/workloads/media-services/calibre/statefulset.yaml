@@ -19,9 +19,16 @@ spec:
     spec:
       nodeSelector:
         node-group: baldric
+      hostUsers: false
+      securityContext:
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: calibre
         image: linuxserver/calibre:latest
+        securityContext:
+          allowPrivilegeEscalation: false
         env:
         - name: PUID
           value: "1000"
@@ -57,7 +64,8 @@ spec:
           claimName: okinawa-downloads-smb
       - name: okinawa-books
         persistentVolumeClaim:
-          claimName: okinawa-media-books
+          # Calibre's sqlite DB doesn't work well over SMB.
+          claimName: okinawa-media-books-nfs
       - name: empty
         emptyDir: {}
   volumeClaimTemplates:

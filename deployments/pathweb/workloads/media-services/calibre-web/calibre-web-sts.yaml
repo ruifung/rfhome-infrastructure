@@ -25,11 +25,16 @@ spec:
       nodeSelector:
         node-group: baldric
       terminationGracePeriodSeconds: 10
+      hostUsers: false
       securityContext:
         fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: calibre-web
         image: lscr.io/linuxserver/calibre-web:latest
+        securityContext:
+          allowPrivilegeEscalation: false
         env:
         - name: TZ
           value: Asia/Kuala_Lumpur
