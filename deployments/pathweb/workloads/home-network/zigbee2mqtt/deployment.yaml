@@ -33,6 +33,11 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /app/data
+        resources:
+          requests:
+            squat.ai/sonoff-zigbee-e: 1
+          limits:
+            squat.ai/sonoff-zigbee-e: 1
       livenessProbe:
         failureThreshold: 30
         httpGet:
