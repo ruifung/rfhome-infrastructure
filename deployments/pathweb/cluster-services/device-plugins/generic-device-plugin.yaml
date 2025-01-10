@@ -55,6 +55,8 @@ spec:
             usb:
             - vendor: 10c4
               product: ea60
+            paths:
+            - path: /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_*
         name: generic-device-plugin
         resources:
           requests:
