@@ -41,6 +41,13 @@ spec:
               - path: /dev/fuse
         - --device
         - |
+          name: net-tun
+          groups:
+          - count: 100
+            paths:
+            - path: /dev/net/tun
+        - --device
+        - |
           name: sonoff-zigbee-e
           groups:
           - count: 1
