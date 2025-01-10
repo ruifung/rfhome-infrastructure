@@ -36,9 +36,17 @@ spec:
         - |
           name: fuse
           groups:
-            - count: 10
+            - count: 100
               paths:
                 - path: /dev/fuse
+        - --device
+        - |
+          name: sonoff-zigbee-e
+          groups:
+          - count: 1
+            usb:
+            - vendor: 10c4
+            - product: ea60
         name: generic-device-plugin
         resources:
           requests:
