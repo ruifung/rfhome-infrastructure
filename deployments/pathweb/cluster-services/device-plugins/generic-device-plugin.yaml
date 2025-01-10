@@ -54,7 +54,7 @@ spec:
           - count: 1
             usb:
             - vendor: 10c4
-            - product: ea60
+              product: ea60
         name: generic-device-plugin
         resources:
           requests:
