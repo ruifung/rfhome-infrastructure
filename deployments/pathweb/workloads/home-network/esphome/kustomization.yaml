@@ -7,6 +7,5 @@ resources:
 - pvc.yaml
 - service.yaml
 - httproute.yaml
-- networkattachmentdefinition.yaml
 commonLabels:
   app.kubernetes.io/name: esphome
