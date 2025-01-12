@@ -22,6 +22,10 @@ spec:
     name: velero-chart
   interval: 15m
   values:
+    # TODO: Remove this when velero 1.15.2 is released, to fix the ItemBlock including too many things bug.
+    image:
+      tag: release-1.15-dev
+      digest: sha256:9cf8d6f5f2ea44f8dd29c0badc333d243d051c704193d789c62d658d5dc0c60d
     initContainers:
     - name: velero-plugin-for-aws
       image: velero/velero-plugin-for-aws:v1.11.1
@@ -58,24 +62,3 @@ spec:
     deployNodeAgent: true
     nodeAgent:
       priorityClassName: system-node-critical
-    # schedules:
-
-#   rfhome-backup:
-#     disabled: false
-#     labels:
-#       velero-backup: rfhome-backup
-#     annotations:
-#       myenv: foo
-#     schedule: "0 0 * * *"
-#     useOwnerReferencesInBackup: false
-#     paused: false
-#     template:
-#       ttl: "240h"
-#       storageLocation: default
-#       includedNamespaces:
-#       - foo
-#       # See: https://velero.io/docs/v1.14/resource-filtering/#excludes
-#       excludedNamespaceScopedResources:
-#       - persistentVolumeClaims
-#       excludedClusterScopedResources:
-#       - persistentVolumes
