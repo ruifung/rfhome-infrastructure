@@ -1,0 +1,1 @@
+Get-ChildItem -Recurse -Filter "*.secret.yaml" | ForEach-Object { $_.FullName } | ForEach-Object { kubeseal --cert pathweb-sealed-secrets.pem -f $_ -o yaml -w $_.Replace("secret.yaml", "sealed.yaml") }
