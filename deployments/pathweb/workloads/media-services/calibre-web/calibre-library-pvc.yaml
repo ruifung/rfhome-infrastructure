@@ -21,6 +21,7 @@ metadata:
   namespace: media-services
   labels:
     app.kubernetes.io/name: calibre-library-sync
+    velero.io/exclude-from-backup: "true"
 spec:
   storageClassName: cephfs
   accessModes:
