@@ -8,6 +8,7 @@ spec:
   interval: 15m
   path: ./deployments/pathweb/workloads/home-network/node-red
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure

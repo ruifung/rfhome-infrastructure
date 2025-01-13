@@ -57,15 +57,7 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: data
-        - mountPath: /.platformio
-          name: temp
-          subPath: .platformio
-        - mountPath: /piolibs
-          name: temp
-          subPath: piolibs
       volumes:
       - name: data
         persistentVolumeClaim:
           claimName: esphome-data
-      - name: temp
-        emptyDir: {}

@@ -48,6 +48,14 @@ spec:
           - op: add
             path: /spec/template/spec/priorityClassName
             value: rfhome-network-critical
+      - target:
+          version: v1
+          kind: PersistentVolumeClaim
+          name: portainer
+        patch: |-
+          - op: add
+            path: /metadata/labels/home.yrf.me~1backup-to-okinawa-s3
+            value: 'true'
   values:
     nodeSelector:
       kubernetes.io/os: linux
