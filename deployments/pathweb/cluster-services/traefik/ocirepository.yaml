@@ -8,4 +8,4 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/helm.traefik.io/traefik/traefik
   ref:
-    tag: 33.2.1
+    tag: 34.0.0
