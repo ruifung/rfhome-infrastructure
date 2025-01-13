@@ -30,6 +30,9 @@ spec:
         - mountPath: /data/settings.js
           name: settings
           subPath: settings.js
+        - mountPath: /etc/ssh/ssh_known_hosts
+          name: settings
+          subPath: ssh_known_hosts
         - mountPath: /extra-tools
           name: extra-tools
           readOnly: true
