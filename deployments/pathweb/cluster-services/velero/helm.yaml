@@ -41,6 +41,8 @@ spec:
       prometheusRule:
         enabled: true
     configuration:
+      extraEnvVars:
+        TZ: Asia/Kuala_Lumpur
       backupStorageLocation:
       - name: okinawa-s3
         provider: aws
@@ -62,5 +64,3 @@ spec:
     deployNodeAgent: true
     nodeAgent:
       priorityClassName: system-node-critical
-    extraEnvVars:
-      TZ: Asia/Kuala_Lumpur
