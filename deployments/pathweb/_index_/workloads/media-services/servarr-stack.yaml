@@ -8,6 +8,7 @@ spec:
   interval: 15m
   path: ./deployments/pathweb/workloads/media-services/prowlarr
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
@@ -22,6 +23,7 @@ spec:
   interval: 15m
   path: ./deployments/pathweb/workloads/media-services/sonarr
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
@@ -36,6 +38,7 @@ spec:
   interval: 15m
   path: ./deployments/pathweb/workloads/media-services/radarr
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
@@ -50,6 +53,7 @@ spec:
   interval: 15m
   path: ./deployments/pathweb/workloads/media-services/lidarr
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
@@ -64,6 +68,7 @@ spec:
   interval: 15m
   path: ./deployments/pathweb/workloads/media-services/readarr
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
@@ -106,6 +111,7 @@ spec:
   interval: 15m
   path: ./deployments/pathweb/workloads/media-services/overseerr
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
@@ -120,6 +126,7 @@ spec:
   interval: 15m
   path: ./deployments/pathweb/workloads/media-services/bazarr
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
@@ -134,6 +141,7 @@ spec:
   interval: 15m
   path: ./deployments/pathweb/workloads/media-services/maintainerr
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure

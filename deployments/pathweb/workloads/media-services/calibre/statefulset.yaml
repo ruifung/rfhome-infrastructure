@@ -68,6 +68,8 @@ spec:
   volumeClaimTemplates:
   - metadata:
       name: config
+      labels:
+        home.yrf.me/backup-to-okinawa-s3: "true"
     spec:
       accessModes: ["ReadWriteOnce"]
       resources:

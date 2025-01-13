@@ -16,6 +16,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: jellyfin-config
+  labels:
+    home.yrf.me/backup-to-okinawa-s3: "true"
 spec:
   resources:
     requests:

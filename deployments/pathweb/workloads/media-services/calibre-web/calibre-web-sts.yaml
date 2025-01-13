@@ -122,6 +122,8 @@ spec:
   volumeClaimTemplates:
   - metadata:
       name: data
+      labels:
+        home.yrf.me/backup-to-okinawa-s3: "true"
     spec:
       accessModes: ["ReadWriteOnce"]
       storageClassName: "ceph-rbd"
