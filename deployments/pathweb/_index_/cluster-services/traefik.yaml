@@ -17,7 +17,7 @@ metadata:
 spec:
   interval: 15m
   path: ./deployments/pathweb/cluster-services/traefik
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
