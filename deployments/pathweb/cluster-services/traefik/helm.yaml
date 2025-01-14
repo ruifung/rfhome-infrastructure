@@ -15,6 +15,8 @@ spec:
     skipCRDs: true
   driftDetection:
     mode: enabled
+  dependsOn:
+  - name: traefik-crds
   values:
     priorityClassName: rfhome-network-critical
     nodeSelector:
@@ -86,9 +88,12 @@ spec:
         expose:
           default: true
         protocol: TCP
-        redirectTo:
-          port: websecure
-          priority: "1000000000"
+        redirections:
+          entryPoint:
+            to: websecure
+            scheme: https
+            permanent: true
+            priority: "1000000000"
       websecure:
         port: 443
         exposedPort: 443

@@ -2,10 +2,21 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
+  name: traefik-crds
+  namespace: traefik
+spec:
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/chartproxy/helm.traefik.io/traefik/traefik-crds
+  ref:
+    tag: 1.1.0
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
   name: traefik-chart
   namespace: traefik
 spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/helm.traefik.io/traefik/traefik
   ref:
-    tag: 33.2.1
+    tag: 34.0.0

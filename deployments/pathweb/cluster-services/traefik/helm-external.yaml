@@ -16,6 +16,8 @@ spec:
     skipCRDs: true
   driftDetection:
     mode: enabled
+  dependsOn:
+  - name: traefik-crds
   values:
     nameOverride: traefik-external
     fullNameOverride: traefik-external
@@ -93,9 +95,12 @@ spec:
         exposedPort: 80
         expose:
           default: true
-        redirectTo:
-          port: websecure
-          priority: "1000000000"
+        redirections:
+          entryPoint:
+            to: websecure
+            scheme: https
+            permanent: true
+            priority: "1000000000"
         proxyProtocol:
           enabled: true
           trustedIPs:

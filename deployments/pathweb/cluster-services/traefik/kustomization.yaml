@@ -3,8 +3,8 @@ images:
 - name: cloudflare/cloudflared
   newTag: 2025.1.0
 resources:
-- "crds"
 - "ocirepository.yaml"
+- "helm-crds.yaml"
 - "helm.yaml"
 - "helm-external.yaml"
 - "ciliumnetworkpolicy.yaml"
