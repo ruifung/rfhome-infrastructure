@@ -102,7 +102,7 @@
     {
         "fqdn": "pathweb-worker-baldric.servers.home.yrf.me",
         "role": "worker",
-        "type": "nocloud-qemu-amdgpu",
+        "type": "nocloud-qemu",
         "patches": [
             "patches/node-patches.yaml",
             "patches/worker-patches.yaml",
