@@ -57,6 +57,16 @@
       "allowedVersions": "^vertical-pod-autoscaler\\/v[0-9]+\\.[0-9]+\\.[0-9]+(\\.[0-9]+)?$"
     },
     {
+      "description": "Do not update home-assistant at specific times",
+      "matchPackageNames": [
+        "homeassistant/home-assistant",
+        "ghcr.io/home-assistant-libs/python-matter-server"
+      ],
+      "schedule": [
+        "* 0-6,9-23 * * *"
+      ]
+    },
+    {
       "matchUpdateTypes": [
         "patch"
       ],
