@@ -49,7 +49,7 @@ spec:
           name: plex-gdm-4
           protocol: UDP
         volumeMounts:
-        - name: media-smb
+        - name: media
           mountPath: /media
         - name: config
           mountPath: /config
@@ -66,9 +66,9 @@ spec:
             cpu: "16"
             memory: "6Gi"
       volumes:
-      - name: media-smb
+      - name: media
         persistentVolumeClaim:
-          claimName: okinawa-media-smb
+          claimName: okinawa-media-nfs
       - name: tls-cert
         secret:
           secretName: services-wildcard-cert
