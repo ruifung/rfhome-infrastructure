@@ -61,10 +61,9 @@ spec:
         resources:
           requests:
             cpu: "600m"
-            memory: "250Mi"
+            memory: "4Gi"
           limits:
-            cpu: "16"
-            memory: "6Gi"
+            memory: "8Gi"
       volumes:
       - name: media
         persistentVolumeClaim:
