@@ -1,7 +1,7 @@
 ---
 images:
 - name: ipfs/kubo
-  newTag: v0.32.1
+  newTag: v0.33.0
 labels:
 - pairs:
     "app.kubernetes.io/name": ipfs-kubo
