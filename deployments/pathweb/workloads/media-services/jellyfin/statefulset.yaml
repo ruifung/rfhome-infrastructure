@@ -44,7 +44,7 @@ spec:
       volumes:
       - name: media
         persistentVolumeClaim:
-          claimName: okinawa-media-smb
+          claimName: okinawa-media-nfs
       - name: config
         persistentVolumeClaim:
           claimName: jellyfin-config
