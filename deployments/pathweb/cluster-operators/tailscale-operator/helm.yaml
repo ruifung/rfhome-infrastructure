@@ -30,3 +30,6 @@ spec:
     name: tailscale-oauth
     valuesKey: oauth-client-secret
     targetPath: oauth.clientSecret
+  values:
+    operatorConfig:
+      hostname: pathweb-tailscale-operator
