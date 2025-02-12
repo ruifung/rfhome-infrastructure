@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/sonarr
   newName: lscr.io/linuxserver/sonarr
-  newTag: version-4.0.12.2823
+  newTag: version-4.0.13.2932
 labels:
 - pairs:
     "app.kubernetes.io/name": sonarr
