@@ -1,6 +1,6 @@
 {
-    "version": "v1.9.2",
-    "k8s_version": "v1.31.2",
+    "version": "v1.9.4",
+    "k8s_version": "v1.32.2",
     "default_type": "proxmox",
     "factory_image_registry": "harbor.services.home.yrf.me/talos-image-factory",
     "schematics": {
