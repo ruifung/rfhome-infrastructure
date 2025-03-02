@@ -78,3 +78,6 @@ spec:
     - podSelector:
         matchLabels:
           app.kubernetes.io/name: wyoming-openwakeword
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: esphome
