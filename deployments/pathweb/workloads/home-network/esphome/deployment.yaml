@@ -38,6 +38,8 @@ spec:
         env:
         - name: TZ
           value: Asia/Kuala_Lumpur
+        - name: HOME
+          value: /home
         - name: ESPHOME_DASHBOARD_USE_PING
           value: "true"
         - name: POD_IP
@@ -58,9 +60,9 @@ spec:
         - mountPath: /config
           name: data
           subPath: config
-        - mountPath: /.platformio
+        - mountPath: /home
           name: data
-          subPath: .platformio
+          subPath: home
       volumes:
       - name: data
         persistentVolumeClaim:
