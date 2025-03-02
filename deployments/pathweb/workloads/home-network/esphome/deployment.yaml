@@ -57,12 +57,17 @@ spec:
         - containerPort: 6052
           name: http
         volumeMounts:
+        - mountPath: /data
+          name: data
         - mountPath: /config
           name: data
           subPath: config
         - mountPath: /home
           name: data
           subPath: home
+        - mountPath: /piolibs
+          name: data
+          subPath: piolibs
       volumes:
       - name: data
         persistentVolumeClaim:
