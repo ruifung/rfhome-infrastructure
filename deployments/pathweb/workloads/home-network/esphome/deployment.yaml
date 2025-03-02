@@ -57,6 +57,10 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: data
+          subPath: config
+        - mountPath: /.platformio
+          name: data
+          subPath: .platformio
       volumes:
       - name: data
         persistentVolumeClaim:
