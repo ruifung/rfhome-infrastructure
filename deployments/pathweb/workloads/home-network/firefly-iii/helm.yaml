@@ -94,6 +94,8 @@ spec:
         AUTHENTICATION_GUARD: remote_user_guard
         AUTHENTICATION_GUARD_HEADER: HTTP_X_AUTHENTIK_USERNAME
         AUTHENTICATION_GUARD_EMAIL: HTTP_X_AUTHENTIK_EMAIL
+        ENABLE_EXCHANGE_RATES: "true"
+        ENABLE_EXTERNAL_RATES: "true"
     cronjob:
       enabled: true
       auth:
