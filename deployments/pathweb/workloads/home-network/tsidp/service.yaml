@@ -5,6 +5,8 @@ metadata:
   name: tsidp
 spec:
   clusterIP: None
+  selector:
+    app.kubernetes.io/name: tsidp
   ports:
   - port: 443
     targetPort: https

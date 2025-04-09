@@ -27,7 +27,7 @@ spec:
           allowPrivilegeEscalation: false
         env:
         - name: TS_HOSTNAME
-          value: tsidp
+          value: idp
         - name: TS_AUTHKEY
           valueFrom:
             secretKeyRef:
