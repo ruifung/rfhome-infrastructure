@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: tsidp
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: tsidp
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: tsidp
+  serviceName: tsidp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: tsidp
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+        kubernetes.io/arch: amd64
+      containers:
+      - name: tsidp
+        image: harbor.services.home.yrf.me/local-images/tsidp:v1.82.0
+        securityContext:
+          allowPrivilegeEscalation: false
+        env:
+        - name: TS_HOSTNAME
+          value: tsidp
+        - name: TS_AUTHKEY
+          valueFrom:
+            secretKeyRef:
+              name: tsidp
+              key: authkey
+        ports:
+        - containerPort: 443
+          name: https
+        volumeMounts:
+        - name: tsidp-data
+          mountPath: /var/lib/tsidp
+      volumes:
+      - name: tsidp-data
+  volumeClaimTemplates:
+  - metadata:
+      name: tsidp-data
+      labels:
+        home.yrf.me/backup-to-okinawa-s3: "true"
+    spec:
+      accessModes:
+      - "ReadWriteOnce"
+      resources:
+        requests:
+          storage: 1Gi
