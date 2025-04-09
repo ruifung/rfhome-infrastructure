@@ -28,11 +28,6 @@ spec:
         env:
         - name: TS_HOSTNAME
           value: idp
-        - name: TS_AUTHKEY
-          valueFrom:
-            secretKeyRef:
-              name: tsidp
-              key: authkey
         ports:
         - containerPort: 443
           name: https
