@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/crowdsecurity.github.io/helm-charts/crowdsec
   ref:
-    tag: 0.19.1
+    tag: 0.19.2
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
