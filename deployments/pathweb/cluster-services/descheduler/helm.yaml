@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/kubernetes-sigs.github.io/descheduler/descheduler
   ref:
-    tag: 0.32.2
+    tag: 0.33.0
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
