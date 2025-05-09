@@ -124,7 +124,7 @@
         ]
     },
     {
-        "ignore": false,
+        "ignore": true,
         "fqdn": "pathweb-worker-pi4-01.servers.home.yrf.me",
         "role": "worker",
         "type": "metal-rpi",

@@ -6,11 +6,15 @@ customization:
   systemExtensions:
     officialExtensions:
     - siderolabs/crun
+    - siderolabs/ctr
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
     - siderolabs/qemu-guest-agent
+    - siderolabs/spin
+    - siderolabs/wasmedge
+    - siderolabs/youki
 ---
 # proxmox-amdgpu
 customization:
@@ -20,11 +24,13 @@ customization:
     officialExtensions:
     - siderolabs/amdgpu
     - siderolabs/crun
+    - siderolabs/ctr
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
     - siderolabs/qemu-guest-agent
+    - siderolabs/youki
 ---
 # proxmox-i915
 customization:
@@ -33,12 +39,14 @@ customization:
   systemExtensions:
     officialExtensions:
     - siderolabs/crun
+    - siderolabs/ctr
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/i915
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
     - siderolabs/qemu-guest-agent
+    - siderolabs/youki
 ---
 # proxmox-nvidia
 customization:
@@ -47,13 +55,14 @@ customization:
   systemExtensions:
     officialExtensions:
     - siderolabs/crun
+    - siderolabs/ctr
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
-    - siderolabs/nvidia-container-toolkit-production
     - siderolabs/nvidia-open-gpu-kernel-modules-production
     - siderolabs/qemu-guest-agent
+    - siderolabs/youki
 ---
 # rpi
 overlay:
@@ -65,7 +74,10 @@ customization:
   systemExtensions:
     officialExtensions:
     - siderolabs/crun
+    - siderolabs/ctr
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
+    - siderolabs/vc4
+    - siderolabs/youki
