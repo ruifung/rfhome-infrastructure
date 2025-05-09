@@ -31,6 +31,8 @@ spec:
           mountPath: /media
         - name: config
           mountPath: /config
+        - name: metadata
+          mountPath: /config/metadata
         - name: cache
           mountPath: /cache
         - name: tls-cert
@@ -48,6 +50,9 @@ spec:
       - name: config
         persistentVolumeClaim:
           claimName: jellyfin-config
+      - name: metadata
+        persistentVolumeClaim:
+          claimName: jellyfin-metadata
       - name: cache
         persistentVolumeClaim:
           claimName: jellyfin-cache

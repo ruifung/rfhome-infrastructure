@@ -26,3 +26,16 @@ spec:
   storageClassName: cephfs-retain
   accessModes:
   - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-metadata
+spec:
+  resources:
+    requests:
+      storage: 100Gi
+  volumeMode: Filesystem
+  storageClassName: okinawa-hdd-nfs-retain
+  accessModes:
+  - ReadWriteMany
