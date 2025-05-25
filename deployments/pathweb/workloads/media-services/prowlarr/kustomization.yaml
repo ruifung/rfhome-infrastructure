@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/prowlarr
   newName: lscr.io/linuxserver/prowlarr
-  newTag: version-1.35.1.5034
+  newTag: version-1.36.3.5071
 labels:
 - pairs:
     "app.kubernetes.io/name": prowlarr
