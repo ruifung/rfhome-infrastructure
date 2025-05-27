@@ -1,0 +1,28 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: coredns-chart
+  namespace: kube-system
+spec:
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/ghcr/coredns/charts/coredns
+  ref:
+    tag: 1.42.2
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: coredns
+  namespace: kube-system
+spec:
+  releaseName: cert-manager
+  chartRef:
+    kind: OCIRepository
+    name: coredns-chart
+  interval: 15m
+  targetNamespace: kube-system
+  install:
+    createNamespace: false
+  valuesFiles:
+  - values.yaml

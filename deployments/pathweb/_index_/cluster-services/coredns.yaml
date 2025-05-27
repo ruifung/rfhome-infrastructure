@@ -1,0 +1,19 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: coredns
+  namespace: kube-system
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/cluster-services/coredns
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: kube-system
+  healthChecks:
+  - apiVersion: helm.toolkit.fluxcd.io/v2
+    kind: HelmRelease
+    name: coredns
+    namespace: kube-system
