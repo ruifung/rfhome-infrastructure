@@ -55,9 +55,11 @@ spec:
   - to:
     - podSelector:
         matchLabels:
-          app.kubernetes.io/component: mqtt-broker
+          app.kubernetes.io/name: vernemq
+          app.kubernetes.io/instance: vernemq
     ports:
     - port: 8883
+    - port: 1883
   - to:
     - podSelector:
         matchLabels:
