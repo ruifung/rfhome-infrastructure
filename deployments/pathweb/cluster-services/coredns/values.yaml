@@ -2,6 +2,7 @@
 replicaCount: 2
 isClusterService: true
 serviceType: ClusterIP
+k8sAppLabelOverride: kube-dns
 service:
   ipFamilyPolicy: RequireDualStack
   clusterIP: 10.97.0.10
