@@ -5,7 +5,7 @@ metadata:
   name: ipfs-gateway
   namespace: home-network
 spec:
-  gatewayClassName: cilium
+  gatewayClassName: traefik-internal
   infrastructure:
     labels:
       lb-location: rfhome
