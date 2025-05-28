@@ -16,7 +16,7 @@ metadata:
   name: coredns
   namespace: kube-system
 spec:
-  releaseName: cert-manager
+  releaseName: coredns
   chartRef:
     kind: OCIRepository
     name: coredns-chart
