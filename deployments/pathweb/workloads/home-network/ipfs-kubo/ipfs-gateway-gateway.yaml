@@ -12,14 +12,12 @@ spec:
   listeners:
   - name: http
     protocol: HTTP
-    hostname: "*.ipfsgw.services.home.yrf.me"
     port: 80
     allowedRoutes:
       namespaces:
         from: All
   - name: https
     protocol: HTTPS
-    hostname: "*.ipfsgw.services.home.yrf.me"
     port: 443
     tls:
       mode: Terminate
