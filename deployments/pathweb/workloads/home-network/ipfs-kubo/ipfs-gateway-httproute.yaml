@@ -29,8 +29,6 @@ metadata:
   labels:
     app.kubernetes.io/name: ipfs-kubo
     external-dns: local-pdns
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: ipfsgw.services.home.yrf.me
 spec:
   parentRefs:
   - name: ipfs-gateway
@@ -39,6 +37,24 @@ spec:
     kind: Gateway
   hostnames:
   - "ipfsgw.services.home.yrf.me"
+  rules:
+  - backendRefs:
+    - name: ipfs-kubo-headless
+      port: 8080
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: ipfs-gateway-https-wildcard
+  labels:
+    app.kubernetes.io/name: ipfs-kubo
+spec:
+  parentRefs:
+  - name: ipfs-gateway
+    namespace: home-network
+    sectionName: https
+    kind: Gateway
+  hostnames:
   - "*.ipfs.ipfsgw.services.home.yrf.me"
   - "*.ipns.ipfsgw.services.home.yrf.me"
   rules:
