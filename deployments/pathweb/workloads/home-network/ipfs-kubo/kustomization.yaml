@@ -10,5 +10,8 @@ labels:
 resources:
 - statefulset.yaml
 - service.yaml
-- httproute.yaml
 - ciliumnetworkpolicy.yaml
+- ipfs-api-httproute.yaml
+- ipfs-gateway-cert.yaml
+- ipfs-gateway-gateway.yaml
+- ipfs-gateway-httproute.yaml

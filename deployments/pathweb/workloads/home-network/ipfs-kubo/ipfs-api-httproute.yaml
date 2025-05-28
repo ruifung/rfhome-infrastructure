@@ -2,26 +2,6 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: ipfs-kubo-gateway
-  labels:
-    app.kubernetes.io/name: ipfs-kubo
-    external-dns: local-pdns
-spec:
-  parentRefs:
-  - name: rfhome-services-gateway
-    namespace: home-network
-    sectionName: https
-    kind: Gateway
-  hostnames:
-  - ipfs-gateway.services.home.yrf.me
-  rules:
-  - backendRefs:
-    - name: ipfs-kubo-headless
-      port: 8080
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
   name: ipfs-kubo-api
   labels:
     app.kubernetes.io/name: ipfs-kubo

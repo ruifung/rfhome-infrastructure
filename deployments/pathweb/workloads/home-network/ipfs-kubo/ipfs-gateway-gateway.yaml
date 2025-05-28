@@ -1,0 +1,30 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: ipfs-gateway
+  namespace: home-network
+spec:
+  gatewayClassName: cilium
+  infrastructure:
+    labels:
+      lb-location: rfhome
+  listeners:
+  - name: http
+    protocol: HTTP
+    hostname: "*.ipfsgw.services.home.yrf.me"
+    port: 80
+    allowedRoutes:
+      namespaces:
+        from: All
+  - name: https
+    protocol: HTTPS
+    hostname: "*.ipfsgw.services.home.yrf.me"
+    port: 443
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: ipfs-gateway-cert
+    allowedRoutes:
+      namespaces:
+        from: Same

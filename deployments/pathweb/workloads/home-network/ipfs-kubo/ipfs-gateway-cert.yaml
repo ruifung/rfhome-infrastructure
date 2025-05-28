@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ipfs-gateway-cert
+  namespace: home-network
+spec:
+  secretName: ipfs-gateway-cert
+  issuerRef:
+    kind: ClusterIssuer
+    name: le-yrf-me
+  dnsNames:
+  - "*.ipfsgw.services.home.yrf.me"
+  - "*.ipfs.ipfsgw.services.home.yrf.me"
+  - "*.ipns.ipfsgw.services.home.yrf.me"
