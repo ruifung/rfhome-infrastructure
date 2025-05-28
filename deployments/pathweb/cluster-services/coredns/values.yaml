@@ -53,3 +53,11 @@ servers:
   - name: loop
   - name: reload
   - name: loadbalance
+- zones:
+  - zone: ts.net
+  plugins:
+  - name: errors
+  - name: cache
+    parameters: 30
+  - name: forward
+    parameters: . 10.97.247.170
