@@ -29,6 +29,8 @@ metadata:
   labels:
     app.kubernetes.io/name: ipfs-kubo
     external-dns: local-pdns
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: ipfsgw.services.home.yrf.me
 spec:
   parentRefs:
   - name: ipfs-gateway
