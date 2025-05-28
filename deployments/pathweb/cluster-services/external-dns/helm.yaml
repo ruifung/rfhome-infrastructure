@@ -60,10 +60,13 @@ spec:
     registry: txt
     txtSuffix: .external-dns-txt
     txtOwnerId: "rfhome-cluster-pathweb"
+    txtNewFormatOnly: true
     crd:
       create: true
       apiversion: externaldns.k8s.io/v1alpha1
       kind: DNSEndpoint
+    extraArgs:
+      txt-wildcard-replacement: "_WILD_"
     dryRun: false
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -102,7 +105,6 @@ spec:
     - gateway-udproute
     provider: rfc2136
     # policy: upsert-only
-
     rfc2136:
       host: "10.229.97.53"
       port: 53
@@ -118,10 +120,13 @@ spec:
     registry: txt
     txtSuffix: .external-dns-txt
     txtOwnerId: "rfhome-cluster-pathweb"
+    txtNewFormatOnly: true
     crd:
       create: false
       apiversion: externaldns.k8s.io/v1alpha1
       kind: DNSEndpoint
+    extraArgs:
+      txt-wildcard-replacement: "_WILD_"
     dryRun: false
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -160,7 +165,6 @@ spec:
     - gateway-udproute
     provider: rfc2136
     # policy: upsert-only
-
     rfc2136:
       host: "10.229.97.53"
       port: 53
@@ -176,8 +180,11 @@ spec:
     registry: txt
     txtSuffix: .external-dns-txt
     txtOwnerId: "rfhome-cluster-pathweb"
+    txtNewFormatOnly: true
     crd:
       create: false
       apiversion: externaldns.k8s.io/v1alpha1
       kind: DNSEndpoint
+    extraArgs:
+      txt-wildcard-replacement: "_WILD_"
     dryRun: false
