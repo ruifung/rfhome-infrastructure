@@ -1,3 +1,9 @@
 ---
 resources:
 - helm.yaml
+configMapGenerator:
+- name: coredns-helm-values
+  options:
+    disableNameSuffixHash: true
+  files:
+  - values.yaml

@@ -24,5 +24,7 @@ spec:
   targetNamespace: kube-system
   install:
     createNamespace: false
-  valuesFiles:
-  - values.yaml
+  valuesFrom:
+  - kind: ConfigMap
+    name: coredns-helm-values
+    valuesKey: values.yaml
