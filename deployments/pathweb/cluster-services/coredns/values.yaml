@@ -55,6 +55,7 @@ servers:
   - name: loadbalance
 - zones:
   - zone: ts.net
+  port: 53
   plugins:
   - name: errors
   - name: cache
