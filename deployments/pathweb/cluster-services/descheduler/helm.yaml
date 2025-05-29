@@ -32,6 +32,8 @@ spec:
     deschedulerPolicy:
       nodeSelector: role=worker
       maxNoOfPodsToEvictPerNode: 2
+      metricsProviders:
+      - source: "KubernetesMetrics"
       profiles:
       - name: ProfileName
         pluginConfig:
