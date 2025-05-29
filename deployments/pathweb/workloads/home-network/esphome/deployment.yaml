@@ -13,8 +13,7 @@ spec:
     # k8s.v1.cni.cncf.io/networks: home-network/esphome-iot-network
     spec:
       priorityClassName: rfhome-low-priority
-      # runtimeClassName: gvisor
-
+      runtimeClassName: gvisor
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome

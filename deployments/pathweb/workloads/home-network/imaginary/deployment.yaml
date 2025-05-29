@@ -16,7 +16,7 @@ spec:
       labels:
         app.kubernetes.io/name: imaginary
     spec:
-      # runtimeClassName: gvisor
+      runtimeClassName: gvisor
       nodeSelector:
         kubernetes.io/arch: amd64
       affinity:

@@ -14,6 +14,7 @@ spec:
       labels:
         app.kubernetes.io/name: wyoming-piper
     spec:
+      runtimeClassName: gvisor
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000

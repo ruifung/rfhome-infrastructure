@@ -15,7 +15,7 @@ spec:
       annotations:
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>,<Egress/80/TCP/HTTP>
     spec:
-      # runtimeClassName: gvisor
+      runtimeClassName: gvisor
       nodeSelector:
         location: rfhome
       hostUsers: false

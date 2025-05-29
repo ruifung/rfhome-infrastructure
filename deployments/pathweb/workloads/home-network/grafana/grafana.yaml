@@ -81,7 +81,7 @@ spec:
     spec:
       template:
         spec:
-          # runtimeClassName: gvisor
+          runtimeClassName: gvisor
           containers:
           - name: grafana
             env:
