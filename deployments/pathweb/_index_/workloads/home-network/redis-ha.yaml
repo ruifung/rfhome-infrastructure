@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: redis-ha
+  namespace: home-network
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/home-network/redis-ha
+  prune: true
+  force: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+    namespace: flux-system

@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-ha-proxy
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: haproxy
+    app.kubernetes.io/instance: redis-ha-proxy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: haproxy
+      app.kubernetes.io/instance: redis-ha-proxy
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: haproxy
+        app.kubernetes.io/instance: redis-ha-proxy
+    spec:
+      containers:
+      - name: haproxy
+        image: haproxy:3.2.0-alpine3.21
+        ports:
+        - containerPort: 6379
+          name: redis
+          protocol: TCP
+        - containerPort: 6380
+          name: redis-readonly
+          protocol: TCP
+        volumeMounts:
+        - name: haproxy-config
+          mountPath: /usr/local/etc/haproxy
+          readOnly: true
+      volumes:
+      - name: haproxy-config
+        configMap:
+          name: redis-ha-proxy-config

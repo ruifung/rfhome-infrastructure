@@ -1,0 +1,35 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: bitnami-redis-chart
+  namespace: home-network
+spec:
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/dockerhub/bitnamicharts/redis
+  ref:
+    tag: 21.1.8
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: redis-ha
+  namespace: home-network
+spec:
+  releaseName: redis-ha
+  chartRef:
+    kind: OCIRepository
+    name: bitnami-redis-chart
+  interval: 15m
+  values:
+    replica:
+      repliaCount: 3
+      persistence:
+        enabled: true
+        storageClass: cephfs
+    sentinel:
+      enabled: true
+      quorum: 2
+      persistence:
+        enabled: true
+        storageClass: cephfs
