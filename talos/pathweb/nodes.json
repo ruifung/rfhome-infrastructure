@@ -60,7 +60,8 @@
             "patches/controlplane-firewall.yaml",
             "patches/control-3.yaml",
             "patches/harbor-rfhome.secret.yaml",
-            "patches/watchdog.yaml"
+            "patches/watchdog.yaml",
+            "patches/podman-seccomp.yaml"
         ]
     },
     {
@@ -72,7 +73,8 @@
             "patches/worker-patches.yaml",
             "patches/worker-1.yaml",
             "patches/harbor-rfhome.secret.yaml",
-            "patches/watchdog.yaml"
+            "patches/watchdog.yaml",
+            "patches/podman-seccomp.yaml"
         ]
     },
     {
@@ -84,7 +86,8 @@
             "patches/worker-patches.yaml",
             "patches/worker-2.yaml",
             "patches/harbor-rfhome.secret.yaml",
-            "patches/watchdog.yaml"
+            "patches/watchdog.yaml",
+            "patches/podman-seccomp.yaml"
         ]
     },
     {
@@ -96,7 +99,8 @@
             "patches/worker-patches.yaml",
             "patches/worker-3.yaml",
             "patches/harbor-rfhome.secret.yaml",
-            "patches/watchdog.yaml"
+            "patches/watchdog.yaml",
+            "patches/podman-seccomp.yaml"
         ]
     },
     {
@@ -108,7 +112,8 @@
             "patches/worker-patches.yaml",
             "patches/worker-baldric.yaml",
             "patches/harbor-rfhome.secret.yaml",
-            "patches/watchdog.yaml"
+            "patches/watchdog.yaml",
+            "patches/podman-seccomp.yaml"
         ]
     },
     {
@@ -120,7 +125,8 @@
             "patches/worker-patches.yaml",
             "patches/worker-baldric-2.yaml",
             "patches/harbor-rfhome.secret.yaml",
-            "patches/watchdog.yaml"
+            "patches/watchdog.yaml",
+            "patches/podman-seccomp.yaml"
         ]
     },
     {
@@ -132,7 +138,8 @@
             "patches/node-patches.yaml",
             "patches/worker-pi4-patches.yaml",
             "patches/worker-pi4-01.yaml",
-            "patches/harbor-rfhome.secret.yaml"
+            "patches/harbor-rfhome.secret.yaml",
+            "patches/podman-seccomp.yaml"
         ]
     }
 ]

@@ -53,7 +53,7 @@ cluster:
     extraArgs:
       election-timeout: "5000"
       listen-metrics-urls: http://0.0.0.0:2381
-  coredns:
+  coreDNS:
     disabled: true
   extraManifests:
   - https://raw.githubusercontent.com/alex1989hu/kubelet-serving-cert-approver/main/deploy/standalone-install.yaml
