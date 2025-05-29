@@ -22,15 +22,14 @@ spec:
         kubernetes.io/arch: amd64
       containers:
       - name: tsidp
-        image: harbor.services.home.yrf.me/local-images/tsidp:v1.82.0
-        command:
-        - /app/tsidp
-        - -dir /var/lib/tsidp
+        image: harbor.services.home.yrf.me/local-images/tsidp:v1.84.0
         securityContext:
           allowPrivilegeEscalation: false
         env:
         - name: TS_HOSTNAME
           value: idp
+        - name: TS_STATE_DIR
+          value: /var/lib/tsidp
         ports:
         - containerPort: 443
           name: https
