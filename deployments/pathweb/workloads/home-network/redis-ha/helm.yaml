@@ -29,6 +29,10 @@ spec:
       persistence:
         enabled: true
         storageClass: cephfs
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: physical-node
+        whenUnsatisfiable: DoNotSchedule
     sentinel:
       enabled: true
       quorum: 2
