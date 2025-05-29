@@ -23,6 +23,9 @@ spec:
       containers:
       - name: tsidp
         image: harbor.services.home.yrf.me/local-images/tsidp:v1.82.0
+        command:
+        - /app/tsidp
+        - -dir /var/lib/tsidp
         securityContext:
           allowPrivilegeEscalation: false
         env:
