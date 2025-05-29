@@ -41,18 +41,22 @@ spec:
             evictLocalStoragePods: true
             nodeFit: true
             minPodAge: 30m
+            priorityThreshold:
+              name: rfhome-home-critical
         - name: "RemoveDuplicates"
         - name: "LowNodeUtilization"
           args:
             useDeviationThresholds: true
             thresholds:
-              cpu: 1
-              memory: 1
-              pods: 5
+              cpu: 10
+              memory: 10
+              pods: 10
             targetThresholds:
               cpu: 5
               memory: 5
               pods: 5
+            metricsUtilization:
+              source: "KubernetesMetrics"
         - name: "RemovePodsViolatingInterPodAntiAffinity"
         - name: "RemovePodsViolatingNodeAffinity"
           args:
