@@ -23,7 +23,7 @@ spec:
         io.cilium.proxy-visibility: <Egress/53/UDP/DNS>,<Egress/80/TCP/HTTP>
     spec:
       priorityClassName: rfhome-home-critical
-      runtimeClassName: gvisor
+      # runtimeClassName: gvisor
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
@@ -36,7 +36,7 @@ spec:
                 operator: In
                 values: [baldric, voyager]
       automountServiceAccountToken: false
-      # hostUsers: false
+      hostUsers: false
       securityContext:
         fsGroup: 1000
         seccompProfile:
@@ -49,6 +49,9 @@ spec:
         image: homeassistant/home-assistant:stable
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
         env:
         - name: TZ
           value: Asia/Kuala_Lumpur
