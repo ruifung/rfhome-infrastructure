@@ -68,6 +68,11 @@ spec:
         matchLabels:
           app.kubernetes.io/name: authentik
           app.kubernetes.io/instance: authentik
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: nextcloud
+          nextcloud-redis-client: "true"
+          app.kubernetes.io/instance: nextcloud
     ports:
     - port: 6379
   egress:
