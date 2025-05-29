@@ -6,6 +6,7 @@ resources:
 - helm.yaml
 - haproxy-deployment.yaml
 - haproxy-service.yaml
+- networkpolicy.yaml
 configMapGenerator:
 - name: redis-ha-proxy-config
   namespace: home-network

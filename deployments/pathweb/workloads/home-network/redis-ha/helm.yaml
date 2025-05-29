@@ -22,6 +22,8 @@ spec:
     name: bitnami-redis-chart
   interval: 15m
   values:
+    auth:
+      enabled: false
     replica:
       repliaCount: 3
       persistence:
