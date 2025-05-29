@@ -121,6 +121,12 @@ spec:
             key: "dbname"
       - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__CONN_HEALTH_CHECK
         value: "true"
+      - name: AUTHENTIK_REDIS__HOST
+        value: "redis-ha-proxy.home-network.svc"
+      - name: AUTHENTIK_REDIS__PORT
+        value: "6379"
+      - name: AUTHENTIK_REDIS__DB
+        value: "1"
     server:
       replicas: 2
       resources:
@@ -196,15 +202,4 @@ spec:
       rules:
         enabled: false
     redis:
-      enabled: true
-      master:
-        priorityClassName: rfhome-network-critical
-        nodeSelector:
-          location: rfhome
-        resources:
-          requests:
-            cpu: 70m
-            memory: 150M
-          limits:
-            cpu: 250m
-            memory: 512M
+      enabled: false
