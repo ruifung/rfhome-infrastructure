@@ -51,12 +51,10 @@ spec:
             useDeviationThresholds: true
             thresholds:
               cpu: 10
-              memory: 10
-              pods: 10
+              memory: 2
             targetThresholds:
               cpu: 5
-              memory: 5
-              pods: 5
+              memory: 10
             metricsUtilization:
               source: "KubernetesMetrics"
         - name: "RemovePodsViolatingInterPodAntiAffinity"
