@@ -47,6 +47,12 @@ spec:
         volumeMounts:
         - name: tsidp-data
           mountPath: /var/lib/tsidp
+        - name: tsidp-data
+          mountPath: /app/oidc-key.json
+          subPath: oidc-key.json
+        - name: tsidp-data
+          mountPath: /app/oidc-funnel-clients.json
+          subPath: oidc-funnel-clients.json
       volumes:
       - name: tsidp-data
   volumeClaimTemplates:
