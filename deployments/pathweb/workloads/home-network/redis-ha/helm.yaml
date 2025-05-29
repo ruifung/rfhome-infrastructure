@@ -32,6 +32,10 @@ spec:
     sentinel:
       enabled: true
       quorum: 2
+      redisShutdownWaitFailover: false
+      automateClusterRecovery: true
+      downAfterMilliseconds: 2000
+      failoverTimeout: 60000
       persistence:
         enabled: true
         storageClass: cephfs
