@@ -71,7 +71,6 @@ spec:
     - podSelector:
         matchLabels:
           app.kubernetes.io/name: nextcloud
-          nextcloud-redis-client: "true"
           app.kubernetes.io/instance: nextcloud
     ports:
     - port: 6379
