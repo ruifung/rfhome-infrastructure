@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/dockerhub/bitnamicharts/redis
   ref:
-    tag: 21.1.8
+    tag: 21.1.9
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
