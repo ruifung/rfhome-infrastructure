@@ -35,6 +35,10 @@ spec:
     targetPath: loki.storage.s3.secretAccessKey
   values:
     loki:
+      image:
+        registry: docker.io
+        repository: grafana/loki
+        tag: 3.5.1
       auth_enabled: false
       commonConfig:
         replication_factor: 3
