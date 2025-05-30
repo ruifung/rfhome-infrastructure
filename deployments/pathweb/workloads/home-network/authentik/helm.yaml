@@ -173,13 +173,13 @@ spec:
                 values:
                 - "pi4"
     worker:
-      replicas: 1
+      replicas: 2
       resources:
         requests:
           cpu: 200m
           memory: 700Mi
         limits:
-          memory: 1.5Gi
+          memory: 2Gi
       livenessProbe:
         failureThreshold: 10
         periodSeconds: 30
