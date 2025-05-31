@@ -132,7 +132,7 @@ spec:
       resources:
         requests:
           cpu: "200m"
-          memory: 850Mi
+          memory: 900Mi
         limits:
           memory: 2Gi
       ingress:
@@ -177,9 +177,9 @@ spec:
       resources:
         requests:
           cpu: 200m
-          memory: 700Mi
+          memory: 1Gi
         limits:
-          memory: 2Gi
+          memory: 2.5Gi
       livenessProbe:
         failureThreshold: 10
         periodSeconds: 30
