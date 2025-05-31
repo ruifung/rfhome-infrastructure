@@ -37,9 +37,9 @@ spec:
       enabled: true
       quorum: 2
       redisShutdownWaitFailover: false
-      automateClusterRecovery: true
-      downAfterMilliseconds: 2000
-      failoverTimeout: 60000
+      automateClusterRecovery: false
+      downAfterMilliseconds: 30000
+      failoverTimeout: 180000
       persistence:
         enabled: true
         storageClass: cephfs
