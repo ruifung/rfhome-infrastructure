@@ -183,13 +183,16 @@ spec:
       livenessProbe:
         failureThreshold: 10
         periodSeconds: 30
+        timeoutSeconds: 10
       readinessProbe:
         failureThreshold: 10
         periodSeconds: 30
+        timeoutSeconds: 10
       startupProbe:
         failureThreshold: 100
         initialDelaySeconds: 60
         periodSeconds: 30
+        timeoutSeconds: 10
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
