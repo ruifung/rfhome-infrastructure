@@ -14,7 +14,7 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
-      hostUsers: false
+      # hostUsers: false
       securityContext:
         runAsNonRoot: true
         seccompProfile:
