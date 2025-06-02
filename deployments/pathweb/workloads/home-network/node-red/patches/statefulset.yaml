@@ -9,12 +9,12 @@ spec:
       annotations:
         io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
     spec:
-      runtimeClassName: gvisor
+      # runtimeClassName: gvisor
       priorityClassName: rfhome-high-priority
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
-      # hostUsers: false
+      hostUsers: false
       securityContext:
         runAsNonRoot: true
         seccompProfile:
