@@ -9,7 +9,7 @@ spec:
       annotations:
         io.cilium.proxy-visibility: "<Egress/53/UDP/DNS>"
     spec:
-      # runtimeClassName: gvisor
+      runtimeClassName: kata
       priorityClassName: rfhome-high-priority
       nodeSelector:
         kubernetes.io/os: linux
