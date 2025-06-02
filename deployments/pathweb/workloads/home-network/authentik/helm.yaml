@@ -42,7 +42,10 @@ spec:
   values:
     global:
       deploymentStrategy:
-        type: Recreate
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 0
+          maxUnavailable: 1
       priorityClassName: rfhome-network-critical
       nodeSelector:
         location: rfhome
