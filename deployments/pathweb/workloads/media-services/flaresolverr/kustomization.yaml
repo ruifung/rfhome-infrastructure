@@ -2,7 +2,7 @@
 images:
 - name: ghcr.io/flaresolverr/flaresolverr
   newName: ghcr.io/flaresolverr/flaresolverr
-  newTag: v3.3.21
+  newTag: v3.3.24
 labels:
 - pairs:
     "app.kubernetes.io/name": flaresolverr
