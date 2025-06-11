@@ -4,3 +4,11 @@ formatter:
   include_document_start: true
   indentless_arrays: true
   line_ending: lf
+doublestar: true
+match_type: doublestar
+include:
+- '**/*.yaml'
+- '**/*.yml'
+exclude:
+- 'clusters/**/flux-system/*.yaml'
+gitignore_excludes: true
