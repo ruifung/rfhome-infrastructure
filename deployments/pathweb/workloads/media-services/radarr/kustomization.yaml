@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/radarr
   newName: lscr.io/linuxserver/radarr
-  newTag: version-5.25.0.10024
+  newTag: version-5.26.2.10099
 labels:
 - pairs:
     "app.kubernetes.io/name": radarr
