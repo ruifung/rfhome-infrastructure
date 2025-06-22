@@ -21,7 +21,7 @@ function Get-TalosNodeVersion {
         [string]$node
     )
     $versionOutput = $(talosctl version --nodes $node --short) -join ""
-    if ($LASTEXITCODE -eq 0 && $versionOutput -match 'Server:[\s\S\n]*Tag:\s*(v\d+\.\d\.\d)' && $Matches -ne $null) {
+    if ($LASTEXITCODE -eq 0 && $versionOutput -match 'Server:[\s\S\n]*Tag:\s*(v\d+\.\d+\.\d+)' && $Matches -ne $null) {
         return $Matches[1]
     }
     else {
@@ -146,6 +146,7 @@ function Invoke-TalosNodeUpgrade {
         try {
             $currentVersion = $null
             $currentSchematic = $null
+            Write-Output "Checking current Talos version and schematic for node [$node]."
             if (Confirm-TalosVersionAndSchematic $node $imageVersion $imageSchematic ([ref]$currentVersion) ([ref]$currentSchematic)) {
                 if (-not $force) {
                     Write-Output "Node [$node] is already at Talos version [$imageVersion], schematic [$imageSchematic], skipping upgrade."
@@ -174,6 +175,7 @@ function Invoke-TalosNodeUpgrade {
             }
         }
         catch {
+            Write-Error -Message $Error[0].Exception.Message
             Start-SleepWithProgress "Failed to perform upgrade. Retry in 10 seconds." 10
             continue
         }
