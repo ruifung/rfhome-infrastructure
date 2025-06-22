@@ -54,7 +54,7 @@ spec:
           name: velero-okinawa-s3-credentials
           key: credentials
         config:
-          region: rfhome
+          region: us-east-1
           s3Url: https://okinawa-s3.services.home.yrf.me:7070
       volumeSnapshotLocation: []
       defaultSnapshotMoveData: true
