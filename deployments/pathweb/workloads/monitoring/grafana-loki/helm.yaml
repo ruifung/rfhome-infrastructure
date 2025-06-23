@@ -69,10 +69,9 @@ spec:
         bucketNames:
           chunks: rfhome-loki-chunks
           ruler: rfhome-loki-ruler
-          admin: rfhome-loki-admin
         s3:
-          endpoint: https://okinawa-s3.services.home.yrf.me:9000
-          region: rfhome
+          endpoint: https://okinawa-s3.services.home.yrf.me:7070
+          region: us-east-1
           # secretAccessKey: ""
 
           # accessKeyId: ""
