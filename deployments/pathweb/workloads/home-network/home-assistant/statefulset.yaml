@@ -125,19 +125,19 @@ spec:
         - name: hass-data
           mountPath: /data
           subPath: matter-server
-      - name: backup-sync
-        image: minio/mc:latest
-        restartPolicy: Always
-        imagePullPolicy: Always
-        command: ["/bin/sh"]
-        args: ["-c", "while true; do mc alias set okinawa-vgw $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY && mc mirror --remove --watch /config/backups okinawa-vgw/rfhome-hass-backup; sleep 5; done"]
-        envFrom:
-        - secretRef:
-            name: home-assistant-backup-credentials
-        volumeMounts:
-        - name: hass-data
-          mountPath: /config/backups
-          subPath: backups
+      # - name: backup-sync
+      #   image: minio/mc:latest
+      #   restartPolicy: Always
+      #   imagePullPolicy: Always
+      #   command: ["/bin/sh"]
+      #   args: ["-c", "while true; do mc alias set okinawa-vgw $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY && mc mirror --remove --watch /config/backups okinawa-vgw/rfhome-hass-backup; sleep 5; done"]
+      #   envFrom:
+      #   - secretRef:
+      #       name: home-assistant-backup-credentials
+      #   volumeMounts:
+      #   - name: hass-data
+      #     mountPath: /config/backups
+      #     subPath: backups
       volumes:
       - name: hass-data
         persistentVolumeClaim:
