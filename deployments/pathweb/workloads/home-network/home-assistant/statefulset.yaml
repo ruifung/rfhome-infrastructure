@@ -130,7 +130,7 @@ spec:
         restartPolicy: Always
         imagePullPolicy: Always
         command: ["/bin/sh"]
-        args: ["-c", "while true; do mc alias set okinawa-s3 $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY && mc mirror --checksum SHA256 --remove --watch /config/backups okinawa-s3/rfhome-hass-backup; sleep 5; done"]
+        args: ["-c", "while true; do mc alias set okinawa-vgw $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY && mc mirror --remove --watch /config/backups okinawa-vgw/rfhome-hass-backup; sleep 5; done"]
         envFrom:
         - secretRef:
             name: home-assistant-backup-credentials
