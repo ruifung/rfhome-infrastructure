@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/victoriametrics.github.io/helm-charts/victoria-metrics-k8s-stack
   ref:
-    tag: 0.50.1
+    tag: 0.54.0
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
