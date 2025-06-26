@@ -45,7 +45,7 @@ spec:
   values:
     image:
       repository: fireflyiii/core
-      tag: version-6.2.10
+      tag: version-6.2.18
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
