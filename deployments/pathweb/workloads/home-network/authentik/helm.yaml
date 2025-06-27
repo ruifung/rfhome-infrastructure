@@ -73,8 +73,8 @@ spec:
       env:
       # - name: AUTHENTIK_POSTGRESQL__DISABLE_SERVER_SIDE_CURSORS
       #   value: "true"
-      # - name: AUTHENTIK_POSTGRESQL__CONN_HEALTH_CHECK
-      #   value: "true"
+      - name: AUTHENTIK_POSTGRESQL__CONN_HEALTH_CHECK
+        value: "true"
       - name: AUTHENTIK_POSTGRESQL__HOST
         valueFrom:
           secretKeyRef:
