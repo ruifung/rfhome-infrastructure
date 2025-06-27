@@ -112,6 +112,7 @@ spec:
   # Allow to Kubernetes API server
   - toEntities:
     - kube-apiserver
+    - host
   - toFQDNs:
     - matchName: "ad.home.yrf.me"
     # Allow egress to ad.home.yrf.me (LDAP)
