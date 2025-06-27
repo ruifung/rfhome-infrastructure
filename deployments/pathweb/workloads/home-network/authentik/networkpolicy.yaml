@@ -107,6 +107,8 @@ spec:
       app.kubernetes.io/name: authentik
       app.kubernetes.io/instance: authentik
   egress:
+  - toEntities:
+    - host
   # Allow to Kubernetes API server
   - toEntities:
     - kube-apiserver
@@ -117,7 +119,6 @@ spec:
   - toFQDNs:
     - matchName: "ad.home.yrf.me"
     # Allow egress to ad.home.yrf.me (LDAP)
-
     toPorts:
     - ports:
       - port: "389"
