@@ -102,7 +102,7 @@ metadata:
   name: authentik-egress-apiserver-ldap
   namespace: home-network
 spec:
-  podSelector:
+  endpointSelector:
     matchLabels:
       app.kubernetes.io/name: authentik
       app.kubernetes.io/instance: authentik
