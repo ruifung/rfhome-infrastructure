@@ -1,0 +1,124 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: authentik-restricted-egress
+  namespace: home-network
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: authentik
+      app.kubernetes.io/instance: authentik
+  policyTypes:
+  - Egress
+  egress:
+  # Allow to other authentik pods
+  - to:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: authentik
+          app.kubernetes.io/instance: authentik
+  - to:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/managed-by: goauthentik.io
+          # Allow to pods managed by goauthentik.io in the same namespace
+  - to:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/component: database
+          app.kubernetes.io/name: postgres
+          app.kubernetes.io/part-of: rfhome-postgres-ha
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/component: database
+          app.kubernetes.io/name: pgbouncer
+          app.kubernetes.io/part-of: rfhome-postgres-ha
+    # Allow all applicable Postgres pods in home-network
+
+    ports:
+    - protocol: TCP
+      port: 5432
+  - to:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: haproxy
+          app.kubernetes.io/instance: redis-ha-proxy
+    # Allow Redis in home-network
+
+    ports:
+    - protocol: TCP
+      port: 6379
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: tailscale
+      podSelector:
+        matchLabels:
+          tailscale.com/parent-resource: ts-idp-egress
+          tailscale.com/parent-resource-ns: tailscale
+          tailscale.com/parent-resource-type: svc
+    # Allow egress to Tailscale IDP egress service
+
+    ports:
+    - protocol: TCP
+      port: 443
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+        except:
+        - 10.0.0.0/8
+        - 192.168.0.0/16
+        - 172.16.0.0/12
+        - 100.64.0.0/10
+    - ipBlock:
+        cidr: ::/0
+        except:
+        - fc00::/7
+        # Allow egress to the internet (IPv4 and IPv6)
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: authentik-managed-egress-to-authentik
+  namespace: home-network
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/managed-by: goauthentik.io
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: authentik
+          app.kubernetes.io/instance: authentik
+          app.kubernetes.io/component: server
+---
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: authentik-egress-apiserver-ldap
+  namespace: home-network
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: authentik
+      app.kubernetes.io/instance: authentik
+  egress:
+  # Allow to Kubernetes API server
+  - toEntities:
+    - kube-apiserver
+    toPorts:
+    - ports:
+      - port: "443"
+        protocol: TCP
+  - toFQDNs:
+    - matchName: "ad.home.yrf.me"
+    # Allow egress to ad.home.yrf.me (LDAP)
+
+    toPorts:
+    - ports:
+      - port: "389"
+        protocol: TCP
