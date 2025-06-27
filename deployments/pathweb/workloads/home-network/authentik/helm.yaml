@@ -71,15 +71,15 @@ spec:
           name: authentik-secrets
         prefix: AUTHENTIK_
       env:
-      - name: AUTHENTIK_POSTGRESQL__DISABLE_SERVER_SIDE_CURSORS
-        value: "true"
-      - name: AUTHENTIK_POSTGRESQL__CONN_HEALTH_CHECK
-        value: "true"
+      # - name: AUTHENTIK_POSTGRESQL__DISABLE_SERVER_SIDE_CURSORS
+      #   value: "true"
+      # - name: AUTHENTIK_POSTGRESQL__CONN_HEALTH_CHECK
+      #   value: "true"
       - name: AUTHENTIK_POSTGRESQL__HOST
         valueFrom:
           secretKeyRef:
             name: "rfhome-postgres-ha-pguser-authentik"
-            key: "pgbouncer-host"
+            key: "host"
       - name: AUTHENTIK_POSTGRESQL__PORT
         valueFrom:
           secretKeyRef:
