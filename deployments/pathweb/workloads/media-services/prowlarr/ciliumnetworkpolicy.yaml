@@ -52,13 +52,13 @@ spec:
       rules:
         dns:
         - matchPattern: "*"
-  - toCIDR:
-    - 10.229.97.0/24
+  - toFQDNs:
+    - matchName: "i2p-router.servers.home.yrf.me"
     toPorts:
     - ports:
       - port: "4444"
         protocol: TCP
-      - port: "4445"
+      - port: "4447"
         protocol: TCP
   - toEndpoints:
     - matchLabels:
