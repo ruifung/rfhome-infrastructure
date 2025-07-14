@@ -8,7 +8,7 @@ labels:
   includeSelectors: false
 images:
 - name: homeassistant/home-assistant
-  newTag: "2025.7.1"
+  newTag: "2025.7.2"
 - name: ghcr.io/home-assistant-libs/python-matter-server
   newTag: "8.0.0"
 resources:
