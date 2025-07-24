@@ -60,7 +60,6 @@ spec:
     registry: txt
     txtSuffix: .external-dns-txt
     txtOwnerId: "rfhome-cluster-pathweb"
-    txtNewFormatOnly: true
     crd:
       create: true
       apiversion: externaldns.k8s.io/v1alpha1
@@ -120,7 +119,6 @@ spec:
     registry: txt
     txtSuffix: .external-dns-txt
     txtOwnerId: "rfhome-cluster-pathweb"
-    txtNewFormatOnly: true
     crd:
       create: false
       apiversion: externaldns.k8s.io/v1alpha1
@@ -180,7 +178,6 @@ spec:
     registry: txt
     txtSuffix: .external-dns-txt
     txtOwnerId: "rfhome-cluster-pathweb"
-    txtNewFormatOnly: true
     crd:
       create: false
       apiversion: externaldns.k8s.io/v1alpha1
