@@ -6,6 +6,3 @@ metadata:
   namespace: harbor
 spec:
   insecureSkipVerify: true
-  rootCAsSecrets:
-  - harbor-core-internal-tls
-  - harbor-portal-internal-tls
