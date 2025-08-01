@@ -19,3 +19,4 @@ jobs:
         GIT_USERNAME: github-sync
         GIT_PASSWORD: ${{ secrets.RF_FORGEJO_TOKEN }}
         PUSH_ALL_REFS: "false"
+        GIT_PUSH_ARGS: "--tags"
