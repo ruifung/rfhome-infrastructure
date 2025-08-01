@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/pkgs.tailscale.com/helmcharts/tailscale-operator
   ref:
-    tag: 1.84.3
+    tag: 1.86.2
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
