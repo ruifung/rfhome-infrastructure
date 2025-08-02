@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/charts.fairwinds.com/stable/goldilocks
   ref:
-    tag: 9.0.2
+    tag: 9.1.0
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
