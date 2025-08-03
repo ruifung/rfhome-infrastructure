@@ -24,6 +24,6 @@ Write-Host "Installing cilium"
 #helm repo add cilium https://helm.cilium.io/
 #helm install cilium cilium/cilium --namespace kube-system -f cilium-values.yaml
 # Requires Cilium CLI 1.15 or newer using helm mode.
-cilium install --values cilium-values.yaml --wait --namespace kube-system
+cilium install --values cilium-values.yaml --wait --namespace kube-system --version 1.18.0
 # Write-Host "Waiting for cilium to be ready."
 # cilium status --wait
