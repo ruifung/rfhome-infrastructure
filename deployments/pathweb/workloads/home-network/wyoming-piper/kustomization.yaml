@@ -1,7 +1,7 @@
 ---
 images:
 - name: rhasspy/wyoming-piper
-  newTag: 1.6.2
+  newTag: 1.6.3
 resources:
 - deployment.yaml
 - service.yaml
