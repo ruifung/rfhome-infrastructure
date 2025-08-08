@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/dockerhub/bitnamicharts/external-dns
   ref:
-    tag: 9.0.1
+    tag: 9.0.2
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
