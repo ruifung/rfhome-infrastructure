@@ -1,7 +1,7 @@
 ---
 images:
 - name: ghcr.io/jorenn92/maintainerr
-  newTag: 2.18.2
+  newTag: 2.19.0
 labels:
 - pairs:
     "app.kubernetes.io/name": maintainerr
