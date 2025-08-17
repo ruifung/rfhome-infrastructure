@@ -23,8 +23,6 @@ clustermesh:
   useAPIServer: true
 hubble:
   enabled: true
-  networkPolicyCorrelation:
-    enabled: false # Disable due to bug https://github.com/cilium/cilium/issues/40804
   relay:
     enabled: true
     rollOutPods: true
