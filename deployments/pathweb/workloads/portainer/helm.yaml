@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/portainer.github.io/k8s/portainer
   ref:
-    tag: 1.0.69
+    tag: 2.33.0
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
