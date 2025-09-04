@@ -38,7 +38,7 @@ spec:
       image:
         registry: docker.io
         repository: grafana/loki
-        tag: 3.5.3
+        tag: 3.5.4
       auth_enabled: false
       commonConfig:
         replication_factor: 3
