@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/bazarr
   newName: lscr.io/linuxserver/bazarr
-  newTag: version-v1.5.2
+  newTag: version-v1.5.3
 labels:
 - pairs:
     "app.kubernetes.io/name": bazarr
