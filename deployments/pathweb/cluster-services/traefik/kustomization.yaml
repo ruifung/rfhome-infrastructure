@@ -1,7 +1,7 @@
 ---
 images:
 - name: cloudflare/cloudflared
-  newTag: 2025.8.1
+  newTag: 2025.9.1
 resources:
 - "ocirepository.yaml"
 - "helm-crds.yaml"
