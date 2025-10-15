@@ -77,27 +77,29 @@
     }
   ],
   "flux": {
-    "fileMatch": [
-      "clusters/.+/.+\\.yaml$",
-      "deployments/.+/.+\\.yaml$"
+    "managerFilePatterns": [
+      "/clusters/.+/.+\\.yaml$/",
+      "/deployments/.+/.+\\.yaml$/"
     ]
   },
   "helm-values": {
-    "fileMatch": [
-      "clusters/.+/.+\\.yaml$",
-      "deployments/.+/.+\\.yaml$"
+    "managerFilePatterns": [
+      "/clusters/.+/.+\\.yaml$/",
+      "/deployments/.+/.+\\.yaml$/"
     ]
   },
   "kubernetes": {
-    "fileMatch": [
-      "clusters/.+/.+\\.yaml$",
-      "deployments/.+/.+\\.yaml$"
+    "managerFilePatterns": [
+      "/clusters/.+/.+\\.yaml$/",
+      "/deployments/.+/.+\\.yaml$/"
     ]
   },
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": "kustomization.yaml",
+      "managerFilePatterns": [
+        "/kustomization.yaml/"
+      ],
       "matchStrings": [
         "github\\.com\\/(?<depName>.*\\/.*?)\\/\\/vertical-pod-autoscaler\\/deploy\\/\\?ref=(?<currentValue>.*)"
       ],
