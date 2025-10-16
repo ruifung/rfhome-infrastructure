@@ -27,7 +27,7 @@ spec:
             - 2606:4700:4700::1001
           containers:
           - name: ooni-probe
-            image: ghcr.io/altertek/ooni-probe:3.25
+            image: ghcr.io/altertek/ooni-probe:3.27
             args: ['/bin/sh', '-c', '/usr/bin/ooniprobe run unattended --batch']
             securityContext:
               allowPrivilegeEscalation: false
