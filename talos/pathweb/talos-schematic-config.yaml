@@ -5,15 +5,14 @@ customization:
   - net.ifnames=0
   systemExtensions:
     officialExtensions:
-    - siderolabs/crun
+    - siderolabs/binfmt-misc
     - siderolabs/ctr
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
+    - siderolabs/nvme-cli
     - siderolabs/qemu-guest-agent
-    - siderolabs/spin
-    - siderolabs/wasmedge
     - siderolabs/youki
 ---
 # proxmox-amdgpu
@@ -23,12 +22,13 @@ customization:
   systemExtensions:
     officialExtensions:
     - siderolabs/amdgpu
-    - siderolabs/crun
+    - siderolabs/binfmt-misc
     - siderolabs/ctr
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
+    - siderolabs/nvme-cli
     - siderolabs/qemu-guest-agent
     - siderolabs/youki
 ---
@@ -38,13 +38,14 @@ customization:
   - net.ifnames=0
   systemExtensions:
     officialExtensions:
-    - siderolabs/crun
+    - siderolabs/binfmt-misc
     - siderolabs/ctr
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/i915
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
+    - siderolabs/nvme-cli
     - siderolabs/qemu-guest-agent
     - siderolabs/youki
 ---
@@ -54,13 +55,15 @@ customization:
   - net.ifnames=0
   systemExtensions:
     officialExtensions:
-    - siderolabs/crun
+    - siderolabs/binfmt-misc
     - siderolabs/ctr
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
+    - siderolabs/nvidia-container-toolkit-production
     - siderolabs/nvidia-open-gpu-kernel-modules-production
+    - siderolabs/nvme-cli
     - siderolabs/qemu-guest-agent
     - siderolabs/youki
 ---
@@ -73,11 +76,12 @@ customization:
   - net.ifnames=0
   systemExtensions:
     officialExtensions:
-    - siderolabs/crun
     - siderolabs/ctr
     - siderolabs/fuse3
     - siderolabs/gvisor
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
+    - siderolabs/nvme-cli
+    - siderolabs/qemu-guest-agent
     - siderolabs/vc4
     - siderolabs/youki
