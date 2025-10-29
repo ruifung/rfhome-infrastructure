@@ -1,0 +1,76 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: home-assistant-policy
+  namespace: home-network
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: home-assistant
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace.labels.kubernetes.io/metadata.name: traefik
+    toPorts:
+    - ports:
+      - port: '8123'
+  - fromEndpoints:
+    - matchExpressions:
+      - key: app.kubernetes.io/name
+        operator: In
+        values:
+        - node-red
+        - appdaemon
+    toPorts:
+    - ports:
+      - port: '8123'
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: kube-dns
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: node-local-dns
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: ANY
+      rules:
+        dns:
+        - matchPattern: "*"
+  - toEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: traefik
+  - toEntities:
+    - world
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: vernemq
+        app.kubernetes.io/instance: vernemq
+    toPorts:
+    - ports:
+      - port: '8883'
+        protocol: TCP
+      - port: '1883'
+        protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/component: database
+        app.kubernetes.io/part-of: rfhome-postgres-ha
+    toPorts:
+    - ports:
+      - port: '5432'
+        protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: go2rtc
+    - matchLabels:
+        app.kubernetes.io/name: faster-whisper
+    - matchLabels:
+        app.kubernetes.io/name: wyoming-piper
+    - matchLabels:
+        app.kubernetes.io/name: wyoming-openwakeword
+    - matchLabels:
+        app.kubernetes.io/name: esphome

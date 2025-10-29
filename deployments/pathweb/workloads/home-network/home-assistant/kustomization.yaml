@@ -1,15 +1,10 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-labels:
-- pairs:
-    app.kubernetes.io/version: "2025.10.0"
-  includeTemplates: true
-  includeSelectors: false
 images:
 - name: homeassistant/home-assistant
   newName: ghcr.io/home-assistant/home-assistant
-  newTag: "2025.10.4"
+  newTag: &hass-version "2025.10.4"
 - name: ghcr.io/home-assistant-libs/python-matter-server
   newTag: "8.1.0"
 resources:
@@ -18,10 +13,15 @@ resources:
 - persistentvolumeclaim.yaml
 - networkattachmentdefinition.yaml
 - httproute.yaml
-- networkpolicy.yaml
+- ciliumnetworkpolicy.yaml
 - backup-credentials.sealed.yaml
 patches: []
 configMapGenerator:
 - name: homeassistant-docker-venv
   files:
   - venv-run
+labels:
+- pairs:
+    app.kubernetes.io/version: *hass-version
+  includeTemplates: true
+  includeSelectors: false
