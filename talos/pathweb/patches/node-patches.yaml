@@ -82,12 +82,12 @@ machine:
         endpoints:
         - https://harbor.services.home.yrf.me/v2/talos-image-factory/
         - https://factory.talos.dev/v2/
-  files:
-  - path: /etc/cri/conf.d/20-customization.part
-    op: create
-    content: |
-      [plugins."io.containerd.cri.v1.runtime".containerd]
-        default_runtime_name = "crun"
+        # files:
+        # - path: /etc/cri/conf.d/20-customization.part
+        #   op: create
+        #   content: |
+        #     [plugins."io.containerd.cri.v1.runtime".containerd]
+        #       default_runtime_name = "youki"
 cluster:
   discovery:
     enabled: true
