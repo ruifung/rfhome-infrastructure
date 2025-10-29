@@ -21,7 +21,7 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 10Gi
+      storage: 50Gi
   volumeMode: Filesystem
   storageClassName: cephfs-retain
   accessModes:
