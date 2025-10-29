@@ -115,7 +115,7 @@ spec:
     extraArgs:
       txt-wildcard-replacement: "_WILD_"
       rfc2136-host: "10.229.97.53"
-      rfc2136-port: 53
+      rfc2136-port: "53"
       rfc2136-zone: "services.home.yrf.me"
       rfc2136-tsig-keyname: "pathweb-external-dns"
       rfc2136-tsig-secret-alg: "hmac-sha256"
@@ -175,7 +175,7 @@ spec:
     extraArgs:
       txt-wildcard-replacement: "_WILD_"
       rfc2136-host: "10.229.97.53"
-      rfc2136-port: 53
+      rfc2136-port: "53"
       rfc2136-zone: "pathweb.clusters.home.yrf.me"
       rfc2136-tsig-keyname: "pathweb-external-dns"
       rfc2136-tsig-secret-alg: "hmac-sha256"
