@@ -1,5 +1,5 @@
 {
-    "version": "v1.10.4",
+    "version": "v1.10.7",
     "k8s_version": "v1.32.5",
     "default_type": "proxmox",
     "factory_image_registry": "harbor.services.home.yrf.me/talos-image-factory",
