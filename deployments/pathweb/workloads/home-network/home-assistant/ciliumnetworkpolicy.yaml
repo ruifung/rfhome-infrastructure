@@ -12,12 +12,6 @@ spec:
   - fromEndpoints:
     - matchLabels:
         io.kubernetes.pod.namespace: traefik
-    toPorts:
-    - ports:
-      - port: '8123'
-      rules:
-        http: [{}]
-  - fromEndpoints:
     - matchExpressions:
       - key: app.kubernetes.io/name
         operator: In
@@ -27,6 +21,7 @@ spec:
     toPorts:
     - ports:
       - port: '8123'
+        protocol: TCP
       rules:
         http: [{}]
   egress:
