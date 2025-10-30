@@ -1,0 +1,40 @@
+---
+apiVersion: fluxcd.controlplane.io/v1
+kind: FluxInstance
+metadata:
+  name: flux
+  namespace: flux-system
+spec:
+  distribution:
+    version: "2.7.x"
+    registry: "ghcr.io/fluxcd"
+  components:
+  - source-controller
+  - kustomize-controller
+  - helm-controller
+  - notification-controller
+  cluster:
+    type: kubernetes
+    multitenant: false
+    networkPolicy: true
+    domain: "cluster.local"
+  sync:
+    kind: GitRepository
+    url: "ssh://git@github.com/ruifung/rfhome-infrastructure.git"
+    ref: "refs/heads/master"
+    path: "clusters/pathweb"
+    pullSecret: "flux-system"
+  kustomize:
+    patches:
+    - patch: |
+        apiVersion: source.toolkit.fluxcd.io/v1
+        kind: GitRepository
+        metadata:
+          name: flux-system
+          namespace: flux-system
+        spec:
+          ignore: |
+            # exclude all
+            /*
+            # include deploy dir
+            !/clusters/pathweb
