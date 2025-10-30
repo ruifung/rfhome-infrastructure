@@ -1,0 +1,17 @@
+---
+name: rfhome-infrastructure
+description: RFHome Homelab IaC
+runtime:
+  name: nodejs
+  options:
+    packagemanager: bun
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript
+packages:
+  authentik:
+    source: terraform-provider
+    version: 1.0.1
+    parameters:
+    - goauthentik/authentik

@@ -82,6 +82,5 @@ customization:
     - siderolabs/iscsi-tools
     - siderolabs/kata-containers
     - siderolabs/nvme-cli
-    - siderolabs/qemu-guest-agent
     - siderolabs/vc4
     - siderolabs/youki

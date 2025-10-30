@@ -1,0 +1,38 @@
+---
+config:
+  talos-pathweb:rfhome-harbor-username: robot$talos-pathweb
+  talos-pathweb:rfhome-harbor-password:
+    secure: AAABAG9ZtYAqUEYsdRuHWnnlg/EEC1RH4PRCS6XXV6DV7RrXhXSlmU6P6Kq3fz5MFvoa8o2clBGNsXn+FtQISg==
+  talos-pathweb:cluster-name: pathweb
+  talos-pathweb:cluster-endpoint: https://controlplane.pathweb.clusters.home.yrf.me:6443
+  talos-pathweb:cluster-vip: 10.229.97.99
+  homelab:servers-domain: servers.home.yrf.me
+  talos-pathweb:cluster-domain: pathweb.clusters.home.yrf.me
+  homelab:harbor-registry: harbor.services.home.yrf.me
+  homelab:harbor-caches:
+    docker.io: dockerhub
+    gcr.io: gcr
+    ghcr.io: ghcr
+    k8s.gcr.io: k8s
+    registry.k8s.io: k8s
+    lscr.io: lscr
+    quay.io: quayio
+    registry.developers.crunchydata.com: crunchydata
+    factory.talos.dev: talos-image-factory
+  talos-pathweb:pod-subnets:
+  - "10.96.0.0/16"
+  - "fd96:619:6b75:0110::/56"
+  talos-pathweb:service-subnets:
+  - "10.97.0.0/16"
+  - "fd96:619:6b75:0120::/112"
+  homelab:servers-vlan-subnet:
+  - '10.229.97.0/24'
+  - 'fd96:619:803e:6100::/64'
+  talos-pathweb:api-server-feature-gates:
+    UserNamespacesSUpport: true
+    UserNamespacesPodSecurityStandards: true
+  talos-pathweb:kubelet-feature-gates:
+    UserNamespacesSUpport: true
+    UserNamespacesPodSecurityStandards: true
+  talos-pathweb:talos-version: 'v1.11.3'
+  talos-pathweb:kubernetes-version: 'v1.32.5'
