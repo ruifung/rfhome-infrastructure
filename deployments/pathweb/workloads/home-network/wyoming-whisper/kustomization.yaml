@@ -1,7 +1,7 @@
 ---
 images:
 - name: rhasspy/wyoming-whisper
-  newTag: 2.5.0
+  newTag: 3.0.1
 resources:
 - deployment.yaml
 - service.yaml
