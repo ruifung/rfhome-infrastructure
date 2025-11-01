@@ -1,0 +1,11 @@
+{
+    "resources": [
+        {
+            "type": "talos:machine/bootstrap:Bootstrap",
+            "name": "pathweb-cluster-bootstrap",
+            "id": "<PLACEHOLDER>",
+            "version": "0.6.1",
+            "pluginDownloadUrl": "github://api.github.com/pulumiverse"
+        }
+    ]
+}

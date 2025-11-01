@@ -4,11 +4,11 @@
   "default_type": "proxmox",
   "factory_image_registry": "harbor.services.home.yrf.me/talos-image-factory",
   "schematics": {
-    "nocloud-qemu": "5d65ee96861d195b6c52a6789d8dc1fd1623396fd0ebe54f4ee437ebc8d8b503",
-    "nocloud-qemu-amdgpu": "cb274d10c793bba87da3974057812dabcb556ecc7c8beefae0079fa5266d438c",
-    "nocloud-qemu-i915": "9f7089dd374fdf9d9209b83ebdcc0e647a48be7434ea01f7dfa007d2499143bb",
-    "nocloud-qemu-nvidia": "35eaef418e1ea4eb950ba3bf7264eb7b3720b262765a5bc6e0ae16a69a6a99f6",
-    "metal-rpi": "fccdd3177c709115c9ac6dbd7be48575c8e9bfbb7c885fb4dfde74cb202f2c8a"
+    "nocloud-qemu": "42c605c36827c40bcc5e0543164c9c787c594aab56b71a2a9e0fc5d6b9505df9",
+    "nocloud-qemu-amdgpu": "b79a22d0de6c7a774bdeca83501a9eca08af7251e37c33061f0272f3e9d229a9",
+    "nocloud-qemu-i915": "6b34efd19f9c6aab23158a735a1dd472022d668f18f7d4a6ee4b22bbc6ec1851",
+    "nocloud-qemu-nvidia": "ea8bcb0941ea96c4a15cde0ab9caee280d7a8a43119b6a24333a2f828c7227f5",
+    "metal-rpi": "b5d55c7d123f584a435e42a51df225508dbe2347dde7d73d211aa00b47a4c9fc"
   },
   "image_override": {}
 }

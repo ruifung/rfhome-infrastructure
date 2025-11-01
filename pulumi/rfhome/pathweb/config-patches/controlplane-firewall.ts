@@ -63,7 +63,7 @@ export const controlplaneFirewall: ConfigPatch[] = [
         name: 'kubernetes-api-ingress',
         ports: [6443],
         protocol: 'tcp',
-        ingress: [...serverVlan]
+        ingress: [...everywhereSubnets]
     }),
     ingressNetworkRule({
         name: 'etcd-ingress',
@@ -96,13 +96,13 @@ export const controlplaneFirewall: ConfigPatch[] = [
         ingress: [...serverVlan]
     }),
     ingressNetworkRule({
-        name: 'cillium-health',
+        name: 'cilium-health',
         ports: [4240],
         protocol: "tcp",
         ingress: [...serverVlan]
     }),
     ingressNetworkRule({
-        name: 'cillium-hubble',
+        name: 'cilium-hubble',
         ports: [4244, 4245],
         protocol: "tcp",
         ingress: [...serverVlan]

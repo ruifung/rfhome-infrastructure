@@ -11,12 +11,6 @@ const apiServerFeatureGatesArg = Object.entries(talosPathwebConfig.requireObject
     .map(([name, value]) => `${name}=${value}`)
     .join(',');
 
-const clusterCertSANs = [
-    `controlplaneNodes.${clusterDomain}`,
-    `*.controlplane.${clusterDomain}`,
-    ...controlplaneNodes.map(node => `${node.hostname}.${serverDomain}`)
-]
-
 export const controlplanePatches: ConfigPatch = {
     machine: {
         network: {
@@ -44,7 +38,9 @@ export const controlplanePatches: ConfigPatch = {
             extraArgs: {
                 'feature-gates': apiServerFeatureGatesArg
             },
-            certSANs: clusterCertSANs,
+            certSANs: [
+                ...controlplaneNodes.map(node => `${node.hostname}.${serverDomain}`)
+            ],
             admissionControl: [
                 {
                     name: 'PodSecurity',

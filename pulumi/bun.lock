@@ -7,8 +7,10 @@
         "@ediri/vultr": "^2.27.1",
         "@muhlba91/pulumi-proxmoxve": "^7.7.0",
         "@pulumi/authentik": "file:sdks/authentik",
+        "@pulumi/aws": "^7.10.0",
         "@pulumi/cloudflare": "^6.10.1",
         "@pulumi/cloudinit": "^1.4.14",
+        "@pulumi/dns": "file:sdks/dns",
         "@pulumi/gcp": "^9.3.0",
         "@pulumi/github": "^6.8.0",
         "@pulumi/kubernetes": "^4.23.0",
@@ -25,6 +27,7 @@
     },
   },
   "trustedDependencies": [
+    "@pulumi/dns",
     "@pulumi/authentik",
   ],
   "packages": {
@@ -122,9 +125,13 @@
 
     "@pulumi/authentik": ["@pulumi/authentik@file:sdks/authentik", { "dependencies": { "@pulumi/pulumi": "^3.142.0", "@types/node": "^18", "async-mutex": "^0.5.0", "typescript": "^4.3.5" } }],
 
+    "@pulumi/aws": ["@pulumi/aws@7.10.0", "", { "dependencies": { "@pulumi/pulumi": "^3.142.0", "mime": "^2.0.0" } }, "sha512-1ykqa7bRcXv7iAmfBdfLckVwbaORsZbOHsqyHZk8A0gcM0RVrv38u3EagQTq13yNjZCaYdfzM2zTYpim2fDUVQ=="],
+
     "@pulumi/cloudflare": ["@pulumi/cloudflare@6.10.1", "", { "dependencies": { "@pulumi/pulumi": "^3.142.0" } }, "sha512-cNXtPq9cu2rLbFTOnEZ3AVvSFU0JiEsbTPubfAkoJsLUqoX/Mf3uq9CCfcU7v28Qmj5Xl5nU+oXwCXmxhpdWNA=="],
 
     "@pulumi/cloudinit": ["@pulumi/cloudinit@1.4.14", "", { "dependencies": { "@pulumi/pulumi": "^3.142.0" } }, "sha512-IHXGDfkUCy8d+mZzv2k9Gsc+38Ail31bq3nbpmftqMYS00b/H9jMhgJ9hCX1zGck2Lq6KD/lbNgz4I3QZHb72g=="],
+
+    "@pulumi/dns": ["@pulumi/dns@file:sdks/dns", { "dependencies": { "@pulumi/pulumi": "^3.142.0", "@types/node": "^18", "async-mutex": "^0.5.0", "typescript": "^4.3.5" } }],
 
     "@pulumi/gcp": ["@pulumi/gcp@9.3.0", "", { "dependencies": { "@npmcli/package-json": "^6.2.0", "@pulumi/pulumi": "^3.142.0", "@types/express": "^4.16.0" } }, "sha512-jWWsRDD1S/THNuhP6wI9wUe0hZ7v6+ZC5szAp3TfBwVZXmyVD1WbAy9ybwJqhiAxU0vnpPXdZHghu7D10XQ3Kg=="],
 
@@ -371,6 +378,8 @@
     "make-fetch-happen": ["make-fetch-happen@13.0.1", "", { "dependencies": { "@npmcli/agent": "^2.0.0", "cacache": "^18.0.0", "http-cache-semantics": "^4.1.1", "is-lambda": "^1.0.1", "minipass": "^7.0.2", "minipass-fetch": "^3.0.0", "minipass-flush": "^1.0.5", "minipass-pipeline": "^1.2.4", "negotiator": "^0.6.3", "proc-log": "^4.2.0", "promise-retry": "^2.0.1", "ssri": "^10.0.0" } }, "sha512-cKTUFc/rbKUd/9meOvgrpJ2WrNzymt6jfRDdwg5UCnVzv9dTpEj9JS5m3wtziXVCjluIXyL8pcaukYqezIzZQA=="],
 
     "merge-stream": ["merge-stream@2.0.0", "", {}, "sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w=="],
+
+    "mime": ["mime@2.6.0", "", { "bin": { "mime": "cli.js" } }, "sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg=="],
 
     "mimic-fn": ["mimic-fn@2.1.0", "", {}, "sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg=="],
 
@@ -619,6 +628,8 @@
     "@opentelemetry/instrumentation-grpc/@opentelemetry/semantic-conventions": ["@opentelemetry/semantic-conventions@1.27.0", "", {}, "sha512-sAay1RrB+ONOem0OZanAR1ZI/k7yDpnOQSQmTMuGImUQb2y8EbSaCJ94FQluM74xoU03vlb2d2U90hZluL6nQg=="],
 
     "@pulumi/authentik/typescript": ["typescript@4.9.5", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g=="],
+
+    "@pulumi/dns/typescript": ["typescript@4.9.5", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g=="],
 
     "@sigstore/sign/proc-log": ["proc-log@4.2.0", "", {}, "sha512-g8+OnU/L2v+wyiVK+D5fA34J7EH8jZ8DDlvwhRCMxmMj7UCBvxiO1mGeN+36JXIKF4zevU4kRBd8lVgG9vLelA=="],
 

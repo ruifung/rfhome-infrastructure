@@ -1,0 +1,142 @@
+---
+kubeProxyReplacement: true
+k8sServiceHost: localhost
+k8sServicePort: 7445
+egressGateway:
+  enabled: true
+bpf:
+  masquerade: true
+  vlanBypass: [0]
+  datapathMode: veth
+cluster:
+  name: pathweb
+  id: 1
+clustermesh:
+  apiserver:
+    service:
+      type: NodePort
+    tls:
+      auto:
+        enabled: true
+        method: cronJob
+        schedule: 0 0 1 */4 *
+  useAPIServer: true
+hubble:
+  enabled: true
+  relay:
+    enabled: true
+    rollOutPods: true
+  ui:
+    enabled: true
+    rollOutPods: true
+    ingress:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.middlewares: home-network-ak-outpost-authentik-embedded-outpost@kubernetescrd
+      labels:
+        external-dns: local-pdns
+      className: traefik-traefik
+      hosts:
+      - hubbleui.pathweb.clusters.home.yrf.me
+      tls:
+      - secretName: pathweb-wildcard-cert
+        hosts:
+        - hubbleui.pathweb.clusters.home.yrf.me
+  metrics:
+    enabled:
+    - dns
+    - drop
+    - flow
+    - flows-to-world
+    - httpV2
+    - icmp
+    - tcp
+    serviceMonitor:
+      enabled: true
+tunnelProtocol: geneve
+# ipv4NativeRoutingCIDR: 10.96.0.0/16
+
+loadBalancer:
+  acceleration: best-effort
+  serviceTopology: true
+  mode: snat
+  dsrDispatch: geneve
+# autoDirectNodeRoutes: false
+
+ipam:
+  mode: kubernetes
+ipv6:
+  enabled: true
+securityContext:
+  capabilities:
+    ciliumAgent:
+    - CHOWN
+    - KILL
+    - NET_ADMIN
+    - NET_RAW
+    - IPC_LOCK
+    - SYS_ADMIN
+    - SYS_RESOURCE
+    - DAC_OVERRIDE
+    - FOWNER
+    - SETGID
+    - SETUID
+    cleanCiliumState:
+    - NET_ADMIN
+    - SYS_ADMIN
+    - SYS_RESOURCE
+cgroup:
+  automount:
+    enabled: false
+  hostRoot: /sys/fs/cgroup
+cni:
+  exclusive: false
+prometheus:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+operator:
+  nodeSelector:
+    role: control-plane
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  rollOutPods: true
+  resources:
+    requests:
+      memory: 100Mi
+      cpu: 10m
+socketLB:
+  hostNamespaceOnly: true
+ingressController:
+  enabled: true
+  loadbalancerMode: shared
+  enforceHttps: true
+  externalTrafficPolicy: Local
+  service:
+    labels:
+      lb-location: rfhome
+gatewayAPI:
+  enabled: true
+  enableAlpn: true
+  enableAppprotocol: true
+  externalTrafficPolicy: Local
+envoy:
+  enabled: true
+  rollOutPods: true
+  resources:
+    requests:
+      memory: 50Mi
+      cpu: 20m
+bgpControlPlane:
+  enabled: true
+localRedirectPolicies:
+  enabled: true
+upgradeCompatibility: "1.15"
+resources:
+  requests:
+    memory: 450Mi
+    cpu: 200m
+rollOutCiliumPods: true

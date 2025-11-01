@@ -1,3 +1,3 @@
-import * as pulumi from "@pulumi/pulumi";
-import './rfhome/pathweb/talos-config'
-import './rfhome/pathweb/talos-version'
+import './rfhome/proxmox-ve'
+import './rfhome/pathweb/index'
+import './rfhome/local-s3'

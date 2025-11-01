@@ -9,8 +9,10 @@
         "@ediri/vultr": "^2.27.1",
         "@muhlba91/pulumi-proxmoxve": "^7.7.0",
         "@pulumi/authentik": "file:sdks\\authentik",
+        "@pulumi/aws": "^7.10.0",
         "@pulumi/cloudflare": "^6.10.1",
         "@pulumi/cloudinit": "^1.4.14",
+        "@pulumi/dns": "file:sdks\\dns",
         "@pulumi/gcp": "^9.3.0",
         "@pulumi/github": "^6.8.0",
         "@pulumi/kubernetes": "^4.23.0",
@@ -20,5 +22,5 @@
         "@pulumiverse/talos": "^0.6.1",
         "@types/js-yaml": "^4.0.9"
     },
-    "trustedDependencies": ["@pulumi/authentik"]
+    "trustedDependencies": ["@pulumi/authentik", "@pulumi/dns"]
 }

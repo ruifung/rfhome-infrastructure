@@ -15,3 +15,8 @@ packages:
     version: 1.0.1
     parameters:
     - goauthentik/authentik
+  dns:
+    source: terraform-provider
+    version: 1.0.1
+    parameters:
+    - hashicorp/dns

@@ -13,7 +13,6 @@ config:
     docker.io: dockerhub
     gcr.io: gcr
     ghcr.io: ghcr
-    k8s.gcr.io: k8s
     registry.k8s.io: k8s
     lscr.io: lscr
     quay.io: quayio
@@ -29,10 +28,24 @@ config:
   - '10.229.97.0/24'
   - 'fd96:619:803e:6100::/64'
   talos-pathweb:api-server-feature-gates:
-    UserNamespacesSUpport: true
+    UserNamespacesSupport: true
     UserNamespacesPodSecurityStandards: true
   talos-pathweb:kubelet-feature-gates:
-    UserNamespacesSUpport: true
+    UserNamespacesSupport: true
     UserNamespacesPodSecurityStandards: true
   talos-pathweb:talos-version: 'v1.11.3'
   talos-pathweb:kubernetes-version: 'v1.32.5'
+  homelab:pve-voyager-endpoint: https://voyager.servers.home.yrf.me:8006
+  homelab:pve-voyager-token:
+    secure: AAABAGtOu3WCSDhEIea9omYFVbaNO4R06VRZSehSndQ0FoYXtN4+Sx9WYCQ2i0Izbag5eWs8UHaZg5bl38liMWZlntmpVT8d0MplsdXWDCKWQj4Qz2M=
+  homelab:pve-baldric-endpoint: https://baldric.servers.home.yrf.me:8006
+  homelab:pve-baldric-token:
+    secure: AAABAFJ1iO/Z/8K4CZ6FJoFX0YQMMWsgOV9BtJ3d579E+B+yxDBcw6kQAH9pabTB3PNPmRWY6I8UObZlL0PelqlAue/wmUw17JzAHTJNA3Aj4CmP+tY=
+  homelab:local-s3-secret-key:
+    secure: AAABAHnNzeQvUgb5A4B+irDEA9h835vsYY+OLdInWmb10Yyg0Cm7Zx+iGtJ9/CqCuo0LsKU+oLFf7e4rykjonCcxRYk=
+  homelab:local-s3-access-key: pulumi@rfhome
+  homelab:local-s3-endpoint: https://okinawa-s3.services.home.yrf.me:7070
+  homelab:pve-s3-bucket: rfhome-pve-s3
+  homelab:pve-s3-datastore-id: rfhome-pve-s3
+  talos-pathweb:cilium-version: 1.18.3
+  talos-pathweb:coredns-version: 1.45.0

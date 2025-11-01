@@ -6,8 +6,8 @@ const commonKernelArgs = [
 
 const commonOfficialExtensions = [
     "siderolabs/binfmt-misc",
-    "sidreolabs/ctr",
-    "sidreolabs/fuse3",
+    "siderolabs/ctr",
+    "siderolabs/fuse3",
     "siderolabs/gvisor",
     "siderolabs/iscsi-tools",
     "siderolabs/kata-containers",
@@ -24,12 +24,12 @@ const noclodQemuSchematic = new imagefactory.Schematic('nocloud-qemu', {
             systemExtensions: {
                 officialExtensions: [
                     ...commonOfficialExtensions,
-                    "siderolabs/qemu-quest-agent",
+                    "siderolabs/qemu-guest-agent",
                 ]
             }
         }
     })
-})
+}, {replaceOnChanges: ['schematic']})
 
 const nocloudQemuAmdGpuSchematic = new imagefactory.Schematic('nocloud-qemu-amdgpu', {
     schematic: JSON.stringify({
@@ -40,13 +40,13 @@ const nocloudQemuAmdGpuSchematic = new imagefactory.Schematic('nocloud-qemu-amdg
             systemExtensions: {
                 officialExtensions: [
                     ...commonOfficialExtensions,
-                    "siderolabs/qemu-quest-agent",
+                    "siderolabs/qemu-guest-agent",
                     "siderolabs/amdgpu"
                 ]
             }
         }
     })
-})
+}, {replaceOnChanges: ['schematic']})
 
 const nocloudQemuI915GpuSchematic = new imagefactory.Schematic('nocloud-qemu-i915', {
     schematic: JSON.stringify({
@@ -57,13 +57,13 @@ const nocloudQemuI915GpuSchematic = new imagefactory.Schematic('nocloud-qemu-i91
             systemExtensions: {
                 officialExtensions: [
                     ...commonOfficialExtensions,
-                    "siderolabs/qemu-quest-agent",
+                    "siderolabs/qemu-guest-agent",
                     "siderolabs/i915"
                 ]
             }
         }
     })
-})
+}, {replaceOnChanges: ['schematic']})
 
 const nocloudQemuNvidiaGpuSchematic = new imagefactory.Schematic('nocloud-qemu-nvidia', {
     schematic: JSON.stringify({
@@ -74,14 +74,14 @@ const nocloudQemuNvidiaGpuSchematic = new imagefactory.Schematic('nocloud-qemu-n
             systemExtensions: {
                 officialExtensions: [
                     ...commonOfficialExtensions,
-                    "siderolabs/qemu-quest-agent",
+                    "siderolabs/qemu-guest-agent",
                     "siderolabs/nvidia-container-toolkit-production",
                     "siderolabs/nvidia-open-gpu-kernel-modules-production"
                 ]
             }
         }
     })
-})
+}, {replaceOnChanges: ['schematic']})
 
 const metalRpiSchematic = new imagefactory.Schematic('metal-rpi', {
     schematic: JSON.stringify({
@@ -101,7 +101,7 @@ const metalRpiSchematic = new imagefactory.Schematic('metal-rpi', {
             }
         }
     })
-})
+}, {replaceOnChanges: ['schematic']})
 
 export const nocloud = {
     qemu: {

@@ -4,7 +4,8 @@ import * as schematics from '../talos-schematics'
 const rfhomeLabels = {
     location: 'rfhome',
     type: 'proxmox-x64',
-    'topology.kubernetes.io/region': 'rfhome'
+    'topology.kubernetes.io/region': 'rfhome',
+    'rook-csi-enabled': 'true'
 }
 
 export const control1: NodeDefinition = {
@@ -14,6 +15,9 @@ export const control1: NodeDefinition = {
     schematic: schematics.nocloud.qemu.default,
     labels: {
         ...rfhomeLabels,
+    },
+    vmSpec: {
+        cpu: 4
     }
 }
 
@@ -24,6 +28,9 @@ export const control2: NodeDefinition = {
     schematic: schematics.nocloud.qemu.default,
     labels: {
         ...rfhomeLabels,
+    },
+    vmSpec: {
+        cpu: 4
     }
 }
 
@@ -34,6 +41,9 @@ export const control3: NodeDefinition = {
     schematic: schematics.nocloud.qemu.default,
     labels: {
         ...rfhomeLabels
+    },
+    vmSpec: {
+        cpu: 4
     }
 }
 
