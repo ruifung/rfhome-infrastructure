@@ -1,14 +1,14 @@
+import * as command from '@pulumi/command';
+import * as forgejo from '@pulumi/forgejo';
+import * as k8s from '@pulumi/kubernetes';
+import * as pulumi from '@pulumi/pulumi';
+import * as tls from '@pulumi/tls';
+import * as talos from '@pulumiverse/talos';
+import { pathwebControl1VM } from "./node-vms/proxmox-control-1";
 import { pathwebControl2VM } from "./node-vms/proxmox-control-2";
 import { pathwebControl3VM } from "./node-vms/proxmox-control-3";
 import { generateMachineConfiguration, pathwebClusterParent, secrets } from "./talos-machineconfig";
 import { control1, control2, control3, controlplaneNodes } from "./talos-nodes";
-import * as talos from '@pulumiverse/talos'
-import * as pulumi from '@pulumi/pulumi'
-import * as k8s from '@pulumi/kubernetes'
-import * as forgejo from '@pulumi/forgejo'
-import * as tls from '@pulumi/tls'
-import * as command from '@pulumi/command'
-import { pathwebControl1VM } from "./node-vms/proxmox-control-1";
 
 const pathwebConfig = new pulumi.Config('talos-pathweb')
 const homelabConfig = new pulumi.Config('homelab')
@@ -102,7 +102,7 @@ const privateGitopsRepo = forgejo.getRepositoryOutput({
 
 const sshKeyScan = new command.local.Command('rfhome-git-keyscan', {
     create: `ssh-keyscan -t ed25519 -p ${homelabConfig.require('local-git-ssh-port')} ${homelabConfig.require('local-git-ssh-host')}`
-}, {parent: deployKey})
+}, { parent: deployKey })
 
 const k8sSecret = new k8s.core.v1.Secret('flux-gitops-key-secret', {
     metadata: {
@@ -114,7 +114,7 @@ const k8sSecret = new k8s.core.v1.Secret('flux-gitops-key-secret', {
         'identity.pub': deployKey.publicKeyOpenssh,
         known_hosts: sshKeyScan.stdout.apply(str => str.replace('\r', ''))
     }
-}, {parent: deployKey, dependsOn: [fluxOperator]})
+}, { parent: deployKey, dependsOn: [fluxOperator] })
 
 const deployKeys = [
     new forgejo.DeployKey('pathweb-gitops-key', {
@@ -122,16 +122,16 @@ const deployKeys = [
         key: deployKey.publicKeyOpenssh,
         readOnly: true,
         title: 'Pathweb FluxCD GitOps Deploy Key',
-    }, {parent: deployKey, deleteBeforeReplace: true, ignoreChanges: ['*']}),
+    }, { parent: deployKey, deleteBeforeReplace: true, ignoreChanges: ['*'] }),
     new forgejo.DeployKey('pathweb-private-gitops-key', {
         repositoryId: privateGitopsRepo.id,
         key: deployKey.publicKeyOpenssh,
         readOnly: true,
         title: 'Pathweb FluxCD GitOps Deploy Key'
-    }, {parent: deployKey, deleteBeforeReplace: true, ignoreChanges: ['*']})
+    }, { parent: deployKey, deleteBeforeReplace: true, ignoreChanges: ['*'] })
 ]
 
 const fluxInstance = new k8s.yaml.ConfigFile('pathweb-flux-instance', {
-        file: '../clusters/pathweb/flux-instance.yaml',
-        skipAwait: true
-    }, { dependsOn: [fluxOperator] })
+    file: '../clusters/pathweb/flux-instance.yaml',
+    skipAwait: true
+}, { dependsOn: [fluxOperator, ...deployKeys, k8sSecret] })
