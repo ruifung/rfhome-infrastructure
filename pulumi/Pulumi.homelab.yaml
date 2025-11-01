@@ -49,3 +49,5 @@ config:
   homelab:pve-s3-datastore-id: rfhome-pve-s3
   talos-pathweb:cilium-version: 1.18.3
   talos-pathweb:coredns-version: 1.45.0
+  homelab:local-git-ssh-host: forgejo.services.home.yrf.me
+  homelab:local-git-ssh-port: "222"

@@ -20,3 +20,8 @@ packages:
     version: 1.0.1
     parameters:
     - hashicorp/dns
+  forgejo:
+    source: terraform-provider
+    version: 1.0.1
+    parameters:
+    - svalabs/forgejo

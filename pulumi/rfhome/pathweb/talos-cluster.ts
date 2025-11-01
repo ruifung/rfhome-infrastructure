@@ -5,7 +5,9 @@ import { control1, control2, control3, controlplaneNodes } from "./talos-nodes";
 import * as talos from '@pulumiverse/talos'
 import * as pulumi from '@pulumi/pulumi'
 import * as k8s from '@pulumi/kubernetes'
-import * as github from '@pulumi/github'
+import * as forgejo from '@pulumi/forgejo'
+import * as tls from '@pulumi/tls'
+import * as command from '@pulumi/command'
 import { pathwebControl1VM } from "./node-vms/proxmox-control-1";
 
 const pathwebConfig = new pulumi.Config('talos-pathweb')
@@ -27,7 +29,7 @@ for (const node of controlplaneNodes) {
         machineConfigurationInput: generateMachineConfiguration(node).machineConfiguration,
         applyMode: 'auto',
         node: `${node.hostname}.${serverDomain}`,
-    }, {dependsOn: [vm]})
+    }, { dependsOn: [vm] })
 
     controlPlaneApply.push(configApply)
 }
@@ -35,16 +37,16 @@ for (const node of controlplaneNodes) {
 const talosBootstrap = new talos.machine.Bootstrap('pathweb-cluster-bootstrap', {
     clientConfiguration: secrets.clientConfiguration,
     node: controlPlaneApply[0].node
-}, {parent: pathwebClusterParent ,dependsOn: [controlPlaneApply[0]]})
+}, { parent: pathwebClusterParent, dependsOn: [controlPlaneApply[0]] })
 
 const talosKubeConfig = new talos.cluster.Kubeconfig('pathweb-talos-kubeconfig', {
     clientConfiguration: secrets.clientConfiguration,
     node: `controlplane.${pathwebConfig.require('cluster-domain')}`
-}, {parent: pathwebClusterParent, dependsOn: [...controlPlaneApply, talosBootstrap]})
+}, { parent: pathwebClusterParent, dependsOn: [...controlPlaneApply, talosBootstrap] })
 
 const provider = new k8s.Provider('pathweb-k8s', {
     kubeconfig: talosKubeConfig.kubeconfigRaw
-}, {parent: pathwebClusterParent})
+}, { parent: pathwebClusterParent })
 export const pathwebK8sProvider = provider
 
 // Install Cilium CNI
@@ -58,7 +60,7 @@ new k8s.helm.v3.Release("pathweb-cilium", {
     version: `v${pathwebConfig.require('cilium-version')}`,
     valueYamlFiles: [ciliumValuesFile],
     namespace: 'kube-system'
-}, {provider, parent: provider})
+}, { provider, parent: provider })
 
 // Install CoreDNS (To allow customization of coredns configuration)
 const coreDnsValuesFile = new pulumi.asset.FileAsset('rfhome/pathweb/coredns-values.yaml')
@@ -68,7 +70,7 @@ new k8s.helm.v3.Release("pathweb-coredns", {
     version: pathwebConfig.require('coredns-version'),
     valueYamlFiles: [coreDnsValuesFile],
     namespace: 'kube-system'
-}, {provider, parent: provider})
+}, { provider, parent: provider })
 
 // Bootstrap the flux operator, it'll manage itself ater this.
 const fluxOperator = new k8s.helm.v3.Release("pathweb-flux-operator", {
@@ -76,7 +78,7 @@ const fluxOperator = new k8s.helm.v3.Release("pathweb-flux-operator", {
     namespace: 'flux-system',
     createNamespace: true,
     chart: 'oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator'
-}, {provider, parent: provider, ignoreChanges: ['version', 'chart']})
+}, { provider, parent: provider, ignoreChanges: ['version', 'chart'] })
 
 // new github.RepositoryDeployKey('pathweb-flux-deploy-key', {
 //     title: 'Pathweb FluxCD Deploy Key',
@@ -84,7 +86,52 @@ const fluxOperator = new k8s.helm.v3.Release("pathweb-flux-operator", {
 //     key: ''
 // })
 
+const deployKey = new tls.PrivateKey('pathweb-flux-deploy-key', {
+    algorithm: 'ED25519'
+}, { parent: pathwebClusterParent })
+
+const gitopsRepo = forgejo.getRepositoryOutput({
+    owner: { login: 'rf-homelab' },
+    name: 'infrastructure-gitops'
+})
+
+const privateGitopsRepo = forgejo.getRepositoryOutput({
+    owner: { login: 'rf-homelab' },
+    name: 'infrastructure-gitops-private'
+})
+
+const sshKeyScan = new command.local.Command('rfhome-git-keyscan', {
+    create: `ssh-keyscan -t ed25519 -p ${homelabConfig.require('local-git-ssh-port')} ${homelabConfig.require('local-git-ssh-host')}`
+}, {parent: deployKey})
+
+const k8sSecret = new k8s.core.v1.Secret('flux-gitops-key-secret', {
+    metadata: {
+        name: 'rfhome-gitops-key',
+        namespace: 'flux-system'
+    },
+    stringData: {
+        identity: deployKey.privateKeyOpenssh,
+        'identity.pub': deployKey.publicKeyOpenssh,
+        known_hosts: sshKeyScan.stdout.apply(str => str.replace('\r', ''))
+    }
+}, {parent: deployKey, dependsOn: [fluxOperator]})
+
+const deployKeys = [
+    new forgejo.DeployKey('pathweb-gitops-key', {
+        repositoryId: gitopsRepo.id,
+        key: deployKey.publicKeyOpenssh,
+        readOnly: true,
+        title: 'Pathweb FluxCD GitOps Deploy Key',
+    }, {parent: deployKey, deleteBeforeReplace: true, ignoreChanges: ['*']}),
+    new forgejo.DeployKey('pathweb-private-gitops-key', {
+        repositoryId: privateGitopsRepo.id,
+        key: deployKey.publicKeyOpenssh,
+        readOnly: true,
+        title: 'Pathweb FluxCD GitOps Deploy Key'
+    }, {parent: deployKey, deleteBeforeReplace: true, ignoreChanges: ['*']})
+]
+
 const fluxInstance = new k8s.yaml.ConfigFile('pathweb-flux-instance', {
-    file: '../clusters/pathweb/flux-instance.yaml',
-    skipAwait: true
-}, {dependsOn: [fluxOperator]})
+        file: '../clusters/pathweb/flux-instance.yaml',
+        skipAwait: true
+    }, { dependsOn: [fluxOperator] })
