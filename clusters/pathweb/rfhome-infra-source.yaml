@@ -32,7 +32,7 @@ spec:
     branch: main
   secretRef:
     name: rfhome-gitops-key
-  url: 'ssh://git@forgejo.services.home.yrf.me:222/rf-homelab/infrastructure-gitops.git'
+  url: 'ssh://git@forgejo.services.home.yrf.me:222/rf-homelab/infrastructure-gitops-private.git'
   ignore: |
     # exclude all
     /*
