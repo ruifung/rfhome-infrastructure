@@ -7,14 +7,14 @@ import * as nodes from '../talos-nodes';
 import { prepareNodeCloudInit } from './pve-helper';
 
 
-const node = nodes.control2
+const node = nodes.control1
 const cloudInitData = prepareNodeCloudInit(node, pathwebClusterParent)
 
-export const pathwebControl2VM = new proxmoxve.vm.VirtualMachine("pathweb-control-2", {
+export const pathwebControl1VM = new proxmoxve.vm.VirtualMachine("pathweb-control-1", {
     name: node.hostname,
     machine: "q35",
     bios: "ovmf",
-    nodeName: "voyager2",
+    nodeName: "voyager1",
     started: true,
     cpu: {
         cores: 2,
@@ -57,7 +57,7 @@ export const pathwebControl2VM = new proxmoxve.vm.VirtualMachine("pathweb-contro
     },
     agent: { enabled: true },
     networkDevices: [
-        { bridge: "servers", macAddress: "BC:24:11:9F:0E:CF" }
+        { bridge: "servers", macAddress: "BC:24:11:37:F1:E5" }
     ],
     operatingSystem: {
         type: "l26",
@@ -84,5 +84,5 @@ export const pathwebControl2VM = new proxmoxve.vm.VirtualMachine("pathweb-contro
     parent: pathwebClusterParent,
     provider: pveVoyager,
     protect: false,
-    ignoreChanges: ['disks[0].speed']
+    ignoreChanges: ['disks[0].speed'],
 });
