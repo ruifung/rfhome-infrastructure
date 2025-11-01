@@ -20,10 +20,10 @@ spec:
     domain: "cluster.local"
   sync:
     kind: GitRepository
-    url: "ssh://git@github.com/ruifung/rfhome-infrastructure.git"
+    url: "ssh://git@forgejo.services.home.yrf.me:222/rf-homelab/infrastructure-gitops.git"
     ref: "refs/heads/master"
     path: "clusters/pathweb"
-    pullSecret: "flux-system"
+    pullSecret: "rfhome-gitops-key"
   kustomize:
     patches:
     - patch: |

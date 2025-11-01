@@ -10,8 +10,8 @@ spec:
   ref:
     branch: master
   secretRef:
-    name: flux-system # Use the flux-system credentials for this, since it's the same damn repo.
-  url: ssh://git@github.com/ruifung/rfhome-infrastructure
+    name: rfhome-gitops-key
+  url: 'ssh://git@forgejo.services.home.yrf.me:222/rf-homelab/infrastructure-gitops.git'
   ignore: |
     # exclude all
     /*
@@ -31,8 +31,8 @@ spec:
   ref:
     branch: main
   secretRef:
-    name: rfhome-private
-  url: ssh://git@github.com/ruifung/rfhome-infrastructure-private
+    name: rfhome-gitops-key
+  url: 'ssh://git@forgejo.services.home.yrf.me:222/rf-homelab/infrastructure-gitops.git'
   ignore: |
     # exclude all
     /*
