@@ -50,7 +50,7 @@ for (const node of clusterNodes) {
 
 // Generate the version file used by the legacy powershell scripts
 new local.File("talos-version-file", {
-    content: versionData.apply(data => JSON.stringify(data, null, 2)),
+    content: versionData.apply(data => JSON.stringify(data, null, 2)+'\n'),
     filename: '../talos/pathweb/talos-version.json'
 }, { parent: pathwebClusterParent, deleteBeforeReplace: true })
 

@@ -1,0 +1,26 @@
+---
+name: pulumi-preview-homelab
+on:
+  pull_request:
+    paths:
+    - pulumi/**
+jobs:
+  push-to-forgejo:
+    runs-on: ubuntu-latest
+    # Only run this on Self-hosted Git.
+
+    if: contains(github.server_url, 'git.yrf.me')
+    steps:
+    - uses: actions/checkout@v5
+      with:
+        fetch-depth: 0
+    - uses: https://github.com/pulumi/actions@v6
+      with:
+        command: preview
+        stack-name: homelab
+        comment-on-summary: true
+        comment-on-pr: true
+        refresh: true
+        diff: true
+      env:
+        PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
