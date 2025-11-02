@@ -20,7 +20,7 @@ config:
     factory.talos.dev: talos-image-factory
   talos-pathweb:pod-subnets:
   - "10.96.0.0/16"
-  - "fd96:619:6b75:0110::/56"
+  - "fd96:619:6b75:0100::/56"
   talos-pathweb:service-subnets:
   - "10.97.0.0/16"
   - "fd96:619:6b75:0120::/112"

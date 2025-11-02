@@ -54,14 +54,14 @@ hubble:
     - tcp
     serviceMonitor:
       enabled: true
-tunnelProtocol: geneve
+tunnelProtocol: vxlan
 # ipv4NativeRoutingCIDR: 10.96.0.0/16
 
 loadBalancer:
   acceleration: best-effort
   serviceTopology: true
   mode: snat
-  dsrDispatch: geneve
+  # dsrDispatch: geneve
 # autoDirectNodeRoutes: false
 
 ipam:

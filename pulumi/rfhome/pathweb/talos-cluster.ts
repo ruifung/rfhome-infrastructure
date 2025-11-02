@@ -142,4 +142,4 @@ const deployKeys = [
 const fluxInstance = new k8s.yaml.ConfigFile('pathweb-flux-instance', {
     file: '../clusters/pathweb/flux-instance.yaml',
     skipAwait: true
-}, { dependsOn: [fluxOperator, ...deployKeys, k8sSecret], deletedWith: fluxOperator })
+}, { parent: fluxOperator, dependsOn: [fluxOperator, ...deployKeys, k8sSecret], deletedWith: fluxOperator, aliases: [{parent: pulumi.rootStackResource}] })
