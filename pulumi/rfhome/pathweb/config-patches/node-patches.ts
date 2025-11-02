@@ -31,7 +31,9 @@ export const nodePatches: ConfigPatch = {
         },
         network: {
             kubespan: {
-                enabled: false
+                enabled: true,
+                advertiseKubernetesNetworks: true,
+                mtu: 1412
             }
         },
         kubelet: {
