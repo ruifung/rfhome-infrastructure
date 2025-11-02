@@ -35,7 +35,6 @@ export const nodePatches: ConfigPatch = {
             }
         },
         kubelet: {
-            clusterDNS: ["10.97.0.10", "fd96:619:6b75:120::a"],
             nodeIP: {
                 validSubnets: homelabConfig.requireObject<string[]>('servers-vlan-subnet')
             },

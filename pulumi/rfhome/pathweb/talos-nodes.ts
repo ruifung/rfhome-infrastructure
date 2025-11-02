@@ -93,7 +93,7 @@ export const workerBaldric: NodeDefinition = {
     schematic: schematics.nocloud.qemu.default,
     labels: {
         ...rfhomeLabels,
-        'node-group': 'voyagbaldricer',
+        'node-group': 'baldric',
         'physical-node': 'rfhome-baldric',
         'topology.kubernetes.io/zone': 'rfhome-baldric'
     }
@@ -106,7 +106,7 @@ export const workerBaldric2: NodeDefinition = {
     schematic: schematics.nocloud.qemu.default,
     labels: {
         ...rfhomeLabels,
-        'node-group': 'voyagbaldricer',
+        'node-group': 'baldric',
         'physical-node': 'rfhome-baldric',
         'topology.kubernetes.io/zone': 'rfhome-baldric'
     }

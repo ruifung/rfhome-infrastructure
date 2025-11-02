@@ -8,7 +8,7 @@ import { pathwebControl1VM } from "./node-vms/proxmox-control-1";
 import { pathwebControl2VM } from "./node-vms/proxmox-control-2";
 import { pathwebControl3VM } from "./node-vms/proxmox-control-3";
 import { generateMachineConfiguration, pathwebClusterParent, secrets } from "./talos-machineconfig";
-import { control1, control2, control3, controlplaneNodes } from "./talos-nodes";
+import { control1, control2, control3, controlplaneNodes, workerNodes } from "./talos-nodes";
 
 const pathwebConfig = new pulumi.Config('talos-pathweb')
 const homelabConfig = new pulumi.Config('homelab')
@@ -20,6 +20,7 @@ const controlPlaneVms = {
     [control3.hostname]: pathwebControl3VM,
 }
 
+// Apply configurations to control plane nodes
 const controlPlaneApply = []
 for (const node of controlplaneNodes) {
     const vm = controlPlaneVms[node.hostname]
@@ -29,21 +30,35 @@ for (const node of controlplaneNodes) {
         machineConfigurationInput: generateMachineConfiguration(node).machineConfiguration,
         applyMode: 'auto',
         node: `${node.hostname}.${serverDomain}`,
-    }, { dependsOn: [vm] })
+    }, { dependsOn: [vm], deletedWith: vm, parent: vm, aliases: [{parent: pulumi.rootStackResource}] })
 
     controlPlaneApply.push(configApply)
 }
 
+// Bootstrap the talos cluster
 const talosBootstrap = new talos.machine.Bootstrap('pathweb-cluster-bootstrap', {
     clientConfiguration: secrets.clientConfiguration,
     node: controlPlaneApply[0].node
-}, { parent: pathwebClusterParent, dependsOn: [controlPlaneApply[0]] })
+}, { parent: pathwebClusterParent, dependsOn: [...controlPlaneApply] })
 
+// Apply configurations to worker nodes
+for (const node of workerNodes) {
+    new talos.machine.ConfigurationApply(`talos-apply-pathweb-${node.hostname}`, {
+        clientConfiguration: secrets.clientConfiguration,
+        machineConfigurationInput: generateMachineConfiguration(node).machineConfiguration,
+        applyMode: 'auto',
+        node: `${node.hostname}.${serverDomain}`,
+        endpoint: `controlplane.${pathwebConfig.require('cluster-domain')}` // Worker nodes can't be contacted directly.
+    }, {parent: pathwebClusterParent, dependsOn: [talosBootstrap], aliases: [{parent: pulumi.rootStackResource}]})
+}
+
+// Generate a kubeconfig for provisioning K8S resources
 const talosKubeConfig = new talos.cluster.Kubeconfig('pathweb-talos-kubeconfig', {
     clientConfiguration: secrets.clientConfiguration,
     node: `controlplane.${pathwebConfig.require('cluster-domain')}`
 }, { parent: pathwebClusterParent, dependsOn: [...controlPlaneApply, talosBootstrap] })
 
+// Instantiate a k8s provider using the generated kubeconfig
 const provider = new k8s.Provider('pathweb-k8s', {
     kubeconfig: talosKubeConfig.kubeconfigRaw
 }, { parent: pathwebClusterParent })
@@ -80,30 +95,21 @@ const fluxOperator = new k8s.helm.v3.Release("pathweb-flux-operator", {
     chart: 'oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator'
 }, { provider, parent: provider, ignoreChanges: ['version', 'chart'] })
 
-// new github.RepositoryDeployKey('pathweb-flux-deploy-key', {
-//     title: 'Pathweb FluxCD Deploy Key',
-//     repository: 'ruifung/rfhome-infrastructure',
-//     key: ''
-// })
-
+// Generate a new ED25519 Private Key for Flux
 const deployKey = new tls.PrivateKey('pathweb-flux-deploy-key', {
     algorithm: 'ED25519'
 }, { parent: pathwebClusterParent })
 
-const gitopsRepo = forgejo.getRepositoryOutput({
-    owner: { login: 'rf-homelab' },
-    name: 'infrastructure-gitops'
-})
+// Grab the repository IDs
+const gitopsRepo = forgejo.getRepositoryOutput({owner: { login: 'rf-homelab' }, name: 'infrastructure-gitops'})
+const privateGitopsRepo = forgejo.getRepositoryOutput({owner: { login: 'rf-homelab' }, name: 'infrastructure-gitops-private'})
 
-const privateGitopsRepo = forgejo.getRepositoryOutput({
-    owner: { login: 'rf-homelab' },
-    name: 'infrastructure-gitops-private'
-})
-
+// Invoke ssh-keyscan to prepare the known_hosts content for FluxCD
 const sshKeyScan = new command.local.Command('rfhome-git-keyscan', {
     create: `ssh-keyscan -t ed25519 -p ${homelabConfig.require('local-git-ssh-port')} ${homelabConfig.require('local-git-ssh-host')}`
 }, { parent: deployKey })
 
+// Create a K8S secret for the fluxcd sync
 const k8sSecret = new k8s.core.v1.Secret('flux-gitops-key-secret', {
     metadata: {
         name: 'rfhome-gitops-key',
@@ -116,6 +122,7 @@ const k8sSecret = new k8s.core.v1.Secret('flux-gitops-key-secret', {
     }
 }, { parent: deployKey, dependsOn: [fluxOperator] })
 
+// Create deploy keys in Forgejo using the previously generated private key
 const deployKeys = [
     new forgejo.DeployKey('pathweb-gitops-key', {
         repositoryId: gitopsRepo.id,
@@ -131,7 +138,8 @@ const deployKeys = [
     }, { parent: deployKey, deleteBeforeReplace: true, ignoreChanges: ['*'] })
 ]
 
+// Load the FluxInstance CRD. Cluster management from this point on is handled by FluxCD.
 const fluxInstance = new k8s.yaml.ConfigFile('pathweb-flux-instance', {
     file: '../clusters/pathweb/flux-instance.yaml',
     skipAwait: true
-}, { dependsOn: [fluxOperator, ...deployKeys, k8sSecret] })
+}, { dependsOn: [fluxOperator, ...deployKeys, k8sSecret], deletedWith: fluxOperator })

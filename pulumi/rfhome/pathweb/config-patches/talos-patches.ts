@@ -8,13 +8,15 @@ import { workerPatches } from './worker-patches'
 import { generateNodeSpecificPatches } from './node-specific-patch'
 import { NodeDefinition } from '../types/NodeDefinition'
 import { ConfigPatch } from '../types/ConfigPatch'
+import { coreDnsConfigPatch } from './coredns-custom'
 
 
 export function getNodePatches(node: NodeDefinition) {
     const patches: Input<ConfigPatch>[] = [
         nodePatches,
         watchdogPatch,
-        containersSeccompPatch
+        containersSeccompPatch,
+        coreDnsConfigPatch
     ]
 
     if (node.role == 'controlplane') {

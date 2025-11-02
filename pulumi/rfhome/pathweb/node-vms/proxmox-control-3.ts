@@ -85,6 +85,6 @@ export const pathwebControl3VM = new proxmoxve.vm.VirtualMachine("pathweb-contro
 }, {
     parent: pathwebClusterParent,
     provider: pveBaldric,
-    protect: false,
+    protect: true,
     ignoreChanges: ['disks[0].speed']
 });

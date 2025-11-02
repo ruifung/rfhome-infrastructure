@@ -5,6 +5,7 @@ import { pveTalosIsos } from '../talos-boot-assets';
 import { pathwebClusterParent } from '../talos-machineconfig';
 import * as nodes from '../talos-nodes';
 import { prepareNodeCloudInit } from './pve-helper';
+import { pathwebControl3VM } from './proxmox-control-3';
 
 
 const node = nodes.control2
@@ -83,6 +84,7 @@ export const pathwebControl2VM = new proxmoxve.vm.VirtualMachine("pathweb-contro
 }, {
     parent: pathwebClusterParent,
     provider: pveVoyager,
-    protect: false,
-    ignoreChanges: ['disks[0].speed']
+    protect: true,
+    ignoreChanges: ['disks[0].speed'],
+    dependsOn: [pathwebControl3VM]
 });
