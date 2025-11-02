@@ -8,16 +8,23 @@ import { pathwebControl1VM } from "./node-vms/proxmox-control-1";
 import { pathwebControl2VM } from "./node-vms/proxmox-control-2";
 import { pathwebControl3VM } from "./node-vms/proxmox-control-3";
 import { generateMachineConfiguration, pathwebClusterParent, secrets } from "./talos-machineconfig";
-import { control1, control2, control3, controlplaneNodes, workerNodes } from "./talos-nodes";
+import { control1, control2, control3, controlplaneNodes, worker1, workerNodes } from "./talos-nodes";
+import { VirtualMachine } from '@muhlba91/pulumi-proxmoxve/vm';
 
 const pathwebConfig = new pulumi.Config('talos-pathweb')
 const homelabConfig = new pulumi.Config('homelab')
 const serverDomain = homelabConfig.require('servers-domain')
 
-const controlPlaneVms = {
+type VmMap = {[hostname: string]: VirtualMachine}
+
+const controlPlaneVms: VmMap = {
     [control1.hostname]: pathwebControl1VM,
     [control2.hostname]: pathwebControl2VM,
     [control3.hostname]: pathwebControl3VM,
+}
+
+const workerVms: VmMap = {
+    // [worker1.hostname]: pathwebWorker1VM
 }
 
 // Apply configurations to control plane nodes
@@ -30,7 +37,7 @@ for (const node of controlplaneNodes) {
         machineConfigurationInput: generateMachineConfiguration(node).machineConfiguration,
         applyMode: 'auto',
         node: `${node.hostname}.${serverDomain}`,
-    }, { dependsOn: [vm], deletedWith: vm, parent: vm, aliases: [{parent: pulumi.rootStackResource}] })
+    }, { dependsOn: [vm], deletedWith: vm, parent: vm })
 
     controlPlaneApply.push(configApply)
 }
@@ -43,13 +50,24 @@ const talosBootstrap = new talos.machine.Bootstrap('pathweb-cluster-bootstrap', 
 
 // Apply configurations to worker nodes
 for (const node of workerNodes) {
+    let parent: pulumi.Resource = pathwebClusterParent
+    const dependsOn: pulumi.Resource[] = [talosBootstrap]
+    let deletedWith: pulumi.Resource|undefined = undefined
+
+    const vm = workerVms[node.hostname]
+    if (vm != null) {
+        parent = vm
+        deletedWith = vm
+        dependsOn.push(vm)
+    }
+
     new talos.machine.ConfigurationApply(`talos-apply-pathweb-${node.hostname}`, {
         clientConfiguration: secrets.clientConfiguration,
         machineConfigurationInput: generateMachineConfiguration(node).machineConfiguration,
         applyMode: 'auto',
         node: `${node.hostname}.${serverDomain}`,
         endpoint: `controlplane.${pathwebConfig.require('cluster-domain')}` // Worker nodes can't be contacted directly.
-    }, {parent: pathwebClusterParent, dependsOn: [talosBootstrap], aliases: [{parent: pulumi.rootStackResource}]})
+    },  {parent, deletedWith, dependsOn})
 }
 
 // Generate a kubeconfig for provisioning K8S resources
