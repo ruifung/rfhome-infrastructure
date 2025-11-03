@@ -138,7 +138,7 @@ const k8sSecret = new k8s.core.v1.Secret('flux-gitops-key-secret', {
         'identity.pub': deployKey.publicKeyOpenssh,
         known_hosts: sshKeyScan.stdout.apply(str => str.replace('\r', ''))
     }
-}, { parent: deployKey, dependsOn: [fluxOperator] })
+}, { provider, parent: deployKey, dependsOn: [fluxOperator] })
 
 // Create deploy keys in Forgejo using the previously generated private key
 const deployKeys = [
@@ -153,11 +153,11 @@ const deployKeys = [
         key: deployKey.publicKeyOpenssh,
         readOnly: true,
         title: 'Pathweb FluxCD GitOps Deploy Key'
-    }, { parent: deployKey, deleteBeforeReplace: true, ignoreChanges: ['*'] })
+    }, {parent: deployKey, deleteBeforeReplace: true, ignoreChanges: ['*'] })
 ]
 
 // Load the FluxInstance CRD. Cluster management from this point on is handled by FluxCD.
 const fluxInstance = new k8s.yaml.ConfigFile('pathweb-flux-instance', {
     file: '../clusters/pathweb/flux-instance.yaml',
     skipAwait: true
-}, { parent: fluxOperator, dependsOn: [fluxOperator, ...deployKeys, k8sSecret], deletedWith: fluxOperator, aliases: [{parent: pulumi.rootStackResource}] })
+}, {provider, parent: fluxOperator, dependsOn: [fluxOperator, ...deployKeys, k8sSecret], deletedWith: fluxOperator})
