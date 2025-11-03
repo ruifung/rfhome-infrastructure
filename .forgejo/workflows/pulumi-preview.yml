@@ -16,6 +16,7 @@ jobs:
         fetch-depth: 0
     - uses: https://github.com/pulumi/actions@v6
       with:
+        work-dir: ./pulumi
         command: preview
         stack-name: homelab
         comment-on-summary: true
