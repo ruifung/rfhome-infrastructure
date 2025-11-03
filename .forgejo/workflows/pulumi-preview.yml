@@ -9,8 +9,7 @@ jobs:
   pulumi-preview:
     runs-on: ubuntu-latest
     # Only run this on Self-hosted Git.
-
-    if: contains(github.server_url, 'git.yrf.me')
+    if: contains(forgejo.server_url, 'forgejo.services.home.yrf.me')
     steps:
     - uses: actions/checkout@v5
       with:
