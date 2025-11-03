@@ -1,11 +1,12 @@
 ---
 name: pulumi-preview-homelab
 on:
+  push:
   pull_request:
-    paths:
-    - pulumi/**
+    # paths:
+    # - pulumi/**
 jobs:
-  push-to-forgejo:
+  pulumi-preview:
     runs-on: ubuntu-latest
     # Only run this on Self-hosted Git.
 
