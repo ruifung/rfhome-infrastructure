@@ -1,0 +1,27 @@
+{
+    "name": "@pulumi/forgejo",
+    "version": "0.5.4",
+    "description": "A Pulumi provider dynamically bridged from forgejo.",
+    "repository": "https://github.com/svalabs/terraform-provider-forgejo",
+    "main": "bin/index.js",
+    "scripts": {
+        "build": "tsc",
+        "postinstall": "node ./scripts/postinstall.js"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.142.0",
+        "@types/node": "^18",
+        "async-mutex": "^0.5.0",
+        "typescript": "^4.3.5"
+    },
+    "pulumi": {
+        "resource": true,
+        "name": "terraform-provider",
+        "version": "1.0.1",
+        "parameterization": {
+            "name": "forgejo",
+            "version": "0.5.4",
+            "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL3N2YWxhYnMvZm9yZ2VqbyIsInZlcnNpb24iOiIwLjUuNCJ9fQ=="
+        }
+    }
+}

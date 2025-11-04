@@ -1,0 +1,27 @@
+{
+    "name": "@pulumi/dns",
+    "version": "3.4.3",
+    "description": "A Pulumi provider dynamically bridged from dns.",
+    "repository": "https://github.com/hashicorp/terraform-provider-dns",
+    "main": "bin/index.js",
+    "scripts": {
+        "build": "tsc",
+        "postinstall": "node ./scripts/postinstall.js"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.142.0",
+        "@types/node": "^18",
+        "async-mutex": "^0.5.0",
+        "typescript": "^4.3.5"
+    },
+    "pulumi": {
+        "resource": true,
+        "name": "terraform-provider",
+        "version": "1.0.1",
+        "parameterization": {
+            "name": "dns",
+            "version": "3.4.3",
+            "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2hhc2hpY29ycC9kbnMiLCJ2ZXJzaW9uIjoiMy40LjMifX0="
+        }
+    }
+}
