@@ -73,8 +73,6 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /config
-        - name: empty
-          mountPath: /media
         - name: media
           mountPath: /media/Shows
           subPath: Shows
@@ -92,8 +90,6 @@ spec:
       - name: media
         persistentVolumeClaim:
           claimName: okinawa-media-smb
-      - name: empty
-        emptyDir: {}
   volumeClaimTemplates:
   - metadata:
       name: config

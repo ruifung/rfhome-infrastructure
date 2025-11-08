@@ -48,8 +48,6 @@ spec:
           mountPath: /config
         - name: downloads
           mountPath: /downloads
-        - name: empty
-          mountPath: /media
         - name: media
           mountPath: /media/Movies
           subPath: Movies
@@ -67,8 +65,6 @@ spec:
       - name: media
         persistentVolumeClaim:
           claimName: okinawa-media-smb
-      - name: empty
-        emptyDir: {}
   volumeClaimTemplates:
   - metadata:
       name: config
