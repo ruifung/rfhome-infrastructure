@@ -17,6 +17,11 @@ jobs:
     - uses: https://github.com/pulumi/actions@v6
       with:
         work-dir: ./pulumi
+        command: install
+        stack-name: homelab
+    - uses: https://github.com/pulumi/actions@v6
+      with:
+        work-dir: ./pulumi
         command: preview
         stack-name: homelab
         comment-on-summary: true
