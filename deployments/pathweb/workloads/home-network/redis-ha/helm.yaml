@@ -6,7 +6,7 @@ metadata:
   namespace: home-network
 spec:
   interval: 24h
-  url: oci://harbor.services.home.yrf.me/dockerhub/bitnamicharts/redis
+  url: oci://harbor.services.home.yrf.me/local-images/bitnamicharts/redis
   ref:
     tag: 22.0.7
 ---
@@ -22,6 +22,9 @@ spec:
     name: bitnami-redis-chart
   interval: 15m
   values:
+    image:
+      registry: harbor.services.home.yrf.me
+      repository: local-images/bitnami/redis
     auth:
       enabled: false
     replica:
@@ -34,6 +37,9 @@ spec:
         topologyKey: physical-node
         whenUnsatisfiable: DoNotSchedule
     sentinel:
+      image:
+        registry: harbor.services.home.yrf.me
+        repository: local-images/bitnami/redis-sentinel
       enabled: true
       quorum: 2
       redisShutdownWaitFailover: false
