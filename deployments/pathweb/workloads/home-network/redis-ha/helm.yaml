@@ -22,6 +22,9 @@ spec:
     name: bitnami-redis-chart
   interval: 15m
   values:
+    global:
+      security:
+        allowInsecureImages: true
     image:
       registry: harbor.services.home.yrf.me
       repository: local-images/bitnami/redis
