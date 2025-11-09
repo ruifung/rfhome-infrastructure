@@ -15,10 +15,8 @@ jobs:
       with:
         fetch-depth: 0
     - uses: https://github.com/pulumi/actions@v6
-      with:
-        work-dir: ./pulumi
-        command: install
-        stack-name: homelab
+    - run: pulumi install
+      working-directory: ./pulumi
     - uses: https://github.com/pulumi/actions@v6
       with:
         work-dir: ./pulumi
