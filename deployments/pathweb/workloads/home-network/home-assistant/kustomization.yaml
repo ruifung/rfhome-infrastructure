@@ -4,7 +4,7 @@ kind: Kustomization
 images:
 - name: homeassistant/home-assistant
   newName: ghcr.io/home-assistant/home-assistant
-  newTag: &hass-version "2025.10.4"
+  newTag: &hass-version "2025.11.1"
 - name: ghcr.io/home-assistant-libs/python-matter-server
   newTag: "8.1.0"
 resources:
