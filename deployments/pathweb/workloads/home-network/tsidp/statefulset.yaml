@@ -41,6 +41,10 @@ spec:
           value: idp
         - name: TS_STATE_DIR
           value: /var/lib/tsidp
+        - name: TAILSCALE_USE_WIP_CODE
+          value: "1"
+        - name: TSIDP_ENABLE_STS
+          value: "1"
         ports:
         - containerPort: 443
           name: https
