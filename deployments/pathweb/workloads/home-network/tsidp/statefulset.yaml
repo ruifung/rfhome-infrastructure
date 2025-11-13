@@ -40,7 +40,7 @@ spec:
         - name: TS_HOSTNAME
           value: idp
         - name: TS_STATE_DIR
-          value: /var/lib/tsidp
+          value: /data
         - name: TAILSCALE_USE_WIP_CODE
           value: "1"
         - name: TSIDP_ENABLE_STS
@@ -50,13 +50,13 @@ spec:
           name: https
         volumeMounts:
         - name: tsidp-data
-          mountPath: /var/lib/tsidp
-        - name: tsidp-data
-          mountPath: /app/oidc-key.json
-          subPath: oidc-key.json
-        - name: tsidp-data
-          mountPath: /app/oidc-funnel-clients.json
-          subPath: oidc-funnel-clients.json
+          mountPath: /data
+          # - name: tsidp-data
+          #   mountPath: /app/oidc-key.json
+          #   subPath: oidc-key.json
+          # - name: tsidp-data
+          #   mountPath: /app/oidc-funnel-clients.json
+          #   subPath: oidc-funnel-clients.json
       volumes:
       - name: tsidp-data
   volumeClaimTemplates:
