@@ -41,8 +41,6 @@ spec:
         args:
         - --voice
         - en_GB-cori-high
-        - --max-piper-procs
-        - '3'
         - --data-dir
         - /data
         - --update-voices
