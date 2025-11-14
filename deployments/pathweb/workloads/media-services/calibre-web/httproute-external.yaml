@@ -40,11 +40,16 @@ spec:
         type: Exact
         value: /logout
     filters:
-    - type: ExtensionRef
-      extensionRef:
-        group: traefik.io
-        kind: Middleware
-        name: calibre-web-rewrite-logout-redirect
+    - type: ResponseHeaderModifier
+      responseHeaderModifier:
+        set:
+        - name: Location
+          value: /outpost.goauthentik.io/sign_out
+    # - type: ExtensionRef
+    #   extensionRef:
+    #     group: traefik.io
+    #     kind: Middleware
+    #     name: calibre-web-rewrite-logout-redirect
     backendRefs:
     - name: calibre-web
       port: 8083
