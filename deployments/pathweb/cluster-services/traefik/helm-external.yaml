@@ -161,12 +161,6 @@ spec:
         rewriteHeaders:
           moduleName: github.com/XciD/traefik-plugin-rewrite-headers
           version: v0.0.4
-        moveHeaders:
-          moduleName: github.com/che-incubator/header-rewrite-traefik-plugin
-          version: v0.1.2
-        rewriteBody:
-          moduleName: github.com/packruler/rewrite-body
-          version: v1.2.0
     ingressClass:
       name: traefik-external
       isDefaultClass: true
