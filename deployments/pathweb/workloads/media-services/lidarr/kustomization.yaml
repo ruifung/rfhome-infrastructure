@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/lidarr
   newName: lscr.io/linuxserver/lidarr
-  newTag: version-3.0.1.4866
+  newTag: version-3.1.0.4875
 labels:
 - pairs:
     "app.kubernetes.io/name": lidarr
