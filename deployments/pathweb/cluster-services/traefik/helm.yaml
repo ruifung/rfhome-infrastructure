@@ -44,8 +44,7 @@ spec:
     deployment:
       # nameOverride: traefik-rfhome
       replicas: 2
-      # runtimeClassName: gvisor
-
+      runtimeClassName: gvisor
       podLabels:
         velero.io/exclude-from-backup: "true"
       additionalVolumes:
@@ -57,6 +56,9 @@ spec:
       - name: plugins
         persistentVolumeClaim:
           claimName: traefik-plugins
+    podSecurityContext:
+      fsGroup: 65532
+      fsGroupChangePolicy: "OnRootMismatch"
     volumes:
     - name: crowdsec-bouncer-tls
       mountPath: /crowdsec
