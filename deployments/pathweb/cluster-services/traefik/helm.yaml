@@ -68,6 +68,7 @@ spec:
       mountPath: /additional-configs
     - name: plugins
       mountPath: /plugins-storage
+      subPath: internal
     resources:
       requests:
         cpu: '1.5'

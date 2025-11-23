@@ -71,6 +71,7 @@ spec:
       mountPath: /additional-configs
     - name: plugins
       mountPath: /plugins-storage
+      subPath: external
     resources:
       requests:
         cpu: '200m'
