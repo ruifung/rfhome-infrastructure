@@ -57,6 +57,9 @@ spec:
           sources:
           - configMap:
               name: traefik-configs
+      - name: plugins
+        persistentVolumeClaim:
+          claimName: traefik-plugins
     volumes:
     - name: crowdsec-bouncer-tls
       mountPath: /crowdsec
