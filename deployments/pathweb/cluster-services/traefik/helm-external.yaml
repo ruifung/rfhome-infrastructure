@@ -67,6 +67,8 @@ spec:
     additionalVolumeMounts:
     - name: additional-configs
       mountPath: /additional-configs
+    - name: plugins
+      mountPath: /plugins-storage
     resources:
       requests:
         cpu: '200m'
