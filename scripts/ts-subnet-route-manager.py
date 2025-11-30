@@ -2,6 +2,8 @@
 import asyncio
 import json
 import os
+import shutil
+import sys
 import argparse
 import re
 
@@ -11,8 +13,9 @@ RECONNECT_INTERVAL = int(os.getenv("RECONNECT_INTERVAL", "2"))  # seconds
 
 # Protocols managed by this script (list for easier modification)
 BIRD_PROTOCOLS = ["tailscale", "tailscale6"]
-
 class BirdSocketClient:
+
+
     def __init__(self, socket_path):
         self.socket_path = socket_path
         self.reader = None
@@ -106,18 +109,45 @@ class BirdSocketClient:
                     self.reader, self.writer = None, None
 
 async def get_tailscale_status():
-    """Run tailscale status --json --peers=false and return parsed JSON."""
+    """Run `tailscale status --json --peers=false` and return parsed JSON.
+    """
+    rc, stdout, stderr = await run_tailscale_cmd(["status", "--json", "--peers=false"])
+    if rc != 0:
+        raise RuntimeError(f"{stderr.strip() or 'tailscale status failed'}")
+    return json.loads(stdout)
+
+
+async def run_tailscale_cmd(args, timeout: int | None = None):
+    """Run `tailscale` with the given args and return (returncode, stdout, stderr).
+
+    `args` should be a list of arguments (e.g. ['status', '--json']).
+    """
     proc = await asyncio.create_subprocess_exec(
-        "tailscale", "status", "--json", "--peers=false",
+        "tailscale", *args,
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
     )
     stdout, stderr = await proc.communicate()
-    if proc.returncode != 0:
-        raise RuntimeError(f"{stderr.decode().strip() or 'tailscale status failed'}")
-    return json.loads(stdout.decode())
+    return proc.returncode, stdout.decode(), stderr.decode()
 
-async def manage_bird(expected_routes, socket_path):
+
+async def set_tailscale_exit_node(enable: bool):
+    """Enable or disable advertising as a Tailscale exit node.
+
+    Runs `tailscale set --advertise-exit-node` when `enable` is True, or
+    `tailscale set --advertise-exit-node=false` when `enable` is False.
+    """
+    cmd_args = ["set", "--advertise-exit-node"] if enable else ["set", "--advertise-exit-node=false"]
+
+    rc, stdout, stderr = await run_tailscale_cmd(cmd_args)
+    if rc == 0:
+        print(f"🔁 tailscale exit-node {'enabled' if enable else 'disabled'}")
+    else:
+        err = stderr.strip() or stdout.strip()
+        print(f"❌ tailscale set advertise-exit-node failed: {err}")
+
+
+async def manage_bird(expected_routes, socket_path, control_exit_node: bool = True):
     expected_set = set(expected_routes)
     bird = BirdSocketClient(socket_path)
     asyncio.create_task(bird.ensure_connected())
@@ -139,9 +169,13 @@ async def manage_bird(expected_routes, socket_path):
             if online and has_routes and bird.last_state != "enable":
                 print("🚀 Node is online and the primary router for all expected routes. Enabling BIRD protocols...")
                 await bird.send_state("enable")
+                if control_exit_node:
+                    await set_tailscale_exit_node(True)
             elif (not online or not has_routes) and bird.last_state != "disable":
                 print("🛑 Node is offline or not the primary router for all expected routes. Disabling BIRD protocols...")
                 await bird.send_state("disable")
+                if control_exit_node:
+                    await set_tailscale_exit_node(False)
 
         except Exception:
             if last_health != "unhealthy":
@@ -149,6 +183,8 @@ async def manage_bird(expected_routes, socket_path):
                 last_health = "unhealthy"
             if bird.last_state != "disable":
                 await bird.send_state("disable")
+                if control_exit_node:
+                    await set_tailscale_exit_node(False)
 
         await asyncio.sleep(CHECK_INTERVAL)
 
@@ -158,13 +194,25 @@ def main():
     )
     parser.add_argument("socket_path", help="Path to the BIRD control socket (e.g. /run/bird/bird.ctl)")
     parser.add_argument("routes", nargs="+", help="Expected routes for which this node must be the primary router")
+    parser.add_argument(
+        "--no-exit-node",
+        action="store_true",
+        help="Do not toggle Tailscale exit-node advertising when enabling/disabling protocols",
+    )
     args = parser.parse_args()
+
+    # Check once at startup whether the `tailscale` binary is present; bail if missing.
+    if shutil.which("tailscale") is None:
+        print("❌ tailscale binary not found in PATH; this script requires tailscale. Exiting.")
+        sys.exit(1)
+    else:
+        print("✅ tailscale binary found in PATH. Will control exit-node when configured.")
 
     if not os.path.exists(args.socket_path):
         print(f"⚠️ Warning: socket {args.socket_path} does not exist yet. Will retry on reconnect.")
 
     print(f"⏱️ CHECK_INTERVAL={CHECK_INTERVAL}s, 🔄 RECONNECT_INTERVAL={RECONNECT_INTERVAL}s")
-    asyncio.run(manage_bird(args.routes, args.socket_path))
+    asyncio.run(manage_bird(args.routes, args.socket_path, control_exit_node=not args.no_exit_node))
 
 if __name__ == "__main__":
     main()
