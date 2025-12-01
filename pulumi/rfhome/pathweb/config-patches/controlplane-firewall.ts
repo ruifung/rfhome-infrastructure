@@ -96,6 +96,12 @@ export const controlplaneFirewall: ConfigPatch[] = [
         ingress: [...serverVlan]
     }),
     ingressNetworkRule({
+        name: 'cilium-geneve',
+        ports: [8472],
+        protocol: "udp",
+        ingress: [...serverVlan]
+    }),
+    ingressNetworkRule({
         name: 'cilium-health',
         ports: [4240],
         protocol: "tcp",
