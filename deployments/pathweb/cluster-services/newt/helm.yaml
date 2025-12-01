@@ -24,6 +24,21 @@ spec:
   install:
     createNamespace: false
     skipCRDs: true
+  postRenderers:
+  # These patches remove the helm.sh/chart label to prevent the helm chart
+  # from rendering invalid label values due to Flux appending the chart digest.
+  - kustomize:
+      patches:
+      - patch: |
+          - op: "remove"
+            path: "/metadata/labels/helm.sh~1chart"
+        target:
+          kind: Deployment
+      - patch: |
+          - op: "remove"
+            path: "/metadata/labels/helm.sh~1chart"
+        target:
+          kind: Service
   driftDetection:
     mode: enabled
   values:
