@@ -29,5 +29,6 @@ spec:
   values:
     newtInstances:
     - name: pathweb-newt
+      enabled: true
       auth:
         existingSecretName: pathweb-newt-secret
