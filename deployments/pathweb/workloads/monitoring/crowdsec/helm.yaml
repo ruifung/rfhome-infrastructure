@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/crowdsecurity.github.io/helm-charts/crowdsec
   ref:
-    tag: 0.20.1
+    tag: 0.21.0
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -152,3 +152,21 @@ spec:
       enabled: true
       certManager:
         enabled: true
+    config:
+      config.yaml.local: |
+        api:
+          server:
+            auto_registration: # Activate if not using TLS for authentication
+              enabled: true
+              token: "${REGISTRATION_TOKEN}" # /!\ Do not modify this variable (auto-generated and handled by the chart)
+              allowed_ranges: # /!\ Make sure to adapt to the pod IP ranges used by your cluster
+                - "10.96.0.0/16"
+                - "fd96:619:6b75:0100::/56"
+        db_config:
+          flush:
+            bouncers_autodelete:
+              cert: 1d
+              api_key: 7d
+            agents_autodelete:
+              cert: 1d
+              login_password: 7d
