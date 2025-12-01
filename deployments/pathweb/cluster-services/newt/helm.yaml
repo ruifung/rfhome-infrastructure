@@ -1,0 +1,33 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: newt-chart
+  namespace: traefik
+spec:
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/chartproxy/charts.fossorial.io/newt
+  ref:
+    tag: 1.1.0
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: newt
+  namespace: traefik
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: newt-chart
+  interval: 15m
+  timeout: 1h
+  install:
+    createNamespace: false
+    skipCRDs: true
+  driftDetection:
+    mode: enabled
+  values:
+    newtInstances:
+    - name: pathweb-newt
+      auth:
+        existingSecretName: pathweb-newt-secret
