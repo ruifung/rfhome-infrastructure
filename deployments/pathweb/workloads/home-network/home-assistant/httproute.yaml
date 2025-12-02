@@ -25,16 +25,3 @@ spec:
     backendRefs:
     - name: home-assistant
       port: 8123
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /auth
-    filters:
-    - type: ExtensionRef
-      extensionRef:
-        group: traefik.io
-        kind: Middleware
-        name: ak-outpost-authentik-embedded-outpost
-    backendRefs:
-    - name: home-assistant
-      port: 8123
