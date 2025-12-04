@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
     - pulumi/**
+    - .forgejo/workflows/pulumi-preview.yml
 jobs:
   pulumi-preview:
     runs-on: ubuntu-latest
