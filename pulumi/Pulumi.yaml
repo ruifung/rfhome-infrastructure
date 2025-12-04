@@ -4,7 +4,7 @@ description: RFHome Homelab IaC
 runtime:
   name: nodejs
   options:
-    packagemanager: pnpm
+    packagemanager: npm
 config:
   pulumi:tags:
     value:
