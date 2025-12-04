@@ -2,6 +2,7 @@
 name: pulumi-preview-homelab
 on:
   push:
+    branches: [master]
     paths: &paths
     - pulumi/**
     - .forgejo/workflows/pulumi-preview.yml
