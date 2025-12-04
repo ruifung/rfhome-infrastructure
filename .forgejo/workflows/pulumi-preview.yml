@@ -1,10 +1,12 @@
 ---
 name: pulumi-preview-homelab
 on:
-  pull_request:
-    paths:
+  push:
+    paths: &paths
     - pulumi/**
     - .forgejo/workflows/pulumi-preview.yml
+  pull_request:
+    paths: *paths
 jobs:
   pulumi-preview:
     runs-on: ubuntu-latest
