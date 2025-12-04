@@ -25,5 +25,9 @@
         "@pulumiverse/talos": "^0.6.1",
         "@types/js-yaml": "^4.0.9"
     },
-    "trustedDependencies": ["@pulumi/authentik", "@pulumi/dns", "@pulumi/forgejo"]
+    "trustedDependencies": [
+        "@pulumi/authentik",
+        "@pulumi/dns",
+        "@pulumi/forgejo"
+    ]
 }
