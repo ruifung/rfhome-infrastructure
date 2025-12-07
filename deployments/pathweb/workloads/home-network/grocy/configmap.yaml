@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grocy-config
+  namespace: home-network
+data:
+  CURRENCY: MYR
+  AUTH_CLASS: 'Grocy\Middleware\ReverseProxyAuthMiddleware'
+  REVERSE_PROXY_AUTH_HEADER: 'X-authentik-username'

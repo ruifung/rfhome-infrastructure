@@ -10,6 +10,8 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: grocy
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -29,6 +31,10 @@ spec:
           value: "1000"
         - name: TZ
           value: "Asia/Kuala_Lumpur"
+        envFrom:
+        - configMapRef:
+            name: grocy-config
+          prefix: 'GROCY_'
         resources: {}
         volumeMounts:
         - mountPath: /config
@@ -40,4 +46,4 @@ spec:
       volumes:
       - name: config
         persistentVolumeClaim:
-          claimName: grocy-config
+          claimName: grocy-data
