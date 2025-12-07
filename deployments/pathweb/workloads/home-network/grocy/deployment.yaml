@@ -16,20 +16,27 @@ spec:
         app.kubernetes.io/name: grocy
         preset-egress-policy: internet-only
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        runAsNonRoot: true
       restartPolicy: Always
+      runtimeClassName: gvisor
       containers:
       - image: linuxserver/grocy:latest
         imagePullPolicy: IfNotPresent
         name: grocy
-        env: []
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Asia/Kuala_Lumpur"
         resources: {}
         volumeMounts:
         - mountPath: /config
           name: config
+        ports:
+        - containerPort: 80
+          protocol: TCP
+          name: http
       volumes:
       - name: config
         persistentVolumeClaim:
