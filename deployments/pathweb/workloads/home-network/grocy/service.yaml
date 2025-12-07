@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grocy
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: grocy
+spec:
+  selector:
+    app.kubernetes.io/name: grocy
+  ports:
+  - port: 80
+    targetPort: http
+    name: http

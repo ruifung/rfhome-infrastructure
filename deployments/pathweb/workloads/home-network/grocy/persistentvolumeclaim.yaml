@@ -1,0 +1,15 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: grocy-config
+  namespace: home-network
+  labels:
+    home.yrf.me/backup-to-okinawa-s3: "true"
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: cephfs

@@ -1,0 +1,14 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: grocy
+  namespace: home-network
+spec:
+  interval: 15m
+  path: ./deployments/pathweb/workloads/home-network/grocy
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: rfhome-infrastructure
+  targetNamespace: home-network
