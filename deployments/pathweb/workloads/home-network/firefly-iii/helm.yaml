@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/firefly-iii.github.io/kubernetes/firefly-iii
   ref:
-    tag: 1.9.11
+    tag: 1.9.12
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
