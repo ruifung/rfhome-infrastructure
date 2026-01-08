@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/democratic-csi.github.io/charts/democratic-csi
   ref:
-    tag: 0.15.0
+    tag: 0.15.1
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
