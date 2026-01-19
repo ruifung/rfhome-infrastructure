@@ -1,7 +1,7 @@
 ---
 images:
 - name: jellyfin/jellyfin
-  newTag: 10.11.5
+  newTag: 10.11.6
 resources:
 - statefulset.yaml
 - service.yaml
