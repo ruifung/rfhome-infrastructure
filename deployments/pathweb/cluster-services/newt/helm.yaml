@@ -42,6 +42,10 @@ spec:
   driftDetection:
     mode: enabled
   values:
+    global:
+      registry: docker.io
+      repository: fosrl/newt
+      tag: 1.9.0
     newtInstances:
     - name: pathweb-newt
       enabled: true
