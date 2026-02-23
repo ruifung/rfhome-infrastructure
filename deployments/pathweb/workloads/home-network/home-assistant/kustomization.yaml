@@ -15,6 +15,7 @@ resources:
 - httproute.yaml
 - ciliumnetworkpolicy.yaml
 - backup-credentials.sealed.yaml
+- hass-secrets.sealed.yaml
 patches: []
 configMapGenerator:
 - name: homeassistant-docker-venv

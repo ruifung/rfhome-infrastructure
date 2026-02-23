@@ -63,6 +63,9 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        envFrom:
+        - secretRef:
+            name: hass-secrets
         ports:
         - containerPort: 8123
           name: http
