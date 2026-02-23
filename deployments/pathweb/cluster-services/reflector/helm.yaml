@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/emberstack.github.io/helm-charts/reflector
   ref:
-    tag: 9.1.45
+    tag: 10.0.10
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
