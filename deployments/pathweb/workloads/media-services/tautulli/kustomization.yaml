@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/tautulli
   newName: lscr.io/linuxserver/tautulli
-  newTag: version-v2.16.0
+  newTag: version-v2.16.1
 labels:
 - pairs:
     "app.kubernetes.io/name": tautulli
