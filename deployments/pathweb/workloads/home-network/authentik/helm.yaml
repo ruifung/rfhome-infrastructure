@@ -72,7 +72,7 @@ spec:
         prefix: AUTHENTIK_
       env:
       - name: AUTHENTIK_POSTGRESQL__CONN_MAX_AGE
-        value: 0
+        value: "0"
       - name: AUTHENTIK_POSTGRESQL__CONN_HEALTH_CHECK
         value: "false"
       - name: AUTHENTIK_POSTGRESQL__HOST
