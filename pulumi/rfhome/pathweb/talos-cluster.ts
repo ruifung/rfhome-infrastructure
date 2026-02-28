@@ -111,7 +111,7 @@ const fluxOperator = new k8s.helm.v3.Release("pathweb-flux-operator", {
     namespace: 'flux-system',
     createNamespace: true,
     chart: 'oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator'
-}, { provider, parent: provider, ignoreChanges: ['version', 'chart'] })
+}, { provider, parent: provider, ignoreChanges: ['version','chart'] })
 
 // Generate a new ED25519 Private Key for Flux
 const deployKey = new tls.PrivateKey('pathweb-flux-deploy-key', {

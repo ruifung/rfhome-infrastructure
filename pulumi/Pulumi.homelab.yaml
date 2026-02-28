@@ -33,7 +33,7 @@ config:
   talos-pathweb:kubelet-feature-gates:
     UserNamespacesSupport: true
     UserNamespacesPodSecurityStandards: true
-  talos-pathweb:talos-version: 'v1.11.3'
+  talos-pathweb:talos-version: 'v1.12.4'
   talos-pathweb:kubernetes-version: 'v1.32.5'
   homelab:pve-voyager-endpoint: https://voyager.servers.home.yrf.me:8006
   homelab:pve-voyager-token:
@@ -47,7 +47,7 @@ config:
   homelab:local-s3-endpoint: https://okinawa-s3.services.home.yrf.me:7070
   homelab:pve-s3-bucket: rfhome-pve-s3
   homelab:pve-s3-datastore-id: rfhome-pve-s3
-  talos-pathweb:cilium-version: 1.18.3
-  talos-pathweb:coredns-version: 1.45.0
+  talos-pathweb:cilium-version: 1.18.7
+  talos-pathweb:coredns-version: 1.45.2
   homelab:local-git-ssh-host: forgejo.services.home.yrf.me
   homelab:local-git-ssh-port: "222"

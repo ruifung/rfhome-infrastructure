@@ -14,6 +14,7 @@ export function prepareNodeCloudInit(node: NodeDefinition, parent: pulumi.Resour
         key: pulumi.interpolate`snippets/cloud-init_${node.hostname}_user-data`,
         content: generateMachineConfiguration(node).machineConfiguration,
         contentType: 'application/yaml',
+        acl: 'private',
     }, { provider: localS3Provider, parent, ignoreChanges: ['contentEncoding', 'versionId'] })
 
     return pulumi.interpolate`${userDataFile.bucket}:${userDataFile.key}`
