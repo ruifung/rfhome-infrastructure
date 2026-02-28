@@ -6,7 +6,7 @@ metadata:
   namespace: home-network
 spec:
   interval: 24h
-  url: oci://harbor.services.home.yrf.me/chartproxy/charts.goauthentik.io/authentik
+  url: oci://ghcr.io/goauthentik/helm-charts/authentik
   ref:
     tag: 2026.2.0
 ---
