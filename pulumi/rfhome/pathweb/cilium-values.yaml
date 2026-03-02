@@ -26,6 +26,11 @@ hubble:
   relay:
     enabled: true
     rollOutPods: true
+  tls:
+    auto:
+      enabled: true
+      method: cronJob
+      schedule: 0 0 1 */4 *
   ui:
     enabled: true
     rollOutPods: true
