@@ -5,11 +5,16 @@ const pathwebConfig = new pulumi.Config('talos-pathweb')
 
 export const workerPatches: ConfigPatchProvider = () => [
     workerMachineconfigPatch,
+    // The primary interface
     v1alpha1Config('LinkConfig', { name: 'eth0', up: true }),
     v1alpha1Config('DHCPv4Config', { name: 'eth0', clientIdentifier: 'mac' }),
     v1alpha1Config('DHCPv6Config', { name: 'eth0', clientIdentifier: 'mac' }),
+    // IoT VLAN and associated bridge for attaching to using Multus CNI.
     v1alpha1Config('LinkConfig', { name: 'eth1', up: true }),
-    v1alpha1Config('BridgeConfig', { name: 'iot', links: ['eth1'] })
+    v1alpha1Config('BridgeConfig', { name: 'iot', links: ['eth1'] }),
+    // Storage VLAN for worker nodes
+    v1alpha1Config('LinkConfig', { name: 'eth2', up: true }),
+    v1alpha1Config('DHCPv4Config', { name: 'eth2', clientIdentifier: 'mac' })
 ]
 
 const workerMachineconfigPatch: ConfigPatch = {
