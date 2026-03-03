@@ -20,7 +20,7 @@ spec:
   - name: traefik-crds
   values:
     nameOverride: traefik-external
-    fullNameOverride: traefik-external
+    fullnameOverride: traefik-external
     priorityClassName: rfhome-home-critical
     nodeSelector:
       kubernetes.io/os: linux
@@ -103,12 +103,13 @@ spec:
         exposedPort: 80
         expose:
           default: true
-        redirections:
-          entryPoint:
-            to: websecure
-            scheme: https
-            permanent: true
-            priority: "1000000000"
+        http:
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
+              priority: "1000000000"
         proxyProtocol:
           enabled: true
           trustedIPs:
@@ -188,7 +189,7 @@ spec:
           enabled: true
       kubernetesGateway:
         enabled: true
-        labelselector: "app.kubernetes.io/name=traefik-external"
+        labelSelector: "app.kubernetes.io/name=traefik-external"
     gateway:
       enabled: false
     ingressRoute:

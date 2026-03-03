@@ -96,12 +96,13 @@ spec:
         expose:
           default: true
         protocol: TCP
-        redirections:
-          entryPoint:
-            to: websecure
-            scheme: https
-            permanent: true
-            priority: "1000000000"
+        http:
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
+              priority: "1000000000"
       websecure:
         port: 443
         exposedPort: 443
@@ -140,7 +141,7 @@ spec:
         allowExternalNameServices: true
       kubernetesGateway:
         enabled: true
-        labelselector: "app.kubernetes.io/name=traefik"
+        labelSelector: "app.kubernetes.io/name=traefik"
     gateway:
       enabled: false
     ingressRoute:
