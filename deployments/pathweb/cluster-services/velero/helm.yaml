@@ -22,6 +22,14 @@ spec:
     name: velero-chart
   interval: 15m
   values:
+    kubectl:
+      image:
+        repository: docker.io/bitnamilegacy/kubectl
+        # Hardcode tag because bitnamilegacy/kubectl:1.33.4 is the latest version.
+        # Due to bitnami discontinuing their public images.
+        # This is required because the velero chart requires a shell in the kubectl image.
+        # This will probably not break that soon.
+        tag: 1.33.4
     initContainers:
     - name: velero-plugin-for-aws
       image: velero/velero-plugin-for-aws:v1.13.2
