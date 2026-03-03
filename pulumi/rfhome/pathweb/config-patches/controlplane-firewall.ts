@@ -1,6 +1,6 @@
 import * as pulumi from '@pulumi/pulumi'
 import { control1, control2, control3 } from "../talos-nodes"
-import { ConfigPatch } from '../types/ConfigPatch'
+import { TypedConfigPatch, TypedConfigPatchProvider } from '../types/ConfigPatch'
 
 const pathwebConfig = new pulumi.Config('talos-pathweb')
 const homelabConfig = new pulumi.Config('homelab')
@@ -19,12 +19,14 @@ export const controlplaneNodeIps = [
     {subnet: `${control3.address}/32`}
 ]
 
+export const controlplaneFirewall: TypedConfigPatchProvider = () => controlplaneFirewallRules
+
 function ingressNetworkRule(rule: {
     name: string,
     ports: (number|string)[],
     protocol: 'tcp'|'udp',
     ingress: {subnet: string}[]
-}): ConfigPatch { return {
+}): TypedConfigPatch { return {
     apiVersion: 'v1alpha1',
     kind: 'NetworkRuleConfig',
     name: rule.name,
@@ -35,7 +37,7 @@ function ingressNetworkRule(rule: {
     ingress: rule.ingress
 }}
 
-export const controlplaneFirewall: ConfigPatch[] = [
+const controlplaneFirewallRules: TypedConfigPatch[] = [
     {
         apiVersion: 'v1alpha1',
         kind: 'NetworkDefaultActionConfig',

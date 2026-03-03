@@ -1,27 +1,21 @@
 import * as pulumi from '@pulumi/pulumi'
-import { ConfigPatch } from '../types/ConfigPatch';
+import { ConfigPatch, ConfigPatchProvider, v1alpha1Config } from '../types/ConfigPatch';
 
 const pathwebConfig = new pulumi.Config('talos-pathweb')
 
-export const workerPatches: ConfigPatch = {
+export const workerPatches: ConfigPatchProvider = () => [
+    workerMachineconfigPatch,
+    v1alpha1Config('LinkConfig', { name: 'eth0', up: true }),
+    v1alpha1Config('DHCPv4Config', { name: 'eth0', clientIdentifier: 'mac' }),
+    v1alpha1Config('DHCPv6Config', { name: 'eth0', clientIdentifier: 'mac' }),
+    v1alpha1Config('LinkConfig', { name: 'eth1', up: true }),
+    v1alpha1Config('BridgeConfig', { name: 'iot', links: ['eth1'] })
+]
+
+const workerMachineconfigPatch: ConfigPatch = {
     machine: {
         nodeLabels: {
             role: 'worker'
-        },
-        network: {
-            interfaces: [
-                {interface: 'eth0', dhcp: true},
-                {interface: 'eth1', dhcp: false},
-                {
-                    interface: 'iot',
-                    dhcp: false,
-                    bridge: {
-                        interfaces: [
-                            'eth1'
-                        ]
-                    }
-                }
-            ]
         },
         certSANs: [ `*.workers.${pathwebConfig.require('cluster-domain')}` ],
         sysctls: {

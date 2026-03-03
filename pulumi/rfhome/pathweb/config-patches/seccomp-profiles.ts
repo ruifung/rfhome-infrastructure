@@ -1,8 +1,8 @@
 import * as local from '@pulumi/local'
 import { Output } from '@pulumi/pulumi'
-import { ConfigPatch } from '../types/ConfigPatch'
+import { ConfigPatch, ConfigPatchProvider } from '../types/ConfigPatch'
 
-export const containersSeccompPatch: Output<ConfigPatch> = local.getFileOutput({
+export const containersSeccompPatch: ConfigPatchProvider = () => [local.getFileOutput({
     filename: 'rfhome/pathweb/config-patches/containers-seccomp.json'
 }).apply(file => ({
     name: 'podman.json',
@@ -13,4 +13,4 @@ export const containersSeccompPatch: Output<ConfigPatch> = local.getFileOutput({
             profile
         ]
     }
-}))
+}))]

@@ -27,14 +27,10 @@ config:
   homelab:servers-vlan-subnet:
   - '10.229.97.0/24'
   - 'fd96:619:803e:6100::/64'
-  talos-pathweb:api-server-feature-gates:
-    UserNamespacesSupport: true
-    UserNamespacesPodSecurityStandards: true
-  talos-pathweb:kubelet-feature-gates:
-    UserNamespacesSupport: true
-    UserNamespacesPodSecurityStandards: true
+  talos-pathweb:api-server-feature-gates: {}
+  talos-pathweb:kubelet-feature-gates: {}
   talos-pathweb:talos-version: 'v1.12.4'
-  talos-pathweb:kubernetes-version: 'v1.32.5'
+  talos-pathweb:kubernetes-version: 'v1.35.2'
   homelab:pve-voyager-endpoint: https://voyager.servers.home.yrf.me:8006
   homelab:pve-voyager-token:
     secure: AAABAGtOu3WCSDhEIea9omYFVbaNO4R06VRZSehSndQ0FoYXtN4+Sx9WYCQ2i0Izbag5eWs8UHaZg5bl38liMWZlntmpVT8d0MplsdXWDCKWQj4Qz2M=

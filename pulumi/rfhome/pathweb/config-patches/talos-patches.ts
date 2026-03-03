@@ -1,42 +1,38 @@
-import { Input } from '@pulumi/pulumi'
+import * as pulumi from '@pulumi/pulumi'
+import { Output } from '@pulumi/pulumi'
 import { nodePatches } from './node-patches'
 import { containersSeccompPatch } from './seccomp-profiles'
 import { controlplaneFirewall } from './controlplane-firewall'
 import { controlplanePatches } from './controlplane-patches'
 import { watchdogPatch } from './watchdog'
 import { workerPatches } from './worker-patches'
-import { generateNodeSpecificPatches } from './node-specific-patch'
+import { nodeSpecificPatches } from './node-specific-patch'
 import { NodeDefinition } from '../types/NodeDefinition'
-import { ConfigPatch } from '../types/ConfigPatch'
+import { ConfigPatch, ConfigPatchProvider } from '../types/ConfigPatch'
 import { coreDnsConfigPatch } from './coredns-custom'
 
 
-export function getNodePatches(node: NodeDefinition) {
-    const patches: Input<ConfigPatch>[] = [
+export function getNodePatches(node: NodeDefinition): Output<ConfigPatch>[] {
+    const patchProviders: ConfigPatchProvider[] = [
         nodePatches,
         watchdogPatch,
         containersSeccompPatch,
-        coreDnsConfigPatch
+        coreDnsConfigPatch,
+        nodeSpecificPatches
     ]
 
     if (node.role == 'controlplane') {
-        patches.push(
+        patchProviders.push(
             controlplanePatches,
-            ...controlplaneFirewall
+            controlplaneFirewall
         )
     } else {
-        patches.push(
+        patchProviders.push(
             workerPatches
         )
     }
 
-    patches.push(generateNodeSpecificPatches(node))
-
-    for (const patch of patches) {
-        if (patch == undefined) {
-            throw "Undefined patch detected."
-        }
-    }
-
-    return patches
+    return patchProviders
+        .flatMap(provider => provider(node))
+        .map(patch => pulumi.output(patch))
 }

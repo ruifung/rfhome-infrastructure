@@ -1,29 +1,26 @@
 import { Config } from '@pulumi/pulumi';
 import { controlplaneNodes } from '../talos-nodes';
-import { ConfigPatch } from '../types/ConfigPatch';
+import { ConfigPatch, ConfigPatchProvider, TypedConfigPatchProvider, v1alpha1Config } from '../types/ConfigPatch';
 
 const talosPathwebConfig = new Config('talos-pathweb')
 const homelabConfig = new Config('homelab')
 const serverDomain = homelabConfig.require('servers-domain')
 const clusterDomain = talosPathwebConfig.require('cluster-domain')
 
+export const controlplanePatches: ConfigPatchProvider = () => [
+    controlplaneMachineconfigPatch,
+    v1alpha1Config('LinkConfig', { name: 'eth0', up: true }),
+    v1alpha1Config('DHCPv4Config', { name: 'eth0', clientIdentifier: 'mac' }),
+    v1alpha1Config('DHCPv6Config', { name: 'eth0', clientIdentifier: 'mac' }),
+    v1alpha1Config('Layer2VIPConfig', { name: talosPathwebConfig.require('cluster-vip'), link: 'eth0' })
+]
+
 const apiServerFeatureGatesArg = Object.entries(talosPathwebConfig.requireObject<{[key: string]: boolean}>('api-server-feature-gates'))
     .map(([name, value]) => `${name}=${value}`)
     .join(',');
 
-export const controlplanePatches: ConfigPatch = {
+const controlplaneMachineconfigPatch: ConfigPatch = {
     machine: {
-        network: {
-            interfaces: [
-                {
-                    interface: 'eth0',
-                    dhcp: true,
-                    vip: {
-                        ip: talosPathwebConfig.require('cluster-vip')
-                    }
-                }
-            ]
-        },
         nodeLabels: {
             role: 'control-plane'
         },

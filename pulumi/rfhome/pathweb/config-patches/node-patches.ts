@@ -1,28 +1,39 @@
 import * as pulumi from '@pulumi/pulumi'
-import { ConfigPatch } from '../types/ConfigPatch';
+import { ConfigPatch, ConfigPatchProvider, TypedConfigPatch, v1alpha1Config } from '../types/ConfigPatch';
 
 const talosPathwebConfig = new pulumi.Config('talos-pathweb')
 const homelabConfig = new pulumi.Config('homelab')
 const harborRegistry = homelabConfig.require('harbor-registry')
 
-const registryMirrors: { [key: string]: { overridePath: boolean, endpoints: string[] } } = {}
-Object.entries(homelabConfig.requireObject<{[key:string]: string}>('harbor-caches'))
-    .forEach(([registry, cacheProject]) => {
-        const upstream = registry == 'docker.io' ?
-            'https://registry.hub.docker.com/v2/' :
-            `https://${registry}/v2/`
-        const cacheUrl = `https://${harborRegistry}/v2/${cacheProject}/`
-        registryMirrors[registry] = {
-            overridePath: true,
-            endpoints: [
-                cacheUrl,
-                upstream
-            ]
-        }
-    })
+export const nodePatches: ConfigPatchProvider = () => [
+    nodeMachineconfigPatch,
+    harborRegistryAuthPatch,
+    ...registryMirrorsTypedPatches,
+]
 
+const harborRegistryAuthPatch: TypedConfigPatch = v1alpha1Config('RegistryAuthConfig', {
+    name: harborRegistry,
+    username: talosPathwebConfig.require("rfhome-harbor-username"),
+    password: talosPathwebConfig.require("rfhome-harbor-password")
+});
 
-export const nodePatches: ConfigPatch = {
+const registryMirrorsTypedPatches: TypedConfigPatch[] =
+    Object.entries(homelabConfig.requireObject<{ [key: string]: string }>('harbor-caches'))
+        .map(([registry, cacheProject]) => {
+            const upstream = registry == 'docker.io' ?
+                'https://registry.hub.docker.com/v2/' :
+                `https://${registry}/v2/`
+            const cacheUrl = `https://${harborRegistry}/v2/${cacheProject}/`
+            return v1alpha1Config('RegistryMirrorConfig', {
+                name: registry,
+                endpoints: [
+                    { url: cacheUrl, overridePath: true },
+                ],
+                skipFallback: false
+            })
+        });
+
+const nodeMachineconfigPatch: ConfigPatch = {
     machine: {
         sysctls: {
             "kernel.domainname": homelabConfig.require('servers-domain'),
@@ -44,7 +55,7 @@ export const nodePatches: ConfigPatch = {
                 "rotate-server-certificates": true
             },
             extraConfig: {
-                featureGates: talosPathwebConfig.requireObject<{[key: string]: boolean}>('kubelet-feature-gates')
+                featureGates: talosPathwebConfig.requireObject<{ [key: string]: boolean }>('kubelet-feature-gates')
             }
         },
         features: {
@@ -57,17 +68,6 @@ export const nodePatches: ConfigPatch = {
                 port: 7445
             }
         },
-        registries: {
-            mirrors: registryMirrors,
-            config: {
-                [harborRegistry]: {
-                    auth: {
-                        username: talosPathwebConfig.require("rfhome-harbor-username"),
-                        password: talosPathwebConfig.require("rfhome-harbor-password")
-                    }
-                }
-            }
-        }
     },
     cluster: {
         discovery: {
