@@ -36,12 +36,7 @@ spec:
           - op: "remove"
             path: "/metadata/labels/helm.sh~1chart"
         target:
-          kind: Deployment
-      - patch: |
-          - op: "remove"
-            path: "/metadata/labels/helm.sh~1chart"
-        target:
-          kind: Service
+          labelSelector: "helm.sh/chart"
   driftDetection:
     mode: enabled
   values:
