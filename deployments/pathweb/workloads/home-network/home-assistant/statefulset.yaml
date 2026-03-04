@@ -10,10 +10,6 @@ spec:
     matchLabels:
       app.kubernetes.io/name: home-assistant
   serviceName: home-assistant
-  updateStrategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 0
   template:
     metadata:
       labels:
