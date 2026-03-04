@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 24h
-  url: oci://harbor.services.home.yrf.me/chartproxy/emberstack.github.io/helm-charts/reflector
+  url: oci://harbor.services.home.yrf.me/ghcr/emberstack/helm-charts/reflector
   ref:
     tag: 10.0.14
 ---

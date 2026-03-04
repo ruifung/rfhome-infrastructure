@@ -6,7 +6,7 @@ metadata:
   namespace: traefik
 spec:
   interval: 24h
-  url: oci://harbor.services.home.yrf.me/chartproxy/helm.traefik.io/traefik/traefik-crds
+  url: oci://harbor.services.home.yrf.me/ghcr/traefik/helm/traefik-crds
   ref:
     tag: 1.14.0
 ---
@@ -17,6 +17,6 @@ metadata:
   namespace: traefik
 spec:
   interval: 24h
-  url: oci://harbor.services.home.yrf.me/chartproxy/helm.traefik.io/traefik/traefik
+  url: oci://harbor.services.home.yrf.me/ghcr/traefik/helm/traefik
   ref:
     tag: 39.0.2

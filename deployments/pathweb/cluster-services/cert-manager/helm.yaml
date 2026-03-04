@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 24h
-  url: oci://harbor.services.home.yrf.me/chartproxy/charts.jetstack.io/cert-manager
+  url: oci://harbor.services.home.yrf.me/quayio/jetstack/charts/cert-manager
   ref:
     tag: 1.19.4
 ---
