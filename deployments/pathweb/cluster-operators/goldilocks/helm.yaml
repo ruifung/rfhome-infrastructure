@@ -42,6 +42,20 @@ spec:
           - op: add
             path: /spec/template/spec/priorityClassName
             value: rfhome-low-priority
+      - target:
+          group: gateway.networking.k8s.io
+          version: v1
+          kind: HTTPRoute
+          name: goldilocks-dashboard
+        patch: |-
+          - op: add
+            path: /spec/rules/0/filters
+            value:
+              - type: ExtensionRef
+                extensionRef:
+                  group: traefik.io
+                  kind: Middleware
+                  name: ak-outpost-authentik-embedded-outpost
   values:
     controller:
       nodeSelector:
