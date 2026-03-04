@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  path: ./deployments/pathweb/workloads/monitoring/goldilocks
+  path: ./deployments/pathweb/cluster-operators/goldilocks
   prune: true
   sourceRef:
     kind: GitRepository
