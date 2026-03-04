@@ -100,8 +100,33 @@ spec:
           secretKeyRef:
             name: "rfhome-postgres-ha-pguser-authentik"
             key: "dbname"
+      # - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__HOST
+      #   value: "rfhome-postgres-ha-replicas.home-network.svc"
+      # - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__PORT
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: "rfhome-postgres-ha-pguser-authentik"
+      #       key: "port"
+      # - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__USER
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: "rfhome-postgres-ha-pguser-authentik"
+      #       key: "user"
+      # - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__PASSWORD
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: "rfhome-postgres-ha-pguser-authentik"
+      #       key: "password"
+      # - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__NAME
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: "rfhome-postgres-ha-pguser-authentik"
+      #       key: "dbname"
       - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__HOST
-        value: "rfhome-postgres-ha-replicas.home-network.svc"
+        valueFrom:
+          secretKeyRef:
+            name: "rfhome-postgres-ha-pguser-authentik"
+            key: "pgbouncer-host"
       - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__PORT
         valueFrom:
           secretKeyRef:
@@ -122,32 +147,7 @@ spec:
           secretKeyRef:
             name: "rfhome-postgres-ha-pguser-authentik"
             key: "dbname"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__1__HOST
-        valueFrom:
-          secretKeyRef:
-            name: "rfhome-postgres-ha-pguser-authentik"
-            key: "pgbouncer-host"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__1__PORT
-        valueFrom:
-          secretKeyRef:
-            name: "rfhome-postgres-ha-pguser-authentik"
-            key: "port"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__1__USER
-        valueFrom:
-          secretKeyRef:
-            name: "rfhome-postgres-ha-pguser-authentik"
-            key: "user"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__1__PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: "rfhome-postgres-ha-pguser-authentik"
-            key: "password"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__1__NAME
-        valueFrom:
-          secretKeyRef:
-            name: "rfhome-postgres-ha-pguser-authentik"
-            key: "dbname"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__1__CONN_HEALTH_CHECK
+      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__CONN_HEALTH_CHECK
         value: "true"
     server:
       replicas: 2
