@@ -75,8 +75,6 @@ spec:
         value: "days=1"
       - name: AUTHENTIK_POSTGRESQL__CONN_MAX_AGE
         value: "0"
-      - name: AUTHENTIK_POSTGRESQL__CONN_HEALTH_CHECK
-        value: "false"
       - name: AUTHENTIK_POSTGRESQL__HOST
         valueFrom:
           secretKeyRef:

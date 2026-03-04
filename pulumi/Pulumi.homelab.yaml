@@ -43,7 +43,7 @@ config:
   homelab:local-s3-endpoint: https://okinawa-s3.services.home.yrf.me:7070
   homelab:pve-s3-bucket: rfhome-pve-s3
   homelab:pve-s3-datastore-id: rfhome-pve-s3
-  talos-pathweb:cilium-version: 1.18.7
+  talos-pathweb:cilium-version: 1.19.1
   talos-pathweb:coredns-version: 1.45.2
   homelab:local-git-ssh-host: forgejo.services.home.yrf.me
   homelab:local-git-ssh-port: "222"
