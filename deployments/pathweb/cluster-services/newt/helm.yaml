@@ -44,7 +44,7 @@ spec:
       image:
         registry: docker.io
         repository: fosrl/newt
-        tag: 1.10.1
+        tag: 1.10.2
     newtInstances:
     - name: pathweb-newt
       enabled: true
