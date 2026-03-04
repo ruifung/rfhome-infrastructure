@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://ghcr.io/goauthentik/helm-charts/authentik
   ref:
-    tag: 2026.2.0
+    tag: 2026.2.1
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
