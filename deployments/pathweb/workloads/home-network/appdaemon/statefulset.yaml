@@ -5,10 +5,6 @@ metadata:
   name: appdaemon
 spec:
   serviceName: appdaemon
-  updateStrategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 0
   template:
     metadata:
       annotations:
