@@ -17,8 +17,6 @@ spec:
     crds: CreateReplace
   driftDetection:
     mode: enabled
-  dependsOn:
-  - name: traefik-crds
   values:
     priorityClassName: rfhome-network-critical
     nodeSelector:
