@@ -13,11 +13,13 @@ spec:
   timeout: 1h
   install:
     createNamespace: false
-    skipCRDs: true
+    crds: Skip
+  upgrade:
+    crds: Skip
   driftDetection:
     mode: enabled
   dependsOn:
-  - name: traefik-crds
+  - name: traefik
   values:
     nameOverride: traefik-external
     fullnameOverride: traefik-external
