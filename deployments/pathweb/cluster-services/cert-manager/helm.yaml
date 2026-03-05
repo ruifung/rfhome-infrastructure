@@ -6,7 +6,10 @@ metadata:
   namespace: flux-system
 spec:
   interval: 24h
-  url: oci://quay.io/jetstack/charts/cert-manager
+  url: oci://harbor.services.home.yrf.me/quayio/jetstack/charts/cert-manager
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
   ref:
     tag: v1.19.4
 ---
