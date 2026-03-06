@@ -9,6 +9,9 @@ spec:
   url: oci://harbor.services.home.yrf.me/chartproxy/charts.rook.io/release/rook-ceph
   ref:
     tag: 1.19.2
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease

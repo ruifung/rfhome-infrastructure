@@ -9,6 +9,9 @@ spec:
   url: oci://harbor.services.home.yrf.me/ghcr/traefik/helm/traefik-crds
   ref:
     tag: 1.14.0
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
@@ -20,3 +23,6 @@ spec:
   url: oci://harbor.services.home.yrf.me/ghcr/traefik/helm/traefik
   ref:
     tag: 39.0.4
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy

@@ -9,6 +9,9 @@ spec:
   url: oci://harbor.services.home.yrf.me/chartproxy/pkgs.tailscale.com/helmcharts/tailscale-operator
   ref:
     tag: 1.94.2
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
