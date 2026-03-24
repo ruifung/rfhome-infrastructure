@@ -1,7 +1,7 @@
 {
     "gateway": {
         "mode": "local",
-        "bind": "loopback",
+        "bind": "lan",
         "port": 18789,
         "auth": {
             "mode": "trusted-proxy",
@@ -14,6 +14,8 @@
             }
         },
         "trustedProxies": [
+            "127.0.0.1",
+            "::1",
             "10.96.0.0/16" //Kubernetes Pod CIDR. This is safe because CiliumNetworkPolicy will block all traffic except via Traefik.
         ],
         "controlUi": {
