@@ -28,7 +28,13 @@
     },
     "agents": {
         "defaults": {
-            "workspace": "~/.openclaw/workspace"
+            "workspace": "~/.openclaw/workspace",
+            "model": {
+                "primary": "openrouter/google/gemini-3.1-pro-preview"
+            },
+            "compaction": {
+                "model": "openrouter/google/gemini-3.1-flash-lite-preview",
+            }
         },
         "list": [
             {
