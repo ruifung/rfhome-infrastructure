@@ -45,7 +45,7 @@
         ]
     },
     "cron": {
-        "enabled": false
+        "enabled": true
     },
     "discovery": {
         "mdns": {
@@ -54,5 +54,21 @@
         "wideArea": {
             "enabled": false
         }
+    },
+    "tools": {
+        "profile": "messaging",
+        "allow": [
+            "group:fs",
+            "group:sessions",
+            "group:memory",
+            "group:ui",
+            "cron",
+            "group:messaging",
+            "group:nodes"
+        ]
+        "deny": [
+            "group:runtime",
+            "gateway"
+        ]
     }
 }
