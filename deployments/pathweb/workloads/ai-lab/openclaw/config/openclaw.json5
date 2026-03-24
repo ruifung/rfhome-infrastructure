@@ -74,7 +74,7 @@
             "cron",
             "group:messaging",
             "group:nodes"
-        ]
+        ],
         "deny": [
             "group:runtime",
             "gateway"
