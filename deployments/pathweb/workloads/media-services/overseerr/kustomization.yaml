@@ -1,8 +1,7 @@
 ---
 images:
-- name: linuxserver/overseerr
-  newName: lscr.io/linuxserver/overseerr
-  newTag: version-v1.35.0
+- name: ghcr.io/seerr-team/seerr
+  newTag: v3.1.0
 labels:
 - pairs:
     "app.kubernetes.io/name": overseerr

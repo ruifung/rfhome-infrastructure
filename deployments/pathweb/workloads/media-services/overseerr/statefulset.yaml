@@ -17,33 +17,44 @@ spec:
       labels:
         app.kubernetes.io/name: overseerr
     spec:
+      runtimeClassName: "gvisor"
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        runAsNonRoot: true
       containers:
-      - name: overseerr
-        image: linuxserver/overseerr:latest
+      - name: seerr
+        image: ghcr.io/seerr-team/seerr:latest
         env:
-        - name: PUID
-          value: "1000"
-        - name: PGID
-          value: "1000"
         - name: TZ
           value: "Asia/Kuala_Lumpur"
+        - name: PORT
+          value: "5055"
+        - name: LOG_LEVEL
+          value: "debug"
         ports:
         - containerPort: 5055
           name: http
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+          readOnlyRootFilesystem: true
         startupProbe:
           httpGet:
-            path: /
+            path: /api/v1/status
             port: 5055
           periodSeconds: 3
           failureThreshold: 20
         livenessProbe:
           httpGet:
-            path: /
+            path: /api/v1/status
             port: 5055
           periodSeconds: 60
         volumeMounts:
         - name: config
-          mountPath: /config
+          mountPath: /app/config
         resources:
           requests:
             cpu: "100m"
