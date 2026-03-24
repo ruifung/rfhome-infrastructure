@@ -8,7 +8,8 @@
             "trustedProxy": {
                 "userHeader": "x-authentik-username",
                 "requiredHeaders": [
-                    "forwarded",
+                    "x-forwarded-host",
+                    "x-forwarded-proto",
                     "x-authentik-uid"
                 ]
             }
