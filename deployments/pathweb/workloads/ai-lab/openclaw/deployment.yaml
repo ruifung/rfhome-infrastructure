@@ -124,7 +124,7 @@ spec:
         image: docker:dind
         command: ["sh", "-c"]
         args:
-        - if [[ $(df -PT /var/lib/docker | awk 'NR==2 {print $2}') == virtiofs ]]; then truncate -s 20G /tmp/disk.img && mkfs.ext4 /tmp/disk.img && mount /tmp/disk.img /var/lib/docker; fi && dockerd-entrypoint.sh;
+        - whoami; if [[ $(df -PT /var/lib/docker | awk 'NR==2 {print $2}') == virtiofs ]]; then truncate -s 20G /tmp/disk.img && mkfs.ext4 /tmp/disk.img && mount /tmp/disk.img /var/lib/docker; fi && dockerd-entrypoint.sh;
         volumeMounts:
         - name: tmp-volume
           mountPath: /var/run
