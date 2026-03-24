@@ -78,11 +78,23 @@
             "group:ui",
             "cron",
             "group:messaging",
-            "group:nodes"
+            "group:nodes",
+            "exec"
         ],
         "deny": [
-            "group:runtime",
+            "process",
             "gateway"
-        ]
+        ],
+        "exec": {
+            "security": "allowlist",
+            "commands": [
+                "ls",
+                "find",
+                "tree",
+                "stat",
+                "file",
+                "grep"
+            ]
+        }
     }
 }

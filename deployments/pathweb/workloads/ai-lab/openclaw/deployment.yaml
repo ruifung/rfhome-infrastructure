@@ -18,7 +18,7 @@ spec:
         app: openclaw
     spec:
       automountServiceAccountToken: false
-      runtimeClassName: gvisor
+      runtimeClassName: kata
       securityContext:
         fsGroup: 1000
         seccompProfile:
