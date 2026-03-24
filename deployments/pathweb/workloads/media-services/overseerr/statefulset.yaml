@@ -41,17 +41,17 @@ spec:
           capabilities:
             drop: ["ALL"]
           readOnlyRootFilesystem: true
-        startupProbe:
-          httpGet:
-            path: /api/v1/status
-            port: 5055
-          periodSeconds: 3
-          failureThreshold: 20
-        livenessProbe:
-          httpGet:
-            path: /api/v1/status
-            port: 5055
-          periodSeconds: 60
+        # startupProbe:
+        #   httpGet:
+        #     path: /api/v1/status
+        #     port: 5055
+        #   periodSeconds: 3
+        #   failureThreshold: 20
+        # livenessProbe:
+        #   httpGet:
+        #     path: /api/v1/status
+        #     port: 5055
+        #   periodSeconds: 60
         volumeMounts:
         - name: config
           mountPath: /app/config
