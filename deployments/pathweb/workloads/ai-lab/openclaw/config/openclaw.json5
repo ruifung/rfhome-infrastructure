@@ -71,30 +71,8 @@
     },
     "tools": {
         "profile": "full",
-        "allow": [
-            "group:fs",
-            "group:sessions",
-            "group:memory",
-            "group:ui",
-            "cron",
-            "group:messaging",
-            "group:nodes",
-            "exec"
-        ],
         "deny": [
-            "process",
             "gateway"
         ],
-        "exec": {
-            "security": "allowlist",
-            "commands": [
-                "ls",
-                "find",
-                "tree",
-                "stat",
-                "file",
-                "grep"
-            ]
-        }
     }
 }
