@@ -108,6 +108,9 @@ spec:
           mountPath: /home/node/.openclaw
         - name: tmp-volume
           mountPath: /tmp
+        - name: tmp-volume
+          mountPath: /var/run
+          subPath: run
         securityContext:
           runAsNonRoot: true
           runAsUser: 1000
@@ -117,6 +120,15 @@ spec:
           capabilities:
             drop:
             - ALL
+      - name: docker
+        image: docker:dind
+        command: ["sh", "-c"]
+        args:
+        - if [[ $(df -PT /var/lib/docker | awk 'NR==2 {print $2}') == virtiofs ]]; then truncate -s 20G /tmp/disk.img && mkfs.ext4 /tmp/disk.img && mount /tmp/disk.img /var/lib/docker; fi && dockerd-entrypoint.sh;
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /var/run
+          subPath: run
       volumes:
       - name: openclaw-home
         persistentVolumeClaim:

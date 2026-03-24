@@ -20,3 +20,5 @@ commonLabels:
 images:
 - name: ghcr.io/openclaw/openclaw
   newTag: 2026.3.23-2-slim@sha256:401218539c1afffbc17a3287e150309aeb4aa9a198e50f9c729175360cb17342
+- name: docker
+  newTag: 29.3.0-dind
