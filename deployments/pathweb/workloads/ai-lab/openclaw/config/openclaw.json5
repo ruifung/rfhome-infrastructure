@@ -20,6 +20,9 @@
         ],
         "controlUi": {
             "enabled": true
+            "allowedOrigins": [
+                "https://openclaw.services.home.yrf.me"
+            ]
         }
     },
     "agents": {
