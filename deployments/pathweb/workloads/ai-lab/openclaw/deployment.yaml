@@ -129,6 +129,17 @@ spec:
         - name: tmp-volume
           mountPath: /var/run
           subPath: run
+        securityContext:
+          capabilities:
+            add:
+            - SYS_ADMIN
+            - NET_ADMIN
+            - MKNOD
+            - SETGID
+            - SETUID
+            - NET_RAW
+            drop:
+            - ALL
       volumes:
       - name: openclaw-home
         persistentVolumeClaim:
