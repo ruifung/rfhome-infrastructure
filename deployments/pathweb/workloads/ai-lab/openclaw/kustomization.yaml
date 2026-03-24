@@ -12,6 +12,7 @@ configMapGenerator:
 - name: openclaw-config
   files:
   - openclaw.json=config/openclaw.json5
+  - telegram-channel.json=config/telegram-channel.json5
   - AGENTS.md=config/AGENTS.md
 commonLabels:
   app.kubernetes.io/name: openclaw

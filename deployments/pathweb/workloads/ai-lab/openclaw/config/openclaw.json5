@@ -53,6 +53,11 @@
             }
         ]
     },
+    "channels": {
+        $include: [
+            "telegram-channel.json"
+        ]
+    },
     "cron": {
         "enabled": true
     },

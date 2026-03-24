@@ -31,7 +31,7 @@ spec:
         - sh
         - -c
         - |
-          cp /config/openclaw.json /home/node/.openclaw/openclaw.json
+          cp /config/*.json /home/node/.openclaw/
           mkdir -p /home/node/.openclaw/workspace
           cp /config/AGENTS.md /home/node/.openclaw/workspace/AGENTS.md
         securityContext:
