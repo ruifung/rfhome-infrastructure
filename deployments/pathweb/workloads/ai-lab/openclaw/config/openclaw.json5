@@ -33,10 +33,10 @@
                 "primary": "openrouter/google/gemini-3.1-pro-preview"
             },
             "compaction": {
-                "model": "openrouter/google/gemini-2.5-flash-lite-preview",
+                "model": "openrouter/google/gemini-2.5-flash-lite",
             },
             "heartbeat": {
-                "model": "openrouter/google/gemini-2.5-flash-lite-preview",
+                "model": "openrouter/google/gemini-2.5-flash-lite",
             },
             "subagents": {
                 "model": "openrouter/google/gemini-3.1-flash-image-preview",
