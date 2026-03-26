@@ -74,5 +74,14 @@
         "deny": [
             "gateway"
         ],
+    },
+    "sandbox": {
+        "mode": "ssh",
+        "ssh": {
+            "host": "openclaw-sandbox.ai-lab.svc.cluster.local",
+            "port": 2222,
+            "user": "openclaw",
+            "privateKey": "/etc/openclaw-ssh/ssh/id_ed25519"
+        }
     }
 }

@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: openclaw-sandbox-pvc
+  namespace: ai-lab
+  labels:
+    app: openclaw-sandbox
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: okinawa-hdd-nfs
+  resources:
+    requests:
+      storage: 20Gi

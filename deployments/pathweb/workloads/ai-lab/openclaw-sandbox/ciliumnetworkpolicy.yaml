@@ -1,0 +1,42 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: openclaw-sandbox-policy
+  namespace: ai-lab
+spec:
+  endpointSelector:
+    matchLabels:
+      app: openclaw-sandbox
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: openclaw
+    toPorts:
+    - ports:
+      - port: '2222'
+        protocol: TCP
+  egress:
+  - toCIDRSet:
+    - cidr: ::/0
+      except:
+      - fc00::/7
+    - cidr: 0.0.0.0/0
+      except:
+      - 10.0.0.0/8
+      - 192.168.0.0/16
+      - 172.16.0.0/12
+    toPorts:
+    - ports:
+      - port: "80"
+        protocol: TCP
+      - port: "443"
+        protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: kube-dns
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: ANY

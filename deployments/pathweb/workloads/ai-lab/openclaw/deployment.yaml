@@ -104,6 +104,9 @@ spec:
           periodSeconds: 10
           timeoutSeconds: 5
         volumeMounts:
+        - name: openclaw-ssh
+          mountPath: /etc/openclaw-ssh
+          readOnly: true
         - name: openclaw-home
           mountPath: /home/node/.openclaw
         - name: tmp-volume
@@ -118,6 +121,10 @@ spec:
             drop:
             - ALL
       volumes:
+      - name: openclaw-ssh
+        persistentVolumeClaim:
+          claimName: openclaw-sandbox-pvc
+          readOnly: true
       - name: openclaw-home
         persistentVolumeClaim:
           claimName: openclaw-home-pvc

@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: openclaw-sandbox
+  namespace: ai-lab
+spec:
+  selector:
+    app: openclaw-sandbox
+  ports:
+  - port: 2222
+    targetPort: 2222
+    protocol: TCP

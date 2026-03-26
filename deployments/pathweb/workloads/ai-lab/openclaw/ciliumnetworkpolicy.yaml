@@ -31,6 +31,13 @@ spec:
         http: [{}]
   - toEndpoints:
     - matchLabels:
+        app: openclaw-sandbox
+    toPorts:
+    - ports:
+      - port: "2222"
+        protocol: TCP
+  - toEndpoints:
+    - matchLabels:
         io.kubernetes.pod.namespace: kube-system
         k8s-app: kube-dns
     - matchLabels:

@@ -1,0 +1,68 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openclaw-sandbox
+  namespace: ai-lab
+  labels:
+    app: openclaw-sandbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openclaw-sandbox
+  template:
+    metadata:
+      labels:
+        app: openclaw-sandbox
+    spec:
+      runtimeClassName: kata
+      securityContext:
+        runAsNonRoot: false
+        fsGroup: 1000
+      initContainers:
+      - name: seed-rootfs
+        image: debian:stable-slim
+        command: ["/bin/bash", "/config-scripts/seed.sh"]
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+        volumeMounts:
+        - name: persist
+          mountPath: /mnt/persist
+        - name: config-scripts
+          mountPath: /config-scripts
+      containers:
+      - name: sshd
+        image: debian:stable-slim
+        # No extra capabilities needed! Fully Baseline compliant.
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+        command: ["/bin/bash", "/config-scripts/entrypoint.sh"]
+        ports:
+        - containerPort: 2222
+        volumeMounts:
+        - name: persist
+          mountPath: /persist
+        - name: config-scripts
+          mountPath: /config-scripts
+        - name: sshd-config
+          mountPath: /etc/ssh/sshd_config
+          subPath: sshd_config
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
+      volumes:
+      - name: persist
+        persistentVolumeClaim:
+          claimName: openclaw-sandbox-pvc
+      - name: config-scripts
+        configMap:
+          name: openclaw-sandbox-config
+          defaultMode: 0755
+      - name: sshd-config
+        configMap:
+          name: openclaw-sandbox-config
