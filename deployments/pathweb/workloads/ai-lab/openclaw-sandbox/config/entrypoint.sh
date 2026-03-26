@@ -1,66 +1,41 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 CHROOT_PATH="/persist/rootfs"
 PROOT="/persist/proot"
 
-# Install sshd if missing
-if ! command -v sshd >/dev/null; then
-    apt-get update
-    apt-get install -y openssh-server curl
-fi
+# Generate host keys inside the persistent rootfs if they don't exist
+$PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys ssh-keygen -A
 
-# Ensure host-side user exists for SSHD
-if ! getent group openclaw > /dev/null; then groupadd -g 1000 openclaw; fi
-if ! getent passwd openclaw > /dev/null; then
-    useradd -u 1000 -g 1000 -m -s /usr/local/bin/openclaw-shell openclaw
-fi
-
-# Manage runtime SSH key for authentication
+# Manage runtime SSH key for authentication (for the openclaw user)
+# We store these on the PVC so they can be shared with the main OpenClaw pod
 mkdir -p /persist/ssh
 if [ ! -f /persist/ssh/id_ed25519 ]; then
     echo "Generating new runtime SSH keypair..."
-    ssh-keygen -t ed25519 -f /persist/ssh/id_ed25519 -N ""
-    chown 1000:1000 /persist/ssh/id_ed25519 /persist/ssh/id_ed25519.pub
-    chmod 600 /persist/ssh/id_ed25519
-    chmod 644 /persist/ssh/id_ed25519.pub
+    # We use the host's ssh-keygen if available, or just use the one in the chroot
+    $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys ssh-keygen -t ed25519 -f /home/openclaw/.ssh/id_ed25519 -N ""
+    cp "$CHROOT_PATH/home/openclaw/.ssh/id_ed25519" /persist/ssh/id_ed25519
+    cp "$CHROOT_PATH/home/openclaw/.ssh/id_ed25519.pub" /persist/ssh/id_ed25519.pub
 fi
 
-# Configure authorized keys in the host container
-mkdir -p /home/openclaw/.ssh
-cat /persist/ssh/id_ed25519.pub > /home/openclaw/.ssh/authorized_keys
-chown -R 1000:1000 /home/openclaw/.ssh
-chmod 700 /home/openclaw/.ssh
-chmod 600 /home/openclaw/.ssh/authorized_keys
-
-# Also put them in the rootfs for consistency
+# Ensure authorized_keys is set up in the rootfs
 mkdir -p "$CHROOT_PATH/home/openclaw/.ssh"
 cat /persist/ssh/id_ed25519.pub > "$CHROOT_PATH/home/openclaw/.ssh/authorized_keys"
-chown -R 1000:1000 "$CHROOT_PATH/home/openclaw/.ssh"
-chmod 700 "$CHROOT_PATH/home/openclaw/.ssh"
-chmod 600 "$CHROOT_PATH/home/openclaw/.ssh/authorized_keys"
+$PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chown -R openclaw:openclaw /home/openclaw/.ssh
+$PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 700 /home/openclaw/.ssh
+$PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 600 /home/openclaw/.ssh/authorized_keys
 
-# Create the shell wrapper
-cat <<EOF > /usr/local/bin/openclaw-shell
+# Create the shell wrapper inside the rootfs
+# This ensures that even if ForceCommand wasn't used, the shell would still be sandboxed
+cat <<EOF > "$CHROOT_PATH/usr/local/bin/openclaw-shell"
 #!/bin/bash
-# Pass through commands or start an interactive shell using proot
-# We use -0 to simulate root inside the proot environment
-if [ -n "\$SSH_ORIGINAL_COMMAND" ]; then
-    exec $PROOT -0 -r $CHROOT_PATH -b /proc -b /dev -b /sys /bin/bash -c "\$SSH_ORIGINAL_COMMAND"
-else
-    exec $PROOT -0 -r $CHROOT_PATH -b /proc -b /dev -b /sys /bin/bash
-fi
+# When running inside the proot-wrapped sshd, we are already in the rootfs.
+# We just need to ensure the environment is correct.
+exec /bin/bash "\$@"
 EOF
-chmod +x /usr/local/bin/openclaw-shell
+chmod +x "$CHROOT_PATH/usr/local/bin/openclaw-shell"
 
-# Add to /etc/shells if not present
-if ! grep -q "/usr/local/bin/openclaw-shell" /etc/shells; then
-    echo "/usr/local/bin/openclaw-shell" >> /etc/shells
-fi
-
-# Generate host keys if they don't exist
-ssh-keygen -A
-
-# Run sshd
-mkdir -p /run/sshd
-echo "Starting sshd on port 2222..."
-exec /usr/sbin/sshd -D -e -p 2222
+# Run sshd via PRoot
+# We bind the host's /etc/ssh/sshd_config so we use our configured settings
+# We use -0 to fake root so sshd can start and handle logins
+echo "Starting sshd via PRoot on port 2222..."
+exec $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys -b /etc/ssh/sshd_config:/etc/ssh/sshd_config /usr/sbin/sshd -D -e -p 2222

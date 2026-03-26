@@ -18,12 +18,14 @@ spec:
     spec:
       runtimeClassName: kata
       securityContext:
-        runAsNonRoot: false
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
         fsGroup: 1000
       initContainers:
       - name: seed-rootfs
-        image: debian:stable-slim
-        command: ["/bin/bash", "/config-scripts/seed.sh"]
+        image: busybox:1.37
+        command: ["/bin/sh", "/config-scripts/seed.sh"]
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
