@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 TARGET="/mnt/persist/rootfs"
-PROOT_URL="https://github.com/proot-me/proot/releases/download/v5.4.0/proot-v5.4.0-x86_64-static"
+PROOT_URL="https://proot.gitlab.io/proot/bin/proot"
 # Using a minimal Debian rootfs tarball to avoid debootstrap privilege issues
-ROOTFS_URL="https://github.com/debuerreotype/docker-debian-artifacts/raw/refs/heads/dist-amd64/stable/slim/oci/blobs/rootfs.tar.gz"
+ROOTFS_URL="https://images.linuxcontainers.org/images/debian/trixie/amd64/default/20260326_05%3A24/rootfs.tar.xz"
 
 mkdir -p /mnt/persist/ssh
 
@@ -20,12 +20,12 @@ if [ ! -f "$TARGET/etc/debian_version" ]; then
     echo "Initializing new rootfs in $TARGET..."
     mkdir -p "$TARGET"
     echo "Downloading rootfs tarball..."
-    wget "$ROOTFS_URL" -O "/mnt/persist/rootfs.tar.gz"
+    wget "$ROOTFS_URL" -O "/mnt/persist/rootfs.tar.xz"
 
     echo "Extracting rootfs via PRoot..."
     # We use -0 to fake root ownership during extraction into the PVC
-    $PROOT -0 tar -xf /mnt/persist/rootfs.tar.gz -C "$TARGET"
-    rm /mnt/persist/rootfs.tar.gz
+    $PROOT -0 tar -xf /mnt/persist/rootfs.tar.xz -C "$TARGET"
+    rm /mnt/persist/rootfs.tar.xz
 
     echo "Configuring sandbox environment..."
     # Setup basic users and groups in chroot using proot
