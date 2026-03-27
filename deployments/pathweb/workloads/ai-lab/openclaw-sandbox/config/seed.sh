@@ -34,8 +34,8 @@ if [ ! -f "$TARGET/etc/debian_version" ]; then
 
     # Pre-install some useful tools into the rootfs
     echo "Updating and installing base tools (within PRoot)..."
-    $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys apt-get update
-    $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys apt-get install -y sudo bash-completion vim-nox curl wget git python3 openssh-server
+    $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys -b /etc/resolv.conf -b /etc/hosts apt-get update
+    $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys -b /etc/resolv.conf -b /etc/hosts apt-get install -y sudo bash-completion vim-nox curl wget git python3 openssh-server
 
     # Allow sudo without password for openclaw
     echo "openclaw ALL=(ALL) NOPASSWD:ALL" > "$TARGET/etc/sudoers.d/openclaw"

@@ -26,8 +26,19 @@ $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chown -R openclaw:openclaw 
 $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 700 /home/openclaw/.ssh
 $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 600 /home/openclaw/.ssh/authorized_keys
 
+# Check for sshd and install if missing
+if [ ! -f "$CHROOT_PATH/usr/sbin/sshd" ]; then
+    echo "sshd missing in rootfs. Attempting to install openssh-server..."
+    $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys -b /etc/resolv.conf -b /etc/hosts apt-get update
+    $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys -b /etc/resolv.conf -b /etc/hosts apt-get install -y openssh-server
+    if [ ! -f "$CHROOT_PATH/usr/sbin/sshd" ]; then
+        echo "Error: Failed to install openssh-server. /usr/sbin/sshd still missing."
+        exit 1
+    fi
+fi
+
 # Run sshd via PRoot
 # We bind the host's /etc/ssh/sshd_config so we use our configured settings
 # We use -0 to fake root so sshd can start and handle logins
 echo "Starting sshd via PRoot on port 2222..."
-exec $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys -b /etc/ssh/sshd_config:/etc/ssh/sshd_config /usr/sbin/sshd -D -e -p 2222
+exec $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys -b /etc/resolv.conf -b /etc/hosts -b /etc/ssh/sshd_config:/etc/ssh/sshd_config /usr/sbin/sshd -D -e -p 2222
