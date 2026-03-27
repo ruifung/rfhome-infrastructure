@@ -5,6 +5,9 @@ PROOT="/persist/proot"
 
 # Generate host keys inside the persistent rootfs if they don't exist
 $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys ssh-keygen -A
+# Ensure host keys have correct permissions (sshd is very strict about this)
+$PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 755 /etc/ssh || true
+$PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 600 /etc/ssh/ssh_host_rsa_key /etc/ssh/ssh_host_ecdsa_key /etc/ssh/ssh_host_ed25519_key || true
 
 # Manage runtime SSH key for authentication (for the openclaw user)
 # We store these on the PVC so they can be shared with the main OpenClaw pod
