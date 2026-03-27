@@ -18,14 +18,21 @@ if [ ! -f /persist/ssh/id_ed25519 ]; then
     mkdir -p "$CHROOT_PATH/home/openclaw/.ssh"
     # We use the host's ssh-keygen if available, or just use the one in the chroot
     $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys ssh-keygen -t ed25519 -f /home/openclaw/.ssh/id_ed25519 -N ""
+    # Ensure strict permissions on the generated private key
+    $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 600 /home/openclaw/.ssh/id_ed25519
     cp "$CHROOT_PATH/home/openclaw/.ssh/id_ed25519" /persist/ssh/id_ed25519
     cp "$CHROOT_PATH/home/openclaw/.ssh/id_ed25519.pub" /persist/ssh/id_ed25519.pub
+    # Ensure the copy on the shared PVC also has strict permissions and correct ownership for the OpenClaw pod
+    chown 1000:1000 /persist/ssh/id_ed25519 /persist/ssh/id_ed25519.pub
+    chmod 600 /persist/ssh/id_ed25519
+    chmod 644 /persist/ssh/id_ed25519.pub
 fi
 
 # Ensure authorized_keys is set up in the rootfs
 mkdir -p "$CHROOT_PATH/home/openclaw/.ssh"
 cat /persist/ssh/id_ed25519.pub > "$CHROOT_PATH/home/openclaw/.ssh/authorized_keys"
-$PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chown -R openclaw:openclaw /home/openclaw/.ssh
+$PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chown -R openclaw:openclaw /home/openclaw
+$PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 755 /home/openclaw
 $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 700 /home/openclaw/.ssh
 $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 600 /home/openclaw/.ssh/authorized_keys
 
