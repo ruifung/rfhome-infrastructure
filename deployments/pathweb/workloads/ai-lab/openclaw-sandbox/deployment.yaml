@@ -44,7 +44,7 @@ spec:
           allowPrivilegeEscalation: false
           capabilities:
             drop: ["ALL"]
-        command: ["/bin/bash", "/config-scripts/entrypoint.sh"]
+        command: ["/bin/sh", "/config-scripts/entrypoint.sh"]
         ports:
         - containerPort: 2222
         volumeMounts:
@@ -52,9 +52,6 @@ spec:
           mountPath: /persist
         - name: config-scripts
           mountPath: /config-scripts
-        - name: sshd-config
-          mountPath: /etc/ssh/sshd_config
-          subPath: sshd_config
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
@@ -66,6 +63,3 @@ spec:
         configMap:
           name: openclaw-sandbox-config
           defaultMode: 0755
-      - name: sshd-config
-        configMap:
-          name: openclaw-sandbox-config

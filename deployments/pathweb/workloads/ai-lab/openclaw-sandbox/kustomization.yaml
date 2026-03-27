@@ -11,7 +11,6 @@ configMapGenerator:
   files:
   - seed.sh=config/seed.sh
   - entrypoint.sh=config/entrypoint.sh
-  - sshd_config=config/sshd_config
 commonLabels:
   app.kubernetes.io/name: openclaw-sandbox
   app.kubernetes.io/instance: openclaw-sandbox
