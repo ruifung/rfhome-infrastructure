@@ -6,9 +6,9 @@ ROOTFS_URL="https://images.linuxcontainers.org/images/debian/trixie/amd64/defaul
 HASH_FILE="/mnt/persist/seed.hash"
 
 # Function to calculate current config hash
-# Includes the URLs and the basic setup commands to detect changes
+# Includes the script itself to detect changes in initialization logic
 calc_hash() {
-    echo "$PROOT_URL|$ROOTFS_URL" | sha256sum | cut -d' ' -f1
+    cat "$0" | sha256sum | cut -d' ' -f1
 }
 
 CURRENT_HASH=$(calc_hash)
