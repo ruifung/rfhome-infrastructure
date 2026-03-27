@@ -32,10 +32,8 @@ if [ ! -f "$TARGET/etc/debian_version" ]; then
     $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys groupadd -g 1000 openclaw || true
     $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys useradd -u 1000 -g 1000 -m -s /bin/bash openclaw || true
 
-    # Setup sshd privilege separation user
-    $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys useradd -r -d /run/sshd -s /usr/sbin/nologin sshd || true
-
     # Pre-install some useful tools into the rootfs
+
     echo "Updating and installing base tools (within PRoot)..."
     $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys -b /etc/resolv.conf -b /etc/hosts apt-get update
     $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys -b /etc/resolv.conf -b /etc/hosts apt-get install -y sudo bash-completion vim-nox curl wget git python3 openssh-server

@@ -18,3 +18,5 @@ ChallengeResponseAuthentication no
 
 # Note: sshd itself is executed inside PRoot, so all sessions
 # already run within the sandboxed rootfs.
+# Disable privilege separation because the real chroot syscall is blocked in Baseline.
+UsePrivilegeSeparation no
