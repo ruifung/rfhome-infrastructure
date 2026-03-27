@@ -53,6 +53,9 @@ if ! $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys id sshd >/dev/null 2>&
     $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys useradd -r -d /run/sshd -s /usr/sbin/nologin sshd || true
 fi
 
+# Ensure privilege separation directory exists
+$PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys mkdir -p /run/sshd
+
 # Run sshd via PRoot
 # We bind the host's /etc/ssh/sshd_config so we use our configured settings
 # We use -0 to fake root so sshd can start and handle logins
