@@ -41,10 +41,6 @@ if [ ! -f "$TARGET/etc/debian_version" ]; then
     # Allow sudo without password for openclaw
     echo "openclaw ALL=(ALL) NOPASSWD:ALL" > "$TARGET/etc/sudoers.d/openclaw"
     chmod 0440 "$TARGET/etc/sudoers.d/openclaw"
-
-    echo "Fixing ownership for non-root usage..."
-    chown -R 1000:1000 "$TARGET"
 else
     echo "Existing rootfs found in $TARGET. Skipping initialization."
-    chown -R 1000:1000 "$TARGET" || true
 fi
