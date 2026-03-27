@@ -53,8 +53,11 @@ if [ "$NEED_RESEED" = "true" ]; then
 
     # Pre-install base tools (switching to dropbear-bin for non-root compatibility)
     echo "Updating and installing base tools (within PRoot)..."
-    $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys -b /etc/resolv.conf -b /etc/hosts apt-get update
-    $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys -b /etc/resolv.conf -b /etc/hosts apt-get install -y sudo bash-completion vim-nox curl wget git python3 dropbear-bin
+    # Set DEBIAN_FRONTEND=noninteractive and bind dev/pts for robustness
+    $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys -b /dev/pts -b /etc/resolv.conf -b /etc/hosts \
+        env DEBIAN_FRONTEND=noninteractive apt-get update
+    $PROOT -0 -r "$TARGET" -b /proc -b /dev -b /sys -b /dev/pts -b /etc/resolv.conf -b /etc/hosts \
+        env DEBIAN_FRONTEND=noninteractive apt-get install -y sudo bash-completion vim-nox curl wget git python3 dropbear-bin
 
     # Allow sudo without password for openclaw
     echo "openclaw ALL=(ALL) NOPASSWD:ALL" > "$TARGET/etc/sudoers.d/openclaw"
