@@ -11,6 +11,8 @@ $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys ssh-keygen -A
 mkdir -p /persist/ssh
 if [ ! -f /persist/ssh/id_ed25519 ]; then
     echo "Generating new runtime SSH keypair..."
+    # Ensure the home/ssh directory exists inside the rootfs before keygen
+    mkdir -p "$CHROOT_PATH/home/openclaw/.ssh"
     # We use the host's ssh-keygen if available, or just use the one in the chroot
     $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys ssh-keygen -t ed25519 -f /home/openclaw/.ssh/id_ed25519 -N ""
     cp "$CHROOT_PATH/home/openclaw/.ssh/id_ed25519" /persist/ssh/id_ed25519
@@ -23,16 +25,6 @@ cat /persist/ssh/id_ed25519.pub > "$CHROOT_PATH/home/openclaw/.ssh/authorized_ke
 $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chown -R openclaw:openclaw /home/openclaw/.ssh
 $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 700 /home/openclaw/.ssh
 $PROOT -0 -r "$CHROOT_PATH" -b /proc -b /dev -b /sys chmod 600 /home/openclaw/.ssh/authorized_keys
-
-# Create the shell wrapper inside the rootfs
-# This ensures that even if ForceCommand wasn't used, the shell would still be sandboxed
-cat <<EOF > "$CHROOT_PATH/usr/local/bin/openclaw-shell"
-#!/bin/bash
-# When running inside the proot-wrapped sshd, we are already in the rootfs.
-# We just need to ensure the environment is correct.
-exec /bin/bash "\$@"
-EOF
-chmod +x "$CHROOT_PATH/usr/local/bin/openclaw-shell"
 
 # Run sshd via PRoot
 # We bind the host's /etc/ssh/sshd_config so we use our configured settings

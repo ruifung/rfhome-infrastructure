@@ -16,11 +16,5 @@ AuthorizedKeysFile .ssh/authorized_keys
 PasswordAuthentication no
 ChallengeResponseAuthentication no
 
-# Note: ChrootDirectory is not used here because it requires CAP_SYS_CHROOT
-# and doesn't support easy bind-mounts in Baseline.
-# We use PRoot in the user's shell instead.
-
-Match User openclaw
-    ForceCommand /usr/local/bin/openclaw-shell
-    AllowTcpForwarding yes
-    X11Forwarding no
+# Note: sshd itself is executed inside PRoot, so all sessions
+# already run within the sandboxed rootfs.
