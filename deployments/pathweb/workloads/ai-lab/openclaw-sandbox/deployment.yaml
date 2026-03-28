@@ -8,6 +8,8 @@ metadata:
     app: openclaw-sandbox
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: openclaw-sandbox
