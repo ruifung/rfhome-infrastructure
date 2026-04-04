@@ -10,12 +10,14 @@ import { nodeSpecificPatches } from './node-specific-patch'
 import { NodeDefinition } from '../types/NodeDefinition'
 import { ConfigPatch, ConfigPatchProvider } from '../types/ConfigPatch'
 import { coreDnsConfigPatch } from './coredns-custom'
+import { userspaceOomPatch } from './talos-oom'
 
 
 export function getNodePatches(node: NodeDefinition): Output<ConfigPatch>[] {
     const patchProviders: ConfigPatchProvider[] = [
         nodePatches,
         watchdogPatch,
+        userspaceOomPatch,
         containersSeccompPatch,
         coreDnsConfigPatch,
         nodeSpecificPatches
