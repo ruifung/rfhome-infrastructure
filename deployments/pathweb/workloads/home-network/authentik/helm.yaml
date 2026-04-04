@@ -157,9 +157,9 @@ spec:
       resources:
         requests:
           cpu: "200m"
-          memory: 900Mi
+          memory: 1Gi
         limits:
-          memory: 2Gi
+          memory: 4Gi
       ingress:
         enabled: true
         ingressClassName: traefik-traefik
