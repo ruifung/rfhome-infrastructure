@@ -24,7 +24,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: code-server
-        image: lscr.io/linuxserver/code-server:4.110.1
+        image: lscr.io/linuxserver/code-server:4.114.1
         securityContext:
           allowPrivilegeEscalation: false
         env:
