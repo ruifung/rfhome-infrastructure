@@ -32,6 +32,16 @@ spec:
         protocol: TCP
       rules:
         http: [{}]
+  - fromEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: music-assistant
+        io.kubernetes.pod.namespace: media-services
+    toPorts:
+    - ports:
+      - port: '8123'
+        protocol: TCP
+      rules:
+        http: [{}]
   egress:
   - toEntities:
     - world
