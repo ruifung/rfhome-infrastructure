@@ -30,7 +30,6 @@ spec:
                 operator: In
                 values: [baldric, voyager]
       automountServiceAccountToken: false
-      hostUsers: false
       securityContext:
         fsGroup: 1000
         seccompProfile:
