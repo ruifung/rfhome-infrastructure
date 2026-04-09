@@ -22,7 +22,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/ghcr/traefik/helm/traefik
   ref:
-    tag: 39.0.5
+    tag: 39.0.7
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
