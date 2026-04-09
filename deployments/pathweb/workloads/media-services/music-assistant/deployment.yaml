@@ -31,6 +31,8 @@ spec:
                 values: [baldric, voyager]
       automountServiceAccountToken: false
       securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
       initContainers:
@@ -111,3 +113,4 @@ spec:
       - name: media
         persistentVolumeClaim:
           claimName: okinawa-media-nfs
+          readOnly: true
