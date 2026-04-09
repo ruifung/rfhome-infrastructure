@@ -2,8 +2,8 @@
 apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
-  name: hass-iot-network
-  namespace: home-network
+  name: music-assistant-iot-network
+  namespace: media-services
 spec:
   config: |-
     {
@@ -15,16 +15,16 @@ spec:
           "ipam": {
             "type": "static",
             "addresses": [
-              {"address": "10.229.4.2/24", "gateway": "10.229.4.1"},
-              {"address": "fd96:619:803e:3700::2/64", "gateway": "fd96:619:803e:3700::1"}
+              {"address": "10.229.4.3/24", "gateway": "10.229.4.1"},
+              {"address": "fd96:619:803e:3700::3/64", "gateway": "fd96:619:803e:3700::1"}
             ]
           }
         },
         {
           "type": "tuning",
           "sysctl": {
-            "net.ipv6.conf.IFNAME.accept_ra": "1",
-            "net.ipv6.conf.IFNAME.autoconf": "1"
+            "net.ipv6.conf.IFNAME.accept_ra": "0",
+            "net.ipv6.conf.IFNAME.autoconf": "0"
           }
         }
       ]

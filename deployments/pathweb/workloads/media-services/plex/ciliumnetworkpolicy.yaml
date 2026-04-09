@@ -22,6 +22,7 @@ spec:
         - tautulli
         - overseerr
         - maintainerr
+        - music-assistant
     toPorts:
     - ports:
       - port: "32400"

@@ -83,3 +83,11 @@ spec:
         app.kubernetes.io/name: wyoming-openwakeword
     - matchLabels:
         app.kubernetes.io/name: esphome
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: music-assistant
+        io.kubernetes.pod.namespace: media-services
+    toPorts:
+    - ports:
+      - port: '8095'
+        protocol: TCP

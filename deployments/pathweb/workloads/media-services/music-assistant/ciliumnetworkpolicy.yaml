@@ -1,0 +1,61 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: music-assistant-policy
+  namespace: media-services
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: music-assistant
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: traefik
+    - matchLabels:
+        app.kubernetes.io/name: home-assistant
+        io.kubernetes.pod.namespace: home-network
+    toPorts:
+    - ports:
+      - port: '8095'
+        protocol: TCP
+  egress:
+  - toCIDRSet:
+    - cidr: ::/0
+      except:
+      - fc00::/7
+    - cidr: 0.0.0.0/0
+      except:
+      - 10.0.0.0/8
+      - 192.168.0.0/16
+      - 172.16.0.0/12
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: plex
+        io.kubernetes.pod.namespace: media-services
+    toPorts:
+    - ports:
+      - port: '32400'
+        protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: kube-dns
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: node-local-dns
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: ANY
+      rules:
+        dns:
+        - matchPattern: "*"
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: home-assistant
+        io.kubernetes.pod.namespace: home-network
+    toPorts:
+    - ports:
+      - port: '8123'
+        protocol: TCP
