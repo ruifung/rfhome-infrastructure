@@ -12,8 +12,8 @@ spec:
   - fromEndpoints:
     - fromEntities:
       - ingress
-    - matchLabels:
-        io.kubernetes.pod.namespace: traefik
+    # - matchLabels:
+    #     io.kubernetes.pod.namespace: traefik
     - matchExpressions:
       - key: app.kubernetes.io/name
         operator: In
