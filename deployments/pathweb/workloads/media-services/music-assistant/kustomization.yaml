@@ -4,6 +4,8 @@ kind: Kustomization
 images:
 - name: ghcr.io/music-assistant/server
   newTag: 2.8.2
+- name: mikefarah/yq
+  newTag: 4.52.5
 resources:
 - deployment.yaml
 - persistentvolumeclaim.yaml

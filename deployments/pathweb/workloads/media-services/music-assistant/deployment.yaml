@@ -34,6 +34,40 @@ spec:
         fsGroup: 1000
         seccompProfile:
           type: RuntimeDefault
+      initContainers:
+      - name: update-settings
+        image: mikefarah/yq:4
+        command:
+        - sh
+        - -c
+        - |
+          if [ -f /data/settings.json ]; then
+            yq -i -o json '.core.webserver.values.bind_ip = env(POD_IP)' /data/settings.json
+          fi
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        volumeMounts:
+        - name: mass-data
+          mountPath: /data
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
+        resources:
+          requests:
+            cpu: 10m
+            memory: 32Mi
+          limits:
+            cpu: 100m
+            memory: 64Mi
       containers:
       - name: music-assistant
         image: ghcr.io/music-assistant/server:latest
