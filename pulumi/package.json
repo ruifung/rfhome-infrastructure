@@ -3,11 +3,11 @@
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^24.0.0",
-        "typescript": "^5.0.0"
+        "typescript": "^6.0.0"
     },
     "dependencies": {
         "@ediri/vultr": "^2.27.1",
-        "@muhlba91/pulumi-proxmoxve": "^7.7.0",
+        "@muhlba91/pulumi-proxmoxve": "^8.0.0",
         "@pulumi/authentik": "file:sdks\\authentik",
         "@pulumi/aws": "^7.10.0",
         "@pulumi/cloudflare": "^6.10.1",
