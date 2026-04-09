@@ -55,6 +55,8 @@ spec:
           mountPath: /data
         securityContext:
           allowPrivilegeEscalation: false
+          runAsUser: 0
+          runAsGroup: 0
           capabilities:
             drop:
             - ALL
