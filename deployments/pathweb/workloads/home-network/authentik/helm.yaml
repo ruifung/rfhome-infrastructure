@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/ghcr/goauthentik/helm-charts/authentik
   ref:
-    tag: 2026.2.1
+    tag: 2026.2.2
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
