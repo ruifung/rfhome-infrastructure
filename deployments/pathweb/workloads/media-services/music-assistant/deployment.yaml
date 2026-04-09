@@ -31,14 +31,13 @@ spec:
                 values: [baldric, voyager]
       automountServiceAccountToken: false
       securityContext:
-        fsGroup: 1000
         seccompProfile:
           type: RuntimeDefault
       initContainers:
       - name: update-settings
         image: mikefarah/yq:4
-        command:
-        - sh
+        command: ["sh"]
+        args:
         - -c
         - |
           if [ -f /data/settings.json ]; then
@@ -57,7 +56,7 @@ spec:
           capabilities:
             drop:
             - ALL
-          readOnlyRootFilesystem: true
+          readOnlyRootFilesystem: false
           runAsNonRoot: true
           runAsUser: 1000
           runAsGroup: 1000
