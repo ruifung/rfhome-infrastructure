@@ -1,6 +1,6 @@
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: music-assistant
   namespace: media-services
@@ -8,7 +8,8 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: music-assistant
-  serviceName: music-assistant
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -55,7 +56,6 @@ spec:
         volumeMounts:
         - name: mass-data
           mountPath: /data
-          subPath: music-assistant
         - name: media
           mountPath: /mnt/media/Music
           subPath: Music
@@ -79,7 +79,7 @@ spec:
       volumes:
       - name: mass-data
         persistentVolumeClaim:
-          claimName: home-assistant-data
+          claimName: music-assistant-data
       - name: media
         persistentVolumeClaim:
           claimName: okinawa-media-nfs

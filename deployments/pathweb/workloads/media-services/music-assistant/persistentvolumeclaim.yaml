@@ -1,0 +1,15 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: music-assistant-data
+  namespace: media-services
+  labels:
+    home.yrf.me/backup-to-okinawa-s3: "true"
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 16Gi
+  storageClassName: okinawa-nfs
