@@ -10,6 +10,8 @@ spec:
       app.kubernetes.io/name: home-assistant
   ingress:
   - fromEndpoints:
+    - fromEntities:
+      - ingress
     - matchLabels:
         io.kubernetes.pod.namespace: traefik
     - matchExpressions:
