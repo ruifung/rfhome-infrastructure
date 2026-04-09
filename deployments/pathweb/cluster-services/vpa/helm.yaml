@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/charts.fairwinds.com/stable/vpa
   ref:
-    tag: 4.10.2
+    tag: 4.11.0
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
