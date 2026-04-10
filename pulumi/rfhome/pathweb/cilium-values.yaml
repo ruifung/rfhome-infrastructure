@@ -17,10 +17,10 @@ clustermesh:
       type: NodePort
     tls:
       auto:
-        enabled: true
+        enabled: false
         method: cronJob
         schedule: 0 0 1 */4 *
-  useAPIServer: true
+  useAPIServer: false
 hubble:
   enabled: true
   relay:
