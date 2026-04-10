@@ -17,7 +17,7 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: '[{"name":"music-assistant-iot-network"}]'
     spec:
-      priorityClassName: rfhome-home-critical
+      priorityClassName: rfhome-standard
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
