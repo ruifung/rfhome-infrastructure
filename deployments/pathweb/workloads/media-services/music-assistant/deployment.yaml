@@ -15,7 +15,7 @@ spec:
       labels:
         app.kubernetes.io/name: music-assistant
       annotations:
-        k8s.v1.cni.cncf.io/networks: '[{"name":"music-assistant-iot-network"}]'
+        k8s.v1.cni.cncf.io/networks: '[{"name":"music-assistant-iot-network"},{"name":"music-assistant-homelan-network"}]'
     spec:
       priorityClassName: rfhome-standard
       nodeSelector:
