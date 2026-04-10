@@ -19,6 +19,17 @@ spec:
     name: streaming
     protocol: TCP
     appProtocol: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: music-assistant-sendspin
+  namespace: media-services
+spec:
+  selector:
+    app.kubernetes.io/name: music-assistant
+  type: LoadBalancer
+  ports:
   - port: 8927
     targetPort: 8927
     name: sendspin

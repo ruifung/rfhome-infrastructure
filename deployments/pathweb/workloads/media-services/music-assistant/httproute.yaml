@@ -23,10 +23,3 @@ spec:
     backendRefs:
     - name: music-assistant
       port: 8095
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /sendspin
-    backendRefs:
-    - name: music-assistant
-      port: 8927

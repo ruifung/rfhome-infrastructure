@@ -15,8 +15,6 @@ spec:
     - ports:
       - port: '8095'
         protocol: TCP
-      - port: '8927'
-        protocol: TCP
   - fromEndpoints:
     - matchLabels:
         app.kubernetes.io/name: music-assistant
@@ -29,6 +27,10 @@ spec:
     - ports:
       - port: '8095'
         protocol: TCP
+  - fromEntities:
+    - world
+    toPorts:
+    - ports:
       - port: '8927'
         protocol: TCP
   egress:
