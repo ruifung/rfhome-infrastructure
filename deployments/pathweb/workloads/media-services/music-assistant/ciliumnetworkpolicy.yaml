@@ -67,9 +67,10 @@ spec:
     - ports:
       - port: '8123'
         protocol: TCP
-  - toFQDNs:
-    - matchName: "hass.services.home.yrf.me"
-    - matchName: "music-assistant.services.home.yrf.me"
+  - toServices:
+    - k8sService:
+        serviceName: cilium-gateway-rfhome-services-cilium
+        namespace: home-network
     toPorts:
     - ports:
       - port: '443'
