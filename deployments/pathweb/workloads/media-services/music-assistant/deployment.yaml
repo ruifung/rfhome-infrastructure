@@ -94,8 +94,8 @@ spec:
           readOnly: true
         resources:
           requests:
-            cpu: 100m
-            memory: 512Mi
+            cpu: 200m
+            memory: 1Gi
           limits:
             memory: 2Gi
         livenessProbe:
@@ -134,10 +134,10 @@ spec:
           periodSeconds: 10
         resources:
           requests:
-            cpu: 100m
-            memory: 256Mi
+            cpu: 1m
+            memory: 100Mi
           limits:
-            memory: 512Mi
+            memory: 256Mi
       volumes:
       - name: mass-data
         persistentVolumeClaim:
