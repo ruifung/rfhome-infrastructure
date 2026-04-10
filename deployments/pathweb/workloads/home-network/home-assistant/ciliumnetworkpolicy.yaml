@@ -18,8 +18,8 @@ spec:
       rules:
         http: [{}]
   - fromEndpoints:
-    # - matchLabels:
-    #     io.kubernetes.pod.namespace: traefik
+    - matchLabels:
+        io.kubernetes.pod.namespace: traefik
     - matchExpressions:
       - key: app.kubernetes.io/name
         operator: In
