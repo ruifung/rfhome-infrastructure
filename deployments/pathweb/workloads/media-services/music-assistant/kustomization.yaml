@@ -7,7 +7,7 @@ images:
 - name: mikefarah/yq
   newTag: 4.52.5@sha256:603ebff15eb308a05f1c5b8b7613179cad859aed3ec9fdd04f2ef5d32345950e
 - name: brainicism/bgutil-ytdlp-pot-provider
-  newTag: 1.2.1@sha256:7064546d70a58680aec236b50859c4fca065092d7ed462c85ea5d897b003095e
+  newTag: 1.3.1@sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b
 resources:
 - deployment.yaml
 - persistentvolumeclaim.yaml
