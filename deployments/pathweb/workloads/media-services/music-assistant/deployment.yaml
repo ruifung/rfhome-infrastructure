@@ -108,6 +108,37 @@ spec:
             port: 8095
           initialDelaySeconds: 5
           periodSeconds: 10
+      - name: yt-pot-provider
+        # Note: Music Assistant requires 1.2.1, check https://www.music-assistant.io/music-providers/youtube-music/#installing-the-po-token-addon before updating.
+        image: bgutil-ytdlp-pot-provider/server:1.2.1-deno
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsUser: 1000
+          runAsGroup: 1000
+          runAsNonRoot: true
+        ports:
+        - containerPort: 4416
+          name: http
+          protocol: TCP
+        livenessProbe:
+          tcpSocket:
+            port: 4416
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          tcpSocket:
+            port: 4416
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            memory: 512Mi
       volumes:
       - name: mass-data
         persistentVolumeClaim:
