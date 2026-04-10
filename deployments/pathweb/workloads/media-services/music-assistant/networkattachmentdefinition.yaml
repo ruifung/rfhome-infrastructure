@@ -15,39 +15,8 @@ spec:
           "ipam": {
             "type": "static",
             "addresses": [
-              {"address": "10.229.4.3/24"},
-              {"address": "fd96:619:803e:3700::3/64"}
-            ]
-          }
-        },
-        {
-          "type": "tuning",
-          "sysctl": {
-            "net.ipv6.conf.IFNAME.accept_ra": "0",
-            "net.ipv6.conf.IFNAME.autoconf": "0"
-          }
-        }
-      ]
-    }
----
-apiVersion: "k8s.cni.cncf.io/v1"
-kind: NetworkAttachmentDefinition
-metadata:
-  name: music-assistant-homelan-network
-  namespace: media-services
-spec:
-  config: |-
-    {
-      "cniVersion": "0.3.1",
-      "plugins": [
-        {
-          "type": "bridge",
-          "bridge": "homelan",
-          "ipam": {
-            "type": "static",
-            "addresses": [
-              {"address": "10.229.2.3/24"},
-              {"address": "fd96:619:803e:e500::3/64"}
+              {"address": "10.229.4.3/24", "gateway": "10.229.4.1"},
+              {"address": "fd96:619:803e:3700::3/64", "gateway": "fd96:619:803e:3700::1"}
             ]
           }
         },

@@ -15,7 +15,7 @@ spec:
       labels:
         app.kubernetes.io/name: music-assistant
       annotations:
-        k8s.v1.cni.cncf.io/networks: '[{"name":"music-assistant-iot-network"},{"name":"music-assistant-homelan-network"}]'
+        k8s.v1.cni.cncf.io/networks: '[{"name":"music-assistant-iot-network"}]'
     spec:
       priorityClassName: rfhome-standard
       nodeSelector:
@@ -84,6 +84,9 @@ spec:
           protocol: TCP
         - containerPort: 8097
           name: streaming
+          protocol: TCP
+        - containerPort: 8927
+          name: sendspin
           protocol: TCP
         volumeMounts:
         - name: mass-data

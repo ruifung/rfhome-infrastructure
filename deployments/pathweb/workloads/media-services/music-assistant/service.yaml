@@ -19,3 +19,8 @@ spec:
     name: streaming
     protocol: TCP
     appProtocol: http
+  - port: 8927
+    targetPort: 8927
+    name: sendspin
+    protocol: TCP
+    appProtocol: kubernetes.io/ws
