@@ -109,8 +109,7 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 10
       - name: yt-pot-provider
-        # Note: Music Assistant requires 1.2.1, check https://www.music-assistant.io/music-providers/youtube-music/#installing-the-po-token-addon before updating.
-        image: bgutil-ytdlp-pot-provider/server:1.2.1-deno
+        image: brainicism/bgutil-ytdlp-pot-provider:latest
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
