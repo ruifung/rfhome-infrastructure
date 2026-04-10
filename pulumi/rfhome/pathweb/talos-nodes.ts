@@ -114,6 +114,6 @@ export const workerBaldric2: NodeDefinition = {
 
 export const controlplaneNodes = [control1, control2, control3]
 export const workerNodes = [
-    worker1, worker2, worker3, workerBaldric, workerBaldric2
+    worker1, worker2, worker3, workerBaldric
 ]
 export const clusterNodes = [...controlplaneNodes, ...workerNodes]

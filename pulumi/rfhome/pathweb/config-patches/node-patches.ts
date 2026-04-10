@@ -61,7 +61,7 @@ const nodeMachineconfigPatch: ConfigPatch = {
         features: {
             hostDNS: {
                 enabled: true,
-                forwardKubeDNSToHost: false
+                forwardKubeDNSToHost: true
             },
             kubePrism: {
                 enabled: true,
