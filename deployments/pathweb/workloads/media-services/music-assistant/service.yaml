@@ -4,6 +4,8 @@ kind: Service
 metadata:
   name: music-assistant
   namespace: media-services
+  labels:
+    app.kubernetes.io/name: music-assistant
 spec:
   selector:
     app.kubernetes.io/name: music-assistant
@@ -25,6 +27,12 @@ kind: Service
 metadata:
   name: music-assistant-sendspin
   namespace: media-services
+  labels:
+    app.kubernetes.io/name: music-assistant
+    external-dns: local-pdns
+    lb-location: rfhome
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: mass-sendspin.services.home.yrf.me
 spec:
   selector:
     app.kubernetes.io/name: music-assistant
