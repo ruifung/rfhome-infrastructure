@@ -14,7 +14,10 @@ export const workerPatches: ConfigPatchProvider = () => [
     v1alpha1Config('BridgeConfig', { name: 'iot', links: ['eth1'] }),
     // Storage VLAN for worker nodes
     v1alpha1Config('LinkConfig', { name: 'eth2', up: true }),
-    v1alpha1Config('DHCPv4Config', { name: 'eth2', clientIdentifier: 'mac' })
+    v1alpha1Config('DHCPv4Config', { name: 'eth2', clientIdentifier: 'mac' }),
+    // LAN VLAN and associated bridge for attaching to using Multus CNI.
+    v1alpha1Config('LinkConfig', { name: 'eth3', up: true }),
+    v1alpha1Config('BridgeConfig', { name: 'homelan', links: ['eth3'] })
 ]
 
 const workerMachineconfigPatch: ConfigPatch = {
