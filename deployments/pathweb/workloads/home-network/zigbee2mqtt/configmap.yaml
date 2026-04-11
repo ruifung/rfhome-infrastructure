@@ -5,6 +5,7 @@ metadata:
   name: z2m-config
 data:
   SERIAL_ADAPTER: ember
+  SERIAL_PORT: /dev/ttyS1
   MQTT_BASE_TOPIC: z2m-sonoff-zb01
   MQTT_CLIENT_ID: z2m-sonoff-zb01
   MQTT_KEEPALIVE: "60"

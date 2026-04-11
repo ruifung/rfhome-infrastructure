@@ -36,9 +36,9 @@ spec:
           mountPath: /app/data
         resources:
           requests:
-            squat.ai/serial: '1'
+            squat.ai/serial-tty-s1: '1'
           limits:
-            squat.ai/serial: '1'
+            squat.ai/serial-tty-s1: '1'
       livenessProbe:
         failureThreshold: 30
         httpGet:

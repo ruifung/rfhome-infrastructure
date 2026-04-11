@@ -56,14 +56,23 @@ spec:
             - path: /dev/dri/render*
         - --device
         - |
-          name: serial
+          name: serial-tty-s1
           groups:
           - count: 1
             paths:
-            - path: /dev/ttyS*
+            - path: /dev/ttyS1
+        - |
+          name: serial-tty-s2
+          groups:
           - count: 1
             paths:
-            - path: /dev/ttyUSB*
+            - path: /dev/ttyS2
+        - |
+          name: serial-tty-s3
+          groups:
+          - count: 1
+            paths:
+            - path: /dev/ttyS3
         name: generic-device-plugin
         resources:
           requests:
