@@ -61,6 +61,8 @@ spec:
           - count: 10
             paths:
             - path: /dev/ttyS*
+          - count: 10
+            paths:
             - path: /dev/ttyUSB*
         name: generic-device-plugin
         resources:
