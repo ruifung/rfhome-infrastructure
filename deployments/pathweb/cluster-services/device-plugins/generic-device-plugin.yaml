@@ -56,11 +56,11 @@ spec:
             - path: /dev/dri/render*
         - --device
         - |
-          name: sonoff-zigbee-e
+          name: serial-tty-s1
           groups:
           - count: 1
             paths:
-            - path: /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_*
+            - path: /dev/ttyS1
         name: generic-device-plugin
         resources:
           requests:
