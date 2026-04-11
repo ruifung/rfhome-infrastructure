@@ -14,6 +14,7 @@ spec:
       priorityClassName: rfhome-home-critical
       nodeSelector:
         location: rfhome
+        kubernetes.io/hostname: pathweb-worker-1 # The node where the Zigbee adapter is attached to
       containers:
       - name: zigbee2mqtt
         image: koenkk/zigbee2mqtt:latest
@@ -35,9 +36,9 @@ spec:
           mountPath: /app/data
         resources:
           requests:
-            squat.ai/serial-tty-s1: '1'
+            squat.ai/serial: '1'
           limits:
-            squat.ai/serial-tty-s1: '1'
+            squat.ai/serial: '1'
       livenessProbe:
         failureThreshold: 30
         httpGet:
