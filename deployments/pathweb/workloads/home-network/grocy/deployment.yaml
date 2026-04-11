@@ -19,7 +19,10 @@ spec:
         preset-egress-policy: internet-only
     spec:
       restartPolicy: Always
-      runtimeClassName: gvisor
+      # runtimeClassName: gvisor
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
       containers:
       - image: linuxserver/grocy:latest
         imagePullPolicy: IfNotPresent
