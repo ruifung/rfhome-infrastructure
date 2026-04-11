@@ -31,6 +31,10 @@ spec:
     - world
     toPorts:
     - ports:
+      - port: '8095'
+        protocol: TCP
+      - port: '8097'
+        protocol: TCP
       - port: '8927'
         protocol: TCP
   egress:
