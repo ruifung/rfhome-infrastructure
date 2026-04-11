@@ -9,7 +9,7 @@ metadata:
     external-dns: local-pdns
     lb-location: rfhome
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: mass-sendspin.services.home.yrf.me
+    external-dns.alpha.kubernetes.io/hostname: mass.services.home.yrf.me
 spec:
   selector:
     app.kubernetes.io/name: music-assistant
