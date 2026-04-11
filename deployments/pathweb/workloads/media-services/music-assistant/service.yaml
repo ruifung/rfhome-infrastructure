@@ -6,10 +6,14 @@ metadata:
   namespace: media-services
   labels:
     app.kubernetes.io/name: music-assistant
+    external-dns: local-pdns
+    lb-location: rfhome
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: mass-sendspin.services.home.yrf.me
 spec:
   selector:
     app.kubernetes.io/name: music-assistant
-  clusterIP: None
+  type: LoadBalancer
   ports:
   - port: 8095
     targetPort: 8095
@@ -21,23 +25,6 @@ spec:
     name: streaming
     protocol: TCP
     appProtocol: http
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: music-assistant-sendspin
-  namespace: media-services
-  labels:
-    app.kubernetes.io/name: music-assistant
-    external-dns: local-pdns
-    lb-location: rfhome
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: mass-sendspin.services.home.yrf.me
-spec:
-  selector:
-    app.kubernetes.io/name: music-assistant
-  type: LoadBalancer
-  ports:
   - port: 8927
     targetPort: 8927
     name: sendspin
