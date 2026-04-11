@@ -58,10 +58,10 @@ spec:
         - |
           name: serial
           groups:
-          - count: 10
+          - count: 1
             paths:
             - path: /dev/ttyS*
-          - count: 10
+          - count: 1
             paths:
             - path: /dev/ttyUSB*
         name: generic-device-plugin
