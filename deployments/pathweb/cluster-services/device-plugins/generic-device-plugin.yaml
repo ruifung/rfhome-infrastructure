@@ -61,12 +61,14 @@ spec:
           - count: 1
             paths:
             - path: /dev/ttyS1
+        - --device
         - |
           name: serial-tty-s2
           groups:
           - count: 1
             paths:
             - path: /dev/ttyS2
+        - --device
         - |
           name: serial-tty-s3
           groups:
