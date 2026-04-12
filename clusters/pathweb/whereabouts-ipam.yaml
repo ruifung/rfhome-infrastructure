@@ -34,4 +34,3 @@ spec:
     priorityClassName: system-cluster-critical
     nodeSliceController:
       enabled: true
-      priorityClassName: system-cluster-critical
