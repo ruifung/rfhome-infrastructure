@@ -3,6 +3,22 @@
 # Start Home Assistant service with venv
 # ==============================================================================
 
+# Wait for leader locker to signal start
+while [ ! -f /signal/is_leader ]; do
+  bashio::log.info "Waiting for leader lock..."
+  sleep 2
+done
+
+# Start leader lock monitor in background.
+# If lock is lost, it will hard-kill HASS, causing s6-overlay to halt the container.
+(
+  while [ -f /signal/is_leader ]; do
+    sleep 2
+  done
+  bashio::log.fatal "Leader lock lost! Hard-killing Home Assistant."
+  s6-svc -k /run/service/home-assistant
+) &
+
 # Compute VENV path from installed package list hash and architecture
 pyenv_hash=$(uv pip list | sha256sum | cut -d " " -f 1 )
 arch=$(uname -m)

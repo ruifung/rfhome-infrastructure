@@ -1,15 +1,15 @@
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: home-assistant
   annotations:
     kustomize.toolkit.fluxcd.io/force: enabled
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: home-assistant
-  serviceName: home-assistant
   template:
     metadata:
       labels:
@@ -18,7 +18,6 @@ spec:
         k8s.v1.cni.cncf.io/networks: '[{"name":"hass-iot-network"}]'
     spec:
       priorityClassName: rfhome-home-critical
-      # runtimeClassName: gvisor
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
@@ -30,16 +29,56 @@ spec:
               - key: node-group
                 operator: In
                 values: [baldric, voyager]
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: home-assistant
+              topologyKey: "kubernetes.io/hostname"
       automountServiceAccountToken: false
       hostUsers: false
       securityContext:
         fsGroup: 1000
         seccompProfile:
           type: RuntimeDefault
-          # sysctls:
-          # - name: net.ipv4.ping_group_range
-          #   value: "0 2147483647"
+      initContainers:
+      - name: leader-locker
+        image: alpine:latest
+        restartPolicy: Always
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        command: ["/usr/local/bin/leader-locker.sh"]
+        volumeMounts:
+        - name: hass-data
+          mountPath: /config
+        - name: leader-signal
+          mountPath: /signal
+        - name: homeassistant-docker-venv
+          mountPath: /usr/local/bin/leader-locker.sh
+          subPath: leader-locker.sh
       containers:
+      - name: matter-server
+        image: ghcr.io/home-assistant-libs/python-matter-server:stable
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        command: ["/usr/local/bin/matter-server.sh"]
+        volumeMounts:
+        - name: hass-data
+          mountPath: /data
+          subPath: matter-server
+        - name: leader-signal
+          mountPath: /signal
+        - name: homeassistant-docker-venv
+          mountPath: /usr/local/bin/matter-server.sh
+          subPath: matter-server.sh
       - name: home-assistant
         image: homeassistant/home-assistant:stable
         securityContext:
@@ -75,6 +114,8 @@ spec:
         - name: homeassistant-docker-venv
           mountPath: /etc/services.d/home-assistant/run
           subPath: venv-run
+        - name: leader-signal
+          mountPath: /signal
         resources:
           requests:
             cpu: 200m
@@ -84,58 +125,18 @@ spec:
         livenessProbe:
           failureThreshold: 30
           periodSeconds: 10
-          httpGet:
-            port: 8123
-            path: /
-            scheme: HTTP
+          exec:
+            command: ["/bin/sh", "-c", "if [ -f /signal/is_leader ]; then curl -f http://localhost:8123/; else exit 0; fi"]
         readinessProbe:
           failureThreshold: 30
           periodSeconds: 10
-          httpGet:
-            port: 8123
-            path: /
-            scheme: HTTP
+          exec:
+            command: ["/bin/sh", "-c", "[ -f /signal/is_leader ] && curl -f http://localhost:8123/"]
         startupProbe:
           failureThreshold: 30
           periodSeconds: 10
-          httpGet:
-            port: 8123
-            path: /
-            scheme: HTTP
-      initContainers:
-      - name: matter-server
-        image: ghcr.io/home-assistant-libs/python-matter-server:stable
-        restartPolicy: Always
-        args:
-        - "--storage-path"
-        - "/data"
-        - "--paa-root-cert-dir"
-        - "/data/credentials"
-        - "--primary-interface"
-        - "net1"
-        - "--listen-address"
-        - "127.0.0.1"
-        - "--fabricid"
-        - "2"
-        - "--vendorid"
-        - "4939"
-        volumeMounts:
-        - name: hass-data
-          mountPath: /data
-          subPath: matter-server
-      # - name: backup-sync
-      #   image: minio/mc:latest
-      #   restartPolicy: Always
-      #   imagePullPolicy: Always
-      #   command: ["/bin/sh"]
-      #   args: ["-c", "while true; do mc alias set okinawa-vgw $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY && mc mirror --remove --watch /config/backups okinawa-vgw/rfhome-hass-backup; sleep 5; done"]
-      #   envFrom:
-      #   - secretRef:
-      #       name: home-assistant-backup-credentials
-      #   volumeMounts:
-      #   - name: hass-data
-      #     mountPath: /config/backups
-      #     subPath: backups
+          exec:
+            command: ["/bin/sh", "-c", "if [ -f /signal/is_leader ]; then curl -f http://localhost:8123/; else exit 0; fi"]
       volumes:
       - name: hass-data
         persistentVolumeClaim:
@@ -144,3 +145,7 @@ spec:
         configMap:
           name: homeassistant-docker-venv
           defaultMode: 0755
+      - name: leader-signal
+        emptyDir:
+          medium: Memory
+          sizeLimit: 1Mi

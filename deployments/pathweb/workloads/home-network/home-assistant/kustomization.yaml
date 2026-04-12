@@ -8,7 +8,7 @@ images:
 - name: ghcr.io/home-assistant-libs/python-matter-server
   newTag: "8.1.0"
 resources:
-- statefulset.yaml
+- deployment.yaml
 - service.yaml
 - persistentvolumeclaim.yaml
 - networkattachmentdefinition.yaml
@@ -21,6 +21,8 @@ configMapGenerator:
 - name: homeassistant-docker-venv
   files:
   - venv-run
+  - leader-locker.sh
+  - matter-server.sh
 labels:
 - pairs:
     app.kubernetes.io/version: *hass-version
