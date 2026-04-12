@@ -21,14 +21,9 @@ done
 log "Leader lock signal detected. Starting Matter server..."
 
 # Launch the Matter server in the background
-# Using -u to ensure unbuffered output for container logs
-python3 -u -m matter_server \
-  --storage-path /data \
-  --paa-root-cert-dir /data/credentials \
-  --primary-interface net1 \
-  --listen-address 127.0.0.1 \
-  --fabricid 2 \
-  --vendorid 4939 &
+# Ensure unbuffered output for container logs
+export PYTHONUNBUFFERED=1
+matter-server "$@" &
 MATTER_PID=$!
 
 # Signal handler function to propagate K8s graceful shutdown signals

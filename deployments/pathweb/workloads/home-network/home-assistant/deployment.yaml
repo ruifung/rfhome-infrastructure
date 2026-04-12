@@ -7,6 +7,8 @@ metadata:
     kustomize.toolkit.fluxcd.io/force: enabled
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app.kubernetes.io/name: home-assistant
@@ -70,6 +72,19 @@ spec:
             drop:
             - ALL
         command: ["/usr/local/bin/matter-server.sh"]
+        args:
+        - --storage-path
+        - /data
+        - --paa-root-cert-dir
+        - /data/credentials
+        - --primary-interface
+        - net1
+        - --listen-address
+        - 127.0.0.1
+        - --fabricid
+        - "2"
+        - --vendorid
+        - "4939"
         volumeMounts:
         - name: hass-data
           mountPath: /data
