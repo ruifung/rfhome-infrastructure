@@ -3,7 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
 - name: ghcr.io/music-assistant/server
-  newTag: 2.8.3@sha256:b25d12126259c9dfb643236a3b5361b7b63fd9dbb0370a5b607a4dfaf316a909
+  newTag: 2.8.4@sha256:f25ab51703e81e18c90d023916d2bc7c8b1ef98b99503644fc12277bacc69ecd
 - name: mikefarah/yq
   newTag: 4.52.5@sha256:603ebff15eb308a05f1c5b8b7613179cad859aed3ec9fdd04f2ef5d32345950e
 - name: brainicism/bgutil-ytdlp-pot-provider

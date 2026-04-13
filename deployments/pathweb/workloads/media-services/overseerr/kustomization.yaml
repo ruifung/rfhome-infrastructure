@@ -1,7 +1,7 @@
 ---
 images:
 - name: ghcr.io/seerr-team/seerr
-  newTag: v3.1.0
+  newTag: v3.1.1
 labels:
 - pairs:
     "app.kubernetes.io/name": overseerr
