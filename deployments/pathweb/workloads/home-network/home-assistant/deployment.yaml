@@ -129,6 +129,9 @@ spec:
         - name: homeassistant-docker-venv
           mountPath: /etc/services.d/home-assistant/run
           subPath: venv-run
+        - name: homeassistant-docker-venv
+          mountPath: /usr/local/bin/ha-probe.sh
+          subPath: ha-probe.sh
         - name: leader-signal
           mountPath: /signal
         resources:
@@ -138,20 +141,15 @@ spec:
           limits:
             memory: 5Gi
         livenessProbe:
-          failureThreshold: 30
-          periodSeconds: 10
+          failureThreshold: 12
+          periodSeconds: 5
           exec:
-            command: ["/bin/sh", "-c", "if [ -f /signal/lock-lost ] && ! flock -n -s /signal/lock-lost true; then curl -sSf http://$POD_IP:8123/; else exit 0; fi"]
+            command: ["/usr/local/bin/ha-probe.sh"]
         readinessProbe:
-          failureThreshold: 30
-          periodSeconds: 10
+          failureThreshold: 2
+          periodSeconds: 5
           exec:
-            command: ["/bin/sh", "-c", "[ -f /signal/lock-obtained ] && flock -n -s /signal/lock-obtained true && ! flock -n -s /signal/lock-lost true && curl -sSf http://$POD_IP:8123/"]
-        startupProbe:
-          failureThreshold: 30
-          periodSeconds: 10
-          exec:
-            command: ["/bin/sh", "-c", "if [ -f /signal/lock-lost ] && ! flock -n -s /signal/lock-lost true; then curl -sSf http://$POD_IP:8123/; else exit 0; fi"]
+            command: ["/usr/local/bin/ha-probe.sh"]
       volumes:
       - name: hass-data
         persistentVolumeClaim:

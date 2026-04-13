@@ -25,6 +25,7 @@ configMapGenerator:
   - venv-run
   - leader-locker.sh
   - matter-server.sh
+  - ha-probe.sh
 labels:
 - pairs:
     app.kubernetes.io/version: *hass-version
