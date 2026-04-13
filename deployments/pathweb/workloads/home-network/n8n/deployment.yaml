@@ -22,7 +22,7 @@ spec:
         kubernetes.io/os: linux
         location: rfhome
       priorityClassName: rfhome-standard
-      runtimeClassName: gvisor
+      # runtimeClassName: gvisor
       containers:
       - name: n8n
         image: n8nio/n8n:latest
