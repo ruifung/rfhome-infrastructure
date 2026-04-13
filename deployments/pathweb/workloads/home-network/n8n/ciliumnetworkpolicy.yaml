@@ -1,0 +1,48 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: n8n-policy
+  namespace: home-network
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: n8n
+  ingress:
+  - fromEntities:
+    - ingress
+    toPorts:
+    - ports:
+      - port: '5678'
+        protocol: TCP
+  - fromEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: traefik
+    toPorts:
+    - ports:
+      - port: '5678'
+        protocol: TCP
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: home-assistant
+    toPorts:
+    - ports:
+      - port: '8123'
+        protocol: TCP
+  - toEntities:
+    - world
+  - toEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: kube-dns
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: node-local-dns
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: ANY
+      rules:
+        dns:
+        - matchPattern: "*"

@@ -1,0 +1,15 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: n8n-data
+  namespace: home-network
+  labels:
+    home.yrf.me/backup-to-okinawa-s3: "true"
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: cephfs

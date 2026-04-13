@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: n8n
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: n8n
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: n8n
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: n8n
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
+      priorityClassName: rfhome-standard
+      runtimeClassName: gvisor
+      containers:
+      - name: n8n
+        image: n8nio/n8n:latest
+        ports:
+        - containerPort: 5678
+          name: http
+        env:
+        - name: GENERIC_TIMEZONE
+          value: "Asia/Kuala_Lumpur" # Assumed based on timezone in memory/context if available, otherwise defaulting to a placeholder or common local TZ. AGENTS.md implies home lab.
+        - name: TZ
+          value: "Asia/Kuala_Lumpur"
+        - name: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+          value: "true"
+        - name: N8N_RUNNERS_ENABLED
+          value: "true"
+        volumeMounts:
+        - name: n8n-data
+          mountPath: /home/node/.n8n
+      volumes:
+      - name: n8n-data
+        persistentVolumeClaim:
+          claimName: n8n-data

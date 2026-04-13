@@ -26,6 +26,7 @@ spec:
         values:
         - node-red
         - appdaemon
+        - n8n
     toPorts:
     - ports:
       - port: '8123'
