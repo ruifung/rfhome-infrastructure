@@ -22,7 +22,11 @@ spec:
         kubernetes.io/os: linux
         location: rfhome
       priorityClassName: rfhome-standard
-      # runtimeClassName: gvisor
+      runtimeClassName: gvisor
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
       - name: n8n
         image: n8nio/n8n:latest
