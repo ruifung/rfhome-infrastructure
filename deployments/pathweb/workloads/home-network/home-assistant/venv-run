@@ -52,18 +52,16 @@ echo $pyenv_hash > $curr_pyenv_file
 # Release VENV setup lock
 exec 100>&-
 
-# Wait for leader locker to signal start
-while [ ! -f /signal/is_leader ]; do
-  bashio::log.info "Waiting for leader lock..."
-  sleep 2
-done
+# Wait for leader locker to be ready.
+bashio::log.info "Waiting for leader lock signal..."
+while [ ! -f /signal/lock-obtained ]; do sleep 0.1; done
+flock -s /signal/lock-obtained true
 
 # Start leader lock monitor in background.
 # If lock is lost, it will hard-kill HASS, causing s6-overlay to halt the container.
 (
-  while [ -f /signal/is_leader ]; do
-    sleep 2
-  done
+  # Block until the kill lock is released (leader lost lock or exited)
+  flock -s /signal/lock-lost true
   bashio::log.fatal "Leader lock lost! Hard-killing Home Assistant."
   s6-svc -k /run/service/home-assistant
 ) &

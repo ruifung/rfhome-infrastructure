@@ -7,16 +7,12 @@ log() {
 
 log "Matter server wrapper: Started."
 
-# Wait for leader locker to signal start
-# Log every 30 seconds to provide a status heartbeat without flooding logs
-WAIT_COUNT=0
-while [ ! -f /signal/is_leader ]; do
-    if [ $((WAIT_COUNT % 15)) -eq 0 ]; then
-        log "Still waiting for leader lock signal at /signal/is_leader..."
-    fi
-    WAIT_COUNT=$((WAIT_COUNT + 1))
-    sleep 2
-done
+# Wait for leader locker to be ready by waiting for a shared lock on the signal start file.
+# The locker sidecar creates this file and takes an exclusive lock on it while it's settling.
+# We wait for the file to exist first to ensure the locker had time to take the exclusive lock.
+log "Waiting for leader lock signal..."
+while [ ! -f /signal/lock-obtained ]; do sleep 0.1; done
+flock -s /signal/lock-obtained true
 
 log "Leader lock signal detected. Starting Matter server..."
 
@@ -29,6 +25,8 @@ MATTER_PID=$!
 # Signal handler function to propagate K8s graceful shutdown signals
 shutdown_handler() {
     SIGNAL=$1
+    # Stop the monitor to avoid killing the process during graceful shutdown
+    kill "$MONITOR_PID" 2>/dev/null
     log "Caught $SIGNAL. Propagating to Matter server (PID $MATTER_PID) for graceful shutdown..."
     kill -TERM "$MATTER_PID" 2>/dev/null
     wait "$MATTER_PID"
@@ -41,9 +39,9 @@ trap "shutdown_handler SIGINT" SIGINT
 
 # Monitor loop in background for emergency lock loss
 (
-    while [ -f /signal/is_leader ]; do
-        sleep 2
-    done
+    # Block until the kill lock is released (leader lost lock or exited)
+    # Since the leader holds it exclusively, this shared lock attempt will block.
+    flock -s /signal/lock-lost true
 
     # Output to stderr for immediate visibility
     echo "[MatterMonitor] CRITICAL: Leader lock lost! Executing emergency hard-kill of Matter server (PID $MATTER_PID)." >&2
