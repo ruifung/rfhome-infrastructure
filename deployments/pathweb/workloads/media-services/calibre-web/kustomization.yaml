@@ -3,10 +3,10 @@ commonLabels:
   app.kubernetes.io/part-of: calibre-web
 images:
 - name: driveone/onedrive
-  newTag: "2.5-debian"
+  newTag: "2.5-debian@sha256:0387a11b16169da037be0defd6bcd26f6a42161a596b708875698de568ba6fda"
 - name: lscr.io/linuxserver/calibre-web
   newName: ghcr.io/ruifung/lsio-calibre-web-mod
-  newTag: "0.6.24-calibre-v7.22.0"
+  newTag: "0.6.24-calibre-v7.22.0@sha256:b4749c16fb450d27e0f175f1707a419b71418b58d223878c6ba6135f33473b56"
 resources:
 - "calibre-library-pvc.yaml"
 - "calibre-web-sts.yaml"

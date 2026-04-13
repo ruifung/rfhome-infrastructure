@@ -1,8 +1,8 @@
 ---
 images:
 - name: koenkk/zigbee2mqtt
-  newTag: 2.9.2
-  # newTag: latest-dev
+  newTag: 2.9.2@sha256:2a21bbf7a664a149024bbe1f776e3151f28ed9db15948270dcbffb89544a41f0
+  # newTag: latest-dev@sha256:67bfc655ce05ef7e3a8b56f0fd621f2c602c64688e3900c2d339568190bf64ec
 # digest: sha256:13deb9be3a27376fe4b2ab3b296c46d666cf38c38350e54671efa1995869e8ba
 resources:
 - "deployment.yaml"

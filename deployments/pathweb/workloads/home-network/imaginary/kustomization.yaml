@@ -1,7 +1,7 @@
 ---
 images:
 - name: h2non/imaginary:latest
-  newTag: 1.2.4
+  newTag: 1.2.4@sha256:7facb4221047a5e79b9e902f380247f4e5bf4376400d0badbeb738d3e1c2f654
 labels:
 - pairs:
     "app.kubernetes.io/name": imaginary

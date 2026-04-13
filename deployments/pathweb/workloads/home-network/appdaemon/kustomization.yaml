@@ -6,7 +6,7 @@ commonLabels:
   app.kubernetes.io/name: appdaemon
 images:
 - name: acockburn/appdaemon
-  newTag: "4.5.13"
+  newTag: "4.5.13@sha256:cabcb3a4e739db2572ecb8dc3cee685300ab27274efda83a6d8ce4d3988dc647"
 resources:
 - statefulset.yaml
 - service.yaml

@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/readarr
   newName: lscr.io/linuxserver/readarr
-  newTag: develop-version-0.4.18.2805
+  newTag: develop-version-0.4.18.2805@sha256:baf471a7101b58f361ef960de91cd15f23bae82d0126df6a9edbeaf5c5aa4392
 labels:
 - pairs:
     "app.kubernetes.io/name": readarr
