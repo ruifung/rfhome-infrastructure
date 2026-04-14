@@ -67,6 +67,8 @@ spec:
       passwordSecret:
         name: rfhome-postgres-ha-pguser-n8n
         key: password
+      ssl:
+        enabled: true
     queueMode:
       enabled: false
     redis:
