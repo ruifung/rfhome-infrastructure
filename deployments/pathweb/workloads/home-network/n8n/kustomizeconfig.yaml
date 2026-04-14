@@ -1,0 +1,14 @@
+---
+nameReference:
+- kind: ConfigMap
+  fieldSpecs:
+  - kind: HelmRelease
+    path: spec/values/extraVolumes/configMap/name
+- kind: Secret
+  fieldSpecs:
+  - kind: HelmRelease
+    path: spec/values/secretRefs/existingSecret
+  - kind: HelmRelease
+    path: spec/values/taskRunners/authToken/existingSecret
+  - kind: HelmRelease
+    path: spec/values/database/passwordSecret/name
