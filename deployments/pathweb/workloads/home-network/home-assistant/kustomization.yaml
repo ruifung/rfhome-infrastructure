@@ -4,7 +4,7 @@ kind: Kustomization
 images:
 - name: homeassistant/home-assistant
   newName: ghcr.io/home-assistant/home-assistant
-  newTag: &hass-version "2026.4.2@sha256:4c940155cfd5b0187a6faee2db5d52b98bb573edc1aeee95d0818bb17b6534d7"
+  newTag: "2026.4.2@sha256:4c940155cfd5b0187a6faee2db5d52b98bb573edc1aeee95d0818bb17b6534d7"
 - name: ghcr.io/home-assistant-libs/python-matter-server
   newTag: "8.1.0@sha256:170aa093ce91c76cde4cc390918307590f0f5558fcec93f913af3cb019e6562a"
 - name: alpine
@@ -28,6 +28,6 @@ configMapGenerator:
   - ha-probe.sh
 labels:
 - pairs:
-    app.kubernetes.io/version: *hass-version
+    app.kubernetes.io/version: 2026.4.2
   includeTemplates: true
   includeSelectors: false
