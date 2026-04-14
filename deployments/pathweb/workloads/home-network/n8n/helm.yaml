@@ -80,7 +80,12 @@ spec:
     - name: postgres-ca
       secret:
         secretName: rfhome-postgres-ha-cluster-cert
+    - name: custom-certs-tmpfs
+      emptyDir:
+        medium: Memory
     extraVolumeMounts:
+    - name: custom-certs-tmpfs
+      mountPath: /opt/custom-certificates
     - name: postgres-ca
       mountPath: /opt/custom-certificates/postgres-ca.crt
       subPath: ca.crt
@@ -152,14 +157,14 @@ spec:
       kubernetes.io/os: linux
       location: rfhome
     priorityClassName: rfhome-standard
-#   postRenderers:
-#   - kustomize:
-#       patches:
-#       - target:
-#           group: apps
-#           version: v1
-#           kind: Deployment
-#         patch: |-
-#           - op: add
-#             path: /spec/template/spec/runtimeClassName
-#             value: gvisor
+  postRenderers:
+  - kustomize:
+      patches:
+      - target:
+          group: apps
+          version: v1
+          kind: Deployment
+        patch: |-
+          - op: add
+            path: /spec/template/spec/runtimeClassName
+            value: gvisor
