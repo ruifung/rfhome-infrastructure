@@ -27,11 +27,11 @@ spec:
   valuesFrom:
   - kind: Secret
     name: rfhome-postgres-ha-pguser-n8n
-    valuesKey: pgbouncer-host
+    valuesKey: host
     targetPath: database.host
   - kind: Secret
     name: rfhome-postgres-ha-pguser-n8n
-    valuesKey: pgbouncer-port
+    valuesKey: port
     targetPath: database.port
   - kind: Secret
     name: rfhome-postgres-ha-pguser-n8n
