@@ -91,7 +91,6 @@ spec:
     - name: postgres-ca
       mountPath: /opt/custom-certificates/postgres-ca.crt
       subPath: ca.crt
-      readOnly: true
     s3:
       enabled: true
       bucket:
