@@ -55,15 +55,7 @@ spec:
       runAsGroup: 1000
       fsGroup: 1000
     ingress:
-      enabled: true
-      className: cilium
-      annotations:
-        external-dns: local-pdns
-      hosts:
-      - host: n8n.services.home.yrf.me
-        paths:
-        - path: /
-          pathType: Prefix
+      enabled: false
     database:
       type: postgresdb
       passwordSecret:
