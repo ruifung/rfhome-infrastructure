@@ -9,6 +9,10 @@ resources:
 - httproute.yaml
 - ciliumnetworkpolicy.yaml
 - n8n.sealed.yaml
+configMapGenerator:
+- name: n8n-hooks
+  files:
+  - hooks.js
 labels:
 - pairs:
     app.kubernetes.io/name: n8n

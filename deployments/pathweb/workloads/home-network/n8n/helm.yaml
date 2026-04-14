@@ -72,6 +72,9 @@ spec:
       database: 1
       prefix: 'n8n:'
     extraVolumes:
+    - name: n8n-hooks
+      configMap:
+        name: n8n-hooks
     - name: postgres-ca
       secret:
         secretName: rfhome-postgres-ha-cluster-cert
@@ -79,6 +82,10 @@ spec:
       emptyDir:
         medium: Memory
     extraVolumeMounts:
+    - name: n8n-hooks
+      mountPath: /home/node/.n8n/hooks.js
+      subPath: hooks.js
+      readOnly: true
     - name: custom-certs-tmpfs
       mountPath: /opt/custom-certificates
     - name: postgres-ca
@@ -149,6 +156,31 @@ spec:
             key: N8N_SMTP_PASS
       - name: N8N_DIAGNOSTICS_ENABLED
         value: "false"
+      - name: EXTERNAL_FRONTEND_HOOKS_URLS
+        value: /assets/oidc-frontend-hook.js
+      - name: EXTERNAL_HOOK_FILES
+        value: /home/node/.n8n/hooks.js
+      - name: N8N_TRUST_PROXY
+        value: "true"
+      - name: OIDC_ISSUER_URL
+        valueFrom:
+          secretKeyRef:
+            name: n8n-secret
+            key: OIDC_ISSUER_URL
+      - name: OIDC_CLIENT_ID
+        valueFrom:
+          secretKeyRef:
+            name: n8n-secret
+            key: OIDC_CLIENT_ID
+      - name: OIDC_CLIENT_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: n8n-secret
+            key: OIDC_CLIENT_SECRET
+      - name: OIDC_REDIRECT_URI
+        value: https://n8n.services.home.yrf.me/auth/oidc/callback
+      - name: N8N_ADDITIONAL_NON_UI_ROUTES
+        value: auth
     nodeSelector:
       kubernetes.io/os: linux
       location: rfhome
