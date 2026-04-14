@@ -155,6 +155,8 @@ spec:
           secretKeyRef:
             name: n8n-secret
             key: N8N_SMTP_PASS
+      - name: N8N_DIAGNOSTICS_ENABLED
+        value: "false"
     nodeSelector:
       kubernetes.io/os: linux
       location: rfhome
