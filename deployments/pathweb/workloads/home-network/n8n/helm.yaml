@@ -122,7 +122,7 @@ spec:
       annotations:
         home.yrf.me/backup-to-okinawa-s3: "true"
     webhook:
-      url: https://n8n.services.home.yrf.me
+      url: https://rfhome-n8n.p.0spkl.dev
     license:
       enabled: true
       existingSecret:
@@ -133,11 +133,6 @@ spec:
       extraEnv:
       - name: N8N_EDITOR_BASE_URL
         value: https://n8n.services.home.yrf.me
-      - name: WEBHOOK_URL
-        valueFrom:
-          secretKeyRef:
-            name: n8n-secret
-            key: WEBHOOK_URL
       - name: N8N_SECURE_COOKIE
         value: "true"
       - name: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
