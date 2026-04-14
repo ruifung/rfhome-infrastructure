@@ -341,14 +341,14 @@ module.exports = {
         // Cookie settings
         const cookieOptions = {
           httpOnly: true,
-          secure: process.env.N8N_PROTOCOL === 'https',
+          secure: process.env.N8N_PROTOCOL === 'https' || process.env.N8N_SECURE_COOKIE === 'true',
           sameSite: 'lax',
           maxAge: 15 * 60 * 1000, // 15 minutes
         };
 
         const authCookieOptions = {
           httpOnly: true,
-          secure: process.env.N8N_PROTOCOL === 'https',
+          secure: process.env.N8N_PROTOCOL === 'https' || process.env.N8N_SECURE_COOKIE === 'true',
           sameSite: 'lax',
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         };
