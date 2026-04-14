@@ -69,12 +69,22 @@ spec:
         key: password
       ssl:
         enabled: true
+        ca: /certs/postgres-ca.crt
     queueMode:
       enabled: false
     redis:
       host: redis-ha-proxy
       database: 1
       prefix: 'n8n:'
+    extraVolumes:
+    - name: postgres-ca
+      secret:
+        secretName: rfhome-postgres-ha-cluster-cert
+    extraVolumeMounts:
+    - name: postgres-ca
+      mountPath: /certs/postgres-ca.crt
+      subPath: ca.crt
+      readOnly: true
     s3:
       enabled: true
       bucket:
