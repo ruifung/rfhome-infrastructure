@@ -46,6 +46,11 @@ spec:
         protocol: TCP
   - toEndpoints:
     - matchLabels:
+        io.kubernetes.pod.namespace: traefik
+  - toEntities:
+    - ingress
+  - toEndpoints:
+    - matchLabels:
         app.kubernetes.io/name: home-assistant
     toPorts:
     - ports:
