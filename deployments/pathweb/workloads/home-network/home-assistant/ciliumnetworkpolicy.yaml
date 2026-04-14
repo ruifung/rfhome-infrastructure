@@ -110,3 +110,16 @@ spec:
     - ports:
       - port: '8095'
         protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: n8n
+    toPorts:
+    - ports:
+      - port: '5678'
+        protocol: TCP
+      rules:
+        http:
+        - method: POST
+          path: /webhook/.*
+        - method: POST
+          path: /webhook-test/.*

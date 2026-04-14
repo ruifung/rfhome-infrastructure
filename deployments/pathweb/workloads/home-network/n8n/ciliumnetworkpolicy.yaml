@@ -22,6 +22,19 @@ spec:
     - ports:
       - port: '5678'
         protocol: TCP
+  - fromEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: home-assistant
+    toPorts:
+    - ports:
+      - port: '5678'
+        protocol: TCP
+      rules:
+        http:
+        - method: POST
+          path: /webhook/.*
+        - method: POST
+          path: /webhook-test/.*
   egress:
   - toEndpoints:
     - matchLabels:
