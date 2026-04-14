@@ -12,3 +12,5 @@ nameReference:
     path: spec/values/taskRunners/authToken/existingSecret
   - kind: HelmRelease
     path: spec/values/database/passwordSecret/name
+  - kind: HelmRelease
+    path: spec/values/license/existingSecret/name
