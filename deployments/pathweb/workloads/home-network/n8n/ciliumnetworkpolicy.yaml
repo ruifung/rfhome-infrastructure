@@ -25,6 +25,27 @@ spec:
   egress:
   - toEndpoints:
     - matchLabels:
+        app.kubernetes.io/name: haproxy
+        app.kubernetes.io/instance: redis-ha-proxy
+    toPorts:
+    - ports:
+      - port: '6379'
+        protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/component: database
+        app.kubernetes.io/name: postgres
+        app.kubernetes.io/part-of: rfhome-postgres-ha
+    - matchLabels:
+        app.kubernetes.io/component: database
+        app.kubernetes.io/name: pgbouncer
+        app.kubernetes.io/part-of: rfhome-postgres-ha
+    toPorts:
+    - ports:
+      - port: '5432'
+        protocol: TCP
+  - toEndpoints:
+    - matchLabels:
         app.kubernetes.io/name: home-assistant
     toPorts:
     - ports:
