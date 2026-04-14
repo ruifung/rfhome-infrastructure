@@ -14,7 +14,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: n8n
-  namespace: flux-system
+  namespace: home-network
 spec:
   releaseName: n8n
   chartRef:
@@ -23,7 +23,9 @@ spec:
   interval: 15m
   targetNamespace: home-network
   install:
-    createNamespace: true
+    disableWait: true
+  upgrade:
+    disableWait: true
   valuesFrom:
   - kind: Secret
     name: rfhome-postgres-ha-pguser-n8n
