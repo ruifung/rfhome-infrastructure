@@ -72,6 +72,7 @@ spec:
       ssl:
         enabled: true
         ca: /opt/custom-certificates/postgres-ca.crt
+        rejectUnauthorized: false
     queueMode:
       enabled: false
     redis:
