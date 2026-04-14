@@ -69,7 +69,7 @@ spec:
         key: password
       ssl:
         enabled: true
-        ca: /certs/postgres-ca.crt
+        ca: /opt/custom-certificates/postgres-ca.crt
     queueMode:
       enabled: false
     redis:
@@ -82,7 +82,7 @@ spec:
         secretName: rfhome-postgres-ha-cluster-cert
     extraVolumeMounts:
     - name: postgres-ca
-      mountPath: /certs/postgres-ca.crt
+      mountPath: /opt/custom-certificates/postgres-ca.crt
       subPath: ca.crt
       readOnly: true
     s3:
