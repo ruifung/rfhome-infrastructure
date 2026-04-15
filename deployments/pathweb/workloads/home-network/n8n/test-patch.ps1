@@ -43,8 +43,8 @@ $ScopesPath = "$TestEnv/patched/global-scopes.ee.js"
 $Tests = @(
     @{ Name="Banner Suppression"; Pattern="if (feature === `"feat:showNonProdBanner`") return false; return true;" },
     @{ Name="Feature Unlock"; Pattern="return true;" },
-    @{ Name="Enterprise Plan"; Pattern="return 'Enterprise';" },
-    @{ Name="Project Limit"; Pattern="return 100;" }
+    @{ Name="Enterprise Plan"; Pattern="if (feature === `"planName`") return `"Enterprise`"" },
+    @{ Name="Quota Unlock"; Pattern="if (feature.startsWith(`"quota:`")) return -1;" }
 )
 
 $Failed = 0

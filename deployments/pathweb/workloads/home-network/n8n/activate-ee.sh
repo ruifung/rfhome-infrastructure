@@ -46,10 +46,8 @@ apply_patch() {
 
 apply_patch 'return this.manager?.hasFeatureEnabled(feature) ?? false;' /patched/license.js '        return true;' "Unlock manager features"
 apply_patch 'isLicensed(feature) {' /patched/license.js '    isLicensed(feature) { if (feature === "feat:showNonProdBanner") return false; return true;' "isLicensed override (Banner suppression)"
+apply_patch 'getValue(feature) {' /patched/license.js '    getValue(feature) { if (feature === "planName") return "Enterprise"; if (feature.startsWith("quota:")) return -1; return this.manager?.getFeatureValue(feature);' "Unlock Quotas and Plan Name"
 apply_patch 'return this.getUsersLimit() === constants_1.UNLIMITED_LICENSE_QUOTA;' /patched/license.js '        return true;' "Unlock user limits"
-apply_patch "return this.getValue('planName') ?? 'Community';" /patched/license.js "        return 'Enterprise';" "Patch plan name"
-apply_patch "return this.getValue(constants_1.LICENSE_QUOTAS.TEAM_PROJECT_LIMIT) ?? 0;" /patched/license.js "        return 100;" "Unlock team projects"
-apply_patch "return this.getValue(constants_1.LICENSE_QUOTAS.AI_CREDITS) ?? 0;" /patched/license.js "        return 1000000;" "Unlock AI credits"
 
 # Apply Permission Patches
 apply_patch 'exports.GLOBAL_MEMBER_SCOPES = [' /patched/global-scopes.ee.js "exports.GLOBAL_MEMBER_SCOPES = [ 'user:create', 'user:changeRole'," "Global Member Scopes"
