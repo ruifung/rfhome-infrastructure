@@ -12,15 +12,24 @@ cp "$LICENSE_FILE" /patched/license.js
 cp "$PERMISSIONS_FILE" /patched/global-scopes.ee.js
 
 # Apply License Patches
-sed -i 's/return this\.manager?.hasFeatureEnabled(feature) ?? false;/return true;/' /patched/license.js
-sed -i 's/return this\.isLicensed(feature);/if (feature === constants_1.LICENSE_FEATURES.SHOW_NON_PROD_BANNER) return false; return true;/' /patched/license.js
-sed -i 's/return this.getUsersLimit() === constants_1.UNLIMITED_LICENSE_QUOTA;/return true;/' /patched/license.js
-sed -i 's/if (!this.isLicensed())/if (false)/' /patched/license.js
+apply_patch() {
+    local pattern="$1"
+    local file="$2"
+    local replacement="$3"
+    if ! grep -qE "$pattern" "$file"; then
+        echo "ERROR: Pattern '$pattern' not found in $file"
+        exit 1
+    fi
+    sed -i "s/$pattern/$replacement/" "$file"
+}
+
+apply_patch 'return this\.manager\?\.hasFeatureEnabled(feature) \?\? false;' /patched/license.js 'return true;'
+apply_patch 'return this\.isLicensed(feature);' /patched/license.js 'if (feature === "feat:showNonProdBanner") return false; return true;'
+apply_patch 'return this\.getUsersLimit() === constants_1\.UNLIMITED_LICENSE_QUOTA;' /patched/license.js 'return true;'
+apply_patch 'if (!this\.isLicensed())' /patched/license.js 'if (false)'
 
 # Apply Permission Patches
-sed -i '/exports.GLOBAL_MEMBER_SCOPES = \[/a\    '\''user:create'\'',' /patched/global-scopes.ee.js
-sed -i '/exports.GLOBAL_MEMBER_SCOPES = \[/a\    '\''user:changeRole'\'',' /patched/global-scopes.ee.js
-sed -i '/exports.GLOBAL_CHAT_USER_SCOPES = \[/a\    '\''user:create'\'',' /patched/global-scopes.ee.js
-sed -i '/exports.GLOBAL_CHAT_USER_SCOPES = \[/a\    '\''user:changeRole'\'',' /patched/global-scopes.ee.js
+apply_patch 'exports\.GLOBAL_MEMBER_SCOPES = \[' /patched/global-scopes.ee.js "exports.GLOBAL_MEMBER_SCOPES = [ 'user:create', 'user:changeRole',"
+apply_patch 'exports\.GLOBAL_CHAT_USER_SCOPES = \[' /patched/global-scopes.ee.js "exports.GLOBAL_CHAT_USER_SCOPES = [ 'user:create', 'user:changeRole',"
 
 echo "n8n Enterprise Edition patches applied successfully."
