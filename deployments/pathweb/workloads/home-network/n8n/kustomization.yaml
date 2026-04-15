@@ -11,7 +11,7 @@ configurations:
 configMapGenerator:
 - name: n8n-hooks
   files:
-  - hooks.js
+  #  - hooks.js
   - activate-ee.sh
 labels:
 - pairs:

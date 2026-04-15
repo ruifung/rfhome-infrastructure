@@ -1,0 +1,42 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: weaviate-chart
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/chartproxy/weaviate/weaviate
+  ref:
+    tag: 17.7.1
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: weaviate
+  namespace: home-network
+spec:
+  releaseName: weaviate
+  chartRef:
+    kind: OCIRepository
+    name: weaviate-chart
+  interval: 15m
+  targetNamespace: home-network
+  install:
+    createNamespace: true
+  values:
+    image:
+      tag: "1.36.5"
+    persistence:
+      enabled: true
+      storageClassName: "okinawa-hdd-nfs"
+      size: "10Gi"
+    authentication:
+      apikey:
+        enabled: true
+        allowed_keys: ["some-key"]
+    replicas: 1
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome
+    priorityClassName: rfhome-standard
