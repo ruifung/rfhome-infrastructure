@@ -206,7 +206,7 @@ spec:
           group: apps
           version: v1
           kind: Deployment
-          name: n8n
+          name: n8n-main
         patch: |-
           - op: add
             path: /spec/template/spec/initContainers
