@@ -13,7 +13,7 @@ cp "$PERMISSIONS_FILE" /patched/global-scopes.ee.js
 
 # Apply License Patches
 sed -i 's/return this\.manager?.hasFeatureEnabled(feature) ?? false;/return true;/' /patched/license.js
-sed -i 's/return this\.isLicensed(feature);/return true;/' /patched/license.js
+sed -i 's/return this\.isLicensed(feature);/if (feature === constants_1.LICENSE_FEATURES.SHOW_NON_PROD_BANNER) return false; return true;/' /patched/license.js
 sed -i 's/return this.getUsersLimit() === constants_1.UNLIMITED_LICENSE_QUOTA;/return true;/' /patched/license.js
 sed -i 's/if (!this.isLicensed())/if (false)/' /patched/license.js
 
