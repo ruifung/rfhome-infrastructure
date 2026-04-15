@@ -33,6 +33,9 @@ apply_patch() {
 apply_patch 'return this.manager?.hasFeatureEnabled(feature) ?? false;' /patched/license.js '        return true;'
 apply_patch 'isLicensed(feature) {' /patched/license.js '    isLicensed(feature) { if (feature === "feat:showNonProdBanner") return false; return true;'
 apply_patch 'return this.getUsersLimit() === constants_1.UNLIMITED_LICENSE_QUOTA;' /patched/license.js '        return true;'
+apply_patch "return this.getValue('planName') ?? 'Community';" /patched/license.js "        return 'Enterprise';"
+apply_patch "return this.getValue(constants_1.LICENSE_QUOTAS.TEAM_PROJECT_LIMIT) ?? 0;" /patched/license.js "        return 100;"
+apply_patch "return this.getValue(constants_1.LICENSE_QUOTAS.AI_CREDITS) ?? 0;" /patched/license.js "        return 1000000;"
 
 # Apply Permission Patches
 apply_patch 'exports.GLOBAL_MEMBER_SCOPES = [' /patched/global-scopes.ee.js "exports.GLOBAL_MEMBER_SCOPES = [ 'user:create', 'user:changeRole',"
