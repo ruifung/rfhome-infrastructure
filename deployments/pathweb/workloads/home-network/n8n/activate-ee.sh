@@ -36,7 +36,7 @@ apply_patch 'if (!this\.isLicensed())' /patched/license.js 'if (false)'
 
 # Apply Permission Patches
 # Using spread operator to prepend scopes to the existing array
-apply_patch 'exports\.GLOBAL_MEMBER_SCOPES = \[' /patched/global-scopes.ee.js "exports.GLOBAL_MEMBER_SCOPES = [ 'user:create', 'user:changeRole', ...["
-apply_patch 'exports\.GLOBAL_CHAT_USER_SCOPES = \[' /patched/global-scopes.ee.js "exports.GLOBAL_CHAT_USER_SCOPES = [ 'user:create', 'user:changeRole', ...["
+apply_patch 'exports\.GLOBAL_MEMBER_SCOPES = \[' /patched/global-scopes.ee.js "exports.GLOBAL_MEMBER_SCOPES = [ 'user:create', 'user:changeRole', ..."
+apply_patch 'exports\.GLOBAL_CHAT_USER_SCOPES = \[' /patched/global-scopes.ee.js "exports.GLOBAL_CHAT_USER_SCOPES = [ 'user:create', 'user:changeRole', ..."
 
 echo "n8n Enterprise Edition patches applied successfully."
