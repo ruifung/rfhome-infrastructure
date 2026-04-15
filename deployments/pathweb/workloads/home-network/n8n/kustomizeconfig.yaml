@@ -4,6 +4,8 @@ nameReference:
   fieldSpecs:
   - kind: HelmRelease
     path: spec/values/extraVolumes/configMap/name
+  - kind: HelmRelease
+    path: spec/postRenderers/kustomize/patches/patch
 - kind: Secret
   fieldSpecs:
   - kind: HelmRelease

@@ -1,9 +1,6 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-images:
-- name: n8nio/n8n
-  newTag: "2.17.0@sha256:cd1fd0e71945cd492a61f90aab802a188015e62bf560c24d4cf752f03250076a"
 resources:
 - helm.yaml
 - httproute.yaml
@@ -15,6 +12,7 @@ configMapGenerator:
 - name: n8n-hooks
   files:
   - hooks.js
+  - activate-ee.sh
 labels:
 - pairs:
     app.kubernetes.io/name: n8n

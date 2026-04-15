@@ -106,6 +106,16 @@
   "customManagers": [
     {
       "customType": "regex",
+      "fileMatch": [
+        "^deployments/pathweb/workloads/home-network/n8n/helm\\.yaml$"
+      ],
+      "matchStrings": [
+        "image:\\s+(?<depName>n8nio/n8n):(?<currentValue>[^\\s\\n\"]+)"
+      ],
+      "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
       "managerFilePatterns": [
         "/kustomization.yaml/"
       ],

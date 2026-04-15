@@ -81,6 +81,9 @@ spec:
     - name: custom-certs-tmpfs
       emptyDir:
         medium: Memory
+    - name: patched-files
+      emptyDir:
+        medium: Memory
     extraVolumeMounts:
     - name: n8n-hooks
       mountPath: /home/node/.n8n/hooks.js
@@ -91,6 +94,12 @@ spec:
     - name: postgres-ca
       mountPath: /opt/custom-certificates/postgres-ca.crt
       subPath: ca.crt
+    - name: patched-files
+      mountPath: /usr/local/lib/node_modules/n8n/dist/license.js
+      subPath: license.js
+    - name: patched-files
+      mountPath: /usr/local/lib/node_modules/n8n/node_modules/.pnpm/@n8n+permissions@file+packages+@n8n+permissions/node_modules/@n8n/permissions/dist/roles/scopes/global-scopes.ee.js
+      subPath: global-scopes.ee.js
     s3:
       enabled: true
       bucket:
@@ -190,14 +199,26 @@ spec:
       kubernetes.io/os: linux
       location: rfhome
     priorityClassName: rfhome-standard
-#  postRenderers:
-#  - kustomize:
-#      patches:
-#      - target:
-#          group: apps
-#          version: v1
-#          kind: Deployment
-#        patch: |-
-#          - op: add
-#            path: /spec/template/spec/runtimeClassName
-#            value: gvisor
+  postRenderers:
+  - kustomize:
+      patches:
+      - target:
+          group: apps
+          version: v1
+          kind: Deployment
+          name: n8n
+        patch: |-
+          - op: add
+            path: /spec/template/spec/initContainers
+            value:
+            - name: patch-n8n
+              image: n8nio/n8n:2.17.0@sha256:cd1fd0e71945cd492a61f90aab802a188015e62bf560c24d4cf752f03250076a
+              command:
+              - sh
+              - /etc/n8n-scripts/activate-ee.sh
+              volumeMounts:
+              - name: patched-files
+                mountPath: /patched
+              - name: n8n-hooks
+                mountPath: /etc/n8n-scripts/activate-ee.sh
+                subPath: activate-ee.sh
