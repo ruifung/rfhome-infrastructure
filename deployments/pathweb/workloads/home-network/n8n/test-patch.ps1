@@ -49,7 +49,7 @@ $Tests = @(
 
 $Failed = 0
 foreach ($Test in $Tests) {
-    if (Select-String -Path $LicensePath -Pattern ($Test.Pattern -replace '\(','\(' -replace '\)','\)') -SimpleMatch) {
+    if (Select-String -Path $LicensePath -Pattern $Test.Pattern -SimpleMatch) {
         Write-Host "[PASS] $($Test.Name)" -ForegroundColor Green
     } else {
         Write-Host "[FAIL] $($Test.Name) (Pattern not found)" -ForegroundColor Red
