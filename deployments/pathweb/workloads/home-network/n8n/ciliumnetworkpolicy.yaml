@@ -30,6 +30,12 @@ spec:
       - port: '5678'
         protocol: TCP
   egress:
+  - toFQDNs:
+    - matchName: "forgejo.services.home.yrf.me"
+    toPorts:
+    - ports:
+      - port: '222'
+        protocol: TCP
   - toEndpoints:
     - matchLabels:
         app.kubernetes.io/name: haproxy
