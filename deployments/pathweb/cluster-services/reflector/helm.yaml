@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/ghcr/emberstack/helm-charts/reflector
   ref:
-    tag: 10.0.30
+    tag: 10.0.34
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
