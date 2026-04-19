@@ -52,3 +52,8 @@ spec:
     - ports:
       - port: "5432"
         protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: traefik
+  - toEntities:
+    - ingress
