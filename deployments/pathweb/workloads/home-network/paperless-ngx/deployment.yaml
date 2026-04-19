@@ -19,7 +19,7 @@ spec:
         preset-egress-policy: internet-only
     spec:
       restartPolicy: Always
-      runtimeClassName: gvisor
+      runtimeClassName: kata
       securityContext:
         seccompProfile:
           type: RuntimeDefault
