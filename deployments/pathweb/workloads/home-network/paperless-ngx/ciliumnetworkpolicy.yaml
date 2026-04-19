@@ -17,6 +17,15 @@ spec:
         protocol: TCP
       rules:
         http: [{}]
+  - fromEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: n8n
+    toPorts:
+    - ports:
+      - port: "8000"
+        protocol: TCP
+      rules:
+        http: [{}]
   egress:
   - toEndpoints:
     - matchLabels:
