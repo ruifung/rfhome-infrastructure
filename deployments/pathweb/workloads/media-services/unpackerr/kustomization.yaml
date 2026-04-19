@@ -2,7 +2,7 @@
 images:
 - name: hotio/unpackerr
   newName: ghcr.io/hotio/unpackerr
-  newTag: release-0.15.2@sha256:34be8cb6ea2b4fd2a45147b539474509b011b028de8b807ff6790dbc1c1b68ae
+  newTag: release-0.15.2@sha256:5d5e36d98630f891ba16649dee59bc9b4ca76d1e4d80e1ffb4fb62bb9f657d34
 labels:
 - pairs:
     "app.kubernetes.io/name": unpackerr
