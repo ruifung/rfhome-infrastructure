@@ -19,7 +19,6 @@ spec:
         preset-egress-policy: internet-only
     spec:
       restartPolicy: Always
-      runtimeClassName: kata
       securityContext:
         seccompProfile:
           type: RuntimeDefault
