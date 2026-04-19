@@ -52,7 +52,7 @@ spec:
           periodSeconds: 10
       containers:
       - name: gotenberg
-        image: docker.io/gotenberg/gotenberg:8.25
+        image: docker.io/gotenberg/gotenberg:8.31
         command:
         - "gotenberg"
         - "--chromium-disable-javascript=true"
