@@ -1,0 +1,23 @@
+---
+images:
+- name: docker.io/library/redis
+  newTag: 8.6.2@sha256:1f073813b641755b70b0200da64131bbeeb4ec5b633ca67772229b49820caafa
+- name: docker.io/gotenberg/gotenberg
+  newTag: 8.25.1@sha256:f9104080d9a7ecab253fb5ebe75100329cf5699c33ec0448f2ea02d885dfde4b
+- name: docker.io/apache/tika
+  newTag: 3.3.0.0@sha256:2a565f1ea1290bdcb74a7d35957d16a989ed44ef98790dcdcc28121d728fa583
+- name: ghcr.io/paperless-ngx/paperless-ngx
+  newTag: 2.20.14@sha256:b89f83345532cfba72690185257eb6c4f92fc2a782332a42abe19c07b7a6595f
+labels:
+- pairs:
+    "app.kubernetes.io/name": paperless-ngx
+  includeTemplates: true
+  includeSelectors: true
+resources:
+- deployment.yaml
+- persistentvolumeclaim.yaml
+- service.yaml
+- httproute.yaml
+- ciliumnetworkpolicy.yaml
+- configmap.yaml
+- paperless-ngx.sealed.yaml
