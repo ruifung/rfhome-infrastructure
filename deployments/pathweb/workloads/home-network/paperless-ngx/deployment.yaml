@@ -156,6 +156,8 @@ spec:
         - mountPath: /usr/src/paperless/media
           name: data
           subPath: media
+        - mountPath: /tmp
+          name: tmpdir
         # - mountPath: /usr/src/paperless/export
         #   name: data
         #   subPath: export
@@ -184,3 +186,5 @@ spec:
       - name: data
         persistentVolumeClaim:
           claimName: paperless-ngx-data
+      - name: tmpdir
+        emptyDir: {}
