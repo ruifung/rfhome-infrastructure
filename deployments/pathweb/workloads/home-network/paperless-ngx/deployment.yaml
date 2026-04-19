@@ -145,6 +145,8 @@ spec:
           value: http://localhost:3000
         - name: PAPERLESS_TIKA_ENDPOINT
           value: http://localhost:9998
+        - name: PAPERLESS_TASK_WORKERS
+          value: "0"
         volumeMounts:
         - mountPath: /usr/src/paperless/data
           name: data
@@ -165,20 +167,70 @@ spec:
             cpu: 100m
             memory: 512Mi
           limits:
+            memory: 1Gi
+      - name: worker
+        image: ghcr.io/paperless-ngx/paperless-ngx:latest
+        ports:
+        - containerPort: 8000
+          name: http
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: paperless-ngx-config
+        - secretRef:
+            name: paperless-ngx-secrets
+        env:
+        - name: PAPERLESS_REDIS
+          value: redis://localhost:6379
+        - name: PAPERLESS_DBHOST
+          valueFrom:
+            secretKeyRef:
+              name: rfhome-postgres-ha-pguser-paperless-ngx
+              key: host
+        - name: PAPERLESS_DBPORT
+          valueFrom:
+            secretKeyRef:
+              name: rfhome-postgres-ha-pguser-paperless-ngx
+              key: port
+        - name: PAPERLESS_DBNAME
+          valueFrom:
+            secretKeyRef:
+              name: rfhome-postgres-ha-pguser-paperless-ngx
+              key: dbname
+        - name: PAPERLESS_DBUSER
+          valueFrom:
+            secretKeyRef:
+              name: rfhome-postgres-ha-pguser-paperless-ngx
+              key: user
+        - name: PAPERLESS_DBPASS
+          valueFrom:
+            secretKeyRef:
+              name: rfhome-postgres-ha-pguser-paperless-ngx
+              key: password
+        - name: PAPERLESS_DBSSLMODE
+          value: "require"
+        - name: PAPERLESS_TIKA_ENABLED
+          value: "1"
+        - name: PAPERLESS_TIKA_GOTENBERG_ENDPOINT
+          value: http://localhost:3000
+        - name: PAPERLESS_TIKA_ENDPOINT
+          value: http://localhost:9998
+        volumeMounts:
+        - mountPath: /usr/src/paperless/data
+          name: data
+          subPath: data
+        - mountPath: /usr/src/paperless/media
+          name: data
+          subPath: media
+        - mountPath: /tmp/paperless
+          name: tmpdir
+        resources:
+          requests:
+            cpu: 100m
+            memory: 512Mi
+          limits:
             cpu: '4'
             memory: 4Gi
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8000
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8000
-          initialDelaySeconds: 10
-          periodSeconds: 10
       volumes:
       - name: data
         persistentVolumeClaim:
