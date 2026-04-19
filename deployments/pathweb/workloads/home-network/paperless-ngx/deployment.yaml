@@ -19,9 +19,13 @@ spec:
         preset-egress-policy: internet-only
     spec:
       restartPolicy: Always
+      runtimeClassName: gvisor
       securityContext:
+        seccompProfile:
+          type: RuntimeDefault
         fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
+      automountServiceAccountToken: false
       initContainers:
       - name: broker
         image: docker.io/library/redis:8
@@ -97,6 +101,9 @@ spec:
           periodSeconds: 10
       - name: webserver
         image: ghcr.io/paperless-ngx/paperless-ngx:latest
+        securityContext:
+          capabilities:
+            drop: ["ALL"]
         ports:
         - containerPort: 8000
           name: http
