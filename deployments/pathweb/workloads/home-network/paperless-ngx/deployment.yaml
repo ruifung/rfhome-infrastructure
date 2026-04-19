@@ -156,7 +156,7 @@ spec:
         - mountPath: /usr/src/paperless/media
           name: data
           subPath: media
-        - mountPath: /tmp
+        - mountPath: /tmp/paperless
           name: tmpdir
         # - mountPath: /usr/src/paperless/export
         #   name: data
