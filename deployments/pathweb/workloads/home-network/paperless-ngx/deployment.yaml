@@ -101,9 +101,6 @@ spec:
           periodSeconds: 10
       - name: webserver
         image: ghcr.io/paperless-ngx/paperless-ngx:latest
-        securityContext:
-          capabilities:
-            drop: ["ALL"]
         ports:
         - containerPort: 8000
           name: http
