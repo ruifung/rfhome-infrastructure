@@ -20,6 +20,8 @@ spec:
   - fromEndpoints:
     - matchLabels:
         app.kubernetes.io/name: n8n
+    - matchLabels:
+        io.kubernetes.pod.namespace: traefik
     toPorts:
     - ports:
       - port: "8000"
