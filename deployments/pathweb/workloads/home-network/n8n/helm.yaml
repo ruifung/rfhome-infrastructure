@@ -199,6 +199,11 @@ spec:
       kubernetes.io/os: linux
       location: rfhome
     priorityClassName: rfhome-standard
+    probes:
+      liveness:
+        path: /healthz/readiness
+      readiness:
+        path: /healthz/readiness
   postRenderers:
   - kustomize:
       patches:
