@@ -6,7 +6,6 @@ metadata:
   labels:
     app: openclaw
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: openclaw
