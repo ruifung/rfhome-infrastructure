@@ -24,7 +24,7 @@ spec:
         runAsNonRoot: true
       containers:
       - name: maintainerr
-        image: ghcr.io/jorenn92/maintainerr:latest
+        image: ghcr.io/maintainerr/maintainerr:latest
         env:
         - name: TZ
           value: "Asia/Kuala_Lumpur"
