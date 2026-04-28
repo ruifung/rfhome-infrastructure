@@ -38,11 +38,12 @@ spec:
         - name: tls-cert
           mountPath: /certs
           readOnly: true
-      #cpu: "4"
-      #memory: 1Gi
-      # limits:
-      # cpu: "4"
-      # memory: 2Gi
+        resources:
+          requests:
+            cpu: "600m"
+            memory: "4Gi"
+          limits:
+            memory: "8Gi"
       volumes:
       - name: media
         persistentVolumeClaim:
