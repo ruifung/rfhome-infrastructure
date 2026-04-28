@@ -11,6 +11,16 @@ spec:
   ingress:
   - matchLabels:
       "k8s:io.kubernetes.pod.namespace": traefik
+  - matchExpressions:
+    - key: "k8s:app.kubernetes.io/name"
+      operator: In
+      values:
+      - sonarr
+      - radarr
+      - lidarr
+      - overseerr
+      - maintainerr
+      - music-assistant
   - fromCIDRSet:
     - cidr: 10.229.2.0/24
   - fromCIDRSet:
