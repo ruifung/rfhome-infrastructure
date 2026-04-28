@@ -26,6 +26,7 @@ spec:
         - sonarr
         - plex
         - tautulli
+        - jellyfin
   - toEndpoints:
     - matchLabels:
         "k8s:io.kubernetes.pod.namespace": kube-system

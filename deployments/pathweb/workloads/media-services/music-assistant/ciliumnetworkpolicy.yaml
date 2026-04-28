@@ -57,6 +57,10 @@ spec:
         protocol: TCP
   - toEndpoints:
     - matchLabels:
+        app.kubernetes.io/name: jellyfin
+        io.kubernetes.pod.namespace: media-services
+  - toEndpoints:
+    - matchLabels:
         io.kubernetes.pod.namespace: kube-system
         k8s-app: kube-dns
     - matchLabels:

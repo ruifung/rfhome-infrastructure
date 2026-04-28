@@ -35,6 +35,7 @@ spec:
         - qbittorrent
         - sabnzbd
         - plex
+        - jellyfin
   - toEndpoints:
     - matchLabels:
         "k8s:io.kubernetes.pod.namespace": kube-system
