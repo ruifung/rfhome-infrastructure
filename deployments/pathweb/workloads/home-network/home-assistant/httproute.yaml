@@ -25,6 +25,18 @@ spec:
     - path:
         type: Exact
         value: /auth/authorize
+    filters:
+    - type: RequestHeaderModifier
+      requestHeaderModifier:
+        add:
+        - name: X-Forwarded-Host
+          value: hass.services.home.yrf.me
+        - name: X-Forwarded-Proto
+          value: https
+        - name: X-Forwarded-Port
+          value: "443"
+        - name: X-Real-IP
+          value: "%{client_ip}s"
     backendRefs:
     - name: home-assistant
       port: 8123
