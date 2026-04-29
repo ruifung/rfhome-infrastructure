@@ -19,12 +19,6 @@ spec:
     - path:
         type: PathPrefix
         value: /
-    - path:
-        type: Exact
-        value: /auth/token
-    - path:
-        type: Exact
-        value: /auth/authorize
     filters:
     - type: RequestHeaderModifier
       requestHeaderModifier:
