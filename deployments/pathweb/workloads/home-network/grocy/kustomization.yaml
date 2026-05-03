@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/grocy
   newName: lscr.io/linuxserver/grocy
-  newTag: version-v4.6.0@sha256:14fb03065528ff4f9e5c1578794732830cb129b0172a791dee46a40a61184b6e
+  newTag: version-v4.6.0@sha256:7e84250a8549975fe0a3e305a1edac187005d65e9dc33f21932632d7f845e4e2
 labels:
 - pairs:
     "app.kubernetes.io/name": grocy
