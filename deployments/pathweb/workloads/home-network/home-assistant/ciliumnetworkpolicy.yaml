@@ -117,3 +117,11 @@ spec:
     - ports:
       - port: '5678'
         protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: home-network-privileged
+        app.kubernetes.io/name: otbr
+    toPorts:
+    - ports:
+      - port: '8081'
+        protocol: TCP
