@@ -12,9 +12,10 @@ spec:
   - fromEndpoints:
     - matchLabels:
         io.kubernetes.pod.namespace: home-network
-    ports:
-    - port: "8081"
-      protocol: TCP
+    toPorts:
+    - ports:
+      - port: "8081"
+        protocol: TCP
   - fromEndpoints:
     - matchLabels:
         io.kubernetes.pod.namespace: traefik
@@ -33,4 +34,5 @@ spec:
     toEndpoints:
     - matchLabels:
         io.cilium/k8s-app: kube-dns
-  - toCIDR: "192.168.229.2/32"
+  - toCIDR:
+    - "192.168.229.2/32"
