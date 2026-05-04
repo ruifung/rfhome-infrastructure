@@ -1,0 +1,36 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: otbr
+  namespace: home-network-privileged
+spec:
+  endpointSelector:
+    matchLabels:
+      app: otbr
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: home-network
+    ports:
+    - port: "8081"
+      protocol: TCP
+  - fromEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: traefik
+    toPorts:
+    - ports:
+      - port: "8082"
+        protocol: TCP
+  egress:
+  - toPorts:
+    - ports:
+      - port: "53"
+        protocol: UDP
+    - ports:
+      - port: "53"
+        protocol: TCP
+    toEndpoints:
+    - matchLabels:
+        io.cilium/k8s-app: kube-dns
+  - toCIDR: "192.168.229.2/32"

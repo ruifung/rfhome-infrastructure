@@ -7,6 +7,7 @@ resources:
 - persistentvolumeclaim.yaml
 - deployment.yaml
 - service.yaml
+- ciliumnetworkpolicy.yaml
 images:
 - name: ghcr.io/ownbee/hass-otbr-docker
   newTag: v0.3.0@sha256:5ca7008462e94d4c937aca8c1c9a60e709d6d300625363c161b946683032d5b1
