@@ -13,6 +13,15 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: home-network-privileged
+  labels:
+    goldilocks.fairwinds.com/enabled: "true"
+    pod-security.kubernetes.io/enforce: "privileged"
+    pod-security.kubernetes.io/enforce-version: latest
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: external-dns
   labels:
     goldilocks.fairwinds.com/enabled: "true"
