@@ -25,8 +25,8 @@ spec:
       containers:
       - name: otbr
         image: ghcr.io/ownbee/hass-otbr-docker:latest
-        command: ["docker-entrypoint.sh"]
-        args: ["otbr-agent"]
+        # command: ["docker-entrypoint.sh"]
+        # args: ["otbr-agent"]
         securityContext:
           capabilities:
             add:
