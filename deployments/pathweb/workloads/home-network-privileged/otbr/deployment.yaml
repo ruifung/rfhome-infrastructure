@@ -22,6 +22,39 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      initContainers:
+      - name: init-root
+        image: ghcr.io/ownbee/hass-otbr-docker:v0.3.0@sha256:5ca7008462e94d4c937aca8c1c9a60e709d6d300625363c161b946683032d5b1
+        command: ["/bin/sh", "-c", "cp -a /etc/s6-overlay/s6-rc.d/otbr-agent/* /otbr-root/"]
+        volumeMounts:
+        - name: otbr-root
+          mountPath: /otbr-root
+      - name: patch-rest-listen
+        image: busybox
+        command: ["/bin/sh", "/scripts/patch-otbr-rest-listen.sh"]
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        volumeMounts:
+        - name: scripts
+          mountPath: /scripts
+        - name: otbr-root
+          mountPath: /etc/s6-overlay/s6-rc.d/otbr-agent
+      - name: patch-agent
+        image: ghcr.io/ownbee/hass-otbr-docker:v0.3.0@sha256:5ca7008462e94d4c937aca8c1c9a60e709d6d300625363c161b946683032d5b1
+        command: ["/bin/sh", "/scripts/patch-otbr-agent.sh"]
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        volumeMounts:
+        - name: scripts
+          mountPath: /scripts
+        - name: patched-scripts
+          mountPath: /patched
       containers:
       - name: otbr
         image: ghcr.io/ownbee/hass-otbr-docker:latest
@@ -32,6 +65,11 @@ spec:
             add:
             - NET_ADMIN
             - NET_RAW
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         envFrom:
         - configMapRef:
             name: otbr
@@ -43,6 +81,13 @@ spec:
         volumeMounts:
         - name: otbr-data
           mountPath: /data
+        - name: scripts
+          mountPath: /scripts
+        - name: otbr-root
+          mountPath: /etc/s6-overlay/s6-rc.d/otbr-agent
+        - name: patched-scripts
+          mountPath: /etc/s6-overlay/s6-rc.d/otbr-agent/run
+          subPath: run
         ports:
         - containerPort: 8081
           name: rest
@@ -52,3 +97,11 @@ spec:
       - name: otbr-data
         persistentVolumeClaim:
           claimName: otbr-data
+      - name: scripts
+        configMap:
+          name: otbr-patch
+          defaultMode: 0755
+      - name: otbr-root
+        emptyDir: {}
+      - name: patched-scripts
+        emptyDir: {}
