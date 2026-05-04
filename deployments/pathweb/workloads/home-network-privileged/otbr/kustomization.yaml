@@ -14,7 +14,6 @@ images:
 configMapGenerator:
 - name: otbr-patch
   files:
-  - patch-otbr-rest-listen.sh
   - patch-otbr-agent.sh
 - name: otbr-leader-locker
   files:
