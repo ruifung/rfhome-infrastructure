@@ -5,8 +5,9 @@ metadata:
   name: otbr
   namespace: home-network-privileged
 data:
+  DEVICE: "/tmp/ttyOTBR"
   NETWORK_DEVICE: "192.168.229.2:6638"
-  # BAUDRATE: "460800"
+  BAUDRATE: "460800"
   BACKBONE_IF: "net1"
   OTBR_WEB: "1"
   OTBR_REST_PORT: "8081"
