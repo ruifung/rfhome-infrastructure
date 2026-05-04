@@ -7,11 +7,12 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      app: otbr
+      app.kubernetes.io/name: otbr
   ingress:
   - fromEndpoints:
     - matchLabels:
         io.kubernetes.pod.namespace: home-network
+        app.kubernetes.io/name: home-assistant
     toPorts:
     - ports:
       - port: "8081"

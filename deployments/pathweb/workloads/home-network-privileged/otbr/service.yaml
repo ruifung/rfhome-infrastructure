@@ -6,7 +6,7 @@ metadata:
   namespace: home-network-privileged
 spec:
   selector:
-    app: otbr
+    app.kubernetes.io/name: otbr
   ports:
   - name: rest
     port: 8081

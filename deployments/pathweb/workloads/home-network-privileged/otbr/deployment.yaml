@@ -10,11 +10,11 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app: otbr
+      app.kubernetes.io/name: otbr
   template:
     metadata:
       labels:
-        app: otbr
+        app.kubernetes.io/name: otbr
       annotations:
         k8s.v1.cni.cncf.io/networks: otbr-iot-network
     spec:
