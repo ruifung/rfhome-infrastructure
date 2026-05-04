@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: otbr
-  namespace: home-network
+  namespace: home-network-privileged
 data:
   NETWORK_DEVICE: "192.168.229.2:6638"
   BAUDRATE: "460800"

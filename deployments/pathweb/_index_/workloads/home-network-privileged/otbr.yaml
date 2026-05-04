@@ -3,7 +3,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: otbr
-  namespace: flux-system
+  namespace: home-network-privileged
 spec:
   interval: 15m
   path: ./deployments/pathweb/workloads/home-network-privileged/otbr
@@ -11,4 +11,4 @@ spec:
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-  targetNamespace: home-network
+  targetNamespace: home-network-privileged

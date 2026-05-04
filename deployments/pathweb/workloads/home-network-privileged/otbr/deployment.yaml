@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: otbr
-  namespace: home-network
+  namespace: home-network-privileged
 spec:
   replicas: 1
   strategy:

@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: otbr
-  namespace: home-network
+  namespace: home-network-privileged
 spec:
   selector:
     app: otbr
