@@ -1,0 +1,91 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otbr
+  namespace: home-network
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: otbr
+  template:
+    metadata:
+      labels:
+        app: otbr
+      annotations:
+        k8s.v1.cni.cncf.io/networks: otbr-iot-network
+    spec:
+      runtimeClassName: kata
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
+      initContainers:
+      - name: leader-locker
+        image: alpine:latest
+        restartPolicy: Always
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        command: ["/usr/local/bin/leader-locker.sh"]
+        env:
+        - name: LOCK_NAME
+          value: otbr
+        volumeMounts:
+        - name: otbr-data
+          mountPath: /data
+        - name: leader-signal
+          mountPath: /signal
+        - name: otbr-leader-locker
+          mountPath: /usr/local/bin/leader-locker.sh
+          subPath: leader-locker.sh
+      containers:
+      - name: otbr
+        image: ghcr.io/ownbee/hass-otbr-docker:latest
+        command: ["/usr/local/bin/leader-locker.sh"]
+        args: ["docker-entrypoint.sh", "otbr-agent"]
+        securityContext:
+          capabilities:
+            add:
+            - NET_ADMIN
+            - NET_RAW
+        env:
+        - name: LOCK_NAME
+          value: otbr
+        envFrom:
+        - configMapRef:
+            name: otbr
+        resources:
+          limits:
+            squat.ai/net-tun: 1
+          requests:
+            squat.ai/net-tun: 1
+        volumeMounts:
+        - name: otbr-data
+          mountPath: /data
+        - name: leader-signal
+          mountPath: /signal
+        - name: otbr-leader-locker
+          mountPath: /usr/local/bin/leader-locker.sh
+          subPath: leader-locker.sh
+        ports:
+        - containerPort: 8081
+          name: rest
+        - containerPort: 8082
+          name: web
+      volumes:
+      - name: otbr-data
+        persistentVolumeClaim:
+          claimName: otbr-data
+      - name: otbr-leader-locker
+        configMap:
+          name: otbr-leader-locker
+          defaultMode: 0755
+      - name: leader-signal
+        emptyDir:
+          medium: Memory
+          sizeLimit: 1Mi

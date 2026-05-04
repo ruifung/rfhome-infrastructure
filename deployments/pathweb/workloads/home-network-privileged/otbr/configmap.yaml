@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otbr
+  namespace: home-network
+data:
+  NETWORK_DEVICE: "192.168.229.2:6638"
+  BAUDRATE: "460800"
+  BACKBONE_IF: "net1"
+  OTBR_WEB: "1"
+  OTBR_REST_PORT: "8081"
+  OTBR_WEB_PORT: "8082"
+  FIREWALL: "1"
+  NAT64: "1"
