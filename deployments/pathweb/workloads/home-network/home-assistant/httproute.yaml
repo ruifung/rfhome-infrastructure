@@ -29,8 +29,6 @@ spec:
           value: https
         - name: X-Forwarded-Port
           value: "443"
-        - name: X-Real-IP
-          value: "%{client_ip}s"
     backendRefs:
     - name: home-assistant
       port: 8123
