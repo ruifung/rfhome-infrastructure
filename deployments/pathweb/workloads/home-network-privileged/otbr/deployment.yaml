@@ -19,7 +19,7 @@ spec:
         k8s.v1.cni.cncf.io/networks: otbr-iot-network
     spec:
       hostname: otbr-1
-      runtimeClassName: kata
+      # runtimeClassName: kata
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
