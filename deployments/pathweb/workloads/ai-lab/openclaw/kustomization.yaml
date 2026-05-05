@@ -19,4 +19,4 @@ commonLabels:
   app.kubernetes.io/instance: openclaw
 images:
 - name: ghcr.io/openclaw/openclaw
-  newTag: 2026.4.10@sha256:1486d55ecb1b35a0e3167f02324958566007dfdc505950f87402c01bf637885f
+  newTag: 2026.5.3@sha256:17a04e767f3097d08b0f31ecd753c5743f0e9c7e3ee613820f1e1d57d84efa4d
