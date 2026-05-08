@@ -16,6 +16,7 @@ spec:
       labels:
         app: openclaw
     spec:
+      replicas: 0
       automountServiceAccountToken: false
       runtimeClassName: gvisor
       securityContext:
