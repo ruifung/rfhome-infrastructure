@@ -29,7 +29,7 @@ config:
   - 'fd96:619:803e:6100::/64'
   talos-pathweb:api-server-feature-gates: {}
   talos-pathweb:kubelet-feature-gates: {}
-  talos-pathweb:talos-version: 'v1.12.6'
+  talos-pathweb:talos-version: 'v1.13.0'
   talos-pathweb:kubernetes-version: 'v1.35.2'
   homelab:pve-voyager-endpoint: https://voyager.servers.home.yrf.me:8006
   homelab:pve-voyager-token:
