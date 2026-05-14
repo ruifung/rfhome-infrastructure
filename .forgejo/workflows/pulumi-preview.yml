@@ -22,11 +22,11 @@ jobs:
         node-version: 25
     - uses: pnpm/action-setup@v6
       with:
-        version: 10
-    - uses: https://github.com/pulumi/actions@v6
+        version: 11
+    - uses: https://github.com/pulumi/actions@v7
     - run: pulumi install
       working-directory: ./pulumi
-    - uses: https://github.com/pulumi/actions@v6
+    - uses: https://github.com/pulumi/actions@v7
       with:
         work-dir: ./pulumi
         command: preview
