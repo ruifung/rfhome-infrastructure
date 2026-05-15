@@ -6,9 +6,8 @@ metadata:
   namespace: traefik
   labels:
     app.kubernetes.io/name: traefik
-  annotations:
-    kubernetes.io/ingress.class: traefik-traefik
 spec:
+  ingressClassName: traefik-traefik
   entryPoints:
   - web
   routes:
@@ -26,9 +25,8 @@ metadata:
   namespace: traefik
   labels:
     app.kubernetes.io/name: traefik-external
-  annotations:
-    kubernetes.io/ingress.class: traefik-external
 spec:
+  ingressClassName: traefik-external
   entryPoints:
   - web
   routes:
