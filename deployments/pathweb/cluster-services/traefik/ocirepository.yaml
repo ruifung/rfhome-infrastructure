@@ -2,27 +2,13 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
-  name: traefik-crds
-  namespace: traefik
-spec:
-  interval: 24h
-  url: oci://harbor.services.home.yrf.me/ghcr/traefik/helm/traefik-crds
-  ref:
-    tag: 1.18.0
-  layerSelector:
-    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
-    operation: copy
----
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: OCIRepository
-metadata:
   name: traefik-chart
   namespace: traefik
 spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/ghcr/traefik/helm/traefik
   ref:
-    tag: 39.0.7
+    tag: 40.2.0
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
