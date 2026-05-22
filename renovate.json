@@ -106,8 +106,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "^deployments/pathweb/workloads/home-network/n8n/helm\\.yaml$"
+      "managerFilePatterns": [
+        "/^deployments/pathweb/workloads/home-network/n8n/helm\\.yaml$/"
       ],
       "matchStrings": [
         "image:\\s+(?<depName>n8nio/n8n):(?<currentValue>[^\\s\\n\"]+)"
