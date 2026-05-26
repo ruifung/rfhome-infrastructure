@@ -1,7 +1,7 @@
 ---
 images:
 - name: docker.io/library/redis
-  newTag: 8.6.3@sha256:0c341492924cad6f5483f9133e43bd6c51ecdecbcadfac5b51657393b6a7936c
+  newTag: 8.8.0@sha256:616f16a8f1e60d53f56379336df5cd769589a1cc7c1fa47ca0982a8d41fe52d1
 - name: docker.io/gotenberg/gotenberg
   newTag: 8.32.0@sha256:a40c5a46b79d812ce2f5e139278163142a054050bfd1e5f162da36d3d11c7138
 - name: docker.io/apache/tika
