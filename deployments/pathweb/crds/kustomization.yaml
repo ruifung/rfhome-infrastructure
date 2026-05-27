@@ -1,3 +1,5 @@
 ---
 resources:
 - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.5.1/standard-install.yaml
+# Temporary workaround to provide v1alpha2 TLSRoute support until cilium updates
+- https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.5.1/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
