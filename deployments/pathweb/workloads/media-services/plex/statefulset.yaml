@@ -67,7 +67,7 @@ spec:
       volumes:
       - name: media
         persistentVolumeClaim:
-          claimName: okinawa-media-nfs
+          claimName: okinawa-media-smb
       - name: tls-cert
         secret:
           secretName: services-wildcard-cert

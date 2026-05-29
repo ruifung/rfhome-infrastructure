@@ -147,5 +147,5 @@ spec:
           claimName: music-assistant-data
       - name: media
         persistentVolumeClaim:
-          claimName: okinawa-media-nfs
+          claimName: okinawa-media-smb
           readOnly: true
