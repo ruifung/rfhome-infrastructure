@@ -27,7 +27,7 @@ spec:
         fsGroupChangePolicy: "OnRootMismatch"
       initContainers:
       - name: seed-rootfs
-        image: busybox:1.37
+        image: busybox:1.38
         command: ["/bin/sh", "/config-scripts/seed.sh"]
         securityContext:
           allowPrivilegeEscalation: false
