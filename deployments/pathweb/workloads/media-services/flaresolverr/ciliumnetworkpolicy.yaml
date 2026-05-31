@@ -19,6 +19,9 @@ spec:
     - matchLabels:
         "k8s:io.kubernetes.pod.namespace": home-network
         "k8s:app.kubernetes.io/name": node-red
+    - matchLabels:
+        "k8s:io.kubernetes.pod.namespace": home-network
+        "k8s:app.kubernetes.io/name": n8n
     toPorts:
     - ports:
       - port: "8191"
