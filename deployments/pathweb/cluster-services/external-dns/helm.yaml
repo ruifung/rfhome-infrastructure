@@ -29,16 +29,16 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
-    values:
-      livenessProbe:
-        initialDelaySeconds: 60
-        periodSeconds: 20
-        failureThreshold: 15
-      readinessProbe:
-        initialDelaySeconds: 60
-        periodSeconds: 20
-        failureThreshold: 15
-      priorityClassName: rfhome-standard
+  values:
+    livenessProbe:
+      initialDelaySeconds: 60
+      periodSeconds: 20
+      failureThreshold: 15
+    readinessProbe:
+      initialDelaySeconds: 60
+      periodSeconds: 20
+      failureThreshold: 15
+    priorityClassName: rfhome-standard
     resources:
       requests:
         cpu: 15m
