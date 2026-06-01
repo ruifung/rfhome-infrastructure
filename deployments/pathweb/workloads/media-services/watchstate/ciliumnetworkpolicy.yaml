@@ -12,6 +12,12 @@ spec:
   - fromEndpoints:
     - matchLabels:
         "k8s:io.kubernetes.pod.namespace": traefik
+    - matchLabels:
+        app.kubernetes.io/name: plex
+    - matchLabels:
+        app.kubernetes.io/name: jellyfin
+    - matchLabels:
+        app.kubernetes.io/name: tautulli
   - fromEntities:
     - ingress
   egress:
