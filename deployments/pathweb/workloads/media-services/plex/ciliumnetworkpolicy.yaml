@@ -23,6 +23,7 @@ spec:
         - overseerr
         - maintainerr
         - music-assistant
+        - watchstate
     toPorts:
     - ports:
       - port: "32400"

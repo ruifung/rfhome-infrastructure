@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: watchstate
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: watchstate
+spec:
+  ports:
+  - port: 8080
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: watchstate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: watchstate-headless
+  namespace: media-services
+  labels:
+    app.kubernetes.io/name: watchstate
+spec:
+  clusterIP: None
+  ports:
+  - port: 8080
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: watchstate

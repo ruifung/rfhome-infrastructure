@@ -1,0 +1,9 @@
+---
+images:
+- name: ghcr.io/arabcoders/watchstate
+  newTag: v1.8.5@sha256:124f4ceaf2a8f098d1dd9b027b12664a7ff1e712e273e11ee8d98365b4a2f7b4
+resources:
+- statefulset.yaml
+- service.yaml
+- httproute.yaml
+- ciliumnetworkpolicy.yaml

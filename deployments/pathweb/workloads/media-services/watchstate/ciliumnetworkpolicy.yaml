@@ -2,30 +2,18 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: jellyfin-network-policy
+  name: watchstate-network-policy
   namespace: media-services
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: jellyfin
+      app.kubernetes.io/name: watchstate
   ingress:
-  - matchLabels:
-      "k8s:io.kubernetes.pod.namespace": traefik
-  - matchExpressions:
-    - key: "k8s:app.kubernetes.io/name"
-      operator: In
-      values:
-      - sonarr
-      - radarr
-      - lidarr
-      - overseerr
-      - maintainerr
-      - music-assistant
-      - watchstate
-  - fromCIDRSet:
-    - cidr: 10.229.2.0/24
-  - fromCIDRSet:
-    - cidr: fd96:619:2::/64
+  - fromEndpoints:
+    - matchLabels:
+        "k8s:io.kubernetes.pod.namespace": traefik
+  - fromEntities:
+    - ingress
   egress:
   - toEndpoints:
     - matchLabels:
@@ -41,6 +29,13 @@ spec:
       rules:
         dns:
         - matchPattern: "*"
+  # Allow connecting to Plex and Jellyfin in the same namespace
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: plex
+    - matchLabels:
+        app.kubernetes.io/name: jellyfin
+  # Allow connecting to external APIs (GitHub for updates, etc)
   - toCIDRSet:
     - cidr: ::/0
       except:

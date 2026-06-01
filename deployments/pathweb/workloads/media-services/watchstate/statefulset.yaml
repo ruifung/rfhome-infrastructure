@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: watchstate
+  namespace: media-services
+spec:
+  serviceName: watchstate-headless
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: watchstate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: watchstate
+    spec:
+      nodeSelector:
+        node-group: baldric
+      priorityClassName: rfhome-standard-node-specific
+      # WatchState is rootless, matches the recommendation
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+      - name: server
+        image: ghcr.io/arabcoders/watchstate:latest
+        ports:
+        - containerPort: 8080
+          name: http
+        env:
+        - name: TZ
+          value: Asia/Kuala_Lumpur
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+          limits:
+            memory: "1Gi"
+  persistentVolumeClaimRetentionPolicy:
+    delete: Retain
+  volumeClaimTemplates:
+  - metadata:
+      name: config
+      labels:
+        home.yrf.me/backup-to-okinawa-s3: "true"
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: ceph-rbd-retain
+      resources:
+        requests:
+          storage: 5Gi
