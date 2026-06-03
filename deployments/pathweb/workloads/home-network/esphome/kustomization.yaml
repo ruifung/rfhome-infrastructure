@@ -1,7 +1,7 @@
 ---
 images:
 - name: esphome/esphome
-  newTag: 2026.5.0@sha256:c0e2159c1f17f800be0f8995af801c934428598481128c8d3d6a5b3adc153dee
+  newTag: 2026.5.2@sha256:1609bf4826b4625e5654c56e4aa86d3f92372beea4772b071fc8a0397edaa72b
 resources:
 - deployment.yaml
 - pvc.yaml
