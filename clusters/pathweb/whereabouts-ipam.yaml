@@ -30,7 +30,7 @@ spec:
       repository: ghcr.io/k8snetworkplumbingwg/whereabouts
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: v0.9.3
+      tag: v0.9.4
     priorityClassName: system-cluster-critical
     nodeSliceController:
       enabled: true
