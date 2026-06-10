@@ -1,7 +1,7 @@
 ---
 images:
 - name: jellyfin/jellyfin
-  newTag: 10.11.9@sha256:bc9fa8e1462fffe3d8d4255fc62af478602641f4c0e5f4875fea8563d1189837
+  newTag: 10.11.11@sha256:aefb67e6a7ff1debdd154a78a7bbb780fd0c873d8639210a7f6a2016ad2b35db
 resources:
 - statefulset.yaml
 - service.yaml
