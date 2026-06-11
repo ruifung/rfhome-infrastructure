@@ -1,0 +1,97 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: ceph-csi-drivers
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/chartproxy/ceph.github.io/ceph-csi-operator/ceph-csi-drivers
+  ref:
+    tag: 1.0.1
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ceph-csi-drivers
+  namespace: flux-system
+spec:
+  releaseName: ceph-csi-drivers
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+  chartRef:
+    kind: OCIRepository
+    name: ceph-csi-drivers
+  interval: 15m
+  timeout: 60m
+  targetNamespace: kube-system
+  values:
+    operatorConfig:
+      driverSpecDefaults:
+        clusterName: pathweb
+        controllerPlugin:
+          hostNetwork: true
+          priorityClassName: system-cluster-critical
+          replicas: 2
+          tolerations:
+          - effect: NoSchedule
+            key: node.kubernetes.io/disk-pressure
+            operator: Exists
+          - effect: NoSchedule
+            key: node.kubernetes.io/memory-pressure
+            operator: Exists
+          - effect: NoSchedule
+            key: node.kubernetes.io/pid-pressure
+            operator: Exists
+          - effect: NoSchedule
+            key: node-role.kubernetes.io/control-plane
+            operator: Exists
+        nodePlugin:
+          hostNetwork: true
+          priorityClassName: system-node-critical
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                - matchExpressions:
+                  - key: rook-csi-enabled
+                    operator: In
+                    values:
+                    - "true"
+          tolerations:
+          - key: node.kubernetes.io/not-ready
+            operator: Exists
+          - key: node.cilium.io/agent-not-ready
+            operator: Exists
+          - effect: NoExecute
+            key: node.kubernetes.io/unreachable
+            operator: Exists
+          - effect: NoSchedule
+            key: node.kubernetes.io/disk-pressure
+            operator: Exists
+          - effect: NoSchedule
+            key: node.kubernetes.io/memory-pressure
+            operator: Exists
+          - effect: NoSchedule
+            key: node.kubernetes.io/pid-pressure
+            operator: Exists
+          - effect: NoSchedule
+            key: node.kubernetes.io/unschedulable
+            operator: Exists
+          - effect: NoSchedule
+            key: node.kubernetes.io/network-unavailable
+            operator: Exists
+    drivers:
+      rbd:
+        enabled: true
+      cephfs:
+        enabled: true
+      nvmeof:
+        enabled: false
+      nfs:
+        enabled: false
