@@ -32,7 +32,10 @@ spec:
   targetNamespace: kube-system
   values:
     operatorConfig:
+      namespace: kube-system
       driverSpecDefaults:
+        imageSet:
+          name: rook-csi-operator-image-set-configmap
         clusterName: pathweb
         controllerPlugin:
           hostNetwork: true
@@ -89,9 +92,13 @@ spec:
     drivers:
       rbd:
         enabled: true
+        name: kube-system.rbd.csi.ceph.com
       cephfs:
         enabled: true
+        name: kube-system.cephfs.csi.ceph.com
       nvmeof:
         enabled: false
+        name: kube-system.nfs.csi.ceph.com
       nfs:
         enabled: false
+        name: kube-system.nvmeof.csi.ceph.com
