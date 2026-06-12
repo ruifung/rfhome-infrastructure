@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/tautulli
   newName: lscr.io/linuxserver/tautulli
-  newTag: version-v2.17.1@sha256:8e1a0d8104422f646c3e89d9b261b0507dc664bd6764baaea0ff0a5718f83b94
+  newTag: version-v2.17.1@sha256:f13b3e7d6798e62eef6f9a9e65513d2e0a8f468524432c2d753b7b458b1876d4
 labels:
 - pairs:
     "app.kubernetes.io/name": tautulli
