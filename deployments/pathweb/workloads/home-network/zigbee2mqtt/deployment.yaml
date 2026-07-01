@@ -14,7 +14,7 @@ spec:
       priorityClassName: rfhome-home-critical
       nodeSelector:
         location: rfhome
-        kubernetes.io/hostname: pathweb-worker-1 # The node where the Zigbee adapter is attached to
+        kubernetes.io/hostname: pathweb-worker-3 # The node where the Zigbee adapter is attached to
       containers:
       - name: zigbee2mqtt
         image: koenkk/zigbee2mqtt:latest
