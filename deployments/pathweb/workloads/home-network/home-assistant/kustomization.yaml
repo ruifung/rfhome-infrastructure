@@ -4,11 +4,11 @@ kind: Kustomization
 images:
 - name: homeassistant/home-assistant
   newName: ghcr.io/home-assistant/home-assistant
-  newTag: "2026.6.2@sha256:b82fab7973fa1ba5eb69a8aaab3a830d56d986d495d894faf0ee969ad27839a6"
+  newTag: "2026.7.1@sha256:f73512ba4fe06bb4d57636fe3578d0820cdec46f81e8f837ab59e451662ff3cb"
 - name: ghcr.io/home-assistant-libs/python-matter-server
   newTag: "8.1.0@sha256:170aa093ce91c76cde4cc390918307590f0f5558fcec93f913af3cb019e6562a"
 - name: alpine
-  newTag: "3.24.0@sha256:a2d49ea686c2adfe3c992e47dc3b5e7fa6e6b5055609400dc2acaeb241c829f4"
+  newTag: "3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b"
 resources:
 - deployment.yaml
 - service.yaml

@@ -1,7 +1,7 @@
 ---
 images:
 - name: koenkk/zigbee2mqtt
-  newTag: 2.12.0@sha256:1debff565ab6841417bd9f7ce8ad44f8c5f25a8b02a24ce3fd79e4779a4763a5
+  newTag: 2.12.1@sha256:80f7f04f72a99e4c4ef51ef7e98ee736edba6db0ecbb7abc626d0c4b0f1871f1
   # newTag: latest-dev@sha256:67bfc655ce05ef7e3a8b56f0fd621f2c602c64688e3900c2d339568190bf64ec
 # digest: sha256:13deb9be3a27376fe4b2ab3b296c46d666cf38c38350e54671efa1995869e8ba
 resources:
