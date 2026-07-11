@@ -68,12 +68,16 @@ spec:
         command: ["/bin/sh", "-c"]
         args:
         - |
-          save_and_exit() {
-            echo "SIGTERM received. Saving final endpoints before exiting..."
+          save_endpoints() {
             if wg show wg0 endpoints | grep -v -E '\(none\)|^$' > /dev/null 2>&1; then
               wg show wg0 endpoints | grep -v -E '\(none\)|^$' > /data/wg0_endpoints.tmp
               mv /data/wg0_endpoints.tmp /data/wg0_endpoints.txt
             fi
+          }
+
+          save_and_exit() {
+            echo "SIGTERM received. Saving final endpoints before exiting..."
+            save_endpoints
             exit 0
           }
 
@@ -83,11 +87,7 @@ spec:
             echo "=== $(date): wg0 status ==="
             wg show wg0 || true
 
-            # Save active endpoints (exclude '(none)')
-            if wg show wg0 endpoints | grep -v -E '\(none\)|^$' > /dev/null 2>&1; then
-              wg show wg0 endpoints | grep -v -E '\(none\)|^$' > /data/wg0_endpoints.tmp
-              mv /data/wg0_endpoints.tmp /data/wg0_endpoints.txt
-            fi
+            save_endpoints
 
             sleep 60 &
             wait $!
