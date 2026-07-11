@@ -33,7 +33,19 @@ spec:
       initContainers:
       - name: wg-init
         image: lscr.io/linuxserver/wireguard:latest
-        command: ["wg-quick", "up", "/etc/wireguard/wg0.conf"]
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          set -e
+          wg-quick up /etc/wireguard/wg0.conf
+          if [ -f /data/wg0_endpoints.txt ]; then
+            while read -r pubkey endpoint; do
+              if [ ! -z "$pubkey" ] && [ "$endpoint" != "(none)" ] && [ ! -z "$endpoint" ]; then
+                echo "Restoring peer $pubkey to endpoint $endpoint"
+                wg set wg0 peer "$pubkey" endpoint "$endpoint" || true
+              fi
+            done < /data/wg0_endpoints.txt
+          fi
         securityContext:
           runAsUser: 0
           capabilities:
@@ -49,9 +61,25 @@ spec:
         volumeMounts:
         - name: wireguard-config
           mountPath: /etc/wireguard
+        - name: slzb-ultima-wg-data
+          mountPath: /data
       - name: wg-monitor
         image: lscr.io/linuxserver/wireguard:latest
-        command: ["sh", "-c", "while true; do echo '=== wg0 status ==='; wg show wg0; echo '==================='; sleep 60; done"]
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          while true; do
+            echo "=== $(date): wg0 status ==="
+            wg show wg0 || true
+
+            # Save active endpoints (exclude '(none)')
+            if wg show wg0 endpoints | grep -v -E '\(none\)|^$' > /dev/null 2>&1; then
+              wg show wg0 endpoints | grep -v -E '\(none\)|^$' > /data/wg0_endpoints.tmp
+              mv /data/wg0_endpoints.tmp /data/wg0_endpoints.txt
+            fi
+
+            sleep 60
+          done
         securityContext:
           runAsUser: 0
           capabilities:
@@ -65,6 +93,9 @@ spec:
             cpu: 1m
             memory: 8Mi
         restartPolicy: Always
+        volumeMounts:
+        - name: slzb-ultima-wg-data
+          mountPath: /data
       containers:
       - name: proxy-radio1
         image: alpine/socat:latest
@@ -175,3 +206,6 @@ spec:
       - name: wireguard-config
         secret:
           secretName: slzb-ultima-wg-secrets
+      - name: slzb-ultima-wg-data
+        persistentVolumeClaim:
+          claimName: slzb-ultima-wg-data

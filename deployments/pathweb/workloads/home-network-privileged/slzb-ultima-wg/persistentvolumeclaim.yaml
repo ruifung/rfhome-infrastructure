@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: slzb-ultima-wg-data
+  namespace: home-network-privileged
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: cephfs
+  resources:
+    requests:
+      storage: 100Mi

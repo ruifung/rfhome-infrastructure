@@ -12,3 +12,4 @@ resources:
 - networkattachmentdefinition.yaml
 - ciliumnetworkpolicy.yaml
 - slzb-ultima-wg-secrets.sealed.yaml
+- persistentvolumeclaim.yaml
