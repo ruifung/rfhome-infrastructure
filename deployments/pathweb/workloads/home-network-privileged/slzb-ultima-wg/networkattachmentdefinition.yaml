@@ -19,13 +19,6 @@ spec:
               {"address": "fd96:619:803e:3700::5/64", "gateway": "fd96:619:803e:3700::1"}
             ]
           }
-        },
-        {
-          "type": "tuning",
-          "sysctl": {
-            "net.ipv6.conf.IFNAME.accept_ra": "1",
-            "net.ipv6.conf.IFNAME.autoconf": "1"
-          }
         }
       ]
     }

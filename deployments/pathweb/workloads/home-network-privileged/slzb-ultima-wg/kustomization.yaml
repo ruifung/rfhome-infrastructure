@@ -6,4 +6,4 @@ resources:
 - service.yaml
 - networkattachmentdefinition.yaml
 - ciliumnetworkpolicy.yaml
-- slzb-ultima-wg-secrets.secret.yaml
+- slzb-ultima-wg-secrets.sealed.yaml
