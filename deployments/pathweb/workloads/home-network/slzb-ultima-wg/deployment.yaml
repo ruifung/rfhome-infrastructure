@@ -25,23 +25,23 @@ spec:
         kubernetes.io/os: linux
         location: rfhome
       automountServiceAccountToken: false
-      hostUsers: false
+      # hostUsers: false
       securityContext:
         fsGroup: 1000
-        seccompProfile:
-          type: RuntimeDefault
+        # seccompProfile:
+        #   type: RuntimeDefault
       containers:
       - name: wireproxy
         image: ghcr.io/windtf/wireproxy:latest
         args: ["--config", "/etc/wireproxy/wireproxy.conf"]
-        securityContext:
-          allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
-          capabilities:
-            drop:
-            - ALL
-            add:
-            - NET_BIND_SERVICE
+        # securityContext:
+        #   allowPrivilegeEscalation: false
+        #   readOnlyRootFilesystem: true
+        #   capabilities:
+        #     drop:
+        #     - ALL
+        #     add:
+        #     - NET_BIND_SERVICE
         ports:
         - containerPort: 6638
           name: radio1
