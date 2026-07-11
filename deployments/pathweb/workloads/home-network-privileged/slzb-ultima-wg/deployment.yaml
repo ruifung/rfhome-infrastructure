@@ -103,10 +103,20 @@ spec:
           requests:
             cpu: 10m
             memory: 32Mi
+        livenessProbe:
+          tcpSocket:
+            port: 7638
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 7638
+          initialDelaySeconds: 5
+          periodSeconds: 10
       - name: proxy-http
         image: alpine/socat:latest
         args:
-        - TCP-LISTEN:8080,fork,reuseaddr
+        - TCP-LISTEN:80,fork,reuseaddr
         - TCP:192.168.229.2:80
         securityContext:
           allowPrivilegeEscalation: false
@@ -118,7 +128,7 @@ spec:
             drop:
             - ALL
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           name: http
           protocol: TCP
         resources:
@@ -128,6 +138,16 @@ spec:
           requests:
             cpu: 10m
             memory: 32Mi
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
       volumes:
       - name: wireguard-config
         secret:
