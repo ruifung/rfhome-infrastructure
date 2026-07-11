@@ -40,9 +40,9 @@ spec:
           runAsNonRoot: true
           runAsUser: 1000
           runAsGroup: 1000
-          capabilities:
-            drop:
-            - ALL
+          # capabilities:
+          #   drop:
+          #   - ALL
         ports:
         - containerPort: 6638
           name: radio1
@@ -50,7 +50,7 @@ spec:
         - containerPort: 7638
           name: radio2
           protocol: TCP
-        - containerPort: 80
+        - containerPort: 8080
           name: http
           protocol: TCP
         volumeMounts:
