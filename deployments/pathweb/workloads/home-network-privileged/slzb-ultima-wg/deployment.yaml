@@ -39,6 +39,13 @@ spec:
           capabilities:
             add:
             - NET_ADMIN
+        resources:
+          limits:
+            cpu: 10m
+            memory: 16Mi
+          requests:
+            cpu: 1m
+            memory: 8Mi
         volumeMounts:
         - name: wireguard-config
           mountPath: /etc/wireguard
@@ -52,11 +59,11 @@ spec:
             - NET_ADMIN
         resources:
           limits:
-            cpu: 50m
-            memory: 64Mi
-          requests:
             cpu: 10m
-            memory: 32Mi
+            memory: 16Mi
+          requests:
+            cpu: 1m
+            memory: 8Mi
         restartPolicy: Always
       containers:
       - name: proxy-radio1
@@ -79,11 +86,11 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: 50m
-            memory: 64Mi
-          requests:
             cpu: 10m
-            memory: 32Mi
+            memory: 16Mi
+          requests:
+            cpu: 1m
+            memory: 8Mi
         livenessProbe:
           tcpSocket:
             port: 6638
@@ -114,11 +121,11 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: 50m
-            memory: 64Mi
-          requests:
             cpu: 10m
-            memory: 32Mi
+            memory: 16Mi
+          requests:
+            cpu: 1m
+            memory: 8Mi
         livenessProbe:
           tcpSocket:
             port: 7638
@@ -149,11 +156,11 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: 50m
-            memory: 64Mi
-          requests:
             cpu: 10m
-            memory: 32Mi
+            memory: 16Mi
+          requests:
+            cpu: 1m
+            memory: 8Mi
         livenessProbe:
           tcpSocket:
             port: 80
