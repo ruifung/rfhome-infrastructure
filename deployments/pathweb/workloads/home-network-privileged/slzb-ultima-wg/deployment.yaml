@@ -111,8 +111,13 @@ spec:
       containers:
       - name: proxy-radio1
         image: alpine/socat:latest
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         args:
-        - TCP-LISTEN:6638,fork,reuseaddr
+        - TCP-LISTEN:6638,bind=$(POD_IP),fork,reuseaddr
         - TCP:192.168.229.2:6638
         securityContext:
           allowPrivilegeEscalation: false
@@ -146,8 +151,13 @@ spec:
           periodSeconds: 10
       - name: proxy-radio2
         image: alpine/socat:latest
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         args:
-        - TCP-LISTEN:7638,fork,reuseaddr
+        - TCP-LISTEN:7638,bind=$(POD_IP),fork,reuseaddr
         - TCP:192.168.229.2:7638
         securityContext:
           allowPrivilegeEscalation: false
@@ -181,8 +191,13 @@ spec:
           periodSeconds: 10
       - name: proxy-http
         image: alpine/socat:latest
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         args:
-        - TCP-LISTEN:80,fork,reuseaddr
+        - TCP-LISTEN:80,bind=$(POD_IP),fork,reuseaddr
         - TCP:192.168.229.2:80
         securityContext:
           allowPrivilegeEscalation: false
