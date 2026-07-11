@@ -6,7 +6,4 @@ resources:
 - service.yaml
 - networkattachmentdefinition.yaml
 - ciliumnetworkpolicy.yaml
-- slzb-ultima-wg-secrets.sealed.yaml
-images:
-- name: ghcr.io/windtf/wireproxy
-  newTag: 55dea163f4445fe5b105d5fa3a0a92a8258ee411
+- slzb-ultima-wg-secrets.secret.yaml

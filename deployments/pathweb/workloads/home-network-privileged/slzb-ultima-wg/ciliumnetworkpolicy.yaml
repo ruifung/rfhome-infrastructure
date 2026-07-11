@@ -3,7 +3,7 @@ apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
   name: slzb-ultima-wg-policy
-  namespace: home-network
+  namespace: home-network-privileged
 spec:
   endpointSelector:
     matchLabels:
@@ -11,19 +11,19 @@ spec:
   ingress:
   - fromEndpoints:
     - matchLabels:
-        io.kubernetes.pod.namespace: home-network-privileged
-        app.kubernetes.io/name: otbr
-    toPorts:
-    - ports:
-      - port: '6638'
-        protocol: TCP
-  - fromEndpoints:
-    - matchLabels:
         app.kubernetes.io/name: home-assistant
         io.kubernetes.pod.namespace: home-network
     toPorts:
     - ports:
       - port: '80'
+        protocol: TCP
+  - fromEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: otbr
+        io.kubernetes.pod.namespace: home-network-privileged
+    toPorts:
+    - ports:
+      - port: '6638'
         protocol: TCP
   egress:
   - toEndpoints:
@@ -40,3 +40,5 @@ spec:
       rules:
         dns:
         - matchPattern: "*"
+  - toEntities:
+    - world

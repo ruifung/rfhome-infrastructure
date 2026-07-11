@@ -39,8 +39,8 @@ spec:
     - "192.168.229.2/32"
   - toEndpoints:
     - matchLabels:
-        io.kubernetes.pod.namespace: home-network
         app.kubernetes.io/name: slzb-ultima-wg
+        io.kubernetes.pod.namespace: home-network-privileged
     toPorts:
     - ports:
       - port: "6638"

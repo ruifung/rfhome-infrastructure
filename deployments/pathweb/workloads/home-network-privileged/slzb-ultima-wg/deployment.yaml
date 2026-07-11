@@ -1,0 +1,134 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slzb-ultima-wg
+  namespace: home-network-privileged
+  annotations:
+    kustomize.toolkit.fluxcd.io/force: enabled
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: slzb-ultima-wg
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: slzb-ultima-wg
+      annotations:
+        k8s.v1.cni.cncf.io/networks: '[{"name":"slzb-ultima-wg-iot-network"}]'
+    spec:
+      priorityClassName: rfhome-home-critical
+      nodeSelector:
+        kubernetes.io/os: linux
+        location: rfhome
+      automountServiceAccountToken: false
+      hostUsers: false
+      securityContext:
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+      - name: wg-init
+        image: lscr.io/linuxserver/wireguard:latest
+        command: ["wg-quick", "up", "/etc/wireguard/wg0.conf"]
+        securityContext:
+          runAsUser: 0
+          capabilities:
+            add:
+            - NET_ADMIN
+        volumeMounts:
+        - name: wireguard-config
+          mountPath: /etc/wireguard
+      containers:
+      - name: proxy-radio1
+        image: alpine/socat:latest
+        args:
+        - TCP-LISTEN:6638,fork,reuseaddr
+        - TCP:192.168.229.2:6638
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          capabilities:
+            drop:
+            - ALL
+        ports:
+        - containerPort: 6638
+          name: radio1
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 50m
+            memory: 64Mi
+          requests:
+            cpu: 10m
+            memory: 32Mi
+        livenessProbe:
+          tcpSocket:
+            port: 6638
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 6638
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      - name: proxy-radio2
+        image: alpine/socat:latest
+        args:
+        - TCP-LISTEN:7638,fork,reuseaddr
+        - TCP:192.168.229.2:7638
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          capabilities:
+            drop:
+            - ALL
+        ports:
+        - containerPort: 7638
+          name: radio2
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 50m
+            memory: 64Mi
+          requests:
+            cpu: 10m
+            memory: 32Mi
+      - name: proxy-http
+        image: alpine/socat:latest
+        args:
+        - TCP-LISTEN:8080,fork,reuseaddr
+        - TCP:192.168.229.2:80
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          capabilities:
+            drop:
+            - ALL
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 50m
+            memory: 64Mi
+          requests:
+            cpu: 10m
+            memory: 32Mi
+      volumes:
+      - name: wireguard-config
+        secret:
+          secretName: slzb-ultima-wg-secrets

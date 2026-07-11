@@ -6,9 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  path: ./deployments/pathweb/workloads/home-network/slzb-ultima-wg
+  path: ./deployments/pathweb/workloads/home-network-privileged/slzb-ultima-wg
   prune: true
   sourceRef:
     kind: GitRepository
     name: rfhome-infrastructure
-  targetNamespace: home-network
+  targetNamespace: home-network-privileged
