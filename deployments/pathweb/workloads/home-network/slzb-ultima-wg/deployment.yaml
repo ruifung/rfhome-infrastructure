@@ -17,8 +17,8 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: slzb-ultima-wg
-      annotations:
-        k8s.v1.cni.cncf.io/networks: '[{"name":"slzb-ultima-wg-iot-network"}]'
+        # annotations:
+        #   k8s.v1.cni.cncf.io/networks: '[{"name":"slzb-ultima-wg-iot-network"}]'
     spec:
       priorityClassName: rfhome-home-critical
       nodeSelector:
