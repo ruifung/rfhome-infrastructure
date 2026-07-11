@@ -40,11 +40,3 @@ spec:
       rules:
         dns:
         - matchPattern: "*"
-  - fromEndpoints:
-    - matchLabels:
-        io.kubernetes.pod.namespace: home-network-privileged
-        app.kubernetes.io/name: otbr
-    toPorts:
-    - ports:
-      - port: '6638'
-        protocol: TCP
