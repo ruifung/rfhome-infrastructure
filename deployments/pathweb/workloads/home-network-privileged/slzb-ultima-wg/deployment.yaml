@@ -42,6 +42,22 @@ spec:
         volumeMounts:
         - name: wireguard-config
           mountPath: /etc/wireguard
+      - name: wg-monitor
+        image: lscr.io/linuxserver/wireguard:latest
+        command: ["sh", "-c", "while true; do echo '=== wg0 status ==='; wg show wg0; echo '==================='; sleep 60; done"]
+        securityContext:
+          runAsUser: 0
+          capabilities:
+            add:
+            - NET_ADMIN
+        resources:
+          limits:
+            cpu: 50m
+            memory: 64Mi
+          requests:
+            cpu: 10m
+            memory: 32Mi
+        restartPolicy: Always
       containers:
       - name: proxy-radio1
         image: alpine/socat:latest
