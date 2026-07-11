@@ -37,3 +37,11 @@ spec:
         io.cilium/k8s-app: kube-dns
   - toCIDR:
     - "192.168.229.2/32"
+  - toEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: home-network
+        app.kubernetes.io/name: slzb-ultima-wg
+    toPorts:
+    - ports:
+      - port: "6638"
+        protocol: TCP

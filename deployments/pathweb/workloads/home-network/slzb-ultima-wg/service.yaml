@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: slzb-ultima-wg
+  namespace: home-network
+spec:
+  selector:
+    app.kubernetes.io/name: slzb-ultima-wg
+  ports:
+  - port: 6638
+    targetPort: 6638
+    name: radio1
+    protocol: TCP
+  - port: 7638
+    targetPort: 7638
+    name: radio2
+    protocol: TCP
+  - port: 80
+    targetPort: 80
+    name: http
+    protocol: TCP

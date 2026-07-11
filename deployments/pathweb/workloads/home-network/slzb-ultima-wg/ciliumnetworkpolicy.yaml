@@ -1,0 +1,50 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: slzb-ultima-wg-policy
+  namespace: home-network
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: slzb-ultima-wg
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: home-network-privileged
+        app.kubernetes.io/name: otbr
+    toPorts:
+    - ports:
+      - port: '6638'
+        protocol: TCP
+  - fromEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: home-assistant
+        io.kubernetes.pod.namespace: home-network
+    toPorts:
+    - ports:
+      - port: '80'
+        protocol: TCP
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: kube-dns
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: node-local-dns
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: ANY
+      rules:
+        dns:
+        - matchPattern: "*"
+  - fromEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: home-network-privileged
+        app.kubernetes.io/name: otbr
+    toPorts:
+    - ports:
+      - port: '6638'
+        protocol: TCP

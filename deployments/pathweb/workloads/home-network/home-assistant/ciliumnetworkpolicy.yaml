@@ -125,3 +125,10 @@ spec:
     - ports:
       - port: '8081'
         protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: slzb-ultima-wg
+    toPorts:
+    - ports:
+      - port: '80'
+        protocol: TCP
