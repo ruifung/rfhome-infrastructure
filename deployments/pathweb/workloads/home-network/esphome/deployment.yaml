@@ -30,7 +30,7 @@ spec:
         args:
         - "dashboard"
         - "/config"
-        - "--address"
+        - "--host"
         - "$(POD_IP)"
         - "--port"
         - "6052"
