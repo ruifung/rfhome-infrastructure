@@ -47,7 +47,7 @@ spec:
     fullnameOverride: n8n
     image:
       repository: n8nio/n8n
-      tag: 2.30.2@sha256:ffe3d68cfb30dd51ac33e6ede52c7d1ce4c04fa39a1f400e3b0b50eecde16412
+      tag: 2.31.1@sha256:3ef2b357b5b82d1fe6e58fb49ef6e8847a428f0eb4e0898e3e5743cb1c92225b
     secretRefs:
       existingSecret: n8n-secret
     securityContext:
@@ -119,7 +119,7 @@ spec:
       enabled: true
       image:
         repository: n8nio/runners
-        tag: 2.30.2@sha256:cbb0618342c4a3f413435f4b1cbd7f512aa5396d77c01c00f79ce85ff7bdab86
+        tag: 2.31.1@sha256:959742173122dfbbed500e50a9d2dc64be44e6aefa350d1ed640f3b530268154
       authToken:
         existingSecret: n8n-secret
         existingSecretKey: N8N_TASK_RUNNER_AUTH_TOKEN
@@ -217,7 +217,7 @@ spec:
             path: /spec/template/spec/initContainers
             value:
             - name: patch-n8n
-              image: n8nio/n8n:2.30.2@sha256:ffe3d68cfb30dd51ac33e6ede52c7d1ce4c04fa39a1f400e3b0b50eecde16412
+              image: n8nio/n8n:2.31.1@sha256:3ef2b357b5b82d1fe6e58fb49ef6e8847a428f0eb4e0898e3e5743cb1c92225b
               command:
               - sh
               - /etc/n8n-scripts/activate-ee.sh
