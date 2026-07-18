@@ -1,7 +1,7 @@
 ---
 serial:
   adapter: ember
-  port: tcp://sonoff-zigbee-bridge.servers.home.yrf.me:20108
+  port: tcp://socat-serial-zb01.home-network.svc.cluster.local:20108
 mqtt:
   base_topic: z2m-sonoff-zb01
   client_id: z2m-sonoff-zb01

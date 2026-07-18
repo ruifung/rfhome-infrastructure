@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: socat-serial-zb01
+  namespace: home-network
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: socat-serial-zb01
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: socat-serial-zb01
+    spec:
+      priorityClassName: rfhome-home-critical
+      nodeSelector:
+        location: rfhome
+        kubernetes.io/hostname: pathweb-worker-3 # The node where the Zigbee adapter is attached to
+      containers:
+      - name: socat
+        image: alpine/socat:latest
+        args:
+        - tcp-listen:20108,fork,reuseaddr
+        - file:/dev/ttyS1,nonblock,raw,echo=0,b115200
+        ports:
+        - containerPort: 20108
+          name: tcp
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 10m
+            memory: 16Mi
+            squat.ai/serial-tty-s1: '1'
+          limits:
+            cpu: 50m
+            memory: 32Mi
+            squat.ai/serial-tty-s1: '1'
+        livenessProbe:
+          tcpSocket:
+            port: 20108
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 20108
+          initialDelaySeconds: 5
+          periodSeconds: 10
