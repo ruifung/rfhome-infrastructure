@@ -18,6 +18,26 @@ spec:
   - matches:
     - path:
         type: PathPrefix
+        value: /api/websocket
+    filters:
+    - type: RequestHeaderModifier
+      requestHeaderModifier:
+        add:
+        - name: X-Forwarded-Host
+          value: hass.services.home.yrf.me
+        - name: X-Forwarded-Proto
+          value: https
+        - name: X-Forwarded-Port
+          value: "443"
+    timeouts:
+      request: 0s # Disables request timeout for long-lived streams
+      backendRequest: 0s
+    backendRefs:
+    - name: home-assistant
+      port: 8123
+  - matches:
+    - path:
+        type: PathPrefix
         value: /
     filters:
     - type: RequestHeaderModifier
