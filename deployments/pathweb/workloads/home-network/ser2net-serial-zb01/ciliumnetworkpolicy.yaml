@@ -2,12 +2,12 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: socat-serial-zb01-policy
+  name: ser2net-serial-zb01-policy
   namespace: home-network
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: socat-serial-zb01
+      app.kubernetes.io/name: ser2net-serial-zb01
   ingress:
   - fromEndpoints:
     - matchLabels:

@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ser2net-serial-zb01
+  namespace: home-network
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ser2net-serial-zb01
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ser2net-serial-zb01
+    spec:
+      priorityClassName: rfhome-home-critical
+      nodeSelector:
+        location: rfhome
+        kubernetes.io/hostname: pathweb-worker-3 # The node where the Zigbee adapter is attached to
+      containers:
+      - name: ser2net
+        image: ghcr.io/jippi/docker-ser2net:latest
+        ports:
+        - containerPort: 20108
+          name: rfc2217
+          protocol: TCP
+        volumeMounts:
+        - name: config
+          mountPath: /etc/ser2net/ser2net.yaml
+          subPath: ser2net.yaml
+          readOnly: true
+        resources:
+          requests:
+            cpu: 10m
+            memory: 16Mi
+            squat.ai/serial-tty-s1: '1'
+          limits:
+            cpu: 50m
+            memory: 32Mi
+            squat.ai/serial-tty-s1: '1'
+        livenessProbe:
+          tcpSocket:
+            port: 20108
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 20108
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      volumes:
+      - name: config
+        configMap:
+          name: ser2net-config

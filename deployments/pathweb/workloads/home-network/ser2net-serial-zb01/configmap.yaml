@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ser2net-config
+  namespace: home-network
+data:
+  ser2net.yaml: |
+    %YAML 1.1
+    ---
+    connections:
+      ttyS1:
+        accepter: tcp,20108
+        connector: serialdev,/dev/ttyS1,115200n81,local

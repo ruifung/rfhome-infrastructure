@@ -103,7 +103,7 @@ spec:
     - matchLabels:
         app.kubernetes.io/name: esphome
     - matchLabels:
-        app.kubernetes.io/name: socat-serial-zb01
+        app.kubernetes.io/name: ser2net-serial-zb01
   - toEndpoints:
     - matchLabels:
         app.kubernetes.io/name: music-assistant

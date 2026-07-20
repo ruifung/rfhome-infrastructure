@@ -2,7 +2,8 @@
 resources:
 - deployment.yaml
 - service.yaml
+- configmap.yaml
 - ciliumnetworkpolicy.yaml
 commonLabels:
-  app.kubernetes.io/name: socat-serial-zb01
+  app.kubernetes.io/name: ser2net-serial-zb01
   app.kubernetes.io/instance: serial-tty-s1
