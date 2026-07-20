@@ -8,7 +8,7 @@ spec:
   ports:
   - port: 20108
     targetPort: 20108
-    name: rfc2217
+    name: serial-tcp
     protocol: TCP
   selector:
     app.kubernetes.io/name: ser2net-serial-zb01
