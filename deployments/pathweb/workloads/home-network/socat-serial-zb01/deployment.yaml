@@ -25,7 +25,7 @@ spec:
         image: alpine/socat:latest
         args:
         - tcp-listen:20108,fork,reuseaddr
-        - file:/dev/ttyS1,nonblock,raw,echo=0,b115200
+        - file:/dev/ttyS1,rawer,echo=0,b115200
         ports:
         - containerPort: 20108
           name: tcp
@@ -39,13 +39,13 @@ spec:
             cpu: 50m
             memory: 32Mi
             squat.ai/serial-tty-s1: '1'
-        livenessProbe:
-          tcpSocket:
-            port: 20108
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          tcpSocket:
-            port: 20108
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        # livenessProbe:
+        #   tcpSocket:
+        #     port: 20108
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 10
+        # readinessProbe:
+        #   tcpSocket:
+        #     port: 20108
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 10
