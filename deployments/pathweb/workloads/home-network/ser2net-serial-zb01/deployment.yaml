@@ -25,7 +25,7 @@ spec:
         image: ghcr.io/jippi/docker-ser2net:latest
         ports:
         - containerPort: 20108
-          name: rfc2217
+          name: serial-tcp
           protocol: TCP
         volumeMounts:
         - name: config
