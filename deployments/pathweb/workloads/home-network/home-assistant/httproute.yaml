@@ -8,7 +8,7 @@ metadata:
     external-dns: local-pdns
 spec:
   parentRefs:
-  - name: rfhome-services-cilium
+  - name: rfhome-services-gateway
     namespace: home-network
     sectionName: https
     kind: Gateway
