@@ -77,6 +77,8 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        - name: PRODUCTION_MODE
+          value: "true"
         command: ["/usr/local/bin/matter-server.sh"]
         args:
         - --storage-path
@@ -86,9 +88,9 @@ spec:
         - --primary-interface
         - net1
         - --listen-address
-        - 127.0.0.1
+        - lo
         - --listen-address
-        - $(POD_IP)
+        - eth0
         - --fabricid
         - "2"
         - --vendorid
