@@ -135,3 +135,11 @@ spec:
     - ports:
       - port: '80'
         protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: zigbee2mqtt
+        io.kubernetes.pod.namespace: home-network
+    toPorts:
+    - ports:
+      - port: '80'
+        protocol: TCP
