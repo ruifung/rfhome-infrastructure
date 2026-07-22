@@ -43,6 +43,7 @@ spec:
       hostUsers: false
       securityContext:
         fsGroup: 1000
+        fsGroupChangePolicy: Always
         seccompProfile:
           type: RuntimeDefault
       initContainers:
@@ -87,7 +88,7 @@ spec:
         - --listen-address
         - 127.0.0.1
         - --listen-address
-        - ${POD_IP}
+        - $(POD_IP)
         - --fabricid
         - "2"
         - --vendorid
