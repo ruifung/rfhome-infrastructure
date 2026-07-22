@@ -65,12 +65,17 @@ spec:
           subPath: leader-locker.sh
       containers:
       - name: matter-server
-        image: ghcr.io/home-assistant-libs/python-matter-server:stable
+        image: ghcr.io/matter-js/matterjs-server:stable
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
             - ALL
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         command: ["/usr/local/bin/matter-server.sh"]
         args:
         - --storage-path
@@ -81,6 +86,8 @@ spec:
         - net1
         - --listen-address
         - 127.0.0.1
+        - --listen-address
+        - ${POD_IP}
         - --fabricid
         - "2"
         - --vendorid

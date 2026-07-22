@@ -18,8 +18,7 @@ log "Leader lock signal detected. Starting Matter server..."
 
 # Launch the Matter server in the background
 # Ensure unbuffered output for container logs
-export PYTHONUNBUFFERED=1
-matter-server "$@" &
+stdbuf -oL node --enable-source-maps /app/node_modules/matter-server/dist/esm/MatterServer.js "$@" &
 MATTER_PID=$!
 
 # Signal handler function to propagate K8s graceful shutdown signals
