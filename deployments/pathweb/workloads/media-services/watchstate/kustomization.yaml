@@ -1,7 +1,7 @@
 ---
 images:
 - name: ghcr.io/arabcoders/watchstate
-  newTag: v1.9.1@sha256:69de0c1fd519155122f1d2db970a8dee5a6a473c27e2a6e3bbe7a6be2e6dea15
+  newTag: v1.10.0@sha256:13e4f56d568eae95ea22e9c4813e0c404ea70404ceebccc7d1a989d455c5789a
 resources:
 - statefulset.yaml
 - service.yaml
