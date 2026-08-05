@@ -109,5 +109,3 @@ spec:
             ttl: "5m"
             cache_by_model: true
             cache_by_provider: true
-        otel:
-          enabled: true
