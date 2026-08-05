@@ -74,11 +74,13 @@ spec:
       mode: postgres
       configStore:
         type: postgres
+        sslMode: require
         maxIdleConns: 2
         maxOpenConns: 5
         connMaxIdleTime: "5m"
       logsStore:
         type: postgres
+        sslMode: require
         maxIdleConns: 2
         maxOpenConns: 10
         connMaxIdleTime: "5m"
