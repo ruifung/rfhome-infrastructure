@@ -1,0 +1,118 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: bifrost-chart
+  namespace: ai-lab
+spec:
+  interval: 24h
+  url: oci://harbor.services.home.yrf.me/chartproxy/maximhq.github.io/bifrost/helm-charts/bifrost
+  ref:
+    tag: 2.1.33
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: bifrost
+  namespace: ai-lab
+spec:
+  releaseName: bifrost
+  chartRef:
+    kind: OCIRepository
+    name: bifrost-chart
+  interval: 15m
+  targetNamespace: ai-lab
+  install:
+    disableWait: true
+  upgrade:
+    disableWait: true
+  valuesFrom:
+  - kind: Secret
+    name: rfhome-postgres-ha-pguser-bifrost
+    valuesKey: host
+    targetPath: postgresql.external.host
+  - kind: Secret
+    name: rfhome-postgres-ha-pguser-bifrost
+    valuesKey: port
+    targetPath: postgresql.external.port
+  - kind: Secret
+    name: rfhome-postgres-ha-pguser-bifrost
+    valuesKey: user
+    targetPath: postgresql.external.user
+  - kind: Secret
+    name: rfhome-postgres-ha-pguser-bifrost
+    valuesKey: dbname
+    targetPath: postgresql.external.database
+  values:
+    nodeSelector:
+      kubernetes.io/os: linux
+      location: rfhome
+    replicaCount: 1
+    image:
+      repository: docker.io/maximhq/bifrost
+      pullPolicy: IfNotPresent
+      tag: "v1.6.4"
+    service:
+      type: ClusterIP
+      port: 8080
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+      requests:
+        cpu: 100m
+        memory: 256Mi
+    terminationGracePeriodSeconds: 30
+    lifecycle:
+      preStop:
+        exec:
+          command: ["sh", "-c", "sleep 5"]
+    storage:
+      mode: postgres
+      configStore:
+        type: postgres
+        maxIdleConns: 2
+        maxOpenConns: 5
+        connMaxIdleTime: "5m"
+      logsStore:
+        type: postgres
+        maxIdleConns: 2
+        maxOpenConns: 10
+        connMaxIdleTime: "5m"
+    postgresql:
+      external:
+        enabled: true
+        existingSecret: rfhome-postgres-ha-pguser-bifrost
+        passwordKey: password
+    bifrost:
+      appDir: /app/data
+      port: 8080
+      host: 0.0.0.0
+      logLevel: info
+      logStyle: json
+      client:
+        enforceAuthOnInference: true
+        initialPoolSize: 10
+      largePayloadOptimization:
+        enabled: true
+      loadBalancer:
+        enabled: true
+      circuitBreakerConfig:
+        enabled: true
+        failureThreshold: 5
+        recoveryTimeout: 30s
+        halfOpenRequests: 3
+      plugins:
+        semanticCache:
+          enabled: true
+          version: 1
+          config:
+            dimension: 1
+            ttl: "5m"
+            cache_by_model: true
+            cache_by_provider: true
+        otel:
+          enabled: true
