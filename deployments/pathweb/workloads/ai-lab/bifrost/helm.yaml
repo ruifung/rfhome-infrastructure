@@ -100,11 +100,6 @@ spec:
         enabled: true
       loadBalancer:
         enabled: true
-      circuitBreakerConfig:
-        enabled: true
-        failureThreshold: 5
-        recoveryTimeout: 30s
-        halfOpenRequests: 3
       plugins:
         semanticCache:
           enabled: true
