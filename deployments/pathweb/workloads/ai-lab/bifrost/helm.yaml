@@ -85,6 +85,7 @@ spec:
     postgresql:
       external:
         enabled: true
+        sslMode: require
         existingSecret: rfhome-postgres-ha-pguser-bifrost
         passwordKey: password
     bifrost:
