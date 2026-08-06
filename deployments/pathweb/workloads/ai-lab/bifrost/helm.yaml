@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/maximhq.github.io/bifrost/helm-charts/bifrost
   ref:
-    tag: 2.1.33
+    tag: 2.1.34
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
@@ -54,7 +54,7 @@ spec:
     image:
       repository: docker.io/maximhq/bifrost
       pullPolicy: IfNotPresent
-      tag: "v1.6.4"
+      tag: "v1.6.8"
     service:
       type: ClusterIP
       port: 8080
