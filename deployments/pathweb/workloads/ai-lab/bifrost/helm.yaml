@@ -105,6 +105,12 @@ spec:
         enabled: true
       loadBalancer:
         enabled: true
+      mcp:
+        enabled: true
+        clientConfigs:
+        - name: brave-search
+          connectionType: http
+          connectionString: "http://127.0.0.1:8123/mcp"
       plugins:
         semanticCache:
           enabled: true
@@ -114,3 +120,37 @@ spec:
             ttl: "5m"
             cache_by_model: true
             cache_by_provider: true
+  postRenderers:
+  - kustomize:
+      patches:
+      - target:
+          group: apps
+          version: v1
+          kind: Deployment
+          name: bifrost
+        patch: |-
+          - op: add
+            path: /spec/template/spec/containers/-
+            value:
+              name: brave-search-mcp
+              image: mcp/brave-search:latest
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: BRAVE_API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: brave-search
+                      key: BRAVE_API_KEY
+                - name: BRAVE_MCP_TRANSPORT
+                  value: "http"
+                - name: BRAVE_MCP_HOST
+                  value: "127.0.0.1"
+                - name: BRAVE_MCP_PORT
+                  value: "8123"
+              resources:
+                limits:
+                  cpu: 500m
+                  memory: 256Mi
+                requests:
+                  cpu: 50m
+                  memory: 64Mi

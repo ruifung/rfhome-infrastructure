@@ -1,0 +1,14 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: brave-search
+  namespace: ai-lab
+spec:
+  encryptedData:
+    BRAVE_API_KEY: AgCs756LfFuCe0o0g/BFRhgZ9R/bWJ9uw0ow4w/4DB7PkLGU8eh+rPCt1gFOf9Pdy8Ks/GNktixc+cWW7B/ayzfkTQLHF8riZiQ0YNVO8cunOb9iwIwRLcnoNfQu00SotU1teuTQBB4AVzwrbkL+q+3nN4/k6Ry8BsyuPm+s9e7Hn9Eiw4S5fvaMz6CjaIJ2aEa15cz73VQVezlmiXvA7iJ9KAQV1niIc2kheDiYoD7yYArydOgJW/p7HljiJJTNBOS+v3jLYsD1z7bWSJTbl6d4u1AcTmLU8H72X6BRqbRafIYDA6zo9dpf+xqtanZ8/cWg8xNiZxphsv85D/rsvHvawOmjQtKc71YX/bdflfI1evb6L0+7D3AGu5XKX5e1u24B1UQTiR/M1VoqTbyOYqYKv4skM+vUO1ZF5RldZcKMLYCelDdqBa+76P7wwJoaowqSofYdu27KKzv96zx2zYwJoTfe7K2wxm27Z9xjvGPPMOTNpUeJCyRHodc2TJvC76WgZBP88Q0mvCdEaTfn5B41IN1OZfETenM9MjRX3SvLUzBlMXDNgsj4kTQrAcgWHAXCpURIit3Fxy3huBGDe/KsC12Bk73IdyfZ7JaT4IeVFBVkLnDN+RyJRlTysIdoExd+3wvDoqIbdI2zf+RaskjiIBclwf1801jSRuDZ+EZetJy1T7nv+AJPjrUcws2ws9sb+D4Q6YW2epI8EKabbGZAyZTDpTGWSqCR+sS0tPc5
+  template:
+    metadata:
+      name: brave-search
+      namespace: ai-lab
+    type: Opaque

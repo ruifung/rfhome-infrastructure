@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
 - helm.yaml
 - httproute.yaml
+- brave-search.sealed.yaml
