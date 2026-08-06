@@ -110,7 +110,8 @@ spec:
         clientConfigs:
         - name: brave-search
           connectionType: http
-          connectionString: "http://127.0.0.1:8123/mcp"
+          httpConfig:
+            url: "http://127.0.0.1:8123/mcp"
       plugins:
         semanticCache:
           enabled: true
@@ -126,7 +127,7 @@ spec:
       - target:
           group: apps
           version: v1
-          kind: Deployment
+          kind: StatefulSet
           name: bifrost
         patch: |-
           - op: add
@@ -136,17 +137,17 @@ spec:
               image: mcp/brave-search:latest
               imagePullPolicy: IfNotPresent
               env:
-                - name: BRAVE_API_KEY
-                  valueFrom:
-                    secretKeyRef:
-                      name: brave-search
-                      key: BRAVE_API_KEY
-                - name: BRAVE_MCP_TRANSPORT
-                  value: "http"
-                - name: BRAVE_MCP_HOST
-                  value: "127.0.0.1"
-                - name: BRAVE_MCP_PORT
-                  value: "8123"
+              - name: BRAVE_API_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: brave-search
+                    key: BRAVE_API_KEY
+              - name: BRAVE_MCP_TRANSPORT
+                value: "http"
+              - name: BRAVE_MCP_HOST
+                value: "127.0.0.1"
+              - name: BRAVE_MCP_PORT
+                value: "8123"
               resources:
                 limits:
                   cpu: 500m
