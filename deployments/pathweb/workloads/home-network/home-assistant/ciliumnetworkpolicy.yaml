@@ -43,6 +43,22 @@ spec:
         protocol: TCP
       rules:
         http: [{}]
+  - fromEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: bifrost
+        io.kubernetes.pod.namespace: ai-lab
+    toPorts:
+    - ports:
+      - port: '8123'
+        protocol: TCP
+      rules:
+        http:
+        - method: GET
+          path: /api/mcp
+        - method: POST
+          path: /api/mcp
+        - method: DELETE
+          path: /api/mcp
   egress:
   - toEntities:
     - world
