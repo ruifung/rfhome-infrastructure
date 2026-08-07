@@ -140,6 +140,9 @@ spec:
         - name: homeassistant-docker-venv
           mountPath: /usr/local/bin/ha-probe.sh
           subPath: ha-probe.sh
+        - name: homeassistant-docker-venv
+          mountPath: /usr/local/bin/ha-patch-http-server-host.py
+          subPath: ha-patch-http-server-host.py
         - name: leader-signal
           mountPath: /signal
         resources:
