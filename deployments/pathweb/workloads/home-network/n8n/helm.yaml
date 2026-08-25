@@ -140,8 +140,6 @@ spec:
     config:
       timezone: Asia/Kuala_Lumpur
       extraEnv:
-      - name: GENERIC_TIMEZONE
-        value: Asia/Kuala_Lumpur
       - name: N8N_EDITOR_BASE_URL
         value: https://n8n.services.home.yrf.me
       - name: N8N_SECURE_COOKIE
