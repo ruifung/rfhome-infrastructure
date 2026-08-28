@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/ghcr/goauthentik/helm-charts/authentik
   ref:
-    tag: 2026.5.6
+    tag: 2026.8.0
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
@@ -78,11 +78,18 @@ spec:
         value: "days=1"
       - name: AUTHENTIK_POSTGRESQL__CONN_MAX_AGE
         value: "0"
-      - name: AUTHENTIK_POSTGRESQL__HOST
+      - name: AUTHENTIK_POSTGRESQL__DISABLE_SERVER_SIDE_CURSORS
+        value: "true"
+      - name: AUTHENTIK_POSTGRESQL__DIRECT__HOST
         valueFrom:
           secretKeyRef:
             name: "rfhome-postgres-ha-pguser-authentik"
             key: "host"
+      - name: AUTHENTIK_POSTGRESQL__HOST
+        valueFrom:
+          secretKeyRef:
+            name: "rfhome-postgres-ha-pguser-authentik"
+            key: "pgbouncer-host"
       - name: AUTHENTIK_POSTGRESQL__PORT
         valueFrom:
           secretKeyRef:
@@ -103,55 +110,6 @@ spec:
           secretKeyRef:
             name: "rfhome-postgres-ha-pguser-authentik"
             key: "dbname"
-      # - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__HOST
-      #   value: "rfhome-postgres-ha-replicas.home-network.svc"
-      # - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__PORT
-      #   valueFrom:
-      #     secretKeyRef:
-      #       name: "rfhome-postgres-ha-pguser-authentik"
-      #       key: "port"
-      # - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__USER
-      #   valueFrom:
-      #     secretKeyRef:
-      #       name: "rfhome-postgres-ha-pguser-authentik"
-      #       key: "user"
-      # - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__PASSWORD
-      #   valueFrom:
-      #     secretKeyRef:
-      #       name: "rfhome-postgres-ha-pguser-authentik"
-      #       key: "password"
-      # - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__NAME
-      #   valueFrom:
-      #     secretKeyRef:
-      #       name: "rfhome-postgres-ha-pguser-authentik"
-      #       key: "dbname"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__HOST
-        valueFrom:
-          secretKeyRef:
-            name: "rfhome-postgres-ha-pguser-authentik"
-            key: "pgbouncer-host"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__PORT
-        valueFrom:
-          secretKeyRef:
-            name: "rfhome-postgres-ha-pguser-authentik"
-            key: "port"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__USER
-        valueFrom:
-          secretKeyRef:
-            name: "rfhome-postgres-ha-pguser-authentik"
-            key: "user"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: "rfhome-postgres-ha-pguser-authentik"
-            key: "password"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__NAME
-        valueFrom:
-          secretKeyRef:
-            name: "rfhome-postgres-ha-pguser-authentik"
-            key: "dbname"
-      - name: AUTHENTIK_POSTGRESQL__READ_REPLICAS__0__CONN_HEALTH_CHECK
-        value: "true"
     server:
       replicas: 2
       resources:
