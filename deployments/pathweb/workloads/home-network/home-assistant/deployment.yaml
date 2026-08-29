@@ -152,7 +152,7 @@ spec:
           limits:
             memory: 5Gi
         livenessProbe:
-          failureThreshold: 12
+          failureThreshold: 60
           periodSeconds: 5
           exec:
             command: ["/usr/local/bin/ha-probe.sh"]
