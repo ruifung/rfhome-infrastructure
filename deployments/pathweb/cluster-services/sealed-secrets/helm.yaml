@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/bitnami.github.io/sealed-secrets/sealed-secrets
   ref:
-    tag: 2.19.1
+    tag: 2.19.3
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
