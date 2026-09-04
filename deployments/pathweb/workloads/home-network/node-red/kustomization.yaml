@@ -6,7 +6,7 @@ resources:
 - "resources/envs.sealed.yaml"
 images:
 - name: nodered/node-red
-  newTag: 5.0.4@sha256:10f40d0a83e7e5852b13d4d472b2006b05b1cca6d55e2f29a55a12c25a630cb6
+  newTag: 5.0.6@sha256:02a2b92a41b73d2bc388238b86e4fcaab7fb5466373adb24e1df6aa5845265ff
 configMapGenerator:
 - name: node-red-env
   literals:

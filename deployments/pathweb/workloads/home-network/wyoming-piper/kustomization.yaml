@@ -1,7 +1,7 @@
 ---
 images:
 - name: rhasspy/wyoming-piper
-  newTag: 2.3.1@sha256:69b7f797ae3a8c3c0202cbf97152fb795d78c2355de2a31655c20671247360d8
+  newTag: 2.4.3@sha256:f7aaafe325d18979f43a9fe8bb4db494ba28ce8c109cb982983157817705ff87
 resources:
 - deployment.yaml
 - service.yaml
