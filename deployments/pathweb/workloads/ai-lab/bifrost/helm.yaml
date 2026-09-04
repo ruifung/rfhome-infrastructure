@@ -54,7 +54,7 @@ spec:
     image:
       repository: docker.io/maximhq/bifrost
       pullPolicy: IfNotPresent
-      tag: "v1.6.8"
+      tag: "2.1.29"
     service:
       type: ClusterIP
       port: 8080
