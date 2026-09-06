@@ -141,8 +141,11 @@ spec:
           mountPath: /usr/local/bin/ha-probe.sh
           subPath: ha-probe.sh
         - name: homeassistant-docker-venv
-          mountPath: /usr/local/bin/ha-patch-http-server-host.py
-          subPath: ha-patch-http-server-host.py
+          mountPath: /usr/local/bin/sync-http-settings.py
+          subPath: sync-http-settings.py
+        - name: ha-http-config
+          mountPath: /tmp/ha-http-config
+          readOnly: true
         - name: leader-signal
           mountPath: /signal
         resources:
@@ -169,6 +172,10 @@ spec:
         configMap:
           name: homeassistant-docker-venv
           defaultMode: 0755
+      - name: ha-http-config
+        configMap:
+          name: ha-http-config
+          defaultMode: 0644
       - name: leader-signal
         emptyDir:
           medium: Memory

@@ -26,7 +26,10 @@ configMapGenerator:
   - leader-locker.sh
   - matter-server.sh
   - ha-probe.sh
-  - ha-patch-http-server-host.py
+  - sync-http-settings.py
+- name: ha-http-config
+  files:
+  - ha-http-config.yaml
 labels:
 - pairs:
     app.kubernetes.io/version: 2026.4.2

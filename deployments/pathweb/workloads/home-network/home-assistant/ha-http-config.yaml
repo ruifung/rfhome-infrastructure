@@ -1,0 +1,44 @@
+---
+# Desired Home Assistant http configuration.
+#
+# Consumed by sync-http-settings.py to generate/update the UI-managed
+# store at /config/.storage/http on pod startup. This file is the source of
+# truth for the http integration options; HA reads them from .storage/http,
+# not configuration.yaml.
+#
+# server_host is deliberately omitted: the patch script always binds the
+# server to this pod's IP.
+http:
+  server_port: 8123
+  use_x_forwarded_for: true
+  trusted_proxies:
+  - 10.96.0.0/16
+  - 10.229.17.0/24
+  - 127.0.0.1
+  - 103.21.244.0/22
+  - 103.22.200.0/22
+  - 103.31.4.0/22
+  - 104.16.0.0/13
+  - 104.24.0.0/14
+  - 108.162.192.0/18
+  - 131.0.72.0/22
+  - 131.0.72.0/22
+  - 162.158.0.0/15
+  - 172.64.0.0/13
+  - 173.245.48.0/20
+  - 188.114.96.0/20
+  - 190.93.240.0/20
+  - 197.234.240.0/22
+  - 198.41.128.0/17
+  - 2400:cb00::/32
+  - 2606:4700::/32
+  - 2803:f800::/32
+  - 2405:b500::/32
+  - 2405:8100::/32
+  - 2a06:98c0::/29
+  - 2c0f:f248::/32
+  cors_allowed_origins:
+  - https://hass-home.yrf.me
+  - https://hass.services.home.yrf.me
+  ip_ban_enabled: false
+  login_attempts_threshold: 5
