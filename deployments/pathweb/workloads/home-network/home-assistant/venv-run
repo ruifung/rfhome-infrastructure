@@ -80,6 +80,7 @@ fi
 
 # Pre-patch UI-managed http config so the server binds to this pod's IP
 # (HA moved http server options out of configuration.yaml into .storage/http).
-python3 /usr/local/bin/ha-patch-http-server-host.py "$POD_IP"
+# Guarded so a patch failure never blocks HA startup; HA self-heals a bad store.
+python3 /usr/local/bin/ha-patch-http-server-host.py "$POD_IP" || true
 
 exec python3 -m homeassistant --config /config
