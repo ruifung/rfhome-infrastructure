@@ -8,7 +8,7 @@ spec:
   interval: 24h
   url: oci://harbor.services.home.yrf.me/chartproxy/maximhq.github.io/bifrost/helm-charts/bifrost
   ref:
-    tag: 2.1.37
+    tag: 2.1.38
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
