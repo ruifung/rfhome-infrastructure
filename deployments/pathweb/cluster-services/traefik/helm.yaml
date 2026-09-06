@@ -147,12 +147,11 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
-    logs:
-      general:
-        format: json
-      access:
-        enabled: true
-        format: json
+    log:
+      format: json
+    accessLog:
+      enabled: true
+      format: json
     metrics:
       prometheus:
         entryPoint: metrics
