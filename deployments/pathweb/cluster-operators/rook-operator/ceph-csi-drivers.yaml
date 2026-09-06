@@ -93,6 +93,7 @@ spec:
       rbd:
         enabled: true
         name: kube-system.rbd.csi.ceph.com
+        snapshotPolicy: volumeSnapshot
       cephfs:
         enabled: true
         name: kube-system.cephfs.csi.ceph.com
