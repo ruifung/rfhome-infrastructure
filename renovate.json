@@ -83,6 +83,14 @@
       "schedule": [
         "* 0-6,9-23 * * *"
       ]
+    },
+    {
+      "description": "Exclude known-bad bifrost tags (chart OCI artifacts pushed to the image repo, not runnable images)",
+      "matchPackageNames": [
+        "maximhq/bifrost",
+        "docker.io/maximhq/bifrost"
+      ],
+      "allowedVersions": "!/^2\\.1\\.(27|29)$/"
     }
   ],
   "flux": {
