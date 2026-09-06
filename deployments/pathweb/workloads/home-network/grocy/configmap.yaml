@@ -6,6 +6,6 @@ metadata:
   namespace: home-network
 data:
   CURRENCY: MYR
-  AUTH_CLASS: 'Grocy\Middleware\ReverseProxyAuthMiddleware'
+  AUTH_CLASS: 'Grocy\Middleware\Auth\ReverseProxyAuthMiddleware'
   REVERSE_PROXY_AUTH_HEADER: 'X-authentik-username'
   BASE_URL: 'https://grocy.services.home.yrf.me'
