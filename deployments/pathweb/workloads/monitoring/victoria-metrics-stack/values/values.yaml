@@ -13,31 +13,6 @@ victoria-metrics-operator:
 
 defaultRules:
   create: true
-  rules:
-    etcd: true
-    general: true
-    k8s: true
-    kubeApiserver: true
-    kubeApiserverAvailability: true
-    kubeApiserverBurnrate: true
-    kubeApiserverHistogram: true
-    kubeApiserverSlos: true
-    kubelet: true
-    kubePrometheusGeneral: true
-    kubePrometheusNodeRecording: true
-    kubernetesApps: true
-    kubernetesResources: true
-    kubernetesStorage: true
-    kubernetesSystem: true
-    kubeScheduler: true
-    kubeStateMetrics: true
-    network: true
-    node: true
-    vmagent: true
-    vmsingle: true
-    vmcluster: true
-    vmhealth: true
-    alertmanager: true
   # -- Runbook url prefix for default rules
 
   runbookUrl: https://runbooks.prometheus-operator.dev/runbooks
