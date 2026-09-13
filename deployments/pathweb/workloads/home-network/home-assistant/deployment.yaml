@@ -93,6 +93,7 @@ spec:
         - "2"
         - --vendorid
         - "4939"
+        - --enable-test-net-dcl
         volumeMounts:
         - name: hass-data
           mountPath: /data
