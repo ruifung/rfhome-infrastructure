@@ -19,6 +19,14 @@ spec:
         http: [{}]
   - fromEndpoints:
     - matchLabels:
+        app.kubernetes.io/name: home-assistant-matter-hub
+        io.kubernetes.pod.namespace: home-network
+    toPorts:
+    - ports:
+      - port: '8123'
+        protocol: TCP
+  - fromEndpoints:
+    - matchLabels:
         io.kubernetes.pod.namespace: traefik
     - matchExpressions:
       - key: app.kubernetes.io/name
