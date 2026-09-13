@@ -177,9 +177,9 @@ spec:
         configMap:
           name: homeassistant-docker-venv
           defaultMode: 0755
-      - name: ha-http-config
+      - name: ha-config-extra
         configMap:
-          name: ha-http-config
+          name: ha-config-extra
           defaultMode: 0644
       - name: leader-signal
         emptyDir:
