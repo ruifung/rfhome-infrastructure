@@ -157,3 +157,13 @@ spec:
     - ports:
       - port: '80'
         protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: home-assistant-matter-hub
+        io.kubernetes.pod.namespace: home-network
+    toPorts:
+    - ports:
+      - port: '8482'
+        protocol: TCP
+      rules:
+        http: [{}]

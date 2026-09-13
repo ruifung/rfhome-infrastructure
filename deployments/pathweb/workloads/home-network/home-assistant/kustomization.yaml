@@ -27,9 +27,10 @@ configMapGenerator:
   - matter-server.sh
   - ha-probe.sh
   - sync-http-settings.py
-- name: ha-http-config
+- name: ha-config-extra
   files:
   - ha-http-config.yaml
+  - hass-ingress.yaml
 labels:
 - pairs:
     app.kubernetes.io/version: 2026.4.2

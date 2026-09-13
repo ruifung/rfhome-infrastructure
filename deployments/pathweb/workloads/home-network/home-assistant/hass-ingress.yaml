@@ -1,0 +1,12 @@
+---
+ingress:
+  matterjs:
+    require_admin: true
+    title: Matter.js Server
+    icon: m3of:matter
+    url: http://127.0.0.1:5580
+  matterhub:
+    require_admin: true
+    title: Matter Hub
+    icon: m3of:matter
+    url: http://home-assistant-matter-hub:8482

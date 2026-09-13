@@ -1,0 +1,44 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: home-assistant-matter-hub-policy
+  namespace: home-network
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: home-assistant-matter-hub
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: home-assistant
+        io.kubernetes.pod.namespace: home-network
+    toPorts:
+    - ports:
+      - port: '8482'
+        protocol: TCP
+      rules:
+        http: [{}]
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: home-assistant
+        io.kubernetes.pod.namespace: home-network
+    toPorts:
+    - ports:
+      - port: '8123'
+        protocol: TCP
+  - toEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: kube-dns
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: node-local-dns
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: ANY
+      rules:
+        dns:
+        - matchPattern: "*"
