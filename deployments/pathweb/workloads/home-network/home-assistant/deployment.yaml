@@ -149,7 +149,7 @@ spec:
           readOnly: true
         - name: ha-config-extra
           subPath: hass-ingress.yaml
-          mountPath: /config/packages/hass-ingress-kustomize.yaml
+          mountPath: /config/packages/hass_ingress_kustomize.yaml
           readOnly: true
         - name: leader-signal
           mountPath: /signal
