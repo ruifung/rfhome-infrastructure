@@ -11,7 +11,10 @@ spec:
   ingress:
   - fromEndpoints:
     - matchLabels:
-        "k8s:io.kubernetes.pod.namespace": traefik
+        io.kubernetes.pod.namespace: traefik
+    - matchLabels:
+        app.kubernetes.io/name: home-assistant
+        io.kubernetes.pod.namespace: home-network
     toPorts:
     - ports:
       - port: "80"
@@ -21,7 +24,7 @@ spec:
   egress:
   - toEndpoints:
     - matchLabels:
-        "k8s:io.kubernetes.pod.namespace": kube-system
+        io.kubernetes.pod.namespace: kube-system
       matchExpressions:
       - key: "k8s:k8s-app"
         operator: In

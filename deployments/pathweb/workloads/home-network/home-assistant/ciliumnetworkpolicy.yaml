@@ -147,13 +147,11 @@ spec:
     - matchLabels:
         app.kubernetes.io/name: slzb-ultima-wg
         io.kubernetes.pod.namespace: home-network-privileged
-    toPorts:
-    - ports:
-      - port: '80'
-        protocol: TCP
-  - toEndpoints:
     - matchLabels:
         app.kubernetes.io/name: zigbee2mqtt
+        io.kubernetes.pod.namespace: home-network
+    - matchLabels:
+        app.kubernetes.io/name: grocy
         io.kubernetes.pod.namespace: home-network
     toPorts:
     - ports:
