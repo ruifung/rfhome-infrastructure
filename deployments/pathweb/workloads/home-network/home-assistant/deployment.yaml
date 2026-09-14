@@ -94,6 +94,8 @@ spec:
         - --vendorid
         - "4939"
         - --enable-test-net-dcl
+        - --ble-proxy
+        - --enable-time-sync
         volumeMounts:
         - name: hass-data
           mountPath: /data
