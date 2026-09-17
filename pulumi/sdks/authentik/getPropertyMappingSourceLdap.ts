@@ -54,9 +54,9 @@ export function getPropertyMappingSourceLdapOutput(args?: GetPropertyMappingSour
  * A collection of arguments for invoking getPropertyMappingSourceLdap.
  */
 export interface GetPropertyMappingSourceLdapOutputArgs {
-    id?: pulumi.Input<string>;
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    managed?: pulumi.Input<string>;
-    managedLists?: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    managed?: pulumi.Input<string | undefined>;
+    managedLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -117,6 +117,7 @@
         ]
     },
     {
+        "ignore": true,
         "fqdn": "pathweb-worker-baldric-2.servers.home.yrf.me",
         "role": "worker",
         "type": "nocloud-qemu",

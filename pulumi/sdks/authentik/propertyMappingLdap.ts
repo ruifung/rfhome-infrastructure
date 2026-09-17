@@ -70,9 +70,9 @@ export class PropertyMappingLdap extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PropertyMappingLdap resources.
  */
 export interface PropertyMappingLdapState {
-    expression?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingLdapId?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingLdapId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -80,6 +80,6 @@ export interface PropertyMappingLdapState {
  */
 export interface PropertyMappingLdapArgs {
     expression: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingLdapId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingLdapId?: pulumi.Input<string | undefined>;
 }

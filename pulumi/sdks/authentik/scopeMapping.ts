@@ -79,20 +79,20 @@ export class ScopeMapping extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ScopeMapping resources.
  */
 export interface ScopeMappingState {
-    description?: pulumi.Input<string>;
-    expression?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    scopeMappingId?: pulumi.Input<string>;
-    scopeName?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    expression?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    scopeMappingId?: pulumi.Input<string | undefined>;
+    scopeName?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ScopeMapping resource.
  */
 export interface ScopeMappingArgs {
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     expression: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    scopeMappingId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    scopeMappingId?: pulumi.Input<string | undefined>;
     scopeName: pulumi.Input<string>;
 }

@@ -92,11 +92,11 @@ export interface RbacInitialPermissionsState {
      *   - <span pulumi-lang-nodejs="`user`" pulumi-lang-dotnet="`User`" pulumi-lang-go="`user`" pulumi-lang-python="`user`" pulumi-lang-yaml="`user`" pulumi-lang-java="`user`">`user`</span>
      *   - <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>
      */
-    mode?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    permissions?: pulumi.Input<pulumi.Input<number>[]>;
-    rbacInitialPermissionsId?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    permissions?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    rbacInitialPermissionsId?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -109,8 +109,8 @@ export interface RbacInitialPermissionsArgs {
      *   - <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>
      */
     mode: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     permissions: pulumi.Input<pulumi.Input<number>[]>;
-    rbacInitialPermissionsId?: pulumi.Input<string>;
+    rbacInitialPermissionsId?: pulumi.Input<string | undefined>;
     role: pulumi.Input<string>;
 }

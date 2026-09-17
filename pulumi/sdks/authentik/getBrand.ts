@@ -101,21 +101,21 @@ export function getBrandOutput(args?: GetBrandOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getBrand.
  */
 export interface GetBrandOutputArgs {
-    brandingCustomCss?: pulumi.Input<string>;
-    brandingDefaultFlowBackground?: pulumi.Input<string>;
-    brandingFavicon?: pulumi.Input<string>;
-    brandingLogo?: pulumi.Input<string>;
-    brandingTitle?: pulumi.Input<string>;
-    clientCertificates?: pulumi.Input<pulumi.Input<string>[]>;
-    default?: pulumi.Input<boolean>;
-    defaultApplication?: pulumi.Input<string>;
-    domain?: pulumi.Input<string>;
-    flowAuthentication?: pulumi.Input<string>;
-    flowDeviceCode?: pulumi.Input<string>;
-    flowInvalidation?: pulumi.Input<string>;
-    flowRecovery?: pulumi.Input<string>;
-    flowUnenrollment?: pulumi.Input<string>;
-    flowUserSettings?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
-    webCertificate?: pulumi.Input<string>;
+    brandingCustomCss?: pulumi.Input<string | undefined>;
+    brandingDefaultFlowBackground?: pulumi.Input<string | undefined>;
+    brandingFavicon?: pulumi.Input<string | undefined>;
+    brandingLogo?: pulumi.Input<string | undefined>;
+    brandingTitle?: pulumi.Input<string | undefined>;
+    clientCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    default?: pulumi.Input<boolean | undefined>;
+    defaultApplication?: pulumi.Input<string | undefined>;
+    domain?: pulumi.Input<string | undefined>;
+    flowAuthentication?: pulumi.Input<string | undefined>;
+    flowDeviceCode?: pulumi.Input<string | undefined>;
+    flowInvalidation?: pulumi.Input<string | undefined>;
+    flowRecovery?: pulumi.Input<string | undefined>;
+    flowUnenrollment?: pulumi.Input<string | undefined>;
+    flowUserSettings?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    webCertificate?: pulumi.Input<string | undefined>;
 }

@@ -70,9 +70,9 @@ export class PropertyMappingProviderMicrosoftEntra extends pulumi.CustomResource
  * Input properties used for looking up and filtering PropertyMappingProviderMicrosoftEntra resources.
  */
 export interface PropertyMappingProviderMicrosoftEntraState {
-    expression?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingProviderMicrosoftEntraId?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingProviderMicrosoftEntraId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -80,6 +80,6 @@ export interface PropertyMappingProviderMicrosoftEntraState {
  */
 export interface PropertyMappingProviderMicrosoftEntraArgs {
     expression: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingProviderMicrosoftEntraId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingProviderMicrosoftEntraId?: pulumi.Input<string | undefined>;
 }

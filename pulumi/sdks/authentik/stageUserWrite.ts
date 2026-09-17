@@ -44,7 +44,7 @@ export class StageUserWrite extends pulumi.CustomResource {
      *   - <span pulumi-lang-nodejs="`neverCreate`" pulumi-lang-dotnet="`NeverCreate`" pulumi-lang-go="`neverCreate`" pulumi-lang-python="`never_create`" pulumi-lang-yaml="`neverCreate`" pulumi-lang-java="`neverCreate`">`never_create`</span>
      *   - <span pulumi-lang-nodejs="`createWhenRequired`" pulumi-lang-dotnet="`CreateWhenRequired`" pulumi-lang-go="`createWhenRequired`" pulumi-lang-python="`create_when_required`" pulumi-lang-yaml="`createWhenRequired`" pulumi-lang-java="`createWhenRequired`">`create_when_required`</span>
      *   - <span pulumi-lang-nodejs="`alwaysCreate`" pulumi-lang-dotnet="`AlwaysCreate`" pulumi-lang-go="`alwaysCreate`" pulumi-lang-python="`always_create`" pulumi-lang-yaml="`alwaysCreate`" pulumi-lang-java="`alwaysCreate`">`always_create`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`createWhenRequired`" pulumi-lang-dotnet="`CreateWhenRequired`" pulumi-lang-go="`createWhenRequired`" pulumi-lang-python="`create_when_required`" pulumi-lang-yaml="`createWhenRequired`" pulumi-lang-java="`createWhenRequired`">`create_when_required`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`createWhenRequired`" pulumi-lang-dotnet="`CreateWhenRequired`" pulumi-lang-go="`createWhenRequired`" pulumi-lang-python="`create_when_required`" pulumi-lang-yaml="`createWhenRequired`" pulumi-lang-java="`createWhenRequired`">`create_when_required`</span>.
      */
     declare public readonly userCreationMode: pulumi.Output<string | undefined>;
     /**
@@ -56,7 +56,7 @@ export class StageUserWrite extends pulumi.CustomResource {
      *   - <span pulumi-lang-nodejs="`internal`" pulumi-lang-dotnet="`Internal`" pulumi-lang-go="`internal`" pulumi-lang-python="`internal`" pulumi-lang-yaml="`internal`" pulumi-lang-java="`internal`">`internal`</span>
      *   - <span pulumi-lang-nodejs="`external`" pulumi-lang-dotnet="`External`" pulumi-lang-go="`external`" pulumi-lang-python="`external`" pulumi-lang-yaml="`external`" pulumi-lang-java="`external`">`external`</span>
      *   - <span pulumi-lang-nodejs="`serviceAccount`" pulumi-lang-dotnet="`ServiceAccount`" pulumi-lang-go="`serviceAccount`" pulumi-lang-python="`service_account`" pulumi-lang-yaml="`serviceAccount`" pulumi-lang-java="`serviceAccount`">`service_account`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`external`" pulumi-lang-dotnet="`External`" pulumi-lang-go="`external`" pulumi-lang-python="`external`" pulumi-lang-yaml="`external`" pulumi-lang-java="`external`">`external`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`external`" pulumi-lang-dotnet="`External`" pulumi-lang-go="`external`" pulumi-lang-python="`external`" pulumi-lang-yaml="`external`" pulumi-lang-java="`external`">`external`</span>.
      */
     declare public readonly userType: pulumi.Output<string | undefined>;
 
@@ -102,30 +102,30 @@ export interface StageUserWriteState {
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    createUsersAsInactive?: pulumi.Input<boolean>;
-    createUsersGroup?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    stageUserWriteId?: pulumi.Input<string>;
+    createUsersAsInactive?: pulumi.Input<boolean | undefined>;
+    createUsersGroup?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    stageUserWriteId?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`neverCreate`" pulumi-lang-dotnet="`NeverCreate`" pulumi-lang-go="`neverCreate`" pulumi-lang-python="`never_create`" pulumi-lang-yaml="`neverCreate`" pulumi-lang-java="`neverCreate`">`never_create`</span>
      *   - <span pulumi-lang-nodejs="`createWhenRequired`" pulumi-lang-dotnet="`CreateWhenRequired`" pulumi-lang-go="`createWhenRequired`" pulumi-lang-python="`create_when_required`" pulumi-lang-yaml="`createWhenRequired`" pulumi-lang-java="`createWhenRequired`">`create_when_required`</span>
      *   - <span pulumi-lang-nodejs="`alwaysCreate`" pulumi-lang-dotnet="`AlwaysCreate`" pulumi-lang-go="`alwaysCreate`" pulumi-lang-python="`always_create`" pulumi-lang-yaml="`alwaysCreate`" pulumi-lang-java="`alwaysCreate`">`always_create`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`createWhenRequired`" pulumi-lang-dotnet="`CreateWhenRequired`" pulumi-lang-go="`createWhenRequired`" pulumi-lang-python="`create_when_required`" pulumi-lang-yaml="`createWhenRequired`" pulumi-lang-java="`createWhenRequired`">`create_when_required`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`createWhenRequired`" pulumi-lang-dotnet="`CreateWhenRequired`" pulumi-lang-go="`createWhenRequired`" pulumi-lang-python="`create_when_required`" pulumi-lang-yaml="`createWhenRequired`" pulumi-lang-java="`createWhenRequired`">`create_when_required`</span>.
      */
-    userCreationMode?: pulumi.Input<string>;
+    userCreationMode?: pulumi.Input<string | undefined>;
     /**
      * Defaults to ``.
      */
-    userPathTemplate?: pulumi.Input<string>;
+    userPathTemplate?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`internal`" pulumi-lang-dotnet="`Internal`" pulumi-lang-go="`internal`" pulumi-lang-python="`internal`" pulumi-lang-yaml="`internal`" pulumi-lang-java="`internal`">`internal`</span>
      *   - <span pulumi-lang-nodejs="`external`" pulumi-lang-dotnet="`External`" pulumi-lang-go="`external`" pulumi-lang-python="`external`" pulumi-lang-yaml="`external`" pulumi-lang-java="`external`">`external`</span>
      *   - <span pulumi-lang-nodejs="`serviceAccount`" pulumi-lang-dotnet="`ServiceAccount`" pulumi-lang-go="`serviceAccount`" pulumi-lang-python="`service_account`" pulumi-lang-yaml="`serviceAccount`" pulumi-lang-java="`serviceAccount`">`service_account`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`external`" pulumi-lang-dotnet="`External`" pulumi-lang-go="`external`" pulumi-lang-python="`external`" pulumi-lang-yaml="`external`" pulumi-lang-java="`external`">`external`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`external`" pulumi-lang-dotnet="`External`" pulumi-lang-go="`external`" pulumi-lang-python="`external`" pulumi-lang-yaml="`external`" pulumi-lang-java="`external`">`external`</span>.
      */
-    userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -135,28 +135,28 @@ export interface StageUserWriteArgs {
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    createUsersAsInactive?: pulumi.Input<boolean>;
-    createUsersGroup?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    stageUserWriteId?: pulumi.Input<string>;
+    createUsersAsInactive?: pulumi.Input<boolean | undefined>;
+    createUsersGroup?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    stageUserWriteId?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`neverCreate`" pulumi-lang-dotnet="`NeverCreate`" pulumi-lang-go="`neverCreate`" pulumi-lang-python="`never_create`" pulumi-lang-yaml="`neverCreate`" pulumi-lang-java="`neverCreate`">`never_create`</span>
      *   - <span pulumi-lang-nodejs="`createWhenRequired`" pulumi-lang-dotnet="`CreateWhenRequired`" pulumi-lang-go="`createWhenRequired`" pulumi-lang-python="`create_when_required`" pulumi-lang-yaml="`createWhenRequired`" pulumi-lang-java="`createWhenRequired`">`create_when_required`</span>
      *   - <span pulumi-lang-nodejs="`alwaysCreate`" pulumi-lang-dotnet="`AlwaysCreate`" pulumi-lang-go="`alwaysCreate`" pulumi-lang-python="`always_create`" pulumi-lang-yaml="`alwaysCreate`" pulumi-lang-java="`alwaysCreate`">`always_create`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`createWhenRequired`" pulumi-lang-dotnet="`CreateWhenRequired`" pulumi-lang-go="`createWhenRequired`" pulumi-lang-python="`create_when_required`" pulumi-lang-yaml="`createWhenRequired`" pulumi-lang-java="`createWhenRequired`">`create_when_required`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`createWhenRequired`" pulumi-lang-dotnet="`CreateWhenRequired`" pulumi-lang-go="`createWhenRequired`" pulumi-lang-python="`create_when_required`" pulumi-lang-yaml="`createWhenRequired`" pulumi-lang-java="`createWhenRequired`">`create_when_required`</span>.
      */
-    userCreationMode?: pulumi.Input<string>;
+    userCreationMode?: pulumi.Input<string | undefined>;
     /**
      * Defaults to ``.
      */
-    userPathTemplate?: pulumi.Input<string>;
+    userPathTemplate?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`internal`" pulumi-lang-dotnet="`Internal`" pulumi-lang-go="`internal`" pulumi-lang-python="`internal`" pulumi-lang-yaml="`internal`" pulumi-lang-java="`internal`">`internal`</span>
      *   - <span pulumi-lang-nodejs="`external`" pulumi-lang-dotnet="`External`" pulumi-lang-go="`external`" pulumi-lang-python="`external`" pulumi-lang-yaml="`external`" pulumi-lang-java="`external`">`external`</span>
      *   - <span pulumi-lang-nodejs="`serviceAccount`" pulumi-lang-dotnet="`ServiceAccount`" pulumi-lang-go="`serviceAccount`" pulumi-lang-python="`service_account`" pulumi-lang-yaml="`serviceAccount`" pulumi-lang-java="`serviceAccount`">`service_account`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`external`" pulumi-lang-dotnet="`External`" pulumi-lang-go="`external`" pulumi-lang-python="`external`" pulumi-lang-yaml="`external`" pulumi-lang-java="`external`">`external`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`external`" pulumi-lang-dotnet="`External`" pulumi-lang-go="`external`" pulumi-lang-python="`external`" pulumi-lang-yaml="`external`" pulumi-lang-java="`external`">`external`</span>.
      */
-    userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string | undefined>;
 }

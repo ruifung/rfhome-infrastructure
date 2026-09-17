@@ -301,11 +301,11 @@ export interface RbacPermissionRoleState {
      *   - `authentik_stages_mtls.mutualtlsstage`
      *   - `authentik_stages_source.sourcestage`
      */
-    model?: pulumi.Input<string>;
-    objectId?: pulumi.Input<string>;
-    permission?: pulumi.Input<string>;
-    rbacPermissionRoleId?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
+    objectId?: pulumi.Input<string | undefined>;
+    permission?: pulumi.Input<string | undefined>;
+    rbacPermissionRoleId?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -423,9 +423,9 @@ export interface RbacPermissionRoleArgs {
      *   - `authentik_stages_mtls.mutualtlsstage`
      *   - `authentik_stages_source.sourcestage`
      */
-    model?: pulumi.Input<string>;
-    objectId?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
+    objectId?: pulumi.Input<string | undefined>;
     permission: pulumi.Input<string>;
-    rbacPermissionRoleId?: pulumi.Input<string>;
+    rbacPermissionRoleId?: pulumi.Input<string | undefined>;
     role: pulumi.Input<string>;
 }

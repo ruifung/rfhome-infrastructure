@@ -82,14 +82,14 @@ export interface ProviderSsfState {
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `days=30`.
      */
-    eventRetention?: pulumi.Input<string>;
+    eventRetention?: pulumi.Input<string | undefined>;
     /**
      * JWTs issued by any of the configured providers can be used to authenticate on behalf of this provider.
      */
-    jwtFederationProviders?: pulumi.Input<pulumi.Input<number>[]>;
-    name?: pulumi.Input<string>;
-    providerSsfId?: pulumi.Input<string>;
-    signingKey?: pulumi.Input<string>;
+    jwtFederationProviders?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    providerSsfId?: pulumi.Input<string | undefined>;
+    signingKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -99,12 +99,12 @@ export interface ProviderSsfArgs {
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `days=30`.
      */
-    eventRetention?: pulumi.Input<string>;
+    eventRetention?: pulumi.Input<string | undefined>;
     /**
      * JWTs issued by any of the configured providers can be used to authenticate on behalf of this provider.
      */
-    jwtFederationProviders?: pulumi.Input<pulumi.Input<number>[]>;
-    name?: pulumi.Input<string>;
-    providerSsfId?: pulumi.Input<string>;
-    signingKey?: pulumi.Input<string>;
+    jwtFederationProviders?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    providerSsfId?: pulumi.Input<string | undefined>;
+    signingKey?: pulumi.Input<string | undefined>;
 }

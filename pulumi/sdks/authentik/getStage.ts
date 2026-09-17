@@ -41,6 +41,6 @@ export function getStageOutput(args?: GetStageOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getStage.
  */
 export interface GetStageOutputArgs {
-    id?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

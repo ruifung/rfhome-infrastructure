@@ -102,21 +102,21 @@ export class ProviderRadius extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProviderRadius resources.
  */
 export interface ProviderRadiusState {
-    authorizationFlow?: pulumi.Input<string>;
-    certificate?: pulumi.Input<string>;
+    authorizationFlow?: pulumi.Input<string | undefined>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `0.0.0.0/0, ::/0`.
      */
-    clientNetworks?: pulumi.Input<string>;
-    invalidationFlow?: pulumi.Input<string>;
+    clientNetworks?: pulumi.Input<string | undefined>;
+    invalidationFlow?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    mfaSupport?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    propertyMappings?: pulumi.Input<pulumi.Input<string>[]>;
-    providerRadiusId?: pulumi.Input<string>;
-    sharedSecret?: pulumi.Input<string>;
+    mfaSupport?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    providerRadiusId?: pulumi.Input<string | undefined>;
+    sharedSecret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -124,18 +124,18 @@ export interface ProviderRadiusState {
  */
 export interface ProviderRadiusArgs {
     authorizationFlow: pulumi.Input<string>;
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `0.0.0.0/0, ::/0`.
      */
-    clientNetworks?: pulumi.Input<string>;
+    clientNetworks?: pulumi.Input<string | undefined>;
     invalidationFlow: pulumi.Input<string>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    mfaSupport?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    propertyMappings?: pulumi.Input<pulumi.Input<string>[]>;
-    providerRadiusId?: pulumi.Input<string>;
+    mfaSupport?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    providerRadiusId?: pulumi.Input<string | undefined>;
     sharedSecret: pulumi.Input<string>;
 }

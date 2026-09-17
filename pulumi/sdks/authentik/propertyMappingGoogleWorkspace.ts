@@ -70,9 +70,9 @@ export class PropertyMappingGoogleWorkspace extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PropertyMappingGoogleWorkspace resources.
  */
 export interface PropertyMappingGoogleWorkspaceState {
-    expression?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingGoogleWorkspaceId?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingGoogleWorkspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -80,6 +80,6 @@ export interface PropertyMappingGoogleWorkspaceState {
  */
 export interface PropertyMappingGoogleWorkspaceArgs {
     expression: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingGoogleWorkspaceId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingGoogleWorkspaceId?: pulumi.Input<string | undefined>;
 }

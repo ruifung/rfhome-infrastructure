@@ -58,7 +58,7 @@ export class ProviderSaml extends pulumi.CustomResource {
      *   - `http://www.w3.org/2001/04/xmlenc#sha256`
      *   - `http://www.w3.org/2001/04/xmldsig-more#sha384`
      *   - `http://www.w3.org/2001/04/xmlenc#sha512`
-     *  Defaults to `http://www.w3.org/2001/04/xmlenc#sha256`.
+     *      Defaults to `http://www.w3.org/2001/04/xmlenc#sha256`.
      */
     declare public readonly digestAlgorithm: pulumi.Output<string | undefined>;
     declare public readonly encryptionKp: pulumi.Output<string | undefined>;
@@ -72,7 +72,7 @@ export class ProviderSaml extends pulumi.CustomResource {
      *   - <span pulumi-lang-nodejs="`frontchannelIframe`" pulumi-lang-dotnet="`FrontchannelIframe`" pulumi-lang-go="`frontchannelIframe`" pulumi-lang-python="`frontchannel_iframe`" pulumi-lang-yaml="`frontchannelIframe`" pulumi-lang-java="`frontchannelIframe`">`frontchannel_iframe`</span>
      *   - <span pulumi-lang-nodejs="`frontchannelNative`" pulumi-lang-dotnet="`FrontchannelNative`" pulumi-lang-go="`frontchannelNative`" pulumi-lang-python="`frontchannel_native`" pulumi-lang-yaml="`frontchannelNative`" pulumi-lang-java="`frontchannelNative`">`frontchannel_native`</span>
      *   - <span pulumi-lang-nodejs="`backchannel`" pulumi-lang-dotnet="`Backchannel`" pulumi-lang-go="`backchannel`" pulumi-lang-python="`backchannel`" pulumi-lang-yaml="`backchannel`" pulumi-lang-java="`backchannel`">`backchannel`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`backchannel`" pulumi-lang-dotnet="`Backchannel`" pulumi-lang-go="`backchannel`" pulumi-lang-python="`backchannel`" pulumi-lang-yaml="`backchannel`" pulumi-lang-java="`backchannel`">`backchannel`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`backchannel`" pulumi-lang-dotnet="`Backchannel`" pulumi-lang-go="`backchannel`" pulumi-lang-python="`backchannel`" pulumi-lang-yaml="`backchannel`" pulumi-lang-java="`backchannel`">`backchannel`</span>.
      */
     declare public readonly logoutMethod: pulumi.Output<string | undefined>;
     declare public readonly name: pulumi.Output<string>;
@@ -106,7 +106,7 @@ export class ProviderSaml extends pulumi.CustomResource {
      *   - `http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384`
      *   - `http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512`
      *   - `http://www.w3.org/2000/09/xmldsig#dsa-sha1`
-     *  Defaults to `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256`.
+     *      Defaults to `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256`.
      */
     declare public readonly signatureAlgorithm: pulumi.Output<string | undefined>;
     declare public readonly signingKp: pulumi.Output<string | undefined>;
@@ -114,7 +114,7 @@ export class ProviderSaml extends pulumi.CustomResource {
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>
      *   - <span pulumi-lang-nodejs="`post`" pulumi-lang-dotnet="`Post`" pulumi-lang-go="`post`" pulumi-lang-python="`post`" pulumi-lang-yaml="`post`" pulumi-lang-java="`post`">`post`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
      */
     declare public readonly slsBinding: pulumi.Output<string | undefined>;
     declare public readonly slsUrl: pulumi.Output<string | undefined>;
@@ -122,7 +122,7 @@ export class ProviderSaml extends pulumi.CustomResource {
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>
      *   - <span pulumi-lang-nodejs="`post`" pulumi-lang-dotnet="`Post`" pulumi-lang-go="`post`" pulumi-lang-python="`post`" pulumi-lang-yaml="`post`" pulumi-lang-java="`post`">`post`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
      */
     declare public readonly spBinding: pulumi.Output<string | undefined>;
     /**
@@ -245,69 +245,69 @@ export class ProviderSaml extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProviderSaml resources.
  */
 export interface ProviderSamlState {
-    acsUrl?: pulumi.Input<string>;
+    acsUrl?: pulumi.Input<string | undefined>;
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `minutes=-5`.
      */
-    assertionValidNotBefore?: pulumi.Input<string>;
+    assertionValidNotBefore?: pulumi.Input<string | undefined>;
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `minutes=5`.
      */
-    assertionValidNotOnOrAfter?: pulumi.Input<string>;
+    assertionValidNotOnOrAfter?: pulumi.Input<string | undefined>;
     /**
      * Defaults to ``.
      */
-    audience?: pulumi.Input<string>;
-    authenticationFlow?: pulumi.Input<string>;
-    authnContextClassRefMapping?: pulumi.Input<string>;
-    authorizationFlow?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
+    authenticationFlow?: pulumi.Input<string | undefined>;
+    authnContextClassRefMapping?: pulumi.Input<string | undefined>;
+    authorizationFlow?: pulumi.Input<string | undefined>;
     /**
      * Defaults to ``.
      */
-    defaultRelayState?: pulumi.Input<string>;
+    defaultRelayState?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - `http://www.w3.org/2000/09/xmldsig#sha1`
      *   - `http://www.w3.org/2001/04/xmlenc#sha256`
      *   - `http://www.w3.org/2001/04/xmldsig-more#sha384`
      *   - `http://www.w3.org/2001/04/xmlenc#sha512`
-     *  Defaults to `http://www.w3.org/2001/04/xmlenc#sha256`.
+     *      Defaults to `http://www.w3.org/2001/04/xmlenc#sha256`.
      */
-    digestAlgorithm?: pulumi.Input<string>;
-    encryptionKp?: pulumi.Input<string>;
-    invalidationFlow?: pulumi.Input<string>;
+    digestAlgorithm?: pulumi.Input<string | undefined>;
+    encryptionKp?: pulumi.Input<string | undefined>;
+    invalidationFlow?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`authentik`" pulumi-lang-dotnet="`Authentik`" pulumi-lang-go="`authentik`" pulumi-lang-python="`authentik`" pulumi-lang-yaml="`authentik`" pulumi-lang-java="`authentik`">`authentik`</span>.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`frontchannelIframe`" pulumi-lang-dotnet="`FrontchannelIframe`" pulumi-lang-go="`frontchannelIframe`" pulumi-lang-python="`frontchannel_iframe`" pulumi-lang-yaml="`frontchannelIframe`" pulumi-lang-java="`frontchannelIframe`">`frontchannel_iframe`</span>
      *   - <span pulumi-lang-nodejs="`frontchannelNative`" pulumi-lang-dotnet="`FrontchannelNative`" pulumi-lang-go="`frontchannelNative`" pulumi-lang-python="`frontchannel_native`" pulumi-lang-yaml="`frontchannelNative`" pulumi-lang-java="`frontchannelNative`">`frontchannel_native`</span>
      *   - <span pulumi-lang-nodejs="`backchannel`" pulumi-lang-dotnet="`Backchannel`" pulumi-lang-go="`backchannel`" pulumi-lang-python="`backchannel`" pulumi-lang-yaml="`backchannel`" pulumi-lang-java="`backchannel`">`backchannel`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`backchannel`" pulumi-lang-dotnet="`Backchannel`" pulumi-lang-go="`backchannel`" pulumi-lang-python="`backchannel`" pulumi-lang-yaml="`backchannel`" pulumi-lang-java="`backchannel`">`backchannel`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`backchannel`" pulumi-lang-dotnet="`Backchannel`" pulumi-lang-go="`backchannel`" pulumi-lang-python="`backchannel`" pulumi-lang-yaml="`backchannel`" pulumi-lang-java="`backchannel`">`backchannel`</span>.
      */
-    logoutMethod?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    nameIdMapping?: pulumi.Input<string>;
-    propertyMappings?: pulumi.Input<pulumi.Input<string>[]>;
-    providerSamlId?: pulumi.Input<string>;
+    logoutMethod?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    nameIdMapping?: pulumi.Input<string | undefined>;
+    propertyMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    providerSamlId?: pulumi.Input<string | undefined>;
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `minutes=86400`.
      */
-    sessionValidNotOnOrAfter?: pulumi.Input<string>;
+    sessionValidNotOnOrAfter?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    signAssertion?: pulumi.Input<boolean>;
+    signAssertion?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    signLogoutRequest?: pulumi.Input<boolean>;
+    signLogoutRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    signResponse?: pulumi.Input<boolean>;
+    signResponse?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed values:
      *   - `http://www.w3.org/2000/09/xmldsig#rsa-sha1`
@@ -319,46 +319,46 @@ export interface ProviderSamlState {
      *   - `http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384`
      *   - `http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512`
      *   - `http://www.w3.org/2000/09/xmldsig#dsa-sha1`
-     *  Defaults to `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256`.
+     *      Defaults to `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256`.
      */
-    signatureAlgorithm?: pulumi.Input<string>;
-    signingKp?: pulumi.Input<string>;
+    signatureAlgorithm?: pulumi.Input<string | undefined>;
+    signingKp?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>
      *   - <span pulumi-lang-nodejs="`post`" pulumi-lang-dotnet="`Post`" pulumi-lang-go="`post`" pulumi-lang-python="`post`" pulumi-lang-yaml="`post`" pulumi-lang-java="`post`">`post`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
      */
-    slsBinding?: pulumi.Input<string>;
-    slsUrl?: pulumi.Input<string>;
+    slsBinding?: pulumi.Input<string | undefined>;
+    slsUrl?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>
      *   - <span pulumi-lang-nodejs="`post`" pulumi-lang-dotnet="`Post`" pulumi-lang-go="`post`" pulumi-lang-python="`post`" pulumi-lang-yaml="`post`" pulumi-lang-java="`post`">`post`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
      */
-    spBinding?: pulumi.Input<string>;
+    spBinding?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    urlSloPost?: pulumi.Input<string>;
+    urlSloPost?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    urlSloRedirect?: pulumi.Input<string>;
+    urlSloRedirect?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    urlSsoInit?: pulumi.Input<string>;
+    urlSsoInit?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    urlSsoPost?: pulumi.Input<string>;
+    urlSsoPost?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    urlSsoRedirect?: pulumi.Input<string>;
-    verificationKp?: pulumi.Input<string>;
+    urlSsoRedirect?: pulumi.Input<string | undefined>;
+    verificationKp?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -369,65 +369,65 @@ export interface ProviderSamlArgs {
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `minutes=-5`.
      */
-    assertionValidNotBefore?: pulumi.Input<string>;
+    assertionValidNotBefore?: pulumi.Input<string | undefined>;
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `minutes=5`.
      */
-    assertionValidNotOnOrAfter?: pulumi.Input<string>;
+    assertionValidNotOnOrAfter?: pulumi.Input<string | undefined>;
     /**
      * Defaults to ``.
      */
-    audience?: pulumi.Input<string>;
-    authenticationFlow?: pulumi.Input<string>;
-    authnContextClassRefMapping?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
+    authenticationFlow?: pulumi.Input<string | undefined>;
+    authnContextClassRefMapping?: pulumi.Input<string | undefined>;
     authorizationFlow: pulumi.Input<string>;
     /**
      * Defaults to ``.
      */
-    defaultRelayState?: pulumi.Input<string>;
+    defaultRelayState?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - `http://www.w3.org/2000/09/xmldsig#sha1`
      *   - `http://www.w3.org/2001/04/xmlenc#sha256`
      *   - `http://www.w3.org/2001/04/xmldsig-more#sha384`
      *   - `http://www.w3.org/2001/04/xmlenc#sha512`
-     *  Defaults to `http://www.w3.org/2001/04/xmlenc#sha256`.
+     *      Defaults to `http://www.w3.org/2001/04/xmlenc#sha256`.
      */
-    digestAlgorithm?: pulumi.Input<string>;
-    encryptionKp?: pulumi.Input<string>;
+    digestAlgorithm?: pulumi.Input<string | undefined>;
+    encryptionKp?: pulumi.Input<string | undefined>;
     invalidationFlow: pulumi.Input<string>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`authentik`" pulumi-lang-dotnet="`Authentik`" pulumi-lang-go="`authentik`" pulumi-lang-python="`authentik`" pulumi-lang-yaml="`authentik`" pulumi-lang-java="`authentik`">`authentik`</span>.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`frontchannelIframe`" pulumi-lang-dotnet="`FrontchannelIframe`" pulumi-lang-go="`frontchannelIframe`" pulumi-lang-python="`frontchannel_iframe`" pulumi-lang-yaml="`frontchannelIframe`" pulumi-lang-java="`frontchannelIframe`">`frontchannel_iframe`</span>
      *   - <span pulumi-lang-nodejs="`frontchannelNative`" pulumi-lang-dotnet="`FrontchannelNative`" pulumi-lang-go="`frontchannelNative`" pulumi-lang-python="`frontchannel_native`" pulumi-lang-yaml="`frontchannelNative`" pulumi-lang-java="`frontchannelNative`">`frontchannel_native`</span>
      *   - <span pulumi-lang-nodejs="`backchannel`" pulumi-lang-dotnet="`Backchannel`" pulumi-lang-go="`backchannel`" pulumi-lang-python="`backchannel`" pulumi-lang-yaml="`backchannel`" pulumi-lang-java="`backchannel`">`backchannel`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`backchannel`" pulumi-lang-dotnet="`Backchannel`" pulumi-lang-go="`backchannel`" pulumi-lang-python="`backchannel`" pulumi-lang-yaml="`backchannel`" pulumi-lang-java="`backchannel`">`backchannel`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`backchannel`" pulumi-lang-dotnet="`Backchannel`" pulumi-lang-go="`backchannel`" pulumi-lang-python="`backchannel`" pulumi-lang-yaml="`backchannel`" pulumi-lang-java="`backchannel`">`backchannel`</span>.
      */
-    logoutMethod?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    nameIdMapping?: pulumi.Input<string>;
-    propertyMappings?: pulumi.Input<pulumi.Input<string>[]>;
-    providerSamlId?: pulumi.Input<string>;
+    logoutMethod?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    nameIdMapping?: pulumi.Input<string | undefined>;
+    propertyMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    providerSamlId?: pulumi.Input<string | undefined>;
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `minutes=86400`.
      */
-    sessionValidNotOnOrAfter?: pulumi.Input<string>;
+    sessionValidNotOnOrAfter?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    signAssertion?: pulumi.Input<boolean>;
+    signAssertion?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    signLogoutRequest?: pulumi.Input<boolean>;
+    signLogoutRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    signResponse?: pulumi.Input<boolean>;
+    signResponse?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed values:
      *   - `http://www.w3.org/2000/09/xmldsig#rsa-sha1`
@@ -439,44 +439,44 @@ export interface ProviderSamlArgs {
      *   - `http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384`
      *   - `http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512`
      *   - `http://www.w3.org/2000/09/xmldsig#dsa-sha1`
-     *  Defaults to `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256`.
+     *      Defaults to `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256`.
      */
-    signatureAlgorithm?: pulumi.Input<string>;
-    signingKp?: pulumi.Input<string>;
+    signatureAlgorithm?: pulumi.Input<string | undefined>;
+    signingKp?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>
      *   - <span pulumi-lang-nodejs="`post`" pulumi-lang-dotnet="`Post`" pulumi-lang-go="`post`" pulumi-lang-python="`post`" pulumi-lang-yaml="`post`" pulumi-lang-java="`post`">`post`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
      */
-    slsBinding?: pulumi.Input<string>;
-    slsUrl?: pulumi.Input<string>;
+    slsBinding?: pulumi.Input<string | undefined>;
+    slsUrl?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>
      *   - <span pulumi-lang-nodejs="`post`" pulumi-lang-dotnet="`Post`" pulumi-lang-go="`post`" pulumi-lang-python="`post`" pulumi-lang-yaml="`post`" pulumi-lang-java="`post`">`post`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
      */
-    spBinding?: pulumi.Input<string>;
+    spBinding?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    urlSloPost?: pulumi.Input<string>;
+    urlSloPost?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    urlSloRedirect?: pulumi.Input<string>;
+    urlSloRedirect?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    urlSsoInit?: pulumi.Input<string>;
+    urlSsoInit?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    urlSsoPost?: pulumi.Input<string>;
+    urlSsoPost?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    urlSsoRedirect?: pulumi.Input<string>;
-    verificationKp?: pulumi.Input<string>;
+    urlSsoRedirect?: pulumi.Input<string | undefined>;
+    verificationKp?: pulumi.Input<string | undefined>;
 }

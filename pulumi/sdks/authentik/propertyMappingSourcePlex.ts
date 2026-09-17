@@ -70,9 +70,9 @@ export class PropertyMappingSourcePlex extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PropertyMappingSourcePlex resources.
  */
 export interface PropertyMappingSourcePlexState {
-    expression?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingSourcePlexId?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingSourcePlexId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -80,6 +80,6 @@ export interface PropertyMappingSourcePlexState {
  */
 export interface PropertyMappingSourcePlexArgs {
     expression: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingSourcePlexId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingSourcePlexId?: pulumi.Input<string | undefined>;
 }

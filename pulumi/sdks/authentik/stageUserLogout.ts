@@ -64,14 +64,14 @@ export class StageUserLogout extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StageUserLogout resources.
  */
 export interface StageUserLogoutState {
-    name?: pulumi.Input<string>;
-    stageUserLogoutId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    stageUserLogoutId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a StageUserLogout resource.
  */
 export interface StageUserLogoutArgs {
-    name?: pulumi.Input<string>;
-    stageUserLogoutId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    stageUserLogoutId?: pulumi.Input<string | undefined>;
 }

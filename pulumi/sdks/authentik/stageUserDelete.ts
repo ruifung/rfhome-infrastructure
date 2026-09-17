@@ -64,14 +64,14 @@ export class StageUserDelete extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StageUserDelete resources.
  */
 export interface StageUserDeleteState {
-    name?: pulumi.Input<string>;
-    stageUserDeleteId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    stageUserDeleteId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a StageUserDelete resource.
  */
 export interface StageUserDeleteArgs {
-    name?: pulumi.Input<string>;
-    stageUserDeleteId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    stageUserDeleteId?: pulumi.Input<string | undefined>;
 }

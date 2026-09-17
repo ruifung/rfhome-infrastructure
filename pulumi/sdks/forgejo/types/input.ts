@@ -32,15 +32,15 @@ export interface GetRepositoryOwnerArgs {
     /**
      * Email address of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Full name of the user.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Numeric identifier of the user.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * Name of the user.
      */
@@ -48,7 +48,7 @@ export interface GetRepositoryOwnerArgs {
     /**
      * Login name of the user.
      */
-    loginName?: pulumi.Input<string>;
+    loginName?: pulumi.Input<string | undefined>;
 }
 
 export interface RepositoryExternalTracker {
@@ -59,7 +59,7 @@ export interface RepositoryExternalTracker {
     /**
      * External Issue Tracker Number Format.
      */
-    externalTrackerStyle?: pulumi.Input<string>;
+    externalTrackerStyle?: pulumi.Input<string | undefined>;
     /**
      * URL of external issue tracker.
      */
@@ -77,28 +77,28 @@ export interface RepositoryInternalTracker {
     /**
      * Let only contributors track time?
      */
-    allowOnlyContributorsToTrackTime?: pulumi.Input<boolean>;
+    allowOnlyContributorsToTrackTime?: pulumi.Input<boolean | undefined>;
     /**
      * Enable dependencies for issues and pull requests?
      */
-    enableIssueDependencies?: pulumi.Input<boolean>;
+    enableIssueDependencies?: pulumi.Input<boolean | undefined>;
     /**
      * Enable time tracking?
      */
-    enableTimeTracker?: pulumi.Input<boolean>;
+    enableTimeTracker?: pulumi.Input<boolean | undefined>;
 }
 
 export interface RepositoryPermissions {
     /**
      * Allowed to administer?
      */
-    admin?: pulumi.Input<boolean>;
+    admin?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed to pull?
      */
-    pull?: pulumi.Input<boolean>;
+    pull?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed to push?
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
 }

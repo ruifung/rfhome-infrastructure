@@ -42,5 +42,5 @@ export function getRbacPermissionOutput(args: GetRbacPermissionOutputArgs, opts?
  */
 export interface GetRbacPermissionOutputArgs {
     codename: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

@@ -437,251 +437,251 @@ export interface RepositoryState {
     /**
      * Allowed to manually merge pull requests? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    allowManualMerge?: pulumi.Input<boolean>;
+    allowManualMerge?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed to create merge commit? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    allowMergeCommits?: pulumi.Input<boolean>;
+    allowMergeCommits?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed to rebase then fast-forward? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    allowRebase?: pulumi.Input<boolean>;
+    allowRebase?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed to rebase then create merge commit? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    allowRebaseExplicit?: pulumi.Input<boolean>;
+    allowRebaseExplicit?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed to create squash commit? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    allowSquashMerge?: pulumi.Input<boolean>;
+    allowSquashMerge?: pulumi.Input<boolean | undefined>;
     /**
      * Is the repository archived?
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * API token for authenticating with migrate / clone URL. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    authToken?: pulumi.Input<string>;
+    authToken?: pulumi.Input<string | undefined>;
     /**
      * Whether the repository should be auto-intialized?
      */
-    autoInit?: pulumi.Input<boolean>;
+    autoInit?: pulumi.Input<boolean | undefined>;
     /**
      * Auto-detect manual pull request merges? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    autodetectManualMerge?: pulumi.Input<boolean>;
+    autodetectManualMerge?: pulumi.Input<boolean | undefined>;
     /**
      * Avatar URL of the repository.
      */
-    avatarUrl?: pulumi.Input<string>;
+    avatarUrl?: pulumi.Input<string | undefined>;
     /**
      * Migrate / clone from URL.
      */
-    cloneAddr?: pulumi.Input<string>;
+    cloneAddr?: pulumi.Input<string | undefined>;
     /**
      * Clone URL of the repository.
      */
-    cloneUrl?: pulumi.Input<string>;
+    cloneUrl?: pulumi.Input<string | undefined>;
     /**
      * Time at which the repository was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Default branch of the repository.
      */
-    defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string | undefined>;
     /**
      * Default merge style of the repository. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    defaultMergeStyle?: pulumi.Input<string>;
+    defaultMergeStyle?: pulumi.Input<string | undefined>;
     /**
      * Description of the repository.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is the repository empty?
      */
-    empty?: pulumi.Input<boolean>;
+    empty?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for external issue tracker. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasIssues`" pulumi-lang-dotnet="`HasIssues`" pulumi-lang-go="`hasIssues`" pulumi-lang-python="`has_issues`" pulumi-lang-yaml="`hasIssues`" pulumi-lang-java="`hasIssues`">`has_issues`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    externalTracker?: pulumi.Input<inputs.RepositoryExternalTracker>;
+    externalTracker?: pulumi.Input<inputs.RepositoryExternalTracker | undefined>;
     /**
      * Settings for external wiki. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasWiki`" pulumi-lang-dotnet="`HasWiki`" pulumi-lang-go="`hasWiki`" pulumi-lang-python="`has_wiki`" pulumi-lang-yaml="`hasWiki`" pulumi-lang-java="`hasWiki`">`has_wiki`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    externalWiki?: pulumi.Input<inputs.RepositoryExternalWiki>;
+    externalWiki?: pulumi.Input<inputs.RepositoryExternalWiki | undefined>;
     /**
      * Is the repository a fork?
      */
-    fork?: pulumi.Input<boolean>;
+    fork?: pulumi.Input<boolean | undefined>;
     /**
      * Number of forks of the repository.
      */
-    forksCount?: pulumi.Input<number>;
+    forksCount?: pulumi.Input<number | undefined>;
     /**
      * Full name of the repository.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Gitignores to use.
      */
-    gitignores?: pulumi.Input<string>;
+    gitignores?: pulumi.Input<string | undefined>;
     /**
      * Are integrated CI/CD pipelines enabled?
      */
-    hasActions?: pulumi.Input<boolean>;
+    hasActions?: pulumi.Input<boolean | undefined>;
     /**
      * Is the repository issue tracker enabled?
      */
-    hasIssues?: pulumi.Input<boolean>;
+    hasIssues?: pulumi.Input<boolean | undefined>;
     /**
      * Is the repository package registry enabled?
      */
-    hasPackages?: pulumi.Input<boolean>;
+    hasPackages?: pulumi.Input<boolean | undefined>;
     /**
      * Are repository projects enabled?
      */
-    hasProjects?: pulumi.Input<boolean>;
+    hasProjects?: pulumi.Input<boolean | undefined>;
     /**
      * Are repository pull requests enabled?
      */
-    hasPullRequests?: pulumi.Input<boolean>;
+    hasPullRequests?: pulumi.Input<boolean | undefined>;
     /**
      * Are repository releases enabled?
      */
-    hasReleases?: pulumi.Input<boolean>;
+    hasReleases?: pulumi.Input<boolean | undefined>;
     /**
      * Is the repository wiki enabled?
      */
-    hasWiki?: pulumi.Input<boolean>;
+    hasWiki?: pulumi.Input<boolean | undefined>;
     /**
      * HTML URL of the repository.
      */
-    htmlUrl?: pulumi.Input<string>;
+    htmlUrl?: pulumi.Input<string | undefined>;
     /**
      * Are whitespace conflicts ignored? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    ignoreWhitespaceConflicts?: pulumi.Input<boolean>;
+    ignoreWhitespaceConflicts?: pulumi.Input<boolean | undefined>;
     /**
      * Is the repository internal?
      */
-    internal?: pulumi.Input<boolean>;
+    internal?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for built-in issue tracker. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasIssues`" pulumi-lang-dotnet="`HasIssues`" pulumi-lang-go="`hasIssues`" pulumi-lang-python="`has_issues`" pulumi-lang-yaml="`hasIssues`" pulumi-lang-java="`hasIssues`">`has_issues`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    internalTracker?: pulumi.Input<inputs.RepositoryInternalTracker>;
+    internalTracker?: pulumi.Input<inputs.RepositoryInternalTracker | undefined>;
     /**
      * Issue Label set to use.
      */
-    issueLabels?: pulumi.Input<string>;
+    issueLabels?: pulumi.Input<string | undefined>;
     /**
      * Whether to migrate labels. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    labels?: pulumi.Input<boolean>;
+    labels?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to migrate LFS files. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    lfs?: pulumi.Input<boolean>;
+    lfs?: pulumi.Input<boolean | undefined>;
     /**
      * LFS endpoint to use. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`lfs`" pulumi-lang-dotnet="`Lfs`" pulumi-lang-go="`lfs`" pulumi-lang-python="`lfs`" pulumi-lang-yaml="`lfs`" pulumi-lang-java="`lfs`">`lfs`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    lfsEndpoint?: pulumi.Input<string>;
+    lfsEndpoint?: pulumi.Input<string | undefined>;
     /**
      * License to use.
      */
-    license?: pulumi.Input<string>;
+    license?: pulumi.Input<string | undefined>;
     /**
      * Whether to migrate milestones. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    milestones?: pulumi.Input<boolean>;
+    milestones?: pulumi.Input<boolean | undefined>;
     /**
      * Is the repository a mirror? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    mirror?: pulumi.Input<boolean>;
+    mirror?: pulumi.Input<boolean | undefined>;
     /**
      * Mirror interval of the repository. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`mirror`" pulumi-lang-dotnet="`Mirror`" pulumi-lang-go="`mirror`" pulumi-lang-python="`mirror`" pulumi-lang-yaml="`mirror`" pulumi-lang-java="`mirror`">`mirror`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    mirrorInterval?: pulumi.Input<string>;
+    mirrorInterval?: pulumi.Input<string | undefined>;
     /**
      * Time at which the repository mirror was updated.
      */
-    mirrorUpdated?: pulumi.Input<string>;
+    mirrorUpdated?: pulumi.Input<string | undefined>;
     /**
      * Name of the repository.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Number of open issues of the repository.
      */
-    openIssuesCount?: pulumi.Input<number>;
+    openIssuesCount?: pulumi.Input<number | undefined>;
     /**
      * Number of open pull requests of the repository.
      */
-    openPrCounter?: pulumi.Input<number>;
+    openPrCounter?: pulumi.Input<number | undefined>;
     /**
      * Owner of the repository.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Numeric identifier of the parent repository.
      */
-    parentId?: pulumi.Input<number>;
+    parentId?: pulumi.Input<number | undefined>;
     /**
      * Permissions of the repository.
      */
-    permissions?: pulumi.Input<inputs.RepositoryPermissions>;
+    permissions?: pulumi.Input<inputs.RepositoryPermissions | undefined>;
     /**
      * Is the repository private?
      */
-    private?: pulumi.Input<boolean>;
+    private?: pulumi.Input<boolean | undefined>;
     /**
      * Readme of the repository to create.
      */
-    readme?: pulumi.Input<string>;
+    readme?: pulumi.Input<string | undefined>;
     /**
      * Number of releases of the repository.
      */
-    releaseCounter?: pulumi.Input<number>;
+    releaseCounter?: pulumi.Input<number | undefined>;
     /**
      * Numeric identifier of the repository.
      */
-    repositoryId?: pulumi.Input<number>;
+    repositoryId?: pulumi.Input<number | undefined>;
     /**
      * Service to migrate from. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Size of the repository in KiB.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * SSH URL of the repository.
      */
-    sshUrl?: pulumi.Input<string>;
+    sshUrl?: pulumi.Input<string | undefined>;
     /**
      * Number of stars of the repository.
      */
-    starsCount?: pulumi.Input<number>;
+    starsCount?: pulumi.Input<number | undefined>;
     /**
      * Is the repository a template?
      */
-    template?: pulumi.Input<boolean>;
+    template?: pulumi.Input<boolean | undefined>;
     /**
      * TrustModel of the repository.
      */
-    trustModel?: pulumi.Input<string>;
+    trustModel?: pulumi.Input<string | undefined>;
     /**
      * Time at which the repository was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of watchers of the repository.
      */
-    watchersCount?: pulumi.Input<number>;
+    watchersCount?: pulumi.Input<number | undefined>;
     /**
      * Website of the repository.
      */
-    website?: pulumi.Input<string>;
+    website?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -691,165 +691,165 @@ export interface RepositoryArgs {
     /**
      * Allowed to manually merge pull requests? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    allowManualMerge?: pulumi.Input<boolean>;
+    allowManualMerge?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed to create merge commit? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    allowMergeCommits?: pulumi.Input<boolean>;
+    allowMergeCommits?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed to rebase then fast-forward? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    allowRebase?: pulumi.Input<boolean>;
+    allowRebase?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed to rebase then create merge commit? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    allowRebaseExplicit?: pulumi.Input<boolean>;
+    allowRebaseExplicit?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed to create squash commit? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    allowSquashMerge?: pulumi.Input<boolean>;
+    allowSquashMerge?: pulumi.Input<boolean | undefined>;
     /**
      * Is the repository archived?
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * API token for authenticating with migrate / clone URL. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    authToken?: pulumi.Input<string>;
+    authToken?: pulumi.Input<string | undefined>;
     /**
      * Whether the repository should be auto-intialized?
      */
-    autoInit?: pulumi.Input<boolean>;
+    autoInit?: pulumi.Input<boolean | undefined>;
     /**
      * Auto-detect manual pull request merges? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    autodetectManualMerge?: pulumi.Input<boolean>;
+    autodetectManualMerge?: pulumi.Input<boolean | undefined>;
     /**
      * Migrate / clone from URL.
      */
-    cloneAddr?: pulumi.Input<string>;
+    cloneAddr?: pulumi.Input<string | undefined>;
     /**
      * Default branch of the repository.
      */
-    defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string | undefined>;
     /**
      * Default merge style of the repository. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    defaultMergeStyle?: pulumi.Input<string>;
+    defaultMergeStyle?: pulumi.Input<string | undefined>;
     /**
      * Description of the repository.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Settings for external issue tracker. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasIssues`" pulumi-lang-dotnet="`HasIssues`" pulumi-lang-go="`hasIssues`" pulumi-lang-python="`has_issues`" pulumi-lang-yaml="`hasIssues`" pulumi-lang-java="`hasIssues`">`has_issues`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    externalTracker?: pulumi.Input<inputs.RepositoryExternalTracker>;
+    externalTracker?: pulumi.Input<inputs.RepositoryExternalTracker | undefined>;
     /**
      * Settings for external wiki. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasWiki`" pulumi-lang-dotnet="`HasWiki`" pulumi-lang-go="`hasWiki`" pulumi-lang-python="`has_wiki`" pulumi-lang-yaml="`hasWiki`" pulumi-lang-java="`hasWiki`">`has_wiki`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    externalWiki?: pulumi.Input<inputs.RepositoryExternalWiki>;
+    externalWiki?: pulumi.Input<inputs.RepositoryExternalWiki | undefined>;
     /**
      * Gitignores to use.
      */
-    gitignores?: pulumi.Input<string>;
+    gitignores?: pulumi.Input<string | undefined>;
     /**
      * Are integrated CI/CD pipelines enabled?
      */
-    hasActions?: pulumi.Input<boolean>;
+    hasActions?: pulumi.Input<boolean | undefined>;
     /**
      * Is the repository issue tracker enabled?
      */
-    hasIssues?: pulumi.Input<boolean>;
+    hasIssues?: pulumi.Input<boolean | undefined>;
     /**
      * Is the repository package registry enabled?
      */
-    hasPackages?: pulumi.Input<boolean>;
+    hasPackages?: pulumi.Input<boolean | undefined>;
     /**
      * Are repository projects enabled?
      */
-    hasProjects?: pulumi.Input<boolean>;
+    hasProjects?: pulumi.Input<boolean | undefined>;
     /**
      * Are repository pull requests enabled?
      */
-    hasPullRequests?: pulumi.Input<boolean>;
+    hasPullRequests?: pulumi.Input<boolean | undefined>;
     /**
      * Are repository releases enabled?
      */
-    hasReleases?: pulumi.Input<boolean>;
+    hasReleases?: pulumi.Input<boolean | undefined>;
     /**
      * Is the repository wiki enabled?
      */
-    hasWiki?: pulumi.Input<boolean>;
+    hasWiki?: pulumi.Input<boolean | undefined>;
     /**
      * Are whitespace conflicts ignored? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasPullRequests`" pulumi-lang-dotnet="`HasPullRequests`" pulumi-lang-go="`hasPullRequests`" pulumi-lang-python="`has_pull_requests`" pulumi-lang-yaml="`hasPullRequests`" pulumi-lang-java="`hasPullRequests`">`has_pull_requests`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    ignoreWhitespaceConflicts?: pulumi.Input<boolean>;
+    ignoreWhitespaceConflicts?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for built-in issue tracker. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`hasIssues`" pulumi-lang-dotnet="`HasIssues`" pulumi-lang-go="`hasIssues`" pulumi-lang-python="`has_issues`" pulumi-lang-yaml="`hasIssues`" pulumi-lang-java="`hasIssues`">`has_issues`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    internalTracker?: pulumi.Input<inputs.RepositoryInternalTracker>;
+    internalTracker?: pulumi.Input<inputs.RepositoryInternalTracker | undefined>;
     /**
      * Issue Label set to use.
      */
-    issueLabels?: pulumi.Input<string>;
+    issueLabels?: pulumi.Input<string | undefined>;
     /**
      * Whether to migrate labels. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    labels?: pulumi.Input<boolean>;
+    labels?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to migrate LFS files. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    lfs?: pulumi.Input<boolean>;
+    lfs?: pulumi.Input<boolean | undefined>;
     /**
      * LFS endpoint to use. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`lfs`" pulumi-lang-dotnet="`Lfs`" pulumi-lang-go="`lfs`" pulumi-lang-python="`lfs`" pulumi-lang-yaml="`lfs`" pulumi-lang-java="`lfs`">`lfs`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    lfsEndpoint?: pulumi.Input<string>;
+    lfsEndpoint?: pulumi.Input<string | undefined>;
     /**
      * License to use.
      */
-    license?: pulumi.Input<string>;
+    license?: pulumi.Input<string | undefined>;
     /**
      * Whether to migrate milestones. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    milestones?: pulumi.Input<boolean>;
+    milestones?: pulumi.Input<boolean | undefined>;
     /**
      * Is the repository a mirror? **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    mirror?: pulumi.Input<boolean>;
+    mirror?: pulumi.Input<boolean | undefined>;
     /**
      * Mirror interval of the repository. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`mirror`" pulumi-lang-dotnet="`Mirror`" pulumi-lang-go="`mirror`" pulumi-lang-python="`mirror`" pulumi-lang-yaml="`mirror`" pulumi-lang-java="`mirror`">`mirror`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    mirrorInterval?: pulumi.Input<string>;
+    mirrorInterval?: pulumi.Input<string | undefined>;
     /**
      * Name of the repository.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Owner of the repository.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Is the repository private?
      */
-    private?: pulumi.Input<boolean>;
+    private?: pulumi.Input<boolean | undefined>;
     /**
      * Readme of the repository to create.
      */
-    readme?: pulumi.Input<string>;
+    readme?: pulumi.Input<string | undefined>;
     /**
      * Service to migrate from. **Note**: This setting is only effective if <span pulumi-lang-nodejs="`cloneAddr`" pulumi-lang-dotnet="`CloneAddr`" pulumi-lang-go="`cloneAddr`" pulumi-lang-python="`clone_addr`" pulumi-lang-yaml="`cloneAddr`" pulumi-lang-java="`cloneAddr`">`clone_addr`</span> is set.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Is the repository a template?
      */
-    template?: pulumi.Input<boolean>;
+    template?: pulumi.Input<boolean | undefined>;
     /**
      * TrustModel of the repository.
      */
-    trustModel?: pulumi.Input<string>;
+    trustModel?: pulumi.Input<string | undefined>;
     /**
      * Website of the repository.
      */
-    website?: pulumi.Input<string>;
+    website?: pulumi.Input<string | undefined>;
 }

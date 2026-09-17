@@ -70,9 +70,9 @@ export class PropertyMappingScim extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PropertyMappingScim resources.
  */
 export interface PropertyMappingScimState {
-    expression?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingScimId?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingScimId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -80,6 +80,6 @@ export interface PropertyMappingScimState {
  */
 export interface PropertyMappingScimArgs {
     expression: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingScimId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingScimId?: pulumi.Input<string | undefined>;
 }

@@ -70,9 +70,9 @@ export class PropertyMappingNotification extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PropertyMappingNotification resources.
  */
 export interface PropertyMappingNotificationState {
-    expression?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingNotificationId?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingNotificationId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -80,6 +80,6 @@ export interface PropertyMappingNotificationState {
  */
 export interface PropertyMappingNotificationArgs {
     expression: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingNotificationId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingNotificationId?: pulumi.Input<string | undefined>;
 }

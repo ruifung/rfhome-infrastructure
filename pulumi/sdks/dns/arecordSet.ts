@@ -91,30 +91,30 @@ export class ARecordSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ARecordSet resources.
  */
 export interface ARecordSetState {
-    aRecordSetId?: pulumi.Input<string>;
+    aRecordSetId?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 addresses this record set will point to.
      */
-    addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the record set. The <span pulumi-lang-nodejs="`zone`" pulumi-lang-dotnet="`Zone`" pulumi-lang-go="`zone`" pulumi-lang-python="`zone`" pulumi-lang-yaml="`zone`" pulumi-lang-java="`zone`">`zone`</span> argument will be appended to this value to create the full record path.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The TTL of the record set. Defaults to <span pulumi-lang-nodejs="`3600`" pulumi-lang-dotnet="`3600`" pulumi-lang-go="`3600`" pulumi-lang-python="`3600`" pulumi-lang-yaml="`3600`" pulumi-lang-java="`3600`">`3600`</span>.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * DNS zone the record set belongs to. It must be an FQDN, that is, include the trailing dot.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ARecordSet resource.
  */
 export interface ARecordSetArgs {
-    aRecordSetId?: pulumi.Input<string>;
+    aRecordSetId?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 addresses this record set will point to.
      */
@@ -122,11 +122,11 @@ export interface ARecordSetArgs {
     /**
      * The name of the record set. The <span pulumi-lang-nodejs="`zone`" pulumi-lang-dotnet="`Zone`" pulumi-lang-go="`zone`" pulumi-lang-python="`zone`" pulumi-lang-yaml="`zone`" pulumi-lang-java="`zone`">`zone`</span> argument will be appended to this value to create the full record path.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The TTL of the record set. Defaults to <span pulumi-lang-nodejs="`3600`" pulumi-lang-dotnet="`3600`" pulumi-lang-go="`3600`" pulumi-lang-python="`3600`" pulumi-lang-yaml="`3600`" pulumi-lang-java="`3600`">`3600`</span>.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * DNS zone the record set belongs to. It must be an FQDN, that is, include the trailing dot.
      */

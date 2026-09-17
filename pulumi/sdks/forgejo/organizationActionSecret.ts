@@ -93,19 +93,19 @@ export interface OrganizationActionSecretState {
     /**
      * Time at which the secret was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Data of the secret.
      */
-    data?: pulumi.Input<string>;
+    data?: pulumi.Input<string | undefined>;
     /**
      * Name of the secret.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the organization.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -119,7 +119,7 @@ export interface OrganizationActionSecretArgs {
     /**
      * Name of the secret.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the organization.
      */

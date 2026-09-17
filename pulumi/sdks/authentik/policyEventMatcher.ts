@@ -267,7 +267,7 @@ export class PolicyEventMatcher extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PolicyEventMatcher resources.
  */
 export interface PolicyEventMatcherState {
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - `authentik.commands`
@@ -342,12 +342,12 @@ export interface PolicyEventMatcherState {
      *   - `authentik.enterprise.stages.mtls`
      *   - `authentik.enterprise.stages.source`
      */
-    app?: pulumi.Input<string>;
-    clientIp?: pulumi.Input<string>;
+    app?: pulumi.Input<string | undefined>;
+    clientIp?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    executionLogging?: pulumi.Input<boolean>;
+    executionLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed values:
      *   - `authentik_tenants.domain`
@@ -459,16 +459,16 @@ export interface PolicyEventMatcherState {
      *   - `authentik_stages_mtls.mutualtlsstage`
      *   - `authentik_stages_source.sourcestage`
      */
-    model?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    policyEventMatcherId?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    policyEventMatcherId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a PolicyEventMatcher resource.
  */
 export interface PolicyEventMatcherArgs {
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - `authentik.commands`
@@ -543,12 +543,12 @@ export interface PolicyEventMatcherArgs {
      *   - `authentik.enterprise.stages.mtls`
      *   - `authentik.enterprise.stages.source`
      */
-    app?: pulumi.Input<string>;
-    clientIp?: pulumi.Input<string>;
+    app?: pulumi.Input<string | undefined>;
+    clientIp?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    executionLogging?: pulumi.Input<boolean>;
+    executionLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed values:
      *   - `authentik_tenants.domain`
@@ -660,7 +660,7 @@ export interface PolicyEventMatcherArgs {
      *   - `authentik_stages_mtls.mutualtlsstage`
      *   - `authentik_stages_source.sourcestage`
      */
-    model?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    policyEventMatcherId?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    policyEventMatcherId?: pulumi.Input<string | undefined>;
 }

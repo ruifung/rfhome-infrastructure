@@ -76,13 +76,13 @@ export class ApplicationEntitlement extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApplicationEntitlement resources.
  */
 export interface ApplicationEntitlementState {
-    application?: pulumi.Input<string>;
-    applicationEntitlementId?: pulumi.Input<string>;
+    application?: pulumi.Input<string | undefined>;
+    applicationEntitlementId?: pulumi.Input<string | undefined>;
     /**
      * JSON format expected. Use `jsonencode()` to pass objects. Defaults to `{}`.
      */
-    attributes?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    attributes?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -90,10 +90,10 @@ export interface ApplicationEntitlementState {
  */
 export interface ApplicationEntitlementArgs {
     application: pulumi.Input<string>;
-    applicationEntitlementId?: pulumi.Input<string>;
+    applicationEntitlementId?: pulumi.Input<string | undefined>;
     /**
      * JSON format expected. Use `jsonencode()` to pass objects. Defaults to `{}`.
      */
-    attributes?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    attributes?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -93,19 +93,19 @@ export interface RepositoryActionSecretState {
     /**
      * Time at which the secret was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Data of the secret.
      */
-    data?: pulumi.Input<string>;
+    data?: pulumi.Input<string | undefined>;
     /**
      * Name of the secret.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Numeric identifier of the repository.
      */
-    repositoryId?: pulumi.Input<number>;
+    repositoryId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -119,7 +119,7 @@ export interface RepositoryActionSecretArgs {
     /**
      * Name of the secret.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Numeric identifier of the repository.
      */

@@ -115,39 +115,39 @@ export interface OrganizationState {
     /**
      * Avatar URL of the organization.
      */
-    avatarUrl?: pulumi.Input<string>;
+    avatarUrl?: pulumi.Input<string | undefined>;
     /**
      * Description of the organization.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Full name of the organization.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Location of the organization.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Numeric identifier of the organization.
      */
-    organizationId?: pulumi.Input<number>;
+    organizationId?: pulumi.Input<number | undefined>;
     /**
      * Whether repository admin can add and remove access for teams.
      */
-    repoAdminChangeTeamAccess?: pulumi.Input<boolean>;
+    repoAdminChangeTeamAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Visibility of the organization. Possible values are 'public' (default), 'limited', or 'private'.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
     /**
      * Website of the organization.
      */
-    website?: pulumi.Input<string>;
+    website?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,29 +157,29 @@ export interface OrganizationArgs {
     /**
      * Description of the organization.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Full name of the organization.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Location of the organization.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether repository admin can add and remove access for teams.
      */
-    repoAdminChangeTeamAccess?: pulumi.Input<boolean>;
+    repoAdminChangeTeamAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Visibility of the organization. Possible values are 'public' (default), 'limited', or 'private'.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
     /**
      * Website of the organization.
      */
-    website?: pulumi.Input<string>;
+    website?: pulumi.Input<string | undefined>;
 }

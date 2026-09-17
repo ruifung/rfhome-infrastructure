@@ -139,53 +139,53 @@ export interface SystemSettingsState {
     /**
      * Defaults to `gravatar,initials`.
      */
-    avatars?: pulumi.Input<string>;
+    avatars?: pulumi.Input<string | undefined>;
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `minutes=30`.
      */
-    defaultTokenDuration?: pulumi.Input<string>;
+    defaultTokenDuration?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>.
      */
-    defaultTokenLength?: pulumi.Input<number>;
+    defaultTokenLength?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    defaultUserChangeEmail?: pulumi.Input<boolean>;
+    defaultUserChangeEmail?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    defaultUserChangeName?: pulumi.Input<boolean>;
+    defaultUserChangeName?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    defaultUserChangeUsername?: pulumi.Input<boolean>;
+    defaultUserChangeUsername?: pulumi.Input<boolean | undefined>;
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `days=365`.
      */
-    eventRetention?: pulumi.Input<string>;
+    eventRetention?: pulumi.Input<string | undefined>;
     /**
      * JSON format expected. Use `jsonencode()` to pass objects. Defaults to `{<span pulumi-lang-nodejs=""policiesBufferedAccessView"" pulumi-lang-dotnet=""PoliciesBufferedAccessView"" pulumi-lang-go=""policiesBufferedAccessView"" pulumi-lang-python=""policies_buffered_access_view"" pulumi-lang-yaml=""policiesBufferedAccessView"" pulumi-lang-java=""policiesBufferedAccessView"">"policies_buffered_access_view"</span>: false}`.
      */
-    flags?: pulumi.Input<string>;
-    footerLinks?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    flags?: pulumi.Input<string | undefined>;
+    footerLinks?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    gdprCompliance?: pulumi.Input<boolean>;
+    gdprCompliance?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    impersonation?: pulumi.Input<boolean>;
+    impersonation?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to `-5`.
      */
-    reputationLowerLimit?: pulumi.Input<number>;
+    reputationLowerLimit?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span>.
      */
-    reputationUpperLimit?: pulumi.Input<number>;
-    systemSettingsId?: pulumi.Input<string>;
+    reputationUpperLimit?: pulumi.Input<number | undefined>;
+    systemSettingsId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -195,51 +195,51 @@ export interface SystemSettingsArgs {
     /**
      * Defaults to `gravatar,initials`.
      */
-    avatars?: pulumi.Input<string>;
+    avatars?: pulumi.Input<string | undefined>;
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `minutes=30`.
      */
-    defaultTokenDuration?: pulumi.Input<string>;
+    defaultTokenDuration?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>.
      */
-    defaultTokenLength?: pulumi.Input<number>;
+    defaultTokenLength?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    defaultUserChangeEmail?: pulumi.Input<boolean>;
+    defaultUserChangeEmail?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    defaultUserChangeName?: pulumi.Input<boolean>;
+    defaultUserChangeName?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    defaultUserChangeUsername?: pulumi.Input<boolean>;
+    defaultUserChangeUsername?: pulumi.Input<boolean | undefined>;
     /**
      * Format: hours=1;minutes=2;seconds=3. Defaults to `days=365`.
      */
-    eventRetention?: pulumi.Input<string>;
+    eventRetention?: pulumi.Input<string | undefined>;
     /**
      * JSON format expected. Use `jsonencode()` to pass objects. Defaults to `{<span pulumi-lang-nodejs=""policiesBufferedAccessView"" pulumi-lang-dotnet=""PoliciesBufferedAccessView"" pulumi-lang-go=""policiesBufferedAccessView"" pulumi-lang-python=""policies_buffered_access_view"" pulumi-lang-yaml=""policiesBufferedAccessView"" pulumi-lang-java=""policiesBufferedAccessView"">"policies_buffered_access_view"</span>: false}`.
      */
-    flags?: pulumi.Input<string>;
-    footerLinks?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    flags?: pulumi.Input<string | undefined>;
+    footerLinks?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    gdprCompliance?: pulumi.Input<boolean>;
+    gdprCompliance?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    impersonation?: pulumi.Input<boolean>;
+    impersonation?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to `-5`.
      */
-    reputationLowerLimit?: pulumi.Input<number>;
+    reputationLowerLimit?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span>.
      */
-    reputationUpperLimit?: pulumi.Input<number>;
-    systemSettingsId?: pulumi.Input<string>;
+    reputationUpperLimit?: pulumi.Input<number | undefined>;
+    systemSettingsId?: pulumi.Input<string | undefined>;
 }

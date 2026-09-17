@@ -20,59 +20,59 @@ export interface ProviderUpdate {
     /**
      * A <span pulumi-lang-nodejs="`gssapi`" pulumi-lang-dotnet="`Gssapi`" pulumi-lang-go="`gssapi`" pulumi-lang-python="`gssapi`" pulumi-lang-yaml="`gssapi`" pulumi-lang-java="`gssapi`">`gssapi`</span> block. Only one <span pulumi-lang-nodejs="`gssapi`" pulumi-lang-dotnet="`Gssapi`" pulumi-lang-go="`gssapi`" pulumi-lang-python="`gssapi`" pulumi-lang-yaml="`gssapi`" pulumi-lang-java="`gssapi`">`gssapi`</span> block may be in the configuration. Conflicts with use of <span pulumi-lang-nodejs="`keyName`" pulumi-lang-dotnet="`KeyName`" pulumi-lang-go="`keyName`" pulumi-lang-python="`key_name`" pulumi-lang-yaml="`keyName`" pulumi-lang-java="`keyName`">`key_name`</span>, <span pulumi-lang-nodejs="`keyAlgorithm`" pulumi-lang-dotnet="`KeyAlgorithm`" pulumi-lang-go="`keyAlgorithm`" pulumi-lang-python="`key_algorithm`" pulumi-lang-yaml="`keyAlgorithm`" pulumi-lang-java="`keyAlgorithm`">`key_algorithm`</span> and <span pulumi-lang-nodejs="`keySecret`" pulumi-lang-dotnet="`KeySecret`" pulumi-lang-go="`keySecret`" pulumi-lang-python="`key_secret`" pulumi-lang-yaml="`keySecret`" pulumi-lang-java="`keySecret`">`key_secret`</span>.
      */
-    gssapis?: pulumi.Input<pulumi.Input<inputs.ProviderUpdateGssapi>[]>;
+    gssapis?: pulumi.Input<pulumi.Input<inputs.ProviderUpdateGssapi>[] | undefined>;
     /**
      * Required if <span pulumi-lang-nodejs="`keyName`" pulumi-lang-dotnet="`KeyName`" pulumi-lang-go="`keyName`" pulumi-lang-python="`key_name`" pulumi-lang-yaml="`keyName`" pulumi-lang-java="`keyName`">`key_name`</span> is set. When using TSIG authentication, the algorithm to use for HMAC. Valid values are `hmac-md5`, `hmac-sha1`, `hmac-sha256` or `hmac-sha512`. Value can also be sourced from the DNS_UPDATE_KEYALGORITHM environment variable.
      */
-    keyAlgorithm?: pulumi.Input<string>;
+    keyAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The name of the TSIG key used to sign the DNS update messages. Value can also be sourced from the DNS_UPDATE_KEYNAME environment variable.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * Required if <span pulumi-lang-nodejs="`keyName`" pulumi-lang-dotnet="`KeyName`" pulumi-lang-go="`keyName`" pulumi-lang-python="`key_name`" pulumi-lang-yaml="`keyName`" pulumi-lang-java="`keyName`">`key_name`</span> is set
      * A Base64-encoded string containing the shared secret to be used for TSIG. Value can also be sourced from the DNS_UPDATE_KEYSECRET environment variable.
      */
-    keySecret?: pulumi.Input<string>;
+    keySecret?: pulumi.Input<string | undefined>;
     /**
      * The target UDP port on the server where updates are sent to. Defaults to <span pulumi-lang-nodejs="`53`" pulumi-lang-dotnet="`53`" pulumi-lang-go="`53`" pulumi-lang-python="`53`" pulumi-lang-yaml="`53`" pulumi-lang-java="`53`">`53`</span>. Value can also be sourced from the DNS_UPDATE_PORT environment variable.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * How many times to retry on connection timeout. Defaults to <span pulumi-lang-nodejs="`3`" pulumi-lang-dotnet="`3`" pulumi-lang-go="`3`" pulumi-lang-python="`3`" pulumi-lang-yaml="`3`" pulumi-lang-java="`3`">`3`</span>. Value can also be sourced from the DNS_UPDATE_RETRIES environment variable.
      */
-    retries?: pulumi.Input<number>;
+    retries?: pulumi.Input<number | undefined>;
     /**
      * The hostname or IP address of the DNS server to send updates to. Value can also be sourced from the DNS_UPDATE_SERVER environment variable.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * Timeout for DNS queries. Valid values are durations expressed as <span pulumi-lang-nodejs="`500ms`" pulumi-lang-dotnet="`500ms`" pulumi-lang-go="`500ms`" pulumi-lang-python="`500ms`" pulumi-lang-yaml="`500ms`" pulumi-lang-java="`500ms`">`500ms`</span>, etc. or a plain number which is treated as whole seconds. Value can also be sourced from the DNS_UPDATE_TIMEOUT environment variable.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
     /**
      * Transport to use for DNS queries. Valid values are <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span>, <span pulumi-lang-nodejs="`udp4`" pulumi-lang-dotnet="`Udp4`" pulumi-lang-go="`udp4`" pulumi-lang-python="`udp4`" pulumi-lang-yaml="`udp4`" pulumi-lang-java="`udp4`">`udp4`</span>, <span pulumi-lang-nodejs="`udp6`" pulumi-lang-dotnet="`Udp6`" pulumi-lang-go="`udp6`" pulumi-lang-python="`udp6`" pulumi-lang-yaml="`udp6`" pulumi-lang-java="`udp6`">`udp6`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>, <span pulumi-lang-nodejs="`tcp4`" pulumi-lang-dotnet="`Tcp4`" pulumi-lang-go="`tcp4`" pulumi-lang-python="`tcp4`" pulumi-lang-yaml="`tcp4`" pulumi-lang-java="`tcp4`">`tcp4`</span>, or <span pulumi-lang-nodejs="`tcp6`" pulumi-lang-dotnet="`Tcp6`" pulumi-lang-go="`tcp6`" pulumi-lang-python="`tcp6`" pulumi-lang-yaml="`tcp6`" pulumi-lang-java="`tcp6`">`tcp6`</span>. Any UDP transport will retry automatically with the equivalent TCP transport in the event of a truncated response. Defaults to <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span>. Value can also be sourced from the DNS_UPDATE_TRANSPORT environment variable.
      */
-    transport?: pulumi.Input<string>;
+    transport?: pulumi.Input<string | undefined>;
 }
 
 export interface ProviderUpdateGssapi {
     /**
      * This or <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`">`password`</span> is required if <span pulumi-lang-nodejs="`username`" pulumi-lang-dotnet="`Username`" pulumi-lang-go="`username`" pulumi-lang-python="`username`" pulumi-lang-yaml="`username`" pulumi-lang-java="`username`">`username`</span> is set, not supported on Windows. The path to a keytab file containing a key for <span pulumi-lang-nodejs="`username`" pulumi-lang-dotnet="`Username`" pulumi-lang-go="`username`" pulumi-lang-python="`username`" pulumi-lang-yaml="`username`" pulumi-lang-java="`username`">`username`</span>. Value can also be sourced from the DNS_UPDATE_KEYTAB environment variable.
      */
-    keytab?: pulumi.Input<string>;
+    keytab?: pulumi.Input<string | undefined>;
     /**
      * This or <span pulumi-lang-nodejs="`keytab`" pulumi-lang-dotnet="`Keytab`" pulumi-lang-go="`keytab`" pulumi-lang-python="`keytab`" pulumi-lang-yaml="`keytab`" pulumi-lang-java="`keytab`">`keytab`</span> is required if <span pulumi-lang-nodejs="`username`" pulumi-lang-dotnet="`Username`" pulumi-lang-go="`username`" pulumi-lang-python="`username`" pulumi-lang-yaml="`username`" pulumi-lang-java="`username`">`username`</span> is set. The matching password for <span pulumi-lang-nodejs="`username`" pulumi-lang-dotnet="`Username`" pulumi-lang-go="`username`" pulumi-lang-python="`username`" pulumi-lang-yaml="`username`" pulumi-lang-java="`username`">`username`</span>. Value can also be sourced from the DNS_UPDATE_PASSWORD environment variable.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The Kerberos realm or Active Directory domain. Value can also be sourced from the DNS_UPDATE_REALM environment variable.
      */
-    realm?: pulumi.Input<string>;
+    realm?: pulumi.Input<string | undefined>;
     /**
      * The name of the user to authenticate as. If not set the current user session will be used. Value can also be sourced from the DNS_UPDATE_USERNAME environment variable.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export interface SrvRecordSetSrv {

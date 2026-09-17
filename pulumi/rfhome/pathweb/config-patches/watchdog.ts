@@ -1,5 +1,5 @@
-import { ConfigPatch, ConfigPatchProvider, v1alpha1Config } from '../types/ConfigPatch';
+import { TypedConfigPatchProvider, v1alpha1Config } from '../types/ConfigPatch';
 
-export const watchdogPatch: ConfigPatchProvider = () => [
+export const watchdogPatch: TypedConfigPatchProvider = () => [
     v1alpha1Config('WatchdogTimerConfig', {device: '/dev/watchdog0', timeout: '5m'})
 ]

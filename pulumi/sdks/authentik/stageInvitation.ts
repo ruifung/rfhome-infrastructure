@@ -73,9 +73,9 @@ export interface StageInvitationState {
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    continueFlowWithoutInvitation?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    stageInvitationId?: pulumi.Input<string>;
+    continueFlowWithoutInvitation?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    stageInvitationId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -85,7 +85,7 @@ export interface StageInvitationArgs {
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    continueFlowWithoutInvitation?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    stageInvitationId?: pulumi.Input<string>;
+    continueFlowWithoutInvitation?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    stageInvitationId?: pulumi.Input<string | undefined>;
 }

@@ -70,9 +70,9 @@ export class PropertyMappingSourceKerberos extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PropertyMappingSourceKerberos resources.
  */
 export interface PropertyMappingSourceKerberosState {
-    expression?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingSourceKerberosId?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingSourceKerberosId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -80,6 +80,6 @@ export interface PropertyMappingSourceKerberosState {
  */
 export interface PropertyMappingSourceKerberosArgs {
     expression: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingSourceKerberosId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingSourceKerberosId?: pulumi.Input<string | undefined>;
 }

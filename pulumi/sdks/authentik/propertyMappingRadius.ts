@@ -70,9 +70,9 @@ export class PropertyMappingRadius extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PropertyMappingRadius resources.
  */
 export interface PropertyMappingRadiusState {
-    expression?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingRadiusId?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingRadiusId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -80,6 +80,6 @@ export interface PropertyMappingRadiusState {
  */
 export interface PropertyMappingRadiusArgs {
     expression: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingRadiusId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingRadiusId?: pulumi.Input<string | undefined>;
 }

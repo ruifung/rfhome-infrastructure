@@ -107,12 +107,12 @@ export interface EventTransportState {
     /**
      * Defaults to `authentik Notification:`.
      */
-    emailSubjectPrefix?: pulumi.Input<string>;
+    emailSubjectPrefix?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `email/event_notification.html`.
      */
-    emailTemplate?: pulumi.Input<string>;
-    eventTransportId?: pulumi.Input<string>;
+    emailTemplate?: pulumi.Input<string | undefined>;
+    eventTransportId?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`local`" pulumi-lang-dotnet="`Local`" pulumi-lang-go="`local`" pulumi-lang-python="`local`" pulumi-lang-yaml="`local`" pulumi-lang-java="`local`">`local`</span>
@@ -120,15 +120,15 @@ export interface EventTransportState {
      *   - <span pulumi-lang-nodejs="`webhookSlack`" pulumi-lang-dotnet="`WebhookSlack`" pulumi-lang-go="`webhookSlack`" pulumi-lang-python="`webhook_slack`" pulumi-lang-yaml="`webhookSlack`" pulumi-lang-java="`webhookSlack`">`webhook_slack`</span>
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`">`email`</span>
      */
-    mode?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    sendOnce?: pulumi.Input<boolean>;
-    webhookMappingBody?: pulumi.Input<string>;
-    webhookMappingHeaders?: pulumi.Input<string>;
-    webhookUrl?: pulumi.Input<string>;
+    sendOnce?: pulumi.Input<boolean | undefined>;
+    webhookMappingBody?: pulumi.Input<string | undefined>;
+    webhookMappingHeaders?: pulumi.Input<string | undefined>;
+    webhookUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -138,12 +138,12 @@ export interface EventTransportArgs {
     /**
      * Defaults to `authentik Notification:`.
      */
-    emailSubjectPrefix?: pulumi.Input<string>;
+    emailSubjectPrefix?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `email/event_notification.html`.
      */
-    emailTemplate?: pulumi.Input<string>;
-    eventTransportId?: pulumi.Input<string>;
+    emailTemplate?: pulumi.Input<string | undefined>;
+    eventTransportId?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`local`" pulumi-lang-dotnet="`Local`" pulumi-lang-go="`local`" pulumi-lang-python="`local`" pulumi-lang-yaml="`local`" pulumi-lang-java="`local`">`local`</span>
@@ -152,12 +152,12 @@ export interface EventTransportArgs {
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`">`email`</span>
      */
     mode: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    sendOnce?: pulumi.Input<boolean>;
-    webhookMappingBody?: pulumi.Input<string>;
-    webhookMappingHeaders?: pulumi.Input<string>;
-    webhookUrl?: pulumi.Input<string>;
+    sendOnce?: pulumi.Input<boolean | undefined>;
+    webhookMappingBody?: pulumi.Input<string | undefined>;
+    webhookMappingHeaders?: pulumi.Input<string | undefined>;
+    webhookUrl?: pulumi.Input<string | undefined>;
 }

@@ -82,34 +82,34 @@ export class Blueprint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Blueprint resources.
  */
 export interface BlueprintState {
-    blueprintId?: pulumi.Input<string>;
-    content?: pulumi.Input<string>;
+    blueprintId?: pulumi.Input<string | undefined>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * JSON format expected. Use `jsonencode()` to pass objects. Defaults to `{}`.
      */
-    context?: pulumi.Input<string>;
+    context?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    enabled?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    path?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    path?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Blueprint resource.
  */
 export interface BlueprintArgs {
-    blueprintId?: pulumi.Input<string>;
-    content?: pulumi.Input<string>;
+    blueprintId?: pulumi.Input<string | undefined>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * JSON format expected. Use `jsonencode()` to pass objects. Defaults to `{}`.
      */
-    context?: pulumi.Input<string>;
+    context?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    enabled?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    path?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    path?: pulumi.Input<string | undefined>;
 }

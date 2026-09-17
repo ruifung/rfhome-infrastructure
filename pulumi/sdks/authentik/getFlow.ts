@@ -51,8 +51,8 @@ export function getFlowOutput(args?: GetFlowOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getFlow.
  */
 export interface GetFlowOutputArgs {
-    authentication?: pulumi.Input<string>;
-    designation?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    authentication?: pulumi.Input<string | undefined>;
+    designation?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -93,30 +93,30 @@ export class EnterpriseLicense extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EnterpriseLicense resources.
  */
 export interface EnterpriseLicenseState {
-    enterpriseLicenseId?: pulumi.Input<string>;
+    enterpriseLicenseId?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    expiry?: pulumi.Input<number>;
+    expiry?: pulumi.Input<number | undefined>;
     /**
      * Generated.
      */
-    externalUsers?: pulumi.Input<number>;
+    externalUsers?: pulumi.Input<number | undefined>;
     /**
      * Generated.
      */
-    internalUsers?: pulumi.Input<number>;
-    key?: pulumi.Input<string>;
+    internalUsers?: pulumi.Input<number | undefined>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EnterpriseLicense resource.
  */
 export interface EnterpriseLicenseArgs {
-    enterpriseLicenseId?: pulumi.Input<string>;
+    enterpriseLicenseId?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }

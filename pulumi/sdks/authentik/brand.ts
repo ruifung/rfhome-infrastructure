@@ -130,33 +130,33 @@ export interface BrandState {
     /**
      * JSON format expected. Use `jsonencode()` to pass objects. Defaults to `{}`.
      */
-    attributes?: pulumi.Input<string>;
-    brandId?: pulumi.Input<string>;
-    brandingCustomCss?: pulumi.Input<string>;
+    attributes?: pulumi.Input<string | undefined>;
+    brandId?: pulumi.Input<string | undefined>;
+    brandingCustomCss?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `/static/dist/assets/images/flow_background.jpg`.
      */
-    brandingDefaultFlowBackground?: pulumi.Input<string>;
-    brandingFavicon?: pulumi.Input<string>;
-    brandingLogo?: pulumi.Input<string>;
+    brandingDefaultFlowBackground?: pulumi.Input<string | undefined>;
+    brandingFavicon?: pulumi.Input<string | undefined>;
+    brandingLogo?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`authentik`" pulumi-lang-dotnet="`Authentik`" pulumi-lang-go="`authentik`" pulumi-lang-python="`authentik`" pulumi-lang-yaml="`authentik`" pulumi-lang-java="`authentik`">`authentik`</span>.
      */
-    brandingTitle?: pulumi.Input<string>;
-    clientCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    brandingTitle?: pulumi.Input<string | undefined>;
+    clientCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    default?: pulumi.Input<boolean>;
-    defaultApplication?: pulumi.Input<string>;
-    domain?: pulumi.Input<string>;
-    flowAuthentication?: pulumi.Input<string>;
-    flowDeviceCode?: pulumi.Input<string>;
-    flowInvalidation?: pulumi.Input<string>;
-    flowRecovery?: pulumi.Input<string>;
-    flowUnenrollment?: pulumi.Input<string>;
-    flowUserSettings?: pulumi.Input<string>;
-    webCertificate?: pulumi.Input<string>;
+    default?: pulumi.Input<boolean | undefined>;
+    defaultApplication?: pulumi.Input<string | undefined>;
+    domain?: pulumi.Input<string | undefined>;
+    flowAuthentication?: pulumi.Input<string | undefined>;
+    flowDeviceCode?: pulumi.Input<string | undefined>;
+    flowInvalidation?: pulumi.Input<string | undefined>;
+    flowRecovery?: pulumi.Input<string | undefined>;
+    flowUnenrollment?: pulumi.Input<string | undefined>;
+    flowUserSettings?: pulumi.Input<string | undefined>;
+    webCertificate?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -166,31 +166,31 @@ export interface BrandArgs {
     /**
      * JSON format expected. Use `jsonencode()` to pass objects. Defaults to `{}`.
      */
-    attributes?: pulumi.Input<string>;
-    brandId?: pulumi.Input<string>;
-    brandingCustomCss?: pulumi.Input<string>;
+    attributes?: pulumi.Input<string | undefined>;
+    brandId?: pulumi.Input<string | undefined>;
+    brandingCustomCss?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `/static/dist/assets/images/flow_background.jpg`.
      */
-    brandingDefaultFlowBackground?: pulumi.Input<string>;
-    brandingFavicon?: pulumi.Input<string>;
-    brandingLogo?: pulumi.Input<string>;
+    brandingDefaultFlowBackground?: pulumi.Input<string | undefined>;
+    brandingFavicon?: pulumi.Input<string | undefined>;
+    brandingLogo?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`authentik`" pulumi-lang-dotnet="`Authentik`" pulumi-lang-go="`authentik`" pulumi-lang-python="`authentik`" pulumi-lang-yaml="`authentik`" pulumi-lang-java="`authentik`">`authentik`</span>.
      */
-    brandingTitle?: pulumi.Input<string>;
-    clientCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    brandingTitle?: pulumi.Input<string | undefined>;
+    clientCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    default?: pulumi.Input<boolean>;
-    defaultApplication?: pulumi.Input<string>;
+    default?: pulumi.Input<boolean | undefined>;
+    defaultApplication?: pulumi.Input<string | undefined>;
     domain: pulumi.Input<string>;
-    flowAuthentication?: pulumi.Input<string>;
-    flowDeviceCode?: pulumi.Input<string>;
-    flowInvalidation?: pulumi.Input<string>;
-    flowRecovery?: pulumi.Input<string>;
-    flowUnenrollment?: pulumi.Input<string>;
-    flowUserSettings?: pulumi.Input<string>;
-    webCertificate?: pulumi.Input<string>;
+    flowAuthentication?: pulumi.Input<string | undefined>;
+    flowDeviceCode?: pulumi.Input<string | undefined>;
+    flowInvalidation?: pulumi.Input<string | undefined>;
+    flowRecovery?: pulumi.Input<string | undefined>;
+    flowUnenrollment?: pulumi.Input<string | undefined>;
+    flowUserSettings?: pulumi.Input<string | undefined>;
+    webCertificate?: pulumi.Input<string | undefined>;
 }

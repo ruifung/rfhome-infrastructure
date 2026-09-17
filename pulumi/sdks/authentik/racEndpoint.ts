@@ -103,26 +103,26 @@ export class RacEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RacEndpoint resources.
  */
 export interface RacEndpointState {
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>.
      */
-    maximumConnections?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    propertyMappings?: pulumi.Input<pulumi.Input<string>[]>;
+    maximumConnections?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`rdp`" pulumi-lang-dotnet="`Rdp`" pulumi-lang-go="`rdp`" pulumi-lang-python="`rdp`" pulumi-lang-yaml="`rdp`" pulumi-lang-java="`rdp`">`rdp`</span>
      *   - <span pulumi-lang-nodejs="`vnc`" pulumi-lang-dotnet="`Vnc`" pulumi-lang-go="`vnc`" pulumi-lang-python="`vnc`" pulumi-lang-yaml="`vnc`" pulumi-lang-java="`vnc`">`vnc`</span>
      *   - <span pulumi-lang-nodejs="`ssh`" pulumi-lang-dotnet="`Ssh`" pulumi-lang-go="`ssh`" pulumi-lang-python="`ssh`" pulumi-lang-yaml="`ssh`" pulumi-lang-java="`ssh`">`ssh`</span>
      */
-    protocol?: pulumi.Input<string>;
-    protocolProvider?: pulumi.Input<number>;
-    racEndpointId?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
+    protocolProvider?: pulumi.Input<number | undefined>;
+    racEndpointId?: pulumi.Input<string | undefined>;
     /**
      * JSON format expected. Use `jsonencode()` to pass objects. Defaults to `{}`.
      */
-    settings?: pulumi.Input<string>;
+    settings?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -133,9 +133,9 @@ export interface RacEndpointArgs {
     /**
      * Defaults to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>.
      */
-    maximumConnections?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    propertyMappings?: pulumi.Input<pulumi.Input<string>[]>;
+    maximumConnections?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`rdp`" pulumi-lang-dotnet="`Rdp`" pulumi-lang-go="`rdp`" pulumi-lang-python="`rdp`" pulumi-lang-yaml="`rdp`" pulumi-lang-java="`rdp`">`rdp`</span>
@@ -144,9 +144,9 @@ export interface RacEndpointArgs {
      */
     protocol: pulumi.Input<string>;
     protocolProvider: pulumi.Input<number>;
-    racEndpointId?: pulumi.Input<string>;
+    racEndpointId?: pulumi.Input<string | undefined>;
     /**
      * JSON format expected. Use `jsonencode()` to pass objects. Defaults to `{}`.
      */
-    settings?: pulumi.Input<string>;
+    settings?: pulumi.Input<string | undefined>;
 }

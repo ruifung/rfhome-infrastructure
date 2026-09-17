@@ -117,31 +117,31 @@ export interface StageCaptchaState {
     /**
      * Defaults to `https://www.recaptcha.net/recaptcha/api/siteverify`.
      */
-    apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    errorOnInvalidScore?: pulumi.Input<boolean>;
+    errorOnInvalidScore?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    interactive?: pulumi.Input<boolean>;
+    interactive?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to `https://www.recaptcha.net/recaptcha/api.js`.
      */
-    jsUrl?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    privateKey?: pulumi.Input<string>;
-    publicKey?: pulumi.Input<string>;
+    jsUrl?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    privateKey?: pulumi.Input<string | undefined>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `0.5`.
      */
-    scoreMaxThreshold?: pulumi.Input<number>;
+    scoreMaxThreshold?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
      */
-    scoreMinThreshold?: pulumi.Input<number>;
-    stageCaptchaId?: pulumi.Input<string>;
+    scoreMinThreshold?: pulumi.Input<number | undefined>;
+    stageCaptchaId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,29 +151,29 @@ export interface StageCaptchaArgs {
     /**
      * Defaults to `https://www.recaptcha.net/recaptcha/api/siteverify`.
      */
-    apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    errorOnInvalidScore?: pulumi.Input<boolean>;
+    errorOnInvalidScore?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    interactive?: pulumi.Input<boolean>;
+    interactive?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to `https://www.recaptcha.net/recaptcha/api.js`.
      */
-    jsUrl?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    jsUrl?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     privateKey: pulumi.Input<string>;
     publicKey: pulumi.Input<string>;
     /**
      * Defaults to `0.5`.
      */
-    scoreMaxThreshold?: pulumi.Input<number>;
+    scoreMaxThreshold?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
      */
-    scoreMinThreshold?: pulumi.Input<number>;
-    stageCaptchaId?: pulumi.Input<string>;
+    scoreMinThreshold?: pulumi.Input<number | undefined>;
+    stageCaptchaId?: pulumi.Input<string | undefined>;
 }

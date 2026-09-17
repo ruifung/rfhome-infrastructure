@@ -88,15 +88,15 @@ export interface CollaboratorState {
     /**
      * Repository permissions of the collaborator. Must be one of 'read', 'write', 'admin'.
      */
-    permission?: pulumi.Input<string>;
+    permission?: pulumi.Input<string | undefined>;
     /**
      * Numeric identifier of the repository.
      */
-    repositoryId?: pulumi.Input<number>;
+    repositoryId?: pulumi.Input<number | undefined>;
     /**
      * Username of the collaborator.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**

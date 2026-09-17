@@ -79,20 +79,20 @@ export class PropertyMappingProviderScope extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PropertyMappingProviderScope resources.
  */
 export interface PropertyMappingProviderScopeState {
-    description?: pulumi.Input<string>;
-    expression?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingProviderScopeId?: pulumi.Input<string>;
-    scopeName?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    expression?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingProviderScopeId?: pulumi.Input<string | undefined>;
+    scopeName?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a PropertyMappingProviderScope resource.
  */
 export interface PropertyMappingProviderScopeArgs {
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     expression: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingProviderScopeId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingProviderScopeId?: pulumi.Input<string | undefined>;
     scopeName: pulumi.Input<string>;
 }

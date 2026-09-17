@@ -47,7 +47,7 @@ export function getSourceOutput(args?: GetSourceOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getSource.
  */
 export interface GetSourceOutputArgs {
-    id?: pulumi.Input<string>;
-    managed?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    managed?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

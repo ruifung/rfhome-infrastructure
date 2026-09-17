@@ -216,85 +216,85 @@ export interface SourceLdapState {
     /**
      * Defaults to ``.
      */
-    additionalGroupDn?: pulumi.Input<string>;
+    additionalGroupDn?: pulumi.Input<string | undefined>;
     /**
      * Defaults to ``.
      */
-    additionalUserDn?: pulumi.Input<string>;
-    baseDn?: pulumi.Input<string>;
-    bindCn?: pulumi.Input<string>;
-    bindPassword?: pulumi.Input<string>;
+    additionalUserDn?: pulumi.Input<string | undefined>;
+    baseDn?: pulumi.Input<string | undefined>;
+    bindCn?: pulumi.Input<string | undefined>;
+    bindPassword?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    deleteNotFoundObjects?: pulumi.Input<boolean>;
+    deleteNotFoundObjects?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`">`member`</span>.
      */
-    groupMembershipField?: pulumi.Input<string>;
+    groupMembershipField?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `(objectClass=group)`.
      */
-    groupObjectFilter?: pulumi.Input<string>;
+    groupObjectFilter?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    lookupGroupsFromUser?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
+    lookupGroupsFromUser?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `objectSid`.
      */
-    objectUniquenessField?: pulumi.Input<string>;
+    objectUniquenessField?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    passwordLoginUpdateInternalPassword?: pulumi.Input<boolean>;
-    propertyMappings?: pulumi.Input<pulumi.Input<string>[]>;
-    propertyMappingsGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    serverUri?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    passwordLoginUpdateInternalPassword?: pulumi.Input<boolean | undefined>;
+    propertyMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    propertyMappingsGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    serverUri?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    sni?: pulumi.Input<boolean>;
-    sourceLdapId?: pulumi.Input<string>;
+    sni?: pulumi.Input<boolean | undefined>;
+    sourceLdapId?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    startTls?: pulumi.Input<boolean>;
+    startTls?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    syncGroups?: pulumi.Input<boolean>;
-    syncParentGroup?: pulumi.Input<string>;
+    syncGroups?: pulumi.Input<boolean | undefined>;
+    syncParentGroup?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    syncUsers?: pulumi.Input<boolean>;
+    syncUsers?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    syncUsersPassword?: pulumi.Input<boolean>;
+    syncUsersPassword?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to `distinguishedName`.
      */
-    userMembershipAttribute?: pulumi.Input<string>;
+    userMembershipAttribute?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `(objectClass=person)`.
      */
-    userObjectFilter?: pulumi.Input<string>;
+    userObjectFilter?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `goauthentik.io/sources/%(slug)s`.
      */
-    userPathTemplate?: pulumi.Input<string>;
+    userPathTemplate?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -304,83 +304,83 @@ export interface SourceLdapArgs {
     /**
      * Defaults to ``.
      */
-    additionalGroupDn?: pulumi.Input<string>;
+    additionalGroupDn?: pulumi.Input<string | undefined>;
     /**
      * Defaults to ``.
      */
-    additionalUserDn?: pulumi.Input<string>;
+    additionalUserDn?: pulumi.Input<string | undefined>;
     baseDn: pulumi.Input<string>;
     bindCn: pulumi.Input<string>;
     bindPassword: pulumi.Input<string>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    deleteNotFoundObjects?: pulumi.Input<boolean>;
+    deleteNotFoundObjects?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`">`member`</span>.
      */
-    groupMembershipField?: pulumi.Input<string>;
+    groupMembershipField?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `(objectClass=group)`.
      */
-    groupObjectFilter?: pulumi.Input<string>;
+    groupObjectFilter?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    lookupGroupsFromUser?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
+    lookupGroupsFromUser?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `objectSid`.
      */
-    objectUniquenessField?: pulumi.Input<string>;
+    objectUniquenessField?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    passwordLoginUpdateInternalPassword?: pulumi.Input<boolean>;
-    propertyMappings?: pulumi.Input<pulumi.Input<string>[]>;
-    propertyMappingsGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    passwordLoginUpdateInternalPassword?: pulumi.Input<boolean | undefined>;
+    propertyMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    propertyMappingsGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     serverUri: pulumi.Input<string>;
     slug: pulumi.Input<string>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    sni?: pulumi.Input<boolean>;
-    sourceLdapId?: pulumi.Input<string>;
+    sni?: pulumi.Input<boolean | undefined>;
+    sourceLdapId?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    startTls?: pulumi.Input<boolean>;
+    startTls?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    syncGroups?: pulumi.Input<boolean>;
-    syncParentGroup?: pulumi.Input<string>;
+    syncGroups?: pulumi.Input<boolean | undefined>;
+    syncParentGroup?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    syncUsers?: pulumi.Input<boolean>;
+    syncUsers?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    syncUsersPassword?: pulumi.Input<boolean>;
+    syncUsersPassword?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to `distinguishedName`.
      */
-    userMembershipAttribute?: pulumi.Input<string>;
+    userMembershipAttribute?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `(objectClass=person)`.
      */
-    userObjectFilter?: pulumi.Input<string>;
+    userObjectFilter?: pulumi.Input<string | undefined>;
     /**
      * Defaults to `goauthentik.io/sources/%(slug)s`.
      */
-    userPathTemplate?: pulumi.Input<string>;
+    userPathTemplate?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }

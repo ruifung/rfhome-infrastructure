@@ -40,7 +40,7 @@ export class Flow extends pulumi.CustomResource {
      *   - <span pulumi-lang-nodejs="`requireSuperuser`" pulumi-lang-dotnet="`RequireSuperuser`" pulumi-lang-go="`requireSuperuser`" pulumi-lang-python="`require_superuser`" pulumi-lang-yaml="`requireSuperuser`" pulumi-lang-java="`requireSuperuser`">`require_superuser`</span>
      *   - <span pulumi-lang-nodejs="`requireRedirect`" pulumi-lang-dotnet="`RequireRedirect`" pulumi-lang-go="`requireRedirect`" pulumi-lang-python="`require_redirect`" pulumi-lang-yaml="`requireRedirect`" pulumi-lang-java="`requireRedirect`">`require_redirect`</span>
      *   - <span pulumi-lang-nodejs="`requireOutpost`" pulumi-lang-dotnet="`RequireOutpost`" pulumi-lang-go="`requireOutpost`" pulumi-lang-python="`require_outpost`" pulumi-lang-yaml="`requireOutpost`" pulumi-lang-java="`requireOutpost`">`require_outpost`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>.
      */
     declare public readonly authentication: pulumi.Output<string | undefined>;
     /**
@@ -74,7 +74,7 @@ export class Flow extends pulumi.CustomResource {
      *   - <span pulumi-lang-nodejs="`contentRight`" pulumi-lang-dotnet="`ContentRight`" pulumi-lang-go="`contentRight`" pulumi-lang-python="`content_right`" pulumi-lang-yaml="`contentRight`" pulumi-lang-java="`contentRight`">`content_right`</span>
      *   - <span pulumi-lang-nodejs="`sidebarLeft`" pulumi-lang-dotnet="`SidebarLeft`" pulumi-lang-go="`sidebarLeft`" pulumi-lang-python="`sidebar_left`" pulumi-lang-yaml="`sidebarLeft`" pulumi-lang-java="`sidebarLeft`">`sidebar_left`</span>
      *   - <span pulumi-lang-nodejs="`sidebarRight`" pulumi-lang-dotnet="`SidebarRight`" pulumi-lang-go="`sidebarRight`" pulumi-lang-python="`sidebar_right`" pulumi-lang-yaml="`sidebarRight`" pulumi-lang-java="`sidebarRight`">`sidebar_right`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`stacked`" pulumi-lang-dotnet="`Stacked`" pulumi-lang-go="`stacked`" pulumi-lang-python="`stacked`" pulumi-lang-yaml="`stacked`" pulumi-lang-java="`stacked`">`stacked`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`stacked`" pulumi-lang-dotnet="`Stacked`" pulumi-lang-go="`stacked`" pulumi-lang-python="`stacked`" pulumi-lang-yaml="`stacked`" pulumi-lang-java="`stacked`">`stacked`</span>.
      */
     declare public readonly layout: pulumi.Output<string | undefined>;
     declare public readonly name: pulumi.Output<string>;
@@ -82,7 +82,7 @@ export class Flow extends pulumi.CustomResource {
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>
      *   - <span pulumi-lang-nodejs="`any`" pulumi-lang-dotnet="`Any`" pulumi-lang-go="`any`" pulumi-lang-python="`any`" pulumi-lang-yaml="`any`" pulumi-lang-java="`any`">`any`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`any`" pulumi-lang-dotnet="`Any`" pulumi-lang-go="`any`" pulumi-lang-python="`any`" pulumi-lang-yaml="`any`" pulumi-lang-java="`any`">`any`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`any`" pulumi-lang-dotnet="`Any`" pulumi-lang-go="`any`" pulumi-lang-python="`any`" pulumi-lang-yaml="`any`" pulumi-lang-java="`any`">`any`</span>.
      */
     declare public readonly policyEngineMode: pulumi.Output<string | undefined>;
     declare public readonly slug: pulumi.Output<string>;
@@ -158,21 +158,21 @@ export interface FlowState {
      *   - <span pulumi-lang-nodejs="`requireSuperuser`" pulumi-lang-dotnet="`RequireSuperuser`" pulumi-lang-go="`requireSuperuser`" pulumi-lang-python="`require_superuser`" pulumi-lang-yaml="`requireSuperuser`" pulumi-lang-java="`requireSuperuser`">`require_superuser`</span>
      *   - <span pulumi-lang-nodejs="`requireRedirect`" pulumi-lang-dotnet="`RequireRedirect`" pulumi-lang-go="`requireRedirect`" pulumi-lang-python="`require_redirect`" pulumi-lang-yaml="`requireRedirect`" pulumi-lang-java="`requireRedirect`">`require_redirect`</span>
      *   - <span pulumi-lang-nodejs="`requireOutpost`" pulumi-lang-dotnet="`RequireOutpost`" pulumi-lang-go="`requireOutpost`" pulumi-lang-python="`require_outpost`" pulumi-lang-yaml="`requireOutpost`" pulumi-lang-java="`requireOutpost`">`require_outpost`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>.
      */
-    authentication?: pulumi.Input<string>;
+    authentication?: pulumi.Input<string | undefined>;
     /**
      * Optional URL to an image which will be used as the background during the flow.
      */
-    background?: pulumi.Input<string>;
+    background?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    compatibilityMode?: pulumi.Input<boolean>;
+    compatibilityMode?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`messageContinue`" pulumi-lang-dotnet="`MessageContinue`" pulumi-lang-go="`messageContinue`" pulumi-lang-python="`message_continue`" pulumi-lang-yaml="`messageContinue`" pulumi-lang-java="`messageContinue`">`message_continue`</span>.
      */
-    deniedAction?: pulumi.Input<string>;
+    deniedAction?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`authentication`" pulumi-lang-dotnet="`Authentication`" pulumi-lang-go="`authentication`" pulumi-lang-python="`authentication`" pulumi-lang-yaml="`authentication`" pulumi-lang-java="`authentication`">`authentication`</span>
@@ -183,8 +183,8 @@ export interface FlowState {
      *   - <span pulumi-lang-nodejs="`recovery`" pulumi-lang-dotnet="`Recovery`" pulumi-lang-go="`recovery`" pulumi-lang-python="`recovery`" pulumi-lang-yaml="`recovery`" pulumi-lang-java="`recovery`">`recovery`</span>
      *   - <span pulumi-lang-nodejs="`stageConfiguration`" pulumi-lang-dotnet="`StageConfiguration`" pulumi-lang-go="`stageConfiguration`" pulumi-lang-python="`stage_configuration`" pulumi-lang-yaml="`stageConfiguration`" pulumi-lang-java="`stageConfiguration`">`stage_configuration`</span>
      */
-    designation?: pulumi.Input<string>;
-    flowId?: pulumi.Input<string>;
+    designation?: pulumi.Input<string | undefined>;
+    flowId?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`stacked`" pulumi-lang-dotnet="`Stacked`" pulumi-lang-go="`stacked`" pulumi-lang-python="`stacked`" pulumi-lang-yaml="`stacked`" pulumi-lang-java="`stacked`">`stacked`</span>
@@ -192,23 +192,23 @@ export interface FlowState {
      *   - <span pulumi-lang-nodejs="`contentRight`" pulumi-lang-dotnet="`ContentRight`" pulumi-lang-go="`contentRight`" pulumi-lang-python="`content_right`" pulumi-lang-yaml="`contentRight`" pulumi-lang-java="`contentRight`">`content_right`</span>
      *   - <span pulumi-lang-nodejs="`sidebarLeft`" pulumi-lang-dotnet="`SidebarLeft`" pulumi-lang-go="`sidebarLeft`" pulumi-lang-python="`sidebar_left`" pulumi-lang-yaml="`sidebarLeft`" pulumi-lang-java="`sidebarLeft`">`sidebar_left`</span>
      *   - <span pulumi-lang-nodejs="`sidebarRight`" pulumi-lang-dotnet="`SidebarRight`" pulumi-lang-go="`sidebarRight`" pulumi-lang-python="`sidebar_right`" pulumi-lang-yaml="`sidebarRight`" pulumi-lang-java="`sidebarRight`">`sidebar_right`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`stacked`" pulumi-lang-dotnet="`Stacked`" pulumi-lang-go="`stacked`" pulumi-lang-python="`stacked`" pulumi-lang-yaml="`stacked`" pulumi-lang-java="`stacked`">`stacked`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`stacked`" pulumi-lang-dotnet="`Stacked`" pulumi-lang-go="`stacked`" pulumi-lang-python="`stacked`" pulumi-lang-yaml="`stacked`" pulumi-lang-java="`stacked`">`stacked`</span>.
      */
-    layout?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    layout?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>
      *   - <span pulumi-lang-nodejs="`any`" pulumi-lang-dotnet="`Any`" pulumi-lang-go="`any`" pulumi-lang-python="`any`" pulumi-lang-yaml="`any`" pulumi-lang-java="`any`">`any`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`any`" pulumi-lang-dotnet="`Any`" pulumi-lang-go="`any`" pulumi-lang-python="`any`" pulumi-lang-yaml="`any`" pulumi-lang-java="`any`">`any`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`any`" pulumi-lang-dotnet="`Any`" pulumi-lang-go="`any`" pulumi-lang-python="`any`" pulumi-lang-yaml="`any`" pulumi-lang-java="`any`">`any`</span>.
      */
-    policyEngineMode?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
-    title?: pulumi.Input<string>;
+    policyEngineMode?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * Generated.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -223,21 +223,21 @@ export interface FlowArgs {
      *   - <span pulumi-lang-nodejs="`requireSuperuser`" pulumi-lang-dotnet="`RequireSuperuser`" pulumi-lang-go="`requireSuperuser`" pulumi-lang-python="`require_superuser`" pulumi-lang-yaml="`requireSuperuser`" pulumi-lang-java="`requireSuperuser`">`require_superuser`</span>
      *   - <span pulumi-lang-nodejs="`requireRedirect`" pulumi-lang-dotnet="`RequireRedirect`" pulumi-lang-go="`requireRedirect`" pulumi-lang-python="`require_redirect`" pulumi-lang-yaml="`requireRedirect`" pulumi-lang-java="`requireRedirect`">`require_redirect`</span>
      *   - <span pulumi-lang-nodejs="`requireOutpost`" pulumi-lang-dotnet="`RequireOutpost`" pulumi-lang-go="`requireOutpost`" pulumi-lang-python="`require_outpost`" pulumi-lang-yaml="`requireOutpost`" pulumi-lang-java="`requireOutpost`">`require_outpost`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>.
      */
-    authentication?: pulumi.Input<string>;
+    authentication?: pulumi.Input<string | undefined>;
     /**
      * Optional URL to an image which will be used as the background during the flow.
      */
-    background?: pulumi.Input<string>;
+    background?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
      */
-    compatibilityMode?: pulumi.Input<boolean>;
+    compatibilityMode?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`messageContinue`" pulumi-lang-dotnet="`MessageContinue`" pulumi-lang-go="`messageContinue`" pulumi-lang-python="`message_continue`" pulumi-lang-yaml="`messageContinue`" pulumi-lang-java="`messageContinue`">`message_continue`</span>.
      */
-    deniedAction?: pulumi.Input<string>;
+    deniedAction?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`authentication`" pulumi-lang-dotnet="`Authentication`" pulumi-lang-go="`authentication`" pulumi-lang-python="`authentication`" pulumi-lang-yaml="`authentication`" pulumi-lang-java="`authentication`">`authentication`</span>
@@ -249,7 +249,7 @@ export interface FlowArgs {
      *   - <span pulumi-lang-nodejs="`stageConfiguration`" pulumi-lang-dotnet="`StageConfiguration`" pulumi-lang-go="`stageConfiguration`" pulumi-lang-python="`stage_configuration`" pulumi-lang-yaml="`stageConfiguration`" pulumi-lang-java="`stageConfiguration`">`stage_configuration`</span>
      */
     designation: pulumi.Input<string>;
-    flowId?: pulumi.Input<string>;
+    flowId?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`stacked`" pulumi-lang-dotnet="`Stacked`" pulumi-lang-go="`stacked`" pulumi-lang-python="`stacked`" pulumi-lang-yaml="`stacked`" pulumi-lang-java="`stacked`">`stacked`</span>
@@ -257,17 +257,17 @@ export interface FlowArgs {
      *   - <span pulumi-lang-nodejs="`contentRight`" pulumi-lang-dotnet="`ContentRight`" pulumi-lang-go="`contentRight`" pulumi-lang-python="`content_right`" pulumi-lang-yaml="`contentRight`" pulumi-lang-java="`contentRight`">`content_right`</span>
      *   - <span pulumi-lang-nodejs="`sidebarLeft`" pulumi-lang-dotnet="`SidebarLeft`" pulumi-lang-go="`sidebarLeft`" pulumi-lang-python="`sidebar_left`" pulumi-lang-yaml="`sidebarLeft`" pulumi-lang-java="`sidebarLeft`">`sidebar_left`</span>
      *   - <span pulumi-lang-nodejs="`sidebarRight`" pulumi-lang-dotnet="`SidebarRight`" pulumi-lang-go="`sidebarRight`" pulumi-lang-python="`sidebar_right`" pulumi-lang-yaml="`sidebarRight`" pulumi-lang-java="`sidebarRight`">`sidebar_right`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`stacked`" pulumi-lang-dotnet="`Stacked`" pulumi-lang-go="`stacked`" pulumi-lang-python="`stacked`" pulumi-lang-yaml="`stacked`" pulumi-lang-java="`stacked`">`stacked`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`stacked`" pulumi-lang-dotnet="`Stacked`" pulumi-lang-go="`stacked`" pulumi-lang-python="`stacked`" pulumi-lang-yaml="`stacked`" pulumi-lang-java="`stacked`">`stacked`</span>.
      */
-    layout?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    layout?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>
      *   - <span pulumi-lang-nodejs="`any`" pulumi-lang-dotnet="`Any`" pulumi-lang-go="`any`" pulumi-lang-python="`any`" pulumi-lang-yaml="`any`" pulumi-lang-java="`any`">`any`</span>
-     *  Defaults to <span pulumi-lang-nodejs="`any`" pulumi-lang-dotnet="`Any`" pulumi-lang-go="`any`" pulumi-lang-python="`any`" pulumi-lang-yaml="`any`" pulumi-lang-java="`any`">`any`</span>.
+     *      Defaults to <span pulumi-lang-nodejs="`any`" pulumi-lang-dotnet="`Any`" pulumi-lang-go="`any`" pulumi-lang-python="`any`" pulumi-lang-yaml="`any`" pulumi-lang-java="`any`">`any`</span>.
      */
-    policyEngineMode?: pulumi.Input<string>;
+    policyEngineMode?: pulumi.Input<string | undefined>;
     slug: pulumi.Input<string>;
     title: pulumi.Input<string>;
 }

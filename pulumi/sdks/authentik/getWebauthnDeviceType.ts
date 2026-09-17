@@ -42,6 +42,6 @@ export function getWebauthnDeviceTypeOutput(args?: GetWebauthnDeviceTypeOutputAr
  * A collection of arguments for invoking getWebauthnDeviceType.
  */
 export interface GetWebauthnDeviceTypeOutputArgs {
-    description?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
 }

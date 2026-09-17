@@ -81,26 +81,26 @@ export class StageAuthenticatorEndpointGdtc extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StageAuthenticatorEndpointGdtc resources.
  */
 export interface StageAuthenticatorEndpointGdtcState {
-    configureFlow?: pulumi.Input<string>;
-    credentials?: pulumi.Input<string>;
+    configureFlow?: pulumi.Input<string | undefined>;
+    credentials?: pulumi.Input<string | undefined>;
     /**
      * Defaults to ``.
      */
-    friendlyName?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    stageAuthenticatorEndpointGdtcId?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    stageAuthenticatorEndpointGdtcId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a StageAuthenticatorEndpointGdtc resource.
  */
 export interface StageAuthenticatorEndpointGdtcArgs {
-    configureFlow?: pulumi.Input<string>;
+    configureFlow?: pulumi.Input<string | undefined>;
     credentials: pulumi.Input<string>;
     /**
      * Defaults to ``.
      */
-    friendlyName?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    stageAuthenticatorEndpointGdtcId?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    stageAuthenticatorEndpointGdtcId?: pulumi.Input<string | undefined>;
 }

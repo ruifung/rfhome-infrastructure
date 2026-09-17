@@ -63,7 +63,7 @@ export interface ProviderArgs {
     /**
      * When the provider is used for DNS updates, this block is required. Only one <span pulumi-lang-nodejs="`update`" pulumi-lang-dotnet="`Update`" pulumi-lang-go="`update`" pulumi-lang-python="`update`" pulumi-lang-yaml="`update`" pulumi-lang-java="`update`">`update`</span> block may be in the configuration.
      */
-    updates?: pulumi.Input<pulumi.Input<inputs.ProviderUpdate>[]>;
+    updates?: pulumi.Input<pulumi.Input<inputs.ProviderUpdate>[] | undefined>;
 }
 
 export namespace Provider {

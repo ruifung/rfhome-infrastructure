@@ -358,9 +358,9 @@ export class PolicyGeoip extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PolicyGeoip resources.
  */
 export interface PolicyGeoipState {
-    asns?: pulumi.Input<pulumi.Input<number>[]>;
-    checkHistoryDistance?: pulumi.Input<boolean>;
-    checkImpossibleTravel?: pulumi.Input<boolean>;
+    asns?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    checkHistoryDistance?: pulumi.Input<boolean | undefined>;
+    checkImpossibleTravel?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed values:
      *   - `AF`
@@ -613,38 +613,38 @@ export interface PolicyGeoipState {
      *   - `ZM`
      *   - `ZW`
      */
-    countries?: pulumi.Input<pulumi.Input<string>[]>;
+    countries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`50`" pulumi-lang-dotnet="`50`" pulumi-lang-go="`50`" pulumi-lang-python="`50`" pulumi-lang-yaml="`50`" pulumi-lang-java="`50`">`50`</span>.
      */
-    distanceToleranceKm?: pulumi.Input<number>;
+    distanceToleranceKm?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    executionLogging?: pulumi.Input<boolean>;
+    executionLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span>.
      */
-    historyLoginCount?: pulumi.Input<number>;
+    historyLoginCount?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span>.
      */
-    historyMaxDistanceKm?: pulumi.Input<number>;
+    historyMaxDistanceKm?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span>.
      */
-    impossibleToleranceKm?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    policyGeoipId?: pulumi.Input<string>;
+    impossibleToleranceKm?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    policyGeoipId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a PolicyGeoip resource.
  */
 export interface PolicyGeoipArgs {
-    asns?: pulumi.Input<pulumi.Input<number>[]>;
-    checkHistoryDistance?: pulumi.Input<boolean>;
-    checkImpossibleTravel?: pulumi.Input<boolean>;
+    asns?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    checkHistoryDistance?: pulumi.Input<boolean | undefined>;
+    checkImpossibleTravel?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed values:
      *   - `AF`
@@ -897,27 +897,27 @@ export interface PolicyGeoipArgs {
      *   - `ZM`
      *   - `ZW`
      */
-    countries?: pulumi.Input<pulumi.Input<string>[]>;
+    countries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`50`" pulumi-lang-dotnet="`50`" pulumi-lang-go="`50`" pulumi-lang-python="`50`" pulumi-lang-yaml="`50`" pulumi-lang-java="`50`">`50`</span>.
      */
-    distanceToleranceKm?: pulumi.Input<number>;
+    distanceToleranceKm?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    executionLogging?: pulumi.Input<boolean>;
+    executionLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span>.
      */
-    historyLoginCount?: pulumi.Input<number>;
+    historyLoginCount?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span>.
      */
-    historyMaxDistanceKm?: pulumi.Input<number>;
+    historyMaxDistanceKm?: pulumi.Input<number | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span>.
      */
-    impossibleToleranceKm?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    policyGeoipId?: pulumi.Input<string>;
+    impossibleToleranceKm?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    policyGeoipId?: pulumi.Input<string | undefined>;
 }

@@ -82,19 +82,19 @@ export interface ProviderArgs {
     /**
      * Token for Forgejo API. May also be provided via FORGEJO_API_TOKEN environment variable.
      */
-    apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string | undefined>;
     /**
      * URI for Forgejo API. May also be provided via FORGEJO_HOST environment variable.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Password for Forgejo API. May also be provided via FORGEJO_PASSWORD environment variable.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Username for Forgejo API. May also be provided via FORGEJO_USERNAME environment variable.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

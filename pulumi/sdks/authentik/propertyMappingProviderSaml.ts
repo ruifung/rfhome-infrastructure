@@ -79,11 +79,11 @@ export class PropertyMappingProviderSaml extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PropertyMappingProviderSaml resources.
  */
 export interface PropertyMappingProviderSamlState {
-    expression?: pulumi.Input<string>;
-    friendlyName?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingProviderSamlId?: pulumi.Input<string>;
-    samlName?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    friendlyName?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingProviderSamlId?: pulumi.Input<string | undefined>;
+    samlName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -91,8 +91,8 @@ export interface PropertyMappingProviderSamlState {
  */
 export interface PropertyMappingProviderSamlArgs {
     expression: pulumi.Input<string>;
-    friendlyName?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingProviderSamlId?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingProviderSamlId?: pulumi.Input<string | undefined>;
     samlName: pulumi.Input<string>;
 }

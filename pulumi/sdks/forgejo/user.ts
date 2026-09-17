@@ -246,119 +246,119 @@ export interface UserState {
     /**
      * Is the user active?
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Is the user an administrator?
      */
-    admin?: pulumi.Input<boolean>;
+    admin?: pulumi.Input<boolean | undefined>;
     /**
      * Allow user to create organizations?
      */
-    allowCreateOrganization?: pulumi.Input<boolean>;
+    allowCreateOrganization?: pulumi.Input<boolean | undefined>;
     /**
      * Allow user to create Git hooks?
      */
-    allowGitHook?: pulumi.Input<boolean>;
+    allowGitHook?: pulumi.Input<boolean | undefined>;
     /**
      * Allow user to import local repositories?
      */
-    allowImportLocal?: pulumi.Input<boolean>;
+    allowImportLocal?: pulumi.Input<boolean | undefined>;
     /**
      * URL to the user's avatar.
      */
-    avatarUrl?: pulumi.Input<string>;
+    avatarUrl?: pulumi.Input<string | undefined>;
     /**
      * Time at which the user was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the user.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Email address of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Number of following users.
      */
-    followersCount?: pulumi.Input<number>;
+    followersCount?: pulumi.Input<number | undefined>;
     /**
      * Number of users followed.
      */
-    followingCount?: pulumi.Input<number>;
+    followingCount?: pulumi.Input<number | undefined>;
     /**
      * Full name of the user.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * URL to the user's profile page.
      */
-    htmlUrl?: pulumi.Input<string>;
+    htmlUrl?: pulumi.Input<string | undefined>;
     /**
      * Locale of the user.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * Time at which the user last logged in.
      */
-    lastLogin?: pulumi.Input<string>;
+    lastLogin?: pulumi.Input<string | undefined>;
     /**
      * Location of the user.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the user.
      */
-    login?: pulumi.Input<string>;
+    login?: pulumi.Input<string | undefined>;
     /**
      * Login name of the user.
      */
-    loginName?: pulumi.Input<string>;
+    loginName?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of repositories user can create. A value of -1 means no limit.
      */
-    maxRepoCreation?: pulumi.Input<number>;
+    maxRepoCreation?: pulumi.Input<number | undefined>;
     /**
      * Require user to change password?
      */
-    mustChangePassword?: pulumi.Input<boolean>;
+    mustChangePassword?: pulumi.Input<boolean | undefined>;
     /**
      * Password of the user.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Are user logins prohibited?
      */
-    prohibitLogin?: pulumi.Input<boolean>;
+    prohibitLogin?: pulumi.Input<boolean | undefined>;
     /**
      * Is the user restricted?
      */
-    restricted?: pulumi.Input<boolean>;
+    restricted?: pulumi.Input<boolean | undefined>;
     /**
      * Send notification to administrators?
      */
-    sendNotify?: pulumi.Input<boolean>;
+    sendNotify?: pulumi.Input<boolean | undefined>;
     /**
      * Numeric identifier of the user's authentication source.
      */
-    sourceId?: pulumi.Input<number>;
+    sourceId?: pulumi.Input<number | undefined>;
     /**
      * Number of starred repositories.
      */
-    starredReposCount?: pulumi.Input<number>;
+    starredReposCount?: pulumi.Input<number | undefined>;
     /**
      * Numeric identifier of the user.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
     /**
      * Visibility of the user.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
     /**
      * Website of the user.
      */
-    website?: pulumi.Input<string>;
+    website?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -368,27 +368,27 @@ export interface UserArgs {
     /**
      * Is the user active?
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Is the user an administrator?
      */
-    admin?: pulumi.Input<boolean>;
+    admin?: pulumi.Input<boolean | undefined>;
     /**
      * Allow user to create organizations?
      */
-    allowCreateOrganization?: pulumi.Input<boolean>;
+    allowCreateOrganization?: pulumi.Input<boolean | undefined>;
     /**
      * Allow user to create Git hooks?
      */
-    allowGitHook?: pulumi.Input<boolean>;
+    allowGitHook?: pulumi.Input<boolean | undefined>;
     /**
      * Allow user to import local repositories?
      */
-    allowImportLocal?: pulumi.Input<boolean>;
+    allowImportLocal?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the user.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Email address of the user.
      */
@@ -396,11 +396,11 @@ export interface UserArgs {
     /**
      * Full name of the user.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Location of the user.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the user.
      */
@@ -408,15 +408,15 @@ export interface UserArgs {
     /**
      * Login name of the user.
      */
-    loginName?: pulumi.Input<string>;
+    loginName?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of repositories user can create. A value of -1 means no limit.
      */
-    maxRepoCreation?: pulumi.Input<number>;
+    maxRepoCreation?: pulumi.Input<number | undefined>;
     /**
      * Require user to change password?
      */
-    mustChangePassword?: pulumi.Input<boolean>;
+    mustChangePassword?: pulumi.Input<boolean | undefined>;
     /**
      * Password of the user.
      */
@@ -424,25 +424,25 @@ export interface UserArgs {
     /**
      * Are user logins prohibited?
      */
-    prohibitLogin?: pulumi.Input<boolean>;
+    prohibitLogin?: pulumi.Input<boolean | undefined>;
     /**
      * Is the user restricted?
      */
-    restricted?: pulumi.Input<boolean>;
+    restricted?: pulumi.Input<boolean | undefined>;
     /**
      * Send notification to administrators?
      */
-    sendNotify?: pulumi.Input<boolean>;
+    sendNotify?: pulumi.Input<boolean | undefined>;
     /**
      * Numeric identifier of the user's authentication source.
      */
-    sourceId?: pulumi.Input<number>;
+    sourceId?: pulumi.Input<number | undefined>;
     /**
      * Visibility of the user.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
     /**
      * Website of the user.
      */
-    website?: pulumi.Input<string>;
+    website?: pulumi.Input<string | undefined>;
 }

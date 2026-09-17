@@ -92,18 +92,18 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersOutputArgs {
-    attributes?: pulumi.Input<string>;
-    email?: pulumi.Input<string>;
-    groupsByNames?: pulumi.Input<pulumi.Input<string>[]>;
-    groupsByPks?: pulumi.Input<pulumi.Input<string>[]>;
-    id?: pulumi.Input<string>;
-    isActive?: pulumi.Input<boolean>;
-    isSuperuser?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    ordering?: pulumi.Input<string>;
-    path?: pulumi.Input<string>;
-    pathStartswith?: pulumi.Input<string>;
-    search?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
-    uuid?: pulumi.Input<string>;
+    attributes?: pulumi.Input<string | undefined>;
+    email?: pulumi.Input<string | undefined>;
+    groupsByNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    groupsByPks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    isActive?: pulumi.Input<boolean | undefined>;
+    isSuperuser?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    ordering?: pulumi.Input<string | undefined>;
+    path?: pulumi.Input<string | undefined>;
+    pathStartswith?: pulumi.Input<string | undefined>;
+    search?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string | undefined>;
+    uuid?: pulumi.Input<string | undefined>;
 }

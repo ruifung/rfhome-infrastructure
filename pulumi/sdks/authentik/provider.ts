@@ -80,11 +80,11 @@ export interface ProviderArgs {
     /**
      * Optional HTTP headers sent with every request
      */
-    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether to skip TLS verification, can optionally be passed as `AUTHENTIK_INSECURE` environmental variable
      */
-    insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean | undefined>;
     /**
      * The authentik API token, can optionally be passed as `AUTHENTIK_TOKEN` environmental variable
      */

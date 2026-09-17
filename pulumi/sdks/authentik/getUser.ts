@@ -58,7 +58,7 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
-    id?: pulumi.Input<string>;
-    pk?: pulumi.Input<number>;
-    username?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    pk?: pulumi.Input<number | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }

@@ -64,14 +64,14 @@ export class StageDummy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StageDummy resources.
  */
 export interface StageDummyState {
-    name?: pulumi.Input<string>;
-    stageDummyId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    stageDummyId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a StageDummy resource.
  */
 export interface StageDummyArgs {
-    name?: pulumi.Input<string>;
-    stageDummyId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    stageDummyId?: pulumi.Input<string | undefined>;
 }

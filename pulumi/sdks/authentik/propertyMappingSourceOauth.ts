@@ -70,9 +70,9 @@ export class PropertyMappingSourceOauth extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PropertyMappingSourceOauth resources.
  */
 export interface PropertyMappingSourceOauthState {
-    expression?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingSourceOauthId?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingSourceOauthId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -80,6 +80,6 @@ export interface PropertyMappingSourceOauthState {
  */
 export interface PropertyMappingSourceOauthArgs {
     expression: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    propertyMappingSourceOauthId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    propertyMappingSourceOauthId?: pulumi.Input<string | undefined>;
 }

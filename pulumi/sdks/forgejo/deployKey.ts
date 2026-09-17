@@ -121,35 +121,35 @@ export interface DeployKeyState {
     /**
      * Time at which the deploy key was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of the deploy key.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Armored SSH key. Trailing newlines must be removed (e.g. using trimspace() function).
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Numeric identifier of the deploy key.
      */
-    keyId?: pulumi.Input<number>;
+    keyId?: pulumi.Input<number | undefined>;
     /**
      * Does the key have only read access?
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Numeric identifier of the repository.
      */
-    repositoryId?: pulumi.Input<number>;
+    repositoryId?: pulumi.Input<number | undefined>;
     /**
      * Title of the deploy key.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * URL of the deploy key.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**

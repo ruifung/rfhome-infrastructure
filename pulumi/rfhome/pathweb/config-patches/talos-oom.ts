@@ -4,9 +4,9 @@
 // cgroupRankingExpression: "0.0"
 // sampleInterval: "5s"
 
-import { ConfigPatchProvider, v1alpha1Config } from '../types/ConfigPatch';
+import { TypedConfigPatchProvider, v1alpha1Config } from '../types/ConfigPatch';
 
-export const userspaceOomPatch: ConfigPatchProvider = () => [
+export const userspaceOomPatch: TypedConfigPatchProvider = () => [
     v1alpha1Config('OOMConfig', {
         triggerExpression: 'false',
         cgroupRankingExpression: '0.0',

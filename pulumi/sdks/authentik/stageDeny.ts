@@ -67,16 +67,16 @@ export class StageDeny extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StageDeny resources.
  */
 export interface StageDenyState {
-    denyMessage?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    stageDenyId?: pulumi.Input<string>;
+    denyMessage?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    stageDenyId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a StageDeny resource.
  */
 export interface StageDenyArgs {
-    denyMessage?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    stageDenyId?: pulumi.Input<string>;
+    denyMessage?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    stageDenyId?: pulumi.Input<string | undefined>;
 }

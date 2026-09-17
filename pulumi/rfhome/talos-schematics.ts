@@ -12,7 +12,7 @@ const commonOfficialExtensions = [
     "siderolabs/iscsi-tools",
     "siderolabs/kata-containers",
     "siderolabs/nvme-cli",
-    "siderolabs/youki"
+    "siderolabs/youki",
 ]
 
 const noclodQemuSchematic = new imagefactory.Schematic('nocloud-qemu', {

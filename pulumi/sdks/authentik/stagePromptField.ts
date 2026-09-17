@@ -136,29 +136,29 @@ export class StagePromptField extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StagePromptField resources.
  */
 export interface StagePromptFieldState {
-    fieldKey?: pulumi.Input<string>;
-    initialValue?: pulumi.Input<string>;
+    fieldKey?: pulumi.Input<string | undefined>;
+    initialValue?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    initialValueExpression?: pulumi.Input<boolean>;
-    label?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    order?: pulumi.Input<number>;
-    placeholder?: pulumi.Input<string>;
+    initialValueExpression?: pulumi.Input<boolean | undefined>;
+    label?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    order?: pulumi.Input<number | undefined>;
+    placeholder?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    placeholderExpression?: pulumi.Input<boolean>;
+    placeholderExpression?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    required?: pulumi.Input<boolean>;
-    stagePromptFieldId?: pulumi.Input<string>;
+    required?: pulumi.Input<boolean | undefined>;
+    stagePromptFieldId?: pulumi.Input<string | undefined>;
     /**
      * Defaults to ``.
      */
-    subText?: pulumi.Input<string>;
+    subText?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`text`" pulumi-lang-dotnet="`Text`" pulumi-lang-go="`text`" pulumi-lang-python="`text`" pulumi-lang-yaml="`text`" pulumi-lang-java="`text`">`text`</span>
@@ -180,7 +180,7 @@ export interface StagePromptFieldState {
      *   - <span pulumi-lang-nodejs="`static`" pulumi-lang-dotnet="`Static`" pulumi-lang-go="`static`" pulumi-lang-python="`static`" pulumi-lang-yaml="`static`" pulumi-lang-java="`static`">`static`</span>
      *   - `ak-locale`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -188,28 +188,28 @@ export interface StagePromptFieldState {
  */
 export interface StagePromptFieldArgs {
     fieldKey: pulumi.Input<string>;
-    initialValue?: pulumi.Input<string>;
+    initialValue?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    initialValueExpression?: pulumi.Input<boolean>;
+    initialValueExpression?: pulumi.Input<boolean | undefined>;
     label: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    order?: pulumi.Input<number>;
-    placeholder?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    order?: pulumi.Input<number | undefined>;
+    placeholder?: pulumi.Input<string | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    placeholderExpression?: pulumi.Input<boolean>;
+    placeholderExpression?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
      */
-    required?: pulumi.Input<boolean>;
-    stagePromptFieldId?: pulumi.Input<string>;
+    required?: pulumi.Input<boolean | undefined>;
+    stagePromptFieldId?: pulumi.Input<string | undefined>;
     /**
      * Defaults to ``.
      */
-    subText?: pulumi.Input<string>;
+    subText?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      *   - <span pulumi-lang-nodejs="`text`" pulumi-lang-dotnet="`Text`" pulumi-lang-go="`text`" pulumi-lang-python="`text`" pulumi-lang-yaml="`text`" pulumi-lang-java="`text`">`text`</span>

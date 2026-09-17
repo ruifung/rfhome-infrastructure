@@ -1,0 +1,5 @@
+---
+onlyBuiltDependencies:
+- '@pulumi/authentik'
+- '@pulumi/dns'
+- '@pulumi/forgejo'
