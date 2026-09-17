@@ -9,6 +9,9 @@
         "mqtt_pass": ""
     },
 
+    "ca_key_file": "ca.key",
+    "ca_cert_file": "ca.cert",
+
     "https_port": 443,
     "mqtts_port": 8883,
 
