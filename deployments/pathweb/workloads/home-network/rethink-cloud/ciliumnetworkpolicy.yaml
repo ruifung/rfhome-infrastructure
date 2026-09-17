@@ -1,0 +1,57 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: rethink-cloud-network-policy
+  namespace: home-network
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: rethink-cloud
+  ingress:
+  - fromEntities:
+    - world
+    toPorts:
+    - ports:
+      - port: "443"
+        protocol: TCP
+      - port: "8883"
+        protocol: TCP
+      - port: "46030"
+        protocol: TCP
+      - port: "47878"
+        protocol: TCP
+  - fromEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: home-network
+    toPorts:
+    - ports:
+      - port: "44401"
+        protocol: TCP
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: kube-dns
+    - matchLabels:
+        io.kubernetes.pod.namespace: kube-system
+        k8s-app: node-local-dns
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: ANY
+      rules:
+        dns:
+        - matchPattern: "*"
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: vernemq
+        app.kubernetes.io/instance: vernemq
+    toPorts:
+    - ports:
+      - port: "1883"
+        protocol: TCP
+      - port: "8883"
+        protocol: TCP
+  - toEntities:
+    - world

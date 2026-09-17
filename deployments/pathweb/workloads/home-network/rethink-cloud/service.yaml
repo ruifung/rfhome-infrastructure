@@ -1,0 +1,66 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rethink-cloud-headless
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: rethink-cloud
+spec:
+  selector:
+    app.kubernetes.io/name: rethink-cloud
+  clusterIP: None
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+  - IPv4
+  - IPv6
+  ports:
+  - port: 443
+    targetPort: https
+    name: https
+  - port: 8883
+    targetPort: mqtts
+    name: mqtts
+  - port: 46030
+    targetPort: thinq1-https
+    name: thinq1-https
+  - port: 47878
+    targetPort: thinq1
+    name: thinq1
+  - port: 44401
+    targetPort: management
+    name: management
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rethink-cloud
+  namespace: home-network
+  labels:
+    app.kubernetes.io/name: rethink-cloud
+    lb-location: rfhome
+    external-dns: local-pdns
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: rethink.services.home.yrf.me
+spec:
+  selector:
+    app.kubernetes.io/name: rethink-cloud
+  type: LoadBalancer
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+  - IPv4
+  - IPv6
+  externalTrafficPolicy: Local
+  ports:
+  - port: 443
+    targetPort: https
+    name: https
+  - port: 8883
+    targetPort: mqtts
+    name: mqtts
+  - port: 46030
+    targetPort: thinq1-https
+    name: thinq1-https
+  - port: 47878
+    targetPort: thinq1
+    name: thinq1

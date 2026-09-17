@@ -1,0 +1,25 @@
+{
+    "hostname": "rethink.services.home.yrf.me",
+
+    "homeassistant": {
+        "mqtt_url": "mqtt://vernemq:1883",
+        "discovery_prefix": "homeassistant",
+        "rethink_prefix": "rethink",
+        "mqtt_user": "",
+        "mqtt_pass": ""
+    },
+
+    "https_port": 443,
+    "mqtts_port": 8883,
+
+    "thinq1_https_port": 46030,
+    "thinq1_port": 47878,
+
+    "management_port": 44401,
+
+    "bridge": {
+        "storage_path": "./state"
+    },
+
+    "log": ["status", "incoming", "HTTPS", "publish", "MGMT"]
+}
