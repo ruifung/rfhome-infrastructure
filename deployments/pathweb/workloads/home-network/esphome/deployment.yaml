@@ -27,6 +27,8 @@ spec:
         image: esphome/esphome
         securityContext:
           allowPrivilegeEscalation: false
+        command:
+        - esphome-device-builder
         args:
         - "--host"
         - "eth0"
