@@ -8,9 +8,9 @@ spec:
   strategy:
     type: Recreate
   template:
-    # metadata:
-    # annotations:
-    # k8s.v1.cni.cncf.io/networks: home-network/esphome-iot-network
+    metadata:
+      annotations:
+        k8s.v1.cni.cncf.io/networks: '[{"name":"esphome-iot-network"}]'
     spec:
       priorityClassName: rfhome-low-priority
       runtimeClassName: gvisor
@@ -28,12 +28,11 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
         args:
-        - "dashboard"
-        - "/config"
         - "--host"
-        - "$(POD_IP)"
+        - "eth0"
         - "--port"
         - "6052"
+        - "/config"
         env:
         - name: TZ
           value: Asia/Kuala_Lumpur

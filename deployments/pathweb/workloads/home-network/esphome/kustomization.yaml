@@ -4,6 +4,7 @@ images:
   newTag: 2026.8.2@sha256:85abea33854be56d9594eaddaa40988b9cda9560221823a740393c5ed5de82b8
 resources:
 - deployment.yaml
+- networkattachmentdefinition.yaml
 - pvc.yaml
 - service.yaml
 - httproute.yaml
