@@ -3,7 +3,7 @@
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^24.0.0",
-        "typescript": "^3.8.0"
+        "typescript": "^7.0.0"
     },
     "dependencies": {
         "@muhlba91/pulumi-proxmoxve": "^8.0.0",
