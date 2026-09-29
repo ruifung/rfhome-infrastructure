@@ -6,7 +6,7 @@ images:
   newTag: "2.5-debian@sha256:0387a11b16169da037be0defd6bcd26f6a42161a596b708875698de568ba6fda"
 - name: lscr.io/linuxserver/calibre-web
   newName: ghcr.io/ruifung/lsio-calibre-web-mod
-  newTag: "0.6.27-calibre-v9.14.0@sha256:2c18d103eaf1355598cbd8cad5ee3afa59c5b06752f539eab81e190ea6c30faf"
+  newTag: "0.6.27-calibre-v9.15.0@sha256:7a3a644b75cb50c819f1c61b5322351fa50ee887dfd7f5102458df080b1d0d8c"
 resources:
 - "calibre-library-pvc.yaml"
 - "calibre-web-sts.yaml"
