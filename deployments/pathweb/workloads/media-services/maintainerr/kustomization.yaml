@@ -1,7 +1,7 @@
 ---
 images:
 - name: ghcr.io/maintainerr/maintainerr
-  newTag: 3.26.0@sha256:0ff47e2465704ceb90cd79a1516844bc1c74f6c8eef8317988618a01e5a680ea
+  newTag: 3.30.0@sha256:908af0b22c61f4908633fa4819e615a1e12e1aafe6c860375686bf18b1723525
 labels:
 - pairs:
     "app.kubernetes.io/name": maintainerr
