@@ -24,13 +24,13 @@ spec:
         location: rfhome
       initContainers:
       - name: init-root
-        image: ghcr.io/ownbee/hass-otbr-docker:v0.3.0@sha256:5ca7008462e94d4c937aca8c1c9a60e709d6d300625363c161b946683032d5b1
+        image: ghcr.io/wittdennis/homeassistant-otbr:latest
         command: ["/bin/sh", "-c", "cp -a /etc/s6-overlay/s6-rc.d/otbr-agent/* /otbr-root/"]
         volumeMounts:
         - name: otbr-root
           mountPath: /otbr-root
       - name: patch-agent
-        image: ghcr.io/ownbee/hass-otbr-docker:v0.3.0@sha256:5ca7008462e94d4c937aca8c1c9a60e709d6d300625363c161b946683032d5b1
+        image: ghcr.io/wittdennis/homeassistant-otbr:latest
         command: ["/bin/sh", "/scripts/patch-otbr-agent.sh"]
         env:
         - name: POD_IP
