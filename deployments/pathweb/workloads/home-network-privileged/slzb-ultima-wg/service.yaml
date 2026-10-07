@@ -8,6 +8,10 @@ spec:
   selector:
     app.kubernetes.io/name: slzb-ultima-wg
   ports:
+  - port: 8080
+    targetPort: 8080
+    name: otbr
+    protocol: TCP
   - port: 6638
     targetPort: 6638
     name: radio1

@@ -229,6 +229,46 @@ spec:
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
+      - name: proxy-otbr
+        image: alpine/socat:latest
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        args:
+        - TCP-LISTEN:8080,bind=$(POD_IP),fork,reuseaddr
+        - TCP:192.168.229.2:8080
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          capabilities:
+            drop:
+            - ALL
+        ports:
+        - containerPort: 8080
+          name: otbr
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 10m
+            memory: 16Mi
+          requests:
+            cpu: 1m
+            memory: 8Mi
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
       volumes:
       - name: wireguard-config
         secret:
