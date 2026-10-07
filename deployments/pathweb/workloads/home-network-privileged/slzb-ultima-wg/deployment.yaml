@@ -109,46 +109,46 @@ spec:
         - name: slzb-ultima-wg-data
           mountPath: /data
       containers:
-      - name: proxy-radio1
-        image: alpine/socat:latest
-        env:
-        - name: POD_IP
-          valueFrom:
-            fieldRef:
-              fieldPath: status.podIP
-        args:
-        - TCP-LISTEN:6638,bind=$(POD_IP),fork,reuseaddr
-        - TCP:192.168.229.2:6638
-        securityContext:
-          allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
-          runAsNonRoot: true
-          runAsUser: 1000
-          runAsGroup: 1000
-          capabilities:
-            drop:
-            - ALL
-        ports:
-        - containerPort: 6638
-          name: radio1
-          protocol: TCP
-        resources:
-          limits:
-            cpu: 10m
-            memory: 16Mi
-          requests:
-            cpu: 1m
-            memory: 8Mi
-        livenessProbe:
-          tcpSocket:
-            port: 6638
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          tcpSocket:
-            port: 6638
-          initialDelaySeconds: 5
-          periodSeconds: 10
+      # - name: proxy-radio1
+      #   image: alpine/socat:latest
+      #   env:
+      #   - name: POD_IP
+      #     valueFrom:
+      #       fieldRef:
+      #         fieldPath: status.podIP
+      #   args:
+      #   - TCP-LISTEN:6638,bind=$(POD_IP),fork,reuseaddr
+      #   - TCP:192.168.229.2:6638
+      #   securityContext:
+      #     allowPrivilegeEscalation: false
+      #     readOnlyRootFilesystem: true
+      #     runAsNonRoot: true
+      #     runAsUser: 1000
+      #     runAsGroup: 1000
+      #     capabilities:
+      #       drop:
+      #       - ALL
+      #   ports:
+      #   - containerPort: 6638
+      #     name: radio1
+      #     protocol: TCP
+      #   resources:
+      #     limits:
+      #       cpu: 10m
+      #       memory: 16Mi
+      #     requests:
+      #       cpu: 1m
+      #       memory: 8Mi
+      #   livenessProbe:
+      #     tcpSocket:
+      #       port: 6638
+      #     initialDelaySeconds: 5
+      #     periodSeconds: 10
+      #   readinessProbe:
+      #     tcpSocket:
+      #       port: 6638
+      #     initialDelaySeconds: 5
+      #     periodSeconds: 10
       - name: proxy-radio2
         image: alpine/socat:latest
         env:
@@ -261,12 +261,12 @@ spec:
             memory: 8Mi
         livenessProbe:
           tcpSocket:
-            port: 80
+            port: 8080
           initialDelaySeconds: 5
           periodSeconds: 10
         readinessProbe:
           tcpSocket:
-            port: 80
+            port: 8080
           initialDelaySeconds: 5
           periodSeconds: 10
       volumes:
