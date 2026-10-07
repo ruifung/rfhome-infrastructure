@@ -3,7 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
 - name: ghcr.io/riddix/home-assistant-matter-hub
-  newTag: 2.0.57@sha256:3f63aca9cd94162c0736859b43949e95d164d2d47dbd1239574738e583c77661
+  newTag: 2.0.58@sha256:3b1aa47b49d6f99dac336633f5a3f3ceed7a340b4e9cd4bdd90fbebd0e32db4e
 resources:
 - deployment.yaml
 - service.yaml
