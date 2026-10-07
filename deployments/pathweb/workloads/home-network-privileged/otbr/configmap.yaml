@@ -14,3 +14,4 @@ data:
   OTBR_WEB_PORT: "8082"
   FIREWALL: "1"
   NAT64: "1"
+  BETA: "1"

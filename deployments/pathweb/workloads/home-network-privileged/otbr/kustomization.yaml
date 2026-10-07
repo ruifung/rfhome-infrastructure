@@ -9,8 +9,8 @@ resources:
 - service.yaml
 - ciliumnetworkpolicy.yaml
 images:
-- name: ghcr.io/ownbee/hass-otbr-docker
-  newTag: v0.3.0@sha256:5ca7008462e94d4c937aca8c1c9a60e709d6d300625363c161b946683032d5b1
+- name: ghcr.io/wittdennis/homeassistant-otbr
+  newTag: 4.2.6@sha256:a0c2b5eeb050b415815344c2206a9fde52a0b69bfa1c66527bbaf5ed2bf5d6c3
 configMapGenerator:
 - name: otbr-patch
   files:

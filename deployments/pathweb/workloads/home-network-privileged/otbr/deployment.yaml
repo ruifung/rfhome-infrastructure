@@ -44,7 +44,7 @@ spec:
           mountPath: /patched
       containers:
       - name: otbr
-        image: ghcr.io/ownbee/hass-otbr-docker:latest
+        image: ghcr.io/wittdennis/homeassistant-otbr:latest
         # command: ["docker-entrypoint.sh"]
         # args: ["otbr-agent"]
         securityContext:
