@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/bazarr
   newName: lscr.io/linuxserver/bazarr
-  newTag: version-v1.6.0@sha256:5d916d07404296ec35ee726e13e0e558f05952724cf494a7f009d913fb2b12f3
+  newTag: version-v1.6.2@sha256:c1673816321156b904af9b7e6415ea547ae9622e4acc375358f1e1eb9ed1e904
 labels:
 - pairs:
     "app.kubernetes.io/name": bazarr
