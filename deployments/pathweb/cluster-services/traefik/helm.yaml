@@ -39,8 +39,9 @@ spec:
     additionalArguments:
     - "--providers.file.directory=/additional-configs"
     - "--providers.file.watch=true"
-    - "--entrypoints.web.http.middlewares=crowdsec@file"
-    - "--entrypoints.websecure.http.middlewares=crowdsec@file"
+    - "--entryPoints.web.http.middlewares=crowdsec@file"
+    - "--entryPoints.websecure.http.middlewares=crowdsec@file"
+    - "--entryPoints.traefik.http.middlewares=crowdsec@file" # Add CrowdSec middleware to Traefik entrypoint so that the healthchecks fail if the crowdsec middleware fails to load
     deployment:
       # nameOverride: traefik-rfhome
       replicas: 2
