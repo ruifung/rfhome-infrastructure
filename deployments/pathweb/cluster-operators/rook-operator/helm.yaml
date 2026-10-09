@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 24h
-  url: oci://harbor.services.home.yrf.me/chartproxy/charts.rook.io/release/rook-ceph
+  url: oci://harbor.services.home.yrf.me/ghcr/rook/rook-ceph
   ref:
     tag: 1.21.0
   layerSelector:
