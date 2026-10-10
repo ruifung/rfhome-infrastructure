@@ -26,6 +26,7 @@ spec:
       - name: iptables-enable-routing
         image: ghcr.io/wittdennis/homeassistant-otbr:latest
         securityContext:
+          procMount: Unmasked
           capabilities:
             add:
               - NET_ADMIN
