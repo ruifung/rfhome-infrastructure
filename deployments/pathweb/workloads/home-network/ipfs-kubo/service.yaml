@@ -35,7 +35,7 @@ metadata:
     external-dns: local-pdns
     lb-location: rfhome
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: ipfs-swarm.services.home.yrf.me
+    external-dns.kubernetes.io/hostname: ipfs-swarm.services.home.yrf.me
 spec:
   type: LoadBalancer
   ipFamilies:

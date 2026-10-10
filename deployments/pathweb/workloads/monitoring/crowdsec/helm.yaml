@@ -111,7 +111,7 @@ spec:
       service:
         type: LoadBalancer
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: crowdsec-lapi.services.home.yrf.me
+          external-dns.kubernetes.io/hostname: crowdsec-lapi.services.home.yrf.me
         labels:
           external-dns: local-pdns
           lb-location: rfhome

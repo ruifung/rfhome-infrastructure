@@ -27,7 +27,7 @@ metadata:
     lb-location: rfhome
     external-dns: local-pdns
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: plexdirect.services.home.yrf.me
+    external-dns.kubernetes.io/hostname: plexdirect.services.home.yrf.me
     # Pin the IPs so that they don't change
     io.cilium/lb-ipam-ips: 10.229.30.184,fd96:619:6b75:130::5
 spec:

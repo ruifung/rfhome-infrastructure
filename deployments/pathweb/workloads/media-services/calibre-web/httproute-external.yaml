@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: calibre-web
     external-dns: cf-yrf-me
   annotations:
-    external-dns.alpha.kubernetes.io/target: ingress-pathweb-clusters-home.yrf.me
+    external-dns.kubernetes.io/target: ingress-pathweb-clusters-home.yrf.me
 spec:
   parentRefs:
   - name: yrf-me-cloudflare-tunnel
