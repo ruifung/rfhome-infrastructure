@@ -55,6 +55,7 @@ spec:
     - gateway-httproute
     provider:
       name: cloudflare
+    policy: sync
     env:
     - name: CF_API_TOKEN
       valueFrom:
@@ -111,6 +112,7 @@ spec:
     - gateway-udproute
     provider:
       name: rfc2136
+    policy: sync
     env:
     - name: EXTERNAL_DNS_RFC2136_TSIG_SECRET
       valueFrom:
@@ -171,6 +173,7 @@ spec:
     - gateway-tcproute
     - gateway-udproute
     provider: rfc2136
+    policy: sync
     env:
     - name: EXTERNAL_DNS_RFC2136_TSIG_SECRET
       valueFrom:
