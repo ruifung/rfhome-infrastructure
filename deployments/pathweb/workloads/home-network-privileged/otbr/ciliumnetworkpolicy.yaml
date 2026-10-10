@@ -45,3 +45,12 @@ spec:
     - ports:
       - port: "6638"
         protocol: TCP
+  - toCIDRSet:
+    - cidr: ::/0
+      except:
+      - fc00::/7
+    - cidr: 0.0.0.0/0
+      except:
+      - 10.0.0.0/8
+      - 192.168.0.0/16
+      - 172.16.0.0/12

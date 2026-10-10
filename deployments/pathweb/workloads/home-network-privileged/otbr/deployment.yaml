@@ -22,7 +22,27 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         location: rfhome
+      securityContext:
+        sysctls:
+        - name: net.ipv4.ip_forward
+          value: "1"
+        - name: net.ipv6.conf.all.forwarding
+          value: "1"
       initContainers:
+      - name: iptables-enable-masquerade
+        image: ghcr.io/wittdennis/homeassistant-otbr:latest
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN  # REQUIRED to allow iptables modifications
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            # Apply the masquerade rules exactly as you intended
+            iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+            ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+            
+            echo "Masquerade successfully configured on eth0"
       - name: init-root
         image: ghcr.io/wittdennis/homeassistant-otbr:latest
         command: ["/bin/sh", "-c", "cp -a /etc/s6-overlay/s6-rc.d/otbr-agent/* /otbr-root/"]
