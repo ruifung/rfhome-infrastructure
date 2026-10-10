@@ -26,9 +26,9 @@ spec:
   interval: 15m
   install:
     createNamespace: true
-    crds: Create
+    crds: Skip
   upgrade:
-    crds: CreateReplace
+    crds: Skip
   values:
     livenessProbe:
       initialDelaySeconds: 60
@@ -87,7 +87,7 @@ spec:
   targetNamespace: external-dns
   install:
     createNamespace: true
-    crds: Create
+    crds: CreateReplace
   upgrade:
     crds: CreateReplace
   values:
@@ -149,9 +149,9 @@ spec:
   targetNamespace: external-dns
   install:
     createNamespace: true
-    crds: Create
+    crds: Skip
   upgrade:
-    crds: CreateReplace
+    crds: Skip
   values:
     priorityClassName: rfhome-network-critical
     resources:
