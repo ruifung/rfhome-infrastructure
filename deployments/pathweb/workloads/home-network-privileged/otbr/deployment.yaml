@@ -81,6 +81,22 @@ spec:
         envFrom:
         - configMapRef:
             name: otbr
+        lifecycle:
+            postStart:
+              exec:
+                command:
+                  - "/bin/sh"
+                  - "-c"
+                  - |
+                    # Asynchronously wait for the local OpenThread daemon to boot
+                    until ot-ctl state >/dev/null 2>&1; do
+                      sleep 2
+                    done
+                    
+                    # 1. Force a permanent, static OMR prefix onto the synced mesh with HIGH preference
+                    ot-ctl br omrconfig custom fdcd:bc09:25d6:1::/64 high
+                    
+                    echo "Static OMR Prefix and routing injected into synced mesh."
         resources:
           limits:
             squat.ai/net-tun: 1
