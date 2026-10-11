@@ -14,9 +14,23 @@ spec:
     spec:
       priorityClassName: rfhome-low-priority
       runtimeClassName: gvisor
-      nodeSelector:
-        kubernetes.io/os: linux
-        location: rfhome
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: location
+                operator: In
+                values:
+                - rfhome
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: node-group
+                    operator: NotIn
+                    values:
+                      - voyager
+              weight: 100
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
