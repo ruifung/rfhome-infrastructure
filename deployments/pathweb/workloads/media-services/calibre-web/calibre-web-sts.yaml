@@ -33,7 +33,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: calibre-web
-        image: lscr.io/linuxserver/calibre-web:latest
+        image: ghcr.io/linuxserver/calibre-web:latest
         securityContext:
           allowPrivilegeEscalation: false
         env:

@@ -1,7 +1,7 @@
 ---
 images:
 - name: linuxserver/calibre
-  newName: lscr.io/linuxserver/calibre
+  newName: ghcr.io/linuxserver/calibre
   newTag: version-v9.16.0@sha256:4b1673b28f18c170e8d6c48c791e67520df44dc4f9b9e8f63fef21d23910abab
 labels:
 - pairs:

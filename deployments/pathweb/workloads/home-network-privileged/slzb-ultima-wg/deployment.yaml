@@ -32,7 +32,7 @@ spec:
           type: RuntimeDefault
       initContainers:
       - name: wg-init
-        image: lscr.io/linuxserver/wireguard:latest
+        image: ghcr.io/linuxserver/wireguard:latest
         command: ["/bin/sh", "-c"]
         args:
         - |
@@ -64,7 +64,7 @@ spec:
         - name: slzb-ultima-wg-data
           mountPath: /data
       - name: wg-monitor
-        image: lscr.io/linuxserver/wireguard:latest
+        image: ghcr.io/linuxserver/wireguard:latest
         command: ["/bin/sh", "-c"]
         args:
         - |
