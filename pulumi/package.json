@@ -3,7 +3,7 @@
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^24.0.0",
-        "typescript": "^3.8.0"
+        "typescript": "^7.0.0"
     },
     "dependencies": {
         "@muhlba91/pulumi-proxmoxve": "^8.0.0",
@@ -14,7 +14,7 @@
         "@pulumi/command": "^1.1.3",
         "@pulumi/dns": "file:sdks\\dns",
         "@pulumi/forgejo": "file:sdks\\forgejo",
-        "@pulumi/gcp": "^9.3.0",
+        "@pulumi/gcp": "^10.0.0",
         "@pulumi/github": "^6.8.0",
         "@pulumi/kubernetes": "^4.23.0",
         "@pulumi/local": "^0.1.6",
