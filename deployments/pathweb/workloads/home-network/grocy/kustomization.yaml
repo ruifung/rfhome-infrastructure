@@ -1,7 +1,7 @@
 ---
 images:
 - name: linuxserver/grocy
-  newName: lscr.io/linuxserver/grocy
+  newName: ghcr.io/linuxserver/grocy
   newTag: version-v4.7.1@sha256:c0d0d9d22d3a54fe3f779a743baa2d7bab96b73fad5597ff1a631e2be4b863c8
 labels:
 - pairs:
