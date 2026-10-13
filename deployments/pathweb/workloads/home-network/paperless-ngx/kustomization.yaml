@@ -7,7 +7,7 @@ images:
 - name: docker.io/apache/tika
   newTag: 3.3.1.0@sha256:90b7fa1dc018434075fce9e1d9b88b1e3d0ea6979d0cf86e116c79a8073ae973
 - name: ghcr.io/paperless-ngx/paperless-ngx
-  newTag: 3.3.0@sha256:6b94799bc769a063b3340cc5847402e626d4d91d29a295a8e747f8e9bead4207
+  newTag: 3.3.1@sha256:cb91bfb468e63025a9d10c01b54c33665113668eee61b490db96de19b860b9c4
 labels:
 - pairs:
     "app.kubernetes.io/name": paperless-ngx
