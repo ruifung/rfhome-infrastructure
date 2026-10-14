@@ -19,10 +19,10 @@ importers:
         version: 7.50.0(typescript@7.0.2)
       '@pulumi/cloudflare':
         specifier: ^6.10.1
-        version: 6.22.0(typescript@7.0.2)
+        version: 6.22.1(typescript@7.0.2)
       '@pulumi/cloudinit':
         specifier: ^1.4.14
-        version: 1.6.2(typescript@7.0.2)
+        version: 1.6.3(typescript@7.0.2)
       '@pulumi/command':
         specifier: ^1.1.3
         version: 1.2.1(typescript@7.0.2)
@@ -34,7 +34,7 @@ importers:
         version: file:sdks/forgejo
       '@pulumi/gcp':
         specifier: ^10.0.0
-        version: 10.1.0(typescript@7.0.2)
+        version: 10.1.1(typescript@7.0.2)
       '@pulumi/github':
         specifier: ^6.8.0
         version: 6.15.0(typescript@7.0.2)
@@ -52,7 +52,7 @@ importers:
         version: 4.21.2(typescript@7.0.2)
       '@pulumi/tls':
         specifier: ^5.2.2
-        version: 5.6.1(typescript@7.0.2)
+        version: 5.6.2(typescript@7.0.2)
       '@pulumiverse/talos':
         specifier: ^0.8.1
         version: 0.8.1(typescript@7.0.2)
@@ -314,11 +314,11 @@ packages:
   '@pulumi/aws@7.50.0':
     resolution: {integrity: sha512-YqnrUfFd5c3mFE8cZeGq5dFM8puX6c+IPBjxUD7ByZUJ1De7z6n4rL3moevkqU8IA4Tn89cEa2H+jUcZ2DzH0w==}
 
-  '@pulumi/cloudflare@6.22.0':
-    resolution: {integrity: sha512-ljJpS3vhIaTNzTvoNURkUfXnzDlBS0gx2nxvg84JmH6kuYoCmsLiQ1afOdhXly4+G/JIgYqjdxo2QNliVUWYDw==}
+  '@pulumi/cloudflare@6.22.1':
+    resolution: {integrity: sha512-ZpfS7qct6+1vSRXcuCqnNWwsm+EVGxo+JVJW/s4+6x3xCv5EhG/s/mIj2QWPew93aFSiN3GXu14P5GF7GejCeQ==}
 
-  '@pulumi/cloudinit@1.6.2':
-    resolution: {integrity: sha512-MH3DLjQyglqiCkWT0Z//YKHrCgYBjGR8MOK1VD/FomgxL8UlEKhv6sWVJE4lnbbfnkOjhW/asn0wtGaciQDPQg==}
+  '@pulumi/cloudinit@1.6.3':
+    resolution: {integrity: sha512-89usrlHRmphT1Km4S5ZbHu+7iGckOf57MTx9XztDC6z3wbCr4g/hYoTdKCJB4OmPkLeY5q7k9HRXr6aDhOSPNQ==}
 
   '@pulumi/command@1.2.1':
     resolution: {integrity: sha512-mutNDIUYP67yCBYOVIidQyxuTwZDY9v/sx9EGbgIv4PXfyfolOKGgGLeoHEbI1lxRwaw2wbTZ3VNIynDnA5VKA==}
@@ -329,8 +329,8 @@ packages:
   '@pulumi/forgejo@file:sdks/forgejo':
     resolution: {directory: sdks/forgejo, type: directory}
 
-  '@pulumi/gcp@10.1.0':
-    resolution: {integrity: sha512-0q448t5FCZv6RZQsL1Do7J8z7RjLfZk8CCZKgViT0ZKwkhm+di941PAEYBi44X/lArPLeXTOwtdlgGLCCocKNA==}
+  '@pulumi/gcp@10.1.1':
+    resolution: {integrity: sha512-4BqjwTQYUELgTOXHbdxarlyHyPt6VV9zUg+ppzzXQTs8+/n8FTNaYBM2P6h+BR26+tEDnEmBmGzE39Z1ZfsZMA==}
 
   '@pulumi/github@6.15.0':
     resolution: {integrity: sha512-U8ZxPQQcOrcTn8y8EZsWmXzMtbw0JnwWCVGmqxBZ/i2SpUlEGMYT9B+EFC/qTALZXkDf7cMiq6fZ3Gy1G23nyQ==}
@@ -356,8 +356,8 @@ packages:
   '@pulumi/random@4.21.2':
     resolution: {integrity: sha512-yQVSPeQE55oqL4KHoWwKqTTTjx3jYGaJ3RCXnlUOcqmGW5zT3hmKWqAS+5nBYCtrVPA8J06UqjC1ZOrQP+Q5yg==}
 
-  '@pulumi/tls@5.6.1':
-    resolution: {integrity: sha512-Uijxsh1TfNpr52a307WA3kUTYLOu/jU/nApuz5ovYRZseZkLTLrrF/PiYpIwudum0AXt04XiBHPCHqleM7YX2Q==}
+  '@pulumi/tls@5.6.2':
+    resolution: {integrity: sha512-Id9iwUsVONmXamwrAo1OR+RGjlR1WXqA50v2WQJevZSF+73ZZpZvp5rmd4CinWfvmoYVcBJGNpAzrUjUnUmuZg==}
 
   '@pulumiverse/talos@0.8.1':
     resolution: {integrity: sha512-GTiqBuWRvunu70uTwmx9mL99B2Yc+I96XMm4bwTP2gE+M/0e8eICcwo3Hs/3LN/vhGgkGWZNFInUSwZlgZFgeg==}
@@ -1477,7 +1477,7 @@ snapshots:
       - ts-node
       - typescript
 
-  '@pulumi/cloudflare@6.22.0(typescript@7.0.2)':
+  '@pulumi/cloudflare@6.22.1(typescript@7.0.2)':
     dependencies:
       '@pulumi/pulumi': 3.268.0(typescript@7.0.2)
     transitivePeerDependencies:
@@ -1485,7 +1485,7 @@ snapshots:
       - ts-node
       - typescript
 
-  '@pulumi/cloudinit@1.6.2(typescript@7.0.2)':
+  '@pulumi/cloudinit@1.6.3(typescript@7.0.2)':
     dependencies:
       '@pulumi/pulumi': 3.268.0(typescript@7.0.2)
     transitivePeerDependencies:
@@ -1519,7 +1519,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  '@pulumi/gcp@10.1.0(typescript@7.0.2)':
+  '@pulumi/gcp@10.1.1(typescript@7.0.2)':
     dependencies:
       '@pulumi/pulumi': 3.268.0(typescript@7.0.2)
       '@types/express': 4.17.25
@@ -1594,7 +1594,7 @@ snapshots:
       - ts-node
       - typescript
 
-  '@pulumi/tls@5.6.1(typescript@7.0.2)':
+  '@pulumi/tls@5.6.2(typescript@7.0.2)':
     dependencies:
       '@pulumi/pulumi': 3.268.0(typescript@7.0.2)
     transitivePeerDependencies:
