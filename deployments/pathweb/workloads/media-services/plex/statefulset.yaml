@@ -24,8 +24,8 @@ spec:
         env:
         - name: TZ
           value: Asia/Kuala_Lumpur
-        - name: ADVERTISE_IP
-          value: "https://plex.services.home.yrf.me:443,https://[fd96:619:6b75:130::5]:32400,https://10.229.30.184:32400,https://plex-home.yrf.me:443" # Yes I know it's a public URL. But it's already in the CT logs anyway.
+        # - name: ADVERTISE_IP
+          # value: "https://plex.services.home.yrf.me:443,https://[fd96:619:6b75:130::5]:32400,https://10.229.30.184:32400,https://plex-home.yrf.me:443" # Yes I know it's a public URL. But it's already in the CT logs anyway.
         ports:
         - containerPort: 32400
           name: plex
