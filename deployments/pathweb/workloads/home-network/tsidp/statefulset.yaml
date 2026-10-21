@@ -30,7 +30,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: tsidp
-        image: ghcr.io/tailscale/tsidp:v0.0.15
+        image: ghcr.io/tailscale/tsidp:v0.0.18
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:

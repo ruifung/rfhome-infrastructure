@@ -4,9 +4,9 @@ kind: Kustomization
 images:
 - name: homeassistant/home-assistant
   newName: ghcr.io/home-assistant/home-assistant
-  newTag: "2026.10.1@sha256:130241f28d01fa80dfa3b44f7d89781c188d8642ecab9024f079f19f9f82baa0"
+  newTag: "2026.10.2@sha256:33afb0659d786213264c2211f8d91c5fe87461c56eba6a3a546eb05fc71e89f4"
 - name: ghcr.io/matter-js/matterjs-server
-  newTag: "1.4.0@sha256:54232d0d3e7dff5a54759469d2753399270412b4c30c55b31750a4595e4cb236"
+  newTag: "1.5.2@sha256:47bc4d8354baf4775c1daf87b02b61123b1b61feeb3b2eadb17c610dbbda9a1c"
 - name: alpine
   newTag: "3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6"
 resources:
