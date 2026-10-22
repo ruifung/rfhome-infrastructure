@@ -3,11 +3,11 @@ images:
 - name: docker.io/library/redis
   newTag: 8.10.2@sha256:2c2dff791878316e3b083188be0d578423b24813cdda5de0e80ea4f7b3e6bfd6
 - name: docker.io/gotenberg/gotenberg
-  newTag: 8.37.0@sha256:f29984bd1e226bf1b93ba90af06000afa8b315853e99d27b9aaa41b93f15c769
+  newTag: 8.38.1@sha256:aa552cc115db488e0f0bcb07446aac13071ad51505b642c84bb894500907b42b
 - name: docker.io/apache/tika
-  newTag: 3.3.1.0@sha256:90b7fa1dc018434075fce9e1d9b88b1e3d0ea6979d0cf86e116c79a8073ae973
+  newTag: 3.3.3.0@sha256:326b238b37904c94ff61fed87afe0af72e6a29fa715933b10af97b7d56f1d4cb
 - name: ghcr.io/paperless-ngx/paperless-ngx
-  newTag: 3.3.1@sha256:cb91bfb468e63025a9d10c01b54c33665113668eee61b490db96de19b860b9c4
+  newTag: 3.3.4@sha256:9bc6e8248891bcfa6f52fffe8b81e4ea8cae75790c3ec1b9906961a7ba55c969
 labels:
 - pairs:
     "app.kubernetes.io/name": paperless-ngx
