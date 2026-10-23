@@ -4,9 +4,9 @@ controller:
     # image: docker.io/democraticcsi/democratic-csi:v1.9.3
     image:
       registry: docker.io/democraticcsi/democratic-csi
-      tag: next
+      tag: v1.9.5
     logLevel: debug
 node:
   driver:
     registry: docker.io/democraticcsi/democratic-csi
-    tag: next
+    tag: v1.9.5
