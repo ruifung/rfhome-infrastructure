@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/tautulli
   newName: ghcr.io/linuxserver/tautulli
-  newTag: version-v2.18.2@sha256:d3c53deb09f6b8fffd1476c7154da538394193955d1e909f3b126068102fb7cf
+  newTag: version-v2.18.2@sha256:c6a48416d16b26f254b000133d2d844c1905ee58ed0f44aad9bda66598d39988
 labels:
 - pairs:
     "app.kubernetes.io/name": tautulli
