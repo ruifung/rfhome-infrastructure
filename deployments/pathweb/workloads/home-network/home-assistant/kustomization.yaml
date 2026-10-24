@@ -8,7 +8,7 @@ images:
 - name: ghcr.io/matter-js/matterjs-server
   newTag: "1.5.4@sha256:b7f4f6c888ece6214a0720ab68c3a46654c71c6d34d01ef1850095d210c0615b"
 - name: alpine
-  newTag: "3.24.3@sha256:b3413572228e34bd1c9245f5565e6cd127005655e8a7899aef33d8e83255c9e6"
+  newTag: "3.24.3@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a"
 resources:
 - deployment.yaml
 - service.yaml
