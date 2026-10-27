@@ -120,7 +120,7 @@ spec:
       enabled: true
       image:
         repository: n8nio/runners
-        tag: 2.45.3@sha256:c57f7d17c37e89fc8128c165063874db788b599ed9c5d263c7adc6d3b59a0477
+        tag: 3.0.0@sha256:6bb4104495ff8baa3b501f11ac5c57f2f9b5b8be2f05669c86c91ffc59084d9e
       authToken:
         existingSecret: n8n-secret
         existingSecretKey: N8N_TASK_RUNNER_AUTH_TOKEN
