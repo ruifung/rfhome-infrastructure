@@ -16,7 +16,7 @@ importers:
         version: file:sdks/authentik
       '@pulumi/aws':
         specifier: ^7.10.0
-        version: 7.51.1(typescript@7.0.2)
+        version: 7.52.0(typescript@7.0.2)
       '@pulumi/cloudflare':
         specifier: ^6.10.1
         version: 6.23.1(typescript@7.0.2)
@@ -313,8 +313,8 @@ packages:
   '@pulumi/authentik@file:sdks/authentik':
     resolution: {directory: sdks/authentik, type: directory}
 
-  '@pulumi/aws@7.51.1':
-    resolution: {integrity: sha512-uJBvElDsU2UVZOwFT3VBprUhc1i1WeHi8MAbbw4mag4okzZDfarHwfSimoMiBkO4XfdQScdY7rDI0g6xIZiosA==}
+  '@pulumi/aws@7.52.0':
+    resolution: {integrity: sha512-GEUXasvdlUy1fweJ+IHG0zm+L25cIJWAfwNQG5kSmaNLzPRuqRzW8DcJdBgm0kW3stoGilP6yMH1ofGhyPAhQw==}
 
   '@pulumi/cloudflare@6.23.1':
     resolution: {integrity: sha512-VaEZaHQFFpToKdG+OkjlLPXhChxhKCHNGqnJoBC0yZaTG2bb02Vh5gP3NOIjQLn7enKkZX3VzdEV5dM0gJJcJA==}
@@ -1475,16 +1475,16 @@ snapshots:
 
   '@pulumi/authentik@file:sdks/authentik':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.272.0(typescript@7.0.2)
       '@types/node': 24.19.2
       typescript: 7.0.2
     transitivePeerDependencies:
       - supports-color
       - ts-node
 
-  '@pulumi/aws@7.51.1(typescript@7.0.2)':
+  '@pulumi/aws@7.52.0(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.272.0(typescript@7.0.2)
       mime: 2.6.0
     transitivePeerDependencies:
       - supports-color
@@ -1517,7 +1517,7 @@ snapshots:
 
   '@pulumi/dns@file:sdks/dns':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.272.0(typescript@7.0.2)
       '@types/node': 24.19.2
       typescript: 7.0.2
     transitivePeerDependencies:
@@ -1526,7 +1526,7 @@ snapshots:
 
   '@pulumi/forgejo@file:sdks/forgejo':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.272.0(typescript@7.0.2)
       '@types/node': 24.19.2
       typescript: 7.0.2
     transitivePeerDependencies:
