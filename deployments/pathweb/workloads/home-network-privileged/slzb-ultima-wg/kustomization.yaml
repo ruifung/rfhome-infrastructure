@@ -5,7 +5,7 @@ images:
 - name: ghcr.io/linuxserver/wireguard
   newTag: "1.0.20260223@sha256:34197b6d2731468a0e77eeb31723af07faf342878be66c1e861e287ec3600b3c"
 - name: alpine/socat
-  newTag: "1.8.1.3@sha256:d58f04c8555f5d04ffab547566d46725ca397dca71b84a5aabf91669de3f4e09"
+  newTag: "1.8.1.3@sha256:f99efbac7d08cb97dc98c5b336fac195c58da9b2804eeec2d4a841365411eeba"
 resources:
 - deployment.yaml
 - service.yaml
