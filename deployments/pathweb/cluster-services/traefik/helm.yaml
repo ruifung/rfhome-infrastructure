@@ -39,9 +39,9 @@ spec:
     additionalArguments:
     - "--providers.file.directory=/additional-configs"
     - "--providers.file.watch=true"
-    - "--entryPoints.web.http.middlewares=crowdsec@file"
-    - "--entryPoints.websecure.http.middlewares=crowdsec@file"
-    - "--entryPoints.traefik.http.middlewares=crowdsec@file" # Add CrowdSec middleware to Traefik entrypoint so that the healthchecks fail if the crowdsec middleware fails to load
+    # - "--entryPoints.web.http.middlewares=crowdsec@file"
+    # - "--entryPoints.websecure.http.middlewares=crowdsec@file"
+    # - "--entryPoints.traefik.http.middlewares=crowdsec@file" # Add CrowdSec middleware to Traefik entrypoint so that the healthchecks fail if the crowdsec middleware fails to load
     deployment:
       # nameOverride: traefik-rfhome
       replicas: 2
@@ -54,9 +54,9 @@ spec:
           sources:
           - configMap:
               name: traefik-configs
-      - name: plugins
-        persistentVolumeClaim:
-          claimName: traefik-plugins
+      # - name: plugins
+      #   persistentVolumeClaim:
+      #     claimName: traefik-plugins
     podSecurityContext:
       fsGroup: 65532
       fsGroupChangePolicy: "OnRootMismatch"
@@ -67,9 +67,9 @@ spec:
     additionalVolumeMounts:
     - name: additional-configs
       mountPath: /additional-configs
-    - name: plugins
-      mountPath: /plugins-storage
-      subPath: internal
+    # - name: plugins
+    #   mountPath: /plugins-storage
+    #   subPath: internal
     resources:
       requests:
         cpu: '1.5'
@@ -117,9 +117,9 @@ spec:
             readTimeout: 300s
     experimental:
       plugins:
-        crowdsec:
-          moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
-          version: v1.3.0
+        # crowdsec:
+        #   moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
+        #   version: v1.3.0
         rewriteHeaders:
           moduleName: github.com/XciD/traefik-plugin-rewrite-headers
           version: v0.0.4
