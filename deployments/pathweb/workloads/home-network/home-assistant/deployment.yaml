@@ -159,9 +159,9 @@ spec:
         resources:
           requests:
             cpu: 200m
-            memory: 3500M
+            memory: 1536Mi
           limits:
-            memory: 5Gi
+            memory: 4Gi
         livenessProbe:
           failureThreshold: 60
           periodSeconds: 5

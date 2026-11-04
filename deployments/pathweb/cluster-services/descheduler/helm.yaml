@@ -31,6 +31,13 @@ spec:
       kubernetes.io/os: linux
       kubernetes.io/arch: amd64
       location: rfhome
+    resources:
+      requests:
+        cpu: 100m
+        memory: 64Mi
+      limits:
+        cpu: 500m
+        memory: 256Mi
     deschedulerPolicyAPIVersion: "descheduler/v1alpha2"
     deschedulerPolicy:
       nodeSelector: role=worker

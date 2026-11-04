@@ -72,8 +72,11 @@ spec:
     #   subPath: internal
     resources:
       requests:
-        cpu: '1.5'
+        cpu: 500m
         memory: 350Mi
+      limits:
+        cpu: 1500m
+        memory: 512Mi
     service:
       spec:
         externalTrafficPolicy: Local

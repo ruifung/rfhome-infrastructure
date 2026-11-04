@@ -21,7 +21,9 @@ vmsingle:
     resources:
       requests:
         cpu: 250m
-        memory: 1300Mi
+        memory: 2Gi
+      limits:
+        memory: 4Gi
     storage:
       storageClassName: okinawa-hdd-block
       accessModes:

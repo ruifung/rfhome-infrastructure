@@ -79,6 +79,9 @@ spec:
       requests:
         cpu: '200m'
         memory: 350Mi
+      limits:
+        cpu: '500m'
+        memory: 512Mi
     service:
       single: true
       spec:

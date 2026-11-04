@@ -17,6 +17,8 @@ spec:
       labels:
         app.kubernetes.io/name: prowlarr
     spec:
+      nodeSelector:
+        node-group: baldric
       # runtimeClassName: gvisor
       containers:
       - name: prowlarr

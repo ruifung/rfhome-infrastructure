@@ -46,3 +46,10 @@ spec:
         ports:
         - containerPort: 9000
           name: http
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 1500m
+            memory: 768Mi
