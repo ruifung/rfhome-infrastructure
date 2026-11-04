@@ -1,0 +1,60 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: descheduler-voyager-capacity
+  namespace: flux-system
+spec:
+  releaseName: descheduler-voyager-capacity
+  chartRef:
+    kind: OCIRepository
+    name: descheduler-chart
+  interval: 15m
+  targetNamespace: kube-system
+  values:
+    kind: CronJob
+    schedule: "*/2 * * * *"
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.io/arch: amd64
+      location: rfhome
+    resources:
+      requests:
+        cpu: 100m
+        memory: 64Mi
+      limits:
+        cpu: 500m
+        memory: 256Mi
+    deschedulerPolicyAPIVersion: "descheduler/v1alpha2"
+    deschedulerPolicy:
+      nodeSelector: node-group=voyager
+      maxNoOfPodsToEvictPerNode: 2
+      metricsProviders:
+      - source: "KubernetesMetrics"
+      profiles:
+      - name: capacity-balancer
+        pluginConfig:
+        - name: "DefaultEvictor"
+          args:
+            evictFailedBarePods: false
+            evictLocalStoragePods: true
+            nodeFit: true
+            minPodAge: 30m
+            priorityThreshold:
+              name: rfhome-home-critical
+        - name: "LowNodeUtilization"
+          args:
+            thresholds:
+              cpu: 40
+              memory: 40
+            targetThresholds:
+              cpu: 75
+              memory: 80
+            metricsUtilization:
+              source: "KubernetesMetrics"
+        plugins:
+          balance:
+            enabled:
+            - "LowNodeUtilization"
+          deschedule:
+            enabled: []

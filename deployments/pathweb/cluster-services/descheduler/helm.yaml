@@ -45,28 +45,17 @@ spec:
       metricsProviders:
       - source: "KubernetesMetrics"
       profiles:
-      - name: ProfileName
+      - name: safety-topology
         pluginConfig:
         - name: "DefaultEvictor"
           args:
-            evictFailedBarePods: true
+            evictFailedBarePods: false
             evictLocalStoragePods: true
-            nodeFit: true
+            nodeFit: false
             minPodAge: 30m
             priorityThreshold:
               name: rfhome-home-critical
         - name: "RemoveDuplicates"
-        - name: "LowNodeUtilization"
-          args:
-            useDeviationThresholds: true
-            thresholds:
-              cpu: 10
-              memory: 2
-            targetThresholds:
-              cpu: 5
-              memory: 10
-            metricsUtilization:
-              source: "KubernetesMetrics"
         - name: "RemovePodsViolatingInterPodAntiAffinity"
         - name: "RemovePodsViolatingNodeAffinity"
           args:
@@ -97,7 +86,6 @@ spec:
           balance:
             enabled:
             - "RemoveDuplicates"
-            - "LowNodeUtilization"
             - "RemovePodsViolatingTopologySpreadConstraint"
           deschedule:
             enabled:
