@@ -16,16 +16,16 @@ importers:
         version: file:sdks/authentik
       '@pulumi/aws':
         specifier: ^7.10.0
-        version: 7.51.1(typescript@7.0.2)
+        version: 7.53.0(typescript@7.0.2)
       '@pulumi/cloudflare':
         specifier: ^6.10.1
-        version: 6.23.1(typescript@7.0.2)
+        version: 6.23.3(typescript@7.0.2)
       '@pulumi/cloudinit':
         specifier: ^1.4.14
-        version: 1.6.3(typescript@7.0.2)
+        version: 1.6.4(typescript@7.0.2)
       '@pulumi/command':
         specifier: ^1.1.3
-        version: 1.2.1(typescript@7.0.2)
+        version: 1.3.0(typescript@7.0.2)
       '@pulumi/dns':
         specifier: file:sdks\dns
         version: file:sdks/dns
@@ -34,25 +34,25 @@ importers:
         version: file:sdks/forgejo
       '@pulumi/gcp':
         specifier: ^10.0.0
-        version: 10.2.0(typescript@7.0.2)
+        version: 10.2.2(typescript@7.0.2)
       '@pulumi/github':
         specifier: ^6.8.0
-        version: 6.15.0(typescript@7.0.2)
+        version: 6.15.1(typescript@7.0.2)
       '@pulumi/kubernetes':
         specifier: ^4.23.0
-        version: 4.34.2(typescript@7.0.2)
+        version: 4.34.3(typescript@7.0.2)
       '@pulumi/local':
         specifier: ^0.1.6
         version: 0.1.6(typescript@7.0.2)
       '@pulumi/pulumi':
         specifier: ^3.113.0
-        version: 3.272.0(typescript@7.0.2)
+        version: 3.274.0(typescript@7.0.2)
       '@pulumi/random':
         specifier: ^4.18.4
-        version: 4.21.4(typescript@7.0.2)
+        version: 4.21.6(typescript@7.0.2)
       '@pulumi/tls':
         specifier: ^5.2.2
-        version: 5.6.2(typescript@7.0.2)
+        version: 5.6.3(typescript@7.0.2)
       '@pulumiverse/talos':
         specifier: ^0.8.1
         version: 0.8.1(typescript@7.0.2)
@@ -313,17 +313,17 @@ packages:
   '@pulumi/authentik@file:sdks/authentik':
     resolution: {directory: sdks/authentik, type: directory}
 
-  '@pulumi/aws@7.51.1':
-    resolution: {integrity: sha512-uJBvElDsU2UVZOwFT3VBprUhc1i1WeHi8MAbbw4mag4okzZDfarHwfSimoMiBkO4XfdQScdY7rDI0g6xIZiosA==}
+  '@pulumi/aws@7.53.0':
+    resolution: {integrity: sha512-qHijd0MQTZhGb3Z1WJzmrqfK8Vxz3WkyUkfTXm/7nWTmyWAdLgshyDwzbHxyGEsPbEVjLpgx+3mjPmY9HIGLrw==}
 
-  '@pulumi/cloudflare@6.23.1':
-    resolution: {integrity: sha512-VaEZaHQFFpToKdG+OkjlLPXhChxhKCHNGqnJoBC0yZaTG2bb02Vh5gP3NOIjQLn7enKkZX3VzdEV5dM0gJJcJA==}
+  '@pulumi/cloudflare@6.23.3':
+    resolution: {integrity: sha512-etEo7csPhmv2K2dbRfyj9lCKcka5vTH9qowVufK9b+iDB2qEta9M/CPo+2QgsaANeEmxRTztqg+pIi+Xtzhjow==}
 
-  '@pulumi/cloudinit@1.6.3':
-    resolution: {integrity: sha512-89usrlHRmphT1Km4S5ZbHu+7iGckOf57MTx9XztDC6z3wbCr4g/hYoTdKCJB4OmPkLeY5q7k9HRXr6aDhOSPNQ==}
+  '@pulumi/cloudinit@1.6.4':
+    resolution: {integrity: sha512-XTqRys3l8lNiqCi8ONX3jKbbfUG489wHxukc0DCBppVwMNLoeDdS6M08O5JJrOA/zw0tLDLAF2D7fpCV8q113A==}
 
-  '@pulumi/command@1.2.1':
-    resolution: {integrity: sha512-mutNDIUYP67yCBYOVIidQyxuTwZDY9v/sx9EGbgIv4PXfyfolOKGgGLeoHEbI1lxRwaw2wbTZ3VNIynDnA5VKA==}
+  '@pulumi/command@1.3.0':
+    resolution: {integrity: sha512-KrRVG/CmN9yCYJ1Rqn5mkond5wbeLNbgrclityNNN8hgltjSVZ2xwlxAw84fApNk9Bu3AV1bwN5Q/XD56Kisvg==}
 
   '@pulumi/dns@file:sdks/dns':
     resolution: {directory: sdks/dns, type: directory}
@@ -331,20 +331,20 @@ packages:
   '@pulumi/forgejo@file:sdks/forgejo':
     resolution: {directory: sdks/forgejo, type: directory}
 
-  '@pulumi/gcp@10.2.0':
-    resolution: {integrity: sha512-SkNSx0MhAVQI/TI4/np9lrM41U1I1L6YeSrtq0D9flkwr3bHWcXKpvgYasJR6qL+3eoLt9UwZmGQuPpYUxIxdQ==}
+  '@pulumi/gcp@10.2.2':
+    resolution: {integrity: sha512-RBrTiBIHPqNsmimIbVQf+Cq29XFVMZLvRfQy3QpEM8vMbFzZEmVIiQZjJN9m/5Ra6yR7H0i5VuUbbhdHC6xpVQ==}
 
-  '@pulumi/github@6.15.0':
-    resolution: {integrity: sha512-U8ZxPQQcOrcTn8y8EZsWmXzMtbw0JnwWCVGmqxBZ/i2SpUlEGMYT9B+EFC/qTALZXkDf7cMiq6fZ3Gy1G23nyQ==}
+  '@pulumi/github@6.15.1':
+    resolution: {integrity: sha512-lXoLADTzeUvhOwxqnpt1Cz2loBm7B1ufsztBBvW4QiBkam6zbNOyq6WbOQVFMVEpoKpPhQxENTLTiJt1NKxLOQ==}
 
-  '@pulumi/kubernetes@4.34.2':
-    resolution: {integrity: sha512-OcIe8OUwivkEngmjinrmke54INbJ0L6u/CWm8mLh6F7pmIDXyHGTM8PzcZsg5QbSm24HnNUHLl2tEUoOBxDo3w==}
+  '@pulumi/kubernetes@4.34.3':
+    resolution: {integrity: sha512-BNEqCTYWe8n6ZFHXafoTMcQoG9Z6PDDjXujKNrtKlr2SGDjdJTSSxCJWUlmFpsO/FCNC4g4wEeGTGnKmLYOthg==}
 
   '@pulumi/local@0.1.6':
     resolution: {integrity: sha512-+up1eN7OgACaaHUSsWjA8qlm2OTFzQ83LZEH+gxmUYTWpVviBftom/mYEL9VBTWTtq71EJI2ERFaCy+TpmTO5g==}
 
-  '@pulumi/pulumi@3.271.0':
-    resolution: {integrity: sha512-5Ol0JIf0vCbiFj1j3r0hvdaCSCbCURhfOxpNvTsE1qhjJS3m665UG1qO3HKrB6T9mD7OzgcD1y4PbL6EGl0gjg==}
+  '@pulumi/pulumi@3.273.0':
+    resolution: {integrity: sha512-Yh2k0Kry4u5LM730KUO5HZFnqHdlW9ypoQ8zgO0Tqam1G6urFXjIUTUaLxvWrdsm6gKCoyVS6CPdeOGcV+Msvg==}
     engines: {node: '>=22'}
     peerDependencies:
       ts-node: '>= 7.0.1 < 12'
@@ -355,8 +355,8 @@ packages:
       typescript:
         optional: true
 
-  '@pulumi/pulumi@3.272.0':
-    resolution: {integrity: sha512-DepbT+tA3HnNo5+OtEMEevK1pC45PD/71sQh3tlWYFtW4tjuZijAQprvgCYcQUKNwRP3/Y3z83Kbvxn7y9HR2w==}
+  '@pulumi/pulumi@3.274.0':
+    resolution: {integrity: sha512-y8R/BryUgfxaE/6jdJV+TO1yq/wFluTJidsTEMSAEli4tLudNmf4QCGNFhj8fQX97G4xBDuFgF/OUDTYi9UMXw==}
     engines: {node: '>=22'}
     peerDependencies:
       ts-node: '>= 7.0.1 < 12'
@@ -367,11 +367,11 @@ packages:
       typescript:
         optional: true
 
-  '@pulumi/random@4.21.4':
-    resolution: {integrity: sha512-CKWWZDfIZxdIB8/Xax5IqqGQNyPEdT8TFwJwooK4saU6kU0ozdmrySZ9jt8U1thlYIQTaYitP9EeMBnPbVK+1g==}
+  '@pulumi/random@4.21.6':
+    resolution: {integrity: sha512-HsWUATAcKxceBcvNzPIdkC7sXyWWiGZmd/y4eZKF5nSAwCgpOPReZ+LLFbkl2bvKGHc3nNX5vIM84YU2dpSD1Q==}
 
-  '@pulumi/tls@5.6.2':
-    resolution: {integrity: sha512-Id9iwUsVONmXamwrAo1OR+RGjlR1WXqA50v2WQJevZSF+73ZZpZvp5rmd4CinWfvmoYVcBJGNpAzrUjUnUmuZg==}
+  '@pulumi/tls@5.6.3':
+    resolution: {integrity: sha512-glAX4KYmsEGOXPz7yFKcErSogfknYB/4h2/EdeVXifZGW8ic47HCjNI5zPHF4+0DcwmNdLGA7fm2qQz69wS9EA==}
 
   '@pulumiverse/talos@0.8.1':
     resolution: {integrity: sha512-GTiqBuWRvunu70uTwmx9mL99B2Yc+I96XMm4bwTP2gE+M/0e8eICcwo3Hs/3LN/vhGgkGWZNFInUSwZlgZFgeg==}
@@ -1194,7 +1194,7 @@ snapshots:
 
   '@muhlba91/pulumi-proxmoxve@8.6.0(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -1475,41 +1475,41 @@ snapshots:
 
   '@pulumi/authentik@file:sdks/authentik':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
       '@types/node': 24.19.2
       typescript: 7.0.2
     transitivePeerDependencies:
       - supports-color
       - ts-node
 
-  '@pulumi/aws@7.51.1(typescript@7.0.2)':
+  '@pulumi/aws@7.53.0(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
       mime: 2.6.0
     transitivePeerDependencies:
       - supports-color
       - ts-node
       - typescript
 
-  '@pulumi/cloudflare@6.23.1(typescript@7.0.2)':
+  '@pulumi/cloudflare@6.23.3(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
       - ts-node
       - typescript
 
-  '@pulumi/cloudinit@1.6.3(typescript@7.0.2)':
+  '@pulumi/cloudinit@1.6.4(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
       - ts-node
       - typescript
 
-  '@pulumi/command@1.2.1(typescript@7.0.2)':
+  '@pulumi/command@1.3.0(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -1517,7 +1517,7 @@ snapshots:
 
   '@pulumi/dns@file:sdks/dns':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
       '@types/node': 24.19.2
       typescript: 7.0.2
     transitivePeerDependencies:
@@ -1526,33 +1526,33 @@ snapshots:
 
   '@pulumi/forgejo@file:sdks/forgejo':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
       '@types/node': 24.19.2
       typescript: 7.0.2
     transitivePeerDependencies:
       - supports-color
       - ts-node
 
-  '@pulumi/gcp@10.2.0(typescript@7.0.2)':
+  '@pulumi/gcp@10.2.2(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
       '@types/express': 4.17.25
     transitivePeerDependencies:
       - supports-color
       - ts-node
       - typescript
 
-  '@pulumi/github@6.15.0(typescript@7.0.2)':
+  '@pulumi/github@6.15.1(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
       - ts-node
       - typescript
 
-  '@pulumi/kubernetes@4.34.2(typescript@7.0.2)':
+  '@pulumi/kubernetes@4.34.3(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
       glob: 12.0.0
       shell-quote: 1.12.0
     transitivePeerDependencies:
@@ -1562,13 +1562,13 @@ snapshots:
 
   '@pulumi/local@0.1.6(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
       - ts-node
       - typescript
 
-  '@pulumi/pulumi@3.271.0(typescript@7.0.2)':
+  '@pulumi/pulumi@3.273.0(typescript@7.0.2)':
     dependencies:
       '@grpc/grpc-js': 1.14.6
       '@logdna/tail-file': 2.2.0
@@ -1600,7 +1600,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@pulumi/pulumi@3.272.0(typescript@7.0.2)':
+  '@pulumi/pulumi@3.274.0(typescript@7.0.2)':
     dependencies:
       '@grpc/grpc-js': 1.14.6
       '@logdna/tail-file': 2.2.0
@@ -1632,17 +1632,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@pulumi/random@4.21.4(typescript@7.0.2)':
+  '@pulumi/random@4.21.6(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
       - ts-node
       - typescript
 
-  '@pulumi/tls@5.6.2(typescript@7.0.2)':
+  '@pulumi/tls@5.6.3(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -1650,7 +1650,7 @@ snapshots:
 
   '@pulumiverse/talos@0.8.1(typescript@7.0.2)':
     dependencies:
-      '@pulumi/pulumi': 3.271.0(typescript@7.0.2)
+      '@pulumi/pulumi': 3.273.0(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
       - ts-node
