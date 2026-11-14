@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/sonarr
   newName: ghcr.io/linuxserver/sonarr
-  newTag: version-4.0.20.3014@sha256:f247545d23ba8b233d6604575347e48a623fe6ad75dda02348bf81917f3b5c06
+  newTag: version-4.0.20.3014@sha256:c7d1df25e428da6c9ace05daea0d34e59522978a3843ea1944812f855af4086c
 labels:
 - pairs:
     "app.kubernetes.io/name": sonarr
