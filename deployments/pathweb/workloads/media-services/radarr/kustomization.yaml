@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/radarr
   newName: ghcr.io/linuxserver/radarr
-  newTag: version-6.4.4.10685@sha256:7dfd049e79c00b16fbc29c3f5d96a9e7b9e73a23930b4c5b3c4541d60b366814
+  newTag: version-7.0.3.10918@sha256:044788f5508b7f67a3e0368cdd142c77c4d4cd5aec2efaba53e1a68b6b6231e7
 labels:
 - pairs:
     "app.kubernetes.io/name": radarr
