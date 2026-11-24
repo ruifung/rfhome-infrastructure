@@ -3,9 +3,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
 - name: ghcr.io/anszom/rethink
-  newTag: 0.1.2@sha256:862d15d456c1e57cbd7f03d4e574d951539cc7aea0d2c9a0ce37706a155a1ce9
+  newTag: 0.1.4@sha256:bed0d44367866b3e7faafa759e67b7bd254aa380a4c68259d0c7838f31709641
 - name: mikefarah/yq
-  newTag: 4.54.1@sha256:4b3d9475d65571d28cbb19544d3820ec2945e4c8b2f18279394282b8dc3a592e
+  newTag: 4.54.3@sha256:7834187596ad56fd5a81436114e0b0b9dd54c91bb43946d1f7145b2be5f9c3d2
 resources:
 - deployment.yaml
 - service.yaml
