@@ -2,7 +2,7 @@
 images:
 - name: linuxserver/calibre
   newName: ghcr.io/linuxserver/calibre
-  newTag: version-v9.19.0@sha256:b7b1d5d64d510d8b7b890ff5ed1692bdceb13bd6290d371859c9eeb973395d6f
+  newTag: version-v9.19.0@sha256:bbf2b494238d83b51e947e9588d03e19053cd74aaa933a7db89f96ed42cc2d43
 labels:
 - pairs:
     "app.kubernetes.io/name": calibre
