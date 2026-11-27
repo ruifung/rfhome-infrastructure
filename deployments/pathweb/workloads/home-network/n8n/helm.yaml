@@ -8,8 +8,8 @@ spec:
   interval: 24h
   url: oci://ghcr.io/n8n-io/n8n-helm-chart/n8n
   ref:
-    tag: 1.20.0
-    digest: sha256:0a8de9057e2a861f9cf85588c6a6315b64296a3eea83bc48c03a0ead40f34a56
+    tag: 1.21.0
+    digest: sha256:a6d00d1d71793c0e15c3bdb6b1fa798185d3e1cc829a2030a0bc35b769c52826
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -48,7 +48,7 @@ spec:
     fullnameOverride: n8n
     image:
       repository: n8nio/n8n
-      tag: 2.49.5@sha256:c349b24d6e242b4ea14d75e6f1a90c50e348cf4b1c4512b4a0a50219ead6533d
+      tag: 2.50.2@sha256:a21f11aaec37ebda09d7dfcb5d4b7a87cc972dedd3556aff424c71ef49d052cd
     secretRefs:
       existingSecret: n8n-secret
     securityContext:
@@ -120,7 +120,7 @@ spec:
       enabled: true
       image:
         repository: n8nio/runners
-        tag: 2.49.5@sha256:6acde3e86f55a343970affdb897f4f225212a73f9f2d7cac1db3c3cb1c16495f
+        tag: 2.50.3@sha256:8a486d3bff0196d8d2d87a71d738655c0c79b81c4fe15959b68100841e1f0901
       authToken:
         existingSecret: n8n-secret
         existingSecretKey: N8N_TASK_RUNNER_AUTH_TOKEN
@@ -218,7 +218,7 @@ spec:
             path: /spec/template/spec/initContainers
             value:
             - name: patch-n8n
-              image: n8nio/n8n:2.49.5@sha256:c349b24d6e242b4ea14d75e6f1a90c50e348cf4b1c4512b4a0a50219ead6533d
+              image: n8nio/n8n:2.50.2@sha256:a21f11aaec37ebda09d7dfcb5d4b7a87cc972dedd3556aff424c71ef49d052cd
               command:
               - sh
               - /etc/n8n-scripts/activate-ee.sh
