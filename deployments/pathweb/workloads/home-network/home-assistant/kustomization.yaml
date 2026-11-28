@@ -6,7 +6,7 @@ images:
   newName: ghcr.io/home-assistant/home-assistant
   newTag: "2026.11.3@sha256:24e541ddae5818bf8eb27898b9ba00d0c344a655aa5097e9e9bd4b19356be847"
 - name: ghcr.io/matter-js/matterjs-server
-  newTag: "1.6.0@sha256:9eb98c839d0b4b07f9230b96ad52de570f7f2a7c286c5992b4c04b6b26c08a3f"
+  newTag: "1.6.1@sha256:5591f9f65926ca4b13b34cfd9c9888cb9d9ee9f147fe0b04c8e025cbeeee0eb7"
 - name: alpine
   newTag: "3.24.4@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf"
 resources:
