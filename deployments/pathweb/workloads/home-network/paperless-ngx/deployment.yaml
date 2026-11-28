@@ -171,6 +171,9 @@ spec:
           httpGet:
             path: /
             port: 8000
+            httpHeaders:
+              - name: Host
+                value: paperless.services.home.yrf.me
           initialDelaySeconds: 30
           periodSeconds: 10
           failureThreshold: 30
@@ -178,6 +181,9 @@ spec:
           httpGet:
             path: /
             port: 8000
+            httpHeaders:
+              - name: Host
+                value: paperless.services.home.yrf.me
           initialDelaySeconds: 10
           periodSeconds: 10
           failureThreshold: 30
